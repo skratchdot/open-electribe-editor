@@ -450,7 +450,7 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 		// bytes 64~191 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_PATTERN_SET_PARAMETERS; i++) {
 			PatternSetParameter patternSetParameter = EsxFactory.eINSTANCE.createPatternSetParameter();
-			patternSetParameter.setPatternNumber(PatternNumber.get(in.readByte()));
+			patternSetParameter.setPatternNumber(PatternNumber.get(in.readUnsignedByte()));
 			this.getPatternSetParameters().add(i, patternSetParameter);
 		}
 

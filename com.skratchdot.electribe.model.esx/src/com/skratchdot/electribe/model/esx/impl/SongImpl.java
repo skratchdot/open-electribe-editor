@@ -28,17 +28,21 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.MuteHold;
+import com.skratchdot.electribe.model.esx.NextSongNumber;
 import com.skratchdot.electribe.model.esx.PatternNumber;
-import com.skratchdot.electribe.model.esx.SampleNumber;
 import com.skratchdot.electribe.model.esx.Song;
 import com.skratchdot.electribe.model.esx.SongEvent;
-import com.skratchdot.electribe.model.esx.SongNumber;
 import com.skratchdot.electribe.model.esx.SongEventControl;
 import com.skratchdot.electribe.model.esx.SongEventDrumNote;
 import com.skratchdot.electribe.model.esx.SongEventKeyboardNote;
 import com.skratchdot.electribe.model.esx.SongEventMuteStatus;
 import com.skratchdot.electribe.model.esx.SongEventTempo;
+import com.skratchdot.electribe.model.esx.SongLength;
+import com.skratchdot.electribe.model.esx.SongNumber;
+import com.skratchdot.electribe.model.esx.SongPattern;
 import com.skratchdot.electribe.model.esx.Tempo;
+import com.skratchdot.electribe.model.esx.TempoLock;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
@@ -53,12 +57,11 @@ import com.skratchdot.electribe.model.esx.util.EsxUtil;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getTempo <em>Tempo</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getTempoLock <em>Tempo Lock</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getLength <em>Length</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getSongLength <em>Song Length</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getMuteHold <em>Mute Hold</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getNextSong <em>Next Song</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getNextSongNumber <em>Next Song Number</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getNumberOfSongEvents <em>Number Of Song Events</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getPatternNumber <em>Pattern Number</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getNoteOffset <em>Note Offset</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getSongPatterns <em>Song Patterns</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getSongEvents <em>Song Events</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#isBeingUsed <em>Being Used</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getSongNumberOriginal <em>Song Number Original</em>}</li>
@@ -107,7 +110,7 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final byte TEMPO_LOCK_EDEFAULT = 0x00;
+	protected static final TempoLock TEMPO_LOCK_EDEFAULT = TempoLock.TEMPO_LOCK_OFF;
 
 	/**
 	 * The cached value of the '{@link #getTempoLock() <em>Tempo Lock</em>}' attribute.
@@ -117,27 +120,27 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * @generated
 	 * @ordered
 	 */
-	protected byte tempoLock = TEMPO_LOCK_EDEFAULT;
+	protected TempoLock tempoLock = TEMPO_LOCK_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getLength() <em>Length</em>}' attribute.
+	 * The default value of the '{@link #getSongLength() <em>Song Length</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLength()
+	 * @see #getSongLength()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final byte LENGTH_EDEFAULT = 0x00;
+	protected static final SongLength SONG_LENGTH_EDEFAULT = SongLength.SONG_LENGTH_001;
 
 	/**
-	 * The cached value of the '{@link #getLength() <em>Length</em>}' attribute.
+	 * The cached value of the '{@link #getSongLength() <em>Song Length</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLength()
+	 * @see #getSongLength()
 	 * @generated
 	 * @ordered
 	 */
-	protected byte length = LENGTH_EDEFAULT;
+	protected SongLength songLength = SONG_LENGTH_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMuteHold() <em>Mute Hold</em>}' attribute.
@@ -147,7 +150,7 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final byte MUTE_HOLD_EDEFAULT = 0x00;
+	protected static final MuteHold MUTE_HOLD_EDEFAULT = MuteHold.MUTE_HOLD_OFF;
 
 	/**
 	 * The cached value of the '{@link #getMuteHold() <em>Mute Hold</em>}' attribute.
@@ -157,27 +160,27 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * @generated
 	 * @ordered
 	 */
-	protected byte muteHold = MUTE_HOLD_EDEFAULT;
+	protected MuteHold muteHold = MUTE_HOLD_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getNextSong() <em>Next Song</em>}' attribute.
+	 * The default value of the '{@link #getNextSongNumber() <em>Next Song Number</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNextSong()
+	 * @see #getNextSongNumber()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final byte NEXT_SONG_EDEFAULT = 0x00;
+	protected static final NextSongNumber NEXT_SONG_NUMBER_EDEFAULT = NextSongNumber.NEXT_SONG_NUMBER_00;
 
 	/**
-	 * The cached value of the '{@link #getNextSong() <em>Next Song</em>}' attribute.
+	 * The cached value of the '{@link #getNextSongNumber() <em>Next Song Number</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNextSong()
+	 * @see #getNextSongNumber()
 	 * @generated
 	 * @ordered
 	 */
-	protected byte nextSong = NEXT_SONG_EDEFAULT;
+	protected NextSongNumber nextSongNumber = NEXT_SONG_NUMBER_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getNumberOfSongEvents() <em>Number Of Song Events</em>}' attribute.
@@ -190,44 +193,14 @@ public class SongImpl extends EObjectImpl implements Song {
 	protected static final short NUMBER_OF_SONG_EVENTS_EDEFAULT = 0;
 
 	/**
-	 * The default value of the '{@link #getPatternNumber() <em>Pattern Number</em>}' attribute.
+	 * The cached value of the '{@link #getSongPatterns() <em>Song Patterns</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPatternNumber()
+	 * @see #getSongPatterns()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final byte[] PATTERN_NUMBER_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getPatternNumber() <em>Pattern Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPatternNumber()
-	 * @generated
-	 * @ordered
-	 */
-	protected byte[] patternNumber = PATTERN_NUMBER_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getNoteOffset() <em>Note Offset</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNoteOffset()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final byte[] NOTE_OFFSET_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getNoteOffset() <em>Note Offset</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNoteOffset()
-	 * @generated
-	 * @ordered
-	 */
-	protected byte[] noteOffset = NOTE_OFFSET_EDEFAULT;
+	protected EList<SongPattern> songPatterns;
 
 	/**
 	 * The cached value of the '{@link #getSongEvents() <em>Song Events</em>}' containment reference list.
@@ -313,25 +286,29 @@ public class SongImpl extends EObjectImpl implements Song {
 		this.getTempo().updateValue();
 
 		// byte 10
-		this.setTempoLock(in.readByte());
+		this.setTempoLock(TempoLock.get(in.readByte()));
 		// byte 11
-		this.setLength(in.readByte());
+		this.setSongLength(SongLength.get(in.readByte()));
 		// byte 12
-		this.setMuteHold(in.readByte());
+		this.setMuteHold(MuteHold.get(in.readByte()));
 		// byte 13
-		this.setNextSong(in.readByte());
+		this.setNextSongNumber(NextSongNumber.get(in.readByte()));
 		// bytes 14~15
 		short tempNumberOfSongEvents = in.readShort();
 
-		// bytes 16~271
-		byte[] newPatternNumber = new byte[EsxUtil.NUM_SONG_PATTERNS];
-		in.read(newPatternNumber, 0, EsxUtil.NUM_SONG_PATTERNS);
-		this.setPatternNumber(newPatternNumber);
-
+		// Create our list of SongPatterns
+		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
+			SongPattern songPattern = EsxFactory.eINSTANCE.createSongPattern();
+			this.getSongPatterns().add(i, songPattern);
+		}
+		// bytes 16~271 (SongPatterns - PatternNumber)
+		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
+			this.getSongPatterns().get(i).setPatternNumber(PatternNumber.get(in.readUnsignedByte()));
+		}
 		// bytes 272~527
-		byte[] newNoteOffset = new byte[EsxUtil.NUM_SONG_NOTE_OFFSET];
-		in.read(newNoteOffset, 0, EsxUtil.NUM_SONG_NOTE_OFFSET);
-		this.setNoteOffset(newNoteOffset);
+		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
+			this.getSongPatterns().get(i).setNoteOffset(in.readByte());
+		}
 
 		// read in song events
 		if(tempNumberOfSongEvents > 0) {
@@ -442,7 +419,7 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public byte getTempoLock() {
+	public TempoLock getTempoLock() {
 		return tempoLock;
 	}
 
@@ -451,9 +428,9 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTempoLock(byte newTempoLock) {
-		byte oldTempoLock = tempoLock;
-		tempoLock = newTempoLock;
+	public void setTempoLock(TempoLock newTempoLock) {
+		TempoLock oldTempoLock = tempoLock;
+		tempoLock = newTempoLock == null ? TEMPO_LOCK_EDEFAULT : newTempoLock;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG__TEMPO_LOCK, oldTempoLock, tempoLock));
 	}
@@ -463,8 +440,8 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public byte getLength() {
-		return length;
+	public SongLength getSongLength() {
+		return songLength;
 	}
 
 	/**
@@ -472,11 +449,11 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLength(byte newLength) {
-		byte oldLength = length;
-		length = newLength;
+	public void setSongLength(SongLength newSongLength) {
+		SongLength oldSongLength = songLength;
+		songLength = newSongLength == null ? SONG_LENGTH_EDEFAULT : newSongLength;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG__LENGTH, oldLength, length));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG__SONG_LENGTH, oldSongLength, songLength));
 	}
 
 	/**
@@ -484,7 +461,7 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public byte getMuteHold() {
+	public MuteHold getMuteHold() {
 		return muteHold;
 	}
 
@@ -493,9 +470,9 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMuteHold(byte newMuteHold) {
-		byte oldMuteHold = muteHold;
-		muteHold = newMuteHold;
+	public void setMuteHold(MuteHold newMuteHold) {
+		MuteHold oldMuteHold = muteHold;
+		muteHold = newMuteHold == null ? MUTE_HOLD_EDEFAULT : newMuteHold;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG__MUTE_HOLD, oldMuteHold, muteHold));
 	}
@@ -505,8 +482,8 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public byte getNextSong() {
-		return nextSong;
+	public NextSongNumber getNextSongNumber() {
+		return nextSongNumber;
 	}
 
 	/**
@@ -514,11 +491,11 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNextSong(byte newNextSong) {
-		byte oldNextSong = nextSong;
-		nextSong = newNextSong;
+	public void setNextSongNumber(NextSongNumber newNextSongNumber) {
+		NextSongNumber oldNextSongNumber = nextSongNumber;
+		nextSongNumber = newNextSongNumber == null ? NEXT_SONG_NUMBER_EDEFAULT : newNextSongNumber;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG__NEXT_SONG, oldNextSong, nextSong));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG__NEXT_SONG_NUMBER, oldNextSongNumber, nextSongNumber));
 	}
 
 	/**
@@ -535,41 +512,11 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public byte[] getPatternNumber() {
-		return patternNumber;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPatternNumber(byte[] newPatternNumber) {
-		byte[] oldPatternNumber = patternNumber;
-		patternNumber = newPatternNumber;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG__PATTERN_NUMBER, oldPatternNumber, patternNumber));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public byte[] getNoteOffset() {
-		return noteOffset;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setNoteOffset(byte[] newNoteOffset) {
-		byte[] oldNoteOffset = noteOffset;
-		noteOffset = newNoteOffset;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG__NOTE_OFFSET, oldNoteOffset, noteOffset));
+	public EList<SongPattern> getSongPatterns() {
+		if (songPatterns == null) {
+			songPatterns = new EObjectContainmentEList<SongPattern>(SongPattern.class, this, EsxPackage.SONG__SONG_PATTERNS);
+		}
+		return songPatterns;
 	}
 
 	/**
@@ -600,7 +547,6 @@ public class SongImpl extends EObjectImpl implements Song {
 			}
 		}
 		return true;
-
 	}
 
 	/**
@@ -650,6 +596,8 @@ public class SongImpl extends EObjectImpl implements Song {
 		switch (featureID) {
 			case EsxPackage.SONG__TEMPO:
 				return basicSetTempo(null, msgs);
+			case EsxPackage.SONG__SONG_PATTERNS:
+				return ((InternalEList<?>)getSongPatterns()).basicRemove(otherEnd, msgs);
 			case EsxPackage.SONG__SONG_EVENTS:
 				return ((InternalEList<?>)getSongEvents()).basicRemove(otherEnd, msgs);
 		}
@@ -670,18 +618,16 @@ public class SongImpl extends EObjectImpl implements Song {
 				return getTempo();
 			case EsxPackage.SONG__TEMPO_LOCK:
 				return getTempoLock();
-			case EsxPackage.SONG__LENGTH:
-				return getLength();
+			case EsxPackage.SONG__SONG_LENGTH:
+				return getSongLength();
 			case EsxPackage.SONG__MUTE_HOLD:
 				return getMuteHold();
-			case EsxPackage.SONG__NEXT_SONG:
-				return getNextSong();
+			case EsxPackage.SONG__NEXT_SONG_NUMBER:
+				return getNextSongNumber();
 			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS:
 				return getNumberOfSongEvents();
-			case EsxPackage.SONG__PATTERN_NUMBER:
-				return getPatternNumber();
-			case EsxPackage.SONG__NOTE_OFFSET:
-				return getNoteOffset();
+			case EsxPackage.SONG__SONG_PATTERNS:
+				return getSongPatterns();
 			case EsxPackage.SONG__SONG_EVENTS:
 				return getSongEvents();
 			case EsxPackage.SONG__BEING_USED:
@@ -710,22 +656,20 @@ public class SongImpl extends EObjectImpl implements Song {
 				setTempo((Tempo)newValue);
 				return;
 			case EsxPackage.SONG__TEMPO_LOCK:
-				setTempoLock((Byte)newValue);
+				setTempoLock((TempoLock)newValue);
 				return;
-			case EsxPackage.SONG__LENGTH:
-				setLength((Byte)newValue);
+			case EsxPackage.SONG__SONG_LENGTH:
+				setSongLength((SongLength)newValue);
 				return;
 			case EsxPackage.SONG__MUTE_HOLD:
-				setMuteHold((Byte)newValue);
+				setMuteHold((MuteHold)newValue);
 				return;
-			case EsxPackage.SONG__NEXT_SONG:
-				setNextSong((Byte)newValue);
+			case EsxPackage.SONG__NEXT_SONG_NUMBER:
+				setNextSongNumber((NextSongNumber)newValue);
 				return;
-			case EsxPackage.SONG__PATTERN_NUMBER:
-				setPatternNumber((byte[])newValue);
-				return;
-			case EsxPackage.SONG__NOTE_OFFSET:
-				setNoteOffset((byte[])newValue);
+			case EsxPackage.SONG__SONG_PATTERNS:
+				getSongPatterns().clear();
+				getSongPatterns().addAll((Collection<? extends SongPattern>)newValue);
 				return;
 			case EsxPackage.SONG__SONG_EVENTS:
 				getSongEvents().clear();
@@ -755,20 +699,17 @@ public class SongImpl extends EObjectImpl implements Song {
 			case EsxPackage.SONG__TEMPO_LOCK:
 				setTempoLock(TEMPO_LOCK_EDEFAULT);
 				return;
-			case EsxPackage.SONG__LENGTH:
-				setLength(LENGTH_EDEFAULT);
+			case EsxPackage.SONG__SONG_LENGTH:
+				setSongLength(SONG_LENGTH_EDEFAULT);
 				return;
 			case EsxPackage.SONG__MUTE_HOLD:
 				setMuteHold(MUTE_HOLD_EDEFAULT);
 				return;
-			case EsxPackage.SONG__NEXT_SONG:
-				setNextSong(NEXT_SONG_EDEFAULT);
+			case EsxPackage.SONG__NEXT_SONG_NUMBER:
+				setNextSongNumber(NEXT_SONG_NUMBER_EDEFAULT);
 				return;
-			case EsxPackage.SONG__PATTERN_NUMBER:
-				setPatternNumber(PATTERN_NUMBER_EDEFAULT);
-				return;
-			case EsxPackage.SONG__NOTE_OFFSET:
-				setNoteOffset(NOTE_OFFSET_EDEFAULT);
+			case EsxPackage.SONG__SONG_PATTERNS:
+				getSongPatterns().clear();
 				return;
 			case EsxPackage.SONG__SONG_EVENTS:
 				getSongEvents().clear();
@@ -794,18 +735,16 @@ public class SongImpl extends EObjectImpl implements Song {
 				return tempo != null;
 			case EsxPackage.SONG__TEMPO_LOCK:
 				return tempoLock != TEMPO_LOCK_EDEFAULT;
-			case EsxPackage.SONG__LENGTH:
-				return length != LENGTH_EDEFAULT;
+			case EsxPackage.SONG__SONG_LENGTH:
+				return songLength != SONG_LENGTH_EDEFAULT;
 			case EsxPackage.SONG__MUTE_HOLD:
 				return muteHold != MUTE_HOLD_EDEFAULT;
-			case EsxPackage.SONG__NEXT_SONG:
-				return nextSong != NEXT_SONG_EDEFAULT;
+			case EsxPackage.SONG__NEXT_SONG_NUMBER:
+				return nextSongNumber != NEXT_SONG_NUMBER_EDEFAULT;
 			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS:
 				return getNumberOfSongEvents() != NUMBER_OF_SONG_EVENTS_EDEFAULT;
-			case EsxPackage.SONG__PATTERN_NUMBER:
-				return PATTERN_NUMBER_EDEFAULT == null ? patternNumber != null : !PATTERN_NUMBER_EDEFAULT.equals(patternNumber);
-			case EsxPackage.SONG__NOTE_OFFSET:
-				return NOTE_OFFSET_EDEFAULT == null ? noteOffset != null : !NOTE_OFFSET_EDEFAULT.equals(noteOffset);
+			case EsxPackage.SONG__SONG_PATTERNS:
+				return songPatterns != null && !songPatterns.isEmpty();
 			case EsxPackage.SONG__SONG_EVENTS:
 				return songEvents != null && !songEvents.isEmpty();
 			case EsxPackage.SONG__BEING_USED:
@@ -832,16 +771,12 @@ public class SongImpl extends EObjectImpl implements Song {
 		result.append(name);
 		result.append(", tempoLock: ");
 		result.append(tempoLock);
-		result.append(", length: ");
-		result.append(length);
+		result.append(", songLength: ");
+		result.append(songLength);
 		result.append(", muteHold: ");
 		result.append(muteHold);
-		result.append(", nextSong: ");
-		result.append(nextSong);
-		result.append(", patternNumber: ");
-		result.append(patternNumber);
-		result.append(", noteOffset: ");
-		result.append(noteOffset);
+		result.append(", nextSongNumber: ");
+		result.append(nextSongNumber);
 		result.append(", songNumberOriginal: ");
 		result.append(songNumberOriginal);
 		result.append(')');
@@ -916,19 +851,23 @@ public class SongImpl extends EObjectImpl implements Song {
 		this.getTempo().updatePackedValue();
 		out.writeShort(this.getTempo().getPackedValue());
 		// byte 10
-		out.writeByte(this.getTempoLock());
+		out.writeByte(this.getTempoLock().getValue());
 		// byte 11
-		out.writeByte(this.getLength());
+		out.writeByte(this.getSongLength().getValue());
 		// byte 12
-		out.writeByte(this.getMuteHold());
+		out.writeByte(this.getMuteHold().getValue());
 		// byte 13
-		out.writeByte(this.getNextSong());
+		out.writeByte(this.getNextSongNumber().getValue());
 		// bytes 14~15
 		out.writeShort(this.getNumberOfSongEvents());
-		// bytes 16~271
-		out.write(this.getPatternNumber());
+		// bytes 16~271 (SongPatterns - PatternNumber)
+		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
+			out.writeByte(this.getSongPatterns().get(i).getPatternNumber().getValue());
+		}
 		// bytes 272~527
-		out.write(this.getNoteOffset());
+		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
+			out.writeByte(this.getSongPatterns().get(i).getNoteOffset());
+		}
 
 		// write song events
 		SongEvent songEvent;

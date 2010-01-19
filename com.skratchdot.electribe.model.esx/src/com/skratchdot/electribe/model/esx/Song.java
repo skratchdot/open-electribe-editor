@@ -30,12 +30,11 @@ import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
  *   <li>{@link com.skratchdot.electribe.model.esx.Song#getName <em>Name</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Song#getTempo <em>Tempo</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Song#getTempoLock <em>Tempo Lock</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Song#getLength <em>Length</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Song#getSongLength <em>Song Length</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Song#getMuteHold <em>Mute Hold</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Song#getNextSong <em>Next Song</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Song#getNextSongNumber <em>Next Song Number</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Song#getNumberOfSongEvents <em>Number Of Song Events</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Song#getPatternNumber <em>Pattern Number</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Song#getNoteOffset <em>Note Offset</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Song#getSongPatterns <em>Song Patterns</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Song#getSongEvents <em>Song Events</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Song#isBeingUsed <em>Being Used</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Song#getSongNumberOriginal <em>Song Number Original</em>}</li>
@@ -102,6 +101,7 @@ public interface Song extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Tempo Lock</b></em>' attribute.
+	 * The literals are from the enumeration {@link com.skratchdot.electribe.model.esx.TempoLock}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Tempo Lock</em>' attribute isn't clear,
@@ -109,51 +109,57 @@ public interface Song extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Tempo Lock</em>' attribute.
-	 * @see #setTempoLock(byte)
+	 * @see com.skratchdot.electribe.model.esx.TempoLock
+	 * @see #setTempoLock(TempoLock)
 	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSong_TempoLock()
 	 * @model
 	 * @generated
 	 */
-	byte getTempoLock();
+	TempoLock getTempoLock();
 
 	/**
 	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Song#getTempoLock <em>Tempo Lock</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Tempo Lock</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.TempoLock
 	 * @see #getTempoLock()
 	 * @generated
 	 */
-	void setTempoLock(byte value);
+	void setTempoLock(TempoLock value);
 
 	/**
-	 * Returns the value of the '<em><b>Length</b></em>' attribute.
+	 * Returns the value of the '<em><b>Song Length</b></em>' attribute.
+	 * The literals are from the enumeration {@link com.skratchdot.electribe.model.esx.SongLength}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Length</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Song Length</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Length</em>' attribute.
-	 * @see #setLength(byte)
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSong_Length()
+	 * @return the value of the '<em>Song Length</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.SongLength
+	 * @see #setSongLength(SongLength)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSong_SongLength()
 	 * @model
 	 * @generated
 	 */
-	byte getLength();
+	SongLength getSongLength();
 
 	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Song#getLength <em>Length</em>}' attribute.
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Song#getSongLength <em>Song Length</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Length</em>' attribute.
-	 * @see #getLength()
+	 * @param value the new value of the '<em>Song Length</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.SongLength
+	 * @see #getSongLength()
 	 * @generated
 	 */
-	void setLength(byte value);
+	void setSongLength(SongLength value);
 
 	/**
 	 * Returns the value of the '<em><b>Mute Hold</b></em>' attribute.
+	 * The literals are from the enumeration {@link com.skratchdot.electribe.model.esx.MuteHold}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Mute Hold</em>' attribute isn't clear,
@@ -161,48 +167,53 @@ public interface Song extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mute Hold</em>' attribute.
-	 * @see #setMuteHold(byte)
+	 * @see com.skratchdot.electribe.model.esx.MuteHold
+	 * @see #setMuteHold(MuteHold)
 	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSong_MuteHold()
 	 * @model
 	 * @generated
 	 */
-	byte getMuteHold();
+	MuteHold getMuteHold();
 
 	/**
 	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Song#getMuteHold <em>Mute Hold</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Mute Hold</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.MuteHold
 	 * @see #getMuteHold()
 	 * @generated
 	 */
-	void setMuteHold(byte value);
+	void setMuteHold(MuteHold value);
 
 	/**
-	 * Returns the value of the '<em><b>Next Song</b></em>' attribute.
+	 * Returns the value of the '<em><b>Next Song Number</b></em>' attribute.
+	 * The literals are from the enumeration {@link com.skratchdot.electribe.model.esx.NextSongNumber}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Next Song</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Next Song Number</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Next Song</em>' attribute.
-	 * @see #setNextSong(byte)
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSong_NextSong()
+	 * @return the value of the '<em>Next Song Number</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.NextSongNumber
+	 * @see #setNextSongNumber(NextSongNumber)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSong_NextSongNumber()
 	 * @model
 	 * @generated
 	 */
-	byte getNextSong();
+	NextSongNumber getNextSongNumber();
 
 	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Song#getNextSong <em>Next Song</em>}' attribute.
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Song#getNextSongNumber <em>Next Song Number</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Next Song</em>' attribute.
-	 * @see #getNextSong()
+	 * @param value the new value of the '<em>Next Song Number</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.NextSongNumber
+	 * @see #getNextSongNumber()
 	 * @generated
 	 */
-	void setNextSong(byte value);
+	void setNextSongNumber(NextSongNumber value);
 
 	/**
 	 * Returns the value of the '<em><b>Number Of Song Events</b></em>' attribute.
@@ -220,56 +231,20 @@ public interface Song extends EObject {
 	short getNumberOfSongEvents();
 
 	/**
-	 * Returns the value of the '<em><b>Pattern Number</b></em>' attribute.
+	 * Returns the value of the '<em><b>Song Patterns</b></em>' containment reference list.
+	 * The list contents are of type {@link com.skratchdot.electribe.model.esx.SongPattern}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Pattern Number</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Song Patterns</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Pattern Number</em>' attribute.
-	 * @see #setPatternNumber(byte[])
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSong_PatternNumber()
-	 * @model
+	 * @return the value of the '<em>Song Patterns</em>' containment reference list.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSong_SongPatterns()
+	 * @model containment="true" lower="256" upper="256"
 	 * @generated
 	 */
-	byte[] getPatternNumber();
-
-	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Song#getPatternNumber <em>Pattern Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Pattern Number</em>' attribute.
-	 * @see #getPatternNumber()
-	 * @generated
-	 */
-	void setPatternNumber(byte[] value);
-
-	/**
-	 * Returns the value of the '<em><b>Note Offset</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Note Offset</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Note Offset</em>' attribute.
-	 * @see #setNoteOffset(byte[])
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSong_NoteOffset()
-	 * @model
-	 * @generated
-	 */
-	byte[] getNoteOffset();
-
-	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Song#getNoteOffset <em>Note Offset</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Note Offset</em>' attribute.
-	 * @see #getNoteOffset()
-	 * @generated
-	 */
-	void setNoteOffset(byte[] value);
+	EList<SongPattern> getSongPatterns();
 
 	/**
 	 * Returns the value of the '<em><b>Song Events</b></em>' containment reference list.

@@ -46,6 +46,8 @@ import com.skratchdot.electribe.model.esx.MidiControlChangeAssignment;
 import com.skratchdot.electribe.model.esx.ModDest;
 import com.skratchdot.electribe.model.esx.ModType;
 import com.skratchdot.electribe.model.esx.MotionSequenceStatus;
+import com.skratchdot.electribe.model.esx.MuteHold;
+import com.skratchdot.electribe.model.esx.NextSongNumber;
 import com.skratchdot.electribe.model.esx.NoteNumber;
 import com.skratchdot.electribe.model.esx.ParametersFx;
 import com.skratchdot.electribe.model.esx.ParametersMotion;
@@ -85,10 +87,13 @@ import com.skratchdot.electribe.model.esx.SongEventKeyboardNote;
 import com.skratchdot.electribe.model.esx.SongEventMuteStatus;
 import com.skratchdot.electribe.model.esx.SongEventTempo;
 import com.skratchdot.electribe.model.esx.SongEventWithPart;
+import com.skratchdot.electribe.model.esx.SongLength;
 import com.skratchdot.electribe.model.esx.SongNumber;
+import com.skratchdot.electribe.model.esx.SongPattern;
 import com.skratchdot.electribe.model.esx.StretchStep;
 import com.skratchdot.electribe.model.esx.Swing;
 import com.skratchdot.electribe.model.esx.Tempo;
+import com.skratchdot.electribe.model.esx.TempoLock;
 import com.skratchdot.electribe.model.esx.util.EsxValidator;
 import java.util.ArrayList;
 
@@ -300,6 +305,13 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass songPatternEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass tempoEClass = null;
 
 	/**
@@ -413,6 +425,34 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	private EEnum songNumberEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum songLengthEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum tempoLockEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum muteHoldEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum nextSongNumberEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2074,7 +2114,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSong_Length() {
+	public EAttribute getSong_SongLength() {
 		return (EAttribute)songEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -2092,7 +2132,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSong_NextSong() {
+	public EAttribute getSong_NextSongNumber() {
 		return (EAttribute)songEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -2110,17 +2150,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSong_PatternNumber() {
-		return (EAttribute)songEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSong_NoteOffset() {
-		return (EAttribute)songEClass.getEStructuralFeatures().get(8);
+	public EReference getSong_SongPatterns() {
+		return (EReference)songEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -2129,7 +2160,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getSong_SongEvents() {
-		return (EReference)songEClass.getEStructuralFeatures().get(9);
+		return (EReference)songEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -2138,7 +2169,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSong_BeingUsed() {
-		return (EAttribute)songEClass.getEStructuralFeatures().get(10);
+		return (EAttribute)songEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -2147,7 +2178,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSong_SongNumberOriginal() {
-		return (EAttribute)songEClass.getEStructuralFeatures().get(11);
+		return (EAttribute)songEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -2156,7 +2187,43 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSong_SongNumberCurrent() {
-		return (EAttribute)songEClass.getEStructuralFeatures().get(12);
+		return (EAttribute)songEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSongPattern() {
+		return songPatternEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSongPattern_PatternNumber() {
+		return (EAttribute)songPatternEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSongPattern_NoteOffset() {
+		return (EAttribute)songPatternEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSongPattern_BeingUsed() {
+		return (EAttribute)songPatternEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2490,6 +2557,42 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 */
 	public EEnum getSongNumber() {
 		return songNumberEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getSongLength() {
+		return songLengthEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getTempoLock() {
+		return tempoLockEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getMuteHold() {
+		return muteHoldEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getNextSongNumber() {
+		return nextSongNumberEEnum;
 	}
 
 	/**
@@ -2904,22 +3007,20 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(songEClass, SONG__NAME);
 		createEReference(songEClass, SONG__TEMPO);
 		createEAttribute(songEClass, SONG__TEMPO_LOCK);
-		createEAttribute(songEClass, SONG__LENGTH);
+		createEAttribute(songEClass, SONG__SONG_LENGTH);
 		createEAttribute(songEClass, SONG__MUTE_HOLD);
-		createEAttribute(songEClass, SONG__NEXT_SONG);
+		createEAttribute(songEClass, SONG__NEXT_SONG_NUMBER);
 		createEAttribute(songEClass, SONG__NUMBER_OF_SONG_EVENTS);
-		createEAttribute(songEClass, SONG__PATTERN_NUMBER);
-		createEAttribute(songEClass, SONG__NOTE_OFFSET);
+		createEReference(songEClass, SONG__SONG_PATTERNS);
 		createEReference(songEClass, SONG__SONG_EVENTS);
 		createEAttribute(songEClass, SONG__BEING_USED);
 		createEAttribute(songEClass, SONG__SONG_NUMBER_ORIGINAL);
 		createEAttribute(songEClass, SONG__SONG_NUMBER_CURRENT);
 
-		tempoEClass = createEClass(TEMPO);
-		createEAttribute(tempoEClass, TEMPO__PACKED_VALUE);
-		createEAttribute(tempoEClass, TEMPO__VALUE);
-		createEAttribute(tempoEClass, TEMPO__VALUE_LEFT);
-		createEAttribute(tempoEClass, TEMPO__VALUE_RIGHT);
+		songPatternEClass = createEClass(SONG_PATTERN);
+		createEAttribute(songPatternEClass, SONG_PATTERN__PATTERN_NUMBER);
+		createEAttribute(songPatternEClass, SONG_PATTERN__NOTE_OFFSET);
+		createEAttribute(songPatternEClass, SONG_PATTERN__BEING_USED);
 
 		songEventEClass = createEClass(SONG_EVENT);
 		createEAttribute(songEventEClass, SONG_EVENT__MEASURE);
@@ -2951,6 +3052,12 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(songEventMuteStatusEClass, SONG_EVENT_MUTE_STATUS__RESERVED_SHORT);
 		createEAttribute(songEventMuteStatusEClass, SONG_EVENT_MUTE_STATUS__MUTE_STATUS);
 
+		tempoEClass = createEClass(TEMPO);
+		createEAttribute(tempoEClass, TEMPO__PACKED_VALUE);
+		createEAttribute(tempoEClass, TEMPO__VALUE);
+		createEAttribute(tempoEClass, TEMPO__VALUE_LEFT);
+		createEAttribute(tempoEClass, TEMPO__VALUE_RIGHT);
+
 		// Create enums
 		arpeggiatorControlEEnum = createEEnum(ARPEGGIATOR_CONTROL);
 		audioInModeEEnum = createEEnum(AUDIO_IN_MODE);
@@ -2961,6 +3068,10 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		patternNumberEEnum = createEEnum(PATTERN_NUMBER);
 		sampleNumberEEnum = createEEnum(SAMPLE_NUMBER);
 		songNumberEEnum = createEEnum(SONG_NUMBER);
+		songLengthEEnum = createEEnum(SONG_LENGTH);
+		tempoLockEEnum = createEEnum(TEMPO_LOCK);
+		muteHoldEEnum = createEEnum(MUTE_HOLD);
+		nextSongNumberEEnum = createEEnum(NEXT_SONG_NUMBER);
 		stretchStepEEnum = createEEnum(STRETCH_STEP);
 		swingEEnum = createEEnum(SWING);
 		patternLengthEEnum = createEEnum(PATTERN_LENGTH);
@@ -3264,36 +3375,21 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEClass(songEClass, Song.class, "Song", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSong_Name(), ecorePackage.getEString(), "name", null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSong_Tempo(), this.getTempo(), null, "tempo", null, 1, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSong_TempoLock(), ecorePackage.getEByte(), "tempoLock", null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSong_Length(), ecorePackage.getEByte(), "length", null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSong_MuteHold(), ecorePackage.getEByte(), "muteHold", null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSong_NextSong(), ecorePackage.getEByte(), "nextSong", null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSong_TempoLock(), this.getTempoLock(), "tempoLock", null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSong_SongLength(), this.getSongLength(), "songLength", null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSong_MuteHold(), this.getMuteHold(), "muteHold", null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSong_NextSongNumber(), this.getNextSongNumber(), "nextSongNumber", null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSong_NumberOfSongEvents(), ecorePackage.getEShort(), "numberOfSongEvents", null, 0, 1, Song.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSong_PatternNumber(), ecorePackage.getEByteArray(), "patternNumber", null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSong_NoteOffset(), ecorePackage.getEByteArray(), "noteOffset", null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSong_SongPatterns(), this.getSongPattern(), null, "songPatterns", null, 256, 256, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSong_SongEvents(), this.getSongEvent(), null, "songEvents", null, 0, 20000, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSong_BeingUsed(), ecorePackage.getEBoolean(), "beingUsed", "true", 0, 1, Song.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSong_SongNumberOriginal(), this.getSongNumber(), "songNumberOriginal", "-1", 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSong_SongNumberCurrent(), this.getSongNumber(), "songNumberCurrent", "-1", 0, 1, Song.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
-		initEClass(tempoEClass, Tempo.class, "Tempo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTempo_PackedValue(), ecorePackage.getEInt(), "packedValue", "15360", 1, 1, Tempo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTempo_Value(), ecorePackage.getEFloat(), "value", "120.0", 1, 1, Tempo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTempo_ValueLeft(), ecorePackage.getEInt(), "valueLeft", "0", 0, 1, Tempo.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTempo_ValueRight(), ecorePackage.getEInt(), "valueRight", "0", 0, 1, Tempo.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-
-		addEOperation(tempoEClass, null, "updateValue", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(tempoEClass, null, "updatePackedValue", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(tempoEClass, ecorePackage.getEBoolean(), "validValue", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEMap());
-		g2 = createEGenericType(this.getObject());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(this.getObject());
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEClass(songPatternEClass, SongPattern.class, "SongPattern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSongPattern_PatternNumber(), this.getPatternNumber(), "patternNumber", null, 0, 1, SongPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongPattern_NoteOffset(), ecorePackage.getEByte(), "noteOffset", null, 0, 1, SongPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongPattern_BeingUsed(), ecorePackage.getEBoolean(), "beingUsed", "true", 0, 1, SongPattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(songEventEClass, SongEvent.class, "SongEvent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSongEvent_Measure(), ecorePackage.getEByte(), "measure", null, 0, 1, SongEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3324,6 +3420,25 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEClass(songEventMuteStatusEClass, SongEventMuteStatus.class, "SongEventMuteStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSongEventMuteStatus_ReservedShort(), ecorePackage.getEShort(), "reservedShort", null, 0, 1, SongEventMuteStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongEventMuteStatus_MuteStatus(), ecorePackage.getEShort(), "muteStatus", null, 0, 1, SongEventMuteStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(tempoEClass, Tempo.class, "Tempo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTempo_PackedValue(), ecorePackage.getEInt(), "packedValue", "15360", 1, 1, Tempo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTempo_Value(), ecorePackage.getEFloat(), "value", "120.0", 1, 1, Tempo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTempo_ValueLeft(), ecorePackage.getEInt(), "valueLeft", "0", 0, 1, Tempo.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTempo_ValueRight(), ecorePackage.getEInt(), "valueRight", "0", 0, 1, Tempo.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		addEOperation(tempoEClass, null, "updateValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(tempoEClass, null, "updatePackedValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(tempoEClass, ecorePackage.getEBoolean(), "validValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(this.getObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(this.getObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(arpeggiatorControlEEnum, ArpeggiatorControl.class, "ArpeggiatorControl");
@@ -4098,6 +4213,339 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_62);
 		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_63);
 		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_64);
+
+		initEEnum(songLengthEEnum, SongLength.class, "SongLength");
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_001);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_002);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_003);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_004);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_005);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_006);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_007);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_008);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_009);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_010);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_011);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_012);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_013);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_014);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_015);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_016);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_017);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_018);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_019);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_020);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_021);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_022);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_023);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_024);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_025);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_026);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_027);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_028);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_029);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_030);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_031);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_032);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_033);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_034);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_035);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_036);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_037);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_038);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_039);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_040);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_041);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_042);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_043);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_044);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_045);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_046);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_047);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_048);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_049);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_050);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_051);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_052);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_053);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_054);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_055);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_056);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_057);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_058);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_059);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_060);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_061);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_062);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_063);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_064);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_065);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_066);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_067);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_068);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_069);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_070);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_071);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_072);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_073);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_074);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_075);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_076);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_077);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_078);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_079);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_080);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_081);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_082);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_083);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_084);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_085);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_086);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_087);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_088);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_089);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_090);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_091);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_092);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_093);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_094);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_095);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_096);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_097);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_098);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_099);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_100);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_101);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_102);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_103);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_104);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_105);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_106);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_107);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_108);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_109);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_110);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_111);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_112);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_113);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_114);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_115);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_116);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_117);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_118);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_119);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_120);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_121);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_122);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_123);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_124);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_125);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_126);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_127);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_128);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_129);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_130);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_131);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_132);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_133);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_134);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_135);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_136);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_137);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_138);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_139);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_140);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_141);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_142);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_143);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_144);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_145);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_146);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_147);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_148);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_149);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_150);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_151);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_152);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_153);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_154);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_155);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_156);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_157);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_158);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_159);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_160);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_161);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_162);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_163);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_164);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_165);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_166);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_167);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_168);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_169);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_170);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_171);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_172);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_173);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_174);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_175);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_176);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_177);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_178);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_179);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_180);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_181);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_182);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_183);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_184);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_185);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_186);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_187);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_188);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_189);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_190);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_191);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_192);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_193);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_194);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_195);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_196);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_197);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_198);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_199);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_200);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_201);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_202);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_203);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_204);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_205);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_206);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_207);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_208);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_209);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_210);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_211);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_212);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_213);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_214);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_215);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_216);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_217);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_218);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_219);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_220);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_221);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_222);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_223);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_224);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_225);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_226);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_227);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_228);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_229);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_230);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_231);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_232);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_233);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_234);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_235);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_236);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_237);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_238);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_239);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_240);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_241);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_242);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_243);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_244);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_245);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_246);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_247);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_248);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_249);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_250);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_251);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_252);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_253);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_254);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_255);
+		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_256);
+
+		initEEnum(tempoLockEEnum, TempoLock.class, "TempoLock");
+		addEEnumLiteral(tempoLockEEnum, TempoLock.TEMPO_LOCK_OFF);
+		addEEnumLiteral(tempoLockEEnum, TempoLock.TEMPO_LOCK_ON);
+
+		initEEnum(muteHoldEEnum, MuteHold.class, "MuteHold");
+		addEEnumLiteral(muteHoldEEnum, MuteHold.MUTE_HOLD_OFF);
+		addEEnumLiteral(muteHoldEEnum, MuteHold.MUTE_HOLD_ON);
+
+		initEEnum(nextSongNumberEEnum, NextSongNumber.class, "NextSongNumber");
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_00);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_01);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_02);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_03);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_04);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_05);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_06);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_07);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_08);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_09);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_10);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_11);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_12);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_13);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_14);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_15);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_16);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_17);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_18);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_19);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_20);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_21);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_22);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_23);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_24);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_25);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_26);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_27);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_28);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_29);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_30);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_31);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_32);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_33);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_34);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_35);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_36);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_37);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_38);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_39);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_40);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_41);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_42);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_43);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_44);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_45);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_46);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_47);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_48);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_49);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_50);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_51);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_52);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_53);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_54);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_55);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_56);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_57);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_58);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_59);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_60);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_61);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_62);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_63);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_64);
 
 		initEEnum(stretchStepEEnum, StretchStep.class, "StretchStep");
 		addEEnumLiteral(stretchStepEEnum, StretchStep.STRETCH_STEP_OFF);

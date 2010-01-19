@@ -544,6 +544,29 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link com.skratchdot.electribe.model.esx.SongPattern} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SongPatternItemProvider songPatternItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.skratchdot.electribe.model.esx.SongPattern}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSongPatternAdapter() {
+		if (songPatternItemProvider == null) {
+			songPatternItemProvider = new SongPatternItemProvider(this);
+		}
+
+		return songPatternItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link com.skratchdot.electribe.model.esx.Tempo} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -800,12 +823,13 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 		if (sampleMonoItemProvider != null) sampleMonoItemProvider.dispose();
 		if (sampleStereoItemProvider != null) sampleStereoItemProvider.dispose();
 		if (songItemProvider != null) songItemProvider.dispose();
-		if (tempoItemProvider != null) tempoItemProvider.dispose();
+		if (songPatternItemProvider != null) songPatternItemProvider.dispose();
 		if (songEventControlItemProvider != null) songEventControlItemProvider.dispose();
 		if (songEventDrumNoteItemProvider != null) songEventDrumNoteItemProvider.dispose();
 		if (songEventKeyboardNoteItemProvider != null) songEventKeyboardNoteItemProvider.dispose();
 		if (songEventTempoItemProvider != null) songEventTempoItemProvider.dispose();
 		if (songEventMuteStatusItemProvider != null) songEventMuteStatusItemProvider.dispose();
+		if (tempoItemProvider != null) tempoItemProvider.dispose();
 	}
 
 }

@@ -12,19 +12,13 @@
 package com.skratchdot.electribe.model.esx.provider;
 
 
-import com.skratchdot.electribe.model.esx.EsxFactory;
-import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.Song;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -41,6 +35,10 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import com.skratchdot.electribe.model.esx.EsxFactory;
+import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.Song;
 
 /**
  * This is the item provider adapter for a {@link com.skratchdot.electribe.model.esx.Song} object.
@@ -76,12 +74,10 @@ public class SongItemProvider
 			addNamePropertyDescriptor(object);
 			addTempoPropertyDescriptor(object);
 			addTempoLockPropertyDescriptor(object);
-			addLengthPropertyDescriptor(object);
+			addSongLengthPropertyDescriptor(object);
 			addMuteHoldPropertyDescriptor(object);
-			addNextSongPropertyDescriptor(object);
+			addNextSongNumberPropertyDescriptor(object);
 			addNumberOfSongEventsPropertyDescriptor(object);
-			addPatternNumberPropertyDescriptor(object);
-			addNoteOffsetPropertyDescriptor(object);
 			addBeingUsedPropertyDescriptor(object);
 			addSongNumberOriginalPropertyDescriptor(object);
 			addSongNumberCurrentPropertyDescriptor(object);
@@ -150,29 +146,29 @@ public class SongItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Length feature.
+	 * This adds a property descriptor for the Song Length feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addLengthPropertyDescriptor(Object object) {
+	protected void addSongLengthPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Song_length_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Song_length_feature", "_UI_Song_type"),
-				 EsxPackage.Literals.SONG__LENGTH,
+				 getString("_UI_Song_songLength_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Song_songLength_feature", "_UI_Song_type"),
+				 EsxPackage.Literals.SONG__SONG_LENGTH,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -194,29 +190,29 @@ public class SongItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Next Song feature.
+	 * This adds a property descriptor for the Next Song Number feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNextSongPropertyDescriptor(Object object) {
+	protected void addNextSongNumberPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Song_nextSong_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Song_nextSong_feature", "_UI_Song_type"),
-				 EsxPackage.Literals.SONG__NEXT_SONG,
+				 getString("_UI_Song_nextSongNumber_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Song_nextSongNumber_feature", "_UI_Song_type"),
+				 EsxPackage.Literals.SONG__NEXT_SONG_NUMBER,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -239,50 +235,6 @@ public class SongItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Pattern Number feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPatternNumberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Song_patternNumber_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Song_patternNumber_feature", "_UI_Song_type"),
-				 EsxPackage.Literals.SONG__PATTERN_NUMBER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Note Offset feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNoteOffsetPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Song_noteOffset_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Song_noteOffset_feature", "_UI_Song_type"),
-				 EsxPackage.Literals.SONG__NOTE_OFFSET,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -365,6 +317,7 @@ public class SongItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(EsxPackage.Literals.SONG__SONG_PATTERNS);
 			childrenFeatures.add(EsxPackage.Literals.SONG__SONG_EVENTS);
 		}
 		return childrenFeatures;
@@ -425,13 +378,13 @@ public class SongItemProvider
 			// Tempo
 			case 3: return Float.toString(((Song) object).getTempo().getValue());
 			// TempoLock
-			case 4: return Byte.toString(((Song) object).getTempoLock());
+			case 4: return ((Song) object).getTempoLock().getLiteral();
 			// Length
-			case 5: return Byte.toString(((Song) object).getLength());
+			case 5: return ((Song) object).getSongLength().getLiteral();
 			// MuteHold
-			case 6: return Byte.toString(((Song) object).getMuteHold());
+			case 6: return ((Song) object).getMuteHold().getLiteral();
 			// NextSong
-			case 7: return Byte.toString(((Song) object).getNextSong());
+			case 7: return ((Song) object).getNextSongNumber().getLiteral();
 			// NumOfEvents
 			case 8: return Short.toString(((Song) object).getNumberOfSongEvents());
 			default: return getText(object);
@@ -453,17 +406,16 @@ public class SongItemProvider
 			case EsxPackage.SONG__NAME:
 			case EsxPackage.SONG__TEMPO:
 			case EsxPackage.SONG__TEMPO_LOCK:
-			case EsxPackage.SONG__LENGTH:
+			case EsxPackage.SONG__SONG_LENGTH:
 			case EsxPackage.SONG__MUTE_HOLD:
-			case EsxPackage.SONG__NEXT_SONG:
+			case EsxPackage.SONG__NEXT_SONG_NUMBER:
 			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS:
-			case EsxPackage.SONG__PATTERN_NUMBER:
-			case EsxPackage.SONG__NOTE_OFFSET:
 			case EsxPackage.SONG__BEING_USED:
 			case EsxPackage.SONG__SONG_NUMBER_ORIGINAL:
 			case EsxPackage.SONG__SONG_NUMBER_CURRENT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
+			case EsxPackage.SONG__SONG_PATTERNS:
 			case EsxPackage.SONG__SONG_EVENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -481,6 +433,11 @@ public class SongItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EsxPackage.Literals.SONG__SONG_PATTERNS,
+				 EsxFactory.eINSTANCE.createSongPattern()));
 
 		newChildDescriptors.add
 			(createChildParameter

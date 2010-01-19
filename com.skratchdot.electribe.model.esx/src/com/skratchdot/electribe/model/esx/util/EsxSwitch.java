@@ -284,9 +284,9 @@ public class EsxSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EsxPackage.TEMPO: {
-				Tempo tempo = (Tempo)theEObject;
-				T result = caseTempo(tempo);
+			case EsxPackage.SONG_PATTERN: {
+				SongPattern songPattern = (SongPattern)theEObject;
+				T result = caseSongPattern(songPattern);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -336,6 +336,12 @@ public class EsxSwitch<T> {
 				SongEventMuteStatus songEventMuteStatus = (SongEventMuteStatus)theEObject;
 				T result = caseSongEventMuteStatus(songEventMuteStatus);
 				if (result == null) result = caseSongEvent(songEventMuteStatus);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsxPackage.TEMPO: {
+				Tempo tempo = (Tempo)theEObject;
+				T result = caseTempo(tempo);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -760,6 +766,21 @@ public class EsxSwitch<T> {
 	 * @generated
 	 */
 	public T caseSong(Song object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Song Pattern</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Song Pattern</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSongPattern(SongPattern object) {
 		return null;
 	}
 

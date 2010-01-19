@@ -160,8 +160,8 @@ public class EsxValidator extends EObjectValidator {
 				return validateSampleStereo((SampleStereo)value, diagnostics, context);
 			case EsxPackage.SONG:
 				return validateSong((Song)value, diagnostics, context);
-			case EsxPackage.TEMPO:
-				return validateTempo((Tempo)value, diagnostics, context);
+			case EsxPackage.SONG_PATTERN:
+				return validateSongPattern((SongPattern)value, diagnostics, context);
 			case EsxPackage.SONG_EVENT:
 				return validateSongEvent((SongEvent)value, diagnostics, context);
 			case EsxPackage.SONG_EVENT_WITH_PART:
@@ -176,6 +176,8 @@ public class EsxValidator extends EObjectValidator {
 				return validateSongEventTempo((SongEventTempo)value, diagnostics, context);
 			case EsxPackage.SONG_EVENT_MUTE_STATUS:
 				return validateSongEventMuteStatus((SongEventMuteStatus)value, diagnostics, context);
+			case EsxPackage.TEMPO:
+				return validateTempo((Tempo)value, diagnostics, context);
 			case EsxPackage.ARPEGGIATOR_CONTROL:
 				return validateArpeggiatorControl((ArpeggiatorControl)value, diagnostics, context);
 			case EsxPackage.AUDIO_IN_MODE:
@@ -194,6 +196,14 @@ public class EsxValidator extends EObjectValidator {
 				return validateSampleNumber((SampleNumber)value, diagnostics, context);
 			case EsxPackage.SONG_NUMBER:
 				return validateSongNumber((SongNumber)value, diagnostics, context);
+			case EsxPackage.SONG_LENGTH:
+				return validateSongLength((SongLength)value, diagnostics, context);
+			case EsxPackage.TEMPO_LOCK:
+				return validateTempoLock((TempoLock)value, diagnostics, context);
+			case EsxPackage.MUTE_HOLD:
+				return validateMuteHold((MuteHold)value, diagnostics, context);
+			case EsxPackage.NEXT_SONG_NUMBER:
+				return validateNextSongNumber((NextSongNumber)value, diagnostics, context);
 			case EsxPackage.STRETCH_STEP:
 				return validateStretchStep((StretchStep)value, diagnostics, context);
 			case EsxPackage.SWING:
@@ -500,6 +510,15 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateSongPattern(SongPattern songPattern, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(songPattern, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateTempo(Tempo tempo, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(tempo, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(tempo, diagnostics, context);
@@ -696,6 +715,42 @@ public class EsxValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSongNumber(SongNumber songNumber, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSongLength(SongLength songLength, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTempoLock(TempoLock tempoLock, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMuteHold(MuteHold muteHold, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNextSongNumber(NextSongNumber nextSongNumber, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

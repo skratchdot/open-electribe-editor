@@ -107,7 +107,6 @@ public class EsxUtil {
 	public static final int NUM_PATTERNS = 256;
 	public static final int NUM_SONGS = 64;
 	public static final int NUM_SONG_PATTERNS = 256;
-	public static final int NUM_SONG_NOTE_OFFSET = 256;
 	public static final int NUM_SAMPLES_MONO = 256;
 	public static final int NUM_SAMPLES_STEREO = 128;
 	public static final int NUM_SAMPLES = NUM_SAMPLES_MONO + NUM_SAMPLES_STEREO;

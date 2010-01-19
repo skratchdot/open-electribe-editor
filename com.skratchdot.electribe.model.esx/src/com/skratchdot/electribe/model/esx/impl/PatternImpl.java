@@ -44,7 +44,6 @@ import com.skratchdot.electribe.model.esx.Pattern;
 import com.skratchdot.electribe.model.esx.PatternLength;
 import com.skratchdot.electribe.model.esx.PatternNumber;
 import com.skratchdot.electribe.model.esx.RollType;
-import com.skratchdot.electribe.model.esx.SampleNumber;
 import com.skratchdot.electribe.model.esx.Swing;
 import com.skratchdot.electribe.model.esx.Tempo;
 import com.skratchdot.electribe.model.esx.util.EsxException;

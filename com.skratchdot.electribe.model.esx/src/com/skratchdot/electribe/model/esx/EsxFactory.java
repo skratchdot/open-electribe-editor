@@ -246,6 +246,15 @@ public interface EsxFactory extends EFactory {
 	 */
 	Song createSong();
 	
+	/**
+	 * Returns a new object of class '<em>Song Pattern</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Song Pattern</em>'.
+	 * @generated
+	 */
+	SongPattern createSongPattern();
+
 	Song createSongFromEsxFile(EsxRandomAccess in, int songNumber) throws EsxException, IOException;
 
 	/**
@@ -489,6 +498,86 @@ public interface EsxFactory extends EFactory {
 	 * @generated
 	 */
 	String convertSongNumber(SongNumber instanceValue);
+
+	/**
+	 * Returns an instance of data type '<em>Song Length</em>' corresponding the given literal.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param literal a literal of the data type.
+	 * @return a new instance value of the data type.
+	 * @generated
+	 */
+	SongLength createSongLength(String literal);
+
+	/**
+	 * Returns a literal representation of an instance of data type '<em>Song Length</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param instanceValue an instance value of the data type.
+	 * @return a literal representation of the instance value.
+	 * @generated
+	 */
+	String convertSongLength(SongLength instanceValue);
+
+	/**
+	 * Returns an instance of data type '<em>Tempo Lock</em>' corresponding the given literal.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param literal a literal of the data type.
+	 * @return a new instance value of the data type.
+	 * @generated
+	 */
+	TempoLock createTempoLock(String literal);
+
+	/**
+	 * Returns a literal representation of an instance of data type '<em>Tempo Lock</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param instanceValue an instance value of the data type.
+	 * @return a literal representation of the instance value.
+	 * @generated
+	 */
+	String convertTempoLock(TempoLock instanceValue);
+
+	/**
+	 * Returns an instance of data type '<em>Mute Hold</em>' corresponding the given literal.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param literal a literal of the data type.
+	 * @return a new instance value of the data type.
+	 * @generated
+	 */
+	MuteHold createMuteHold(String literal);
+
+	/**
+	 * Returns a literal representation of an instance of data type '<em>Mute Hold</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param instanceValue an instance value of the data type.
+	 * @return a literal representation of the instance value.
+	 * @generated
+	 */
+	String convertMuteHold(MuteHold instanceValue);
+
+	/**
+	 * Returns an instance of data type '<em>Next Song Number</em>' corresponding the given literal.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param literal a literal of the data type.
+	 * @return a new instance value of the data type.
+	 * @generated
+	 */
+	NextSongNumber createNextSongNumber(String literal);
+
+	/**
+	 * Returns a literal representation of an instance of data type '<em>Next Song Number</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param instanceValue an instance value of the data type.
+	 * @return a literal representation of the instance value.
+	 * @generated
+	 */
+	String convertNextSongNumber(NextSongNumber instanceValue);
 
 	/**
 	 * Returns an instance of data type '<em>Stretch Step</em>' corresponding the given literal.

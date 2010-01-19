@@ -3155,13 +3155,13 @@ public interface EsxPackage extends EPackage {
 	int SONG__TEMPO_LOCK = 2;
 
 	/**
-	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * The feature id for the '<em><b>Song Length</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SONG__LENGTH = 3;
+	int SONG__SONG_LENGTH = 3;
 
 	/**
 	 * The feature id for the '<em><b>Mute Hold</b></em>' attribute.
@@ -3173,13 +3173,13 @@ public interface EsxPackage extends EPackage {
 	int SONG__MUTE_HOLD = 4;
 
 	/**
-	 * The feature id for the '<em><b>Next Song</b></em>' attribute.
+	 * The feature id for the '<em><b>Next Song Number</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SONG__NEXT_SONG = 5;
+	int SONG__NEXT_SONG_NUMBER = 5;
 
 	/**
 	 * The feature id for the '<em><b>Number Of Song Events</b></em>' attribute.
@@ -3191,22 +3191,13 @@ public interface EsxPackage extends EPackage {
 	int SONG__NUMBER_OF_SONG_EVENTS = 6;
 
 	/**
-	 * The feature id for the '<em><b>Pattern Number</b></em>' attribute.
+	 * The feature id for the '<em><b>Song Patterns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SONG__PATTERN_NUMBER = 7;
-
-	/**
-	 * The feature id for the '<em><b>Note Offset</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SONG__NOTE_OFFSET = 8;
+	int SONG__SONG_PATTERNS = 7;
 
 	/**
 	 * The feature id for the '<em><b>Song Events</b></em>' containment reference list.
@@ -3215,7 +3206,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG__SONG_EVENTS = 9;
+	int SONG__SONG_EVENTS = 8;
 
 	/**
 	 * The feature id for the '<em><b>Being Used</b></em>' attribute.
@@ -3224,7 +3215,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG__BEING_USED = 10;
+	int SONG__BEING_USED = 9;
 
 	/**
 	 * The feature id for the '<em><b>Song Number Original</b></em>' attribute.
@@ -3233,7 +3224,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG__SONG_NUMBER_ORIGINAL = 11;
+	int SONG__SONG_NUMBER_ORIGINAL = 10;
 
 	/**
 	 * The feature id for the '<em><b>Song Number Current</b></em>' attribute.
@@ -3242,7 +3233,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG__SONG_NUMBER_CURRENT = 12;
+	int SONG__SONG_NUMBER_CURRENT = 11;
 
 	/**
 	 * The number of structural features of the '<em>Song</em>' class.
@@ -3251,8 +3242,54 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_FEATURE_COUNT = 13;
+	int SONG_FEATURE_COUNT = 12;
 
+
+	/**
+	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.SongPatternImpl <em>Song Pattern</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.impl.SongPatternImpl
+	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSongPattern()
+	 * @generated
+	 */
+	int SONG_PATTERN = 28;
+
+	/**
+	 * The feature id for the '<em><b>Pattern Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_PATTERN__PATTERN_NUMBER = 0;
+
+	/**
+	 * The feature id for the '<em><b>Note Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_PATTERN__NOTE_OFFSET = 1;
+
+	/**
+	 * The feature id for the '<em><b>Being Used</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_PATTERN__BEING_USED = 2;
+
+	/**
+	 * The number of structural features of the '<em>Song Pattern</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_PATTERN_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.TempoImpl <em>Tempo</em>}' class.
@@ -3262,53 +3299,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getTempo()
 	 * @generated
 	 */
-	int TEMPO = 28;
-
-	/**
-	 * The feature id for the '<em><b>Packed Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPO__PACKED_VALUE = 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPO__VALUE = 1;
-
-	/**
-	 * The feature id for the '<em><b>Value Left</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPO__VALUE_LEFT = 2;
-
-	/**
-	 * The feature id for the '<em><b>Value Right</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPO__VALUE_RIGHT = 3;
-
-	/**
-	 * The number of structural features of the '<em>Tempo</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPO_FEATURE_COUNT = 4;
-
+	int TEMPO = 36;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.SongEventImpl <em>Song Event</em>}' class.
@@ -3785,6 +3776,51 @@ public interface EsxPackage extends EPackage {
 	 */
 	int SONG_EVENT_MUTE_STATUS_FEATURE_COUNT = SONG_EVENT_FEATURE_COUNT + 2;
 
+	/**
+	 * The feature id for the '<em><b>Packed Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPO__PACKED_VALUE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPO__VALUE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Value Left</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPO__VALUE_LEFT = 2;
+
+	/**
+	 * The feature id for the '<em><b>Value Right</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPO__VALUE_RIGHT = 3;
+
+	/**
+	 * The number of structural features of the '<em>Tempo</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPO_FEATURE_COUNT = 4;
+
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.ArpeggiatorControl <em>Arpeggiator Control</em>}' enum.
@@ -3794,7 +3830,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getArpeggiatorControl()
 	 * @generated
 	 */
-	int ARPEGGIATOR_CONTROL = 36;
+	int ARPEGGIATOR_CONTROL = 37;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.AudioInMode <em>Audio In Mode</em>}' enum.
@@ -3804,7 +3840,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getAudioInMode()
 	 * @generated
 	 */
-	int AUDIO_IN_MODE = 37;
+	int AUDIO_IN_MODE = 38;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.MidiClock <em>Midi Clock</em>}' enum.
@@ -3814,7 +3850,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMidiClock()
 	 * @generated
 	 */
-	int MIDI_CLOCK = 38;
+	int MIDI_CLOCK = 39;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.EnabledFlag <em>Enabled Flag</em>}' enum.
@@ -3824,7 +3860,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getEnabledFlag()
 	 * @generated
 	 */
-	int ENABLED_FLAG = 39;
+	int ENABLED_FLAG = 40;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.PitchBendRange <em>Pitch Bend Range</em>}' enum.
@@ -3834,7 +3870,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getPitchBendRange()
 	 * @generated
 	 */
-	int PITCH_BEND_RANGE = 40;
+	int PITCH_BEND_RANGE = 41;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.MidiChannel <em>Midi Channel</em>}' enum.
@@ -3844,7 +3880,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMidiChannel()
 	 * @generated
 	 */
-	int MIDI_CHANNEL = 41;
+	int MIDI_CHANNEL = 42;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.PatternNumber <em>Pattern Number</em>}' enum.
@@ -3854,7 +3890,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getPatternNumber()
 	 * @generated
 	 */
-	int PATTERN_NUMBER = 42;
+	int PATTERN_NUMBER = 43;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.SampleNumber <em>Sample Number</em>}' enum.
@@ -3864,7 +3900,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSampleNumber()
 	 * @generated
 	 */
-	int SAMPLE_NUMBER = 43;
+	int SAMPLE_NUMBER = 44;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.SongNumber <em>Song Number</em>}' enum.
@@ -3874,7 +3910,47 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSongNumber()
 	 * @generated
 	 */
-	int SONG_NUMBER = 44;
+	int SONG_NUMBER = 45;
+
+	/**
+	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.SongLength <em>Song Length</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.SongLength
+	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSongLength()
+	 * @generated
+	 */
+	int SONG_LENGTH = 46;
+
+	/**
+	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.TempoLock <em>Tempo Lock</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.TempoLock
+	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getTempoLock()
+	 * @generated
+	 */
+	int TEMPO_LOCK = 47;
+
+	/**
+	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.MuteHold <em>Mute Hold</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.MuteHold
+	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMuteHold()
+	 * @generated
+	 */
+	int MUTE_HOLD = 48;
+
+	/**
+	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.NextSongNumber <em>Next Song Number</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.NextSongNumber
+	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getNextSongNumber()
+	 * @generated
+	 */
+	int NEXT_SONG_NUMBER = 49;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.StretchStep <em>Stretch Step</em>}' enum.
@@ -3884,7 +3960,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getStretchStep()
 	 * @generated
 	 */
-	int STRETCH_STEP = 45;
+	int STRETCH_STEP = 50;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.Swing <em>Swing</em>}' enum.
@@ -3894,7 +3970,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSwing()
 	 * @generated
 	 */
-	int SWING = 46;
+	int SWING = 51;
 
 
 	/**
@@ -3905,7 +3981,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getPatternLength()
 	 * @generated
 	 */
-	int PATTERN_LENGTH = 47;
+	int PATTERN_LENGTH = 52;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.Beat <em>Beat</em>}' enum.
@@ -3915,7 +3991,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getBeat()
 	 * @generated
 	 */
-	int BEAT = 48;
+	int BEAT = 53;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.RollType <em>Roll Type</em>}' enum.
@@ -3925,7 +4001,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getRollType()
 	 * @generated
 	 */
-	int ROLL_TYPE = 49;
+	int ROLL_TYPE = 54;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.FxChain <em>Fx Chain</em>}' enum.
@@ -3935,7 +4011,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getFxChain()
 	 * @generated
 	 */
-	int FX_CHAIN = 50;
+	int FX_CHAIN = 55;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.LastStep <em>Last Step</em>}' enum.
@@ -3945,7 +4021,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getLastStep()
 	 * @generated
 	 */
-	int LAST_STEP = 51;
+	int LAST_STEP = 56;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.ArpeggiatorScale <em>Arpeggiator Scale</em>}' enum.
@@ -3955,7 +4031,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getArpeggiatorScale()
 	 * @generated
 	 */
-	int ARPEGGIATOR_SCALE = 52;
+	int ARPEGGIATOR_SCALE = 57;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.NoteNumber <em>Note Number</em>}' enum.
@@ -3965,7 +4041,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getNoteNumber()
 	 * @generated
 	 */
-	int NOTE_NUMBER = 53;
+	int NOTE_NUMBER = 58;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.FilterType <em>Filter Type</em>}' enum.
@@ -3975,7 +4051,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getFilterType()
 	 * @generated
 	 */
-	int FILTER_TYPE = 54;
+	int FILTER_TYPE = 59;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.FxSelect <em>Fx Select</em>}' enum.
@@ -3985,7 +4061,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getFxSelect()
 	 * @generated
 	 */
-	int FX_SELECT = 55;
+	int FX_SELECT = 60;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.FxSend <em>Fx Send</em>}' enum.
@@ -3995,7 +4071,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getFxSend()
 	 * @generated
 	 */
-	int FX_SEND = 56;
+	int FX_SEND = 61;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.FxType <em>Fx Type</em>}' enum.
@@ -4005,7 +4081,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getFxType()
 	 * @generated
 	 */
-	int FX_TYPE = 57;
+	int FX_TYPE = 62;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.Roll <em>Roll</em>}' enum.
@@ -4015,7 +4091,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getRoll()
 	 * @generated
 	 */
-	int ROLL = 58;
+	int ROLL = 63;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.AmpEg <em>Amp Eg</em>}' enum.
@@ -4025,7 +4101,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getAmpEg()
 	 * @generated
 	 */
-	int AMP_EG = 59;
+	int AMP_EG = 64;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.Reverse <em>Reverse</em>}' enum.
@@ -4035,7 +4111,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getReverse()
 	 * @generated
 	 */
-	int REVERSE = 60;
+	int REVERSE = 65;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.ModDest <em>Mod Dest</em>}' enum.
@@ -4045,7 +4121,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getModDest()
 	 * @generated
 	 */
-	int MOD_DEST = 61;
+	int MOD_DEST = 66;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.ModType <em>Mod Type</em>}' enum.
@@ -4055,7 +4131,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getModType()
 	 * @generated
 	 */
-	int MOD_TYPE = 62;
+	int MOD_TYPE = 67;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.BpmSync <em>Bpm Sync</em>}' enum.
@@ -4065,7 +4141,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getBpmSync()
 	 * @generated
 	 */
-	int BPM_SYNC = 63;
+	int BPM_SYNC = 68;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.MotionSequenceStatus <em>Motion Sequence Status</em>}' enum.
@@ -4075,7 +4151,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMotionSequenceStatus()
 	 * @generated
 	 */
-	int MOTION_SEQUENCE_STATUS = 64;
+	int MOTION_SEQUENCE_STATUS = 69;
 
 	/**
 	 * The meta object id for the '<em>Object</em>' data type.
@@ -4085,7 +4161,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getObject()
 	 * @generated
 	 */
-	int OBJECT = 65;
+	int OBJECT = 70;
 
 
 	/**
@@ -4096,7 +4172,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getArrayList()
 	 * @generated
 	 */
-	int ARRAY_LIST = 66;
+	int ARRAY_LIST = 71;
 
 
 	/**
@@ -5821,15 +5897,15 @@ public interface EsxPackage extends EPackage {
 	EAttribute getSong_TempoLock();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Song#getLength <em>Length</em>}'.
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Song#getSongLength <em>Song Length</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Length</em>'.
-	 * @see com.skratchdot.electribe.model.esx.Song#getLength()
+	 * @return the meta object for the attribute '<em>Song Length</em>'.
+	 * @see com.skratchdot.electribe.model.esx.Song#getSongLength()
 	 * @see #getSong()
 	 * @generated
 	 */
-	EAttribute getSong_Length();
+	EAttribute getSong_SongLength();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Song#getMuteHold <em>Mute Hold</em>}'.
@@ -5843,15 +5919,15 @@ public interface EsxPackage extends EPackage {
 	EAttribute getSong_MuteHold();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Song#getNextSong <em>Next Song</em>}'.
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Song#getNextSongNumber <em>Next Song Number</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Next Song</em>'.
-	 * @see com.skratchdot.electribe.model.esx.Song#getNextSong()
+	 * @return the meta object for the attribute '<em>Next Song Number</em>'.
+	 * @see com.skratchdot.electribe.model.esx.Song#getNextSongNumber()
 	 * @see #getSong()
 	 * @generated
 	 */
-	EAttribute getSong_NextSong();
+	EAttribute getSong_NextSongNumber();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Song#getNumberOfSongEvents <em>Number Of Song Events</em>}'.
@@ -5865,26 +5941,15 @@ public interface EsxPackage extends EPackage {
 	EAttribute getSong_NumberOfSongEvents();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Song#getPatternNumber <em>Pattern Number</em>}'.
+	 * Returns the meta object for the containment reference list '{@link com.skratchdot.electribe.model.esx.Song#getSongPatterns <em>Song Patterns</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Pattern Number</em>'.
-	 * @see com.skratchdot.electribe.model.esx.Song#getPatternNumber()
+	 * @return the meta object for the containment reference list '<em>Song Patterns</em>'.
+	 * @see com.skratchdot.electribe.model.esx.Song#getSongPatterns()
 	 * @see #getSong()
 	 * @generated
 	 */
-	EAttribute getSong_PatternNumber();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Song#getNoteOffset <em>Note Offset</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Note Offset</em>'.
-	 * @see com.skratchdot.electribe.model.esx.Song#getNoteOffset()
-	 * @see #getSong()
-	 * @generated
-	 */
-	EAttribute getSong_NoteOffset();
+	EReference getSong_SongPatterns();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link com.skratchdot.electribe.model.esx.Song#getSongEvents <em>Song Events</em>}'.
@@ -5929,6 +5994,49 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSong_SongNumberCurrent();
+
+	/**
+	 * Returns the meta object for class '{@link com.skratchdot.electribe.model.esx.SongPattern <em>Song Pattern</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Song Pattern</em>'.
+	 * @see com.skratchdot.electribe.model.esx.SongPattern
+	 * @generated
+	 */
+	EClass getSongPattern();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongPattern#getPatternNumber <em>Pattern Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Pattern Number</em>'.
+	 * @see com.skratchdot.electribe.model.esx.SongPattern#getPatternNumber()
+	 * @see #getSongPattern()
+	 * @generated
+	 */
+	EAttribute getSongPattern_PatternNumber();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongPattern#getNoteOffset <em>Note Offset</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Note Offset</em>'.
+	 * @see com.skratchdot.electribe.model.esx.SongPattern#getNoteOffset()
+	 * @see #getSongPattern()
+	 * @generated
+	 */
+	EAttribute getSongPattern_NoteOffset();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongPattern#isBeingUsed <em>Being Used</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Being Used</em>'.
+	 * @see com.skratchdot.electribe.model.esx.SongPattern#isBeingUsed()
+	 * @see #getSongPattern()
+	 * @generated
+	 */
+	EAttribute getSongPattern_BeingUsed();
 
 	/**
 	 * Returns the meta object for class '{@link com.skratchdot.electribe.model.esx.Tempo <em>Tempo</em>}'.
@@ -6319,6 +6427,46 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getSongNumber();
+
+	/**
+	 * Returns the meta object for enum '{@link com.skratchdot.electribe.model.esx.SongLength <em>Song Length</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Song Length</em>'.
+	 * @see com.skratchdot.electribe.model.esx.SongLength
+	 * @generated
+	 */
+	EEnum getSongLength();
+
+	/**
+	 * Returns the meta object for enum '{@link com.skratchdot.electribe.model.esx.TempoLock <em>Tempo Lock</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Tempo Lock</em>'.
+	 * @see com.skratchdot.electribe.model.esx.TempoLock
+	 * @generated
+	 */
+	EEnum getTempoLock();
+
+	/**
+	 * Returns the meta object for enum '{@link com.skratchdot.electribe.model.esx.MuteHold <em>Mute Hold</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Mute Hold</em>'.
+	 * @see com.skratchdot.electribe.model.esx.MuteHold
+	 * @generated
+	 */
+	EEnum getMuteHold();
+
+	/**
+	 * Returns the meta object for enum '{@link com.skratchdot.electribe.model.esx.NextSongNumber <em>Next Song Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Next Song Number</em>'.
+	 * @see com.skratchdot.electribe.model.esx.NextSongNumber
+	 * @generated
+	 */
+	EEnum getNextSongNumber();
 
 	/**
 	 * Returns the meta object for enum '{@link com.skratchdot.electribe.model.esx.StretchStep <em>Stretch Step</em>}'.
@@ -7893,12 +8041,12 @@ public interface EsxPackage extends EPackage {
 		EAttribute SONG__TEMPO_LOCK = eINSTANCE.getSong_TempoLock();
 
 		/**
-		 * The meta object literal for the '<em><b>Length</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Song Length</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG__LENGTH = eINSTANCE.getSong_Length();
+		EAttribute SONG__SONG_LENGTH = eINSTANCE.getSong_SongLength();
 
 		/**
 		 * The meta object literal for the '<em><b>Mute Hold</b></em>' attribute feature.
@@ -7909,12 +8057,12 @@ public interface EsxPackage extends EPackage {
 		EAttribute SONG__MUTE_HOLD = eINSTANCE.getSong_MuteHold();
 
 		/**
-		 * The meta object literal for the '<em><b>Next Song</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Next Song Number</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG__NEXT_SONG = eINSTANCE.getSong_NextSong();
+		EAttribute SONG__NEXT_SONG_NUMBER = eINSTANCE.getSong_NextSongNumber();
 
 		/**
 		 * The meta object literal for the '<em><b>Number Of Song Events</b></em>' attribute feature.
@@ -7925,20 +8073,12 @@ public interface EsxPackage extends EPackage {
 		EAttribute SONG__NUMBER_OF_SONG_EVENTS = eINSTANCE.getSong_NumberOfSongEvents();
 
 		/**
-		 * The meta object literal for the '<em><b>Pattern Number</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Song Patterns</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG__PATTERN_NUMBER = eINSTANCE.getSong_PatternNumber();
-
-		/**
-		 * The meta object literal for the '<em><b>Note Offset</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SONG__NOTE_OFFSET = eINSTANCE.getSong_NoteOffset();
+		EReference SONG__SONG_PATTERNS = eINSTANCE.getSong_SongPatterns();
 
 		/**
 		 * The meta object literal for the '<em><b>Song Events</b></em>' containment reference list feature.
@@ -7971,6 +8111,40 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SONG__SONG_NUMBER_CURRENT = eINSTANCE.getSong_SongNumberCurrent();
+
+		/**
+		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.SongPatternImpl <em>Song Pattern</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.skratchdot.electribe.model.esx.impl.SongPatternImpl
+		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSongPattern()
+		 * @generated
+		 */
+		EClass SONG_PATTERN = eINSTANCE.getSongPattern();
+
+		/**
+		 * The meta object literal for the '<em><b>Pattern Number</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SONG_PATTERN__PATTERN_NUMBER = eINSTANCE.getSongPattern_PatternNumber();
+
+		/**
+		 * The meta object literal for the '<em><b>Note Offset</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SONG_PATTERN__NOTE_OFFSET = eINSTANCE.getSongPattern_NoteOffset();
+
+		/**
+		 * The meta object literal for the '<em><b>Being Used</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SONG_PATTERN__BEING_USED = eINSTANCE.getSongPattern_BeingUsed();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.TempoImpl <em>Tempo</em>}' class.
@@ -8301,6 +8475,46 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum SONG_NUMBER = eINSTANCE.getSongNumber();
+
+		/**
+		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.SongLength <em>Song Length</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.skratchdot.electribe.model.esx.SongLength
+		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSongLength()
+		 * @generated
+		 */
+		EEnum SONG_LENGTH = eINSTANCE.getSongLength();
+
+		/**
+		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.TempoLock <em>Tempo Lock</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.skratchdot.electribe.model.esx.TempoLock
+		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getTempoLock()
+		 * @generated
+		 */
+		EEnum TEMPO_LOCK = eINSTANCE.getTempoLock();
+
+		/**
+		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.MuteHold <em>Mute Hold</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.skratchdot.electribe.model.esx.MuteHold
+		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMuteHold()
+		 * @generated
+		 */
+		EEnum MUTE_HOLD = eINSTANCE.getMuteHold();
+
+		/**
+		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.NextSongNumber <em>Next Song Number</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.skratchdot.electribe.model.esx.NextSongNumber
+		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getNextSongNumber()
+		 * @generated
+		 */
+		EEnum NEXT_SONG_NUMBER = eINSTANCE.getNextSongNumber();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.StretchStep <em>Stretch Step</em>}' enum.

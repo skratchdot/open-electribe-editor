@@ -262,14 +262,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tempo" lowerBound="1" eType="#//Tempo"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tempoLock" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="muteHold" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nextSong" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tempoLock" eType="#//TempoLock"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="songLength" eType="#//SongLength"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="muteHold" eType="#//MuteHold"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nextSongNumber" eType="#//NextSongNumber"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfSongEvents" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"
         changeable="false" volatile="true" transient="true" derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patternNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="noteOffset" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="songPatterns" lowerBound="256"
+        upperBound="256" eType="#//SongPattern" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="songEvents" upperBound="20000"
         eType="#//SongEvent" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="beingUsed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -281,30 +281,11 @@
         changeable="false" volatile="true" transient="true" defaultValueLiteral="-1"
         derived="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Tempo">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="validRange"/>
-    </eAnnotations>
-    <eOperations name="updateValue"/>
-    <eOperations name="updatePackedValue"/>
-    <eOperations name="validValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
-      <eParameters name="context">
-        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
-          <eTypeArguments eClassifier="#//Object"/>
-          <eTypeArguments eClassifier="#//Object"/>
-        </eGenericType>
-      </eParameters>
-    </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="packedValue" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="15360"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
-        defaultValueLiteral="120.0"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueLeft" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
-        derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueRight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
+  <eClassifiers xsi:type="ecore:EClass" name="SongPattern">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patternNumber" eType="#//PatternNumber"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="noteOffset" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="beingUsed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="true"
         derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SongEvent" abstract="true">
@@ -337,6 +318,32 @@
   <eClassifiers xsi:type="ecore:EClass" name="SongEventMuteStatus" eSuperTypes="#//SongEvent">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedShort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="muteStatus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Tempo">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="validRange"/>
+    </eAnnotations>
+    <eOperations name="updateValue"/>
+    <eOperations name="updatePackedValue"/>
+    <eOperations name="validValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
+      <eParameters name="context">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
+          <eTypeArguments eClassifier="#//Object"/>
+          <eTypeArguments eClassifier="#//Object"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="packedValue" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="15360"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
+        defaultValueLiteral="120.0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueLeft" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
+        derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueRight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
+        derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ArpeggiatorControl">
     <eLiterals name="Normal"/>
@@ -1110,6 +1117,339 @@
     <eLiterals name="Song_62" value="61" literal="62"/>
     <eLiterals name="Song_63" value="62" literal="63"/>
     <eLiterals name="Song_64" value="63" literal="64"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SongLength">
+    <eLiterals name="SONG_LENGTH_001" literal="1"/>
+    <eLiterals name="SONG_LENGTH_002" value="1" literal="2"/>
+    <eLiterals name="SONG_LENGTH_003" value="2" literal="3"/>
+    <eLiterals name="SONG_LENGTH_004" value="3" literal="4"/>
+    <eLiterals name="SONG_LENGTH_005" value="4" literal="5"/>
+    <eLiterals name="SONG_LENGTH_006" value="5" literal="6"/>
+    <eLiterals name="SONG_LENGTH_007" value="6" literal="7"/>
+    <eLiterals name="SONG_LENGTH_008" value="7" literal="8"/>
+    <eLiterals name="SONG_LENGTH_009" value="8" literal="9"/>
+    <eLiterals name="SONG_LENGTH_010" value="9" literal="10"/>
+    <eLiterals name="SONG_LENGTH_011" value="10" literal="11"/>
+    <eLiterals name="SONG_LENGTH_012" value="11" literal="12"/>
+    <eLiterals name="SONG_LENGTH_013" value="12" literal="13"/>
+    <eLiterals name="SONG_LENGTH_014" value="13" literal="14"/>
+    <eLiterals name="SONG_LENGTH_015" value="14" literal="15"/>
+    <eLiterals name="SONG_LENGTH_016" value="15" literal="16"/>
+    <eLiterals name="SONG_LENGTH_017" value="16" literal="17"/>
+    <eLiterals name="SONG_LENGTH_018" value="17" literal="18"/>
+    <eLiterals name="SONG_LENGTH_019" value="18" literal="19"/>
+    <eLiterals name="SONG_LENGTH_020" value="19" literal="20"/>
+    <eLiterals name="SONG_LENGTH_021" value="20" literal="21"/>
+    <eLiterals name="SONG_LENGTH_022" value="21" literal="22"/>
+    <eLiterals name="SONG_LENGTH_023" value="22" literal="23"/>
+    <eLiterals name="SONG_LENGTH_024" value="23" literal="24"/>
+    <eLiterals name="SONG_LENGTH_025" value="24" literal="25"/>
+    <eLiterals name="SONG_LENGTH_026" value="25" literal="26"/>
+    <eLiterals name="SONG_LENGTH_027" value="26" literal="27"/>
+    <eLiterals name="SONG_LENGTH_028" value="27" literal="28"/>
+    <eLiterals name="SONG_LENGTH_029" value="28" literal="29"/>
+    <eLiterals name="SONG_LENGTH_030" value="29" literal="30"/>
+    <eLiterals name="SONG_LENGTH_031" value="30" literal="31"/>
+    <eLiterals name="SONG_LENGTH_032" value="31" literal="32"/>
+    <eLiterals name="SONG_LENGTH_033" value="32" literal="33"/>
+    <eLiterals name="SONG_LENGTH_034" value="33" literal="34"/>
+    <eLiterals name="SONG_LENGTH_035" value="34" literal="35"/>
+    <eLiterals name="SONG_LENGTH_036" value="35" literal="36"/>
+    <eLiterals name="SONG_LENGTH_037" value="36" literal="37"/>
+    <eLiterals name="SONG_LENGTH_038" value="37" literal="38"/>
+    <eLiterals name="SONG_LENGTH_039" value="38" literal="39"/>
+    <eLiterals name="SONG_LENGTH_040" value="39" literal="40"/>
+    <eLiterals name="SONG_LENGTH_041" value="40" literal="41"/>
+    <eLiterals name="SONG_LENGTH_042" value="41" literal="42"/>
+    <eLiterals name="SONG_LENGTH_043" value="42" literal="43"/>
+    <eLiterals name="SONG_LENGTH_044" value="43" literal="44"/>
+    <eLiterals name="SONG_LENGTH_045" value="44" literal="45"/>
+    <eLiterals name="SONG_LENGTH_046" value="45" literal="46"/>
+    <eLiterals name="SONG_LENGTH_047" value="46" literal="47"/>
+    <eLiterals name="SONG_LENGTH_048" value="47" literal="48"/>
+    <eLiterals name="SONG_LENGTH_049" value="48" literal="49"/>
+    <eLiterals name="SONG_LENGTH_050" value="49" literal="50"/>
+    <eLiterals name="SONG_LENGTH_051" value="50" literal="51"/>
+    <eLiterals name="SONG_LENGTH_052" value="51" literal="52"/>
+    <eLiterals name="SONG_LENGTH_053" value="52" literal="53"/>
+    <eLiterals name="SONG_LENGTH_054" value="53" literal="54"/>
+    <eLiterals name="SONG_LENGTH_055" value="54" literal="55"/>
+    <eLiterals name="SONG_LENGTH_056" value="55" literal="56"/>
+    <eLiterals name="SONG_LENGTH_057" value="56" literal="57"/>
+    <eLiterals name="SONG_LENGTH_058" value="57" literal="58"/>
+    <eLiterals name="SONG_LENGTH_059" value="58" literal="59"/>
+    <eLiterals name="SONG_LENGTH_060" value="59" literal="60"/>
+    <eLiterals name="SONG_LENGTH_061" value="60" literal="61"/>
+    <eLiterals name="SONG_LENGTH_062" value="61" literal="62"/>
+    <eLiterals name="SONG_LENGTH_063" value="62" literal="63"/>
+    <eLiterals name="SONG_LENGTH_064" value="63" literal="64"/>
+    <eLiterals name="SONG_LENGTH_065" value="64" literal="65"/>
+    <eLiterals name="SONG_LENGTH_066" value="65" literal="66"/>
+    <eLiterals name="SONG_LENGTH_067" value="66" literal="67"/>
+    <eLiterals name="SONG_LENGTH_068" value="67" literal="68"/>
+    <eLiterals name="SONG_LENGTH_069" value="68" literal="69"/>
+    <eLiterals name="SONG_LENGTH_070" value="69" literal="70"/>
+    <eLiterals name="SONG_LENGTH_071" value="70" literal="71"/>
+    <eLiterals name="SONG_LENGTH_072" value="71" literal="72"/>
+    <eLiterals name="SONG_LENGTH_073" value="72" literal="73"/>
+    <eLiterals name="SONG_LENGTH_074" value="73" literal="74"/>
+    <eLiterals name="SONG_LENGTH_075" value="74" literal="75"/>
+    <eLiterals name="SONG_LENGTH_076" value="75" literal="76"/>
+    <eLiterals name="SONG_LENGTH_077" value="76" literal="77"/>
+    <eLiterals name="SONG_LENGTH_078" value="77" literal="78"/>
+    <eLiterals name="SONG_LENGTH_079" value="78" literal="79"/>
+    <eLiterals name="SONG_LENGTH_080" value="79" literal="80"/>
+    <eLiterals name="SONG_LENGTH_081" value="80" literal="81"/>
+    <eLiterals name="SONG_LENGTH_082" value="81" literal="82"/>
+    <eLiterals name="SONG_LENGTH_083" value="82" literal="83"/>
+    <eLiterals name="SONG_LENGTH_084" value="83" literal="84"/>
+    <eLiterals name="SONG_LENGTH_085" value="84" literal="85"/>
+    <eLiterals name="SONG_LENGTH_086" value="85" literal="86"/>
+    <eLiterals name="SONG_LENGTH_087" value="86" literal="87"/>
+    <eLiterals name="SONG_LENGTH_088" value="87" literal="88"/>
+    <eLiterals name="SONG_LENGTH_089" value="88" literal="89"/>
+    <eLiterals name="SONG_LENGTH_090" value="89" literal="90"/>
+    <eLiterals name="SONG_LENGTH_091" value="90" literal="91"/>
+    <eLiterals name="SONG_LENGTH_092" value="91" literal="92"/>
+    <eLiterals name="SONG_LENGTH_093" value="92" literal="93"/>
+    <eLiterals name="SONG_LENGTH_094" value="93" literal="94"/>
+    <eLiterals name="SONG_LENGTH_095" value="94" literal="95"/>
+    <eLiterals name="SONG_LENGTH_096" value="95" literal="96"/>
+    <eLiterals name="SONG_LENGTH_097" value="96" literal="97"/>
+    <eLiterals name="SONG_LENGTH_098" value="97" literal="98"/>
+    <eLiterals name="SONG_LENGTH_099" value="98" literal="99"/>
+    <eLiterals name="SONG_LENGTH_100" value="99" literal="100"/>
+    <eLiterals name="SONG_LENGTH_101" value="100" literal="101"/>
+    <eLiterals name="SONG_LENGTH_102" value="101" literal="102"/>
+    <eLiterals name="SONG_LENGTH_103" value="102" literal="103"/>
+    <eLiterals name="SONG_LENGTH_104" value="103" literal="104"/>
+    <eLiterals name="SONG_LENGTH_105" value="104" literal="105"/>
+    <eLiterals name="SONG_LENGTH_106" value="105" literal="106"/>
+    <eLiterals name="SONG_LENGTH_107" value="106" literal="107"/>
+    <eLiterals name="SONG_LENGTH_108" value="107" literal="108"/>
+    <eLiterals name="SONG_LENGTH_109" value="108" literal="109"/>
+    <eLiterals name="SONG_LENGTH_110" value="109" literal="110"/>
+    <eLiterals name="SONG_LENGTH_111" value="110" literal="111"/>
+    <eLiterals name="SONG_LENGTH_112" value="111" literal="112"/>
+    <eLiterals name="SONG_LENGTH_113" value="112" literal="113"/>
+    <eLiterals name="SONG_LENGTH_114" value="113" literal="114"/>
+    <eLiterals name="SONG_LENGTH_115" value="114" literal="115"/>
+    <eLiterals name="SONG_LENGTH_116" value="115" literal="116"/>
+    <eLiterals name="SONG_LENGTH_117" value="116" literal="117"/>
+    <eLiterals name="SONG_LENGTH_118" value="117" literal="118"/>
+    <eLiterals name="SONG_LENGTH_119" value="118" literal="119"/>
+    <eLiterals name="SONG_LENGTH_120" value="119" literal="120"/>
+    <eLiterals name="SONG_LENGTH_121" value="120" literal="121"/>
+    <eLiterals name="SONG_LENGTH_122" value="121" literal="122"/>
+    <eLiterals name="SONG_LENGTH_123" value="122" literal="123"/>
+    <eLiterals name="SONG_LENGTH_124" value="123" literal="124"/>
+    <eLiterals name="SONG_LENGTH_125" value="124" literal="125"/>
+    <eLiterals name="SONG_LENGTH_126" value="125" literal="126"/>
+    <eLiterals name="SONG_LENGTH_127" value="126" literal="127"/>
+    <eLiterals name="SONG_LENGTH_128" value="127" literal="128"/>
+    <eLiterals name="SONG_LENGTH_129" value="128" literal="129"/>
+    <eLiterals name="SONG_LENGTH_130" value="129" literal="130"/>
+    <eLiterals name="SONG_LENGTH_131" value="130" literal="131"/>
+    <eLiterals name="SONG_LENGTH_132" value="131" literal="132"/>
+    <eLiterals name="SONG_LENGTH_133" value="132" literal="133"/>
+    <eLiterals name="SONG_LENGTH_134" value="133" literal="134"/>
+    <eLiterals name="SONG_LENGTH_135" value="134" literal="135"/>
+    <eLiterals name="SONG_LENGTH_136" value="135" literal="136"/>
+    <eLiterals name="SONG_LENGTH_137" value="136" literal="137"/>
+    <eLiterals name="SONG_LENGTH_138" value="137" literal="138"/>
+    <eLiterals name="SONG_LENGTH_139" value="138" literal="139"/>
+    <eLiterals name="SONG_LENGTH_140" value="139" literal="140"/>
+    <eLiterals name="SONG_LENGTH_141" value="140" literal="141"/>
+    <eLiterals name="SONG_LENGTH_142" value="141" literal="142"/>
+    <eLiterals name="SONG_LENGTH_143" value="142" literal="143"/>
+    <eLiterals name="SONG_LENGTH_144" value="143" literal="144"/>
+    <eLiterals name="SONG_LENGTH_145" value="144" literal="145"/>
+    <eLiterals name="SONG_LENGTH_146" value="145" literal="146"/>
+    <eLiterals name="SONG_LENGTH_147" value="146" literal="147"/>
+    <eLiterals name="SONG_LENGTH_148" value="147" literal="148"/>
+    <eLiterals name="SONG_LENGTH_149" value="148" literal="149"/>
+    <eLiterals name="SONG_LENGTH_150" value="149" literal="150"/>
+    <eLiterals name="SONG_LENGTH_151" value="150" literal="151"/>
+    <eLiterals name="SONG_LENGTH_152" value="151" literal="152"/>
+    <eLiterals name="SONG_LENGTH_153" value="152" literal="153"/>
+    <eLiterals name="SONG_LENGTH_154" value="153" literal="154"/>
+    <eLiterals name="SONG_LENGTH_155" value="154" literal="155"/>
+    <eLiterals name="SONG_LENGTH_156" value="155" literal="156"/>
+    <eLiterals name="SONG_LENGTH_157" value="156" literal="157"/>
+    <eLiterals name="SONG_LENGTH_158" value="157" literal="158"/>
+    <eLiterals name="SONG_LENGTH_159" value="158" literal="159"/>
+    <eLiterals name="SONG_LENGTH_160" value="159" literal="160"/>
+    <eLiterals name="SONG_LENGTH_161" value="160" literal="161"/>
+    <eLiterals name="SONG_LENGTH_162" value="161" literal="162"/>
+    <eLiterals name="SONG_LENGTH_163" value="162" literal="163"/>
+    <eLiterals name="SONG_LENGTH_164" value="163" literal="164"/>
+    <eLiterals name="SONG_LENGTH_165" value="164" literal="165"/>
+    <eLiterals name="SONG_LENGTH_166" value="165" literal="166"/>
+    <eLiterals name="SONG_LENGTH_167" value="166" literal="167"/>
+    <eLiterals name="SONG_LENGTH_168" value="167" literal="168"/>
+    <eLiterals name="SONG_LENGTH_169" value="168" literal="169"/>
+    <eLiterals name="SONG_LENGTH_170" value="169" literal="170"/>
+    <eLiterals name="SONG_LENGTH_171" value="170" literal="171"/>
+    <eLiterals name="SONG_LENGTH_172" value="171" literal="172"/>
+    <eLiterals name="SONG_LENGTH_173" value="172" literal="173"/>
+    <eLiterals name="SONG_LENGTH_174" value="173" literal="174"/>
+    <eLiterals name="SONG_LENGTH_175" value="174" literal="175"/>
+    <eLiterals name="SONG_LENGTH_176" value="175" literal="176"/>
+    <eLiterals name="SONG_LENGTH_177" value="176" literal="177"/>
+    <eLiterals name="SONG_LENGTH_178" value="177" literal="178"/>
+    <eLiterals name="SONG_LENGTH_179" value="178" literal="179"/>
+    <eLiterals name="SONG_LENGTH_180" value="179" literal="180"/>
+    <eLiterals name="SONG_LENGTH_181" value="180" literal="181"/>
+    <eLiterals name="SONG_LENGTH_182" value="181" literal="182"/>
+    <eLiterals name="SONG_LENGTH_183" value="182" literal="183"/>
+    <eLiterals name="SONG_LENGTH_184" value="183" literal="184"/>
+    <eLiterals name="SONG_LENGTH_185" value="184" literal="185"/>
+    <eLiterals name="SONG_LENGTH_186" value="185" literal="186"/>
+    <eLiterals name="SONG_LENGTH_187" value="186" literal="187"/>
+    <eLiterals name="SONG_LENGTH_188" value="187" literal="188"/>
+    <eLiterals name="SONG_LENGTH_189" value="188" literal="189"/>
+    <eLiterals name="SONG_LENGTH_190" value="189" literal="190"/>
+    <eLiterals name="SONG_LENGTH_191" value="190" literal="191"/>
+    <eLiterals name="SONG_LENGTH_192" value="191" literal="192"/>
+    <eLiterals name="SONG_LENGTH_193" value="192" literal="193"/>
+    <eLiterals name="SONG_LENGTH_194" value="193" literal="194"/>
+    <eLiterals name="SONG_LENGTH_195" value="194" literal="195"/>
+    <eLiterals name="SONG_LENGTH_196" value="195" literal="196"/>
+    <eLiterals name="SONG_LENGTH_197" value="196" literal="197"/>
+    <eLiterals name="SONG_LENGTH_198" value="197" literal="198"/>
+    <eLiterals name="SONG_LENGTH_199" value="198" literal="199"/>
+    <eLiterals name="SONG_LENGTH_200" value="199" literal="200"/>
+    <eLiterals name="SONG_LENGTH_201" value="200" literal="201"/>
+    <eLiterals name="SONG_LENGTH_202" value="201" literal="202"/>
+    <eLiterals name="SONG_LENGTH_203" value="202" literal="203"/>
+    <eLiterals name="SONG_LENGTH_204" value="203" literal="204"/>
+    <eLiterals name="SONG_LENGTH_205" value="204" literal="205"/>
+    <eLiterals name="SONG_LENGTH_206" value="205" literal="206"/>
+    <eLiterals name="SONG_LENGTH_207" value="206" literal="207"/>
+    <eLiterals name="SONG_LENGTH_208" value="207" literal="208"/>
+    <eLiterals name="SONG_LENGTH_209" value="208" literal="209"/>
+    <eLiterals name="SONG_LENGTH_210" value="209" literal="210"/>
+    <eLiterals name="SONG_LENGTH_211" value="210" literal="211"/>
+    <eLiterals name="SONG_LENGTH_212" value="211" literal="212"/>
+    <eLiterals name="SONG_LENGTH_213" value="212" literal="213"/>
+    <eLiterals name="SONG_LENGTH_214" value="213" literal="214"/>
+    <eLiterals name="SONG_LENGTH_215" value="214" literal="215"/>
+    <eLiterals name="SONG_LENGTH_216" value="215" literal="216"/>
+    <eLiterals name="SONG_LENGTH_217" value="216" literal="217"/>
+    <eLiterals name="SONG_LENGTH_218" value="217" literal="218"/>
+    <eLiterals name="SONG_LENGTH_219" value="218" literal="219"/>
+    <eLiterals name="SONG_LENGTH_220" value="219" literal="220"/>
+    <eLiterals name="SONG_LENGTH_221" value="220" literal="221"/>
+    <eLiterals name="SONG_LENGTH_222" value="221" literal="222"/>
+    <eLiterals name="SONG_LENGTH_223" value="222" literal="223"/>
+    <eLiterals name="SONG_LENGTH_224" value="223" literal="224"/>
+    <eLiterals name="SONG_LENGTH_225" value="224" literal="225"/>
+    <eLiterals name="SONG_LENGTH_226" value="225" literal="226"/>
+    <eLiterals name="SONG_LENGTH_227" value="226" literal="227"/>
+    <eLiterals name="SONG_LENGTH_228" value="227" literal="228"/>
+    <eLiterals name="SONG_LENGTH_229" value="228" literal="229"/>
+    <eLiterals name="SONG_LENGTH_230" value="229" literal="230"/>
+    <eLiterals name="SONG_LENGTH_231" value="230" literal="231"/>
+    <eLiterals name="SONG_LENGTH_232" value="231" literal="232"/>
+    <eLiterals name="SONG_LENGTH_233" value="232" literal="233"/>
+    <eLiterals name="SONG_LENGTH_234" value="233" literal="234"/>
+    <eLiterals name="SONG_LENGTH_235" value="234" literal="235"/>
+    <eLiterals name="SONG_LENGTH_236" value="235" literal="236"/>
+    <eLiterals name="SONG_LENGTH_237" value="236" literal="237"/>
+    <eLiterals name="SONG_LENGTH_238" value="237" literal="238"/>
+    <eLiterals name="SONG_LENGTH_239" value="238" literal="239"/>
+    <eLiterals name="SONG_LENGTH_240" value="239" literal="240"/>
+    <eLiterals name="SONG_LENGTH_241" value="240" literal="241"/>
+    <eLiterals name="SONG_LENGTH_242" value="241" literal="242"/>
+    <eLiterals name="SONG_LENGTH_243" value="242" literal="243"/>
+    <eLiterals name="SONG_LENGTH_244" value="243" literal="244"/>
+    <eLiterals name="SONG_LENGTH_245" value="244" literal="245"/>
+    <eLiterals name="SONG_LENGTH_246" value="245" literal="246"/>
+    <eLiterals name="SONG_LENGTH_247" value="246" literal="247"/>
+    <eLiterals name="SONG_LENGTH_248" value="247" literal="248"/>
+    <eLiterals name="SONG_LENGTH_249" value="248" literal="249"/>
+    <eLiterals name="SONG_LENGTH_250" value="249" literal="250"/>
+    <eLiterals name="SONG_LENGTH_251" value="250" literal="251"/>
+    <eLiterals name="SONG_LENGTH_252" value="251" literal="252"/>
+    <eLiterals name="SONG_LENGTH_253" value="252" literal="253"/>
+    <eLiterals name="SONG_LENGTH_254" value="253" literal="254"/>
+    <eLiterals name="SONG_LENGTH_255" value="254" literal="255"/>
+    <eLiterals name="SONG_LENGTH_256" value="255" literal="256"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TempoLock">
+    <eLiterals name="TEMPO_LOCK_OFF" literal="Off"/>
+    <eLiterals name="TEMPO_LOCK_ON" value="1" literal="On"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MuteHold">
+    <eLiterals name="MUTE_HOLD_OFF" literal="Off"/>
+    <eLiterals name="MUTE_HOLD_ON" value="1" literal="On"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="NextSongNumber">
+    <eLiterals name="NEXT_SONG_NUMBER_00" literal="Off"/>
+    <eLiterals name="NEXT_SONG_NUMBER_01" value="1" literal="01"/>
+    <eLiterals name="NEXT_SONG_NUMBER_02" value="2" literal="02"/>
+    <eLiterals name="NEXT_SONG_NUMBER_03" value="3" literal="03"/>
+    <eLiterals name="NEXT_SONG_NUMBER_04" value="4" literal="04"/>
+    <eLiterals name="NEXT_SONG_NUMBER_05" value="5" literal="05"/>
+    <eLiterals name="NEXT_SONG_NUMBER_06" value="6" literal="06"/>
+    <eLiterals name="NEXT_SONG_NUMBER_07" value="7" literal="07"/>
+    <eLiterals name="NEXT_SONG_NUMBER_08" value="8" literal="08"/>
+    <eLiterals name="NEXT_SONG_NUMBER_09" value="9" literal="09"/>
+    <eLiterals name="NEXT_SONG_NUMBER_10" value="10" literal="10"/>
+    <eLiterals name="NEXT_SONG_NUMBER_11" value="11" literal="11"/>
+    <eLiterals name="NEXT_SONG_NUMBER_12" value="12" literal="12"/>
+    <eLiterals name="NEXT_SONG_NUMBER_13" value="13" literal="13"/>
+    <eLiterals name="NEXT_SONG_NUMBER_14" value="14" literal="14"/>
+    <eLiterals name="NEXT_SONG_NUMBER_15" value="15" literal="15"/>
+    <eLiterals name="NEXT_SONG_NUMBER_16" value="16" literal="16"/>
+    <eLiterals name="NEXT_SONG_NUMBER_17" value="17" literal="17"/>
+    <eLiterals name="NEXT_SONG_NUMBER_18" value="18" literal="18"/>
+    <eLiterals name="NEXT_SONG_NUMBER_19" value="19" literal="19"/>
+    <eLiterals name="NEXT_SONG_NUMBER_20" value="20" literal="20"/>
+    <eLiterals name="NEXT_SONG_NUMBER_21" value="21" literal="21"/>
+    <eLiterals name="NEXT_SONG_NUMBER_22" value="22" literal="22"/>
+    <eLiterals name="NEXT_SONG_NUMBER_23" value="23" literal="23"/>
+    <eLiterals name="NEXT_SONG_NUMBER_24" value="24" literal="24"/>
+    <eLiterals name="NEXT_SONG_NUMBER_25" value="25" literal="25"/>
+    <eLiterals name="NEXT_SONG_NUMBER_26" value="26" literal="26"/>
+    <eLiterals name="NEXT_SONG_NUMBER_27" value="27" literal="27"/>
+    <eLiterals name="NEXT_SONG_NUMBER_28" value="28" literal="28"/>
+    <eLiterals name="NEXT_SONG_NUMBER_29" value="29" literal="29"/>
+    <eLiterals name="NEXT_SONG_NUMBER_30" value="30" literal="30"/>
+    <eLiterals name="NEXT_SONG_NUMBER_31" value="31" literal="31"/>
+    <eLiterals name="NEXT_SONG_NUMBER_32" value="32" literal="32"/>
+    <eLiterals name="NEXT_SONG_NUMBER_33" value="33" literal="33"/>
+    <eLiterals name="NEXT_SONG_NUMBER_34" value="34" literal="34"/>
+    <eLiterals name="NEXT_SONG_NUMBER_35" value="35" literal="35"/>
+    <eLiterals name="NEXT_SONG_NUMBER_36" value="36" literal="36"/>
+    <eLiterals name="NEXT_SONG_NUMBER_37" value="37" literal="37"/>
+    <eLiterals name="NEXT_SONG_NUMBER_38" value="38" literal="38"/>
+    <eLiterals name="NEXT_SONG_NUMBER_39" value="39" literal="39"/>
+    <eLiterals name="NEXT_SONG_NUMBER_40" value="40" literal="40"/>
+    <eLiterals name="NEXT_SONG_NUMBER_41" value="41" literal="41"/>
+    <eLiterals name="NEXT_SONG_NUMBER_42" value="42" literal="42"/>
+    <eLiterals name="NEXT_SONG_NUMBER_43" value="43" literal="43"/>
+    <eLiterals name="NEXT_SONG_NUMBER_44" value="44" literal="44"/>
+    <eLiterals name="NEXT_SONG_NUMBER_45" value="45" literal="45"/>
+    <eLiterals name="NEXT_SONG_NUMBER_46" value="46" literal="46"/>
+    <eLiterals name="NEXT_SONG_NUMBER_47" value="47" literal="47"/>
+    <eLiterals name="NEXT_SONG_NUMBER_48" value="48" literal="48"/>
+    <eLiterals name="NEXT_SONG_NUMBER_49" value="49" literal="49"/>
+    <eLiterals name="NEXT_SONG_NUMBER_50" value="50" literal="50"/>
+    <eLiterals name="NEXT_SONG_NUMBER_51" value="51" literal="51"/>
+    <eLiterals name="NEXT_SONG_NUMBER_52" value="52" literal="52"/>
+    <eLiterals name="NEXT_SONG_NUMBER_53" value="53" literal="53"/>
+    <eLiterals name="NEXT_SONG_NUMBER_54" value="54" literal="54"/>
+    <eLiterals name="NEXT_SONG_NUMBER_55" value="55" literal="55"/>
+    <eLiterals name="NEXT_SONG_NUMBER_56" value="56" literal="56"/>
+    <eLiterals name="NEXT_SONG_NUMBER_57" value="57" literal="57"/>
+    <eLiterals name="NEXT_SONG_NUMBER_58" value="58" literal="58"/>
+    <eLiterals name="NEXT_SONG_NUMBER_59" value="59" literal="59"/>
+    <eLiterals name="NEXT_SONG_NUMBER_60" value="60" literal="60"/>
+    <eLiterals name="NEXT_SONG_NUMBER_61" value="61" literal="61"/>
+    <eLiterals name="NEXT_SONG_NUMBER_62" value="62" literal="62"/>
+    <eLiterals name="NEXT_SONG_NUMBER_63" value="63" literal="63"/>
+    <eLiterals name="NEXT_SONG_NUMBER_64" value="64" literal="64"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="StretchStep">
     <eLiterals name="StretchStepOFF" value="-1" literal="Off"/>

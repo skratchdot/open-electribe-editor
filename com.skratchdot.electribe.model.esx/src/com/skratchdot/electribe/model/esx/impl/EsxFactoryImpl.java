@@ -146,12 +146,13 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 			case EsxPackage.SAMPLE_MONO: return createSampleMono();
 			case EsxPackage.SAMPLE_STEREO: return createSampleStereo();
 			case EsxPackage.SONG: return createSong();
-			case EsxPackage.TEMPO: return createTempo();
+			case EsxPackage.SONG_PATTERN: return createSongPattern();
 			case EsxPackage.SONG_EVENT_CONTROL: return createSongEventControl();
 			case EsxPackage.SONG_EVENT_DRUM_NOTE: return createSongEventDrumNote();
 			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE: return createSongEventKeyboardNote();
 			case EsxPackage.SONG_EVENT_TEMPO: return createSongEventTempo();
 			case EsxPackage.SONG_EVENT_MUTE_STATUS: return createSongEventMuteStatus();
+			case EsxPackage.TEMPO: return createTempo();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -183,6 +184,14 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return createSampleNumberFromString(eDataType, initialValue);
 			case EsxPackage.SONG_NUMBER:
 				return createSongNumberFromString(eDataType, initialValue);
+			case EsxPackage.SONG_LENGTH:
+				return createSongLengthFromString(eDataType, initialValue);
+			case EsxPackage.TEMPO_LOCK:
+				return createTempoLockFromString(eDataType, initialValue);
+			case EsxPackage.MUTE_HOLD:
+				return createMuteHoldFromString(eDataType, initialValue);
+			case EsxPackage.NEXT_SONG_NUMBER:
+				return createNextSongNumberFromString(eDataType, initialValue);
 			case EsxPackage.STRETCH_STEP:
 				return createStretchStepFromString(eDataType, initialValue);
 			case EsxPackage.SWING:
@@ -258,6 +267,14 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return convertSampleNumberToString(eDataType, instanceValue);
 			case EsxPackage.SONG_NUMBER:
 				return convertSongNumberToString(eDataType, instanceValue);
+			case EsxPackage.SONG_LENGTH:
+				return convertSongLengthToString(eDataType, instanceValue);
+			case EsxPackage.TEMPO_LOCK:
+				return convertTempoLockToString(eDataType, instanceValue);
+			case EsxPackage.MUTE_HOLD:
+				return convertMuteHoldToString(eDataType, instanceValue);
+			case EsxPackage.NEXT_SONG_NUMBER:
+				return convertNextSongNumberToString(eDataType, instanceValue);
 			case EsxPackage.STRETCH_STEP:
 				return convertStretchStepToString(eDataType, instanceValue);
 			case EsxPackage.SWING:
@@ -601,6 +618,16 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	public Song createSong() {
 		SongImpl song = new SongImpl();
 		return song;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SongPattern createSongPattern() {
+		SongPatternImpl songPattern = new SongPatternImpl();
+		return songPattern;
 	}
 
 	public Song createSongFromEsxFile(EsxRandomAccess in, int songNumber) throws EsxException, IOException {
@@ -1038,6 +1065,158 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public String convertSongNumberToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SongLength createSongLength(String literal) {
+		SongLength result = SongLength.get(literal);
+		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.SONG_LENGTH.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SongLength createSongLengthFromString(EDataType eDataType, String initialValue) {
+		return createSongLength(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSongLength(SongLength instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSongLengthToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TempoLock createTempoLock(String literal) {
+		TempoLock result = TempoLock.get(literal);
+		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.TEMPO_LOCK.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TempoLock createTempoLockFromString(EDataType eDataType, String initialValue) {
+		return createTempoLock(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertTempoLock(TempoLock instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertTempoLockToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MuteHold createMuteHold(String literal) {
+		MuteHold result = MuteHold.get(literal);
+		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.MUTE_HOLD.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MuteHold createMuteHoldFromString(EDataType eDataType, String initialValue) {
+		return createMuteHold(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMuteHold(MuteHold instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMuteHoldToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NextSongNumber createNextSongNumber(String literal) {
+		NextSongNumber result = NextSongNumber.get(literal);
+		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.NEXT_SONG_NUMBER.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NextSongNumber createNextSongNumberFromString(EDataType eDataType, String initialValue) {
+		return createNextSongNumber(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertNextSongNumber(NextSongNumber instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertNextSongNumberToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
