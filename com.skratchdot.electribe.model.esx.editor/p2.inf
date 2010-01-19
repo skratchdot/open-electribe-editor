@@ -1,0 +1,3 @@
+instructions.configure=\
+  addRepository(type:0,location:http${#58}//open-electribe-editor.googlecode.com/svn/_electribe_/updates/);\
+  addRepository(type:1,location:http${#58}//open-electribe-editor.googlecode.com/svn/_electribe_/updates/);

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension
+         point="org.eclipse.core.runtime.applications"
+         id="EsxEditorAdvisorApplication">
+      <application>
+         <run class="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisor$Application"/>
+      </application>
+   </extension>
+
+   <extension point="org.eclipse.ui.perspectives">
+      <perspective
+            name="%_UI_Perspective_label"
+            class="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisor$Perspective"
+            id="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorPerspective">
+      </perspective>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands">
+      <command
+            name="%_UI_Menu_Open_label"
+            description="%_UI_Menu_Open_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorOpenCommand"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.bindings">
+      <key
+            commandId="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorOpenCommand"
+            sequence="M1+O"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="%_UI_EsxEditorAdvisor_ActionSet_label"
+            visible="true"
+            id="EsxEditorAdvisorActionSet">
+         <action
+               class="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisor$AboutAction"
+               id="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorAboutAction"
+               label="%_UI_Menu_About_label"
+               menubarPath="help/additions">
+         </action>
+         <action
+               class="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisor$NewAction"
+               id="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorNewAction"
+               label="%_UI_Menu_New_Esx_File_label"
+               menubarPath="file/new/additions">
+         </action>
+         <action
+               class="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisor$ImportAudioFileAction"
+               id="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorImportAudioFileAction"
+               label="%_UI_Menu_Import_Audio_File_label"
+               menubarPath="file/import/additions">
+         </action>
+         <action
+               class="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisor$OpenAction"
+               definitionId="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorOpenCommand"
+               id="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorOpenAction"
+               label="%_UI_Menu_Open_label"
+               menubarPath="file/additions">
+         </action>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="com.skratchdot.electribe.model.esx.presentation.EsxEditorID"
+            name="%_UI_EsxEditor_label"
+            icon="icons/full/obj16/EsxModelFile.gif"
+            extensions="esx"
+            class="com.skratchdot.electribe.model.esx.presentation.EsxEditor"
+            contributorClass="com.skratchdot.electribe.model.esx.presentation.EsxActionBarContributor">
+      </editor>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="com.skratchdot.electribe.model.esx.editor.EsxEditorAdvisorApplication"
+            name="Open Electribe Editor">
+         <property
+               name="appName"
+               value="Open Electribe Editor">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+         <property
+               name="startupForegroundColor"
+               value="000000">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="5,305,458,15">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="7,322,461,20">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/window/window_16.gif,icons/window/window_32.gif,icons/window/window_48.gif,icons/window/window_64.gif,icons/window/window_128.gif">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.activities">
+      <activity
+            description="Disable plug-in contributions"
+            id="com.skratchdot.electribe.model.esx.editor.disableEclipseIDEContribs"
+            name="DisableIDEContribs">
+      </activity>
+      <activityPatternBinding
+            activityId="com.skratchdot.electribe.model.esx.editor.disableEclipseIDEContribs"
+            pattern="org.eclipse.ui.editors/org.eclipse.ui.edit.text.delimiter.*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.skratchdot.electribe.model.esx.editor.disableEclipseIDEContribs"
+            pattern="org.eclipse.ui.editors/org.eclipse.ui.edit.text.*nnotation">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.skratchdot.electribe.model.esx.editor.disableEclipseIDEContribs"
+            pattern="org.eclipse.ui.editors/org.eclipse.ui.edit.text.gotoLastEditPosition">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.skratchdot.electribe.model.esx.editor.disableEclipseIDEContribs"
+            pattern="org.eclipse.ui.ide/org.eclipse.update.ui.*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.skratchdot.electribe.model.esx.editor.disableEclipseIDEContribs"
+            pattern="org.eclipse.ui.ide/.*WorkingSet.*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.skratchdot.electribe.model.esx.editor.disableEclipseIDEContribs"
+            pattern="org.eclipse.ui.ide/org.eclipse.ui.openLocalFile">
+      </activityPatternBinding>
+   </extension>
+
+</plugin>

@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Audioplayer Plug-in
+Bundle-SymbolicName: com.skratchdot.electribe.audioplayer;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.skratchdot.electribe.audioplayer.Activator
+Bundle-Vendor: SKRATCHDOT
+Require-Bundle: net.javazoom.jlayer;bundle-version="1.0.0",
+ org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.skratchdot.electribe.model.esx;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.core.resources

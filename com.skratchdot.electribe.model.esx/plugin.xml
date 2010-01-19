@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http:///com/skratchdot/electribe/model/esx.ecore"
+            class="com.skratchdot.electribe.model.esx.EsxPackage"
+            genModel="model/esx.genmodel"/>
+   </extension>
+
+   <extension
+         point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            class="com.skratchdot.electribe.model.esx.util.EsxResourceFactoryImpl"
+            type="esx">
+      </parser>
+      <parser
+            class="com.skratchdot.electribe.model.esx.util.EsxResourceFactoryImpl"
+            type="esX">
+      </parser>
+      <parser
+            class="com.skratchdot.electribe.model.esx.util.EsxResourceFactoryImpl"
+            type="eSx">
+      </parser>
+      <parser
+            class="com.skratchdot.electribe.model.esx.util.EsxResourceFactoryImpl"
+            type="eSX">
+      </parser>
+      <parser
+            class="com.skratchdot.electribe.model.esx.util.EsxResourceFactoryImpl"
+            type="Esx">
+      </parser>
+      <parser
+            class="com.skratchdot.electribe.model.esx.util.EsxResourceFactoryImpl"
+            type="EsX">
+      </parser>
+      <parser
+            class="com.skratchdot.electribe.model.esx.util.EsxResourceFactoryImpl"
+            type="ESx">
+      </parser>
+      <parser
+            class="com.skratchdot.electribe.model.esx.util.EsxResourceFactoryImpl"
+            type="ESX">
+      </parser>
+   </extension>
+
+</plugin>

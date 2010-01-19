@@ -1,0 +1,42 @@
+<project name="Copy default files to runtime directory" default="all" basedir=".">
+
+	<!-- Setup paths to the "defaults" and "temp" folders -->
+	<property name="runtime.dir" value="${basedir}/../../runtime-OpenElectribeEditor.product" />
+	<property name="workspace.dir" value="${basedir}/.." />
+	<property name="destdir.temp" value="${runtime.dir}/temp" />
+	<property name="destdir.defaults" value="${runtime.dir}/defaults" />
+	<property name="srcdir.defaults" value="${workspace.dir}/com.skratchdot.electribe.features.defaultfiles/rootfiles/defaults" />
+
+	<!-- Does "temp" exist? -->
+	<target name="checkdir.temp">
+		<echo message="Checking for existence of ${destdir.temp}" />
+		<available file="$(destdir.temp}" type="dir" property="direxists.temp" />
+	</target>
+
+	<!-- Create "temp" if necessary -->
+	<target name="createdir.temp" unless="${direxists.temp}">
+		<mkdir dir="${destdir.temp}"/>
+	</target>
+
+	<!-- Does "defaults" exist? -->
+	<target name="checkdir.defaults">
+		<echo message="Checking for existence of ${destdir.defaults}" />
+		<available file="$(destdir.defaults}" type="dir" property="direxists.defaults" />
+	</target>
+
+	<!-- Create "defaults" if necessary -->
+	<target name="createdir.defaults" unless="${direxists.defaults}">
+		<mkdir dir="${destdir.defaults}"/>
+	</target>
+
+	<!-- Now copy "defaults/default.esx" to our destination directory -->
+	<target name="copyfiles.defaults">
+		<copy file="${srcdir.defaults}/default.esx" todir="${destdir.defaults}" overwrite="true" />
+	</target>
+
+	<!-- Main Target (makes directories, and performs the copying of files) -->
+	<target name="all" depends="checkdir.temp, createdir.temp, checkdir.defaults, createdir.defaults, copyfiles.defaults">
+		<echo message="Copy Files Operation Complete." />
+	</target>
+
+</project>

@@ -1,0 +1,1552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="esx"
+    nsURI="http:///com/skratchdot/electribe/model/esx.ecore" nsPrefix="com.skratchdot.electribe.model.esx">
+  <eClassifiers xsi:type="ecore:EClass" name="EsxFile">
+    <eOperations name="findFirstUnusedSample" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eParameters name="searchMono" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="searchStereo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="startingSampleNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="skipSampleNumbers">
+        <eGenericType eClassifier="#//ArrayList">
+          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="originalNonAudioData" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="globalParameters" lowerBound="1"
+        eType="#//GlobalParameters" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="patterns" lowerBound="256"
+        upperBound="256" eType="#//Pattern" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="songs" lowerBound="64"
+        upperBound="64" eType="#//Song" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="samples" lowerBound="384"
+        upperBound="384" eType="#//Sample" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="blankPattern" lowerBound="1"
+        eType="#//Pattern" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="blankSong" lowerBound="1"
+        eType="#//Song" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memUsedInBytes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
+        derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memFreeInBytes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
+        derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GlobalParameters">
+    <eOperations name="createAndPopulateMidiChannelNames"/>
+    <eOperations name="createAndPopulatePartNoteNumberNames"/>
+    <eOperations name="createAndPopulateMidiControlChangeAssignmentNames"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memoryProtectEnabled" eType="#//EnabledFlag"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedByte" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="arpeggiatorControl" eType="#//ArpeggiatorControl"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="audioInMode" eType="#//AudioInMode"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="midiClock" eType="#//MidiClock"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="noteMessageEnabled" eType="#//EnabledFlag"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="systemExEnabled" eType="#//EnabledFlag"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="controlChangeEnabled" eType="#//EnabledFlag"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="programChangeEnabled" eType="#//EnabledFlag"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedBitsAfterProgramChangeEnabled"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pitchBendRange" eType="#//PitchBendRange"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="midiChannels" lowerBound="3"
+        upperBound="3" eType="#//MidiChannelType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partNoteNumbers" lowerBound="13"
+        upperBound="13" eType="#//PartNoteNumber" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="midiControlChangeAssignments"
+        lowerBound="33" upperBound="33" eType="#//MidiControlChangeAssignment" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedLong" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="patternSetParameters" lowerBound="128"
+        upperBound="128" eType="#//PatternSetParameter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="midiChannelNames" transient="true">
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
+        <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+        <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eGenericType>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="partNoteNumberNames" transient="true">
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
+        <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+        <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eGenericType>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="midiControlChangeAssignmentNames"
+        transient="true">
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
+        <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+        <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eGenericType>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PatternSetParameter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patternNumber" eType="#//PatternNumber"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MidiChannelType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="midiChannel" eType="#//MidiChannel"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PartNoteNumber">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="noteNumber" eType="#//NoteNumber"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MidiControlChangeAssignment">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParametersFx">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="effectType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="edit1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="edit2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="motionSequenceStatus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParametersMotion">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SequenceData">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceData" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SequenceDataGate">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceDataGate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SequenceDataNote">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceDataNote" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Part" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="motionSequenceStatus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PartWithSequenceData" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceData" eType="#//SequenceData"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PartWithCommon" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ampEg" eType="#//AmpEg"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bpmSync" eType="#//BpmSync"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cutoff" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="egIntensity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="egTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterType" eType="#//FilterType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fxSelect" eType="#//FxSelect"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fxSend" eType="#//FxSend"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modDepth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modDest" eType="#//ModDest"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modSpeed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modType" eType="#//ModType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pan" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedBitAfterModDepth"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resonance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="roll" eType="#//Roll"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PartWithSample" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reverse" eType="#//Reverse"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="startPoint" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedBitsAfterReverse"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PartWithSlice" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedByte" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sliceNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PartWithPitch" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pitch" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PartWithSequenceDataGate" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceDataGate" eType="#//SequenceDataGate"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PartAccent" eSuperTypes="#//Part #//PartWithSequenceData"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PartAudioIn" eSuperTypes="#//Part #//PartWithCommon #//PartWithSequenceData #//PartWithSequenceDataGate">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedBitsByte7" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PartDrum" eSuperTypes="#//Part #//PartWithCommon #//PartWithPitch #//PartWithSample #//PartWithSequenceData #//PartWithSlice"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PartKeyboard" eSuperTypes="#//Part #//PartWithCommon #//PartWithSample #//PartWithSequenceDataGate #//PartWithSlice">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="glide" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceDataNote" eType="#//SequenceDataNote"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PartStretchSlice" eSuperTypes="#//Part #//PartWithCommon #//PartWithPitch #//PartWithSample #//PartWithSequenceData"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Pattern">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tempo" lowerBound="1" eType="#//Tempo"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="swing" eType="#//Swing"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patternLength" eType="#//PatternLength"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedBitAfterPatternLength"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="beat" eType="#//Beat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rollType" eType="#//RollType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fxChain" eType="#//FxChain"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastStep" eType="#//LastStep"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="arpeggiatorScale" eType="#//ArpeggiatorScale"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedBitsAfterArpeggiatorScale"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="arpeggiatorCenterNote"
+        eType="#//NoteNumber"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="muteStatus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="swingStatus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputBusStatus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="accentStatus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="drumParts" lowerBound="9"
+        upperBound="9" eType="#//PartDrum" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="keyboardParts" lowerBound="2"
+        upperBound="2" eType="#//PartKeyboard" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stretchSliceParts" lowerBound="3"
+        upperBound="3" eType="#//PartStretchSlice" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="audioInPart" lowerBound="1"
+        eType="#//PartAudioIn" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="accentPart" lowerBound="1"
+        eType="#//PartAccent" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fxParameters" lowerBound="3"
+        upperBound="3" eType="#//ParametersFx" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="motionParameters" lowerBound="24"
+        upperBound="24" eType="#//ParametersMotion" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="beingUsed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="true"
+        derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patternNumberOriginal"
+        eType="#//PatternNumber" defaultValueLiteral="-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patternNumberCurrent" eType="#//PatternNumber"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="-1"
+        derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Sample" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="offsetChannel1Start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="offsetChannel1End" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="offsetChannel2Start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="offsetChannel2End" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="loopStart" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleTuneLeft" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleTuneRight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfSampleFrames" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="playLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unknownByte1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stretchStep" eType="#//StretchStep"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unknownByte2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unknownByte3" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unknownByte4" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="audioDataChannel1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="audioDataChannel2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sliceArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="loop" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="slice" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stereo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="true"
+        derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memUsedInBytes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
+        derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="beingUsed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="true"
+        derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleNumberOriginal" eType="#//SampleNumber"
+        defaultValueLiteral="-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleNumberCurrent" eType="#//SampleNumber"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="-1"
+        derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SampleMono" eSuperTypes="#//Sample"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SampleStereo" eSuperTypes="#//Sample"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Song">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tempo" lowerBound="1" eType="#//Tempo"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tempoLock" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="muteHold" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nextSong" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfSongEvents" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patternNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="noteOffset" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="songEvents" upperBound="20000"
+        eType="#//SongEvent" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="beingUsed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="true"
+        derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="songNumberOriginal" eType="#//SongNumber"
+        defaultValueLiteral="-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="songNumberCurrent" eType="#//SongNumber"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="-1"
+        derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Tempo">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="validRange"/>
+    </eAnnotations>
+    <eOperations name="updateValue"/>
+    <eOperations name="updatePackedValue"/>
+    <eOperations name="validValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
+      <eParameters name="context">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
+          <eTypeArguments eClassifier="#//Object"/>
+          <eTypeArguments eClassifier="#//Object"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="packedValue" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="15360"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
+        defaultValueLiteral="120.0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueLeft" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
+        derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueRight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
+        derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SongEvent" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="measure" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="positionNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="step" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SongEventWithPart" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="part" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SongEventControl" eSuperTypes="#//SongEvent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedByte" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedShort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"
+        defaultValueLiteral="-21846"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SongEventDrumNote" eSuperTypes="#//SongEvent #//SongEventWithPart">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedByte" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedShort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SongEventKeyboardNote" eSuperTypes="#//SongEvent #//SongEventWithPart">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="noteNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SongEventTempo" eSuperTypes="#//SongEvent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tempo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedShort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SongEventMuteStatus" eSuperTypes="#//SongEvent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedShort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="muteStatus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ArpeggiatorControl">
+    <eLiterals name="Normal"/>
+    <eLiterals name="Reverse" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AudioInMode">
+    <eLiterals name="Mono" literal="L/Mono"/>
+    <eLiterals name="Stereo" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MidiClock">
+    <eLiterals name="Int"/>
+    <eLiterals name="Ext" value="1"/>
+    <eLiterals name="Auto" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EnabledFlag">
+    <eLiterals name="Disabled"/>
+    <eLiterals name="Enabled" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PitchBendRange">
+    <eLiterals name="PitchBend_N12" literal="-12"/>
+    <eLiterals name="PitchBend_N11" value="1" literal="-11"/>
+    <eLiterals name="PitchBend_N10" value="2" literal="-10"/>
+    <eLiterals name="PitchBend_N9" value="3" literal="-9"/>
+    <eLiterals name="PitchBend_N8" value="4" literal="-8"/>
+    <eLiterals name="PitchBend_N7" value="5" literal="-7"/>
+    <eLiterals name="PitchBend_N6" value="6" literal="-6"/>
+    <eLiterals name="PitchBend_N5" value="7" literal="-5"/>
+    <eLiterals name="PitchBend_N4" value="8" literal="-4"/>
+    <eLiterals name="PitchBend_N3" value="9" literal="-3"/>
+    <eLiterals name="PitchBend_N2" value="10" literal="-2"/>
+    <eLiterals name="PitchBend_N1" value="11" literal="-1"/>
+    <eLiterals name="PitchBend_0" value="12" literal="0"/>
+    <eLiterals name="PitchBend_1" value="13" literal="1"/>
+    <eLiterals name="PitchBend_2" value="14" literal="2"/>
+    <eLiterals name="PitchBend_3" value="15" literal="3"/>
+    <eLiterals name="PitchBend_4" value="16" literal="4"/>
+    <eLiterals name="PitchBend_5" value="17" literal="5"/>
+    <eLiterals name="PitchBend_6" value="18" literal="6"/>
+    <eLiterals name="PitchBend_7" value="19" literal="7"/>
+    <eLiterals name="PitchBend_8" value="20" literal="8"/>
+    <eLiterals name="PitchBend_9" value="21" literal="9"/>
+    <eLiterals name="PitchBend_10" value="22" literal="10"/>
+    <eLiterals name="PitchBend_11" value="23" literal="11"/>
+    <eLiterals name="PitchBend_12" value="24" literal="12"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MidiChannel">
+    <eLiterals name="Channel_1" literal="1"/>
+    <eLiterals name="Channel_2" value="1" literal="2"/>
+    <eLiterals name="Channel_3" value="2" literal="3"/>
+    <eLiterals name="Channel_4" value="3" literal="4"/>
+    <eLiterals name="Channel_5" value="4" literal="5"/>
+    <eLiterals name="Channel_6" value="5" literal="6"/>
+    <eLiterals name="Channel_7" value="6" literal="7"/>
+    <eLiterals name="Channel_8" value="7" literal="8"/>
+    <eLiterals name="Channel_9" value="8" literal="9"/>
+    <eLiterals name="Channel_10" value="9" literal="10"/>
+    <eLiterals name="Channel_11" value="10" literal="11"/>
+    <eLiterals name="Channel_12" value="11" literal="12"/>
+    <eLiterals name="Channel_13" value="12" literal="13"/>
+    <eLiterals name="Channel_14" value="13" literal="14"/>
+    <eLiterals name="Channel_15" value="14" literal="15"/>
+    <eLiterals name="Channel_16" value="15" literal="16"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PatternNumber">
+    <eLiterals name="Pattern_A01" literal="A01"/>
+    <eLiterals name="Pattern_A02" value="1" literal="A02"/>
+    <eLiterals name="Pattern_A03" value="2" literal="A03"/>
+    <eLiterals name="Pattern_A04" value="3" literal="A04"/>
+    <eLiterals name="Pattern_A05" value="4" literal="A05"/>
+    <eLiterals name="Pattern_A06" value="5" literal="A06"/>
+    <eLiterals name="Pattern_A07" value="6" literal="A07"/>
+    <eLiterals name="Pattern_A08" value="7" literal="A08"/>
+    <eLiterals name="Pattern_A09" value="8" literal="A09"/>
+    <eLiterals name="Pattern_A10" value="9" literal="A10"/>
+    <eLiterals name="Pattern_A11" value="10" literal="A11"/>
+    <eLiterals name="Pattern_A12" value="11" literal="A12"/>
+    <eLiterals name="Pattern_A13" value="12" literal="A13"/>
+    <eLiterals name="Pattern_A14" value="13" literal="A14"/>
+    <eLiterals name="Pattern_A15" value="14" literal="A15"/>
+    <eLiterals name="Pattern_A16" value="15" literal="A16"/>
+    <eLiterals name="Pattern_A17" value="16" literal="A17"/>
+    <eLiterals name="Pattern_A18" value="17" literal="A18"/>
+    <eLiterals name="Pattern_A19" value="18" literal="A19"/>
+    <eLiterals name="Pattern_A20" value="19" literal="A20"/>
+    <eLiterals name="Pattern_A21" value="20" literal="A21"/>
+    <eLiterals name="Pattern_A22" value="21" literal="A22"/>
+    <eLiterals name="Pattern_A23" value="22" literal="A23"/>
+    <eLiterals name="Pattern_A24" value="23" literal="A24"/>
+    <eLiterals name="Pattern_A25" value="24" literal="A25"/>
+    <eLiterals name="Pattern_A26" value="25" literal="A26"/>
+    <eLiterals name="Pattern_A27" value="26" literal="A27"/>
+    <eLiterals name="Pattern_A28" value="27" literal="A28"/>
+    <eLiterals name="Pattern_A29" value="28" literal="A29"/>
+    <eLiterals name="Pattern_A30" value="29" literal="A30"/>
+    <eLiterals name="Pattern_A31" value="30" literal="A31"/>
+    <eLiterals name="Pattern_A32" value="31" literal="A32"/>
+    <eLiterals name="Pattern_A33" value="32" literal="A33"/>
+    <eLiterals name="Pattern_A34" value="33" literal="A34"/>
+    <eLiterals name="Pattern_A35" value="34" literal="A35"/>
+    <eLiterals name="Pattern_A36" value="35" literal="A36"/>
+    <eLiterals name="Pattern_A37" value="36" literal="A37"/>
+    <eLiterals name="Pattern_A38" value="37" literal="A38"/>
+    <eLiterals name="Pattern_A39" value="38" literal="A39"/>
+    <eLiterals name="Pattern_A40" value="39" literal="A40"/>
+    <eLiterals name="Pattern_A41" value="40" literal="A41"/>
+    <eLiterals name="Pattern_A42" value="41" literal="A42"/>
+    <eLiterals name="Pattern_A43" value="42" literal="A43"/>
+    <eLiterals name="Pattern_A44" value="43" literal="A44"/>
+    <eLiterals name="Pattern_A45" value="44" literal="A45"/>
+    <eLiterals name="Pattern_A46" value="45" literal="A46"/>
+    <eLiterals name="Pattern_A47" value="46" literal="A47"/>
+    <eLiterals name="Pattern_A48" value="47" literal="A48"/>
+    <eLiterals name="Pattern_A49" value="48" literal="A49"/>
+    <eLiterals name="Pattern_A50" value="49" literal="A50"/>
+    <eLiterals name="Pattern_A51" value="50" literal="A51"/>
+    <eLiterals name="Pattern_A52" value="51" literal="A52"/>
+    <eLiterals name="Pattern_A53" value="52" literal="A53"/>
+    <eLiterals name="Pattern_A54" value="53" literal="A54"/>
+    <eLiterals name="Pattern_A55" value="54" literal="A55"/>
+    <eLiterals name="Pattern_A56" value="55" literal="A56"/>
+    <eLiterals name="Pattern_A57" value="56" literal="A57"/>
+    <eLiterals name="Pattern_A58" value="57" literal="A58"/>
+    <eLiterals name="Pattern_A59" value="58" literal="A59"/>
+    <eLiterals name="Pattern_A60" value="59" literal="A60"/>
+    <eLiterals name="Pattern_A61" value="60" literal="A61"/>
+    <eLiterals name="Pattern_A62" value="61" literal="A62"/>
+    <eLiterals name="Pattern_A63" value="62" literal="A63"/>
+    <eLiterals name="Pattern_A64" value="63" literal="A64"/>
+    <eLiterals name="Pattern_B01" value="64" literal="B01"/>
+    <eLiterals name="Pattern_B02" value="65" literal="B02"/>
+    <eLiterals name="Pattern_B03" value="66" literal="B03"/>
+    <eLiterals name="Pattern_B04" value="67" literal="B04"/>
+    <eLiterals name="Pattern_B05" value="68" literal="B05"/>
+    <eLiterals name="Pattern_B06" value="69" literal="B06"/>
+    <eLiterals name="Pattern_B07" value="70" literal="B07"/>
+    <eLiterals name="Pattern_B08" value="71" literal="B08"/>
+    <eLiterals name="Pattern_B09" value="72" literal="B09"/>
+    <eLiterals name="Pattern_B10" value="73" literal="B10"/>
+    <eLiterals name="Pattern_B11" value="74" literal="B11"/>
+    <eLiterals name="Pattern_B12" value="75" literal="B12"/>
+    <eLiterals name="Pattern_B13" value="76" literal="B13"/>
+    <eLiterals name="Pattern_B14" value="77" literal="B14"/>
+    <eLiterals name="Pattern_B15" value="78" literal="B15"/>
+    <eLiterals name="Pattern_B16" value="79" literal="B16"/>
+    <eLiterals name="Pattern_B17" value="80" literal="B17"/>
+    <eLiterals name="Pattern_B18" value="81" literal="B18"/>
+    <eLiterals name="Pattern_B19" value="82" literal="B19"/>
+    <eLiterals name="Pattern_B20" value="83" literal="B20"/>
+    <eLiterals name="Pattern_B21" value="84" literal="B21"/>
+    <eLiterals name="Pattern_B22" value="85" literal="B22"/>
+    <eLiterals name="Pattern_B23" value="86" literal="B23"/>
+    <eLiterals name="Pattern_B24" value="87" literal="B24"/>
+    <eLiterals name="Pattern_B25" value="88" literal="B25"/>
+    <eLiterals name="Pattern_B26" value="89" literal="B26"/>
+    <eLiterals name="Pattern_B27" value="90" literal="B27"/>
+    <eLiterals name="Pattern_B28" value="91" literal="B28"/>
+    <eLiterals name="Pattern_B29" value="92" literal="B29"/>
+    <eLiterals name="Pattern_B30" value="93" literal="B30"/>
+    <eLiterals name="Pattern_B31" value="94" literal="B31"/>
+    <eLiterals name="Pattern_B32" value="95" literal="B32"/>
+    <eLiterals name="Pattern_B33" value="96" literal="B33"/>
+    <eLiterals name="Pattern_B34" value="97" literal="B34"/>
+    <eLiterals name="Pattern_B35" value="98" literal="B35"/>
+    <eLiterals name="Pattern_B36" value="99" literal="B36"/>
+    <eLiterals name="Pattern_B37" value="100" literal="B37"/>
+    <eLiterals name="Pattern_B38" value="101" literal="B38"/>
+    <eLiterals name="Pattern_B39" value="102" literal="B39"/>
+    <eLiterals name="Pattern_B40" value="103" literal="B40"/>
+    <eLiterals name="Pattern_B41" value="104" literal="B41"/>
+    <eLiterals name="Pattern_B42" value="105" literal="B42"/>
+    <eLiterals name="Pattern_B43" value="106" literal="B43"/>
+    <eLiterals name="Pattern_B44" value="107" literal="B44"/>
+    <eLiterals name="Pattern_B45" value="108" literal="B45"/>
+    <eLiterals name="Pattern_B46" value="109" literal="B46"/>
+    <eLiterals name="Pattern_B47" value="110" literal="B47"/>
+    <eLiterals name="Pattern_B48" value="111" literal="B48"/>
+    <eLiterals name="Pattern_B49" value="112" literal="B49"/>
+    <eLiterals name="Pattern_B50" value="113" literal="B50"/>
+    <eLiterals name="Pattern_B51" value="114" literal="B51"/>
+    <eLiterals name="Pattern_B52" value="115" literal="B52"/>
+    <eLiterals name="Pattern_B53" value="116" literal="B53"/>
+    <eLiterals name="Pattern_B54" value="117" literal="B54"/>
+    <eLiterals name="Pattern_B55" value="118" literal="B55"/>
+    <eLiterals name="Pattern_B56" value="119" literal="B56"/>
+    <eLiterals name="Pattern_B57" value="120" literal="B57"/>
+    <eLiterals name="Pattern_B58" value="121" literal="B58"/>
+    <eLiterals name="Pattern_B59" value="122" literal="B59"/>
+    <eLiterals name="Pattern_B60" value="123" literal="B60"/>
+    <eLiterals name="Pattern_B61" value="124" literal="B61"/>
+    <eLiterals name="Pattern_B62" value="125" literal="B62"/>
+    <eLiterals name="Pattern_B63" value="126" literal="B63"/>
+    <eLiterals name="Pattern_B64" value="127" literal="B64"/>
+    <eLiterals name="Pattern_C01" value="128" literal="C01"/>
+    <eLiterals name="Pattern_C02" value="129" literal="C02"/>
+    <eLiterals name="Pattern_C03" value="130" literal="C03"/>
+    <eLiterals name="Pattern_C04" value="131" literal="C04"/>
+    <eLiterals name="Pattern_C05" value="132" literal="C05"/>
+    <eLiterals name="Pattern_C06" value="133" literal="C06"/>
+    <eLiterals name="Pattern_C07" value="134" literal="C07"/>
+    <eLiterals name="Pattern_C08" value="135" literal="C08"/>
+    <eLiterals name="Pattern_C09" value="136" literal="C09"/>
+    <eLiterals name="Pattern_C10" value="137" literal="C10"/>
+    <eLiterals name="Pattern_C11" value="138" literal="C11"/>
+    <eLiterals name="Pattern_C12" value="139" literal="C12"/>
+    <eLiterals name="Pattern_C13" value="140" literal="C13"/>
+    <eLiterals name="Pattern_C14" value="141" literal="C14"/>
+    <eLiterals name="Pattern_C15" value="142" literal="C15"/>
+    <eLiterals name="Pattern_C16" value="143" literal="C16"/>
+    <eLiterals name="Pattern_C17" value="144" literal="C17"/>
+    <eLiterals name="Pattern_C18" value="145" literal="C18"/>
+    <eLiterals name="Pattern_C19" value="146" literal="C19"/>
+    <eLiterals name="Pattern_C20" value="147" literal="C20"/>
+    <eLiterals name="Pattern_C21" value="148" literal="C21"/>
+    <eLiterals name="Pattern_C22" value="149" literal="C22"/>
+    <eLiterals name="Pattern_C23" value="150" literal="C23"/>
+    <eLiterals name="Pattern_C24" value="151" literal="C24"/>
+    <eLiterals name="Pattern_C25" value="152" literal="C25"/>
+    <eLiterals name="Pattern_C26" value="153" literal="C26"/>
+    <eLiterals name="Pattern_C27" value="154" literal="C27"/>
+    <eLiterals name="Pattern_C28" value="155" literal="C28"/>
+    <eLiterals name="Pattern_C29" value="156" literal="C29"/>
+    <eLiterals name="Pattern_C30" value="157" literal="C30"/>
+    <eLiterals name="Pattern_C31" value="158" literal="C31"/>
+    <eLiterals name="Pattern_C32" value="159" literal="C32"/>
+    <eLiterals name="Pattern_C33" value="160" literal="C33"/>
+    <eLiterals name="Pattern_C34" value="161" literal="C34"/>
+    <eLiterals name="Pattern_C35" value="162" literal="C35"/>
+    <eLiterals name="Pattern_C36" value="163" literal="C36"/>
+    <eLiterals name="Pattern_C37" value="164" literal="C37"/>
+    <eLiterals name="Pattern_C38" value="165" literal="C38"/>
+    <eLiterals name="Pattern_C39" value="166" literal="C39"/>
+    <eLiterals name="Pattern_C40" value="167" literal="C40"/>
+    <eLiterals name="Pattern_C41" value="168" literal="C41"/>
+    <eLiterals name="Pattern_C42" value="169" literal="C42"/>
+    <eLiterals name="Pattern_C43" value="170" literal="C43"/>
+    <eLiterals name="Pattern_C44" value="171" literal="C44"/>
+    <eLiterals name="Pattern_C45" value="172" literal="C45"/>
+    <eLiterals name="Pattern_C46" value="173" literal="C46"/>
+    <eLiterals name="Pattern_C47" value="174" literal="C47"/>
+    <eLiterals name="Pattern_C48" value="175" literal="C48"/>
+    <eLiterals name="Pattern_C49" value="176" literal="C49"/>
+    <eLiterals name="Pattern_C50" value="177" literal="C50"/>
+    <eLiterals name="Pattern_C51" value="178" literal="C51"/>
+    <eLiterals name="Pattern_C52" value="179" literal="C52"/>
+    <eLiterals name="Pattern_C53" value="180" literal="C53"/>
+    <eLiterals name="Pattern_C54" value="181" literal="C54"/>
+    <eLiterals name="Pattern_C55" value="182" literal="C55"/>
+    <eLiterals name="Pattern_C56" value="183" literal="C56"/>
+    <eLiterals name="Pattern_C57" value="184" literal="C57"/>
+    <eLiterals name="Pattern_C58" value="185" literal="C58"/>
+    <eLiterals name="Pattern_C59" value="186" literal="C59"/>
+    <eLiterals name="Pattern_C60" value="187" literal="C60"/>
+    <eLiterals name="Pattern_C61" value="188" literal="C61"/>
+    <eLiterals name="Pattern_C62" value="189" literal="C62"/>
+    <eLiterals name="Pattern_C63" value="190" literal="C63"/>
+    <eLiterals name="Pattern_C64" value="191" literal="C64"/>
+    <eLiterals name="Pattern_D01" value="192" literal="D01"/>
+    <eLiterals name="Pattern_D02" value="193" literal="D02"/>
+    <eLiterals name="Pattern_D03" value="194" literal="D03"/>
+    <eLiterals name="Pattern_D04" value="195" literal="D04"/>
+    <eLiterals name="Pattern_D05" value="196" literal="D05"/>
+    <eLiterals name="Pattern_D06" value="197" literal="D06"/>
+    <eLiterals name="Pattern_D07" value="198" literal="D07"/>
+    <eLiterals name="Pattern_D08" value="199" literal="D08"/>
+    <eLiterals name="Pattern_D09" value="200" literal="D09"/>
+    <eLiterals name="Pattern_D10" value="201" literal="D10"/>
+    <eLiterals name="Pattern_D11" value="202" literal="D11"/>
+    <eLiterals name="Pattern_D12" value="203" literal="D12"/>
+    <eLiterals name="Pattern_D13" value="204" literal="D13"/>
+    <eLiterals name="Pattern_D14" value="205" literal="D14"/>
+    <eLiterals name="Pattern_D15" value="206" literal="D15"/>
+    <eLiterals name="Pattern_D16" value="207" literal="D16"/>
+    <eLiterals name="Pattern_D17" value="208" literal="D17"/>
+    <eLiterals name="Pattern_D18" value="209" literal="D18"/>
+    <eLiterals name="Pattern_D19" value="210" literal="D19"/>
+    <eLiterals name="Pattern_D20" value="211" literal="D20"/>
+    <eLiterals name="Pattern_D21" value="212" literal="D21"/>
+    <eLiterals name="Pattern_D22" value="213" literal="D22"/>
+    <eLiterals name="Pattern_D23" value="214" literal="D23"/>
+    <eLiterals name="Pattern_D24" value="215" literal="D24"/>
+    <eLiterals name="Pattern_D25" value="216" literal="D25"/>
+    <eLiterals name="Pattern_D26" value="217" literal="D26"/>
+    <eLiterals name="Pattern_D27" value="218" literal="D27"/>
+    <eLiterals name="Pattern_D28" value="219" literal="D28"/>
+    <eLiterals name="Pattern_D29" value="220" literal="D29"/>
+    <eLiterals name="Pattern_D30" value="221" literal="D30"/>
+    <eLiterals name="Pattern_D31" value="222" literal="D31"/>
+    <eLiterals name="Pattern_D32" value="223" literal="D32"/>
+    <eLiterals name="Pattern_D33" value="224" literal="D33"/>
+    <eLiterals name="Pattern_D34" value="225" literal="D34"/>
+    <eLiterals name="Pattern_D35" value="226" literal="D35"/>
+    <eLiterals name="Pattern_D36" value="227" literal="D36"/>
+    <eLiterals name="Pattern_D37" value="228" literal="D37"/>
+    <eLiterals name="Pattern_D38" value="229" literal="D38"/>
+    <eLiterals name="Pattern_D39" value="230" literal="D39"/>
+    <eLiterals name="Pattern_D40" value="231" literal="D40"/>
+    <eLiterals name="Pattern_D41" value="232" literal="D41"/>
+    <eLiterals name="Pattern_D42" value="233" literal="D42"/>
+    <eLiterals name="Pattern_D43" value="234" literal="D43"/>
+    <eLiterals name="Pattern_D44" value="235" literal="D44"/>
+    <eLiterals name="Pattern_D45" value="236" literal="D45"/>
+    <eLiterals name="Pattern_D46" value="237" literal="D46"/>
+    <eLiterals name="Pattern_D47" value="238" literal="D47"/>
+    <eLiterals name="Pattern_D48" value="239" literal="D48"/>
+    <eLiterals name="Pattern_D49" value="240" literal="D49"/>
+    <eLiterals name="Pattern_D50" value="241" literal="D50"/>
+    <eLiterals name="Pattern_D51" value="242" literal="D51"/>
+    <eLiterals name="Pattern_D52" value="243" literal="D52"/>
+    <eLiterals name="Pattern_D53" value="244" literal="D53"/>
+    <eLiterals name="Pattern_D54" value="245" literal="D54"/>
+    <eLiterals name="Pattern_D55" value="246" literal="D55"/>
+    <eLiterals name="Pattern_D56" value="247" literal="D56"/>
+    <eLiterals name="Pattern_D57" value="248" literal="D57"/>
+    <eLiterals name="Pattern_D58" value="249" literal="D58"/>
+    <eLiterals name="Pattern_D59" value="250" literal="D59"/>
+    <eLiterals name="Pattern_D60" value="251" literal="D60"/>
+    <eLiterals name="Pattern_D61" value="252" literal="D61"/>
+    <eLiterals name="Pattern_D62" value="253" literal="D62"/>
+    <eLiterals name="Pattern_D63" value="254" literal="D63"/>
+    <eLiterals name="Pattern_D64" value="255" literal="D64"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SampleNumber">
+    <eLiterals name="Sample_OFF" value="-1" literal="OFF"/>
+    <eLiterals name="Sample_M000" literal="000"/>
+    <eLiterals name="Sample_M001" value="1" literal="001"/>
+    <eLiterals name="Sample_M002" value="2" literal="002"/>
+    <eLiterals name="Sample_M003" value="3" literal="003"/>
+    <eLiterals name="Sample_M004" value="4" literal="004"/>
+    <eLiterals name="Sample_M005" value="5" literal="005"/>
+    <eLiterals name="Sample_M006" value="6" literal="006"/>
+    <eLiterals name="Sample_M007" value="7" literal="007"/>
+    <eLiterals name="Sample_M008" value="8" literal="008"/>
+    <eLiterals name="Sample_M009" value="9" literal="009"/>
+    <eLiterals name="Sample_M010" value="10" literal="010"/>
+    <eLiterals name="Sample_M011" value="11" literal="011"/>
+    <eLiterals name="Sample_M012" value="12" literal="012"/>
+    <eLiterals name="Sample_M013" value="13" literal="013"/>
+    <eLiterals name="Sample_M014" value="14" literal="014"/>
+    <eLiterals name="Sample_M015" value="15" literal="015"/>
+    <eLiterals name="Sample_M016" value="16" literal="016"/>
+    <eLiterals name="Sample_M017" value="17" literal="017"/>
+    <eLiterals name="Sample_M018" value="18" literal="018"/>
+    <eLiterals name="Sample_M019" value="19" literal="019"/>
+    <eLiterals name="Sample_M020" value="20" literal="020"/>
+    <eLiterals name="Sample_M021" value="21" literal="021"/>
+    <eLiterals name="Sample_M022" value="22" literal="022"/>
+    <eLiterals name="Sample_M023" value="23" literal="023"/>
+    <eLiterals name="Sample_M024" value="24" literal="024"/>
+    <eLiterals name="Sample_M025" value="25" literal="025"/>
+    <eLiterals name="Sample_M026" value="26" literal="026"/>
+    <eLiterals name="Sample_M027" value="27" literal="027"/>
+    <eLiterals name="Sample_M028" value="28" literal="028"/>
+    <eLiterals name="Sample_M029" value="29" literal="029"/>
+    <eLiterals name="Sample_M030" value="30" literal="030"/>
+    <eLiterals name="Sample_M031" value="31" literal="031"/>
+    <eLiterals name="Sample_M032" value="32" literal="032"/>
+    <eLiterals name="Sample_M033" value="33" literal="033"/>
+    <eLiterals name="Sample_M034" value="34" literal="034"/>
+    <eLiterals name="Sample_M035" value="35" literal="035"/>
+    <eLiterals name="Sample_M036" value="36" literal="036"/>
+    <eLiterals name="Sample_M037" value="37" literal="037"/>
+    <eLiterals name="Sample_M038" value="38" literal="038"/>
+    <eLiterals name="Sample_M039" value="39" literal="039"/>
+    <eLiterals name="Sample_M040" value="40" literal="040"/>
+    <eLiterals name="Sample_M041" value="41" literal="041"/>
+    <eLiterals name="Sample_M042" value="42" literal="042"/>
+    <eLiterals name="Sample_M043" value="43" literal="043"/>
+    <eLiterals name="Sample_M044" value="44" literal="044"/>
+    <eLiterals name="Sample_M045" value="45" literal="045"/>
+    <eLiterals name="Sample_M046" value="46" literal="046"/>
+    <eLiterals name="Sample_M047" value="47" literal="047"/>
+    <eLiterals name="Sample_M048" value="48" literal="048"/>
+    <eLiterals name="Sample_M049" value="49" literal="049"/>
+    <eLiterals name="Sample_M050" value="50" literal="050"/>
+    <eLiterals name="Sample_M051" value="51" literal="051"/>
+    <eLiterals name="Sample_M052" value="52" literal="052"/>
+    <eLiterals name="Sample_M053" value="53" literal="053"/>
+    <eLiterals name="Sample_M054" value="54" literal="054"/>
+    <eLiterals name="Sample_M055" value="55" literal="055"/>
+    <eLiterals name="Sample_M056" value="56" literal="056"/>
+    <eLiterals name="Sample_M057" value="57" literal="057"/>
+    <eLiterals name="Sample_M058" value="58" literal="058"/>
+    <eLiterals name="Sample_M059" value="59" literal="059"/>
+    <eLiterals name="Sample_M060" value="60" literal="060"/>
+    <eLiterals name="Sample_M061" value="61" literal="061"/>
+    <eLiterals name="Sample_M062" value="62" literal="062"/>
+    <eLiterals name="Sample_M063" value="63" literal="063"/>
+    <eLiterals name="Sample_M064" value="64" literal="064"/>
+    <eLiterals name="Sample_M065" value="65" literal="065"/>
+    <eLiterals name="Sample_M066" value="66" literal="066"/>
+    <eLiterals name="Sample_M067" value="67" literal="067"/>
+    <eLiterals name="Sample_M068" value="68" literal="068"/>
+    <eLiterals name="Sample_M069" value="69" literal="069"/>
+    <eLiterals name="Sample_M070" value="70" literal="070"/>
+    <eLiterals name="Sample_M071" value="71" literal="071"/>
+    <eLiterals name="Sample_M072" value="72" literal="072"/>
+    <eLiterals name="Sample_M073" value="73" literal="073"/>
+    <eLiterals name="Sample_M074" value="74" literal="074"/>
+    <eLiterals name="Sample_M075" value="75" literal="075"/>
+    <eLiterals name="Sample_M076" value="76" literal="076"/>
+    <eLiterals name="Sample_M077" value="77" literal="077"/>
+    <eLiterals name="Sample_M078" value="78" literal="078"/>
+    <eLiterals name="Sample_M079" value="79" literal="079"/>
+    <eLiterals name="Sample_M080" value="80" literal="080"/>
+    <eLiterals name="Sample_M081" value="81" literal="081"/>
+    <eLiterals name="Sample_M082" value="82" literal="082"/>
+    <eLiterals name="Sample_M083" value="83" literal="083"/>
+    <eLiterals name="Sample_M084" value="84" literal="084"/>
+    <eLiterals name="Sample_M085" value="85" literal="085"/>
+    <eLiterals name="Sample_M086" value="86" literal="086"/>
+    <eLiterals name="Sample_M087" value="87" literal="087"/>
+    <eLiterals name="Sample_M088" value="88" literal="088"/>
+    <eLiterals name="Sample_M089" value="89" literal="089"/>
+    <eLiterals name="Sample_M090" value="90" literal="090"/>
+    <eLiterals name="Sample_M091" value="91" literal="091"/>
+    <eLiterals name="Sample_M092" value="92" literal="092"/>
+    <eLiterals name="Sample_M093" value="93" literal="093"/>
+    <eLiterals name="Sample_M094" value="94" literal="094"/>
+    <eLiterals name="Sample_M095" value="95" literal="095"/>
+    <eLiterals name="Sample_M096" value="96" literal="096"/>
+    <eLiterals name="Sample_M097" value="97" literal="097"/>
+    <eLiterals name="Sample_M098" value="98" literal="098"/>
+    <eLiterals name="Sample_M099" value="99" literal="099"/>
+    <eLiterals name="Sample_M100" value="100" literal="100"/>
+    <eLiterals name="Sample_M101" value="101" literal="101"/>
+    <eLiterals name="Sample_M102" value="102" literal="102"/>
+    <eLiterals name="Sample_M103" value="103" literal="103"/>
+    <eLiterals name="Sample_M104" value="104" literal="104"/>
+    <eLiterals name="Sample_M105" value="105" literal="105"/>
+    <eLiterals name="Sample_M106" value="106" literal="106"/>
+    <eLiterals name="Sample_M107" value="107" literal="107"/>
+    <eLiterals name="Sample_M108" value="108" literal="108"/>
+    <eLiterals name="Sample_M109" value="109" literal="109"/>
+    <eLiterals name="Sample_M110" value="110" literal="110"/>
+    <eLiterals name="Sample_M111" value="111" literal="111"/>
+    <eLiterals name="Sample_M112" value="112" literal="112"/>
+    <eLiterals name="Sample_M113" value="113" literal="113"/>
+    <eLiterals name="Sample_M114" value="114" literal="114"/>
+    <eLiterals name="Sample_M115" value="115" literal="115"/>
+    <eLiterals name="Sample_M116" value="116" literal="116"/>
+    <eLiterals name="Sample_M117" value="117" literal="117"/>
+    <eLiterals name="Sample_M118" value="118" literal="118"/>
+    <eLiterals name="Sample_M119" value="119" literal="119"/>
+    <eLiterals name="Sample_M120" value="120" literal="120"/>
+    <eLiterals name="Sample_M121" value="121" literal="121"/>
+    <eLiterals name="Sample_M122" value="122" literal="122"/>
+    <eLiterals name="Sample_M123" value="123" literal="123"/>
+    <eLiterals name="Sample_M124" value="124" literal="124"/>
+    <eLiterals name="Sample_M125" value="125" literal="125"/>
+    <eLiterals name="Sample_M126" value="126" literal="126"/>
+    <eLiterals name="Sample_M127" value="127" literal="127"/>
+    <eLiterals name="Sample_M128" value="128" literal="128"/>
+    <eLiterals name="Sample_M129" value="129" literal="129"/>
+    <eLiterals name="Sample_M130" value="130" literal="130"/>
+    <eLiterals name="Sample_M131" value="131" literal="131"/>
+    <eLiterals name="Sample_M132" value="132" literal="132"/>
+    <eLiterals name="Sample_M133" value="133" literal="133"/>
+    <eLiterals name="Sample_M134" value="134" literal="134"/>
+    <eLiterals name="Sample_M135" value="135" literal="135"/>
+    <eLiterals name="Sample_M136" value="136" literal="136"/>
+    <eLiterals name="Sample_M137" value="137" literal="137"/>
+    <eLiterals name="Sample_M138" value="138" literal="138"/>
+    <eLiterals name="Sample_M139" value="139" literal="139"/>
+    <eLiterals name="Sample_M140" value="140" literal="140"/>
+    <eLiterals name="Sample_M141" value="141" literal="141"/>
+    <eLiterals name="Sample_M142" value="142" literal="142"/>
+    <eLiterals name="Sample_M143" value="143" literal="143"/>
+    <eLiterals name="Sample_M144" value="144" literal="144"/>
+    <eLiterals name="Sample_M145" value="145" literal="145"/>
+    <eLiterals name="Sample_M146" value="146" literal="146"/>
+    <eLiterals name="Sample_M147" value="147" literal="147"/>
+    <eLiterals name="Sample_M148" value="148" literal="148"/>
+    <eLiterals name="Sample_M149" value="149" literal="149"/>
+    <eLiterals name="Sample_M150" value="150" literal="150"/>
+    <eLiterals name="Sample_M151" value="151" literal="151"/>
+    <eLiterals name="Sample_M152" value="152" literal="152"/>
+    <eLiterals name="Sample_M153" value="153" literal="153"/>
+    <eLiterals name="Sample_M154" value="154" literal="154"/>
+    <eLiterals name="Sample_M155" value="155" literal="155"/>
+    <eLiterals name="Sample_M156" value="156" literal="156"/>
+    <eLiterals name="Sample_M157" value="157" literal="157"/>
+    <eLiterals name="Sample_M158" value="158" literal="158"/>
+    <eLiterals name="Sample_M159" value="159" literal="159"/>
+    <eLiterals name="Sample_M160" value="160" literal="160"/>
+    <eLiterals name="Sample_M161" value="161" literal="161"/>
+    <eLiterals name="Sample_M162" value="162" literal="162"/>
+    <eLiterals name="Sample_M163" value="163" literal="163"/>
+    <eLiterals name="Sample_M164" value="164" literal="164"/>
+    <eLiterals name="Sample_M165" value="165" literal="165"/>
+    <eLiterals name="Sample_M166" value="166" literal="166"/>
+    <eLiterals name="Sample_M167" value="167" literal="167"/>
+    <eLiterals name="Sample_M168" value="168" literal="168"/>
+    <eLiterals name="Sample_M169" value="169" literal="169"/>
+    <eLiterals name="Sample_M170" value="170" literal="170"/>
+    <eLiterals name="Sample_M171" value="171" literal="171"/>
+    <eLiterals name="Sample_M172" value="172" literal="172"/>
+    <eLiterals name="Sample_M173" value="173" literal="173"/>
+    <eLiterals name="Sample_M174" value="174" literal="174"/>
+    <eLiterals name="Sample_M175" value="175" literal="175"/>
+    <eLiterals name="Sample_M176" value="176" literal="176"/>
+    <eLiterals name="Sample_M177" value="177" literal="177"/>
+    <eLiterals name="Sample_M178" value="178" literal="178"/>
+    <eLiterals name="Sample_M179" value="179" literal="179"/>
+    <eLiterals name="Sample_M180" value="180" literal="180"/>
+    <eLiterals name="Sample_M181" value="181" literal="181"/>
+    <eLiterals name="Sample_M182" value="182" literal="182"/>
+    <eLiterals name="Sample_M183" value="183" literal="183"/>
+    <eLiterals name="Sample_M184" value="184" literal="184"/>
+    <eLiterals name="Sample_M185" value="185" literal="185"/>
+    <eLiterals name="Sample_M186" value="186" literal="186"/>
+    <eLiterals name="Sample_M187" value="187" literal="187"/>
+    <eLiterals name="Sample_M188" value="188" literal="188"/>
+    <eLiterals name="Sample_M189" value="189" literal="189"/>
+    <eLiterals name="Sample_M190" value="190" literal="190"/>
+    <eLiterals name="Sample_M191" value="191" literal="191"/>
+    <eLiterals name="Sample_M192" value="192" literal="192"/>
+    <eLiterals name="Sample_M193" value="193" literal="193"/>
+    <eLiterals name="Sample_M194" value="194" literal="194"/>
+    <eLiterals name="Sample_M195" value="195" literal="195"/>
+    <eLiterals name="Sample_M196" value="196" literal="196"/>
+    <eLiterals name="Sample_M197" value="197" literal="197"/>
+    <eLiterals name="Sample_M198" value="198" literal="198"/>
+    <eLiterals name="Sample_M199" value="199" literal="199"/>
+    <eLiterals name="Sample_M200" value="200" literal="200"/>
+    <eLiterals name="Sample_M201" value="201" literal="201"/>
+    <eLiterals name="Sample_M202" value="202" literal="202"/>
+    <eLiterals name="Sample_M203" value="203" literal="203"/>
+    <eLiterals name="Sample_M204" value="204" literal="204"/>
+    <eLiterals name="Sample_M205" value="205" literal="205"/>
+    <eLiterals name="Sample_M206" value="206" literal="206"/>
+    <eLiterals name="Sample_M207" value="207" literal="207"/>
+    <eLiterals name="Sample_M208" value="208" literal="208"/>
+    <eLiterals name="Sample_M209" value="209" literal="209"/>
+    <eLiterals name="Sample_M210" value="210" literal="210"/>
+    <eLiterals name="Sample_M211" value="211" literal="211"/>
+    <eLiterals name="Sample_M212" value="212" literal="212"/>
+    <eLiterals name="Sample_M213" value="213" literal="213"/>
+    <eLiterals name="Sample_M214" value="214" literal="214"/>
+    <eLiterals name="Sample_M215" value="215" literal="215"/>
+    <eLiterals name="Sample_M216" value="216" literal="216"/>
+    <eLiterals name="Sample_M217" value="217" literal="217"/>
+    <eLiterals name="Sample_M218" value="218" literal="218"/>
+    <eLiterals name="Sample_M219" value="219" literal="219"/>
+    <eLiterals name="Sample_M220" value="220" literal="220"/>
+    <eLiterals name="Sample_M221" value="221" literal="221"/>
+    <eLiterals name="Sample_M222" value="222" literal="222"/>
+    <eLiterals name="Sample_M223" value="223" literal="223"/>
+    <eLiterals name="Sample_M224" value="224" literal="224"/>
+    <eLiterals name="Sample_M225" value="225" literal="225"/>
+    <eLiterals name="Sample_M226" value="226" literal="226"/>
+    <eLiterals name="Sample_M227" value="227" literal="227"/>
+    <eLiterals name="Sample_M228" value="228" literal="228"/>
+    <eLiterals name="Sample_M229" value="229" literal="229"/>
+    <eLiterals name="Sample_M230" value="230" literal="230"/>
+    <eLiterals name="Sample_M231" value="231" literal="231"/>
+    <eLiterals name="Sample_M232" value="232" literal="232"/>
+    <eLiterals name="Sample_M233" value="233" literal="233"/>
+    <eLiterals name="Sample_M234" value="234" literal="234"/>
+    <eLiterals name="Sample_M235" value="235" literal="235"/>
+    <eLiterals name="Sample_M236" value="236" literal="236"/>
+    <eLiterals name="Sample_M237" value="237" literal="237"/>
+    <eLiterals name="Sample_M238" value="238" literal="238"/>
+    <eLiterals name="Sample_M239" value="239" literal="239"/>
+    <eLiterals name="Sample_M240" value="240" literal="240"/>
+    <eLiterals name="Sample_M241" value="241" literal="241"/>
+    <eLiterals name="Sample_M242" value="242" literal="242"/>
+    <eLiterals name="Sample_M243" value="243" literal="243"/>
+    <eLiterals name="Sample_M244" value="244" literal="244"/>
+    <eLiterals name="Sample_M245" value="245" literal="245"/>
+    <eLiterals name="Sample_M246" value="246" literal="246"/>
+    <eLiterals name="Sample_M247" value="247" literal="247"/>
+    <eLiterals name="Sample_M248" value="248" literal="248"/>
+    <eLiterals name="Sample_M249" value="249" literal="249"/>
+    <eLiterals name="Sample_M250" value="250" literal="250"/>
+    <eLiterals name="Sample_M251" value="251" literal="251"/>
+    <eLiterals name="Sample_M252" value="252" literal="252"/>
+    <eLiterals name="Sample_M253" value="253" literal="253"/>
+    <eLiterals name="Sample_M254" value="254" literal="254"/>
+    <eLiterals name="Sample_M255" value="255" literal="255"/>
+    <eLiterals name="Sample_S000" value="256" literal="S.000"/>
+    <eLiterals name="Sample_S001" value="257" literal="S.001"/>
+    <eLiterals name="Sample_S002" value="258" literal="S.002"/>
+    <eLiterals name="Sample_S003" value="259" literal="S.003"/>
+    <eLiterals name="Sample_S004" value="260" literal="S.004"/>
+    <eLiterals name="Sample_S005" value="261" literal="S.005"/>
+    <eLiterals name="Sample_S006" value="262" literal="S.006"/>
+    <eLiterals name="Sample_S007" value="263" literal="S.007"/>
+    <eLiterals name="Sample_S008" value="264" literal="S.008"/>
+    <eLiterals name="Sample_S009" value="265" literal="S.009"/>
+    <eLiterals name="Sample_S010" value="266" literal="S.010"/>
+    <eLiterals name="Sample_S011" value="267" literal="S.011"/>
+    <eLiterals name="Sample_S012" value="268" literal="S.012"/>
+    <eLiterals name="Sample_S013" value="269" literal="S.013"/>
+    <eLiterals name="Sample_S014" value="270" literal="S.014"/>
+    <eLiterals name="Sample_S015" value="271" literal="S.015"/>
+    <eLiterals name="Sample_S016" value="272" literal="S.016"/>
+    <eLiterals name="Sample_S017" value="273" literal="S.017"/>
+    <eLiterals name="Sample_S018" value="274" literal="S.018"/>
+    <eLiterals name="Sample_S019" value="275" literal="S.019"/>
+    <eLiterals name="Sample_S020" value="276" literal="S.020"/>
+    <eLiterals name="Sample_S021" value="277" literal="S.021"/>
+    <eLiterals name="Sample_S022" value="278" literal="S.022"/>
+    <eLiterals name="Sample_S023" value="279" literal="S.023"/>
+    <eLiterals name="Sample_S024" value="280" literal="S.024"/>
+    <eLiterals name="Sample_S025" value="281" literal="S.025"/>
+    <eLiterals name="Sample_S026" value="282" literal="S.026"/>
+    <eLiterals name="Sample_S027" value="283" literal="S.027"/>
+    <eLiterals name="Sample_S028" value="284" literal="S.028"/>
+    <eLiterals name="Sample_S029" value="285" literal="S.029"/>
+    <eLiterals name="Sample_S030" value="286" literal="S.030"/>
+    <eLiterals name="Sample_S031" value="287" literal="S.031"/>
+    <eLiterals name="Sample_S032" value="288" literal="S.032"/>
+    <eLiterals name="Sample_S033" value="289" literal="S.033"/>
+    <eLiterals name="Sample_S034" value="290" literal="S.034"/>
+    <eLiterals name="Sample_S035" value="291" literal="S.035"/>
+    <eLiterals name="Sample_S036" value="292" literal="S.036"/>
+    <eLiterals name="Sample_S037" value="293" literal="S.037"/>
+    <eLiterals name="Sample_S038" value="294" literal="S.038"/>
+    <eLiterals name="Sample_S039" value="295" literal="S.039"/>
+    <eLiterals name="Sample_S040" value="296" literal="S.040"/>
+    <eLiterals name="Sample_S041" value="297" literal="S.041"/>
+    <eLiterals name="Sample_S042" value="298" literal="S.042"/>
+    <eLiterals name="Sample_S043" value="299" literal="S.043"/>
+    <eLiterals name="Sample_S044" value="300" literal="S.044"/>
+    <eLiterals name="Sample_S045" value="301" literal="S.045"/>
+    <eLiterals name="Sample_S046" value="302" literal="S.046"/>
+    <eLiterals name="Sample_S047" value="303" literal="S.047"/>
+    <eLiterals name="Sample_S048" value="304" literal="S.048"/>
+    <eLiterals name="Sample_S049" value="305" literal="S.049"/>
+    <eLiterals name="Sample_S050" value="306" literal="S.050"/>
+    <eLiterals name="Sample_S051" value="307" literal="S.051"/>
+    <eLiterals name="Sample_S052" value="308" literal="S.052"/>
+    <eLiterals name="Sample_S053" value="309" literal="S.053"/>
+    <eLiterals name="Sample_S054" value="310" literal="S.054"/>
+    <eLiterals name="Sample_S055" value="311" literal="S.055"/>
+    <eLiterals name="Sample_S056" value="312" literal="S.056"/>
+    <eLiterals name="Sample_S057" value="313" literal="S.057"/>
+    <eLiterals name="Sample_S058" value="314" literal="S.058"/>
+    <eLiterals name="Sample_S059" value="315" literal="S.059"/>
+    <eLiterals name="Sample_S060" value="316" literal="S.060"/>
+    <eLiterals name="Sample_S061" value="317" literal="S.061"/>
+    <eLiterals name="Sample_S062" value="318" literal="S.062"/>
+    <eLiterals name="Sample_S063" value="319" literal="S.063"/>
+    <eLiterals name="Sample_S064" value="320" literal="S.064"/>
+    <eLiterals name="Sample_S065" value="321" literal="S.065"/>
+    <eLiterals name="Sample_S066" value="322" literal="S.066"/>
+    <eLiterals name="Sample_S067" value="323" literal="S.067"/>
+    <eLiterals name="Sample_S068" value="324" literal="S.068"/>
+    <eLiterals name="Sample_S069" value="325" literal="S.069"/>
+    <eLiterals name="Sample_S070" value="326" literal="S.070"/>
+    <eLiterals name="Sample_S071" value="327" literal="S.071"/>
+    <eLiterals name="Sample_S072" value="328" literal="S.072"/>
+    <eLiterals name="Sample_S073" value="329" literal="S.073"/>
+    <eLiterals name="Sample_S074" value="330" literal="S.074"/>
+    <eLiterals name="Sample_S075" value="331" literal="S.075"/>
+    <eLiterals name="Sample_S076" value="332" literal="S.076"/>
+    <eLiterals name="Sample_S077" value="333" literal="S.077"/>
+    <eLiterals name="Sample_S078" value="334" literal="S.078"/>
+    <eLiterals name="Sample_S079" value="335" literal="S.079"/>
+    <eLiterals name="Sample_S080" value="336" literal="S.080"/>
+    <eLiterals name="Sample_S081" value="337" literal="S.081"/>
+    <eLiterals name="Sample_S082" value="338" literal="S.082"/>
+    <eLiterals name="Sample_S083" value="339" literal="S.083"/>
+    <eLiterals name="Sample_S084" value="340" literal="S.084"/>
+    <eLiterals name="Sample_S085" value="341" literal="S.085"/>
+    <eLiterals name="Sample_S086" value="342" literal="S.086"/>
+    <eLiterals name="Sample_S087" value="343" literal="S.087"/>
+    <eLiterals name="Sample_S088" value="344" literal="S.088"/>
+    <eLiterals name="Sample_S089" value="345" literal="S.089"/>
+    <eLiterals name="Sample_S090" value="346" literal="S.090"/>
+    <eLiterals name="Sample_S091" value="347" literal="S.091"/>
+    <eLiterals name="Sample_S092" value="348" literal="S.092"/>
+    <eLiterals name="Sample_S093" value="349" literal="S.093"/>
+    <eLiterals name="Sample_S094" value="350" literal="S.094"/>
+    <eLiterals name="Sample_S095" value="351" literal="S.095"/>
+    <eLiterals name="Sample_S096" value="352" literal="S.096"/>
+    <eLiterals name="Sample_S097" value="353" literal="S.097"/>
+    <eLiterals name="Sample_S098" value="354" literal="S.098"/>
+    <eLiterals name="Sample_S099" value="355" literal="S.099"/>
+    <eLiterals name="Sample_S100" value="356" literal="S.100"/>
+    <eLiterals name="Sample_S101" value="357" literal="S.101"/>
+    <eLiterals name="Sample_S102" value="358" literal="S.102"/>
+    <eLiterals name="Sample_S103" value="359" literal="S.103"/>
+    <eLiterals name="Sample_S104" value="360" literal="S.104"/>
+    <eLiterals name="Sample_S105" value="361" literal="S.105"/>
+    <eLiterals name="Sample_S106" value="362" literal="S.106"/>
+    <eLiterals name="Sample_S107" value="363" literal="S.107"/>
+    <eLiterals name="Sample_S108" value="364" literal="S.108"/>
+    <eLiterals name="Sample_S109" value="365" literal="S.109"/>
+    <eLiterals name="Sample_S110" value="366" literal="S.110"/>
+    <eLiterals name="Sample_S111" value="367" literal="S.111"/>
+    <eLiterals name="Sample_S112" value="368" literal="S.112"/>
+    <eLiterals name="Sample_S113" value="369" literal="S.113"/>
+    <eLiterals name="Sample_S114" value="370" literal="S.114"/>
+    <eLiterals name="Sample_S115" value="371" literal="S.115"/>
+    <eLiterals name="Sample_S116" value="372" literal="S.116"/>
+    <eLiterals name="Sample_S117" value="373" literal="S.117"/>
+    <eLiterals name="Sample_S118" value="374" literal="S.118"/>
+    <eLiterals name="Sample_S119" value="375" literal="S.119"/>
+    <eLiterals name="Sample_S120" value="376" literal="S.120"/>
+    <eLiterals name="Sample_S121" value="377" literal="S.121"/>
+    <eLiterals name="Sample_S122" value="378" literal="S.122"/>
+    <eLiterals name="Sample_S123" value="379" literal="S.123"/>
+    <eLiterals name="Sample_S124" value="380" literal="S.124"/>
+    <eLiterals name="Sample_S125" value="381" literal="S.125"/>
+    <eLiterals name="Sample_S126" value="382" literal="S.126"/>
+    <eLiterals name="Sample_S127" value="383" literal="S.127"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SongNumber">
+    <eLiterals name="Song_01" literal="01"/>
+    <eLiterals name="Song_02" value="1" literal="02"/>
+    <eLiterals name="Song_03" value="2" literal="03"/>
+    <eLiterals name="Song_04" value="3" literal="04"/>
+    <eLiterals name="Song_05" value="4" literal="05"/>
+    <eLiterals name="Song_06" value="5" literal="06"/>
+    <eLiterals name="Song_07" value="6" literal="07"/>
+    <eLiterals name="Song_08" value="7" literal="08"/>
+    <eLiterals name="Song_09" value="8" literal="09"/>
+    <eLiterals name="Song_10" value="9" literal="10"/>
+    <eLiterals name="Song_11" value="10" literal="11"/>
+    <eLiterals name="Song_12" value="11" literal="12"/>
+    <eLiterals name="Song_13" value="12" literal="13"/>
+    <eLiterals name="Song_14" value="13" literal="14"/>
+    <eLiterals name="Song_15" value="14" literal="15"/>
+    <eLiterals name="Song_16" value="15" literal="16"/>
+    <eLiterals name="Song_17" value="16" literal="17"/>
+    <eLiterals name="Song_18" value="17" literal="18"/>
+    <eLiterals name="Song_19" value="18" literal="19"/>
+    <eLiterals name="Song_20" value="19" literal="20"/>
+    <eLiterals name="Song_21" value="20" literal="21"/>
+    <eLiterals name="Song_22" value="21" literal="22"/>
+    <eLiterals name="Song_23" value="22" literal="23"/>
+    <eLiterals name="Song_24" value="23" literal="24"/>
+    <eLiterals name="Song_25" value="24" literal="25"/>
+    <eLiterals name="Song_26" value="25" literal="26"/>
+    <eLiterals name="Song_27" value="26" literal="27"/>
+    <eLiterals name="Song_28" value="27" literal="28"/>
+    <eLiterals name="Song_29" value="28" literal="29"/>
+    <eLiterals name="Song_30" value="29" literal="30"/>
+    <eLiterals name="Song_31" value="30" literal="31"/>
+    <eLiterals name="Song_32" value="31" literal="32"/>
+    <eLiterals name="Song_33" value="32" literal="33"/>
+    <eLiterals name="Song_34" value="33" literal="34"/>
+    <eLiterals name="Song_35" value="34" literal="35"/>
+    <eLiterals name="Song_36" value="35" literal="36"/>
+    <eLiterals name="Song_37" value="36" literal="37"/>
+    <eLiterals name="Song_38" value="37" literal="38"/>
+    <eLiterals name="Song_39" value="38" literal="39"/>
+    <eLiterals name="Song_40" value="39" literal="40"/>
+    <eLiterals name="Song_41" value="40" literal="41"/>
+    <eLiterals name="Song_42" value="41" literal="42"/>
+    <eLiterals name="Song_43" value="42" literal="43"/>
+    <eLiterals name="Song_44" value="43" literal="44"/>
+    <eLiterals name="Song_45" value="44" literal="45"/>
+    <eLiterals name="Song_46" value="45" literal="46"/>
+    <eLiterals name="Song_47" value="46" literal="47"/>
+    <eLiterals name="Song_48" value="47" literal="48"/>
+    <eLiterals name="Song_49" value="48" literal="49"/>
+    <eLiterals name="Song_50" value="49" literal="50"/>
+    <eLiterals name="Song_51" value="50" literal="51"/>
+    <eLiterals name="Song_52" value="51" literal="52"/>
+    <eLiterals name="Song_53" value="52" literal="53"/>
+    <eLiterals name="Song_54" value="53" literal="54"/>
+    <eLiterals name="Song_55" value="54" literal="55"/>
+    <eLiterals name="Song_56" value="55" literal="56"/>
+    <eLiterals name="Song_57" value="56" literal="57"/>
+    <eLiterals name="Song_58" value="57" literal="58"/>
+    <eLiterals name="Song_59" value="58" literal="59"/>
+    <eLiterals name="Song_60" value="59" literal="60"/>
+    <eLiterals name="Song_61" value="60" literal="61"/>
+    <eLiterals name="Song_62" value="61" literal="62"/>
+    <eLiterals name="Song_63" value="62" literal="63"/>
+    <eLiterals name="Song_64" value="63" literal="64"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="StretchStep">
+    <eLiterals name="StretchStepOFF" value="-1" literal="Off"/>
+    <eLiterals name="StretchStep001" literal="1"/>
+    <eLiterals name="StretchStep002" value="1" literal="2"/>
+    <eLiterals name="StretchStep003" value="2" literal="3"/>
+    <eLiterals name="StretchStep004" value="3" literal="4"/>
+    <eLiterals name="StretchStep005" value="4" literal="5"/>
+    <eLiterals name="StretchStep006" value="5" literal="6"/>
+    <eLiterals name="StretchStep007" value="6" literal="7"/>
+    <eLiterals name="StretchStep008" value="7" literal="8"/>
+    <eLiterals name="StretchStep009" value="8" literal="9"/>
+    <eLiterals name="StretchStep010" value="9" literal="10"/>
+    <eLiterals name="StretchStep011" value="10" literal="11"/>
+    <eLiterals name="StretchStep012" value="11" literal="12"/>
+    <eLiterals name="StretchStep013" value="12" literal="13"/>
+    <eLiterals name="StretchStep014" value="13" literal="14"/>
+    <eLiterals name="StretchStep015" value="14" literal="15"/>
+    <eLiterals name="StretchStep016" value="15" literal="16"/>
+    <eLiterals name="StretchStep017" value="16" literal="17"/>
+    <eLiterals name="StretchStep018" value="17" literal="18"/>
+    <eLiterals name="StretchStep019" value="18" literal="19"/>
+    <eLiterals name="StretchStep020" value="19" literal="20"/>
+    <eLiterals name="StretchStep021" value="20" literal="21"/>
+    <eLiterals name="StretchStep022" value="21" literal="22"/>
+    <eLiterals name="StretchStep023" value="22" literal="23"/>
+    <eLiterals name="StretchStep024" value="23" literal="24"/>
+    <eLiterals name="StretchStep025" value="24" literal="25"/>
+    <eLiterals name="StretchStep026" value="25" literal="26"/>
+    <eLiterals name="StretchStep027" value="26" literal="27"/>
+    <eLiterals name="StretchStep028" value="27" literal="28"/>
+    <eLiterals name="StretchStep029" value="28" literal="29"/>
+    <eLiterals name="StretchStep030" value="29" literal="30"/>
+    <eLiterals name="StretchStep031" value="30" literal="31"/>
+    <eLiterals name="StretchStep032" value="31" literal="32"/>
+    <eLiterals name="StretchStep033" value="32" literal="33"/>
+    <eLiterals name="StretchStep034" value="33" literal="34"/>
+    <eLiterals name="StretchStep035" value="34" literal="35"/>
+    <eLiterals name="StretchStep036" value="35" literal="36"/>
+    <eLiterals name="StretchStep037" value="36" literal="37"/>
+    <eLiterals name="StretchStep038" value="37" literal="38"/>
+    <eLiterals name="StretchStep039" value="38" literal="39"/>
+    <eLiterals name="StretchStep040" value="39" literal="40"/>
+    <eLiterals name="StretchStep041" value="40" literal="41"/>
+    <eLiterals name="StretchStep042" value="41" literal="42"/>
+    <eLiterals name="StretchStep043" value="42" literal="43"/>
+    <eLiterals name="StretchStep044" value="43" literal="44"/>
+    <eLiterals name="StretchStep045" value="44" literal="45"/>
+    <eLiterals name="StretchStep046" value="45" literal="46"/>
+    <eLiterals name="StretchStep047" value="46" literal="47"/>
+    <eLiterals name="StretchStep048" value="47" literal="48"/>
+    <eLiterals name="StretchStep049" value="48" literal="49"/>
+    <eLiterals name="StretchStep050" value="49" literal="50"/>
+    <eLiterals name="StretchStep051" value="50" literal="51"/>
+    <eLiterals name="StretchStep052" value="51" literal="52"/>
+    <eLiterals name="StretchStep053" value="52" literal="53"/>
+    <eLiterals name="StretchStep054" value="53" literal="54"/>
+    <eLiterals name="StretchStep055" value="54" literal="55"/>
+    <eLiterals name="StretchStep056" value="55" literal="56"/>
+    <eLiterals name="StretchStep057" value="56" literal="57"/>
+    <eLiterals name="StretchStep058" value="57" literal="58"/>
+    <eLiterals name="StretchStep059" value="58" literal="59"/>
+    <eLiterals name="StretchStep060" value="59" literal="60"/>
+    <eLiterals name="StretchStep061" value="60" literal="61"/>
+    <eLiterals name="StretchStep062" value="61" literal="62"/>
+    <eLiterals name="StretchStep063" value="62" literal="63"/>
+    <eLiterals name="StretchStep064" value="63" literal="64"/>
+    <eLiterals name="StretchStep065" value="64" literal="65"/>
+    <eLiterals name="StretchStep066" value="65" literal="66"/>
+    <eLiterals name="StretchStep067" value="66" literal="67"/>
+    <eLiterals name="StretchStep068" value="67" literal="68"/>
+    <eLiterals name="StretchStep069" value="68" literal="69"/>
+    <eLiterals name="StretchStep070" value="69" literal="70"/>
+    <eLiterals name="StretchStep071" value="70" literal="71"/>
+    <eLiterals name="StretchStep072" value="71" literal="72"/>
+    <eLiterals name="StretchStep073" value="72" literal="73"/>
+    <eLiterals name="StretchStep074" value="73" literal="74"/>
+    <eLiterals name="StretchStep075" value="74" literal="75"/>
+    <eLiterals name="StretchStep076" value="75" literal="76"/>
+    <eLiterals name="StretchStep077" value="76" literal="77"/>
+    <eLiterals name="StretchStep078" value="77" literal="78"/>
+    <eLiterals name="StretchStep079" value="78" literal="79"/>
+    <eLiterals name="StretchStep080" value="79" literal="80"/>
+    <eLiterals name="StretchStep081" value="80" literal="81"/>
+    <eLiterals name="StretchStep082" value="81" literal="82"/>
+    <eLiterals name="StretchStep083" value="82" literal="83"/>
+    <eLiterals name="StretchStep084" value="83" literal="84"/>
+    <eLiterals name="StretchStep085" value="84" literal="85"/>
+    <eLiterals name="StretchStep086" value="85" literal="86"/>
+    <eLiterals name="StretchStep087" value="86" literal="87"/>
+    <eLiterals name="StretchStep088" value="87" literal="88"/>
+    <eLiterals name="StretchStep089" value="88" literal="89"/>
+    <eLiterals name="StretchStep090" value="89" literal="90"/>
+    <eLiterals name="StretchStep091" value="90" literal="91"/>
+    <eLiterals name="StretchStep092" value="91" literal="92"/>
+    <eLiterals name="StretchStep093" value="92" literal="93"/>
+    <eLiterals name="StretchStep094" value="93" literal="94"/>
+    <eLiterals name="StretchStep095" value="94" literal="95"/>
+    <eLiterals name="StretchStep096" value="95" literal="96"/>
+    <eLiterals name="StretchStep097" value="96" literal="97"/>
+    <eLiterals name="StretchStep098" value="97" literal="98"/>
+    <eLiterals name="StretchStep099" value="98" literal="99"/>
+    <eLiterals name="StretchStep100" value="99" literal="100"/>
+    <eLiterals name="StretchStep101" value="100" literal="101"/>
+    <eLiterals name="StretchStep102" value="101" literal="102"/>
+    <eLiterals name="StretchStep103" value="102" literal="103"/>
+    <eLiterals name="StretchStep104" value="103" literal="104"/>
+    <eLiterals name="StretchStep105" value="104" literal="105"/>
+    <eLiterals name="StretchStep106" value="105" literal="106"/>
+    <eLiterals name="StretchStep107" value="106" literal="107"/>
+    <eLiterals name="StretchStep108" value="107" literal="108"/>
+    <eLiterals name="StretchStep109" value="108" literal="109"/>
+    <eLiterals name="StretchStep110" value="109" literal="110"/>
+    <eLiterals name="StretchStep111" value="110" literal="111"/>
+    <eLiterals name="StretchStep112" value="111" literal="112"/>
+    <eLiterals name="StretchStep113" value="112" literal="113"/>
+    <eLiterals name="StretchStep114" value="113" literal="114"/>
+    <eLiterals name="StretchStep115" value="114" literal="115"/>
+    <eLiterals name="StretchStep116" value="115" literal="116"/>
+    <eLiterals name="StretchStep117" value="116" literal="117"/>
+    <eLiterals name="StretchStep118" value="117" literal="118"/>
+    <eLiterals name="StretchStep119" value="118" literal="119"/>
+    <eLiterals name="StretchStep120" value="119" literal="120"/>
+    <eLiterals name="StretchStep121" value="120" literal="121"/>
+    <eLiterals name="StretchStep122" value="121" literal="122"/>
+    <eLiterals name="StretchStep123" value="122" literal="123"/>
+    <eLiterals name="StretchStep124" value="123" literal="124"/>
+    <eLiterals name="StretchStep125" value="124" literal="125"/>
+    <eLiterals name="StretchStep126" value="125" literal="126"/>
+    <eLiterals name="StretchStep127" value="126" literal="127"/>
+    <eLiterals name="StretchStep128" value="127" literal="128"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Swing">
+    <eLiterals name="Percent_50" literal="50%"/>
+    <eLiterals name="Percent_51" value="1" literal="51%"/>
+    <eLiterals name="Percent_52" value="2" literal="52%"/>
+    <eLiterals name="Percent_53" value="3" literal="53%"/>
+    <eLiterals name="Percent_54" value="4" literal="54%"/>
+    <eLiterals name="Percent_55" value="5" literal="55%"/>
+    <eLiterals name="Percent_56" value="6" literal="56%"/>
+    <eLiterals name="Percent_57" value="7" literal="57%"/>
+    <eLiterals name="Percent_58" value="8" literal="58%"/>
+    <eLiterals name="Percent_59" value="9" literal="59%"/>
+    <eLiterals name="Percent_60" value="10" literal="60%"/>
+    <eLiterals name="Percent_61" value="11" literal="61%"/>
+    <eLiterals name="Percent_62" value="12" literal="62%"/>
+    <eLiterals name="Percent_63" value="13" literal="63%"/>
+    <eLiterals name="Percent_64" value="14" literal="64%"/>
+    <eLiterals name="Percent_65" value="15" literal="65%"/>
+    <eLiterals name="Percent_66" value="16" literal="66%"/>
+    <eLiterals name="Percent_67" value="17" literal="67%"/>
+    <eLiterals name="Percent_68" value="18" literal="68%"/>
+    <eLiterals name="Percent_69" value="19" literal="69%"/>
+    <eLiterals name="Percent_70" value="20" literal="70%"/>
+    <eLiterals name="Percent_71" value="21" literal="71%"/>
+    <eLiterals name="Percent_72" value="22" literal="72%"/>
+    <eLiterals name="Percent_73" value="23" literal="73%"/>
+    <eLiterals name="Percent_74" value="24" literal="74%"/>
+    <eLiterals name="Percent_75" value="25" literal="75%"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PatternLength">
+    <eLiterals name="Length_1" literal="1"/>
+    <eLiterals name="Length_2" value="1" literal="2"/>
+    <eLiterals name="Length_3" value="2" literal="3"/>
+    <eLiterals name="Length_4" value="3" literal="4"/>
+    <eLiterals name="Length_5" value="4" literal="5"/>
+    <eLiterals name="Length_6" value="5" literal="6"/>
+    <eLiterals name="Length_7" value="6" literal="7"/>
+    <eLiterals name="Length_8" value="7" literal="8"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Beat">
+    <eLiterals name="Beat_16th" literal="16th"/>
+    <eLiterals name="Beat_32nd" value="1" literal="32nd"/>
+    <eLiterals name="Beat_8Tri" value="2" literal="8Tri"/>
+    <eLiterals name="Beat_16Tri" value="3" literal="16Tri"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RollType">
+    <eLiterals name="Roll_2" literal="2"/>
+    <eLiterals name="Roll_3" value="1" literal="3"/>
+    <eLiterals name="Roll_4" value="2" literal="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FxChain">
+    <eLiterals name="None" literal="None"/>
+    <eLiterals name="Fx_1_2" value="1" literal="1 -> 2"/>
+    <eLiterals name="Fx_2_3" value="2" literal="2 -> 3"/>
+    <eLiterals name="Fx_1_2_3" value="3" literal="1 -> 2 -> 3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LastStep">
+    <eLiterals name="LastStep_1" literal="1"/>
+    <eLiterals name="LastStep_2" value="1" literal="2"/>
+    <eLiterals name="LastStep_3" value="2" literal="3"/>
+    <eLiterals name="LastStep_4" value="3" literal="4"/>
+    <eLiterals name="LastStep_5" value="4" literal="5"/>
+    <eLiterals name="LastStep_6" value="5" literal="6"/>
+    <eLiterals name="LastStep_7" value="6" literal="7"/>
+    <eLiterals name="LastStep_8" value="7" literal="8"/>
+    <eLiterals name="LastStep_9" value="8" literal="9"/>
+    <eLiterals name="LastStep_10" value="9" literal="10"/>
+    <eLiterals name="LastStep_11" value="10" literal="11"/>
+    <eLiterals name="LastStep_12" value="11" literal="12"/>
+    <eLiterals name="LastStep_13" value="12" literal="13"/>
+    <eLiterals name="LastStep_14" value="13" literal="14"/>
+    <eLiterals name="LastStep_15" value="14" literal="15"/>
+    <eLiterals name="LastStep_16" value="15" literal="16"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ArpeggiatorScale">
+    <eLiterals name="CHROMATIC" literal="Chromatic"/>
+    <eLiterals name="IONIAN" value="1" literal="Ionian"/>
+    <eLiterals name="DORIAN" value="2" literal="Dorian"/>
+    <eLiterals name="PHRYGIAN" value="3" literal="Phrygian"/>
+    <eLiterals name="LYDIAN" value="4" literal="Lydian"/>
+    <eLiterals name="MIXOLYDIAN" value="5" literal="Mixolydian"/>
+    <eLiterals name="AEOLIAN" value="6" literal="Aeolian"/>
+    <eLiterals name="LOCRIAN" value="7" literal="Locrian"/>
+    <eLiterals name="MAJOR_BLUES" value="8" literal="Major Blues"/>
+    <eLiterals name="MINOR_BLUES" value="9" literal="minor Blues"/>
+    <eLiterals name="DIMINISH" value="10" literal="Diminish"/>
+    <eLiterals name="COMBINATION_DIMINISH" value="11" literal="Combination Diminish"/>
+    <eLiterals name="MAJOR_PENTATONIC" value="12" literal="Major Pentatonic"/>
+    <eLiterals name="MINOR_PENTATONIC" value="13" literal="minor Pentatonic"/>
+    <eLiterals name="RAGA_BHAIRAV" value="14" literal="Raga Bhairav"/>
+    <eLiterals name="RAGA_GAMANASRAMA" value="15" literal="Raga Gamanasrama"/>
+    <eLiterals name="RAGA_TODI" value="16" literal="Raga Todi"/>
+    <eLiterals name="SPANISH_SCALE" value="17" literal="Spanish Scale"/>
+    <eLiterals name="GYPSY_SCALE" value="18" literal="Gypsy Scale"/>
+    <eLiterals name="ARABIAN_SCALE" value="19" literal="Arabian Scale"/>
+    <eLiterals name="EGYPTIAN_SCALE" value="20" literal="Egyptian Scale"/>
+    <eLiterals name="HAWAIIAN_SCALE" value="21" literal="Hawaiian Scale"/>
+    <eLiterals name="BALI_ISLAND_SCALE" value="22" literal="Bali Island Scale"/>
+    <eLiterals name="JAPANESE_MIYAKOBUSHI" value="23" literal="Japanese Miyakobushi"/>
+    <eLiterals name="RYUKYU_SCALE" value="24" literal="Ryukyu Scale"/>
+    <eLiterals name="WHOLETONE" value="25" literal="Wholetone"/>
+    <eLiterals name="MINOR_3RD_INTERVAL" value="26" literal="m3rd Interval"/>
+    <eLiterals name="MAJOR_3RD_INTERVAL" value="27" literal="M3rd Interval"/>
+    <eLiterals name="FOURTH_INTERVAL" value="28" literal="4th Interval"/>
+    <eLiterals name="FIFTH_INTERVAL" value="29" literal="5th Interval"/>
+    <eLiterals name="OCTAVE_INTERVAL" value="30" literal="Octave Interval"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="NoteNumber">
+    <eLiterals name="CN1" literal="C -1"/>
+    <eLiterals name="CSN1" value="1" literal="C# -1"/>
+    <eLiterals name="DN1" value="2" literal="D -1"/>
+    <eLiterals name="DSN1" value="3" literal="D# -1"/>
+    <eLiterals name="EN1" value="4" literal="E -1"/>
+    <eLiterals name="FN1" value="5" literal="F -1"/>
+    <eLiterals name="FSN1" value="6" literal="F# -1"/>
+    <eLiterals name="GN1" value="7" literal="G -1"/>
+    <eLiterals name="GSN1" value="8" literal="G# -1"/>
+    <eLiterals name="AN1" value="9" literal="A -1"/>
+    <eLiterals name="ASN1" value="10" literal="A# -1"/>
+    <eLiterals name="BN1" value="11" literal="B -1"/>
+    <eLiterals name="C0" value="12" literal="C 0"/>
+    <eLiterals name="CS10" value="13" literal="C# 0"/>
+    <eLiterals name="D0" value="14" literal="D 0"/>
+    <eLiterals name="DS0" value="15" literal="D# 0"/>
+    <eLiterals name="E0" value="16" literal="E 0"/>
+    <eLiterals name="F0" value="17" literal="F 0"/>
+    <eLiterals name="FS0" value="18" literal="F# 0"/>
+    <eLiterals name="G0" value="19" literal="G 0"/>
+    <eLiterals name="GS0" value="20" literal="G# 0"/>
+    <eLiterals name="A0" value="21" literal="A 0"/>
+    <eLiterals name="AS0" value="22" literal="A# 0"/>
+    <eLiterals name="B0" value="23" literal="B 0"/>
+    <eLiterals name="C1" value="24" literal="C 1"/>
+    <eLiterals name="CS11" value="25" literal="C# 1"/>
+    <eLiterals name="D1" value="26" literal="D 1"/>
+    <eLiterals name="DS1" value="27" literal="D# 1"/>
+    <eLiterals name="E1" value="28" literal="E 1"/>
+    <eLiterals name="F1" value="29" literal="F 1"/>
+    <eLiterals name="FS1" value="30" literal="F# 1"/>
+    <eLiterals name="G1" value="31" literal="G 1"/>
+    <eLiterals name="GS1" value="32" literal="G# 1"/>
+    <eLiterals name="A1" value="33" literal="A 1"/>
+    <eLiterals name="AS1" value="34" literal="A# 1"/>
+    <eLiterals name="B1" value="35" literal="B 1"/>
+    <eLiterals name="C2" value="36" literal="C 2"/>
+    <eLiterals name="CS12" value="37" literal="C# 2"/>
+    <eLiterals name="D2" value="38" literal="D 2"/>
+    <eLiterals name="DS2" value="39" literal="D# 2"/>
+    <eLiterals name="E2" value="40" literal="E 2"/>
+    <eLiterals name="F2" value="41" literal="F 2"/>
+    <eLiterals name="FS2" value="42" literal="F# 2"/>
+    <eLiterals name="G2" value="43" literal="G 2"/>
+    <eLiterals name="GS2" value="44" literal="G# 2"/>
+    <eLiterals name="A2" value="45" literal="A 2"/>
+    <eLiterals name="AS2" value="46" literal="A# 2"/>
+    <eLiterals name="B2" value="47" literal="B 2"/>
+    <eLiterals name="C3" value="48" literal="C 3"/>
+    <eLiterals name="CS13" value="49" literal="C# 3"/>
+    <eLiterals name="D3" value="50" literal="D 3"/>
+    <eLiterals name="DS3" value="51" literal="D# 3"/>
+    <eLiterals name="E3" value="52" literal="E 3"/>
+    <eLiterals name="F3" value="53" literal="F 3"/>
+    <eLiterals name="FS3" value="54" literal="F# 3"/>
+    <eLiterals name="G3" value="55" literal="G 3"/>
+    <eLiterals name="GS3" value="56" literal="G# 3"/>
+    <eLiterals name="A3" value="57" literal="A 3"/>
+    <eLiterals name="AS3" value="58" literal="A# 3"/>
+    <eLiterals name="B3" value="59" literal="B 3"/>
+    <eLiterals name="C4" value="60" literal="C 4"/>
+    <eLiterals name="CS14" value="61" literal="C# 4"/>
+    <eLiterals name="D4" value="62" literal="D 4"/>
+    <eLiterals name="DS4" value="63" literal="D# 4"/>
+    <eLiterals name="E4" value="64" literal="E 4"/>
+    <eLiterals name="F4" value="65" literal="F 4"/>
+    <eLiterals name="FS4" value="66" literal="F# 4"/>
+    <eLiterals name="G4" value="67" literal="G 4"/>
+    <eLiterals name="GS4" value="68" literal="G# 4"/>
+    <eLiterals name="A4" value="69" literal="A 4"/>
+    <eLiterals name="AS4" value="70" literal="A# 4"/>
+    <eLiterals name="B4" value="71" literal="B 4"/>
+    <eLiterals name="C5" value="72" literal="C 5"/>
+    <eLiterals name="CS15" value="73" literal="C# 5"/>
+    <eLiterals name="D5" value="74" literal="D 5"/>
+    <eLiterals name="DS5" value="75" literal="D# 5"/>
+    <eLiterals name="E5" value="76" literal="E 5"/>
+    <eLiterals name="F5" value="77" literal="F 5"/>
+    <eLiterals name="FS5" value="78" literal="F# 5"/>
+    <eLiterals name="G5" value="79" literal="G 5"/>
+    <eLiterals name="GS5" value="80" literal="G# 5"/>
+    <eLiterals name="A5" value="81" literal="A 5"/>
+    <eLiterals name="AS5" value="82" literal="A# 5"/>
+    <eLiterals name="B5" value="83" literal="B 5"/>
+    <eLiterals name="C6" value="84" literal="C 6"/>
+    <eLiterals name="CS16" value="85" literal="C# 6"/>
+    <eLiterals name="D6" value="86" literal="D 6"/>
+    <eLiterals name="DS6" value="87" literal="D# 6"/>
+    <eLiterals name="E6" value="88" literal="E 6"/>
+    <eLiterals name="F6" value="89" literal="F 6"/>
+    <eLiterals name="FS6" value="90" literal="F# 6"/>
+    <eLiterals name="G6" value="91" literal="G 6"/>
+    <eLiterals name="GS6" value="92" literal="G# 6"/>
+    <eLiterals name="A6" value="93" literal="A 6"/>
+    <eLiterals name="AS6" value="94" literal="A# 6"/>
+    <eLiterals name="B6" value="95" literal="B 6"/>
+    <eLiterals name="C7" value="96" literal="C 7"/>
+    <eLiterals name="CS17" value="97" literal="C# 7"/>
+    <eLiterals name="D7" value="98" literal="D 7"/>
+    <eLiterals name="DS7" value="99" literal="D# 7"/>
+    <eLiterals name="E7" value="100" literal="E 7"/>
+    <eLiterals name="F7" value="101" literal="F 7"/>
+    <eLiterals name="FS7" value="102" literal="F# 7"/>
+    <eLiterals name="G7" value="103" literal="G 7"/>
+    <eLiterals name="GS7" value="104" literal="G# 7"/>
+    <eLiterals name="A7" value="105" literal="A 7"/>
+    <eLiterals name="AS7" value="106" literal="A# 7"/>
+    <eLiterals name="B7" value="107" literal="B 7"/>
+    <eLiterals name="C8" value="108" literal="C 8"/>
+    <eLiterals name="CS18" value="109" literal="C# 8"/>
+    <eLiterals name="D8" value="110" literal="D 8"/>
+    <eLiterals name="DS8" value="111" literal="D# 8"/>
+    <eLiterals name="E8" value="112" literal="E 8"/>
+    <eLiterals name="F8" value="113" literal="F 8"/>
+    <eLiterals name="FS8" value="114" literal="F# 8"/>
+    <eLiterals name="G8" value="115" literal="G 8"/>
+    <eLiterals name="GS8" value="116" literal="G# 8"/>
+    <eLiterals name="A8" value="117" literal="A 8"/>
+    <eLiterals name="AS8" value="118" literal="A# 8"/>
+    <eLiterals name="B8" value="119" literal="B 8"/>
+    <eLiterals name="C9" value="120" literal="C 9"/>
+    <eLiterals name="CS19" value="121" literal="C# 9"/>
+    <eLiterals name="D9" value="122" literal="D 9"/>
+    <eLiterals name="DS9" value="123" literal="D# 9"/>
+    <eLiterals name="E9" value="124" literal="E 9"/>
+    <eLiterals name="F9" value="125" literal="F 9"/>
+    <eLiterals name="FS9" value="126" literal="F# 9"/>
+    <eLiterals name="G9" value="127" literal="G 9"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FilterType">
+    <eLiterals name="LPF" literal="LPF"/>
+    <eLiterals name="HPF" value="1" literal="HPF"/>
+    <eLiterals name="BPF" value="2" literal="BPF"/>
+    <eLiterals name="BPF_PLUS" value="3" literal="BPF+"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FxSelect">
+    <eLiterals name="FX1" literal="FX1"/>
+    <eLiterals name="FX2" value="1" literal="FX2"/>
+    <eLiterals name="FX3" value="2" literal="FX3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FxSend">
+    <eLiterals name="OFF" literal="Off"/>
+    <eLiterals name="ON" value="1" literal="On"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FxType">
+    <eLiterals name="REVERB" literal="Reverb"/>
+    <eLiterals name="BPM_SYNC_DELAY" value="8" literal="BPM Sync Delay"/>
+    <eLiterals name="SHORT_DELAY" value="16" literal="Short Delay"/>
+    <eLiterals name="MOD_DELAY" value="24" literal="Mod Delay"/>
+    <eLiterals name="GRAIN_SHIFTER" value="32" literal="Grain Shifter"/>
+    <eLiterals name="CHO_FLG" value="40" literal="Cho/Flg"/>
+    <eLiterals name="PHASER" value="48" literal="Phaser"/>
+    <eLiterals name="RING_MOD" value="56" literal="Ring Mod"/>
+    <eLiterals name="TALKING_MOD" value="64" literal="Talking Mod"/>
+    <eLiterals name="PITCH_SHIFTER" value="72" literal="Pitch Shifter"/>
+    <eLiterals name="COMPRESSOR" value="80" literal="Compressor"/>
+    <eLiterals name="DISTORTION" value="88" literal="Distortion"/>
+    <eLiterals name="DECIMATOR" value="96" literal="Decimator"/>
+    <eLiterals name="EQ" value="104" literal="EQ"/>
+    <eLiterals name="LPF" value="112" literal="LPF"/>
+    <eLiterals name="HPF" value="120" literal="HPF"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Roll">
+    <eLiterals name="OFF" literal="Off"/>
+    <eLiterals name="ON" value="1" literal="On"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AmpEg">
+    <eLiterals name="GATE" literal="Gate"/>
+    <eLiterals name="EG" value="1" literal="EG"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Reverse">
+    <eLiterals name="OFF" literal="Off"/>
+    <eLiterals name="ON" value="1" literal="On"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ModDest">
+    <eLiterals name="Pitch" literal="Pitch"/>
+    <eLiterals name="Cutoff" value="1" literal="Cutoff"/>
+    <eLiterals name="Amp" value="2" literal="Amp"/>
+    <eLiterals name="Pan" value="3" literal="Pan"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ModType">
+    <eLiterals name="Sawtooth" literal="Sawtooth"/>
+    <eLiterals name="Square" value="1" literal="Square"/>
+    <eLiterals name="Triangle" value="2" literal="Triangle"/>
+    <eLiterals name="S_AND_H" value="3" literal="S &amp; H"/>
+    <eLiterals name="Envelope" value="4" literal="Envelope"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="BpmSync">
+    <eLiterals name="OFF" literal="Off"/>
+    <eLiterals name="ON" value="1" literal="On"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MotionSequenceStatus">
+    <eLiterals name="Off" literal="Off"/>
+    <eLiterals name="Smooth" value="1" literal="Smooth"/>
+    <eLiterals name="TrigHold" value="2" literal="TrigHold"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Object" instanceClassName="java.lang.Object"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="ArrayList" instanceClassName="java.util.ArrayList">
+    <eTypeParameters name="E"/>
+  </eClassifiers>
+</ecore:EPackage>
