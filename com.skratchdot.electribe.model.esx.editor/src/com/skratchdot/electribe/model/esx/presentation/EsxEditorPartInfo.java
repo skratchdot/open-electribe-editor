@@ -84,13 +84,12 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		sectionComposite = toolkit.createComposite(section);
 		sectionComposite.setLayout(new GridLayout(2, false));
 		section.setClient(sectionComposite);
-		
-		// Sample Space in Frames:
+
+		// Memory Free In Bytes:
 		label = new Label(sectionComposite, SWT.RIGHT);
 		label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 		label.setText("Sample Space in Frames:");
 		labelMemFreeInBytes = new Text(sectionComposite, SWT.READ_ONLY);
-//		labelSampleSpaceFrames.setText(Integer.toString(esxFile.getMemFreeInBytes()));
 
 		Button but;
 
@@ -99,8 +98,6 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		but.addListener(SWT.Selection, new Listener() {
 			@Override
 			public void handleEvent(Event event) {
-				//Sample sss = esxFile.getSamples().get(1);
-				//sss.setEnd(10);
 				MessageDialog.openInformation(
 						parentEditor.getSite().getShell(),
 						"Free Memory1",
@@ -126,48 +123,6 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 					);
 			}
 		});
-
-
-
-		
-		/*
-		DataBindingContext dataBindingContext = new DataBindingContext();
-		dataBindingContext.bindValue(
-			SWTObservables.observeText(labelSampleSpaceFrames),
-			EMFObservables.observeValue(esxFile.getSamples().get(1), EsxPackage.Literals.SAMPLE__END)
-		);
-*/
-		
-		//EMFObservables.observeList(esxFile.getMemFreeInBytes(), EsxPackage.Literals.ESX_FILE__MEM_FREE_IN_BYTES);
-		//EMFObservables.observeValue(esxFile.getMemFreeInBytes(), null);
-		
-		
-
-/*		
-		ataBindingContext bindingContext = new DataBindingContext();
-		firstName.setText("Hallo");
-		GridData gridData = new GridData();
-		gridData.horizontalAlignment = GridData.FILL;
-		gridData.horizontalSpan = 2;
-		firstName.setLayoutData(gridData);
-		
-		bindingContext.bindValue(
-			SWTObservables.observeText(firstName, SWT.Modify),
-			EMFObservables.observeValue(lars,DomainmodelemfPackage.Literals.IPERSON__FIRST_NAME), 
-			null, 
-			null
-		);
-	*/	
-		/*
-
-		
-		label = new Label(sectionComposite, SWT.RIGHT);
-		label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		label.setText("Sample Space in Frames:");
-		labelSampleSpaceFrames = new Text(sectionComposite, SWT.READ_ONLY);
-		labelSampleSpaceFrames.setText("wow");
-*/
-
 	}
 	
 	@Override
@@ -182,13 +137,12 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 			EMFDataBindingContext bindingContext;
 			IObservableValue uiElement;
 			IObservableValue modelElement;
-			
+
 			// Bind labelMemFreeInBytes
 			bindingContext = new EMFDataBindingContext();
 			uiElement = SWTObservables.observeText(labelMemFreeInBytes);
-	        modelElement = EMFEditObservables.observeValue(parentEditor.getEditingDomain(), esxFile, EsxPackage.Literals.ESX_FILE__MEM_FREE_IN_BYTES);
+	        modelElement = EMFEditObservables.observeValue(parentEditor.getEditingDomain(), this.esxFile, EsxPackage.Literals.ESX_FILE__MEM_FREE_IN_BYTES);
 	        bindingContext.bindValue(uiElement, modelElement, null, null );
-		
 		}
 	}
 
