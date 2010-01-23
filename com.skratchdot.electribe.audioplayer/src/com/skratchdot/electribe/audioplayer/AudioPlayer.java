@@ -129,6 +129,8 @@ public class AudioPlayer implements Runnable, IAudioPlayerStates {
 					audioInDecoded.close();
 				} catch (IOException e) {
 					e.printStackTrace();
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		}
