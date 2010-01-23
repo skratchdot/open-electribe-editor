@@ -799,6 +799,12 @@ public class EsxEditor
 		}
 	}
 
+	@Override
+	protected void setActivePage(int pageIndex) {
+		if(pageIndex<this.getPageCount())
+			super.setActivePage(pageIndex);
+	}
+
 	/**
 	 * This is the method used by the framework to install your own controls.
 	 * <!-- begin-user-doc -->

@@ -158,13 +158,58 @@ public interface EsxPackage extends EPackage {
 	int ESX_FILE__MEM_FREE_IN_BYTES = 8;
 
 	/**
+	 * The feature id for the '<em><b>Num Patterns Used</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESX_FILE__NUM_PATTERNS_USED = 9;
+
+	/**
+	 * The feature id for the '<em><b>Num Samples Used</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESX_FILE__NUM_SAMPLES_USED = 10;
+
+	/**
+	 * The feature id for the '<em><b>Num Samples Mono Used</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESX_FILE__NUM_SAMPLES_MONO_USED = 11;
+
+	/**
+	 * The feature id for the '<em><b>Num Samples Stereo Used</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESX_FILE__NUM_SAMPLES_STEREO_USED = 12;
+
+	/**
+	 * The feature id for the '<em><b>Num Songs Used</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESX_FILE__NUM_SONGS_USED = 13;
+
+	/**
 	 * The number of structural features of the '<em>File</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE_FEATURE_COUNT = 9;
+	int ESX_FILE_FEATURE_COUNT = 14;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.GlobalParametersImpl <em>Global Parameters</em>}' class.
@@ -4285,6 +4330,61 @@ public interface EsxPackage extends EPackage {
 	EAttribute getEsxFile_MemFreeInBytes();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsUsed <em>Num Patterns Used</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Num Patterns Used</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsUsed()
+	 * @see #getEsxFile()
+	 * @generated
+	 */
+	EAttribute getEsxFile_NumPatternsUsed();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesUsed <em>Num Samples Used</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Num Samples Used</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesUsed()
+	 * @see #getEsxFile()
+	 * @generated
+	 */
+	EAttribute getEsxFile_NumSamplesUsed();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoUsed <em>Num Samples Mono Used</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Num Samples Mono Used</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoUsed()
+	 * @see #getEsxFile()
+	 * @generated
+	 */
+	EAttribute getEsxFile_NumSamplesMonoUsed();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoUsed <em>Num Samples Stereo Used</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Num Samples Stereo Used</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoUsed()
+	 * @see #getEsxFile()
+	 * @generated
+	 */
+	EAttribute getEsxFile_NumSamplesStereoUsed();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsUsed <em>Num Songs Used</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Num Songs Used</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSongsUsed()
+	 * @see #getEsxFile()
+	 * @generated
+	 */
+	EAttribute getEsxFile_NumSongsUsed();
+
+	/**
 	 * Returns the meta object for class '{@link com.skratchdot.electribe.model.esx.GlobalParameters <em>Global Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6793,6 +6893,46 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ESX_FILE__MEM_FREE_IN_BYTES = eINSTANCE.getEsxFile_MemFreeInBytes();
+
+		/**
+		 * The meta object literal for the '<em><b>Num Patterns Used</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ESX_FILE__NUM_PATTERNS_USED = eINSTANCE.getEsxFile_NumPatternsUsed();
+
+		/**
+		 * The meta object literal for the '<em><b>Num Samples Used</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ESX_FILE__NUM_SAMPLES_USED = eINSTANCE.getEsxFile_NumSamplesUsed();
+
+		/**
+		 * The meta object literal for the '<em><b>Num Samples Mono Used</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ESX_FILE__NUM_SAMPLES_MONO_USED = eINSTANCE.getEsxFile_NumSamplesMonoUsed();
+
+		/**
+		 * The meta object literal for the '<em><b>Num Samples Stereo Used</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ESX_FILE__NUM_SAMPLES_STEREO_USED = eINSTANCE.getEsxFile_NumSamplesStereoUsed();
+
+		/**
+		 * The meta object literal for the '<em><b>Num Songs Used</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ESX_FILE__NUM_SONGS_USED = eINSTANCE.getEsxFile_NumSongsUsed();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.GlobalParametersImpl <em>Global Parameters</em>}' class.

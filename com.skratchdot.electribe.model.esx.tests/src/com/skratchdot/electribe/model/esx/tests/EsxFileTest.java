@@ -27,6 +27,11 @@ import junit.textui.TestRunner;
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMemUsedInBytes() <em>Mem Used In Bytes</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMemFreeInBytes() <em>Mem Free In Bytes</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsUsed() <em>Num Patterns Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesUsed() <em>Num Samples Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoUsed() <em>Num Samples Mono Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoUsed() <em>Num Samples Stereo Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsUsed() <em>Num Songs Used</em>}</li>
  * </ul>
  * </p>
  * <p>
@@ -129,6 +134,71 @@ public class EsxFileTest extends TestCase {
 	 * @generated
 	 */
 	public void testGetMemFreeInBytes() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsUsed() <em>Num Patterns Used</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsUsed()
+	 * @generated
+	 */
+	public void testGetNumPatternsUsed() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesUsed() <em>Num Samples Used</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesUsed()
+	 * @generated
+	 */
+	public void testGetNumSamplesUsed() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoUsed() <em>Num Samples Mono Used</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoUsed()
+	 * @generated
+	 */
+	public void testGetNumSamplesMonoUsed() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoUsed() <em>Num Samples Stereo Used</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoUsed()
+	 * @generated
+	 */
+	public void testGetNumSamplesStereoUsed() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsUsed() <em>Num Songs Used</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSongsUsed()
+	 * @generated
+	 */
+	public void testGetNumSongsUsed() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

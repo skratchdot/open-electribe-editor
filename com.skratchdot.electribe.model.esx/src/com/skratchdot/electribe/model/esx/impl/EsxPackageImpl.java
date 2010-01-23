@@ -773,6 +773,51 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getEsxFile_NumPatternsUsed() {
+		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEsxFile_NumSamplesUsed() {
+		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEsxFile_NumSamplesMonoUsed() {
+		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEsxFile_NumSamplesStereoUsed() {
+		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEsxFile_NumSongsUsed() {
+		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getGlobalParameters() {
 		return globalParametersEClass;
 	}
@@ -2831,6 +2876,11 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEReference(esxFileEClass, ESX_FILE__BLANK_SONG);
 		createEAttribute(esxFileEClass, ESX_FILE__MEM_USED_IN_BYTES);
 		createEAttribute(esxFileEClass, ESX_FILE__MEM_FREE_IN_BYTES);
+		createEAttribute(esxFileEClass, ESX_FILE__NUM_PATTERNS_USED);
+		createEAttribute(esxFileEClass, ESX_FILE__NUM_SAMPLES_USED);
+		createEAttribute(esxFileEClass, ESX_FILE__NUM_SAMPLES_MONO_USED);
+		createEAttribute(esxFileEClass, ESX_FILE__NUM_SAMPLES_STEREO_USED);
+		createEAttribute(esxFileEClass, ESX_FILE__NUM_SONGS_USED);
 
 		globalParametersEClass = createEClass(GLOBAL_PARAMETERS);
 		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED);
@@ -3170,6 +3220,11 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEReference(getEsxFile_BlankSong(), this.getSong(), null, "blankSong", null, 1, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEsxFile_MemUsedInBytes(), ecorePackage.getEInt(), "memUsedInBytes", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEsxFile_MemFreeInBytes(), ecorePackage.getEInt(), "memFreeInBytes", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumPatternsUsed(), ecorePackage.getEInt(), "numPatternsUsed", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSamplesUsed(), ecorePackage.getEInt(), "numSamplesUsed", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSamplesMonoUsed(), ecorePackage.getEInt(), "numSamplesMonoUsed", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSamplesStereoUsed(), ecorePackage.getEInt(), "numSamplesStereoUsed", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSongsUsed(), ecorePackage.getEInt(), "numSongsUsed", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		EOperation op = addEOperation(esxFileEClass, ecorePackage.getEInt(), "findFirstUnusedSample", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "searchMono", 0, 1, IS_UNIQUE, IS_ORDERED);

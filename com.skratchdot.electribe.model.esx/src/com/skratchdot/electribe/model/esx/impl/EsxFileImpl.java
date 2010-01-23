@@ -19,6 +19,7 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -56,6 +57,11 @@ import com.skratchdot.electribe.model.esx.util.EsxUtil;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getBlankSong <em>Blank Song</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getMemUsedInBytes <em>Mem Used In Bytes</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getMemFreeInBytes <em>Mem Free In Bytes</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumPatternsUsed <em>Num Patterns Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSamplesUsed <em>Num Samples Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSamplesMonoUsed <em>Num Samples Mono Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSamplesStereoUsed <em>Num Samples Stereo Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSongsUsed <em>Num Songs Used</em>}</li>
  * </ul>
  * </p>
  *
@@ -163,16 +169,68 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	protected static final int MEM_FREE_IN_BYTES_EDEFAULT = 0;
 
 	/**
+	 * The default value of the '{@link #getNumPatternsUsed() <em>Num Patterns Used</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #getNumPatternsUsed()
 	 * @generated
+	 * @ordered
+	 */
+	protected static final int NUM_PATTERNS_USED_EDEFAULT = 0;
+
+	/**
+	 * The default value of the '{@link #getNumSamplesUsed() <em>Num Samples Used</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumSamplesUsed()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int NUM_SAMPLES_USED_EDEFAULT = 0;
+
+	/**
+	 * The default value of the '{@link #getNumSamplesMonoUsed() <em>Num Samples Mono Used</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumSamplesMonoUsed()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int NUM_SAMPLES_MONO_USED_EDEFAULT = 0;
+
+	/**
+	 * The default value of the '{@link #getNumSamplesStereoUsed() <em>Num Samples Stereo Used</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumSamplesStereoUsed()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int NUM_SAMPLES_STEREO_USED_EDEFAULT = 0;
+
+	/**
+	 * The default value of the '{@link #getNumSongsUsed() <em>Num Songs Used</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumSongsUsed()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int NUM_SONGS_USED_EDEFAULT = 0;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
 	 */
 	protected EsxFileImpl() {
 		super();
+		init();
 	}
 
 	protected EsxFileImpl(EsxRandomAccess in, IProgressMonitor monitor) throws EsxException {
 		super();
+		init();
 		try {
 			// Store all our "non-sample data" which will be overwritten when saving
 			// the file
@@ -233,7 +291,49 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 
 	}
 
-	@Override
+	private void init() {
+		eAdapters().add(new AdapterImpl() {
+			@Override
+			public void notifyChanged(Notification msg) {
+				// When getBlankPattern() changes
+				if( EsxPackage.Literals.ESX_FILE__BLANK_PATTERN.equals(msg.getFeature()) ) {
+					if (eNotificationRequired()) {
+						eNotify(new ENotificationImpl(EsxFileImpl.this, Notification.SET, EsxPackage.ESX_FILE__NUM_PATTERNS_USED, 0, getNumPatternsUsed()));
+					}
+				}
+				// When getBlankSong() changes
+				if( EsxPackage.Literals.ESX_FILE__BLANK_SONG.equals(msg.getFeature()) ) {
+					if (eNotificationRequired()) {
+						eNotify(new ENotificationImpl(EsxFileImpl.this, Notification.SET, EsxPackage.ESX_FILE__NUM_SONGS_USED, 0, getNumSongsUsed()));
+					}
+				}
+				// When getPatterns() changes
+				if( EsxPackage.Literals.ESX_FILE__PATTERNS.equals(msg.getFeature()) ) {
+					if (eNotificationRequired()) {
+						eNotify(new ENotificationImpl(EsxFileImpl.this, Notification.SET, EsxPackage.ESX_FILE__NUM_PATTERNS_USED, 0, getNumPatternsUsed()));
+					}
+				}
+				// When getSamples() changes
+				if( EsxPackage.Literals.ESX_FILE__SAMPLES.equals(msg.getFeature()) ) {
+					if (eNotificationRequired()) {
+						eNotify(new ENotificationImpl(EsxFileImpl.this, Notification.SET, EsxPackage.ESX_FILE__MEM_FREE_IN_BYTES, 0, getMemFreeInBytes()));
+						eNotify(new ENotificationImpl(EsxFileImpl.this, Notification.SET, EsxPackage.ESX_FILE__MEM_USED_IN_BYTES, 0, getMemUsedInBytes()));
+						eNotify(new ENotificationImpl(EsxFileImpl.this, Notification.SET, EsxPackage.ESX_FILE__NUM_SAMPLES_USED, 0, getNumSamplesUsed()));
+						eNotify(new ENotificationImpl(EsxFileImpl.this, Notification.SET, EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_USED, 0, getNumSamplesMonoUsed()));
+						eNotify(new ENotificationImpl(EsxFileImpl.this, Notification.SET, EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_USED, 0, getNumSamplesStereoUsed()));
+					}
+				}
+				// When getSongs() changes
+				if( EsxPackage.Literals.ESX_FILE__SONGS.equals(msg.getFeature()) ) {
+					if (eNotificationRequired()) {
+						eNotify(new ENotificationImpl(EsxFileImpl.this, Notification.SET, EsxPackage.ESX_FILE__NUM_SONGS_USED, 0, getNumSongsUsed()));
+					}
+				}
+			}
+		});
+	}
+
+    @Override
 	public void write(EsxRandomAccess out, IProgressMonitor monitor) throws IOException, EsxException {
 		// Write original data (we will overwrite invalid data with our known
 		// data structures)
@@ -630,11 +730,9 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 */
 	public int getMemUsedInBytes() {
 		int returnValue = 0;
-		
 		for(int i=0; i<this.getSamples().size(); i++) {
 			returnValue += this.getSamples().get(i).getMemUsedInBytes();
 		}
-
 		return returnValue;
 	}
 
@@ -645,6 +743,75 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 */
 	public int getMemFreeInBytes() {
 		return (EsxUtil.MAX_NUM_SAMPLES * 2) - this.getMemUsedInBytes();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getNumPatternsUsed() {
+		int returnValue = 0;
+		for(int i=0; i<this.getPatterns().size(); i++) {
+			if (this.getPatterns().get(i).isBeingUsed()) {
+				returnValue++;
+			}
+		}
+		return returnValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getNumSamplesUsed() {
+		return this.getNumSamplesMonoUsed()+this.getNumSamplesStereoUsed();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getNumSamplesMonoUsed() {
+		int returnValue = 0;
+		for(int i=0; i<this.getSamples().size() && i<EsxUtil.NUM_SAMPLES_MONO; i++) {
+			if (this.getSamples().get(i).isBeingUsed()) {
+				returnValue++;
+			}
+		}
+		return returnValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getNumSamplesStereoUsed() {
+		int returnValue = 0;
+		for(int i=EsxUtil.NUM_SAMPLES_MONO; i<this.getSamples().size() && i<EsxUtil.NUM_SAMPLES; i++) {
+			if (this.getSamples().get(i).isBeingUsed()) {
+				returnValue++;
+			}
+		}
+		return returnValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getNumSongsUsed() {
+		int returnValue = 0;
+		for(int i=0; i<this.getSongs().size(); i++) {
+			if (this.getSongs().get(i).isBeingUsed()) {
+				returnValue++;
+			}
+		}
+		return returnValue;
 	}
 
 	/**
@@ -734,6 +901,16 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 				return getMemUsedInBytes();
 			case EsxPackage.ESX_FILE__MEM_FREE_IN_BYTES:
 				return getMemFreeInBytes();
+			case EsxPackage.ESX_FILE__NUM_PATTERNS_USED:
+				return getNumPatternsUsed();
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_USED:
+				return getNumSamplesUsed();
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_USED:
+				return getNumSamplesMonoUsed();
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_USED:
+				return getNumSamplesStereoUsed();
+			case EsxPackage.ESX_FILE__NUM_SONGS_USED:
+				return getNumSongsUsed();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -834,6 +1011,16 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 				return getMemUsedInBytes() != MEM_USED_IN_BYTES_EDEFAULT;
 			case EsxPackage.ESX_FILE__MEM_FREE_IN_BYTES:
 				return getMemFreeInBytes() != MEM_FREE_IN_BYTES_EDEFAULT;
+			case EsxPackage.ESX_FILE__NUM_PATTERNS_USED:
+				return getNumPatternsUsed() != NUM_PATTERNS_USED_EDEFAULT;
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_USED:
+				return getNumSamplesUsed() != NUM_SAMPLES_USED_EDEFAULT;
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_USED:
+				return getNumSamplesMonoUsed() != NUM_SAMPLES_MONO_USED_EDEFAULT;
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_USED:
+				return getNumSamplesStereoUsed() != NUM_SAMPLES_STEREO_USED_EDEFAULT;
+			case EsxPackage.ESX_FILE__NUM_SONGS_USED:
+				return getNumSongsUsed() != NUM_SONGS_USED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

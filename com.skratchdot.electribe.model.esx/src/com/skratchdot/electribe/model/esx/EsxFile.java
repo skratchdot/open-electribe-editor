@@ -39,6 +39,11 @@ import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getBlankSong <em>Blank Song</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMemUsedInBytes <em>Mem Used In Bytes</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMemFreeInBytes <em>Mem Free In Bytes</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsUsed <em>Num Patterns Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesUsed <em>Num Samples Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoUsed <em>Num Samples Mono Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoUsed <em>Num Samples Stereo Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsUsed <em>Num Songs Used</em>}</li>
  * </ul>
  * </p>
  *
@@ -230,6 +235,86 @@ public interface EsxFile extends EObject {
 	 * @generated
 	 */
 	int getMemFreeInBytes();
+
+	/**
+	 * Returns the value of the '<em><b>Num Patterns Used</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Num Patterns Used</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Num Patterns Used</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumPatternsUsed()
+	 * @model default="0" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	int getNumPatternsUsed();
+
+	/**
+	 * Returns the value of the '<em><b>Num Samples Used</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Num Samples Used</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Num Samples Used</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumSamplesUsed()
+	 * @model default="0" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	int getNumSamplesUsed();
+
+	/**
+	 * Returns the value of the '<em><b>Num Samples Mono Used</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Num Samples Mono Used</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Num Samples Mono Used</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumSamplesMonoUsed()
+	 * @model default="0" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	int getNumSamplesMonoUsed();
+
+	/**
+	 * Returns the value of the '<em><b>Num Samples Stereo Used</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Num Samples Stereo Used</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Num Samples Stereo Used</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumSamplesStereoUsed()
+	 * @model default="0" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	int getNumSamplesStereoUsed();
+
+	/**
+	 * Returns the value of the '<em><b>Num Songs Used</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Num Songs Used</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Num Songs Used</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumSongsUsed()
+	 * @model default="0" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	int getNumSongsUsed();
 
 	/**
 	 * <!-- begin-user-doc -->
