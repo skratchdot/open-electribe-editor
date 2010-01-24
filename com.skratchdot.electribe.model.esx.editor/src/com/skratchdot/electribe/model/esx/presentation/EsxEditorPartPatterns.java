@@ -20,6 +20,7 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -31,6 +32,7 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 
 import com.skratchdot.electribe.model.esx.EsxFile;
+import com.skratchdot.electribe.model.esx.Pattern;
 
 public class EsxEditorPartPatterns extends EsxEditorPart {
 	private TableViewer tableViewer;
@@ -127,6 +129,12 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 			columns[i].setMoveable(true);
 		}
 
+		// Modify the scroll speed
+		TableScrollSpeedListener scrollSpeedListener = 	new TableScrollSpeedListener(this.tableViewer.getTable(), 40);
+		this.tableViewer.getTable().addListener(SWT.MouseDown, scrollSpeedListener);
+		this.tableViewer.getTable().addListener(SWT.MouseUp, scrollSpeedListener);
+		this.tableViewer.getTable().addListener(SWT.MouseExit, scrollSpeedListener);
+		
 		// Setup this.tableViewer ContentProvider
 		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
 
@@ -142,8 +150,17 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 			
 		});
 
+
 		// Label Provider
-		this.tableViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(this.getAdapterFactory(), this.tableViewer));
+		this.tableViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(this.getAdapterFactory(), this.tableViewer) {
+			@Override
+			public Color getBackground(Object object, int columnIndex) {
+				if(!((Pattern)object).isBeingUsed()) {
+					return tableViewer.getTable().getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND);
+				}
+				return super.getBackground(object, columnIndex);
+			}
+		});
 
 		// Context Menu
 	    createContextMenuFor(this.tableViewer);
