@@ -14,6 +14,8 @@ package com.skratchdot.electribe.model.esx.impl;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -586,13 +588,17 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 
 	protected SampleImpl(File file) throws EsxException {
 		super();
+		
+		// Declare our streams and formats
 		AudioFormat audioFormatEncoded;
 		AudioFormat audioFormatDecoded;
 		AudioInputStream audioInputStreamEncoded;
 		AudioInputStream audioInputStreamDecoded;
 
 		try {
-			audioFormatEncoded = AudioSystem.getAudioFileFormat(file).getFormat();
+			// Initialize our streams and formats
+			audioInputStreamEncoded = AudioSystem.getAudioInputStream(file);
+			audioFormatEncoded = audioInputStreamEncoded.getFormat();
 			audioFormatDecoded = new AudioFormat(
 					AudioFormat.Encoding.PCM_SIGNED,
 					audioFormatEncoded.getSampleRate(),
@@ -602,39 +608,72 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 					audioFormatEncoded.getSampleRate(),
 					true
 				);
-			audioInputStreamEncoded = AudioSystem.getAudioInputStream(file);
 			audioInputStreamDecoded = AudioSystem.getAudioInputStream(
 				audioFormatDecoded,
 				audioInputStreamEncoded
 			);
-			int frameLength = (int) audioInputStreamDecoded.getFrameLength();
+
+			// We have a decoded stereo audio stream
+			// Now we need to get the stream info into a list we can manipulate
+			byte[] audioData = new byte[4096];
+			int nBytesRead = 0;
+			long nTotalBytesRead = 0;
+			List<Byte> audioDataListChannel1 = new ArrayList<Byte>();
+			List<Byte> audioDataListChannel2 = new ArrayList<Byte>();
+			boolean isAudioDataStereo = false;
+
+			// Set isAudioDataStereo
+			if(audioFormatEncoded.getChannels()==1) {
+				isAudioDataStereo = false;
+			}
+			else if(audioFormatEncoded.getChannels()==2) {
+				isAudioDataStereo = true;
+			}
+			else {
+				throw new EsxException("Sample has too many channels: " + file.getAbsolutePath());
+			}
+
+			// Convert stream to list. This needs to be optimized. Converting
+			// a byte at a time is probably too slow...
+			while(nBytesRead>=0) {
+				nBytesRead = audioInputStreamDecoded.read(audioData, 0, audioData.length);
+
+				// If we aren't at the end of the stream
+				if(nBytesRead>0) {
+					for(int i=0; i<nBytesRead; i++) {
+						// MONO
+						if(!isAudioDataStereo) {
+							audioDataListChannel1.add(audioData[i]);
+							audioDataListChannel2.add(audioData[i]);
+						}
+						// STEREO (LEFT)
+						else if(nTotalBytesRead%4<2) {
+							audioDataListChannel1.add(audioData[i]);
+						}
+						// STEREO (RIGHT)
+						else {
+							audioDataListChannel2.add(audioData[i]);
+						}
+
+						// Update the total amount of bytes we've read
+						nTotalBytesRead++;
+					}
+				}
+
+				// Throw Exception if sample is too big
+				if(nTotalBytesRead>EsxUtil.MAX_NUM_SAMPLES*2) {
+					throw new EsxException("Sample is too big: " + file.getAbsolutePath());
+				}
+			}
+
+			// Set member variables
+			int frameLength = audioDataListChannel1.size();
 			this.setNumberOfSampleFrames(frameLength);
 			this.setEnd(frameLength-1);
 			this.setLoopStart(frameLength-1);
-
 			this.setSampleRate((int) audioFormatEncoded.getSampleRate());
-
-			byte[] both = new byte[frameLength*audioInputStreamDecoded.getFormat().getChannels()];
-			audioInputStreamDecoded.read(both);
-			
-			if(audioInputStreamDecoded.getFormat().getChannels()==1) {
-				this.setAudioDataChannel1(both);
-				this.setAudioDataChannel2(both);
-			}
-			else if(audioInputStreamDecoded.getFormat().getChannels()==2) {
-				byte[] left = new byte[both.length/2];
-				byte[] right = new byte[both.length/2];
-
-				// Combine left and right channels to one stream
-				for (int i = 0, j = 0; i<both.length; i = i + 4, j = j+2) {
-					left[j]    = both[i];
-					left[j+1]  = both[i+1];
-					right[j]   = both[i+2];
-					right[j+1] = both[i+3];
-				}
-				this.setAudioDataChannel1(left);
-				this.setAudioDataChannel2(right);
-			}
+			this.setAudioDataChannel1(EsxUtil.listToByteArray(audioDataListChannel1));
+			this.setAudioDataChannel2(EsxUtil.listToByteArray(audioDataListChannel2));
 		
 		} catch (UnsupportedAudioFileException e) {
 			e.printStackTrace();
