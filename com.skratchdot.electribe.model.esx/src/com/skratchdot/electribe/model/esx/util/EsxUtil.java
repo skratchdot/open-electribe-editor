@@ -19,7 +19,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
@@ -171,6 +173,24 @@ public class EsxUtil {
 		return b;
 	}
 
+	public static List<Byte> byteArrayToList(byte[] byteArray) {
+		List<Byte> list = new ArrayList<Byte>();
+		for(byte b : byteArray) {
+			list.add(b);
+		}
+		return list;
+	}
+
+	public static byte[] listToByteArray(List<Byte> list){
+		byte[] byteArray = new byte[list.size()];
+		for(int i = 0; i<list.size(); i++) {
+			byteArray[i] = list.get(i);
+		}
+		return byteArray;
+	}
+
+	
+	
 	public static boolean isValidEsxFile(EsxRandomAccess in) throws EsxException, IOException {
 		// File is not big enough
 		if (in.length() < SIZE_FILE_MIN)
