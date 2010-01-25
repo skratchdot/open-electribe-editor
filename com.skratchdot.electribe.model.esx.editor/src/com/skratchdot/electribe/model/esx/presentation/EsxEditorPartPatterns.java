@@ -35,6 +35,8 @@ import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.Pattern;
 
 public class EsxEditorPartPatterns extends EsxEditorPart {
+	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartPatterns"; //$NON-NLS-1$
+
 	private TableViewer tableViewer;
 
 	public EsxEditorPartPatterns(EsxEditor parent) {

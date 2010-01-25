@@ -24,7 +24,7 @@ import org.eclipse.ui.preferences.IWorkbenchPreferenceContainer;
 
 public class EsxEditorPreferencePage extends PreferencePage
 		implements IWorkbenchPreferencePage {
-	public static final String ID = "com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePage";
+	public static final String ID = "com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePage"; //$NON-NLS-1$
 
 	/**
 	 * Create the preference page.

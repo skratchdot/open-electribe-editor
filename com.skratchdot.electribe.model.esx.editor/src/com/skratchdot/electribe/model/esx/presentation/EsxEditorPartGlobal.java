@@ -12,6 +12,7 @@
 package com.skratchdot.electribe.model.esx.presentation;
 
 public class EsxEditorPartGlobal extends EsxEditorPart {
+	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartGlobal"; //$NON-NLS-1$
 
 	public EsxEditorPartGlobal(EsxEditor parent) {
 		super(parent);

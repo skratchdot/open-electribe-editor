@@ -195,11 +195,6 @@ public class EsxEditor
 	protected PropertySheetPage propertySheetPage;
 
 	/**
-	 * This is the tree viewer for the currently selected item.
-	 */
-	protected EsxEditorPartSelection partSelection;
-
-	/**
 	 * This is the editor for the overview/summary/info in an esx file.
 	 */
 	protected EsxEditorPartInfo partInfo;
@@ -825,15 +820,6 @@ public class EsxEditor
 	    	try {
 	    		int pageIndex;
 
-                // Create a page for the selection tree view.
-                //
-	    		/*
-                partSelection = new EsxEditorPartSelection(this);
-                pageIndex = addPage(partSelection, getEditorInput());
-                setPageText(pageIndex, getString("_UI_SelectionPage_label"));
-                partSelection.setInput(getEditingDomain().getResourceSet());
-                */
-
 	    		// Create a page to show the summary information
                 //
                 partInfo = new EsxEditorPartInfo(this);
@@ -1079,15 +1065,7 @@ public class EsxEditor
 	public void handleContentOutlineSelection(ISelection selection) {
 		if (!selection.isEmpty() && selection instanceof IStructuredSelection) {
 			List<?> selectedElements = ((IStructuredSelection)selection).toList();
-			if (getActiveEditor() == partSelection) {
-				// If the selection viewer is active, we want it to select the same selection as this selection.
-				//
-				selectionProvider.setSelection(new StructuredSelection(selectedElements));
-			} else {
-				// For any other viewer, set the input directly.
-				//
-				((EsxEditorPart)getActiveEditor()).setInput(selectedElements.get(0));
-			}
+			((EsxEditorPart)getActiveEditor()).setInput(selectedElements.get(0));
 		}
 	}
 

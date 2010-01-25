@@ -40,6 +40,8 @@ import com.skratchdot.electribe.model.esx.util.EsxUtil;
 
 
 public class EsxEditorPartInfo extends EsxEditorPart {
+	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartInfo"; //$NON-NLS-1$
+
 	private EsxFile esxFile;	
 	private FormToolkit toolkit;
 	private ScrolledForm form;

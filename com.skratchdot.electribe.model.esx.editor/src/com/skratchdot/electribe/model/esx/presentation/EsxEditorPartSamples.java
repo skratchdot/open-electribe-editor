@@ -32,6 +32,8 @@ import org.eclipse.swt.widgets.TableColumn;
 import com.skratchdot.electribe.model.esx.EsxFile;
 
 public class EsxEditorPartSamples extends EsxEditorPart {
+	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartSamples"; //$NON-NLS-1$
+
 	protected TableViewer tableViewer;
 	protected ListViewer listViewer;
 

@@ -38,10 +38,10 @@ import org.eclipse.ui.part.EditorPart;
 /**
  * http://www.eclipse.org/articles/article.php?file=Article-Integrating-EMF-GMF-Editors/index.html
  */
-public abstract class EsxEditorPart extends EditorPart implements IMenuListener, IEditingDomainProvider {
-
+public abstract class EsxEditorPart extends EditorPart
+	implements IMenuListener, IEditingDomainProvider {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPart"; //$NON-NLS-1$
-	
+
 	protected EsxEditor parentEditor;
 
 	public EsxEditorPart(EsxEditor parent) {

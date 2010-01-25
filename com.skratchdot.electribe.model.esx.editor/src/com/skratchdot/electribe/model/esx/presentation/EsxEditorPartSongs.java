@@ -31,6 +31,8 @@ import org.eclipse.swt.widgets.TableColumn;
 import com.skratchdot.electribe.model.esx.EsxFile;
 
 public class EsxEditorPartSongs extends EsxEditorPart {
+	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartSongs"; //$NON-NLS-1$
+
 	protected TableViewer tableViewerSongs;
 	protected TableViewer tableViewerSongPatterns;
 
