@@ -17,6 +17,32 @@
          <run class="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisor$Application"/>
       </application>
    </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePage"
+            id="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePage"
+            name="Esx Editor Preferences">
+      </page>
+      <page
+            category="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePage"
+            class="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePagePatterns"
+            id="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePagePatterns"
+            name="Patterns">
+      </page>
+      <page
+            category="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePage"
+            class="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePageSamples"
+            id="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePageSamples"
+            name="Samples">
+      </page>
+      <page
+            category="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePage"
+            class="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePageSongs"
+            id="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePageSongs"
+            name="Songs">
+      </page>
+   </extension>
 
    <extension point="org.eclipse.ui.perspectives">
       <perspective

@@ -27,6 +27,8 @@ import org.eclipse.emf.edit.command.ReplaceCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.action.LoadResourceAction;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
+
+import com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferenceInitializer;
 import com.skratchdot.electribe.model.esx.presentation.EsxEditorPlugin;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
@@ -234,6 +236,10 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 			configurer.setTitle(getString("_UI_Application_title"));
 			configurer.addEditorAreaTransfer(FileTransfer.getInstance());
 			configurer.configureEditorAreaDropListener(new EsxEditorDropTargetAdapter());
+
+			// Make sure our preferences are initialized with default values
+			EsxEditorPreferenceInitializer preferenceInitializer = new EsxEditorPreferenceInitializer();
+			preferenceInitializer.initializeDefaultPreferences();
 		}
 
 		/**
