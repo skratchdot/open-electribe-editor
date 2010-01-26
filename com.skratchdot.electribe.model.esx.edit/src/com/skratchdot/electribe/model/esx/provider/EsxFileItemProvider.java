@@ -405,27 +405,6 @@ public class EsxFileItemProvider
 		}
 	}
 
-	protected Command createImportCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Collection<?> collection) {
-
-		// Replace with blank samples
-		if(feature == EsxPackage.Literals.ESX_FILE__SAMPLES && collection.size()>0) {
-			return this.createImportSampleCommand(domain, owner, feature, collection);
-		}
-		// Replace with blank patterns
-		else if(feature == EsxPackage.Literals.ESX_FILE__PATTERNS && collection.size()>0) {
-			return UnexecutableCommand.INSTANCE;
-		}
-		// Replace with blank songs
-		else if(feature == EsxPackage.Literals.ESX_FILE__SONGS && collection.size()>0) {
-			return UnexecutableCommand.INSTANCE;
-		}
-		// Do nothing
-		else {
-			return UnexecutableCommand.INSTANCE;
-		}
-	}
-
 	protected Command createRemoveSampleCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection<?> collection) {
 		if(feature == EsxPackage.Literals.ESX_FILE__SAMPLES && collection.size()>0) {
@@ -465,28 +444,5 @@ public class EsxFileItemProvider
 			return UnexecutableCommand.INSTANCE;
 		}
 	}
-
-	protected Command createImportSampleCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Collection<?> collection) {
-		if(feature == EsxPackage.Literals.ESX_FILE__SAMPLES && collection.size()>0) {
-			CompoundCommand cmd = new CompoundCommand();
-
-			/*
-			// We can create a replace command
-			if(blankSample!=null) {
-				// Create a temp collection that contains one blankSample
-				blankSamples = new ArrayList<Sample>();
-				blankSamples.add(blankSample);
-				cmd.append(super.createReplaceCommand(domain, owner, feature, (Sample) removedSamples[i], blankSamples));
-			}
-			*/
-
-			return cmd;
-		}
-		else {
-			return UnexecutableCommand.INSTANCE;
-		}
-	}
-
 	
 }
