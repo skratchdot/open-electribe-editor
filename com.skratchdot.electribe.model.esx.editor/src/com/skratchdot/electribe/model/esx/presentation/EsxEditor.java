@@ -834,19 +834,19 @@ public class EsxEditor
                 setPageText(pageIndex, getString("_UI_Page_Global_label"));
                 partGlobal.setInput(getEditingDomain().getResourceSet());
 
-	    		// Create a page to edit the samples.
-                //
-                partSamples = new EsxEditorPartSamples(this);
-                pageIndex = addPage(partSamples, getEditorInput());
-                setPageText(pageIndex, getString("_UI_Page_Samples_label"));
-                partSamples.setInput(getEditingDomain().getResourceSet());
-
 	    		// Create a page to edit the patterns.
                 //
                 partPatterns = new EsxEditorPartPatterns(this);
                 pageIndex = addPage(partPatterns, getEditorInput());
                 setPageText(pageIndex, getString("_UI_Page_Patterns_label"));
                 partPatterns.setInput(getEditingDomain().getResourceSet());
+
+	    		// Create a page to edit the samples.
+                //
+                partSamples = new EsxEditorPartSamples(this);
+                pageIndex = addPage(partSamples, getEditorInput());
+                setPageText(pageIndex, getString("_UI_Page_Samples_label"));
+                partSamples.setInput(getEditingDomain().getResourceSet());
 
 	    		// Create a page to edit the songs.
                 //

@@ -109,6 +109,44 @@ public class TableViewerColorProvider extends ColorProvider {
 
 	/**
 	 * @param backgroundColorWhenBeingUsed
+	 * @param backgroundColorWhenNotInUse
+	 * @param foregroundColorWhenBeingUsed
+	 * @param foregroundColorWhenNotInUse
+	 */
+	public void setAllColors(
+		Color backgroundColorWhenBeingUsed,
+		Color backgroundColorWhenNotInUse,
+		Color foregroundColorWhenBeingUsed,
+		Color foregroundColorWhenNotInUse) {
+		this.backgroundColorWhenBeingUsed = backgroundColorWhenBeingUsed;
+		this.backgroundColorWhenNotInUse = backgroundColorWhenNotInUse;
+		this.foregroundColorWhenBeingUsed = foregroundColorWhenBeingUsed;
+		this.foregroundColorWhenNotInUse = foregroundColorWhenNotInUse;
+	}
+	
+	/**
+	 * @param backgroundColorWhenBeingUsed
+	 * @param backgroundColorWhenNotInUse
+	 * @param foregroundColorWhenBeingUsed
+	 * @param foregroundColorWhenNotInUse
+	 */
+	public void setAllColors(
+		RGB backgroundColorWhenBeingUsed,
+		RGB backgroundColorWhenNotInUse,
+		RGB foregroundColorWhenBeingUsed,
+		RGB foregroundColorWhenNotInUse) {
+		this.backgroundColorWhenBeingUsed = new Color(null,
+				backgroundColorWhenBeingUsed);
+		this.backgroundColorWhenNotInUse = new Color(null,
+				backgroundColorWhenNotInUse);
+		this.foregroundColorWhenBeingUsed = new Color(null,
+				foregroundColorWhenBeingUsed);
+		this.foregroundColorWhenNotInUse = new Color(null,
+				foregroundColorWhenNotInUse);
+	}
+
+	/**
+	 * @param backgroundColorWhenBeingUsed
 	 */
 	public void setBackgroundColorWhenBeingUsed(
 			Color backgroundColorWhenBeingUsed) {

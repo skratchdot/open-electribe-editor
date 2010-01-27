@@ -85,8 +85,8 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		form.getBody().setLayout(tableWrapLayout);
 
 		// Now create the different sections of the form
-		createSectionSamples("Samples", 2);
-		createSectionPatterns("Patterns", 3);
+		createSectionPatterns("Patterns", 2);
+		createSectionSamples("Samples", 3);
 		createSectionSongs("Songs", 4);
 	}
 	

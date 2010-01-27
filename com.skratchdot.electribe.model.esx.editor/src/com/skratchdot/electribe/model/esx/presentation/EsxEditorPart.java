@@ -93,7 +93,7 @@ public abstract class EsxEditorPart extends EditorPart
 	public void propertyChange(PropertyChangeEvent event) {
 		// nothing to do here - this is handled by the editor part subclasses
 	}
-
+	
 	/* (non-Javadoc)
 	 * @see org.eclipse.ui.part.EditorPart#doSave(org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -194,4 +194,51 @@ public abstract class EsxEditorPart extends EditorPart
 		column.setWidth(width);
 	}
 
+	/**
+	 * @param viewer
+	 * @param scrollSpeedListener
+	 * @param scrollSpeed
+	 * @param useScrollSpeed
+	 * @return
+	 */
+	protected TableScrollSpeedListener syncScrollSpeedWithPreference(TableViewer viewer, TableScrollSpeedListener scrollSpeedListener, Integer scrollSpeed, Boolean useScrollSpeed) {
+		if( useScrollSpeed ) {
+			return enableScrollSpeed(viewer, scrollSpeedListener, scrollSpeed);
+		}
+		else {
+			return disableScrollSpeed(viewer, scrollSpeedListener);
+		}
+	}
+
+	/**
+	 * @param viewer
+	 * @param scrollSpeedListener
+	 * @param scrollSpeed
+	 * @return
+	 */
+	private TableScrollSpeedListener enableScrollSpeed(TableViewer viewer, TableScrollSpeedListener scrollSpeedListener, Integer scrollSpeed) {
+		if(scrollSpeedListener==null) {
+			disableScrollSpeed(viewer, scrollSpeedListener);
+		}
+		scrollSpeedListener = new TableScrollSpeedListener(viewer.getTable(), scrollSpeed);
+		viewer.getTable().addListener(SWT.MouseDown, scrollSpeedListener);
+		viewer.getTable().addListener(SWT.MouseUp, scrollSpeedListener);
+		viewer.getTable().addListener(SWT.MouseExit, scrollSpeedListener);
+		return scrollSpeedListener;
+	}
+
+	/**
+	 * @param viewer
+	 * @param scrollSpeedListener
+	 * @return
+	 */
+	private TableScrollSpeedListener disableScrollSpeed(TableViewer viewer, TableScrollSpeedListener scrollSpeedListener) {
+		if(scrollSpeedListener!=null) {
+			viewer.getTable().removeListener(SWT.MouseDown, scrollSpeedListener);
+			viewer.getTable().removeListener(SWT.MouseUp, scrollSpeedListener);
+			viewer.getTable().removeListener(SWT.MouseExit, scrollSpeedListener);
+			scrollSpeedListener = null;
+		}
+		return scrollSpeedListener;
+	}
 }

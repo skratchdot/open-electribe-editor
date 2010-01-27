@@ -55,8 +55,8 @@ public class EsxPreferencePageSongs extends FieldEditorPreferencePage
 			addField(integerFieldEditor);
 		}
 		addField(new ColorFieldEditor(EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_BEING_USED, "Background Color When Being Used", getFieldEditorParent()));
-		addField(new ColorFieldEditor(EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_NOT_IN_USE, "Background Color When Not In Use", getFieldEditorParent()));
 		addField(new ColorFieldEditor(EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_BEING_USED, "Foreground Color When Being Used", getFieldEditorParent()));
+		addField(new ColorFieldEditor(EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_NOT_IN_USE, "Background Color When Not In Use", getFieldEditorParent()));
 		addField(new ColorFieldEditor(EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_NOT_IN_USE, "Foreground Color When Not In Use", getFieldEditorParent()));
 	}
 

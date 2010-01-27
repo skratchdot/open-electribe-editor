@@ -15,6 +15,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
+import org.eclipse.jface.util.IPropertyChangeListener;
+import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
@@ -27,14 +29,17 @@ import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.ui.PlatformUI;
 
 import com.skratchdot.electribe.model.esx.EsxFile;
+import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceNames;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
 
 public class EsxEditorPartPatterns extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartPatterns"; //$NON-NLS-1$
 
 	private TableViewer tableViewer;
+	private TableScrollSpeedListener tableViewerScrollSpeedListener;
 
 	/**
 	 * @param parent
@@ -137,12 +142,6 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 			columns[i].setMoveable(true);
 		}
 
-		// Modify the scroll speed
-		TableScrollSpeedListener scrollSpeedListener = 	new TableScrollSpeedListener(this.tableViewer.getTable(), 40);
-		this.tableViewer.getTable().addListener(SWT.MouseDown, scrollSpeedListener);
-		this.tableViewer.getTable().addListener(SWT.MouseUp, scrollSpeedListener);
-		this.tableViewer.getTable().addListener(SWT.MouseExit, scrollSpeedListener);
-
 		// Setup this.tableViewer ContentProvider
 		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
 
@@ -168,11 +167,67 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 			EsxPreferenceStore.getPatternsForegroundColorWhenNotInUse()
 		));
 
-		// Context Menu
+		// Sync the scroll speed with our preference
+		tableViewerScrollSpeedListener = this.syncScrollSpeedWithPreference(
+			this.tableViewer,
+			tableViewerScrollSpeedListener,
+			EsxPreferenceStore.getPatternsScrollSpeed(),
+			EsxPreferenceStore.getPatternsUseScrollSpeed()
+		);
+
+		// listen for preference change events
+		PlatformUI.getPreferenceStore().addPropertyChangeListener((IPropertyChangeListener) this);
+
+		// Setup Context Menu
 	    createContextMenuFor(this.tableViewer);
 
 	    // Selection Provider
-	    getEditorSite().setSelectionProvider(this.tableViewer);		
+	    // getEditorSite().setSelectionProvider(this.tableViewer);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.skratchdot.electribe.model.esx.presentation.EsxEditorPart#propertyChange(org.eclipse.jface.util.PropertyChangeEvent)
+	 */
+	@Override
+	public void propertyChange(PropertyChangeEvent event) {
+		super.propertyChange(event);
+
+		// Scroll Speed Changes
+		if(event.getProperty().equals(EsxPreferenceNames.PATTERNS_SCROLL_SPEED) ||
+			event.getProperty().equals(EsxPreferenceNames.PATTERNS_USE_SCROLL_SPEED)) {
+			tableViewerScrollSpeedListener = this.syncScrollSpeedWithPreference(
+				this.tableViewer,
+				tableViewerScrollSpeedListener,
+				EsxPreferenceStore.getPatternsScrollSpeed(),
+				EsxPreferenceStore.getPatternsUseScrollSpeed()
+			);
+			this.tableViewer.refresh();
+		}
+		
+		// Color Changes
+		if(event.getProperty().equals(EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_BEING_USED) ||
+				event.getProperty().equals(EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_NOT_IN_USE) ||
+				event.getProperty().equals(EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_BEING_USED) ||
+				event.getProperty().equals(EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_NOT_IN_USE)) {
+			((TableViewerColorProvider)this.tableViewer.getLabelProvider()).setAllColors(
+				EsxPreferenceStore.getPatternsBackgroundColorWhenBeingUsed(),
+				EsxPreferenceStore.getPatternsBackgroundColorWhenNotInUse(),
+				EsxPreferenceStore.getPatternsForegroundColorWhenBeingUsed(),
+				EsxPreferenceStore.getPatternsForegroundColorWhenNotInUse()
+			);
+			this.tableViewer.refresh();
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.part.WorkbenchPart#dispose()
+	 */
+	@Override
+	public void dispose() {
+		super.dispose();
+
+		// Remove Listeners added in createPartControl()
+		PlatformUI.getPreferenceStore().removePropertyChangeListener((IPropertyChangeListener) this);
 	}
 
 	/* (non-Javadoc)
