@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.layout.FillLayout;
@@ -37,10 +36,16 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 
 	private TableViewer tableViewer;
 
+	/**
+	 * @param parent
+	 */
 	public EsxEditorPartPatterns(EsxEditor parent) {
 		super(parent);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.skratchdot.electribe.model.esx.presentation.EsxEditorPart#createPartControl(org.eclipse.swt.widgets.Composite)
+	 */
 	@Override
 	public void createPartControl(Composite parent) {
 		// Create sashForm
@@ -99,6 +104,9 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 		tabAccent.setText("Accent");
 	}
 
+	/**
+	 * 
+	 */
 	private void initTableViewer() {
 		// Create the table
 		Table table = this.tableViewer.getTable();
@@ -134,7 +142,7 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 		this.tableViewer.getTable().addListener(SWT.MouseDown, scrollSpeedListener);
 		this.tableViewer.getTable().addListener(SWT.MouseUp, scrollSpeedListener);
 		this.tableViewer.getTable().addListener(SWT.MouseExit, scrollSpeedListener);
-		
+
 		// Setup this.tableViewer ContentProvider
 		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
 
@@ -167,18 +175,17 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 	    getEditorSite().setSelectionProvider(this.tableViewer);		
 	}
 
-	private void addColumnToTableViewer(TableViewer tableViewer, String text, int width) {
-		TableViewerColumn tableViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
-		TableColumn column = tableViewerColumn.getColumn();
-		column.setText(text);
-		column.setWidth(width);
-	}
-
+	/* (non-Javadoc)
+	 * @see com.skratchdot.electribe.model.esx.presentation.EsxEditorPart#setFocus()
+	 */
 	@Override
 	public void setFocus() {
 		this.tableViewer.getTable().setFocus();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.skratchdot.electribe.model.esx.presentation.EsxEditorPart#setInput(java.lang.Object)
+	 */
 	@Override
 	public void setInput(Object input) {
 		Resource resource =

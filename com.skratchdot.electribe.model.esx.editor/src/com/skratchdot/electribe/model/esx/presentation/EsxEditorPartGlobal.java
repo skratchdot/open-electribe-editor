@@ -14,11 +14,17 @@ package com.skratchdot.electribe.model.esx.presentation;
 public class EsxEditorPartGlobal extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartGlobal"; //$NON-NLS-1$
 
+	/**
+	 * @param parent
+	 */
 	public EsxEditorPartGlobal(EsxEditor parent) {
 		super(parent);
 		// TODO Auto-generated constructor stub
 	}
 
+	/* (non-Javadoc)
+	 * @see com.skratchdot.electribe.model.esx.presentation.EsxEditorPart#setInput(java.lang.Object)
+	 */
 	@Override
 	public void setInput(Object input) {
 		// TODO Auto-generated method stub

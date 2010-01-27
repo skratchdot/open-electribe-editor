@@ -28,17 +28,20 @@ import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredViewer;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.TableViewerColumn;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.EditorPart;
-
 
 /**
  * http://www.eclipse.org/articles/article.php?file=Article-Integrating-EMF-GMF-Editors/index.html
@@ -49,6 +52,9 @@ public abstract class EsxEditorPart extends EditorPart
 
 	protected EsxEditor parentEditor;
 
+	/**
+	 * @param parent
+	 */
 	public EsxEditorPart(EsxEditor parent) {
 		super();
 		this.parentEditor = parent;
@@ -56,26 +62,41 @@ public abstract class EsxEditorPart extends EditorPart
 
 	public abstract void setInput(Object input);
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.part.WorkbenchPart#createPartControl(org.eclipse.swt.widgets.Composite)
+	 */
 	@Override
 	public void createPartControl(Composite parent) {
 		// nothing to do here - this is handled by the editor part subclasses
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.part.WorkbenchPart#setFocus()
+	 */
 	@Override
 	public void setFocus() {
 		// nothing to do here - this is handled by the editor part subclasses
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.ISelectionListener#selectionChanged(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
+	 */
 	@Override
 	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
 		// nothing to do here - this is handled by the editor part subclasses
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.util.IPropertyChangeListener#propertyChange(org.eclipse.jface.util.PropertyChangeEvent)
+	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent event) {
 		// nothing to do here - this is handled by the editor part subclasses
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.part.EditorPart#doSave(org.eclipse.core.runtime.IProgressMonitor)
+	 */
 	@Override
 	public void doSave(IProgressMonitor monitor) {
 		// nothing to do here - this is handled by the parent editor
@@ -86,6 +107,9 @@ public abstract class EsxEditorPart extends EditorPart
 		// nothing to do here - this is handled by the parent editor
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.part.EditorPart#init(org.eclipse.ui.IEditorSite, org.eclipse.ui.IEditorInput)
+	 */
 	@Override
 	public void init(IEditorSite site, IEditorInput input)
 			throws PartInitException {
@@ -93,35 +117,56 @@ public abstract class EsxEditorPart extends EditorPart
 		setInput(input);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.part.EditorPart#isDirty()
+	 */
 	@Override
 	public boolean isDirty() {
 		return getCommandStack().isSaveNeeded();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.part.EditorPart#isSaveAsAllowed()
+	 */
 	@Override
 	public boolean isSaveAsAllowed() {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.action.IMenuListener#menuAboutToShow(org.eclipse.jface.action.IMenuManager)
+	 */
 	@Override
 	public void menuAboutToShow(IMenuManager manager) {
 		// pass the request to show the context menu on to the parent editor
 		((IMenuListener)parentEditor.getEditorSite().getActionBarContributor()).menuAboutToShow(manager);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.emf.edit.domain.IEditingDomainProvider#getEditingDomain()
+	 */
 	@Override
 	public EditingDomain getEditingDomain() {
 		return parentEditor.getEditingDomain();
 	}
 
+	/**
+	 * @return
+	 */
 	protected BasicCommandStack getCommandStack() {
 		return ((BasicCommandStack)getEditingDomain().getCommandStack());
 	}
 	
+	/**
+	 * @return
+	 */
 	protected AdapterFactory getAdapterFactory() {
 		return parentEditor.getAdapterFactory();
 	}
-	
+
+	/**
+	 * @param viewer
+	 */
 	protected void createContextMenuFor(StructuredViewer viewer) {
 		MenuManager contextMenu = new MenuManager("#PopUp");
 		contextMenu.add(new Separator("additions"));
@@ -135,6 +180,18 @@ public abstract class EsxEditorPart extends EditorPart
 		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance() };
 		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(viewer));
 		viewer.addDropSupport(dndOperations, transfers, new EditingDomainViewerDropAdapter(getEditingDomain(), viewer));
+	}
+
+	/**
+	 * @param tableViewer
+	 * @param text
+	 * @param width
+	 */
+	protected void addColumnToTableViewer(TableViewer tableViewer, String text, int width) {
+		TableViewerColumn tableViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
+		TableColumn column = tableViewerColumn.getColumn();
+		column.setText(text);
+		column.setWidth(width);
 	}
 
 }

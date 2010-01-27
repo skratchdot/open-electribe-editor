@@ -64,10 +64,16 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 	private Text labelNumPatternsUsed;
 	private Text labelNumSongsUsed;
 
+	/**
+	 * @param parent
+	 */
 	public EsxEditorPartInfo(EsxEditor parent) {
 		super(parent);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.skratchdot.electribe.model.esx.presentation.EsxEditorPart#createPartControl(org.eclipse.swt.widgets.Composite)
+	 */
 	@Override
 	public void createPartControl(Composite parent) {
 		// This tab will only contain one scrolled form
@@ -84,6 +90,9 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		createSectionSongs("Songs", 4);
 	}
 	
+	/**
+	 * @param title
+	 */
 	private void createSectionComposite(String title) {
 		td = new TableWrapData(TableWrapData.FILL_GRAB);
 
@@ -100,6 +109,15 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		section.setClient(sectionComposite);
 	}
 	
+	/**
+	 * @param type
+	 * @param marginTop
+	 * @param marginRight
+	 * @param marginLeft
+	 * @param marginBottom
+	 * @param spacing
+	 * @return
+	 */
 	private RowLayout createRowLayout(int type, int marginTop, int marginRight, int marginLeft, int marginBottom, int spacing) {
 		RowLayout rowLayout = new RowLayout(type);
 		rowLayout.marginTop = marginTop;
@@ -110,12 +128,18 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		return rowLayout;
 	}
 
+	/**
+	 * 
+	 */
 	private void createRowSpacer() {
 		rowSpacer = new Composite(sectionComposite, SWT.NONE);
 		rowSpacer.setLayoutData(new RowData(rowLabelWidth, rowSpacerHeight));
 		rowSpacer.setBackground(getSite().getShell().getDisplay().getSystemColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
 	}
 
+	/**
+	 * @param title
+	 */
 	private void createRow(String title) {
 		createRowSpacer();
 		rowComposite = new Composite(sectionComposite, SWT.NONE);
@@ -129,6 +153,11 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		createRowSpacer();
 	}
 
+	/**
+	 * @param title
+	 * @param textFieldToBind
+	 * @param maxValue
+	 */
 	private void createRowUsingXOf(String title, String textFieldToBind, String maxValue) {
 		/* Create The Row */
 		this.createRow(title);
@@ -160,6 +189,11 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		label.setText("of  " + maxValue);	
 	}
 
+	/**
+	 * @param title
+	 * @param pageIndex
+	 * @param description
+	 */
 	private void createDescription(String title, final int pageIndex, String description) {
 		rowComposite = new Composite(sectionComposite, SWT.NONE);
 		rowComposite.setLayout(createRowLayout(SWT.HORIZONTAL,0,0,0,5,0));
@@ -174,6 +208,10 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		label.setText(" - " + description);
 	}
 
+	/**
+	 * @param title
+	 * @param pageIndex
+	 */
 	private void createSectionSamples(String title, int pageIndex) {
 		// Create Section
 		this.createSectionComposite(title);
@@ -222,6 +260,10 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		labelMemFreeInBytes = new Text(rowComposite, SWT.READ_ONLY | SWT.NONE);
 	}
 	
+	/**
+	 * @param title
+	 * @param pageIndex
+	 */
 	private void createSectionPatterns(String title, int pageIndex) {
 		// Create Section
 		this.createSectionComposite(title);
@@ -241,6 +283,10 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		);
 	}
 
+	/**
+	 * @param title
+	 * @param pageIndex
+	 */
 	private void createSectionSongs(String title, int pageIndex) {
 		// Create Section
 		this.createSectionComposite(title);
@@ -263,6 +309,9 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		);
 	}
 
+	/**
+	 * 
+	 */
 	private void initDataBindings() {
 		// The DataBindingContext object will manage the databindings
 		if(bindingContext!=null) {
@@ -341,6 +390,9 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		}
 }
 
+	/* (non-Javadoc)
+	 * @see com.skratchdot.electribe.model.esx.presentation.EsxEditorPart#setInput(java.lang.Object)
+	 */
 	@Override
 	public void setInput(Object input) {
 		Resource resource =
@@ -352,6 +404,9 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.part.WorkbenchPart#dispose()
+	 */
 	@Override
 	public void dispose() {
 		toolkit.dispose();

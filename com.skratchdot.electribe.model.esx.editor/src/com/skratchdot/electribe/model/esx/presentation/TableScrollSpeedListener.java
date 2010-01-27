@@ -27,6 +27,9 @@ public class TableScrollSpeedListener implements Listener {
 	private boolean tracking;
 	private int scrollSpeed = 40; // In milliseconds
 
+	/**
+	 * @param table
+	 */
 	public TableScrollSpeedListener(Table table) {
 		super();
 		this.display = null;
@@ -34,6 +37,10 @@ public class TableScrollSpeedListener implements Listener {
 		this.heartbeat = initHeartbeat();
 	}
 
+	/**
+	 * @param table
+	 * @param scrollSpeed
+	 */
 	public TableScrollSpeedListener(Table table, int scrollSpeed) {
 		super();
 		this.display = table.getDisplay();
@@ -42,6 +49,9 @@ public class TableScrollSpeedListener implements Listener {
 		this.scrollSpeed = scrollSpeed;
 	}
 
+	/**
+	 * @return
+	 */
 	private Runnable initHeartbeat() {
 		return new Runnable() {
 			public void run() {
@@ -54,6 +64,9 @@ public class TableScrollSpeedListener implements Listener {
 		};
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.swt.widgets.Listener#handleEvent(org.eclipse.swt.widgets.Event)
+	 */
 	@Override
 	public void handleEvent(Event event) {
 		switch (event.type) {
@@ -69,6 +82,11 @@ public class TableScrollSpeedListener implements Listener {
 		}
 	}
 
+	/**
+	 * @param table
+	 * @param x
+	 * @param y
+	 */
 	static void Scroll(Table table, int x, int y) {
 		TableItem item = table.getItem(new Point(x, y));
 		if (item == null) return;
@@ -85,6 +103,11 @@ public class TableScrollSpeedListener implements Listener {
 		if (nextItem != null) table.showItem(nextItem);
 	}
 
+	/**
+	 * @param table
+	 * @param item
+	 * @return
+	 */
 	static TableItem PreviousItem(Table table, TableItem item) {
 		if (item == null) return null;
 		int previousIndex = table.indexOf(item)-1;
@@ -96,6 +119,11 @@ public class TableScrollSpeedListener implements Listener {
 		}
 	}
 
+	/**
+	 * @param table
+	 * @param item
+	 * @return
+	 */
 	static TableItem NextItem(Table table, TableItem item) {
 		if (item == null) return null;
 		int nextIndex = table.indexOf(item)+1;

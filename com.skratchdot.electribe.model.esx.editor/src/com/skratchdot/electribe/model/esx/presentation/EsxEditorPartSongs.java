@@ -17,7 +17,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.layout.FillLayout;
@@ -36,10 +35,16 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 	protected TableViewer tableViewerSongs;
 	protected TableViewer tableViewerSongPatterns;
 
+	/**
+	 * @param parent
+	 */
 	public EsxEditorPartSongs(EsxEditor parent) {
 		super(parent);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.skratchdot.electribe.model.esx.presentation.EsxEditorPart#createPartControl(org.eclipse.swt.widgets.Composite)
+	 */
 	@Override
 	public void createPartControl(Composite parent) {
 		// Create sashForm
@@ -66,6 +71,9 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		sashForm.setWeights(new int[] {3, 1});
 	}
 
+	/**
+	 * 
+	 */
 	private void initTableViewerSongs() {
 		// Create the table
 		Table table = this.tableViewerSongs.getTable();
@@ -115,22 +123,24 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 	    getEditorSite().setSelectionProvider(this.tableViewerSongs);
 	}
 
+	/**
+	 * 
+	 */
 	private void initTableViewerSongPatterns() {
 		// TODO Auto-generated method stub
 	}
 
-	private void addColumnToTableViewer(TableViewer tableViewer, String text, int width) {
-		TableViewerColumn tableViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
-		TableColumn column = tableViewerColumn.getColumn();
-		column.setText(text);
-		column.setWidth(width);
-	}
-
+	/* (non-Javadoc)
+	 * @see com.skratchdot.electribe.model.esx.presentation.EsxEditorPart#setFocus()
+	 */
 	@Override
 	public void setFocus() {
 		this.tableViewerSongs.getTable().setFocus();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.skratchdot.electribe.model.esx.presentation.EsxEditorPart#setInput(java.lang.Object)
+	 */
 	@Override
 	public void setInput(Object input) {
 		Resource resource =
