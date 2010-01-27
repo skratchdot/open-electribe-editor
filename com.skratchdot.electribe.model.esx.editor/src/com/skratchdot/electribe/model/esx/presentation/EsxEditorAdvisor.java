@@ -27,9 +27,6 @@ import org.eclipse.emf.edit.command.ReplaceCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.action.LoadResourceAction;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
-
-import com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferenceInitializer;
-import com.skratchdot.electribe.model.esx.presentation.EsxEditorPlugin;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.jface.action.GroupMarker;
@@ -69,6 +66,7 @@ import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.Sample;
+import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceInitializer;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 
@@ -238,7 +236,7 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 			configurer.configureEditorAreaDropListener(new EsxEditorDropTargetAdapter());
 
 			// Make sure our preferences are initialized with default values
-			EsxEditorPreferenceInitializer preferenceInitializer = new EsxEditorPreferenceInitializer();
+			EsxPreferenceInitializer preferenceInitializer = new EsxPreferenceInitializer();
 			preferenceInitializer.initializeDefaultPreferences();
 		}
 

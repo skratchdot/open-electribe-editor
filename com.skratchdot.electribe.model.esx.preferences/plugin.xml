@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePage"
+            id="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePage"
+            name="Electribe Editor Preferences">
+      </page>
+      <page
+            category="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePage"
+            class="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePagePatterns"
+            id="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePagePatterns"
+            name="Patterns">
+      </page>
+      <page
+            category="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePage"
+            class="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePageSamples"
+            id="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePageSamples"
+            name="Samples">
+      </page>
+      <page
+            category="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePage"
+            class="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePageSongs"
+            id="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePageSongs"
+            name="Songs">
+      </page>
+   </extension>
+
+
+</plugin>

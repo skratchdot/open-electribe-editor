@@ -19,14 +19,14 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.PlatformUI;
 
-public class EsxEditorPreferencePagePatterns extends FieldEditorPreferencePage
+public class EsxPreferencePageSamples extends FieldEditorPreferencePage
 		implements IWorkbenchPreferencePage {
-	public static final String ID = "com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePagePatterns"; //$NON-NLS-1$
+	public static final String ID = "com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePageSamples"; //$NON-NLS-1$
 
 	/**
 	 * Create the preference page.
 	 */
-	public EsxEditorPreferencePagePatterns() {
+	public EsxPreferencePageSamples() {
 		super(FLAT);
 	}
 
@@ -36,7 +36,7 @@ public class EsxEditorPreferencePagePatterns extends FieldEditorPreferencePage
 	public void init(IWorkbench workbench) {
 		setPreferenceStore(PlatformUI.getPreferenceStore());
 		setDescription(
-			"You can change the Pattern preference settings below." +
+			"You can change the Sample preference settings below." +
 			"\n\nNOTE: If \"Use Scroll Speed\" is not checked, then " +
 			"the Scroll Speed value below it will be ignored.\n\n"
 		);
@@ -48,13 +48,16 @@ public class EsxEditorPreferencePagePatterns extends FieldEditorPreferencePage
 	@Override
 	protected void createFieldEditors() {
 		// Create the field editors
-		addField(new BooleanFieldEditor(EsxEditorPreferenceConstants.NAME_PATTERNS_USE_SCROLLSPEED, "Use Scroll Speed", BooleanFieldEditor.SEPARATE_LABEL, getFieldEditorParent()));
+		addField(new BooleanFieldEditor(EsxPreferenceNames.SAMPLES_USE_SCROLL_SPEED, "Use Scroll Speed", BooleanFieldEditor.SEPARATE_LABEL, getFieldEditorParent()));
 		{
-			IntegerFieldEditor integerFieldEditor = new IntegerFieldEditor(EsxEditorPreferenceConstants.NAME_PATTERNS_SCROLLSPEED, "Scroll Speed (in ms)", getFieldEditorParent());
+			IntegerFieldEditor integerFieldEditor = new IntegerFieldEditor(EsxPreferenceNames.SAMPLES_SCROLL_SPEED, "Scroll Speed (in ms)", getFieldEditorParent());
 			integerFieldEditor.setValidRange(10, 200);
 			addField(integerFieldEditor);
 		}
-		addField(new ColorFieldEditor(EsxEditorPreferenceConstants.NAME_PATTERNS_UNUSED_COLOR, "Unused Samples Color", getFieldEditorParent()));
+		addField(new ColorFieldEditor(EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_BEING_USED, "Background Color When Being Used", getFieldEditorParent()));
+		addField(new ColorFieldEditor(EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_NOT_IN_USE, "Background Color When Not In Use", getFieldEditorParent()));
+		addField(new ColorFieldEditor(EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_BEING_USED, "Foreground Color When Being Used", getFieldEditorParent()));
+		addField(new ColorFieldEditor(EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_NOT_IN_USE, "Foreground Color When Not In Use", getFieldEditorParent()));
 	}
 
 }

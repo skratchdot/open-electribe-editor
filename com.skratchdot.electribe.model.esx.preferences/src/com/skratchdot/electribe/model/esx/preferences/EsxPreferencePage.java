@@ -22,14 +22,14 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.PreferenceLinkArea;
 import org.eclipse.ui.preferences.IWorkbenchPreferenceContainer;
 
-public class EsxEditorPreferencePage extends PreferencePage
+public class EsxPreferencePage extends PreferencePage
 		implements IWorkbenchPreferencePage {
 	public static final String ID = "com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePage"; //$NON-NLS-1$
 
 	/**
 	 * Create the preference page.
 	 */
-	public EsxEditorPreferencePage() {
+	public EsxPreferencePage() {
 	}
 
 	/**
@@ -56,7 +56,7 @@ public class EsxEditorPreferencePage extends PreferencePage
 		new PreferenceLinkArea(
 			composite,
 			SWT.NONE,
-			EsxEditorPreferencePagePatterns.ID,
+			EsxPreferencePagePatterns.ID,
 			"See <a>''{0}''</a> to edit the Pattern preferences.",
 			(IWorkbenchPreferenceContainer) getContainer(),
 			null
@@ -66,7 +66,7 @@ public class EsxEditorPreferencePage extends PreferencePage
 		new PreferenceLinkArea(
 			composite,
 			SWT.NONE,
-			EsxEditorPreferencePageSamples.ID,
+			EsxPreferencePageSamples.ID,
 			"See <a>''{0}''</a> to edit the Sample preferences.",
 			(IWorkbenchPreferenceContainer) getContainer(),
 			null
@@ -76,7 +76,7 @@ public class EsxEditorPreferencePage extends PreferencePage
 		new PreferenceLinkArea(
 			composite,
 			SWT.NONE,
-			EsxEditorPreferencePageSongs.ID,
+			EsxPreferencePageSongs.ID,
 			"See <a>''{0}''</a> to edit the Song preferences.",
 			(IWorkbenchPreferenceContainer) getContainer(),
 			null

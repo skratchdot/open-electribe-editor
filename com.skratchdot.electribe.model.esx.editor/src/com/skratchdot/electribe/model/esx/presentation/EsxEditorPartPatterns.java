@@ -15,12 +15,10 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -32,7 +30,7 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 
 import com.skratchdot.electribe.model.esx.EsxFile;
-import com.skratchdot.electribe.model.esx.Pattern;
+import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
 
 public class EsxEditorPartPatterns extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartPatterns"; //$NON-NLS-1$
@@ -152,17 +150,15 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 			
 		});
 
-
-		// Label Provider
-		this.tableViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(this.getAdapterFactory(), this.tableViewer) {
-			@Override
-			public Color getBackground(Object object, int columnIndex) {
-				if(!((Pattern)object).isBeingUsed()) {
-					return tableViewer.getTable().getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND);
-				}
-				return super.getBackground(object, columnIndex);
-			}
-		});
+		// Label Provider		
+		this.tableViewer.setLabelProvider(new TableViewerColorProvider(
+			this.getAdapterFactory(),
+			this.tableViewer,
+			EsxPreferenceStore.getPatternsBackgroundColorWhenBeingUsed(),
+			EsxPreferenceStore.getPatternsBackgroundColorWhenNotInUse(),
+			EsxPreferenceStore.getPatternsForegroundColorWhenBeingUsed(),
+			EsxPreferenceStore.getPatternsForegroundColorWhenNotInUse()
+		));
 
 		// Context Menu
 	    createContextMenuFor(this.tableViewer);
