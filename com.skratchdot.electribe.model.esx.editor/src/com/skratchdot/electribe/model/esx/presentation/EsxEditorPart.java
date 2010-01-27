@@ -24,6 +24,9 @@ import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.util.IPropertyChangeListener;
+import org.eclipse.jface.util.PropertyChangeEvent;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.Transfer;
@@ -31,6 +34,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
+import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.EditorPart;
 
@@ -39,7 +44,7 @@ import org.eclipse.ui.part.EditorPart;
  * http://www.eclipse.org/articles/article.php?file=Article-Integrating-EMF-GMF-Editors/index.html
  */
 public abstract class EsxEditorPart extends EditorPart
-	implements IMenuListener, IEditingDomainProvider {
+	implements IEditingDomainProvider, IMenuListener, ISelectionListener, IPropertyChangeListener {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPart"; //$NON-NLS-1$
 
 	protected EsxEditor parentEditor;
@@ -58,6 +63,16 @@ public abstract class EsxEditorPart extends EditorPart
 
 	@Override
 	public void setFocus() {
+		// nothing to do here - this is handled by the editor part subclasses
+	}
+
+	@Override
+	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
+		// nothing to do here - this is handled by the editor part subclasses
+	}
+
+	@Override
+	public void propertyChange(PropertyChangeEvent event) {
 		// nothing to do here - this is handled by the editor part subclasses
 	}
 
