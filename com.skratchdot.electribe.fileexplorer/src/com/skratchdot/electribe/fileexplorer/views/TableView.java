@@ -43,13 +43,13 @@ import com.skratchdot.electribe.fileexplorer.preferences.PreferenceConstants;
 public class TableView extends ViewPart
 	implements ISelectionListener, IPropertyChangeListener, IDoubleClickListener {
 	public static final String ID = "com.skratchdot.electribe.fileexplorer.views.TableView";
+	public static final RootDirectory root = new RootDirectory();
 
 	private TableViewer viewer;
 	private TableColumn columnName;
 	private TableColumn columnSize;
 	private TableColumn columnType;
 	private TableColumn columnDate;
-	private String currentDirectory = null;
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -86,7 +86,7 @@ public class TableView extends ViewPart
 		viewer.setLabelProvider(new TableViewLabelProvider());
 		viewer.setSorter(new FileExplorerSorter());
 		viewer.getTable().setHeaderVisible(true);
-		viewer.setInput(null);
+		viewer.setInput(root);
 
 		// This view is a selection provider
 		getSite().setSelectionProvider(viewer);
@@ -129,7 +129,7 @@ public class TableView extends ViewPart
 			Object firstObject = ((IStructuredSelection) selection).getFirstElement();
 			// Handle File
 			if (firstObject != null && firstObject instanceof File) {
-				attemptToSetInput((File) firstObject);
+				viewer.setInput((File) firstObject);
 			}
 		}
 	}
@@ -153,14 +153,16 @@ public class TableView extends ViewPart
 	@Override
 	public void doubleClick(DoubleClickEvent event) {
 		ISelection selection = event.getSelection();
-
 		Object firstObject = ((IStructuredSelection) selection).getFirstElement();
+
 		// Handle File
 		if (firstObject != null && firstObject instanceof File) {
+
 			// Navigate to the selected directory
 			if (((File) firstObject).isDirectory()) {
-				attemptToSetInput((File) firstObject);
+				viewer.setInput((File) firstObject);
 			}
+
 			// Try to open the selected file with the default editor
 			else {
 				IWorkbenchPage page = getSite().getWorkbenchWindow().getActivePage();
@@ -177,36 +179,14 @@ public class TableView extends ViewPart
 				}
 			}
 		}
+
 		// Try to navigate to the parent directory.
 		else if (firstObject != null && firstObject instanceof ParentDirectory) {
-			String parentPath = ((ParentDirectory) firstObject).getParentPath();
-			if (parentPath!=null) {
-				attemptToSetInput(new File(parentPath));
-			}
-		}
-		else {
-			return;
-		}
-	}
-
-	// We only need to call viewer.setInput() if we've changed directories
-	public void attemptToSetInput(File file) {
-		if (file!=null) {
-			// Handle Directory
-			if(file.isDirectory()) {
-				String selectedDirectory = file.getAbsolutePath();
-				if (currentDirectory==null || currentDirectory.equals(selectedDirectory)==false) {
-					currentDirectory = file.getAbsolutePath();
-					viewer.setInput(file);
-				}
-			}
-			// Handle File
-			else {
-				String selectedDirectory = file.getParentFile().getAbsolutePath();
-				if (currentDirectory==null || currentDirectory.equals(selectedDirectory)==false) {
-					currentDirectory = file.getParentFile().getAbsolutePath();
-					viewer.setInput(file.getParentFile());
-				}
+			Object currentInput = viewer.getInput();
+			if(currentInput instanceof File && ((File)currentInput).getParentFile()!=null) {
+				viewer.setInput(((File)currentInput).getParentFile());
+			} else {
+				viewer.setInput(root);
 			}
 		}
 	}

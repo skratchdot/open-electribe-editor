@@ -24,24 +24,34 @@ public class TableViewLabelProvider implements ITableLabelProvider {
 	@Override
 	public Image getColumnImage(Object element, int columnIndex) {
 		// The only column to have an image is the first column (the name column)
-		if (columnIndex != 0) {
+		if (columnIndex != 0 || element==null) {
 			return null;
+		}
+
+		// Our "root directory"
+		if(element instanceof RootDirectory) {
+			return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
 		}
 
 		// Our "parent directory"
 		else if(element instanceof ParentDirectory) {
 			return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
 		}
-		
+
 		// A regular filesystem directory
 		else if(element instanceof File && ((File) element).isDirectory()) {
 			return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);			
 		}
 
 		// A regular filesystem file
-		else {
+		else if(element instanceof File && ((File) element).isFile()) {
 			return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FILE);
 		}
+
+		else {
+			return null;
+		}
+
 	}
 
 	@Override
@@ -71,8 +81,8 @@ public class TableViewLabelProvider implements ITableLabelProvider {
 				return FileExplorerUtil.getFileDate((File) element);
 			}
 		}
-		return "";
 
+		return "";
 	}
 
 	@Override

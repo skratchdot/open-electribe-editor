@@ -15,6 +15,6 @@ package com.skratchdot.electribe.fileexplorer.views;
  * An empty class to be used for instanceof checks
  *
  */
-public final class ParentDirectory {
+public final class RootDirectory {
 
 }

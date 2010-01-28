@@ -34,6 +34,11 @@ public class TableViewContentProvider implements IStructuredContentProvider {
 
 	@Override
 	public Object[] getElements(Object inputElement) {
+		// We only need to return the root files
+		if(inputElement==null || inputElement instanceof RootDirectory) {
+			return File.listRoots();
+		}
+		
 		// Declare our returnElements array which always contains a "parent directory"
 		// in the first position
 		Object[] returnElements = null;
@@ -47,7 +52,7 @@ public class TableViewContentProvider implements IStructuredContentProvider {
 			returnElements = new Object[1];
 
 			// Add our "parent directory"
-			returnElements[0] = new ParentDirectory(((File) inputElement).getParent());
+			returnElements[0] = new ParentDirectory();
 			
 			// Only return "parent directory"
 			return returnElements;
@@ -57,7 +62,7 @@ public class TableViewContentProvider implements IStructuredContentProvider {
 			returnElements = new Object[listOfFiles.length+1];
 
 			// Add our "parent directory"
-			returnElements[0] = new ParentDirectory(((File) inputElement).getParent());
+			returnElements[0] = new ParentDirectory();
 
 			// Add all of our other directory/files
 			for(int i=0;i<listOfFiles.length;i++) {

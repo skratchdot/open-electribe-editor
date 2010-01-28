@@ -30,6 +30,7 @@ import com.skratchdot.electribe.fileexplorer.preferences.PreferenceConstants;
 public class TreeView extends ViewPart
 	implements ISelectionListener, IPropertyChangeListener {
 	public static final String ID = "com.skratchdot.electribe.fileexplorer.views.TreeView";
+	public static final RootDirectory root = new RootDirectory();
 
 	private TreeViewer viewer;
 
@@ -51,7 +52,7 @@ public class TreeView extends ViewPart
 		));
 		viewer.setLabelProvider(new TreeViewLabelProvider());
 		viewer.setSorter(new FileExplorerSorter());
-		viewer.setInput("root"); // this value doesn't matter, getElements() from the ContentProvider does
+		viewer.setInput(root); 
 
 		// This view is a selection provider
 		getSite().setSelectionProvider(viewer);
@@ -66,7 +67,7 @@ public class TreeView extends ViewPart
 
 		// Remove Listeners added in createPartControl()
 		Activator.getDefault().getPreferenceStore().removePropertyChangeListener((IPropertyChangeListener) this);
-}
+	}
 
 	@Override
 	public void setFocus() {

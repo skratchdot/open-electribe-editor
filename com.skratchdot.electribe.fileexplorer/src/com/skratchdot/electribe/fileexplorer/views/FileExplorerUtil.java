@@ -24,7 +24,8 @@ public class FileExplorerUtil {
 	private static final NumberFormat numberFormat = NumberFormat.getNumberInstance();
 
 	public static String getFileName(File element) {
-		return element.getName();
+		String name = element.getName();
+		return name.length()==0?element.getPath():name;
 	}
 	
 	public static String getFileSize(File element) {
@@ -58,7 +59,7 @@ public class FileExplorerUtil {
 				return "Unknown";
 			}
 		}
-		return "???";
+		return "";
 	}
 
 	public static String getFileDate(File element) {
