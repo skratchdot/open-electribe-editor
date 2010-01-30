@@ -540,6 +540,14 @@ public class EsxEditor
 								  if (propertySheetPage != null && !propertySheetPage.getControl().isDisposed()) {
 									  propertySheetPage.refresh();
 								  }
+								  
+								  // Refresh all our pages. It's up to them to ignore
+								  // the refresh call.
+								  partInfo.refresh();
+								  partGlobal.refresh();
+								  partSamples.refresh();
+								  partPatterns.refresh();
+								  partSongs.refresh();
 							  }
 						  });
 				 }

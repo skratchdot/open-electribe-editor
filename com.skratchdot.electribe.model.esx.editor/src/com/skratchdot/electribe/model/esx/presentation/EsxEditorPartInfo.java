@@ -13,10 +13,7 @@ package com.skratchdot.electribe.model.esx.presentation;
 
 import java.lang.reflect.Field;
 
-import org.eclipse.emf.databinding.EMFDataBindingContext;
-import org.eclipse.emf.databinding.edit.EMFEditObservables;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.RowData;
 import org.eclipse.swt.layout.RowLayout;
@@ -35,7 +32,6 @@ import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
 
 import com.skratchdot.electribe.model.esx.EsxFile;
-import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 
 
@@ -55,14 +51,13 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 	private int rowLabelWidth = 150;
 	private int rowLabelHeight = 15;
 	private int rowSpacerHeight = 5; // will be added above and below
-	private EMFDataBindingContext bindingContext;
-	private Text labelMemFreeInBytes;
-	private Text labelMemUsedInBytes;
-	private Text labelNumSamplesUsed;
-	private Text labelNumSamplesMonoUsed;
-	private Text labelNumSamplesStereoUsed;
-	private Text labelNumPatternsUsed;
-	private Text labelNumSongsUsed;
+	private Text textMemFreeInBytes;
+	private Text textMemUsedInBytes;
+	private Text textNumSamplesUsed;
+	private Text textNumSamplesMonoUsed;
+	private Text textNumSamplesStereoUsed;
+	private Text textNumPatternsUsed;
+	private Text textNumSongsUsed;
 
 	/**
 	 * @param parent
@@ -158,20 +153,18 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 	 * @param textFieldToBind
 	 * @param maxValue
 	 */
-	private void createRowUsingXOf(String title, String textFieldToBind, String maxValue) {
+	private void createTextRow(String title, String textFieldToBind) {
 		/* Create The Row */
 		this.createRow(title);
-
-		/* Add the "Using" label */
-		label = new Label(rowComposite, SWT.NONE);
-		label.setText(" Using");
 
 		/* Use reflection to get the private Text field specified by
 		 * textFieldToBind
 		 */
 		try {
 		    Field textField = this.getClass().getDeclaredField(textFieldToBind);
-		    textField.set(this, new Text(rowComposite, SWT.READ_ONLY | SWT.NONE));
+		    Text text = new Text(rowComposite, SWT.READ_ONLY | SWT.NONE);
+			text.setLayoutData(new RowData(200, SWT.DEFAULT));
+		    textField.set(this, text);
 		} catch (SecurityException e) {
 			e.printStackTrace();
 		} catch (NoSuchFieldException e) {
@@ -183,10 +176,6 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		/* Add the "of" label with the maxValue */
-		label = new Label(rowComposite, SWT.LEFT);
-		label.setText("of  " + maxValue);	
 	}
 
 	/**
@@ -228,36 +217,19 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		);
 
 		// Number Of Samples Used:
-		this.createRowUsingXOf(
-			"# Samples Used:",
-			"labelNumSamplesUsed",
-			Integer.toString((EsxUtil.NUM_SAMPLES))
-		);
+		this.createTextRow("# Samples Used:", "textNumSamplesUsed");
 
 		// Number Of Mono Samples Used:
-		this.createRowUsingXOf(
-			"# Samples Used (MONO):",
-			"labelNumSamplesMonoUsed",
-			Integer.toString((EsxUtil.NUM_SAMPLES_MONO))
-		);
+		this.createTextRow("# Samples Used (MONO):", "textNumSamplesMonoUsed");
 
 		// Number Of Stereo Samples Used:
-		this.createRowUsingXOf(
-			"# Samples Used (STEREO):",
-			"labelNumSamplesStereoUsed",
-			Integer.toString((EsxUtil.NUM_SAMPLES_STEREO))
-		);
+		this.createTextRow("# Samples Used (STEREO):", "textNumSamplesStereoUsed");
 
 		// Memory Used In Bytes:
-		this.createRowUsingXOf(
-			"Memory Used (In Bytes):",
-			"labelMemUsedInBytes",
-			Integer.toString((EsxUtil.MAX_NUM_SAMPLES * 2))
-		);
+		this.createTextRow("Memory Used (In Bytes):", "textMemUsedInBytes");
 
 		// Memory Free In Bytes:
-		this.createRow("Memory Free (In Bytes):");
-		labelMemFreeInBytes = new Text(rowComposite, SWT.READ_ONLY | SWT.NONE);
+		this.createTextRow("Memory Free (In Bytes):", "textMemFreeInBytes");
 	}
 	
 	/**
@@ -276,11 +248,7 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		);
 
 		// Number Of Patterns Used:
-		this.createRowUsingXOf(
-			"# Patterns Used:",
-			"labelNumPatternsUsed",
-			Integer.toString((EsxUtil.NUM_PATTERNS))
-		);
+		this.createTextRow("# Patterns Used:", "textNumPatternsUsed");
 	}
 
 	/**
@@ -302,93 +270,8 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		);
 
 		// Number Of Songs Used:
-		this.createRowUsingXOf(
-			"# Songs Used:",
-			"labelNumSongsUsed",
-			Integer.toString((EsxUtil.NUM_SONGS))
-		);
+		this.createTextRow("# Songs Used:", "textNumSongsUsed");
 	}
-
-	/**
-	 * 
-	 */
-	private void initDataBindings() {
-		// The DataBindingContext object will manage the databindings
-		if(bindingContext!=null) {
-			bindingContext.dispose();
-		}
-		bindingContext = new EMFDataBindingContext();
-		
-		// labelNumSamplesUsed
-		if(this.labelNumSamplesUsed!=null && this.esxFile!=null) {
-			bindingContext.bindValue(
-				SWTObservables.observeText(this.labelNumSamplesUsed),
-				EMFEditObservables.observeValue(parentEditor.getEditingDomain(), this.esxFile, EsxPackage.Literals.ESX_FILE__NUM_SAMPLES_USED),
-				null,
-				null
-			);
-		}
-
-		// labelNumSamplesMonoUsed
-		if(this.labelNumSamplesMonoUsed!=null && this.esxFile!=null) {
-			bindingContext.bindValue(
-				SWTObservables.observeText(this.labelNumSamplesMonoUsed),
-				EMFEditObservables.observeValue(parentEditor.getEditingDomain(), this.esxFile, EsxPackage.Literals.ESX_FILE__NUM_SAMPLES_MONO_USED),
-				null,
-				null
-			);
-		}
-
-		// labelNumSamplesStereoUsed
-		if(this.labelNumSamplesStereoUsed!=null && this.esxFile!=null) {
-			bindingContext.bindValue(
-				SWTObservables.observeText(this.labelNumSamplesStereoUsed),
-				EMFEditObservables.observeValue(parentEditor.getEditingDomain(), this.esxFile, EsxPackage.Literals.ESX_FILE__NUM_SAMPLES_STEREO_USED),
-				null,
-				null
-			);
-		}
-
-		// labelUsedFreeInBytes
-		if(this.labelMemUsedInBytes!=null && this.esxFile!=null) {
-			bindingContext.bindValue(
-				SWTObservables.observeText(this.labelMemUsedInBytes),
-				EMFEditObservables.observeValue(parentEditor.getEditingDomain(), this.esxFile, EsxPackage.Literals.ESX_FILE__MEM_USED_IN_BYTES),
-				null,
-				null
-			);
-		}
-
-		// labelMemFreeInBytes
-		if(this.labelMemFreeInBytes!=null && this.esxFile!=null) {
-			bindingContext.bindValue(
-				SWTObservables.observeText(this.labelMemFreeInBytes),
-				EMFEditObservables.observeValue(parentEditor.getEditingDomain(), this.esxFile, EsxPackage.Literals.ESX_FILE__MEM_FREE_IN_BYTES),
-				null,
-				null
-			);
-		}
-
-		// labelNumPatternsUsed
-		if(this.labelNumPatternsUsed!=null && this.esxFile!=null) {
-			bindingContext.bindValue(
-				SWTObservables.observeText(this.labelNumPatternsUsed),
-				EMFEditObservables.observeValue(parentEditor.getEditingDomain(), this.esxFile, EsxPackage.Literals.ESX_FILE__NUM_PATTERNS_USED),
-				null,
-				null
-			);
-		}
-
-		// labelNumSongsUsed
-		if(this.labelNumSongsUsed!=null && this.esxFile!=null) {
-			bindingContext.bindValue(
-				SWTObservables.observeText(this.labelNumSongsUsed),
-				EMFEditObservables.observeValue(parentEditor.getEditingDomain(), this.esxFile, EsxPackage.Literals.ESX_FILE__NUM_SONGS_USED),
-				null,
-				null
-			);
-		}
-}
 
 	/* (non-Javadoc)
 	 * @see com.skratchdot.electribe.model.esx.presentation.EsxEditorPart#setInput(java.lang.Object)
@@ -400,7 +283,7 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		Object rootObject = resource.getContents().get(0);
 		if(rootObject instanceof EsxFile) {
 			this.esxFile = (EsxFile) rootObject;
-			this.initDataBindings();
+			this.refresh();
 		}
 	}
 
@@ -411,6 +294,21 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 	public void dispose() {
 		toolkit.dispose();
 		super.dispose();
+	}
+
+	/**
+	 * 
+	 */
+	public void refresh() {
+		if(this.parentEditor.getActivePage()!=0) return;
+
+		textMemFreeInBytes.setText(Integer.toString(esxFile.getMemFreeInBytes()));
+		textMemUsedInBytes.setText("Using " + esxFile.getMemUsedInBytes() + " of " + EsxUtil.MAX_NUM_SAMPLES * 2);
+		textNumSamplesUsed.setText("Using " + esxFile.getNumSamplesUsed() + " of " + EsxUtil.NUM_SAMPLES);
+		textNumSamplesMonoUsed.setText("Using " + esxFile.getNumSamplesMonoUsed() + " of " + EsxUtil.NUM_SAMPLES_MONO);
+		textNumSamplesStereoUsed.setText("Using " + esxFile.getNumSamplesStereoUsed() + " of " + EsxUtil.NUM_SAMPLES_STEREO);
+		textNumPatternsUsed.setText("Using " + esxFile.getNumPatternsUsed() + " of " + EsxUtil.NUM_PATTERNS);
+		textNumSongsUsed.setText("Using " + esxFile.getNumSongsUsed() + " of " + EsxUtil.NUM_SONGS);
 	}
 
 }

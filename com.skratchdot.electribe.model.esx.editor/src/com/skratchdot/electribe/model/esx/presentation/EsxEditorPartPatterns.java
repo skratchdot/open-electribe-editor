@@ -248,7 +248,17 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 		Object rootObject = resource.getContents().get(0);
 		if(rootObject instanceof EsxFile) {
 			this.tableViewer.setInput(rootObject);
+			this.refresh();
 		}
+	}
+
+	/**
+	 * 
+	 */
+	public void refresh() {
+		if(this.parentEditor.getActivePage()!=2) return;
+
+		this.tableViewer.refresh();
 	}
 
 }

@@ -30,4 +30,11 @@ public class EsxEditorPartGlobal extends EsxEditorPart {
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * 
+	 */
+	public void refresh() {
+		if(this.parentEditor.getActivePage()!=1) return;
+	}
+
 }

@@ -218,14 +218,17 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		Object rootObject = resource.getContents().get(0);
 		if(rootObject instanceof EsxFile) {
 			this.tableViewer.setInput(rootObject);
-			
-			// Hack for EsxEditorAdvisor#ImportAudioFileAction() so that
-			// after the CompoundCommand is run, the sample list refreshes.
-			// It only seems to refresh if an item in the list has been
-			// selected.
-			// TODO: Find out why we need this hack
-			this.tableViewer.getTable().select(0);
+			this.refresh();
 		}
 	}
 
+	/**
+	 * 
+	 */
+	public void refresh() {
+		if(this.parentEditor.getActivePage()!=3) return;
+
+		this.tableViewer.refresh();
+	}
+	
 }

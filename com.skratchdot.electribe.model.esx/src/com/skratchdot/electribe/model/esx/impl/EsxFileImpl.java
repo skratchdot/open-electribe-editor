@@ -19,7 +19,6 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -225,12 +224,10 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 */
 	protected EsxFileImpl() {
 		super();
-		init();
 	}
 
 	protected EsxFileImpl(EsxRandomAccess in, IProgressMonitor monitor) throws EsxException {
 		super();
-		init();
 		try {
 			// Store all our "non-sample data" which will be overwritten when saving
 			// the file
@@ -289,48 +286,6 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 			e.printStackTrace();
 		}
 
-	}
-
-	private void init() {
-		eAdapters().add(new AdapterImpl() {
-			@Override
-			public void notifyChanged(Notification msg) {
-				// When getBlankPattern() changes
-				if( EsxPackage.Literals.ESX_FILE__BLANK_PATTERN.equals(msg.getFeature()) ) {
-					if (eNotificationRequired()) {
-						eNotify(new ENotificationImpl(EsxFileImpl.this, Notification.SET, EsxPackage.ESX_FILE__NUM_PATTERNS_USED, 0, getNumPatternsUsed()));
-					}
-				}
-				// When getBlankSong() changes
-				if( EsxPackage.Literals.ESX_FILE__BLANK_SONG.equals(msg.getFeature()) ) {
-					if (eNotificationRequired()) {
-						eNotify(new ENotificationImpl(EsxFileImpl.this, Notification.SET, EsxPackage.ESX_FILE__NUM_SONGS_USED, 0, getNumSongsUsed()));
-					}
-				}
-				// When getPatterns() changes
-				if( EsxPackage.Literals.ESX_FILE__PATTERNS.equals(msg.getFeature()) ) {
-					if (eNotificationRequired()) {
-						eNotify(new ENotificationImpl(EsxFileImpl.this, Notification.SET, EsxPackage.ESX_FILE__NUM_PATTERNS_USED, 0, getNumPatternsUsed()));
-					}
-				}
-				// When getSamples() changes
-				if( EsxPackage.Literals.ESX_FILE__SAMPLES.equals(msg.getFeature()) ) {
-					if (eNotificationRequired()) {
-						eNotify(new ENotificationImpl(EsxFileImpl.this, Notification.SET, EsxPackage.ESX_FILE__MEM_FREE_IN_BYTES, 0, getMemFreeInBytes()));
-						eNotify(new ENotificationImpl(EsxFileImpl.this, Notification.SET, EsxPackage.ESX_FILE__MEM_USED_IN_BYTES, 0, getMemUsedInBytes()));
-						eNotify(new ENotificationImpl(EsxFileImpl.this, Notification.SET, EsxPackage.ESX_FILE__NUM_SAMPLES_USED, 0, getNumSamplesUsed()));
-						eNotify(new ENotificationImpl(EsxFileImpl.this, Notification.SET, EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_USED, 0, getNumSamplesMonoUsed()));
-						eNotify(new ENotificationImpl(EsxFileImpl.this, Notification.SET, EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_USED, 0, getNumSamplesStereoUsed()));
-					}
-				}
-				// When getSongs() changes
-				if( EsxPackage.Literals.ESX_FILE__SONGS.equals(msg.getFeature()) ) {
-					if (eNotificationRequired()) {
-						eNotify(new ENotificationImpl(EsxFileImpl.this, Notification.SET, EsxPackage.ESX_FILE__NUM_SONGS_USED, 0, getNumSongsUsed()));
-					}
-				}
-			}
-		});
 	}
 
     @Override

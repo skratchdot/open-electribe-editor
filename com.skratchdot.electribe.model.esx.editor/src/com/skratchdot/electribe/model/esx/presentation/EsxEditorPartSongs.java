@@ -216,7 +216,17 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		Object rootObject = resource.getContents().get(0);
 		if(rootObject instanceof EsxFile) {
 			this.tableViewerSongs.setInput(rootObject);
+			this.refresh();
 		}
+	}
+
+	/**
+	 * 
+	 */
+	public void refresh() {
+		if(this.parentEditor.getActivePage()!=4) return;
+
+		this.tableViewerSongs.refresh();
 	}
 
 }

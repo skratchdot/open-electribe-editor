@@ -241,4 +241,15 @@ public abstract class EsxEditorPart extends EditorPart
 		}
 		return scrollSpeedListener;
 	}
+
+	/**
+	 * The refresh() method is called by the main editor when a command on the command
+	 * stack has been called. It is up to the subclasses to deal with how to refresh.
+	 * This should eventually be refactored and handled more elegantly.  I'm adding
+	 * this in because I was running into too many issues going the databinding route.
+	 */
+	public void refresh() {
+		// nothing to do here - this is handled by the editor part subclasses
+	}
+
 }
