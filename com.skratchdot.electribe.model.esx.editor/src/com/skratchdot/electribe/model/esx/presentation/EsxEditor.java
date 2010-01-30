@@ -1359,6 +1359,6 @@ public class EsxEditor
 	 * @generated
 	 */
 	protected boolean showOutlineView() {
-		return true;
+		return false;
 	}
 }

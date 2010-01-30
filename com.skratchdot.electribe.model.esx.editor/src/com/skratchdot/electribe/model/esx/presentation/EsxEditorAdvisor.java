@@ -179,7 +179,7 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 
 			layout.addView("com.skratchdot.electribe.fileexplorer.views.TableView", IPageLayout.BOTTOM, 0.60f, IPageLayout.ID_EDITOR_AREA);
 			layout.addView("com.skratchdot.electribe.fileexplorer.views.TreeView", IPageLayout.LEFT, 0.25f, IPageLayout.ID_EDITOR_AREA);
-			layout.addView(IPageLayout.ID_OUTLINE, IPageLayout.RIGHT, 0.66f, IPageLayout.ID_EDITOR_AREA);
+			//layout.addView(IPageLayout.ID_OUTLINE, IPageLayout.RIGHT, 0.66f, IPageLayout.ID_EDITOR_AREA);
 			layout.addView(IPageLayout.ID_PROP_SHEET, IPageLayout.RIGHT, 0.75f, "com.skratchdot.electribe.fileexplorer.views.TableView");
 		}
 
