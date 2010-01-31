@@ -15,14 +15,19 @@ package com.skratchdot.electribe.model.esx.provider;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.SampleTune;
 
+import java.text.DecimalFormat;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
@@ -165,6 +170,28 @@ public class SampleTuneItemProvider
 	@Override
 	public ResourceLocator getResourceLocator() {
 		return EsxEditPlugin.INSTANCE;
+	}
+
+	@Override
+	protected Command createSetCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, Object value) {
+
+		// We only allow the tempo to be between 20-300 with one decimal place precision
+		if(feature == EsxPackage.Literals.SAMPLE_TUNE__VALUE) {
+			String sampleTuneAsString = new DecimalFormat("0.##").format((Double) value);
+			Float sampleTuneAsFloat = new Float(sampleTuneAsString);
+
+			if(sampleTuneAsFloat < -64) {
+				value = new Float(-64);
+			}
+			else if(sampleTuneAsFloat > 64) {
+				value = new Float(64);
+			}
+			else {
+				value = sampleTuneAsFloat;
+			}		
+		}
+		return super.createSetCommand(domain, owner, feature, value);
 	}
 
 }
