@@ -543,11 +543,7 @@ public class EsxEditor
 								  
 								  // Refresh all our pages. It's up to them to ignore
 								  // the refresh call.
-								  partInfo.refresh();
-								  partGlobal.refresh();
-								  partSamples.refresh();
-								  partPatterns.refresh();
-								  partSongs.refresh();
+								  refreshAllPages();
 							  }
 						  });
 				 }
@@ -809,6 +805,17 @@ public class EsxEditor
 	}
 
 	/**
+	 * This calls the refresh() method on all of our EsxEditorParts.
+	 */
+	private void refreshAllPages() {
+		  partInfo.refresh();
+		  partGlobal.refresh();
+		  partSamples.refresh();
+		  partPatterns.refresh();
+		  partSongs.refresh();
+	}
+
+	/**
 	 * This is the method used by the framework to install your own controls.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -948,7 +955,8 @@ public class EsxEditor
 		if (contentOutlinePage != null) {
 			handleContentOutlineSelection(contentOutlinePage.getSelection());
 		}
-
+		
+		refreshAllPages();
 	}
 
 	/**
