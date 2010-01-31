@@ -55,6 +55,7 @@ http://www.eclipse.org/legal/epl-v10.html
       <plugin id="com.skratchdot.electribe.model.esx.preferences"/>
       <plugin id="javax.transaction" fragment="true"/>
       <plugin id="net.javazoom.jlayer"/>
+      <plugin id="org.apache.commons.lang"/>
       <plugin id="org.eclipse.core.commands"/>
       <plugin id="org.eclipse.core.contenttype"/>
       <plugin id="org.eclipse.core.databinding"/>

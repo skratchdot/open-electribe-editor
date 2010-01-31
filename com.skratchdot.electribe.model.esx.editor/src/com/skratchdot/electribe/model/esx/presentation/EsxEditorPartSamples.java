@@ -11,34 +11,41 @@
  */
 package com.skratchdot.electribe.model.esx.presentation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
-import org.eclipse.jface.viewers.ListViewer;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
 import com.skratchdot.electribe.model.esx.EsxFile;
+import com.skratchdot.electribe.model.esx.Sample;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceNames;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
 
 public class EsxEditorPartSamples extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartSamples"; //$NON-NLS-1$
+	public static final int PAGE_INDEX = 3;
 
 	private TableViewer tableViewer;
-	private ListViewer listViewer;
+	private EsxCompositeSample sampleEditor;
 	private TableScrollSpeedListener tableViewerScrollSpeedListener;
 
 	/**
@@ -65,13 +72,8 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		this.tableViewer = new TableViewer(groupSamples, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
 		this.initTableViewer();
 
-		// Create groupSelectedSample
-		Group groupSelectedSample = new Group(sashForm, SWT.NONE);
-		groupSelectedSample.setLayout(new FillLayout(SWT.HORIZONTAL));
-		groupSelectedSample.setText("Selected Sample");
-
-		// Create this.listViewer
-		this.listViewer = new ListViewer(groupSelectedSample);
+		// Create sampleEditor
+		this.sampleEditor = new EsxCompositeSample(this.parentEditor, sashForm, SWT.NONE);
 
 		sashForm.setWeights(new int[] {3, 1});
 	}
@@ -151,8 +153,29 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		// Context Menu
 	    createContextMenuFor(this.tableViewer);
 
-	    // Selection Provider
-	    // getEditorSite().setSelectionProvider(this.tableViewer);
+	    // Selection Provider For EsxEditor
+	    getEditorSite().setSelectionProvider(this.tableViewer);
+
+		// listen for selection events
+	    getSite().getPage().addSelectionListener((ISelectionListener) this);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.skratchdot.electribe.model.esx.presentation.EsxEditorPart#selectionChanged(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
+	 */
+	@Override
+	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
+		if (parentEditor.getActivePage()==EsxEditorPartSamples.PAGE_INDEX &&
+				selection instanceof IStructuredSelection) {
+			Object[] objects = ((IStructuredSelection) selection).toArray();
+			List<Sample> selectedSamples = new ArrayList<Sample>();
+			for (Object obj : objects) {
+				if(obj instanceof Sample) {
+					selectedSamples.add((Sample) obj);
+				}
+			}
+			this.sampleEditor.setInput(selectedSamples);
+		}
 	}
 
 	/* (non-Javadoc)
@@ -197,6 +220,7 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		super.dispose();
 
 		// Remove Listeners added in createPartControl()
+		getSite().getPage().removeSelectionListener((ISelectionListener) this);
 		PlatformUI.getPreferenceStore().removePropertyChangeListener((IPropertyChangeListener) this);
 	}
 
@@ -226,9 +250,10 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 	 * 
 	 */
 	public void refresh() {
-		if(this.parentEditor.getActivePage()!=3) return;
+		if(this.parentEditor.getActivePage()!=EsxEditorPartSamples.PAGE_INDEX) return;
 
 		this.tableViewer.refresh();
+		this.sampleEditor.refresh();
 	}
 	
 }

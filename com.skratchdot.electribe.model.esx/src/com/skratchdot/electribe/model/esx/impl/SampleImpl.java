@@ -22,6 +22,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -685,8 +686,8 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 			e.printStackTrace();
 			throw new EsxException("Invalid audio file: " + file.getAbsolutePath());
 		}
-		
-		String newSampleName = (file.getName().length()<8) ? file.getName() : file.getName().substring(0, 8);
+
+		String newSampleName = StringUtils.left(StringUtils.trim(file.getName()), 8);
 		this.setName(newSampleName);
 	}
 

@@ -37,6 +37,7 @@ import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
 
 public class EsxEditorPartPatterns extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartPatterns"; //$NON-NLS-1$
+	public static final int PAGE_INDEX = 2;
 
 	private TableViewer tableViewer;
 	private TableScrollSpeedListener tableViewerScrollSpeedListener;
@@ -181,8 +182,8 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 		// Setup Context Menu
 	    createContextMenuFor(this.tableViewer);
 
-	    // Selection Provider
-	    // getEditorSite().setSelectionProvider(this.tableViewer);
+	    // Selection Provider For EsxEditor
+	    getEditorSite().setSelectionProvider(this.tableViewer);
 	}
 
 	/* (non-Javadoc)
@@ -256,7 +257,7 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 	 * 
 	 */
 	public void refresh() {
-		if(this.parentEditor.getActivePage()!=2) return;
+		if(this.parentEditor.getActivePage()!=EsxEditorPartPatterns.PAGE_INDEX) return;
 
 		this.tableViewer.refresh();
 	}

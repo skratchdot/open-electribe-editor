@@ -13,6 +13,7 @@ package com.skratchdot.electribe.model.esx.presentation;
 
 public class EsxEditorPartGlobal extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartGlobal"; //$NON-NLS-1$
+	public static final int PAGE_INDEX = 1;
 
 	/**
 	 * @param parent
@@ -34,7 +35,7 @@ public class EsxEditorPartGlobal extends EsxEditorPart {
 	 * 
 	 */
 	public void refresh() {
-		if(this.parentEditor.getActivePage()!=1) return;
+		if(this.parentEditor.getActivePage()!=EsxEditorPartGlobal.PAGE_INDEX) return;
 	}
 
 }

@@ -37,6 +37,7 @@ import com.skratchdot.electribe.model.esx.util.EsxUtil;
 
 public class EsxEditorPartInfo extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartInfo"; //$NON-NLS-1$
+	public static final int PAGE_INDEX = 0;
 
 	private EsxFile esxFile;	
 	private FormToolkit toolkit;
@@ -80,9 +81,9 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		form.getBody().setLayout(tableWrapLayout);
 
 		// Now create the different sections of the form
-		createSectionPatterns("Patterns", 2);
-		createSectionSamples("Samples", 3);
-		createSectionSongs("Songs", 4);
+		createSectionPatterns("Patterns", EsxEditorPartPatterns.PAGE_INDEX);
+		createSectionSamples("Samples", EsxEditorPartSamples.PAGE_INDEX);
+		createSectionSongs("Songs", EsxEditorPartSongs.PAGE_INDEX);
 	}
 	
 	/**
@@ -300,7 +301,7 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 	 * 
 	 */
 	public void refresh() {
-		if(this.parentEditor.getActivePage()!=0) return;
+		if(this.parentEditor.getActivePage()!=EsxEditorPartInfo.PAGE_INDEX) return;
 
 		textMemFreeInBytes.setText(Integer.toString(esxFile.getMemFreeInBytes()));
 		textMemUsedInBytes.setText("Using " + esxFile.getMemUsedInBytes() + " of " + EsxUtil.MAX_NUM_SAMPLES * 2);

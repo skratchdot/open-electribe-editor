@@ -35,6 +35,7 @@ import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
 
 public class EsxEditorPartSongs extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartSongs"; //$NON-NLS-1$
+	public static final int PAGE_INDEX = 4;
 
 	private TableViewer tableViewerSongs;
 	private TableViewer tableViewerSongPatterns;
@@ -142,8 +143,8 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		// Context Menu
 	    createContextMenuFor(this.tableViewerSongs);
 
-	    // Selection Provider
-	    // getEditorSite().setSelectionProvider(this.tableViewer);
+	    // Selection Provider For EsxEditor
+	    getEditorSite().setSelectionProvider(this.tableViewerSongs);
 	}
 
 	/**
@@ -224,7 +225,7 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 	 * 
 	 */
 	public void refresh() {
-		if(this.parentEditor.getActivePage()!=4) return;
+		if(this.parentEditor.getActivePage()!=EsxEditorPartSongs.PAGE_INDEX) return;
 
 		this.tableViewerSongs.refresh();
 	}

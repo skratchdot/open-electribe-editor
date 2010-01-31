@@ -60,8 +60,21 @@ public abstract class EsxEditorPart extends EditorPart
 		this.parentEditor = parent;
 	}
 
+	/**
+	 * Sets the input to this editor.  This method simply updates the internal
+	 * member variables of the editor.
+	 * 
+	 * @param input
+	 */
 	public abstract void setInput(Object input);
 
+	/**
+	 * Refreshes this editor with information freshly obtained from the editor's model.
+	 * This method is called by the main editor whenever a command on the command stack
+	 * has been called.  It is up to the subclasses to determine what needs to be refreshed.
+	 */
+	public abstract void refresh();
+	
 	/* (non-Javadoc)
 	 * @see org.eclipse.ui.part.WorkbenchPart#createPartControl(org.eclipse.swt.widgets.Composite)
 	 */
@@ -240,16 +253,6 @@ public abstract class EsxEditorPart extends EditorPart
 			scrollSpeedListener = null;
 		}
 		return scrollSpeedListener;
-	}
-
-	/**
-	 * The refresh() method is called by the main editor when a command on the command
-	 * stack has been called. It is up to the subclasses to deal with how to refresh.
-	 * This should eventually be refactored and handled more elegantly.  I'm adding
-	 * this in because I was running into too many issues going the databinding route.
-	 */
-	public void refresh() {
-		// nothing to do here - this is handled by the editor part subclasses
 	}
 
 }

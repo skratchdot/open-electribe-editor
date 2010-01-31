@@ -15,6 +15,7 @@ package com.skratchdot.electribe.model.esx.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -856,10 +857,7 @@ public class SampleItemProvider
 
 		// When setting name, only allow 8 characters
 		if(feature == EsxPackage.Literals.SAMPLE__NAME) {
-			String stringValue = (String) value;
-			if(stringValue.length()>8) {
-				value = stringValue.substring(0, 8);
-			}
+			value = StringUtils.left((String)value, 8);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}
