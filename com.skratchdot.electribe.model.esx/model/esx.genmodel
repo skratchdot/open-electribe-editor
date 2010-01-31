@@ -1695,33 +1695,34 @@
       <genFeatures property="Readonly" children="true" createChild="false" ecoreFeature="ecore:EReference esx.ecore#//Pattern/tempo"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/swing"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/patternLength"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/reservedBitAfterPatternLength"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/reservedBitAfterPatternLength"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/beat"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/rollType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/fxChain"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/lastStep"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/arpeggiatorScale"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/reservedBitsAfterArpeggiatorScale"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/reservedBitsAfterArpeggiatorScale"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/arpeggiatorCenterNote"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/muteStatus"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/swingStatus"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/outputBusStatus"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/accentStatus"/>
-      <genFeatures children="true" createChild="false" propertySortChoices="true"
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/muteStatus"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/swingStatus"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/outputBusStatus"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/accentStatus"/>
+      <genFeatures property="None" children="true" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference esx.ecore#//Pattern/drumParts"/>
-      <genFeatures children="true" createChild="false" propertySortChoices="true"
+      <genFeatures property="None" children="true" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference esx.ecore#//Pattern/keyboardParts"/>
-      <genFeatures children="true" createChild="false" propertySortChoices="true"
+      <genFeatures property="None" children="true" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference esx.ecore#//Pattern/stretchSliceParts"/>
-      <genFeatures children="true" createChild="false" propertySortChoices="true"
+      <genFeatures property="None" children="true" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference esx.ecore#//Pattern/audioInPart"/>
-      <genFeatures children="true" createChild="false" propertySortChoices="true"
+      <genFeatures property="None" children="true" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference esx.ecore#//Pattern/accentPart"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esx.ecore#//Pattern/fxParameters"/>
-      <genFeatures children="true" createChild="false" propertySortChoices="true"
+      <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+          ecoreFeature="ecore:EReference esx.ecore#//Pattern/fxParameters"/>
+      <genFeatures property="None" children="true" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference esx.ecore#//Pattern/motionParameters"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/beingUsed"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/patternNumberOriginal"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/patternNumberOriginal"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/patternNumberCurrent"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//Sample">
@@ -1773,7 +1774,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esx.ecore#//Song/songPatterns"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esx.ecore#//Song/songEvents"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/beingUsed"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/songNumberOriginal"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/songNumberOriginal"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/songNumberCurrent"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//SongPattern">

@@ -75,25 +75,12 @@ public class PatternItemProvider
 			addTempoPropertyDescriptor(object);
 			addSwingPropertyDescriptor(object);
 			addPatternLengthPropertyDescriptor(object);
-			addReservedBitAfterPatternLengthPropertyDescriptor(object);
 			addBeatPropertyDescriptor(object);
 			addRollTypePropertyDescriptor(object);
 			addFxChainPropertyDescriptor(object);
 			addLastStepPropertyDescriptor(object);
 			addArpeggiatorScalePropertyDescriptor(object);
-			addReservedBitsAfterArpeggiatorScalePropertyDescriptor(object);
 			addArpeggiatorCenterNotePropertyDescriptor(object);
-			addMuteStatusPropertyDescriptor(object);
-			addSwingStatusPropertyDescriptor(object);
-			addOutputBusStatusPropertyDescriptor(object);
-			addAccentStatusPropertyDescriptor(object);
-			addDrumPartsPropertyDescriptor(object);
-			addKeyboardPartsPropertyDescriptor(object);
-			addStretchSlicePartsPropertyDescriptor(object);
-			addAudioInPartPropertyDescriptor(object);
-			addAccentPartPropertyDescriptor(object);
-			addFxParametersPropertyDescriptor(object);
-			addMotionParametersPropertyDescriptor(object);
 			addBeingUsedPropertyDescriptor(object);
 			addPatternNumberOriginalPropertyDescriptor(object);
 			addPatternNumberCurrentPropertyDescriptor(object);
@@ -185,28 +172,6 @@ public class PatternItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Reserved Bit After Pattern Length feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addReservedBitAfterPatternLengthPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Pattern_reservedBitAfterPatternLength_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Pattern_reservedBitAfterPatternLength_feature", "_UI_Pattern_type"),
-				 EsxPackage.Literals.PATTERN__RESERVED_BIT_AFTER_PATTERN_LENGTH,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -322,28 +287,6 @@ public class PatternItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Reserved Bits After Arpeggiator Scale feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addReservedBitsAfterArpeggiatorScalePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Pattern_reservedBitsAfterArpeggiatorScale_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Pattern_reservedBitsAfterArpeggiatorScale_feature", "_UI_Pattern_type"),
-				 EsxPackage.Literals.PATTERN__RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Arpeggiator Center Note feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -361,248 +304,6 @@ public class PatternItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Mute Status feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addMuteStatusPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Pattern_muteStatus_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Pattern_muteStatus_feature", "_UI_Pattern_type"),
-				 EsxPackage.Literals.PATTERN__MUTE_STATUS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Swing Status feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSwingStatusPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Pattern_swingStatus_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Pattern_swingStatus_feature", "_UI_Pattern_type"),
-				 EsxPackage.Literals.PATTERN__SWING_STATUS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Output Bus Status feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOutputBusStatusPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Pattern_outputBusStatus_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Pattern_outputBusStatus_feature", "_UI_Pattern_type"),
-				 EsxPackage.Literals.PATTERN__OUTPUT_BUS_STATUS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Accent Status feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addAccentStatusPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Pattern_accentStatus_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Pattern_accentStatus_feature", "_UI_Pattern_type"),
-				 EsxPackage.Literals.PATTERN__ACCENT_STATUS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Drum Parts feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDrumPartsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Pattern_drumParts_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Pattern_drumParts_feature", "_UI_Pattern_type"),
-				 EsxPackage.Literals.PATTERN__DRUM_PARTS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Keyboard Parts feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addKeyboardPartsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Pattern_keyboardParts_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Pattern_keyboardParts_feature", "_UI_Pattern_type"),
-				 EsxPackage.Literals.PATTERN__KEYBOARD_PARTS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Stretch Slice Parts feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addStretchSlicePartsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Pattern_stretchSliceParts_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Pattern_stretchSliceParts_feature", "_UI_Pattern_type"),
-				 EsxPackage.Literals.PATTERN__STRETCH_SLICE_PARTS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Audio In Part feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addAudioInPartPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Pattern_audioInPart_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Pattern_audioInPart_feature", "_UI_Pattern_type"),
-				 EsxPackage.Literals.PATTERN__AUDIO_IN_PART,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Accent Part feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addAccentPartPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Pattern_accentPart_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Pattern_accentPart_feature", "_UI_Pattern_type"),
-				 EsxPackage.Literals.PATTERN__ACCENT_PART,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Fx Parameters feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addFxParametersPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Pattern_fxParameters_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Pattern_fxParameters_feature", "_UI_Pattern_type"),
-				 EsxPackage.Literals.PATTERN__FX_PARAMETERS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Motion Parameters feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addMotionParametersPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Pattern_motionParameters_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Pattern_motionParameters_feature", "_UI_Pattern_type"),
-				 EsxPackage.Literals.PATTERN__MOTION_PARAMETERS,
-				 true,
-				 false,
-				 true,
-				 null,
 				 null,
 				 null));
 	}
@@ -643,7 +344,7 @@ public class PatternItemProvider
 				 getString("_UI_Pattern_patternNumberOriginal_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Pattern_patternNumberOriginal_feature", "_UI_Pattern_type"),
 				 EsxPackage.Literals.PATTERN__PATTERN_NUMBER_ORIGINAL,
-				 true,
+				 false,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -751,7 +452,7 @@ public class PatternItemProvider
 			// Tempo
 			case 3: return Float.toString(((Pattern) object).getTempo().getValue());
 			// Swing
-			case 4: return Integer.toString(((Pattern) object).getSwing().getValue());
+			case 4: return ((Pattern) object).getSwing().getLiteral();
 			// Length
 			case 5: return ((Pattern) object).getPatternLength().getLiteral();
 			// Beat

@@ -276,7 +276,7 @@ public class SongItemProvider
 				 getString("_UI_Song_songNumberOriginal_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Song_songNumberOriginal_feature", "_UI_Song_type"),
 				 EsxPackage.Literals.SONG__SONG_NUMBER_ORIGINAL,
-				 true,
+				 false,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
