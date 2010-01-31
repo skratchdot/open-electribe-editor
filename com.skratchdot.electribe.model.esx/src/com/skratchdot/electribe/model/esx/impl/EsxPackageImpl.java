@@ -69,6 +69,7 @@ import com.skratchdot.electribe.model.esx.PatternLength;
 import com.skratchdot.electribe.model.esx.PatternNumber;
 import com.skratchdot.electribe.model.esx.PatternSetParameter;
 import com.skratchdot.electribe.model.esx.PitchBendRange;
+import com.skratchdot.electribe.model.esx.PlayLevel;
 import com.skratchdot.electribe.model.esx.Reverse;
 import com.skratchdot.electribe.model.esx.Roll;
 import com.skratchdot.electribe.model.esx.RollType;
@@ -76,6 +77,7 @@ import com.skratchdot.electribe.model.esx.Sample;
 import com.skratchdot.electribe.model.esx.SampleMono;
 import com.skratchdot.electribe.model.esx.SampleNumber;
 import com.skratchdot.electribe.model.esx.SampleStereo;
+import com.skratchdot.electribe.model.esx.SampleTune;
 import com.skratchdot.electribe.model.esx.SequenceData;
 import com.skratchdot.electribe.model.esx.SequenceDataGate;
 import com.skratchdot.electribe.model.esx.SequenceDataNote;
@@ -298,6 +300,13 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass sampleTuneEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass songEClass = null;
 
 	/**
@@ -404,6 +413,13 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	private EEnum midiChannelEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum playLevelEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1863,7 +1879,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_BeingUsed() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(25);
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(26);
 	}
 
 	/**
@@ -1872,7 +1888,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_Stereo() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(23);
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(24);
 	}
 
 	/**
@@ -1881,7 +1897,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_MemUsedInBytes() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(24);
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(25);
 	}
 
 	/**
@@ -1961,8 +1977,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_SampleTuneLeft() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(9);
+	public EReference getSample_SampleTune() {
+		return (EReference)sampleEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -1970,7 +1986,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_SampleTuneRight() {
+	public EAttribute getSample_SampleTuneLeft() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -1979,7 +1995,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_NumberOfSampleFrames() {
+	public EAttribute getSample_SampleTuneRight() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -1988,7 +2004,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_PlayLevel() {
+	public EAttribute getSample_NumberOfSampleFrames() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -1997,7 +2013,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_UnknownByte1() {
+	public EAttribute getSample_PlayLevel() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(13);
 	}
 
@@ -2006,7 +2022,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_StretchStep() {
+	public EAttribute getSample_UnknownByte1() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(14);
 	}
 
@@ -2015,7 +2031,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_UnknownByte2() {
+	public EAttribute getSample_StretchStep() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(15);
 	}
 
@@ -2024,7 +2040,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_UnknownByte3() {
+	public EAttribute getSample_UnknownByte2() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(16);
 	}
 
@@ -2033,7 +2049,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_UnknownByte4() {
+	public EAttribute getSample_UnknownByte3() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(17);
 	}
 
@@ -2042,7 +2058,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_AudioDataChannel1() {
+	public EAttribute getSample_UnknownByte4() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(18);
 	}
 
@@ -2051,7 +2067,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_AudioDataChannel2() {
+	public EAttribute getSample_AudioDataChannel1() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(19);
 	}
 
@@ -2060,7 +2076,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_SliceArray() {
+	public EAttribute getSample_AudioDataChannel2() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(20);
 	}
 
@@ -2069,25 +2085,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_SampleNumberOriginal() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(26);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSample_SampleNumberCurrent() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(27);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSample_Loop() {
+	public EAttribute getSample_SliceArray() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(21);
 	}
 
@@ -2096,8 +2094,35 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_Slice() {
+	public EAttribute getSample_SampleNumberOriginal() {
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(27);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSample_SampleNumberCurrent() {
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(28);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSample_Loop() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(22);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSample_Slice() {
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(23);
 	}
 
 	/**
@@ -2116,6 +2141,24 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 */
 	public EClass getSampleStereo() {
 		return sampleStereoEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSampleTune() {
+		return sampleTuneEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSampleTune_Value() {
+		return (EAttribute)sampleTuneEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2582,6 +2625,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getPlayLevel() {
+		return playLevelEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getPatternNumber() {
 		return patternNumberEEnum;
 	}
@@ -3029,6 +3081,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(sampleEClass, SAMPLE__END);
 		createEAttribute(sampleEClass, SAMPLE__LOOP_START);
 		createEAttribute(sampleEClass, SAMPLE__SAMPLE_RATE);
+		createEReference(sampleEClass, SAMPLE__SAMPLE_TUNE);
 		createEAttribute(sampleEClass, SAMPLE__SAMPLE_TUNE_LEFT);
 		createEAttribute(sampleEClass, SAMPLE__SAMPLE_TUNE_RIGHT);
 		createEAttribute(sampleEClass, SAMPLE__NUMBER_OF_SAMPLE_FRAMES);
@@ -3052,6 +3105,9 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		sampleMonoEClass = createEClass(SAMPLE_MONO);
 
 		sampleStereoEClass = createEClass(SAMPLE_STEREO);
+
+		sampleTuneEClass = createEClass(SAMPLE_TUNE);
+		createEAttribute(sampleTuneEClass, SAMPLE_TUNE__VALUE);
 
 		songEClass = createEClass(SONG);
 		createEAttribute(songEClass, SONG__NAME);
@@ -3115,6 +3171,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		enabledFlagEEnum = createEEnum(ENABLED_FLAG);
 		pitchBendRangeEEnum = createEEnum(PITCH_BEND_RANGE);
 		midiChannelEEnum = createEEnum(MIDI_CHANNEL);
+		playLevelEEnum = createEEnum(PLAY_LEVEL);
 		patternNumberEEnum = createEEnum(PATTERN_NUMBER);
 		sampleNumberEEnum = createEEnum(SAMPLE_NUMBER);
 		songNumberEEnum = createEEnum(SONG_NUMBER);
@@ -3403,10 +3460,11 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getSample_End(), ecorePackage.getEInt(), "end", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_LoopStart(), ecorePackage.getEInt(), "loopStart", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_SampleRate(), ecorePackage.getEInt(), "sampleRate", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSample_SampleTune(), this.getSampleTune(), null, "sampleTune", null, 1, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_SampleTuneLeft(), ecorePackage.getEInt(), "sampleTuneLeft", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_SampleTuneRight(), ecorePackage.getEInt(), "sampleTuneRight", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_NumberOfSampleFrames(), ecorePackage.getEInt(), "numberOfSampleFrames", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_PlayLevel(), ecorePackage.getEByte(), "playLevel", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_PlayLevel(), this.getPlayLevel(), "playLevel", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_UnknownByte1(), ecorePackage.getEByte(), "unknownByte1", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_StretchStep(), this.getStretchStep(), "stretchStep", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_UnknownByte2(), ecorePackage.getEByte(), "unknownByte2", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3426,6 +3484,14 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEClass(sampleMonoEClass, SampleMono.class, "SampleMono", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(sampleStereoEClass, SampleStereo.class, "SampleStereo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(sampleTuneEClass, SampleTune.class, "SampleTune", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSampleTune_Value(), ecorePackage.getEFloat(), "value", null, 0, 1, SampleTune.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(sampleTuneEClass, ecorePackage.getEShort(), "getShortFromCurrentValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(sampleTuneEClass, null, "setCurrentValueFromShort", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEShort(), "packedShort", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(songEClass, Song.class, "Song", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSong_Name(), ecorePackage.getEString(), "name", null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3557,6 +3623,10 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEEnumLiteral(midiChannelEEnum, MidiChannel.CHANNEL_14);
 		addEEnumLiteral(midiChannelEEnum, MidiChannel.CHANNEL_15);
 		addEEnumLiteral(midiChannelEEnum, MidiChannel.CHANNEL_16);
+
+		initEEnum(playLevelEEnum, PlayLevel.class, "PlayLevel");
+		addEEnumLiteral(playLevelEEnum, PlayLevel.DB_0);
+		addEEnumLiteral(playLevelEEnum, PlayLevel.DB_1);
 
 		initEEnum(patternNumberEEnum, PatternNumber.class, "PatternNumber");
 		addEEnumLiteral(patternNumberEEnum, PatternNumber.PATTERN_A01);

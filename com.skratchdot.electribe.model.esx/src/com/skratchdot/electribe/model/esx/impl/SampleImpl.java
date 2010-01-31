@@ -24,15 +24,19 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.PlayLevel;
 import com.skratchdot.electribe.model.esx.Sample;
 import com.skratchdot.electribe.model.esx.SampleNumber;
+import com.skratchdot.electribe.model.esx.SampleTune;
 import com.skratchdot.electribe.model.esx.StretchStep;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
@@ -53,6 +57,7 @@ import com.skratchdot.electribe.model.esx.util.EsxUtil;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getEnd <em>End</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getLoopStart <em>Loop Start</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleRate <em>Sample Rate</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleTune <em>Sample Tune</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleTuneLeft <em>Sample Tune Left</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleTuneRight <em>Sample Tune Right</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getNumberOfSampleFrames <em>Number Of Sample Frames</em>}</li>
@@ -259,6 +264,16 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	protected int sampleRate = SAMPLE_RATE_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getSampleTune() <em>Sample Tune</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSampleTune()
+	 * @generated
+	 * @ordered
+	 */
+	protected SampleTune sampleTune;
+
+	/**
 	 * The default value of the '{@link #getSampleTuneLeft() <em>Sample Tune Left</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -326,7 +341,7 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final byte PLAY_LEVEL_EDEFAULT = 0x00;
+	protected static final PlayLevel PLAY_LEVEL_EDEFAULT = PlayLevel.DB_0;
 
 	/**
 	 * The cached value of the '{@link #getPlayLevel() <em>Play Level</em>}' attribute.
@@ -336,7 +351,7 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	 * @generated
 	 * @ordered
 	 */
-	protected byte playLevel = PLAY_LEVEL_EDEFAULT;
+	protected PlayLevel playLevel = PLAY_LEVEL_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getUnknownByte1() <em>Unknown Byte1</em>}' attribute.
@@ -895,6 +910,49 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public SampleTune getSampleTune() {
+		return sampleTune;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSampleTune(SampleTune newSampleTune, NotificationChain msgs) {
+		SampleTune oldSampleTune = sampleTune;
+		sampleTune = newSampleTune;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__SAMPLE_TUNE, oldSampleTune, newSampleTune);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSampleTune(SampleTune newSampleTune) {
+		if (newSampleTune != sampleTune) {
+			NotificationChain msgs = null;
+			if (sampleTune != null)
+				msgs = ((InternalEObject)sampleTune).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.SAMPLE__SAMPLE_TUNE, null, msgs);
+			if (newSampleTune != null)
+				msgs = ((InternalEObject)newSampleTune).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.SAMPLE__SAMPLE_TUNE, null, msgs);
+			msgs = basicSetSampleTune(newSampleTune, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__SAMPLE_TUNE, newSampleTune, newSampleTune));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int getSampleTuneLeft() {
 		return sampleTuneLeft;
 	}
@@ -958,7 +1016,7 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public byte getPlayLevel() {
+	public PlayLevel getPlayLevel() {
 		return playLevel;
 	}
 
@@ -967,9 +1025,9 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPlayLevel(byte newPlayLevel) {
-		byte oldPlayLevel = playLevel;
-		playLevel = newPlayLevel;
+	public void setPlayLevel(PlayLevel newPlayLevel) {
+		PlayLevel oldPlayLevel = playLevel;
+		playLevel = newPlayLevel == null ? PLAY_LEVEL_EDEFAULT : newPlayLevel;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__PLAY_LEVEL, oldPlayLevel, playLevel));
 	}
@@ -1182,6 +1240,20 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EsxPackage.SAMPLE__SAMPLE_TUNE:
+				return basicSetSampleTune(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public boolean isLoop() {
@@ -1267,6 +1339,8 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 				return getLoopStart();
 			case EsxPackage.SAMPLE__SAMPLE_RATE:
 				return getSampleRate();
+			case EsxPackage.SAMPLE__SAMPLE_TUNE:
+				return getSampleTune();
 			case EsxPackage.SAMPLE__SAMPLE_TUNE_LEFT:
 				return getSampleTuneLeft();
 			case EsxPackage.SAMPLE__SAMPLE_TUNE_RIGHT:
@@ -1344,6 +1418,9 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 			case EsxPackage.SAMPLE__SAMPLE_RATE:
 				setSampleRate((Integer)newValue);
 				return;
+			case EsxPackage.SAMPLE__SAMPLE_TUNE:
+				setSampleTune((SampleTune)newValue);
+				return;
 			case EsxPackage.SAMPLE__SAMPLE_TUNE_LEFT:
 				setSampleTuneLeft((Integer)newValue);
 				return;
@@ -1354,7 +1431,7 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 				setNumberOfSampleFrames((Integer)newValue);
 				return;
 			case EsxPackage.SAMPLE__PLAY_LEVEL:
-				setPlayLevel((Byte)newValue);
+				setPlayLevel((PlayLevel)newValue);
 				return;
 			case EsxPackage.SAMPLE__UNKNOWN_BYTE1:
 				setUnknownByte1((Byte)newValue);
@@ -1421,6 +1498,9 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 				return;
 			case EsxPackage.SAMPLE__SAMPLE_RATE:
 				setSampleRate(SAMPLE_RATE_EDEFAULT);
+				return;
+			case EsxPackage.SAMPLE__SAMPLE_TUNE:
+				setSampleTune((SampleTune)null);
 				return;
 			case EsxPackage.SAMPLE__SAMPLE_TUNE_LEFT:
 				setSampleTuneLeft(SAMPLE_TUNE_LEFT_EDEFAULT);
@@ -1491,6 +1571,8 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 				return loopStart != LOOP_START_EDEFAULT;
 			case EsxPackage.SAMPLE__SAMPLE_RATE:
 				return sampleRate != SAMPLE_RATE_EDEFAULT;
+			case EsxPackage.SAMPLE__SAMPLE_TUNE:
+				return sampleTune != null;
 			case EsxPackage.SAMPLE__SAMPLE_TUNE_LEFT:
 				return sampleTuneLeft != SAMPLE_TUNE_LEFT_EDEFAULT;
 			case EsxPackage.SAMPLE__SAMPLE_TUNE_RIGHT:

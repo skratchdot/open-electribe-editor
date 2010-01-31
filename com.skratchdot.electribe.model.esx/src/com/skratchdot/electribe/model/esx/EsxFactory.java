@@ -233,6 +233,15 @@ public interface EsxFactory extends EFactory {
 	 */
 	SampleStereo createSampleStereo();
 
+	/**
+	 * Returns a new object of class '<em>Sample Tune</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sample Tune</em>'.
+	 * @generated
+	 */
+	SampleTune createSampleTune();
+
 	SampleStereo createSampleStereoFromEsxFile(EsxRandomAccess in, int stereoSampleNumber) throws EsxException, IOException;
 
 	SampleStereo createSampleStereoFromAudioFile(File file) throws EsxException, IOException;
@@ -438,6 +447,26 @@ public interface EsxFactory extends EFactory {
 	 * @generated
 	 */
 	String convertMidiChannel(MidiChannel instanceValue);
+
+	/**
+	 * Returns an instance of data type '<em>Play Level</em>' corresponding the given literal.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param literal a literal of the data type.
+	 * @return a new instance value of the data type.
+	 * @generated
+	 */
+	PlayLevel createPlayLevel(String literal);
+
+	/**
+	 * Returns a literal representation of an instance of data type '<em>Play Level</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param instanceValue an instance value of the data type.
+	 * @return a literal representation of the instance value.
+	 * @generated
+	 */
+	String convertPlayLevel(PlayLevel instanceValue);
 
 	/**
 	 * Returns an instance of data type '<em>Pattern Number</em>' corresponding the given literal.

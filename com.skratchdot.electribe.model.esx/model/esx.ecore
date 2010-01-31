@@ -238,10 +238,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="loopStart" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sampleTune" lowerBound="1"
+        eType="#//SampleTune" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleTuneLeft" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleTuneRight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfSampleFrames" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="playLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="playLevel" eType="#//PlayLevel"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unknownByte1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="stretchStep" eType="#//StretchStep"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unknownByte2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
@@ -273,6 +275,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SampleMono" eSuperTypes="#//Sample"/>
   <eClassifiers xsi:type="ecore:EClass" name="SampleStereo" eSuperTypes="#//Sample"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SampleTune">
+    <eOperations name="getShortFromCurrentValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    <eOperations name="setCurrentValueFromShort">
+      <eParameters name="packedShort" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Song">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tempo" lowerBound="1" eType="#//Tempo"
@@ -421,6 +430,10 @@
     <eLiterals name="Channel_14" value="13" literal="14"/>
     <eLiterals name="Channel_15" value="14" literal="15"/>
     <eLiterals name="Channel_16" value="15" literal="16"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PlayLevel">
+    <eLiterals name="DB_0" literal="0 db"/>
+    <eLiterals name="DB_1" value="1" literal="+12 db"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="PatternNumber">
     <eLiterals name="Pattern_A01" literal="A01"/>

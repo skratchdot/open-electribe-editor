@@ -73,6 +73,10 @@
       <genEnumLiterals ecoreEnumLiteral="esx.ecore#//MidiChannel/Channel_15"/>
       <genEnumLiterals ecoreEnumLiteral="esx.ecore#//MidiChannel/Channel_16"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esx.ecore#//PlayLevel">
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//PlayLevel/DB_0"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//PlayLevel/DB_1"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esx.ecore#//PatternNumber">
       <genEnumLiterals ecoreEnumLiteral="esx.ecore#//PatternNumber/Pattern_A01"/>
       <genEnumLiterals ecoreEnumLiteral="esx.ecore#//PatternNumber/Pattern_A02"/>
@@ -784,6 +788,339 @@
       <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongNumber/Song_63"/>
       <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongNumber/Song_64"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esx.ecore#//SongLength">
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_001"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_002"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_003"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_004"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_005"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_006"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_007"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_008"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_009"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_010"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_011"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_012"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_013"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_014"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_015"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_016"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_017"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_018"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_019"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_020"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_021"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_022"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_023"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_024"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_025"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_026"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_027"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_028"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_029"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_030"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_031"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_032"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_033"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_034"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_035"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_036"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_037"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_038"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_039"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_040"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_041"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_042"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_043"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_044"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_045"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_046"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_047"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_048"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_049"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_050"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_051"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_052"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_053"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_054"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_055"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_056"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_057"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_058"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_059"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_060"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_061"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_062"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_063"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_064"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_065"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_066"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_067"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_068"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_069"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_070"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_071"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_072"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_073"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_074"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_075"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_076"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_077"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_078"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_079"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_080"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_081"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_082"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_083"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_084"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_085"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_086"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_087"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_088"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_089"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_090"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_091"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_092"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_093"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_094"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_095"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_096"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_097"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_098"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_099"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_100"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_101"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_102"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_103"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_104"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_105"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_106"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_107"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_108"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_109"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_110"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_111"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_112"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_113"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_114"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_115"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_116"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_117"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_118"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_119"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_120"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_121"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_122"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_123"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_124"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_125"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_126"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_127"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_128"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_129"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_130"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_131"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_132"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_133"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_134"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_135"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_136"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_137"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_138"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_139"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_140"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_141"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_142"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_143"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_144"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_145"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_146"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_147"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_148"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_149"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_150"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_151"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_152"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_153"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_154"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_155"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_156"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_157"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_158"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_159"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_160"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_161"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_162"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_163"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_164"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_165"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_166"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_167"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_168"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_169"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_170"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_171"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_172"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_173"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_174"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_175"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_176"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_177"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_178"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_179"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_180"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_181"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_182"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_183"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_184"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_185"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_186"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_187"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_188"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_189"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_190"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_191"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_192"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_193"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_194"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_195"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_196"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_197"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_198"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_199"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_200"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_201"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_202"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_203"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_204"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_205"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_206"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_207"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_208"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_209"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_210"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_211"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_212"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_213"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_214"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_215"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_216"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_217"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_218"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_219"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_220"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_221"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_222"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_223"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_224"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_225"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_226"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_227"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_228"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_229"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_230"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_231"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_232"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_233"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_234"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_235"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_236"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_237"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_238"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_239"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_240"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_241"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_242"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_243"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_244"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_245"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_246"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_247"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_248"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_249"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_250"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_251"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_252"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_253"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_254"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_255"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//SongLength/SONG_LENGTH_256"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esx.ecore#//TempoLock">
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//TempoLock/TEMPO_LOCK_OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//TempoLock/TEMPO_LOCK_ON"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esx.ecore#//MuteHold">
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//MuteHold/MUTE_HOLD_OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//MuteHold/MUTE_HOLD_ON"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esx.ecore#//NextSongNumber">
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_00"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_01"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_02"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_03"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_04"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_05"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_06"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_07"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_08"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_09"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_10"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_11"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_12"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_13"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_14"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_15"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_16"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_17"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_18"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_19"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_20"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_21"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_22"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_23"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_24"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_25"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_26"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_27"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_28"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_29"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_30"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_31"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_32"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_33"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_34"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_35"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_36"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_37"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_38"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_39"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_40"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_41"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_42"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_43"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_44"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_45"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_46"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_47"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_48"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_49"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_50"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_51"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_52"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_53"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_54"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_55"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_56"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_57"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_58"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_59"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_60"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_61"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_62"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_63"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NextSongNumber/NEXT_SONG_NUMBER_64"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esx.ecore#//StretchStep">
       <genEnumLiterals ecoreEnumLiteral="esx.ecore#//StretchStep/StretchStepOFF"/>
       <genEnumLiterals ecoreEnumLiteral="esx.ecore#//StretchStep/StretchStep001"/>
@@ -1232,6 +1569,11 @@
       <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference esx.ecore#//EsxFile/blankSong"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/memUsedInBytes"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/memFreeInBytes"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/numPatternsUsed"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/numSamplesUsed"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/numSamplesMonoUsed"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/numSamplesStereoUsed"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/numSongsUsed"/>
       <genOperations ecoreOperation="esx.ecore#//EsxFile/findFirstUnusedSample">
         <genParameters ecoreParameter="esx.ecore#//EsxFile/findFirstUnusedSample/searchMono"/>
         <genParameters ecoreParameter="esx.ecore#//EsxFile/findFirstUnusedSample/searchStereo"/>
@@ -1384,62 +1726,62 @@
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//Sample">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/offsetChannel1Start"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/offsetChannel1End"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/offsetChannel2Start"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/offsetChannel2End"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/offsetChannel1Start"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/offsetChannel1End"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/offsetChannel2Start"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/offsetChannel2End"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/start"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/end"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/loopStart"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/sampleRate"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/sampleTuneLeft"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/sampleTuneRight"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/numberOfSampleFrames"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/sampleRate"/>
+      <genFeatures property="Readonly" children="true" createChild="true" ecoreFeature="ecore:EReference esx.ecore#//Sample/sampleTune"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/sampleTuneLeft"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/sampleTuneRight"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/numberOfSampleFrames"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/playLevel"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/unknownByte1"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/unknownByte1"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/stretchStep"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/unknownByte2"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/unknownByte3"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/unknownByte4"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/audioDataChannel1"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/audioDataChannel2"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/sliceArray"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/unknownByte2"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/unknownByte3"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/unknownByte4"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/audioDataChannel1"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/audioDataChannel2"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/sliceArray"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/loop"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/slice"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/stereo"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/memUsedInBytes"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/beingUsed"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/sampleNumberOriginal"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/sampleNumberOriginal"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/sampleNumberCurrent"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//SampleMono"/>
     <genClasses ecoreClass="esx.ecore#//SampleStereo"/>
+    <genClasses ecoreClass="esx.ecore#//SampleTune">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SampleTune/value"/>
+      <genOperations ecoreOperation="esx.ecore#//SampleTune/getShortFromCurrentValue"/>
+      <genOperations ecoreOperation="esx.ecore#//SampleTune/setCurrentValueFromShort">
+        <genParameters ecoreParameter="esx.ecore#//SampleTune/setCurrentValueFromShort/packedShort"/>
+      </genOperations>
+    </genClasses>
     <genClasses ecoreClass="esx.ecore#//Song">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EReference esx.ecore#//Song/tempo"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/tempoLock"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/length"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/songLength"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/muteHold"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/nextSong"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/nextSongNumber"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/numberOfSongEvents"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/patternNumber"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/noteOffset"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esx.ecore#//Song/songPatterns"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esx.ecore#//Song/songEvents"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/beingUsed"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/songNumberOriginal"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/songNumberCurrent"/>
     </genClasses>
-    <genClasses ecoreClass="esx.ecore#//Tempo">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Tempo/packedValue"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Tempo/value"/>
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Tempo/valueLeft"/>
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Tempo/valueRight"/>
-      <genOperations ecoreOperation="esx.ecore#//Tempo/updateValue"/>
-      <genOperations ecoreOperation="esx.ecore#//Tempo/updatePackedValue"/>
-      <genOperations ecoreOperation="esx.ecore#//Tempo/validValue">
-        <genParameters ecoreParameter="esx.ecore#//Tempo/validValue/diagnostics"/>
-        <genParameters ecoreParameter="esx.ecore#//Tempo/validValue/context"/>
-      </genOperations>
+    <genClasses ecoreClass="esx.ecore#//SongPattern">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongPattern/patternNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongPattern/noteOffset"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongPattern/beingUsed"/>
     </genClasses>
     <genClasses image="false" ecoreClass="esx.ecore#//SongEvent">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongEvent/measure"/>
@@ -1470,6 +1812,18 @@
     <genClasses ecoreClass="esx.ecore#//SongEventMuteStatus">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongEventMuteStatus/reservedShort"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongEventMuteStatus/muteStatus"/>
+    </genClasses>
+    <genClasses ecoreClass="esx.ecore#//Tempo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Tempo/packedValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Tempo/value"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Tempo/valueLeft"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Tempo/valueRight"/>
+      <genOperations ecoreOperation="esx.ecore#//Tempo/updateValue"/>
+      <genOperations ecoreOperation="esx.ecore#//Tempo/updatePackedValue"/>
+      <genOperations ecoreOperation="esx.ecore#//Tempo/validValue">
+        <genParameters ecoreParameter="esx.ecore#//Tempo/validValue/diagnostics"/>
+        <genParameters ecoreParameter="esx.ecore#//Tempo/validValue/context"/>
+      </genOperations>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

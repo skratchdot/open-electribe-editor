@@ -278,6 +278,12 @@ public class EsxSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EsxPackage.SAMPLE_TUNE: {
+				SampleTune sampleTune = (SampleTune)theEObject;
+				T result = caseSampleTune(sampleTune);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EsxPackage.SONG: {
 				Song song = (Song)theEObject;
 				T result = caseSong(song);
@@ -751,6 +757,21 @@ public class EsxSwitch<T> {
 	 * @generated
 	 */
 	public T caseSampleStereo(SampleStereo object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sample Tune</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sample Tune</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSampleTune(SampleTune object) {
 		return null;
 	}
 

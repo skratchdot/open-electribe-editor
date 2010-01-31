@@ -158,6 +158,8 @@ public class EsxValidator extends EObjectValidator {
 				return validateSampleMono((SampleMono)value, diagnostics, context);
 			case EsxPackage.SAMPLE_STEREO:
 				return validateSampleStereo((SampleStereo)value, diagnostics, context);
+			case EsxPackage.SAMPLE_TUNE:
+				return validateSampleTune((SampleTune)value, diagnostics, context);
 			case EsxPackage.SONG:
 				return validateSong((Song)value, diagnostics, context);
 			case EsxPackage.SONG_PATTERN:
@@ -190,6 +192,8 @@ public class EsxValidator extends EObjectValidator {
 				return validatePitchBendRange((PitchBendRange)value, diagnostics, context);
 			case EsxPackage.MIDI_CHANNEL:
 				return validateMidiChannel((MidiChannel)value, diagnostics, context);
+			case EsxPackage.PLAY_LEVEL:
+				return validatePlayLevel((PlayLevel)value, diagnostics, context);
 			case EsxPackage.PATTERN_NUMBER:
 				return validatePatternNumber((PatternNumber)value, diagnostics, context);
 			case EsxPackage.SAMPLE_NUMBER:
@@ -501,6 +505,15 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateSampleTune(SampleTune sampleTune, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(sampleTune, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateSong(Song song, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(song, diagnostics, context);
 	}
@@ -688,6 +701,15 @@ public class EsxValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateMidiChannel(MidiChannel midiChannel, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePlayLevel(PlayLevel playLevel, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

@@ -521,6 +521,29 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link com.skratchdot.electribe.model.esx.SampleTune} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SampleTuneItemProvider sampleTuneItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.skratchdot.electribe.model.esx.SampleTune}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSampleTuneAdapter() {
+		if (sampleTuneItemProvider == null) {
+			sampleTuneItemProvider = new SampleTuneItemProvider(this);
+		}
+
+		return sampleTuneItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link com.skratchdot.electribe.model.esx.Song} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -822,6 +845,7 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 		if (patternItemProvider != null) patternItemProvider.dispose();
 		if (sampleMonoItemProvider != null) sampleMonoItemProvider.dispose();
 		if (sampleStereoItemProvider != null) sampleStereoItemProvider.dispose();
+		if (sampleTuneItemProvider != null) sampleTuneItemProvider.dispose();
 		if (songItemProvider != null) songItemProvider.dispose();
 		if (songPatternItemProvider != null) songPatternItemProvider.dispose();
 		if (songEventControlItemProvider != null) songEventControlItemProvider.dispose();

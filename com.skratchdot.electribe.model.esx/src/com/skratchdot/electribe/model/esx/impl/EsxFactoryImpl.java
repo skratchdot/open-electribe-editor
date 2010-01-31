@@ -145,6 +145,7 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 			case EsxPackage.PATTERN: return createPattern();
 			case EsxPackage.SAMPLE_MONO: return createSampleMono();
 			case EsxPackage.SAMPLE_STEREO: return createSampleStereo();
+			case EsxPackage.SAMPLE_TUNE: return createSampleTune();
 			case EsxPackage.SONG: return createSong();
 			case EsxPackage.SONG_PATTERN: return createSongPattern();
 			case EsxPackage.SONG_EVENT_CONTROL: return createSongEventControl();
@@ -178,6 +179,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return createPitchBendRangeFromString(eDataType, initialValue);
 			case EsxPackage.MIDI_CHANNEL:
 				return createMidiChannelFromString(eDataType, initialValue);
+			case EsxPackage.PLAY_LEVEL:
+				return createPlayLevelFromString(eDataType, initialValue);
 			case EsxPackage.PATTERN_NUMBER:
 				return createPatternNumberFromString(eDataType, initialValue);
 			case EsxPackage.SAMPLE_NUMBER:
@@ -261,6 +264,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return convertPitchBendRangeToString(eDataType, instanceValue);
 			case EsxPackage.MIDI_CHANNEL:
 				return convertMidiChannelToString(eDataType, instanceValue);
+			case EsxPackage.PLAY_LEVEL:
+				return convertPlayLevelToString(eDataType, instanceValue);
 			case EsxPackage.PATTERN_NUMBER:
 				return convertPatternNumberToString(eDataType, instanceValue);
 			case EsxPackage.SAMPLE_NUMBER:
@@ -595,6 +600,16 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	public SampleStereo createSampleStereo() {
 		SampleStereoImpl sampleStereo = new SampleStereoImpl();
 		return sampleStereo;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SampleTune createSampleTune() {
+		SampleTuneImpl sampleTune = new SampleTuneImpl();
+		return sampleTune;
 	}
 
 	public SampleStereo createSampleStereoFromEsxFile(EsxRandomAccess in,
@@ -951,6 +966,44 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public String convertMidiChannelToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PlayLevel createPlayLevel(String literal) {
+		PlayLevel result = PlayLevel.get(literal);
+		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.PLAY_LEVEL.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PlayLevel createPlayLevelFromString(EDataType eDataType, String initialValue) {
+		return createPlayLevel(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPlayLevel(PlayLevel instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPlayLevelToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

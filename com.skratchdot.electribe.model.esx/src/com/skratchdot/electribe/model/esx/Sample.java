@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getEnd <em>End</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getLoopStart <em>Loop Start</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleRate <em>Sample Rate</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleTune <em>Sample Tune</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleTuneLeft <em>Sample Tune Left</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleTuneRight <em>Sample Tune Right</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getNumberOfSampleFrames <em>Number Of Sample Frames</em>}</li>
@@ -342,6 +343,32 @@ public interface Sample extends EObject {
 	void setSampleRate(int value);
 
 	/**
+	 * Returns the value of the '<em><b>Sample Tune</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sample Tune</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sample Tune</em>' containment reference.
+	 * @see #setSampleTune(SampleTune)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_SampleTune()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	SampleTune getSampleTune();
+
+	/**
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Sample#getSampleTune <em>Sample Tune</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Sample Tune</em>' containment reference.
+	 * @see #getSampleTune()
+	 * @generated
+	 */
+	void setSampleTune(SampleTune value);
+
+	/**
 	 * Returns the value of the '<em><b>Sample Tune Left</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -421,6 +448,7 @@ public interface Sample extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Play Level</b></em>' attribute.
+	 * The literals are from the enumeration {@link com.skratchdot.electribe.model.esx.PlayLevel}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Play Level</em>' attribute isn't clear,
@@ -428,22 +456,24 @@ public interface Sample extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Play Level</em>' attribute.
-	 * @see #setPlayLevel(byte)
+	 * @see com.skratchdot.electribe.model.esx.PlayLevel
+	 * @see #setPlayLevel(PlayLevel)
 	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_PlayLevel()
 	 * @model
 	 * @generated
 	 */
-	byte getPlayLevel();
+	PlayLevel getPlayLevel();
 
 	/**
 	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Sample#getPlayLevel <em>Play Level</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Play Level</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.PlayLevel
 	 * @see #getPlayLevel()
 	 * @generated
 	 */
-	void setPlayLevel(byte value);
+	void setPlayLevel(PlayLevel value);
 
 	/**
 	 * Returns the value of the '<em><b>Unknown Byte1</b></em>' attribute.

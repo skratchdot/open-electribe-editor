@@ -12,6 +12,7 @@
 package com.skratchdot.electribe.model.esx.provider;
 
 
+import com.skratchdot.electribe.model.esx.EsxFactory;
 import java.util.Collection;
 import java.util.List;
 
@@ -72,26 +73,16 @@ public class SampleItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addOffsetChannel1StartPropertyDescriptor(object);
-			addOffsetChannel1EndPropertyDescriptor(object);
-			addOffsetChannel2StartPropertyDescriptor(object);
-			addOffsetChannel2EndPropertyDescriptor(object);
 			addStartPropertyDescriptor(object);
 			addEndPropertyDescriptor(object);
 			addLoopStartPropertyDescriptor(object);
 			addSampleRatePropertyDescriptor(object);
+			addSampleTunePropertyDescriptor(object);
 			addSampleTuneLeftPropertyDescriptor(object);
 			addSampleTuneRightPropertyDescriptor(object);
 			addNumberOfSampleFramesPropertyDescriptor(object);
 			addPlayLevelPropertyDescriptor(object);
-			addUnknownByte1PropertyDescriptor(object);
 			addStretchStepPropertyDescriptor(object);
-			addUnknownByte2PropertyDescriptor(object);
-			addUnknownByte3PropertyDescriptor(object);
-			addUnknownByte4PropertyDescriptor(object);
-			addAudioDataChannel1PropertyDescriptor(object);
-			addAudioDataChannel2PropertyDescriptor(object);
-			addSliceArrayPropertyDescriptor(object);
 			addLoopPropertyDescriptor(object);
 			addSlicePropertyDescriptor(object);
 			addStereoPropertyDescriptor(object);
@@ -192,94 +183,6 @@ public class SampleItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Offset Channel1 Start feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOffsetChannel1StartPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Sample_offsetChannel1Start_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_offsetChannel1Start_feature", "_UI_Sample_type"),
-				 EsxPackage.Literals.SAMPLE__OFFSET_CHANNEL1_START,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Offset Channel1 End feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOffsetChannel1EndPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Sample_offsetChannel1End_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_offsetChannel1End_feature", "_UI_Sample_type"),
-				 EsxPackage.Literals.SAMPLE__OFFSET_CHANNEL1_END,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Offset Channel2 Start feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOffsetChannel2StartPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Sample_offsetChannel2Start_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_offsetChannel2Start_feature", "_UI_Sample_type"),
-				 EsxPackage.Literals.SAMPLE__OFFSET_CHANNEL2_START,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Offset Channel2 End feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOffsetChannel2EndPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Sample_offsetChannel2End_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_offsetChannel2End_feature", "_UI_Sample_type"),
-				 EsxPackage.Literals.SAMPLE__OFFSET_CHANNEL2_END,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Start feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -359,10 +262,32 @@ public class SampleItemProvider
 				 getString("_UI_Sample_sampleRate_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_sampleRate_feature", "_UI_Sample_type"),
 				 EsxPackage.Literals.SAMPLE__SAMPLE_RATE,
-				 true,
+				 false,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Sample Tune feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSampleTunePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sample_sampleTune_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_sampleTune_feature", "_UI_Sample_type"),
+				 EsxPackage.Literals.SAMPLE__SAMPLE_TUNE,
+				 false,
+				 false,
+				 false,
+				 null,
 				 null,
 				 null));
 	}
@@ -381,7 +306,7 @@ public class SampleItemProvider
 				 getString("_UI_Sample_sampleTuneLeft_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_sampleTuneLeft_feature", "_UI_Sample_type"),
 				 EsxPackage.Literals.SAMPLE__SAMPLE_TUNE_LEFT,
-				 true,
+				 false,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
@@ -403,7 +328,7 @@ public class SampleItemProvider
 				 getString("_UI_Sample_sampleTuneRight_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_sampleTuneRight_feature", "_UI_Sample_type"),
 				 EsxPackage.Literals.SAMPLE__SAMPLE_TUNE_RIGHT,
-				 true,
+				 false,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
@@ -425,7 +350,7 @@ public class SampleItemProvider
 				 getString("_UI_Sample_numberOfSampleFrames_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_numberOfSampleFrames_feature", "_UI_Sample_type"),
 				 EsxPackage.Literals.SAMPLE__NUMBER_OF_SAMPLE_FRAMES,
-				 true,
+				 false,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
@@ -450,29 +375,7 @@ public class SampleItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Unknown Byte1 feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addUnknownByte1PropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Sample_unknownByte1_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_unknownByte1_feature", "_UI_Sample_type"),
-				 EsxPackage.Literals.SAMPLE__UNKNOWN_BYTE1,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -500,138 +403,6 @@ public class SampleItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Unknown Byte2 feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addUnknownByte2PropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Sample_unknownByte2_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_unknownByte2_feature", "_UI_Sample_type"),
-				 EsxPackage.Literals.SAMPLE__UNKNOWN_BYTE2,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Unknown Byte3 feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addUnknownByte3PropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Sample_unknownByte3_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_unknownByte3_feature", "_UI_Sample_type"),
-				 EsxPackage.Literals.SAMPLE__UNKNOWN_BYTE3,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Unknown Byte4 feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addUnknownByte4PropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Sample_unknownByte4_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_unknownByte4_feature", "_UI_Sample_type"),
-				 EsxPackage.Literals.SAMPLE__UNKNOWN_BYTE4,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Audio Data Channel1 feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addAudioDataChannel1PropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Sample_audioDataChannel1_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_audioDataChannel1_feature", "_UI_Sample_type"),
-				 EsxPackage.Literals.SAMPLE__AUDIO_DATA_CHANNEL1,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Audio Data Channel2 feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addAudioDataChannel2PropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Sample_audioDataChannel2_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_audioDataChannel2_feature", "_UI_Sample_type"),
-				 EsxPackage.Literals.SAMPLE__AUDIO_DATA_CHANNEL2,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Slice Array feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSliceArrayPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Sample_sliceArray_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_sliceArray_feature", "_UI_Sample_type"),
-				 EsxPackage.Literals.SAMPLE__SLICE_ARRAY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Sample Number Original feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -645,7 +416,7 @@ public class SampleItemProvider
 				 getString("_UI_Sample_sampleNumberOriginal_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_sampleNumberOriginal_feature", "_UI_Sample_type"),
 				 EsxPackage.Literals.SAMPLE__SAMPLE_NUMBER_ORIGINAL,
-				 true,
+				 false,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -673,6 +444,36 @@ public class SampleItemProvider
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
+	}
+
+	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(EsxPackage.Literals.SAMPLE__SAMPLE_TUNE);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -769,7 +570,7 @@ public class SampleItemProvider
 			// IsSlice?
 			case 7: return ((Sample) object).isSlice()?getString("_UI_Display_Yes"):getString("_UI_Display_No");
 			// PlayLevel
-			case 8: return Integer.toString(((Sample) object).getPlayLevel());
+			case 8: return ((Sample) object).getPlayLevel().getLiteral();
 			// Start
 			case 9: return Integer.toString(((Sample) object).getStart());
 			// End
@@ -824,6 +625,9 @@ public class SampleItemProvider
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_CURRENT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
+			case EsxPackage.SAMPLE__SAMPLE_TUNE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -838,6 +642,11 @@ public class SampleItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EsxPackage.Literals.SAMPLE__SAMPLE_TUNE,
+				 EsxFactory.eINSTANCE.createSampleTune()));
 	}
 
 	/**

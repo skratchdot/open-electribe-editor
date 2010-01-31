@@ -17,6 +17,7 @@ import java.io.IOException;
 import org.eclipse.emf.ecore.EClass;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.PlayLevel;
 import com.skratchdot.electribe.model.esx.SampleMono;
 import com.skratchdot.electribe.model.esx.SampleNumber;
 import com.skratchdot.electribe.model.esx.StretchStep;
@@ -76,7 +77,7 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 		// byte 33
 		this.setSampleTuneRight(in.readByte());
 		// byte 34
-		this.setPlayLevel(in.readByte());
+		this.setPlayLevel(PlayLevel.get(in.readByte()));
 		// byte 35
 		this.setUnknownByte1(in.readByte());
 		// byte 36
@@ -165,7 +166,7 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 		// byte 33
 		out.writeByte(this.getSampleTuneRight());
 		// byte 34
-		out.writeByte(this.getPlayLevel());
+		out.writeByte(this.getPlayLevel().getValue());
 		// byte 35
 		out.writeByte(this.getUnknownByte1());
 		// byte 36

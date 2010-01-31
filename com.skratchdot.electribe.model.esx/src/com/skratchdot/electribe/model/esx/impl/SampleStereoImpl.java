@@ -17,6 +17,7 @@ import java.io.IOException;
 import org.eclipse.emf.ecore.EClass;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.PlayLevel;
 import com.skratchdot.electribe.model.esx.SampleNumber;
 import com.skratchdot.electribe.model.esx.SampleStereo;
 import com.skratchdot.electribe.model.esx.StretchStep;
@@ -78,7 +79,7 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 		// byte 37
 		this.setSampleTuneRight(in.readByte());
 		// byte 38
-		this.setPlayLevel(in.readByte());
+		this.setPlayLevel(PlayLevel.get(in.readByte()));
 		// byte 39
 		this.setUnknownByte1(in.readByte());
 		// byte 40
@@ -173,7 +174,7 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 		// byte 37
 		out.writeByte(this.getSampleTuneRight());
 		// byte 38
-		out.writeByte(this.getPlayLevel());
+		out.writeByte(this.getPlayLevel().getValue());
 		// byte 39
 		out.writeByte(this.getUnknownByte1());
 		// byte 40

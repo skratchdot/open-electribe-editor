@@ -185,6 +185,10 @@ public class EsxAdapterFactory extends AdapterFactoryImpl {
 				return createSampleStereoAdapter();
 			}
 			@Override
+			public Adapter caseSampleTune(SampleTune object) {
+				return createSampleTuneAdapter();
+			}
+			@Override
 			public Adapter caseSong(Song object) {
 				return createSongAdapter();
 			}
@@ -619,6 +623,20 @@ public class EsxAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSampleStereoAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.skratchdot.electribe.model.esx.SampleTune <em>Sample Tune</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.skratchdot.electribe.model.esx.SampleTune
+	 * @generated
+	 */
+	public Adapter createSampleTuneAdapter() {
 		return null;
 	}
 
