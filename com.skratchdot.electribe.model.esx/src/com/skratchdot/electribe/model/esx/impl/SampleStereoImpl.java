@@ -16,10 +16,12 @@ import java.io.IOException;
 
 import org.eclipse.emf.ecore.EClass;
 
+import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.PlayLevel;
 import com.skratchdot.electribe.model.esx.SampleNumber;
 import com.skratchdot.electribe.model.esx.SampleStereo;
+import com.skratchdot.electribe.model.esx.SampleTune;
 import com.skratchdot.electribe.model.esx.StretchStep;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
@@ -74,10 +76,10 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 		this.setEnd(in.readInt());
 		// bytes 32~35
 		this.setSampleRate(in.readInt());
-		// byte 36
-		this.setSampleTuneLeft(in.readByte());
-		// byte 37
-		this.setSampleTuneRight(in.readByte());
+		// bytes 36~37
+		SampleTune newSampleTune = EsxFactory.eINSTANCE.createSampleTune();
+		newSampleTune.setCurrentValueFromShort(in.readShort());
+		this.setSampleTune(newSampleTune);
 		// byte 38
 		this.setPlayLevel(PlayLevel.get(in.readByte()));
 		// byte 39
@@ -169,10 +171,8 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 		out.writeInt(this.getEnd());
 		// bytes 32~35
 		out.writeInt(this.getSampleRate());
-		// byte 36
-		out.writeByte(this.getSampleTuneLeft());
-		// byte 37
-		out.writeByte(this.getSampleTuneRight());
+		// bytes 36~37
+		out.writeShort(this.getSampleTune().getShortFromCurrentValue());
 		// byte 38
 		out.writeByte(this.getPlayLevel().getValue());
 		// byte 39

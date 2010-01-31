@@ -1734,9 +1734,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/end"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/loopStart"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/sampleRate"/>
-      <genFeatures property="Readonly" children="true" createChild="true" ecoreFeature="ecore:EReference esx.ecore#//Sample/sampleTune"/>
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/sampleTuneLeft"/>
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/sampleTuneRight"/>
+      <genFeatures property="Readonly" children="true" createChild="false" ecoreFeature="ecore:EReference esx.ecore#//Sample/sampleTune"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/numberOfSampleFrames"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/playLevel"/>
       <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/unknownByte1"/>

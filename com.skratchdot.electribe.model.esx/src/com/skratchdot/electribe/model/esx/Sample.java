@@ -33,8 +33,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getLoopStart <em>Loop Start</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleRate <em>Sample Rate</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleTune <em>Sample Tune</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleTuneLeft <em>Sample Tune Left</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleTuneRight <em>Sample Tune Right</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getNumberOfSampleFrames <em>Number Of Sample Frames</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getPlayLevel <em>Play Level</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByte1 <em>Unknown Byte1</em>}</li>
@@ -367,58 +365,6 @@ public interface Sample extends EObject {
 	 * @generated
 	 */
 	void setSampleTune(SampleTune value);
-
-	/**
-	 * Returns the value of the '<em><b>Sample Tune Left</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Sample Tune Left</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sample Tune Left</em>' attribute.
-	 * @see #setSampleTuneLeft(int)
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_SampleTuneLeft()
-	 * @model
-	 * @generated
-	 */
-	int getSampleTuneLeft();
-
-	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Sample#getSampleTuneLeft <em>Sample Tune Left</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Sample Tune Left</em>' attribute.
-	 * @see #getSampleTuneLeft()
-	 * @generated
-	 */
-	void setSampleTuneLeft(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Sample Tune Right</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Sample Tune Right</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sample Tune Right</em>' attribute.
-	 * @see #setSampleTuneRight(int)
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_SampleTuneRight()
-	 * @model
-	 * @generated
-	 */
-	int getSampleTuneRight();
-
-	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Sample#getSampleTuneRight <em>Sample Tune Right</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Sample Tune Right</em>' attribute.
-	 * @see #getSampleTuneRight()
-	 * @generated
-	 */
-	void setSampleTuneRight(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Number Of Sample Frames</b></em>' attribute.

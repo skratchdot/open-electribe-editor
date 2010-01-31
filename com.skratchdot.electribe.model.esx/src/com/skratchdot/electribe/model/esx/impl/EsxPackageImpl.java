@@ -1879,15 +1879,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_BeingUsed() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(26);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSample_Stereo() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(24);
 	}
 
@@ -1896,8 +1887,17 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSample_Stereo() {
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(22);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getSample_MemUsedInBytes() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(25);
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(23);
 	}
 
 	/**
@@ -1986,7 +1986,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_SampleTuneLeft() {
+	public EAttribute getSample_NumberOfSampleFrames() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -1995,7 +1995,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_SampleTuneRight() {
+	public EAttribute getSample_PlayLevel() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -2004,7 +2004,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_NumberOfSampleFrames() {
+	public EAttribute getSample_UnknownByte1() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -2013,7 +2013,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_PlayLevel() {
+	public EAttribute getSample_StretchStep() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(13);
 	}
 
@@ -2022,7 +2022,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_UnknownByte1() {
+	public EAttribute getSample_UnknownByte2() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(14);
 	}
 
@@ -2031,7 +2031,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_StretchStep() {
+	public EAttribute getSample_UnknownByte3() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(15);
 	}
 
@@ -2040,7 +2040,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_UnknownByte2() {
+	public EAttribute getSample_UnknownByte4() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(16);
 	}
 
@@ -2049,7 +2049,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_UnknownByte3() {
+	public EAttribute getSample_AudioDataChannel1() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(17);
 	}
 
@@ -2058,7 +2058,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_UnknownByte4() {
+	public EAttribute getSample_AudioDataChannel2() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(18);
 	}
 
@@ -2067,7 +2067,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_AudioDataChannel1() {
+	public EAttribute getSample_SliceArray() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(19);
 	}
 
@@ -2076,26 +2076,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_AudioDataChannel2() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(20);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSample_SliceArray() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(21);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getSample_SampleNumberOriginal() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(27);
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(25);
 	}
 
 	/**
@@ -2104,7 +2086,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_SampleNumberCurrent() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(28);
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(26);
 	}
 
 	/**
@@ -2113,7 +2095,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_Loop() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(22);
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(20);
 	}
 
 	/**
@@ -2122,7 +2104,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_Slice() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(23);
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(21);
 	}
 
 	/**
@@ -3082,8 +3064,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(sampleEClass, SAMPLE__LOOP_START);
 		createEAttribute(sampleEClass, SAMPLE__SAMPLE_RATE);
 		createEReference(sampleEClass, SAMPLE__SAMPLE_TUNE);
-		createEAttribute(sampleEClass, SAMPLE__SAMPLE_TUNE_LEFT);
-		createEAttribute(sampleEClass, SAMPLE__SAMPLE_TUNE_RIGHT);
 		createEAttribute(sampleEClass, SAMPLE__NUMBER_OF_SAMPLE_FRAMES);
 		createEAttribute(sampleEClass, SAMPLE__PLAY_LEVEL);
 		createEAttribute(sampleEClass, SAMPLE__UNKNOWN_BYTE1);
@@ -3461,8 +3441,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getSample_LoopStart(), ecorePackage.getEInt(), "loopStart", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_SampleRate(), ecorePackage.getEInt(), "sampleRate", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSample_SampleTune(), this.getSampleTune(), null, "sampleTune", null, 1, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_SampleTuneLeft(), ecorePackage.getEInt(), "sampleTuneLeft", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_SampleTuneRight(), ecorePackage.getEInt(), "sampleTuneRight", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_NumberOfSampleFrames(), ecorePackage.getEInt(), "numberOfSampleFrames", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_PlayLevel(), this.getPlayLevel(), "playLevel", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_UnknownByte1(), ecorePackage.getEByte(), "unknownByte1", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

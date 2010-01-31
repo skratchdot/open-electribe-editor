@@ -58,8 +58,6 @@ import com.skratchdot.electribe.model.esx.util.EsxUtil;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getLoopStart <em>Loop Start</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleRate <em>Sample Rate</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleTune <em>Sample Tune</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleTuneLeft <em>Sample Tune Left</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleTuneRight <em>Sample Tune Right</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getNumberOfSampleFrames <em>Number Of Sample Frames</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getPlayLevel <em>Play Level</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getUnknownByte1 <em>Unknown Byte1</em>}</li>
@@ -272,46 +270,6 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	 * @ordered
 	 */
 	protected SampleTune sampleTune;
-
-	/**
-	 * The default value of the '{@link #getSampleTuneLeft() <em>Sample Tune Left</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSampleTuneLeft()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int SAMPLE_TUNE_LEFT_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getSampleTuneLeft() <em>Sample Tune Left</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSampleTuneLeft()
-	 * @generated
-	 * @ordered
-	 */
-	protected int sampleTuneLeft = SAMPLE_TUNE_LEFT_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getSampleTuneRight() <em>Sample Tune Right</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSampleTuneRight()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int SAMPLE_TUNE_RIGHT_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getSampleTuneRight() <em>Sample Tune Right</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSampleTuneRight()
-	 * @generated
-	 * @ordered
-	 */
-	protected int sampleTuneRight = SAMPLE_TUNE_RIGHT_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getNumberOfSampleFrames() <em>Number Of Sample Frames</em>}' attribute.
@@ -953,48 +911,6 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getSampleTuneLeft() {
-		return sampleTuneLeft;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSampleTuneLeft(int newSampleTuneLeft) {
-		int oldSampleTuneLeft = sampleTuneLeft;
-		sampleTuneLeft = newSampleTuneLeft;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__SAMPLE_TUNE_LEFT, oldSampleTuneLeft, sampleTuneLeft));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int getSampleTuneRight() {
-		return sampleTuneRight;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSampleTuneRight(int newSampleTuneRight) {
-		int oldSampleTuneRight = sampleTuneRight;
-		sampleTuneRight = newSampleTuneRight;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__SAMPLE_TUNE_RIGHT, oldSampleTuneRight, sampleTuneRight));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public int getNumberOfSampleFrames() {
 		return numberOfSampleFrames;
 	}
@@ -1341,10 +1257,6 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 				return getSampleRate();
 			case EsxPackage.SAMPLE__SAMPLE_TUNE:
 				return getSampleTune();
-			case EsxPackage.SAMPLE__SAMPLE_TUNE_LEFT:
-				return getSampleTuneLeft();
-			case EsxPackage.SAMPLE__SAMPLE_TUNE_RIGHT:
-				return getSampleTuneRight();
 			case EsxPackage.SAMPLE__NUMBER_OF_SAMPLE_FRAMES:
 				return getNumberOfSampleFrames();
 			case EsxPackage.SAMPLE__PLAY_LEVEL:
@@ -1421,12 +1333,6 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 			case EsxPackage.SAMPLE__SAMPLE_TUNE:
 				setSampleTune((SampleTune)newValue);
 				return;
-			case EsxPackage.SAMPLE__SAMPLE_TUNE_LEFT:
-				setSampleTuneLeft((Integer)newValue);
-				return;
-			case EsxPackage.SAMPLE__SAMPLE_TUNE_RIGHT:
-				setSampleTuneRight((Integer)newValue);
-				return;
 			case EsxPackage.SAMPLE__NUMBER_OF_SAMPLE_FRAMES:
 				setNumberOfSampleFrames((Integer)newValue);
 				return;
@@ -1502,12 +1408,6 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 			case EsxPackage.SAMPLE__SAMPLE_TUNE:
 				setSampleTune((SampleTune)null);
 				return;
-			case EsxPackage.SAMPLE__SAMPLE_TUNE_LEFT:
-				setSampleTuneLeft(SAMPLE_TUNE_LEFT_EDEFAULT);
-				return;
-			case EsxPackage.SAMPLE__SAMPLE_TUNE_RIGHT:
-				setSampleTuneRight(SAMPLE_TUNE_RIGHT_EDEFAULT);
-				return;
 			case EsxPackage.SAMPLE__NUMBER_OF_SAMPLE_FRAMES:
 				setNumberOfSampleFrames(NUMBER_OF_SAMPLE_FRAMES_EDEFAULT);
 				return;
@@ -1573,10 +1473,6 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 				return sampleRate != SAMPLE_RATE_EDEFAULT;
 			case EsxPackage.SAMPLE__SAMPLE_TUNE:
 				return sampleTune != null;
-			case EsxPackage.SAMPLE__SAMPLE_TUNE_LEFT:
-				return sampleTuneLeft != SAMPLE_TUNE_LEFT_EDEFAULT;
-			case EsxPackage.SAMPLE__SAMPLE_TUNE_RIGHT:
-				return sampleTuneRight != SAMPLE_TUNE_RIGHT_EDEFAULT;
 			case EsxPackage.SAMPLE__NUMBER_OF_SAMPLE_FRAMES:
 				return numberOfSampleFrames != NUMBER_OF_SAMPLE_FRAMES_EDEFAULT;
 			case EsxPackage.SAMPLE__PLAY_LEVEL:
@@ -1643,10 +1539,6 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 		result.append(loopStart);
 		result.append(", sampleRate: ");
 		result.append(sampleRate);
-		result.append(", sampleTuneLeft: ");
-		result.append(sampleTuneLeft);
-		result.append(", sampleTuneRight: ");
-		result.append(sampleTuneRight);
 		result.append(", numberOfSampleFrames: ");
 		result.append(numberOfSampleFrames);
 		result.append(", playLevel: ");

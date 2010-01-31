@@ -2450,31 +2450,13 @@ public interface EsxPackage extends EPackage {
 	int SAMPLE__SAMPLE_TUNE = 9;
 
 	/**
-	 * The feature id for the '<em><b>Sample Tune Left</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SAMPLE__SAMPLE_TUNE_LEFT = 10;
-
-	/**
-	 * The feature id for the '<em><b>Sample Tune Right</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SAMPLE__SAMPLE_TUNE_RIGHT = 11;
-
-	/**
 	 * The feature id for the '<em><b>Number Of Sample Frames</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__NUMBER_OF_SAMPLE_FRAMES = 12;
+	int SAMPLE__NUMBER_OF_SAMPLE_FRAMES = 10;
 
 	/**
 	 * The feature id for the '<em><b>Play Level</b></em>' attribute.
@@ -2483,7 +2465,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__PLAY_LEVEL = 13;
+	int SAMPLE__PLAY_LEVEL = 11;
 
 	/**
 	 * The feature id for the '<em><b>Unknown Byte1</b></em>' attribute.
@@ -2492,7 +2474,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__UNKNOWN_BYTE1 = 14;
+	int SAMPLE__UNKNOWN_BYTE1 = 12;
 
 	/**
 	 * The feature id for the '<em><b>Stretch Step</b></em>' attribute.
@@ -2501,7 +2483,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__STRETCH_STEP = 15;
+	int SAMPLE__STRETCH_STEP = 13;
 
 	/**
 	 * The feature id for the '<em><b>Unknown Byte2</b></em>' attribute.
@@ -2510,7 +2492,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__UNKNOWN_BYTE2 = 16;
+	int SAMPLE__UNKNOWN_BYTE2 = 14;
 
 	/**
 	 * The feature id for the '<em><b>Unknown Byte3</b></em>' attribute.
@@ -2519,7 +2501,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__UNKNOWN_BYTE3 = 17;
+	int SAMPLE__UNKNOWN_BYTE3 = 15;
 
 	/**
 	 * The feature id for the '<em><b>Unknown Byte4</b></em>' attribute.
@@ -2528,7 +2510,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__UNKNOWN_BYTE4 = 18;
+	int SAMPLE__UNKNOWN_BYTE4 = 16;
 
 	/**
 	 * The feature id for the '<em><b>Audio Data Channel1</b></em>' attribute.
@@ -2537,7 +2519,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__AUDIO_DATA_CHANNEL1 = 19;
+	int SAMPLE__AUDIO_DATA_CHANNEL1 = 17;
 
 	/**
 	 * The feature id for the '<em><b>Audio Data Channel2</b></em>' attribute.
@@ -2546,7 +2528,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__AUDIO_DATA_CHANNEL2 = 20;
+	int SAMPLE__AUDIO_DATA_CHANNEL2 = 18;
 
 	/**
 	 * The feature id for the '<em><b>Slice Array</b></em>' attribute.
@@ -2555,7 +2537,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__SLICE_ARRAY = 21;
+	int SAMPLE__SLICE_ARRAY = 19;
 
 	/**
 	 * The feature id for the '<em><b>Loop</b></em>' attribute.
@@ -2564,7 +2546,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__LOOP = 22;
+	int SAMPLE__LOOP = 20;
 
 	/**
 	 * The feature id for the '<em><b>Slice</b></em>' attribute.
@@ -2573,7 +2555,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__SLICE = 23;
+	int SAMPLE__SLICE = 21;
 
 	/**
 	 * The feature id for the '<em><b>Stereo</b></em>' attribute.
@@ -2582,7 +2564,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__STEREO = 24;
+	int SAMPLE__STEREO = 22;
 
 	/**
 	 * The feature id for the '<em><b>Mem Used In Bytes</b></em>' attribute.
@@ -2591,7 +2573,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__MEM_USED_IN_BYTES = 25;
+	int SAMPLE__MEM_USED_IN_BYTES = 23;
 
 	/**
 	 * The feature id for the '<em><b>Being Used</b></em>' attribute.
@@ -2600,7 +2582,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__BEING_USED = 26;
+	int SAMPLE__BEING_USED = 24;
 
 	/**
 	 * The feature id for the '<em><b>Sample Number Original</b></em>' attribute.
@@ -2609,7 +2591,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__SAMPLE_NUMBER_ORIGINAL = 27;
+	int SAMPLE__SAMPLE_NUMBER_ORIGINAL = 25;
 
 	/**
 	 * The feature id for the '<em><b>Sample Number Current</b></em>' attribute.
@@ -2618,7 +2600,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__SAMPLE_NUMBER_CURRENT = 28;
+	int SAMPLE__SAMPLE_NUMBER_CURRENT = 26;
 
 	/**
 	 * The number of structural features of the '<em>Sample</em>' class.
@@ -2627,7 +2609,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE_FEATURE_COUNT = 29;
+	int SAMPLE_FEATURE_COUNT = 27;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.SampleMonoImpl <em>Sample Mono</em>}' class.
@@ -2728,24 +2710,6 @@ public interface EsxPackage extends EPackage {
 	 * @ordered
 	 */
 	int SAMPLE_MONO__SAMPLE_TUNE = SAMPLE__SAMPLE_TUNE;
-
-	/**
-	 * The feature id for the '<em><b>Sample Tune Left</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SAMPLE_MONO__SAMPLE_TUNE_LEFT = SAMPLE__SAMPLE_TUNE_LEFT;
-
-	/**
-	 * The feature id for the '<em><b>Sample Tune Right</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SAMPLE_MONO__SAMPLE_TUNE_RIGHT = SAMPLE__SAMPLE_TUNE_RIGHT;
 
 	/**
 	 * The feature id for the '<em><b>Number Of Sample Frames</b></em>' attribute.
@@ -3008,24 +2972,6 @@ public interface EsxPackage extends EPackage {
 	 * @ordered
 	 */
 	int SAMPLE_STEREO__SAMPLE_TUNE = SAMPLE__SAMPLE_TUNE;
-
-	/**
-	 * The feature id for the '<em><b>Sample Tune Left</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SAMPLE_STEREO__SAMPLE_TUNE_LEFT = SAMPLE__SAMPLE_TUNE_LEFT;
-
-	/**
-	 * The feature id for the '<em><b>Sample Tune Right</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SAMPLE_STEREO__SAMPLE_TUNE_RIGHT = SAMPLE__SAMPLE_TUNE_RIGHT;
 
 	/**
 	 * The feature id for the '<em><b>Number Of Sample Frames</b></em>' attribute.
@@ -5834,28 +5780,6 @@ public interface EsxPackage extends EPackage {
 	EReference getSample_SampleTune();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Sample#getSampleTuneLeft <em>Sample Tune Left</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Sample Tune Left</em>'.
-	 * @see com.skratchdot.electribe.model.esx.Sample#getSampleTuneLeft()
-	 * @see #getSample()
-	 * @generated
-	 */
-	EAttribute getSample_SampleTuneLeft();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Sample#getSampleTuneRight <em>Sample Tune Right</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Sample Tune Right</em>'.
-	 * @see com.skratchdot.electribe.model.esx.Sample#getSampleTuneRight()
-	 * @see #getSample()
-	 * @generated
-	 */
-	EAttribute getSample_SampleTuneRight();
-
-	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Sample#getNumberOfSampleFrames <em>Number Of Sample Frames</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8112,22 +8036,6 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SAMPLE__SAMPLE_TUNE = eINSTANCE.getSample_SampleTune();
-
-		/**
-		 * The meta object literal for the '<em><b>Sample Tune Left</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SAMPLE__SAMPLE_TUNE_LEFT = eINSTANCE.getSample_SampleTuneLeft();
-
-		/**
-		 * The meta object literal for the '<em><b>Sample Tune Right</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SAMPLE__SAMPLE_TUNE_RIGHT = eINSTANCE.getSample_SampleTuneRight();
 
 		/**
 		 * The meta object literal for the '<em><b>Number Of Sample Frames</b></em>' attribute feature.

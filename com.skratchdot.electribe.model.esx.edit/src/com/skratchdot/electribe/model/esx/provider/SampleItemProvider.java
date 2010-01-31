@@ -78,8 +78,6 @@ public class SampleItemProvider
 			addLoopStartPropertyDescriptor(object);
 			addSampleRatePropertyDescriptor(object);
 			addSampleTunePropertyDescriptor(object);
-			addSampleTuneLeftPropertyDescriptor(object);
-			addSampleTuneRightPropertyDescriptor(object);
 			addNumberOfSampleFramesPropertyDescriptor(object);
 			addPlayLevelPropertyDescriptor(object);
 			addStretchStepPropertyDescriptor(object);
@@ -288,50 +286,6 @@ public class SampleItemProvider
 				 false,
 				 false,
 				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Sample Tune Left feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSampleTuneLeftPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Sample_sampleTuneLeft_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_sampleTuneLeft_feature", "_UI_Sample_type"),
-				 EsxPackage.Literals.SAMPLE__SAMPLE_TUNE_LEFT,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Sample Tune Right feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSampleTuneRightPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Sample_sampleTuneRight_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_sampleTuneRight_feature", "_UI_Sample_type"),
-				 EsxPackage.Literals.SAMPLE__SAMPLE_TUNE_RIGHT,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -604,8 +558,6 @@ public class SampleItemProvider
 			case EsxPackage.SAMPLE__END:
 			case EsxPackage.SAMPLE__LOOP_START:
 			case EsxPackage.SAMPLE__SAMPLE_RATE:
-			case EsxPackage.SAMPLE__SAMPLE_TUNE_LEFT:
-			case EsxPackage.SAMPLE__SAMPLE_TUNE_RIGHT:
 			case EsxPackage.SAMPLE__NUMBER_OF_SAMPLE_FRAMES:
 			case EsxPackage.SAMPLE__PLAY_LEVEL:
 			case EsxPackage.SAMPLE__UNKNOWN_BYTE1:
@@ -642,11 +594,6 @@ public class SampleItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(EsxPackage.Literals.SAMPLE__SAMPLE_TUNE,
-				 EsxFactory.eINSTANCE.createSampleTune()));
 	}
 
 	/**

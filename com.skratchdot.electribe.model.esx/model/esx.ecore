@@ -240,8 +240,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sampleTune" lowerBound="1"
         eType="#//SampleTune" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleTuneLeft" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleTuneRight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfSampleFrames" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="playLevel" eType="#//PlayLevel"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unknownByte1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>

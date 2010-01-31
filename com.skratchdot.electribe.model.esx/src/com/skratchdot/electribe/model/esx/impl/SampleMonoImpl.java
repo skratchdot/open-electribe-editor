@@ -16,10 +16,12 @@ import java.io.IOException;
 
 import org.eclipse.emf.ecore.EClass;
 
+import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.PlayLevel;
 import com.skratchdot.electribe.model.esx.SampleMono;
 import com.skratchdot.electribe.model.esx.SampleNumber;
+import com.skratchdot.electribe.model.esx.SampleTune;
 import com.skratchdot.electribe.model.esx.StretchStep;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
@@ -72,10 +74,10 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 		this.setLoopStart(in.readInt());
 		// bytes 28~31
 		this.setSampleRate(in.readInt());
-		// byte 32
-		this.setSampleTuneLeft(in.readByte());
-		// byte 33
-		this.setSampleTuneRight(in.readByte());
+		// bytes 32~33
+		SampleTune newSampleTune = EsxFactory.eINSTANCE.createSampleTune();
+		newSampleTune.setCurrentValueFromShort(in.readShort());
+		this.setSampleTune(newSampleTune);
 		// byte 34
 		this.setPlayLevel(PlayLevel.get(in.readByte()));
 		// byte 35
@@ -161,10 +163,8 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 		out.writeInt(this.getLoopStart());
 		// bytes 28~31
 		out.writeInt(this.getSampleRate());
-		// byte 32
-		out.writeByte(this.getSampleTuneLeft());
-		// byte 33
-		out.writeByte(this.getSampleTuneRight());
+		// bytes 32~33
+		out.writeShort(this.getSampleTune().getShortFromCurrentValue());
 		// byte 34
 		out.writeByte(this.getPlayLevel().getValue());
 		// byte 35
