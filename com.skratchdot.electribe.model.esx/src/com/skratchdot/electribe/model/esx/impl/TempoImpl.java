@@ -11,23 +11,14 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
-import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.Tempo;
-import com.skratchdot.electribe.model.esx.util.EsxValidator;
-import java.util.Map;
-import com.skratchdot.electribe.model.esx.util.EsxUtil;
-
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.ecore.util.EObjectValidator;
+
+import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.Tempo;
+import com.skratchdot.electribe.model.esx.util.EsxUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,36 +27,13 @@ import org.eclipse.emf.ecore.util.EObjectValidator;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.TempoImpl#getPackedValue <em>Packed Value</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.TempoImpl#getValue <em>Value</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.TempoImpl#getValueLeft <em>Value Left</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.TempoImpl#getValueRight <em>Value Right</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class TempoImpl extends EObjectImpl implements Tempo {
-	/**
-	 * The default value of the '{@link #getPackedValue() <em>Packed Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPackedValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int PACKED_VALUE_EDEFAULT = 15360;
-
-	/**
-	 * The cached value of the '{@link #getPackedValue() <em>Packed Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPackedValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected int packedValue = PACKED_VALUE_EDEFAULT;
-
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -74,7 +42,7 @@ public class TempoImpl extends EObjectImpl implements Tempo {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final float VALUE_EDEFAULT = 120.0F;
+	protected static final float VALUE_EDEFAULT = 0.0F;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -85,26 +53,6 @@ public class TempoImpl extends EObjectImpl implements Tempo {
 	 * @ordered
 	 */
 	protected float value = VALUE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getValueLeft() <em>Value Left</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueLeft()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int VALUE_LEFT_EDEFAULT = 0;
-
-	/**
-	 * The default value of the '{@link #getValueRight() <em>Value Right</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueRight()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int VALUE_RIGHT_EDEFAULT = 0;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -123,27 +71,6 @@ public class TempoImpl extends EObjectImpl implements Tempo {
 	@Override
 	protected EClass eStaticClass() {
 		return EsxPackage.Literals.TEMPO;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int getPackedValue() {
-		return packedValue;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPackedValue(int newPackedValue) {
-		int oldPackedValue = packedValue;
-		packedValue = newPackedValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.TEMPO__PACKED_VALUE, oldPackedValue, packedValue));
 	}
 
 	/**
@@ -172,10 +99,15 @@ public class TempoImpl extends EObjectImpl implements Tempo {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public int getValueLeft() {
-		// TODO: implement this method to return the 'Value Left' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		return (int) (this.getValue() / 1);
+	public short getShortFromCurrentValue() {
+		float tempoAbsolute = Math.abs(this.getValue());
+		int tempoWhole = (int) (tempoAbsolute / 1);
+		int tempoDecimal = (int) ((tempoAbsolute - tempoWhole) * 10);
+
+		int packedShort = 0;
+		packedShort = EsxUtil.packInt(packedShort, tempoWhole, 9, 7);
+		packedShort = EsxUtil.packInt(packedShort, tempoDecimal, 4, 0);
+		return (short) packedShort;
 	}
 
 	/**
@@ -183,62 +115,22 @@ public class TempoImpl extends EObjectImpl implements Tempo {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public int getValueRight() {
-		return (int) ((this.getValue() - this.getValueLeft()) * 10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void updateValue() {
+	public void setCurrentValueFromShort(short packedShort) {
 		// iiiiiiii i000ffff
-		int tempoWhole = EsxUtil.unpackInt(this.getPackedValue(), 9, 7);
-		int tempoDecimal = EsxUtil.unpackInt(this.getPackedValue(), 4, 0);
+		int tempoWhole = EsxUtil.unpackInt(packedShort, 9, 7);
+		int tempoDecimal = EsxUtil.unpackInt(packedShort, 4, 0);
+
+		// valid tempoDecimal values are between 0-9
+		if(tempoDecimal>9 || tempoDecimal<0) tempoDecimal = 0;
+
+		// valid tempoWhole values are between 20-300
+		if(tempoWhole<20) tempoWhole = 20;
+		if(tempoWhole>300) tempoWhole = 300;
+		
+		// Now construct the float value as a string
 		String tempoAsString = "" + tempoWhole + "." + tempoDecimal + "";
 		Float tempoAsFloat = new Float(tempoAsString);
 		this.setValue(tempoAsFloat.floatValue());
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void updatePackedValue() {
-		// iiiiiiii i000ffff
-		int tempoWhole = this.getValueLeft();
-		int tempoDecimal = this.getValueRight();
-		int temp = this.getPackedValue();
-		temp = EsxUtil.packInt(temp, tempoWhole, 9, 7);
-		temp = EsxUtil.packInt(temp, tempoDecimal, 4, 0);
-		this.setPackedValue(temp);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public boolean validValue(DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (this.getValueLeft() < 20 ||
-			this.getValueLeft() > 300 ||
-			this.getValueRight() < 0 ||
-			this.getValueRight() > 9
-		) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(new BasicDiagnostic
-						(Diagnostic.ERROR,
-						 EsxValidator.DIAGNOSTIC_SOURCE,
-						 EsxValidator.TEMPO__VALID_VALUE,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", new Object[] { "validValue", EObjectValidator.getObjectLabel(this, context) }),
-						 new Object [] { this }));
-			}
-			return false;
-		}
-		return true;
 	}
 
 	/**
@@ -249,14 +141,8 @@ public class TempoImpl extends EObjectImpl implements Tempo {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.TEMPO__PACKED_VALUE:
-				return getPackedValue();
 			case EsxPackage.TEMPO__VALUE:
 				return getValue();
-			case EsxPackage.TEMPO__VALUE_LEFT:
-				return getValueLeft();
-			case EsxPackage.TEMPO__VALUE_RIGHT:
-				return getValueRight();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -269,9 +155,6 @@ public class TempoImpl extends EObjectImpl implements Tempo {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.TEMPO__PACKED_VALUE:
-				setPackedValue((Integer)newValue);
-				return;
 			case EsxPackage.TEMPO__VALUE:
 				setValue((Float)newValue);
 				return;
@@ -287,9 +170,6 @@ public class TempoImpl extends EObjectImpl implements Tempo {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.TEMPO__PACKED_VALUE:
-				setPackedValue(PACKED_VALUE_EDEFAULT);
-				return;
 			case EsxPackage.TEMPO__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
@@ -305,14 +185,8 @@ public class TempoImpl extends EObjectImpl implements Tempo {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.TEMPO__PACKED_VALUE:
-				return packedValue != PACKED_VALUE_EDEFAULT;
 			case EsxPackage.TEMPO__VALUE:
 				return value != VALUE_EDEFAULT;
-			case EsxPackage.TEMPO__VALUE_LEFT:
-				return getValueLeft() != VALUE_LEFT_EDEFAULT;
-			case EsxPackage.TEMPO__VALUE_RIGHT:
-				return getValueRight() != VALUE_RIGHT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -327,9 +201,7 @@ public class TempoImpl extends EObjectImpl implements Tempo {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (packedValue: ");
-		result.append(packedValue);
-		result.append(", value: ");
+		result.append(" (value: ");
 		result.append(value);
 		result.append(')');
 		return result.toString();

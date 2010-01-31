@@ -11,18 +11,87 @@
  */
 package com.skratchdot.electribe.model.esx.util;
 
-import com.skratchdot.electribe.model.esx.*;
-
 import java.util.ArrayList;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.EObjectValidator;
+
+import com.skratchdot.electribe.model.esx.AmpEg;
+import com.skratchdot.electribe.model.esx.ArpeggiatorControl;
+import com.skratchdot.electribe.model.esx.ArpeggiatorScale;
+import com.skratchdot.electribe.model.esx.AudioInMode;
+import com.skratchdot.electribe.model.esx.Beat;
+import com.skratchdot.electribe.model.esx.BpmSync;
+import com.skratchdot.electribe.model.esx.EnabledFlag;
+import com.skratchdot.electribe.model.esx.EsxFile;
+import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.FilterType;
+import com.skratchdot.electribe.model.esx.FxChain;
+import com.skratchdot.electribe.model.esx.FxSelect;
+import com.skratchdot.electribe.model.esx.FxSend;
+import com.skratchdot.electribe.model.esx.FxType;
+import com.skratchdot.electribe.model.esx.GlobalParameters;
+import com.skratchdot.electribe.model.esx.LastStep;
+import com.skratchdot.electribe.model.esx.MidiChannel;
+import com.skratchdot.electribe.model.esx.MidiChannelType;
+import com.skratchdot.electribe.model.esx.MidiClock;
+import com.skratchdot.electribe.model.esx.MidiControlChangeAssignment;
+import com.skratchdot.electribe.model.esx.ModDest;
+import com.skratchdot.electribe.model.esx.ModType;
+import com.skratchdot.electribe.model.esx.MotionSequenceStatus;
+import com.skratchdot.electribe.model.esx.MuteHold;
+import com.skratchdot.electribe.model.esx.NextSongNumber;
+import com.skratchdot.electribe.model.esx.NoteNumber;
+import com.skratchdot.electribe.model.esx.ParametersFx;
+import com.skratchdot.electribe.model.esx.ParametersMotion;
+import com.skratchdot.electribe.model.esx.Part;
+import com.skratchdot.electribe.model.esx.PartAccent;
+import com.skratchdot.electribe.model.esx.PartAudioIn;
+import com.skratchdot.electribe.model.esx.PartDrum;
+import com.skratchdot.electribe.model.esx.PartKeyboard;
+import com.skratchdot.electribe.model.esx.PartNoteNumber;
+import com.skratchdot.electribe.model.esx.PartStretchSlice;
+import com.skratchdot.electribe.model.esx.PartWithCommon;
+import com.skratchdot.electribe.model.esx.PartWithPitch;
+import com.skratchdot.electribe.model.esx.PartWithSample;
+import com.skratchdot.electribe.model.esx.PartWithSequenceData;
+import com.skratchdot.electribe.model.esx.PartWithSequenceDataGate;
+import com.skratchdot.electribe.model.esx.PartWithSlice;
+import com.skratchdot.electribe.model.esx.Pattern;
+import com.skratchdot.electribe.model.esx.PatternLength;
+import com.skratchdot.electribe.model.esx.PatternNumber;
+import com.skratchdot.electribe.model.esx.PatternSetParameter;
+import com.skratchdot.electribe.model.esx.PitchBendRange;
+import com.skratchdot.electribe.model.esx.PlayLevel;
+import com.skratchdot.electribe.model.esx.Reverse;
+import com.skratchdot.electribe.model.esx.Roll;
+import com.skratchdot.electribe.model.esx.RollType;
+import com.skratchdot.electribe.model.esx.Sample;
+import com.skratchdot.electribe.model.esx.SampleMono;
+import com.skratchdot.electribe.model.esx.SampleNumber;
+import com.skratchdot.electribe.model.esx.SampleStereo;
+import com.skratchdot.electribe.model.esx.SampleTune;
+import com.skratchdot.electribe.model.esx.SequenceData;
+import com.skratchdot.electribe.model.esx.SequenceDataGate;
+import com.skratchdot.electribe.model.esx.SequenceDataNote;
+import com.skratchdot.electribe.model.esx.Song;
+import com.skratchdot.electribe.model.esx.SongEvent;
+import com.skratchdot.electribe.model.esx.SongEventControl;
+import com.skratchdot.electribe.model.esx.SongEventDrumNote;
+import com.skratchdot.electribe.model.esx.SongEventKeyboardNote;
+import com.skratchdot.electribe.model.esx.SongEventMuteStatus;
+import com.skratchdot.electribe.model.esx.SongEventTempo;
+import com.skratchdot.electribe.model.esx.SongEventWithPart;
+import com.skratchdot.electribe.model.esx.SongLength;
+import com.skratchdot.electribe.model.esx.SongNumber;
+import com.skratchdot.electribe.model.esx.SongPattern;
+import com.skratchdot.electribe.model.esx.StretchStep;
+import com.skratchdot.electribe.model.esx.Swing;
+import com.skratchdot.electribe.model.esx.Tempo;
+import com.skratchdot.electribe.model.esx.TempoLock;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,20 +120,12 @@ public class EsxValidator extends EObjectValidator {
 	public static final String DIAGNOSTIC_SOURCE = "com.skratchdot.electribe.model.esx";
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Valid Value' of 'Tempo'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int TEMPO__VALID_VALUE = 1;
-
-	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 1;
+	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 0;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants in a derived class.
@@ -532,66 +593,6 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTempo(Tempo tempo, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean result = validate_EveryMultiplicityConforms(tempo, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(tempo, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(tempo, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(tempo, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(tempo, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(tempo, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(tempo, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTempo_validRange(tempo, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTempo_validValue(tempo, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * Validates the validRange constraint of '<em>Tempo</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public boolean validateTempo_validRange(Tempo tempo, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO implement the constraint
-		// -> specify the condition that violates the constraint
-		// -> verify the diagnostic details, including severity, code, and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (tempo.getValueLeft() < 20 ||
-			tempo.getValueLeft() > 300 ||
-			tempo.getValueRight() < 0 ||
-			tempo.getValueRight() > 9
-			) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "validRange", getObjectLabel(tempo, context) },
-						 new Object[] { tempo },
-						 context));
-			}
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * Validates the validValue constraint of '<em>Tempo</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateTempo_validValue(Tempo tempo, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return tempo.validValue(diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateSongEvent(SongEvent songEvent, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(songEvent, diagnostics, context);
 	}
@@ -650,6 +651,15 @@ public class EsxValidator extends EObjectValidator {
 		return validate_EveryDefaultConstraint(songEventMuteStatus, diagnostics, context);
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTempo(Tempo tempo, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(tempo, diagnostics, context);
+	}
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

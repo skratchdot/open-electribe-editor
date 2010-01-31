@@ -122,7 +122,7 @@ public class SongItemProvider
 				 getString("_UI_Song_tempo_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Song_tempo_feature", "_UI_Song_type"),
 				 EsxPackage.Literals.SONG__TEMPO,
-				 true,
+				 false,
 				 false,
 				 false,
 				 null,

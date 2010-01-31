@@ -342,30 +342,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="muteStatus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Tempo">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="validRange"/>
-    </eAnnotations>
-    <eOperations name="updateValue"/>
-    <eOperations name="updatePackedValue"/>
-    <eOperations name="validValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
-      <eParameters name="context">
-        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
-          <eTypeArguments eClassifier="#//Object"/>
-          <eTypeArguments eClassifier="#//Object"/>
-        </eGenericType>
-      </eParameters>
+    <eOperations name="getShortFromCurrentValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    <eOperations name="setCurrentValueFromShort">
+      <eParameters name="packedShort" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="packedValue" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="15360"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
-        defaultValueLiteral="120.0"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueLeft" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
-        derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueRight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
-        derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ArpeggiatorControl">
     <eLiterals name="Normal"/>

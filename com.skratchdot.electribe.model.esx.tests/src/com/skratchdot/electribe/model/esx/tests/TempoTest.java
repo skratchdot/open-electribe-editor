@@ -23,18 +23,10 @@ import junit.textui.TestRunner;
  * A test case for the model object '<em><b>Tempo</b></em>'.
  * <!-- end-user-doc -->
  * <p>
- * The following features are tested:
- * <ul>
- *   <li>{@link com.skratchdot.electribe.model.esx.Tempo#getValueLeft() <em>Value Left</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Tempo#getValueRight() <em>Value Right</em>}</li>
- * </ul>
- * </p>
- * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link com.skratchdot.electribe.model.esx.Tempo#updateValue() <em>Update Value</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Tempo#updatePackedValue() <em>Update Packed Value</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Tempo#validValue(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Valid Value</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Tempo#getShortFromCurrentValue() <em>Get Short From Current Value</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Tempo#setCurrentValueFromShort(short) <em>Set Current Value From Short</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -111,65 +103,26 @@ public class TempoTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.Tempo#getValueLeft() <em>Value Left</em>}' feature getter.
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Tempo#getShortFromCurrentValue() <em>Get Short From Current Value</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.Tempo#getValueLeft()
+	 * @see com.skratchdot.electribe.model.esx.Tempo#getShortFromCurrentValue()
 	 * @generated
 	 */
-	public void testGetValueLeft() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.Tempo#getValueRight() <em>Value Right</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.Tempo#getValueRight()
-	 * @generated
-	 */
-	public void testGetValueRight() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.Tempo#updateValue() <em>Update Value</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.Tempo#updateValue()
-	 * @generated
-	 */
-	public void testUpdateValue() {
+	public void testGetShortFromCurrentValue() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();
 	}
 
 	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.Tempo#updatePackedValue() <em>Update Packed Value</em>}' operation.
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Tempo#setCurrentValueFromShort(short) <em>Set Current Value From Short</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.Tempo#updatePackedValue()
+	 * @see com.skratchdot.electribe.model.esx.Tempo#setCurrentValueFromShort(short)
 	 * @generated
 	 */
-	public void testUpdatePackedValue() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.Tempo#validValue(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Valid Value</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.Tempo#validValue(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	public void testValidValue__DiagnosticChain_Map() {
+	public void testSetCurrentValueFromShort__short() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

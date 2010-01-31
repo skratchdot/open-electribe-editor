@@ -538,9 +538,8 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 
 		// bytes 8~9
 		Tempo newTempo = EsxFactory.eINSTANCE.createTempo();
+		newTempo.setCurrentValueFromShort(in.readShort());
 		this.setTempo(newTempo);
-		this.getTempo().setPackedValue(in.readUnsignedShort());
-		this.getTempo().updateValue();
 
 		// byte 10
 		this.setSwing(Swing.get(in.readByte()));
@@ -1582,8 +1581,7 @@ MergeService.merge(differences, true);
 		// bytes 0~7
 		out.write(EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00), 0, 8);
 		// bytes 8~9
-		this.getTempo().updatePackedValue();
-		out.writeShort(this.getTempo().getPackedValue());
+		out.writeShort(this.getTempo().getShortFromCurrentValue());
 		// byte 10
 		out.writeByte(this.getSwing().getValue());
 		// byte 11

@@ -3823,40 +3823,13 @@ public interface EsxPackage extends EPackage {
 	int SONG_EVENT_MUTE_STATUS_FEATURE_COUNT = SONG_EVENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Packed Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPO__PACKED_VALUE = 0;
-
-	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPO__VALUE = 1;
-
-	/**
-	 * The feature id for the '<em><b>Value Left</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPO__VALUE_LEFT = 2;
-
-	/**
-	 * The feature id for the '<em><b>Value Right</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPO__VALUE_RIGHT = 3;
+	int TEMPO__VALUE = 0;
 
 	/**
 	 * The number of structural features of the '<em>Tempo</em>' class.
@@ -3865,7 +3838,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPO_FEATURE_COUNT = 4;
+	int TEMPO_FEATURE_COUNT = 1;
 
 
 	/**
@@ -6170,17 +6143,6 @@ public interface EsxPackage extends EPackage {
 	EClass getTempo();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Tempo#getPackedValue <em>Packed Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Packed Value</em>'.
-	 * @see com.skratchdot.electribe.model.esx.Tempo#getPackedValue()
-	 * @see #getTempo()
-	 * @generated
-	 */
-	EAttribute getTempo_PackedValue();
-
-	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Tempo#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6190,28 +6152,6 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTempo_Value();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Tempo#getValueLeft <em>Value Left</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value Left</em>'.
-	 * @see com.skratchdot.electribe.model.esx.Tempo#getValueLeft()
-	 * @see #getTempo()
-	 * @generated
-	 */
-	EAttribute getTempo_ValueLeft();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Tempo#getValueRight <em>Value Right</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value Right</em>'.
-	 * @see com.skratchdot.electribe.model.esx.Tempo#getValueRight()
-	 * @see #getTempo()
-	 * @generated
-	 */
-	EAttribute getTempo_ValueRight();
 
 	/**
 	 * Returns the meta object for class '{@link com.skratchdot.electribe.model.esx.SongEvent <em>Song Event</em>}'.
@@ -8338,36 +8278,12 @@ public interface EsxPackage extends EPackage {
 		EClass TEMPO = eINSTANCE.getTempo();
 
 		/**
-		 * The meta object literal for the '<em><b>Packed Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TEMPO__PACKED_VALUE = eINSTANCE.getTempo_PackedValue();
-
-		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute TEMPO__VALUE = eINSTANCE.getTempo_Value();
-
-		/**
-		 * The meta object literal for the '<em><b>Value Left</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TEMPO__VALUE_LEFT = eINSTANCE.getTempo_ValueLeft();
-
-		/**
-		 * The meta object literal for the '<em><b>Value Right</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TEMPO__VALUE_RIGHT = eINSTANCE.getTempo_ValueRight();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.SongEventImpl <em>Song Event</em>}' class.

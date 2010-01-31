@@ -11,6 +11,8 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
+import java.util.ArrayList;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -19,7 +21,6 @@ import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import com.skratchdot.electribe.model.esx.AmpEg;
@@ -96,8 +97,6 @@ import com.skratchdot.electribe.model.esx.StretchStep;
 import com.skratchdot.electribe.model.esx.Swing;
 import com.skratchdot.electribe.model.esx.Tempo;
 import com.skratchdot.electribe.model.esx.TempoLock;
-import com.skratchdot.electribe.model.esx.util.EsxValidator;
-import java.util.ArrayList;
 
 /**
  * <!-- begin-user-doc -->
@@ -675,15 +674,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 
 		// Initialize created meta-data
 		theEsxPackage.initializePackageContents();
-
-		// Register package validator
-		EValidator.Registry.INSTANCE.put
-			(theEsxPackage, 
-			 new EValidator.Descriptor() {
-				 public EValidator getEValidator() {
-					 return EsxValidator.INSTANCE;
-				 }
-			 });
 
 		// Mark meta-data to indicate it can't be changed
 		theEsxPackage.freeze();
@@ -2310,35 +2300,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTempo_PackedValue() {
-		return (EAttribute)tempoEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getTempo_Value() {
-		return (EAttribute)tempoEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTempo_ValueLeft() {
-		return (EAttribute)tempoEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTempo_ValueRight() {
-		return (EAttribute)tempoEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)tempoEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3139,10 +3102,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(songEventMuteStatusEClass, SONG_EVENT_MUTE_STATUS__MUTE_STATUS);
 
 		tempoEClass = createEClass(TEMPO);
-		createEAttribute(tempoEClass, TEMPO__PACKED_VALUE);
 		createEAttribute(tempoEClass, TEMPO__VALUE);
-		createEAttribute(tempoEClass, TEMPO__VALUE_LEFT);
-		createEAttribute(tempoEClass, TEMPO__VALUE_RIGHT);
 
 		// Create enums
 		arpeggiatorControlEEnum = createEEnum(ARPEGGIATOR_CONTROL);
@@ -3521,23 +3481,12 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getSongEventMuteStatus_MuteStatus(), ecorePackage.getEShort(), "muteStatus", null, 0, 1, SongEventMuteStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tempoEClass, Tempo.class, "Tempo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTempo_PackedValue(), ecorePackage.getEInt(), "packedValue", "15360", 1, 1, Tempo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTempo_Value(), ecorePackage.getEFloat(), "value", "120.0", 1, 1, Tempo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTempo_ValueLeft(), ecorePackage.getEInt(), "valueLeft", "0", 0, 1, Tempo.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTempo_ValueRight(), ecorePackage.getEInt(), "valueRight", "0", 0, 1, Tempo.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTempo_Value(), ecorePackage.getEFloat(), "value", null, 0, 1, Tempo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(tempoEClass, null, "updateValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(tempoEClass, ecorePackage.getEShort(), "getShortFromCurrentValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(tempoEClass, null, "updatePackedValue", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(tempoEClass, ecorePackage.getEBoolean(), "validValue", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEMap());
-		g2 = createEGenericType(this.getObject());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(this.getObject());
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(tempoEClass, null, "setCurrentValueFromShort", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEShort(), "packedShort", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(arpeggiatorControlEEnum, ArpeggiatorControl.class, "ArpeggiatorControl");
@@ -5090,26 +5039,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 
 		// Create resource
 		createResource(eNS_URI);
-
-		// Create annotations
-		// http://www.eclipse.org/emf/2002/Ecore
-		createEcoreAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createEcoreAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore";		
-		addAnnotation
-		  (tempoEClass, 
-		   source, 
-		   new String[] {
-			 "constraints", "validRange"
-		   });
 	}
 
 } //EsxPackageImpl

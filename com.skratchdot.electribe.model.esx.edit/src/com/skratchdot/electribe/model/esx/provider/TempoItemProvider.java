@@ -70,34 +70,9 @@ public class TempoItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addPackedValuePropertyDescriptor(object);
 			addValuePropertyDescriptor(object);
-			addValueLeftPropertyDescriptor(object);
-			addValueRightPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Packed Value feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPackedValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Tempo_packedValue_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Tempo_packedValue_feature", "_UI_Tempo_type"),
-				 EsxPackage.Literals.TEMPO__PACKED_VALUE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -123,50 +98,6 @@ public class TempoItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Value Left feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addValueLeftPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Tempo_valueLeft_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Tempo_valueLeft_feature", "_UI_Tempo_type"),
-				 EsxPackage.Literals.TEMPO__VALUE_LEFT,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Value Right feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addValueRightPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Tempo_valueRight_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Tempo_valueRight_feature", "_UI_Tempo_type"),
-				 EsxPackage.Literals.TEMPO__VALUE_RIGHT,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This returns Tempo.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -186,7 +117,7 @@ public class TempoItemProvider
 	@Override
 	public String getText(Object object) {
 		Tempo tempo = (Tempo)object;
-		return getString("_UI_Tempo_type") + " " + tempo.getPackedValue();
+		return getString("_UI_Tempo_type") + " " + tempo.getValue();
 	}
 
 	/**
@@ -201,10 +132,7 @@ public class TempoItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Tempo.class)) {
-			case EsxPackage.TEMPO__PACKED_VALUE:
 			case EsxPackage.TEMPO__VALUE:
-			case EsxPackage.TEMPO__VALUE_LEFT:
-			case EsxPackage.TEMPO__VALUE_RIGHT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

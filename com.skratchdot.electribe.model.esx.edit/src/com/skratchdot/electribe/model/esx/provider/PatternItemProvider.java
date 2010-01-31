@@ -137,7 +137,7 @@ public class PatternItemProvider
 				 getString("_UI_Pattern_tempo_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Pattern_tempo_feature", "_UI_Pattern_type"),
 				 EsxPackage.Literals.PATTERN__TEMPO,
-				 true,
+				 false,
 				 false,
 				 false,
 				 null,

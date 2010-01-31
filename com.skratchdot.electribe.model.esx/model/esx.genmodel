@@ -1692,7 +1692,7 @@
     <genClasses ecoreClass="esx.ecore#//PartStretchSlice"/>
     <genClasses ecoreClass="esx.ecore#//Pattern">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/name"/>
-      <genFeatures children="true" createChild="false" ecoreFeature="ecore:EReference esx.ecore#//Pattern/tempo"/>
+      <genFeatures property="Readonly" children="true" createChild="false" ecoreFeature="ecore:EReference esx.ecore#//Pattern/tempo"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/swing"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/patternLength"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/reservedBitAfterPatternLength"/>
@@ -1764,7 +1764,7 @@
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//Song">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EReference esx.ecore#//Song/tempo"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EReference esx.ecore#//Song/tempo"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/tempoLock"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/songLength"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/muteHold"/>
@@ -1812,15 +1812,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongEventMuteStatus/muteStatus"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//Tempo">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Tempo/packedValue"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Tempo/value"/>
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Tempo/valueLeft"/>
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Tempo/valueRight"/>
-      <genOperations ecoreOperation="esx.ecore#//Tempo/updateValue"/>
-      <genOperations ecoreOperation="esx.ecore#//Tempo/updatePackedValue"/>
-      <genOperations ecoreOperation="esx.ecore#//Tempo/validValue">
-        <genParameters ecoreParameter="esx.ecore#//Tempo/validValue/diagnostics"/>
-        <genParameters ecoreParameter="esx.ecore#//Tempo/validValue/context"/>
+      <genOperations ecoreOperation="esx.ecore#//Tempo/getShortFromCurrentValue"/>
+      <genOperations ecoreOperation="esx.ecore#//Tempo/setCurrentValueFromShort">
+        <genParameters ecoreParameter="esx.ecore#//Tempo/setCurrentValueFromShort/packedShort"/>
       </genOperations>
     </genClasses>
   </genPackages>
