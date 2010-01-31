@@ -40,6 +40,7 @@ import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 public interface ParametersFx extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Effect Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link com.skratchdot.electribe.model.esx.FxType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Effect Type</em>' attribute isn't clear,
@@ -47,22 +48,24 @@ public interface ParametersFx extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Effect Type</em>' attribute.
-	 * @see #setEffectType(byte)
+	 * @see com.skratchdot.electribe.model.esx.FxType
+	 * @see #setEffectType(FxType)
 	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getParametersFx_EffectType()
 	 * @model
 	 * @generated
 	 */
-	byte getEffectType();
+	FxType getEffectType();
 
 	/**
 	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.ParametersFx#getEffectType <em>Effect Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Effect Type</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.FxType
 	 * @see #getEffectType()
 	 * @generated
 	 */
-	void setEffectType(byte value);
+	void setEffectType(FxType value);
 
 	/**
 	 * Returns the value of the '<em><b>Edit1</b></em>' attribute.

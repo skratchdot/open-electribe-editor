@@ -13,6 +13,7 @@ package com.skratchdot.electribe.model.esx.provider;
 
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.FxType;
 import com.skratchdot.electribe.model.esx.ParametersFx;
 
 import java.util.Collection;
@@ -93,7 +94,7 @@ public class ParametersFxItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -183,8 +184,11 @@ public class ParametersFxItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		ParametersFx parametersFx = (ParametersFx)object;
-		return getString("_UI_ParametersFx_type") + " " + parametersFx.getEffectType();
+		FxType labelValue = ((ParametersFx)object).getEffectType();
+		String label = labelValue == null ? null : labelValue.toString();
+		return label == null || label.length() == 0 ?
+			getString("_UI_ParametersFx_type") :
+			getString("_UI_ParametersFx_type") + " " + label;
 	}
 
 	/**

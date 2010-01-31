@@ -468,11 +468,11 @@ public class PatternItemProvider
 			// CenterNote
 			case 11: return ((Pattern) object).getArpeggiatorCenterNote().getLiteral();
 			// Fx1 Type
-			case 12: return Byte.toString(((Pattern) object).getFxParameters().get(0).getEffectType());
+			case 12: return ((Pattern) object).getFxParameters().get(0).getEffectType().getLiteral();
 			// Fx2 Type
-			case 13: return Byte.toString(((Pattern) object).getFxParameters().get(1).getEffectType());
+			case 13: return ((Pattern) object).getFxParameters().get(1).getEffectType().getLiteral();
 			// Fx3 Type
-			case 14: return Byte.toString(((Pattern) object).getFxParameters().get(2).getEffectType());
+			case 14: return ((Pattern) object).getFxParameters().get(2).getEffectType().getLiteral();
 			default: return getText(object);
 		}
 	}

@@ -45,7 +45,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	BPM_SYNC_DELAY(8, "BPM_SYNC_DELAY", "BPM Sync Delay"),
+	BPM_SYNC_DELAY(1, "BPM_SYNC_DELAY", "BPM Sync Delay"),
 
 	/**
 	 * The '<em><b>SHORT DELAY</b></em>' literal object.
@@ -55,7 +55,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SHORT_DELAY(16, "SHORT_DELAY", "Short Delay"),
+	SHORT_DELAY(2, "SHORT_DELAY", "Short Delay"),
 
 	/**
 	 * The '<em><b>MOD DELAY</b></em>' literal object.
@@ -65,7 +65,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	MOD_DELAY(24, "MOD_DELAY", "Mod Delay"),
+	MOD_DELAY(3, "MOD_DELAY", "Mod Delay"),
 
 	/**
 	 * The '<em><b>GRAIN SHIFTER</b></em>' literal object.
@@ -75,7 +75,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	GRAIN_SHIFTER(32, "GRAIN_SHIFTER", "Grain Shifter"),
+	GRAIN_SHIFTER(4, "GRAIN_SHIFTER", "Grain Shifter"),
 
 	/**
 	 * The '<em><b>CHO FLG</b></em>' literal object.
@@ -85,7 +85,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CHO_FLG(40, "CHO_FLG", "Cho/Flg"),
+	CHO_FLG(5, "CHO_FLG", "Cho/Flg"),
 
 	/**
 	 * The '<em><b>PHASER</b></em>' literal object.
@@ -95,7 +95,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	PHASER(48, "PHASER", "Phaser"),
+	PHASER(6, "PHASER", "Phaser"),
 
 	/**
 	 * The '<em><b>RING MOD</b></em>' literal object.
@@ -105,7 +105,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	RING_MOD(56, "RING_MOD", "Ring Mod"),
+	RING_MOD(7, "RING_MOD", "Ring Mod"),
 
 	/**
 	 * The '<em><b>TALKING MOD</b></em>' literal object.
@@ -115,7 +115,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	TALKING_MOD(64, "TALKING_MOD", "Talking Mod"),
+	TALKING_MOD(8, "TALKING_MOD", "Talking Mod"),
 
 	/**
 	 * The '<em><b>PITCH SHIFTER</b></em>' literal object.
@@ -125,7 +125,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	PITCH_SHIFTER(72, "PITCH_SHIFTER", "Pitch Shifter"),
+	PITCH_SHIFTER(9, "PITCH_SHIFTER", "Pitch Shifter"),
 
 	/**
 	 * The '<em><b>COMPRESSOR</b></em>' literal object.
@@ -135,7 +135,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	COMPRESSOR(80, "COMPRESSOR", "Compressor"),
+	COMPRESSOR(10, "COMPRESSOR", "Compressor"),
 
 	/**
 	 * The '<em><b>DISTORTION</b></em>' literal object.
@@ -145,7 +145,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	DISTORTION(88, "DISTORTION", "Distortion"),
+	DISTORTION(11, "DISTORTION", "Distortion"),
 
 	/**
 	 * The '<em><b>DECIMATOR</b></em>' literal object.
@@ -155,7 +155,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	DECIMATOR(96, "DECIMATOR", "Decimator"),
+	DECIMATOR(12, "DECIMATOR", "Decimator"),
 
 	/**
 	 * The '<em><b>EQ</b></em>' literal object.
@@ -165,7 +165,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	EQ(104, "EQ", "EQ"),
+	EQ(13, "EQ", "EQ"),
 
 	/**
 	 * The '<em><b>LPF</b></em>' literal object.
@@ -175,7 +175,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	LPF(112, "LPF", "LPF"),
+	LPF(14, "LPF", "LPF"),
 
 	/**
 	 * The '<em><b>HPF</b></em>' literal object.
@@ -185,7 +185,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	HPF(120, "HPF", "HPF");
+	HPF(15, "HPF", "HPF");
 
 	/**
 	 * The '<em><b>REVERB</b></em>' literal value.
@@ -215,7 +215,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int BPM_SYNC_DELAY_VALUE = 8;
+	public static final int BPM_SYNC_DELAY_VALUE = 1;
 
 	/**
 	 * The '<em><b>SHORT DELAY</b></em>' literal value.
@@ -230,7 +230,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SHORT_DELAY_VALUE = 16;
+	public static final int SHORT_DELAY_VALUE = 2;
 
 	/**
 	 * The '<em><b>MOD DELAY</b></em>' literal value.
@@ -245,7 +245,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MOD_DELAY_VALUE = 24;
+	public static final int MOD_DELAY_VALUE = 3;
 
 	/**
 	 * The '<em><b>GRAIN SHIFTER</b></em>' literal value.
@@ -260,7 +260,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int GRAIN_SHIFTER_VALUE = 32;
+	public static final int GRAIN_SHIFTER_VALUE = 4;
 
 	/**
 	 * The '<em><b>CHO FLG</b></em>' literal value.
@@ -275,7 +275,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CHO_FLG_VALUE = 40;
+	public static final int CHO_FLG_VALUE = 5;
 
 	/**
 	 * The '<em><b>PHASER</b></em>' literal value.
@@ -290,7 +290,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PHASER_VALUE = 48;
+	public static final int PHASER_VALUE = 6;
 
 	/**
 	 * The '<em><b>RING MOD</b></em>' literal value.
@@ -305,7 +305,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int RING_MOD_VALUE = 56;
+	public static final int RING_MOD_VALUE = 7;
 
 	/**
 	 * The '<em><b>TALKING MOD</b></em>' literal value.
@@ -320,7 +320,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int TALKING_MOD_VALUE = 64;
+	public static final int TALKING_MOD_VALUE = 8;
 
 	/**
 	 * The '<em><b>PITCH SHIFTER</b></em>' literal value.
@@ -335,7 +335,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PITCH_SHIFTER_VALUE = 72;
+	public static final int PITCH_SHIFTER_VALUE = 9;
 
 	/**
 	 * The '<em><b>COMPRESSOR</b></em>' literal value.
@@ -350,7 +350,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int COMPRESSOR_VALUE = 80;
+	public static final int COMPRESSOR_VALUE = 10;
 
 	/**
 	 * The '<em><b>DISTORTION</b></em>' literal value.
@@ -365,7 +365,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DISTORTION_VALUE = 88;
+	public static final int DISTORTION_VALUE = 11;
 
 	/**
 	 * The '<em><b>DECIMATOR</b></em>' literal value.
@@ -380,7 +380,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DECIMATOR_VALUE = 96;
+	public static final int DECIMATOR_VALUE = 12;
 
 	/**
 	 * The '<em><b>EQ</b></em>' literal value.
@@ -395,7 +395,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int EQ_VALUE = 104;
+	public static final int EQ_VALUE = 13;
 
 	/**
 	 * The '<em><b>LPF</b></em>' literal value.
@@ -410,7 +410,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int LPF_VALUE = 112;
+	public static final int LPF_VALUE = 14;
 
 	/**
 	 * The '<em><b>HPF</b></em>' literal value.
@@ -425,7 +425,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int HPF_VALUE = 120;
+	public static final int HPF_VALUE = 15;
 
 	/**
 	 * An array of all the '<em><b>Fx Type</b></em>' enumerators.

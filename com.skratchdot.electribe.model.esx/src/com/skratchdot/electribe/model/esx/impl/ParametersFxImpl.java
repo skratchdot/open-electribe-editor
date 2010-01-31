@@ -13,18 +13,17 @@ package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.IOException;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.FxType;
 import com.skratchdot.electribe.model.esx.ParametersFx;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,7 +50,7 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final byte EFFECT_TYPE_EDEFAULT = 0x00;
+	protected static final FxType EFFECT_TYPE_EDEFAULT = FxType.REVERB;
 
 	/**
 	 * The cached value of the '{@link #getEffectType() <em>Effect Type</em>}' attribute.
@@ -61,7 +60,7 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 	 * @generated
 	 * @ordered
 	 */
-	protected byte effectType = EFFECT_TYPE_EDEFAULT;
+	protected FxType effectType = EFFECT_TYPE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getEdit1() <em>Edit1</em>}' attribute.
@@ -151,7 +150,7 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 				(parametersFxNumber * EsxUtil.CHUNKSIZE_PARAMETERS_FX));
 
 		// byte 0
-		this.setEffectType(in.readByte());
+		this.setEffectType(FxType.get(in.readByte()));
 		// byte 1
 		this.setEdit1(in.readByte());
 		// byte 2
@@ -176,7 +175,7 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public byte getEffectType() {
+	public FxType getEffectType() {
 		return effectType;
 	}
 
@@ -185,9 +184,9 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setEffectType(byte newEffectType) {
-		byte oldEffectType = effectType;
-		effectType = newEffectType;
+	public void setEffectType(FxType newEffectType) {
+		FxType oldEffectType = effectType;
+		effectType = newEffectType == null ? EFFECT_TYPE_EDEFAULT : newEffectType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PARAMETERS_FX__EFFECT_TYPE, oldEffectType, effectType));
 	}
@@ -284,7 +283,7 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EsxPackage.PARAMETERS_FX__EFFECT_TYPE:
-				setEffectType((Byte)newValue);
+				setEffectType((FxType)newValue);
 				return;
 			case EsxPackage.PARAMETERS_FX__EDIT1:
 				setEdit1((Byte)newValue);
@@ -384,7 +383,7 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 				(parametersFxNumber * EsxUtil.CHUNKSIZE_PARAMETERS_FX));
 
 		// byte 0
-		out.writeByte(this.getEffectType());
+		out.writeByte(this.getEffectType().getValue());
 		// byte 1
 		out.writeByte(this.getEdit1());
 		// byte 2

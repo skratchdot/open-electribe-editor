@@ -110,7 +110,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParametersFx">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="effectType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="effectType" eType="#//FxType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="edit1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="edit2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="motionSequenceStatus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
@@ -1842,21 +1842,21 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="FxType">
     <eLiterals name="REVERB" literal="Reverb"/>
-    <eLiterals name="BPM_SYNC_DELAY" value="8" literal="BPM Sync Delay"/>
-    <eLiterals name="SHORT_DELAY" value="16" literal="Short Delay"/>
-    <eLiterals name="MOD_DELAY" value="24" literal="Mod Delay"/>
-    <eLiterals name="GRAIN_SHIFTER" value="32" literal="Grain Shifter"/>
-    <eLiterals name="CHO_FLG" value="40" literal="Cho/Flg"/>
-    <eLiterals name="PHASER" value="48" literal="Phaser"/>
-    <eLiterals name="RING_MOD" value="56" literal="Ring Mod"/>
-    <eLiterals name="TALKING_MOD" value="64" literal="Talking Mod"/>
-    <eLiterals name="PITCH_SHIFTER" value="72" literal="Pitch Shifter"/>
-    <eLiterals name="COMPRESSOR" value="80" literal="Compressor"/>
-    <eLiterals name="DISTORTION" value="88" literal="Distortion"/>
-    <eLiterals name="DECIMATOR" value="96" literal="Decimator"/>
-    <eLiterals name="EQ" value="104" literal="EQ"/>
-    <eLiterals name="LPF" value="112" literal="LPF"/>
-    <eLiterals name="HPF" value="120" literal="HPF"/>
+    <eLiterals name="BPM_SYNC_DELAY" value="1" literal="BPM Sync Delay"/>
+    <eLiterals name="SHORT_DELAY" value="2" literal="Short Delay"/>
+    <eLiterals name="MOD_DELAY" value="3" literal="Mod Delay"/>
+    <eLiterals name="GRAIN_SHIFTER" value="4" literal="Grain Shifter"/>
+    <eLiterals name="CHO_FLG" value="5" literal="Cho/Flg"/>
+    <eLiterals name="PHASER" value="6" literal="Phaser"/>
+    <eLiterals name="RING_MOD" value="7" literal="Ring Mod"/>
+    <eLiterals name="TALKING_MOD" value="8" literal="Talking Mod"/>
+    <eLiterals name="PITCH_SHIFTER" value="9" literal="Pitch Shifter"/>
+    <eLiterals name="COMPRESSOR" value="10" literal="Compressor"/>
+    <eLiterals name="DISTORTION" value="11" literal="Distortion"/>
+    <eLiterals name="DECIMATOR" value="12" literal="Decimator"/>
+    <eLiterals name="EQ" value="13" literal="EQ"/>
+    <eLiterals name="LPF" value="14" literal="LPF"/>
+    <eLiterals name="HPF" value="15" literal="HPF"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Roll">
     <eLiterals name="OFF" literal="Off"/>
