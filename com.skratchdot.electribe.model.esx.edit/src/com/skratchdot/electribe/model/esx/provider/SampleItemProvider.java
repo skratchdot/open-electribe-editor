@@ -12,17 +12,18 @@
 package com.skratchdot.electribe.model.esx.provider;
 
 
-import com.skratchdot.electribe.model.esx.EsxFactory;
 import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -615,6 +616,66 @@ public class SampleItemProvider
 		if(feature == EsxPackage.Literals.SAMPLE__NAME) {
 			value = StringUtils.left((String)value, 8);
 		}
+
+		// Start cannot be negative, greater than getEnd(),
+		// or greater than getNumberOfSampleFrames()
+		if(feature == EsxPackage.Literals.SAMPLE__START) {
+			int end = ((Sample)owner).getEnd();
+			int maxEnd = ((Sample)owner).getNumberOfSampleFrames()-1;
+			maxEnd = maxEnd<0?0:maxEnd;
+			// If needed, convert from string
+			if(value instanceof String) {
+				value = new Integer((String)value);
+			}
+			// Start cannot be negative
+			if((Integer)value<0) {
+				value = new Integer(0);
+			}
+			// Start cannot be greater than getEnd()
+			if((Integer)value>end) {
+				value = new Integer(end);
+			}
+			// Start cannot be greater than getEnd()
+			if((Integer)value>maxEnd) {
+				value = new Integer(maxEnd);
+			}
+		}
+
+		// End cannot be negative, less than getStart(),
+		// or greater than getNumberOfSampleFrames()
+		// If it's less than getLoopStart(), then we need to adjust loopStart()
+		if(feature == EsxPackage.Literals.SAMPLE__END) {
+			int start = ((Sample)owner).getStart();
+			int loopStart = ((Sample)owner).getLoopStart();
+			int maxEnd = ((Sample)owner).getNumberOfSampleFrames()-1;
+			maxEnd = maxEnd<0?0:maxEnd;
+			
+			// If needed, convert from string
+			if(value instanceof String) {
+				value = new Integer((String)value);
+			}
+			// End cannot be negative
+			if((Integer)value<0) {
+				value = new Integer(0);
+			}
+			// End cannot be less than getStart()
+			if((Integer)value<start) {
+				value = new Integer(start);
+			}
+			// If it's less than getLoopStart(), we need to adjust loopStart
+			if((Integer)value<loopStart) {
+				CompoundCommand cmd = new CompoundCommand();
+				// Change getLoopStart()
+				cmd.append(new SetCommand(domain, owner, EsxPackage.Literals.SAMPLE__LOOP_START, (Integer)value));
+				// Change getEnd()
+				cmd.append(new SetCommand(domain, owner, feature, (Integer)value));
+				return cmd;
+			}
+		}
+
+
+		
+		
 		return super.createSetCommand(domain, owner, feature, value);
 	}
 
