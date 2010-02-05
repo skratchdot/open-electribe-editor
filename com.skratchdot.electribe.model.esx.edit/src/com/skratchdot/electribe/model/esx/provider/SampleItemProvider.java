@@ -619,14 +619,12 @@ public class SampleItemProvider
 
 		// Start cannot be negative, greater than getEnd(),
 		// or greater than getNumberOfSampleFrames()
+		// If it's greater than getLoopStart(), then we need to adjust loopStart()
 		if(feature == EsxPackage.Literals.SAMPLE__START) {
+			int loopStart = ((Sample)owner).getLoopStart();
 			int end = ((Sample)owner).getEnd();
 			int maxEnd = ((Sample)owner).getNumberOfSampleFrames()-1;
 			maxEnd = maxEnd<0?0:maxEnd;
-			// If needed, convert from string
-			if(value instanceof String) {
-				value = new Integer((String)value);
-			}
 			// Start cannot be negative
 			if((Integer)value<0) {
 				value = new Integer(0);
@@ -635,9 +633,18 @@ public class SampleItemProvider
 			if((Integer)value>end) {
 				value = new Integer(end);
 			}
-			// Start cannot be greater than getEnd()
+			// Start cannot be greater than getNumberOfSampleFrames()
 			if((Integer)value>maxEnd) {
 				value = new Integer(maxEnd);
+			}
+			// If End is less than getLoopStart(), we need to adjust loopStart
+			if((Integer)value>loopStart) {
+				CompoundCommand cmd = new CompoundCommand();
+				// Change getLoopStart()
+				cmd.append(new SetCommand(domain, owner, EsxPackage.Literals.SAMPLE__LOOP_START, (Integer)value));
+				// Change getEnd()
+				cmd.append(new SetCommand(domain, owner, feature, (Integer)value));
+				return cmd;
 			}
 		}
 
@@ -645,15 +652,10 @@ public class SampleItemProvider
 		// or greater than getNumberOfSampleFrames()
 		// If it's less than getLoopStart(), then we need to adjust loopStart()
 		if(feature == EsxPackage.Literals.SAMPLE__END) {
-			int start = ((Sample)owner).getStart();
 			int loopStart = ((Sample)owner).getLoopStart();
+			int start = ((Sample)owner).getStart();
 			int maxEnd = ((Sample)owner).getNumberOfSampleFrames()-1;
 			maxEnd = maxEnd<0?0:maxEnd;
-			
-			// If needed, convert from string
-			if(value instanceof String) {
-				value = new Integer((String)value);
-			}
 			// End cannot be negative
 			if((Integer)value<0) {
 				value = new Integer(0);
@@ -662,7 +664,11 @@ public class SampleItemProvider
 			if((Integer)value<start) {
 				value = new Integer(start);
 			}
-			// If it's less than getLoopStart(), we need to adjust loopStart
+			// End cannot be greater than getNumberOfSampleFrames()
+			if((Integer)value>maxEnd) {
+				value = new Integer(maxEnd);
+			}
+			// If End is less than getLoopStart(), we need to adjust loopStart
 			if((Integer)value<loopStart) {
 				CompoundCommand cmd = new CompoundCommand();
 				// Change getLoopStart()
@@ -673,8 +679,30 @@ public class SampleItemProvider
 			}
 		}
 
-
-		
+		// LoopStart cannot be negative, less than getStart(), 
+		// greater than getEnd(), or greater than getNumberOfSampleFrames()
+		if(feature == EsxPackage.Literals.SAMPLE__LOOP_START) {
+			int start = ((Sample)owner).getStart();
+			int end = ((Sample)owner).getEnd();
+			int maxEnd = ((Sample)owner).getNumberOfSampleFrames()-1;
+			maxEnd = maxEnd<0?0:maxEnd;
+			// LoopStart cannot be negative
+			if((Integer)value<0) {
+				value = new Integer(0);
+			}
+			// LoopStart cannot be less that getStart()
+			if((Integer)value<start) {
+				value = new Integer(start);
+			}
+			// LoopStart cannot be greater than getEnd()
+			if((Integer)value>end) {
+				value = new Integer(end);
+			}
+			// LoopStart cannot be greater than getNumberOfSampleFrames()
+			if((Integer)value>maxEnd) {
+				value = new Integer(maxEnd);
+			}
+		}
 		
 		return super.createSetCommand(domain, owner, feature, value);
 	}

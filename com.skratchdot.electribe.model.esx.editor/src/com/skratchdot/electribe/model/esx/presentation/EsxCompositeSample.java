@@ -7,53 +7,66 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.PlayLevel;
 import com.skratchdot.electribe.model.esx.Sample;
+import com.skratchdot.electribe.model.esx.StretchStep;
 
 public class EsxCompositeSample extends EsxComposite {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositeSample"; //$NON-NLS-1$
 
-	protected List<Sample> samples;
+	private List<Sample> samples;
 
 	private Composite compositeMain;
 	private Composite compositeRow1;
 	private Composite compositeRow2;
 	private Composite compositeRow3;
 	private Composite compositeRow4;
+	private Composite compositeRow5;
 
 	private Group groupSelectedSamples;
-	protected Text textSelectedTotal;
-	protected Text textSelectedBeingUsed;
-	protected Text textSelectedNotInUse;
+	private Text textSelectedTotal;
+	private Text textSelectedBeingUsed;
+	private Text textSelectedNotInUse;
 
 	private Group groupSampleName;
-	protected Text textName;
-	protected Text inputName;
-	protected Button appendName;
+	private Text textName;
+	private Text inputName;
+	private Button appendName;
 
 	private Group groupGeneralInfo;
-	protected Text textSampleRate;
-	protected Text textSampleTune;
-	protected Text textIsSlice;
-	protected Text textIsLoop;
+	private Text textSampleRate;
+	private Text textSampleTune;
+	private Text textIsSlice;
+	private Text textIsLoop;
 
 	private Group groupSizeInfo;
-	protected Text textMemUsedInBytes;
-	protected Text textNumberOfSampleFrames;
-	protected Text textStart;
-	protected Text inputStart;
-	protected Text textEnd;
-	protected Text inputEnd;
-	protected Text textLoopStart;
-	protected Text inputLoopStart;
+	private Text textMemUsedInBytes;
+	private Text textNumberOfSampleFrames;
+	private Text textStart;
+	private Text inputStart;
+	private Text textEnd;
+	private Text inputEnd;
+	private Text textLoopStart;
+	private Text inputLoopStart;
+
+	private Group groupMiscInfo;
+	private Text textStretchStep;
+	private Combo comboStretchStep;
+	private Text textPlayLevel;
+	private Combo comboPlayLevel;
+
 	private ScrolledComposite scrolledComposite;
 
 	/**
@@ -85,9 +98,9 @@ public class EsxCompositeSample extends EsxComposite {
 		groupSelectedSamples.setText("Selected Samples");
 		groupSelectedSamples.setLayout(new GridLayout(2, false));
 
-		this.createGridData2ColumnText(this, groupSelectedSamples, "Total # Selected", "textSelectedTotal");
-		this.createGridData2ColumnText(this, groupSelectedSamples, "# of Selected Being Used", "textSelectedBeingUsed");
-		this.createGridData2ColumnText(this, groupSelectedSamples, "# of Selected Not In Use", "textSelectedNotInUse");
+		textSelectedTotal = this.createGridData2ColumnTextLabel(groupSelectedSamples, "Total # Selected");
+		textSelectedBeingUsed = this.createGridData2ColumnTextLabel(groupSelectedSamples, "# of Selected Being Used");
+		textSelectedNotInUse = this.createGridData2ColumnTextLabel(groupSelectedSamples, "# of Selected Not In Use");
 
 		/* ======================== */
 		/* ROW 2					*/
@@ -99,8 +112,15 @@ public class EsxCompositeSample extends EsxComposite {
 		groupSampleName.setText("Sample Name");
 		groupSampleName.setLayout(new GridLayout(4, false));
 
-		this.createGridData4ColumnTextInput(this, groupSampleName, "Sample Name", "textName", "inputName", "appendName", 8, "samples", EsxPackage.Literals.SAMPLE__NAME);
-		
+		textName = this.createGridData2ColumnTextLabel(groupSampleName, "Name");
+		inputName = this.createGridData2ColumnTextInput(groupSampleName, "Name", new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				setFeatureForSelectedItems(samples, EsxPackage.Literals.SAMPLE__NAME, inputName.getText(), appendName.getSelection(), 8);
+			}
+		});
+		appendName = this.createGridData4ColumnCheckButton(groupSampleName, "Append # when multiple samples are selected", true);
+
 		/* ======================== */
 		/* ROW 3					*/
 		/* ======================== */
@@ -111,10 +131,10 @@ public class EsxCompositeSample extends EsxComposite {
 		groupGeneralInfo.setText("General Info");
 		groupGeneralInfo.setLayout(new GridLayout(4, false));
 
-		this.createGridData2ColumnText(this, groupGeneralInfo, "Sample Rate", "textSampleRate");
-		this.createGridData2ColumnText(this, groupGeneralInfo, "Sample Tune", "textSampleTune");
-		this.createGridData2ColumnText(this, groupGeneralInfo, "Is Slice?", "textIsSlice");
-		this.createGridData2ColumnText(this, groupGeneralInfo, "Is Loop?", "textIsLoop");
+		textSampleRate = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Sample Rate");
+		textSampleTune = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Sample Tune");
+		textIsSlice = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Is Slice?");
+		textIsLoop = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Is Loop?");
 
 		/* ======================== */
 		/* ROW 4					*/
@@ -126,11 +146,55 @@ public class EsxCompositeSample extends EsxComposite {
 		groupSizeInfo.setText("Size/Length Info");
 		groupSizeInfo.setLayout(new GridLayout(4, false));
 
-		this.createGridData2ColumnText(this, groupSizeInfo, "Length", "textNumberOfSampleFrames");
-		this.createGridData2ColumnText(this, groupSizeInfo, "Mem Used", "textMemUsedInBytes");
-		this.createGridData4ColumnTextInput(this, groupSizeInfo, "Start", "textStart", "inputStart", null, 100, "samples", EsxPackage.Literals.SAMPLE__START);
-		this.createGridData4ColumnTextInput(this, groupSizeInfo, "End", "textEnd", "inputEnd", null, 100, "samples", EsxPackage.Literals.SAMPLE__END);
-		this.createGridData4ColumnTextInput(this, groupSizeInfo, "Loop Start", "textLoopStart", "inputLoopStart", null, 100, "samples", EsxPackage.Literals.SAMPLE__LOOP_START);
+		textNumberOfSampleFrames = this.createGridData2ColumnTextLabel(groupSizeInfo, "Length");
+		textMemUsedInBytes = this.createGridData2ColumnTextLabel(groupSizeInfo, "Mem Used");
+		textStart = this.createGridData2ColumnTextLabel(groupSizeInfo, "Start");
+		inputStart = this.createGridData2ColumnTextInput(groupSizeInfo, "Start", new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				setFeatureForSelectedItems(samples, EsxPackage.Literals.SAMPLE__START, Integer.parseInt(inputStart.getText()), false, -1);
+			}
+		});
+		textEnd = this.createGridData2ColumnTextLabel(groupSizeInfo, "End");
+		inputEnd = this.createGridData2ColumnTextInput(groupSizeInfo, "End", new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				setFeatureForSelectedItems(samples, EsxPackage.Literals.SAMPLE__END, Integer.parseInt(inputEnd.getText()), false, -1);
+			}
+		});
+		textLoopStart = this.createGridData2ColumnTextLabel(groupSizeInfo, "Loop Start");
+		inputLoopStart = this.createGridData2ColumnTextInput(groupSizeInfo, "Loop Start", new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				setFeatureForSelectedItems(samples, EsxPackage.Literals.SAMPLE__LOOP_START, Integer.parseInt(inputLoopStart.getText()), false, -1);
+			}
+		});
+
+		/* ======================== */
+		/* ROW 5					*/
+		/* ======================== */
+		compositeRow5 = new Composite(compositeMain, SWT.NONE);
+		compositeRow5.setLayout(new FillLayout(SWT.HORIZONTAL));
+
+		groupMiscInfo = new Group(compositeRow5, SWT.NONE);
+		groupMiscInfo.setText("StretchStep/PlayLevel Info");
+		groupMiscInfo.setLayout(new GridLayout(4, false));
+
+		textStretchStep = this.createGridData2ColumnTextLabel(groupMiscInfo, "Stretch Step");
+		comboStretchStep = this.createGridData2ColumnComboInput(groupMiscInfo, "Stretch Step", this.getLiteralStrings(StretchStep.values()) , new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				setFeatureForSelectedItems(samples, EsxPackage.Literals.SAMPLE__STRETCH_STEP, StretchStep.get(comboStretchStep.getSelectionIndex()-1), false, -1);
+			}
+		});
+		textPlayLevel = this.createGridData2ColumnTextLabel(groupMiscInfo, "Play Level");
+		comboPlayLevel = this.createGridData2ColumnComboInput(groupMiscInfo, "Play Level", this.getLiteralStrings(PlayLevel.values()) , new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				setFeatureForSelectedItems(samples, EsxPackage.Literals.SAMPLE__PLAY_LEVEL, PlayLevel.get(comboPlayLevel.getSelectionIndex()), false, -1);
+			}
+		});
+
 		scrolledComposite.setContent(compositeMain);
 		scrolledComposite.setMinSize(compositeMain.computeSize(SWT.DEFAULT, SWT.DEFAULT));
 	}
@@ -190,6 +254,9 @@ public class EsxCompositeSample extends EsxComposite {
 		this.textStart.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__START, multipleValueString)));
 		this.textEnd.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__END, multipleValueString)));
 		this.textLoopStart.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__LOOP_START, multipleValueString)));
+
+		this.textStretchStep.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__STRETCH_STEP, multipleValueString)));
+		this.textPlayLevel.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__PLAY_LEVEL, multipleValueString)));
 	}
 
 	/**
@@ -204,6 +271,9 @@ public class EsxCompositeSample extends EsxComposite {
 		this.inputStart.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__START, multipleValueString)));
 		this.inputEnd.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__END, multipleValueString)));
 		this.inputLoopStart.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__LOOP_START, multipleValueString)));
+
+		this.comboStretchStep.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__STRETCH_STEP, multipleValueString)));
+		this.comboPlayLevel.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__PLAY_LEVEL, multipleValueString)));
 	}
 	
 	/**

@@ -1,11 +1,11 @@
 package com.skratchdot.electribe.model.esx.presentation;
 
-import java.lang.reflect.Field;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.SetCommand;
@@ -13,9 +13,9 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
@@ -82,7 +82,7 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * @return
 	 */
 	protected String getMultiString(List<?> list, EStructuralFeature feature, String multiText) {
-		if(list.size()<1) {
+		if(list==null || list.size()<1) {
 			return "";
 		}
 		String returnValue = ((EObject) list.get(0)).eGet(feature).toString();
@@ -95,160 +95,128 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	}
 
 	/**
-	 * @param obj
-	 * @param inputFieldName
-	 * @param appendFieldName
+	 * @param string
 	 * @param currentIndex
 	 * @param listSize
 	 * @param maxAppendStringLength
 	 * @return
 	 */
-	protected String getMultiNumberString(Object obj, String inputFieldName, String appendFieldName, int currentIndex, int listSize, int maxAppendStringLength) {
-		try {
-			Field inputField = obj.getClass().getDeclaredField(inputFieldName);
-			Text text = (Text) inputField.get(obj);
-			String string = StringUtils.trim(text.getText());
-
-			// Don't append if a null was passed in, or the list only has one item
-			if(appendFieldName==null || listSize<=1) {
-				return string;
-			}
-			else {
-				Field appendField = obj.getClass().getDeclaredField(appendFieldName);
-				Button append = (Button) appendField.get(obj);
-				currentIndex = currentIndex<listSize?currentIndex+1:listSize+1;
-
-				// If the append button is not checked
-				if(!append.getSelection()) {
-					return string;
-				}
-				// The append button is checked so append a number to the end of the string
-				else {
-					int listSizeStringLength = StringUtils.length(Integer.toString(listSize));
-					return StringUtils.left(
-						string,
-						maxAppendStringLength-listSizeStringLength
-					) + StringUtils.leftPad(Integer.toString(currentIndex), listSizeStringLength, "0");
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+	protected String getMultiNumberString(final String string, final int currentIndex, final int listSize, final int maxAppendStringLength) {
+		if(listSize<=1) {
+			return string;
 		}
-		return null;
-	}
-
-	protected void setFeatureForSelectedItems(Object obj, EStructuralFeature feature, String listFieldName, String inputFieldName, String appendFieldName, int maxAppendStringLength) {
-		try {
-			Field listField = obj.getClass().getDeclaredField(listFieldName);
-			List<?> list = (List<?>) listField.get(obj);
-
-			CompoundCommand cmd = new CompoundCommand();
-
-			for(int i=0; i<list.size(); i++) {
-				cmd.append(SetCommand.create(
-					this.getEditingDomain(),
-					(EObject) list.get(i),
-					feature,
-					getMultiNumberString(obj, inputFieldName, appendFieldName, i, list.size(), maxAppendStringLength)
-				));
-			}
-			
-			if(cmd.canExecute()) {
-				this.getCommandStack().execute(cmd);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		else {
+			int listSizeStringLength = StringUtils.length(Integer.toString(listSize));
+			return StringUtils.left(
+				string,
+				maxAppendStringLength-listSizeStringLength
+			) + StringUtils.leftPad(Integer.toString(currentIndex+1), listSizeStringLength, "0");
 		}
 	}
 
+	/**
+	 * @param list
+	 * @param feature
+	 * @param value
+	 * @param appendNumber
+	 * @param maxAppendStringLength
+	 */
+	protected void setFeatureForSelectedItems(List<?> list, EStructuralFeature feature, Object value, boolean appendNumber, int maxAppendStringLength) {
+		CompoundCommand cmd = new CompoundCommand();
+		
+		for(int i=0; i<list.size(); i++) {
+			cmd.append(SetCommand.create(
+				this.getEditingDomain(),
+				(EObject) list.get(i),
+				feature,
+				(appendNumber==false?value:getMultiNumberString(value.toString(), i, list.size(), maxAppendStringLength))
+			));
+		}
+		
+		if(cmd.canExecute()) {
+			this.getCommandStack().execute(cmd);
+		}
+	}
+
+	/**
+	 * @param parent
+	 */
 	protected void createGridData2ColumnSpacer (final Composite parent) {
 		Label label = new Label(parent, SWT.NONE);
 		label.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 2, 1));
 	}
 
-	protected void createGridData2ColumnText (final Object obj, final Composite parent, final String title, final String textFieldName) {
-		Field textField;
-		Label label;
-		Text text;
+	/**
+	 * @param parent
+	 * @param title
+	 * @return
+	 */
+	protected Text createGridData2ColumnTextLabel(Composite parent, String title) {
+		Label label = new Label(parent, SWT.NONE);
+		label.setAlignment(SWT.RIGHT);
+		label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		label.setText(title + ":");
 
-		try {
-			label = new Label(parent, SWT.NONE);
-			label.setAlignment(SWT.RIGHT);
-			label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-			label.setText(title + ":");
-
-			textField = this.getClass().getDeclaredField(textFieldName);
-			text = new Text(parent, SWT.BORDER);
-			text.setEditable(false);
-			text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-			textField.set(obj, text);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
+		Text text = new Text(parent, SWT.BORDER);
+		text.setEditable(false);
+		text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		return text;
 	}
 
 	/**
-	 * 
-	 * @param obj This is the instance of the sub-class (ie. EsxCompositeSample, etc).
-	 * @param parent The parent composite in which the GridData will be inserted
-	 * @param title The title for the label, and the SET button. Usually refers to the field name that we'll be editing
-	 * @param textFieldName This is a string representation of the text field. Must be declared as protected, and must exist.
-	 * @param inputFieldName This is a string representation of the input field. Must be declared as protected, and must exist.
-	 * @param appendFieldName 
-	 * @param maxAppendStringLength 
-	 * @param listFieldName This is a string representation of the list field. Must be declared as protected, and must exist.
-	 * @param feature This is the feature that will be set when the SET button is clicked.
+	 * @param parent
+	 * @param title
+	 * @param selectionAdapter
+	 * @return
 	 */
-	protected void createGridData4ColumnTextInput(final Object obj, final Composite parent, final String title, final String textFieldName, final String inputFieldName, final String appendFieldName, final int maxAppendStringLength, final String listFieldName, final EStructuralFeature feature) {
-		Field textField;
-		Field inputField;
-		Field appendField;
+	protected Text createGridData2ColumnTextInput(Composite parent, String title, SelectionAdapter selectionAdapter) {
+		Text text = new Text(parent, SWT.BORDER);
+		text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
-		Label label;
-		Text text;
-		Text input;
-		Button button;
-		Button append;
-
-		try {
-			label = new Label(parent, SWT.NONE);
-			label.setAlignment(SWT.RIGHT);
-			label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-			label.setText(title + ":");
-
-			textField = this.getClass().getDeclaredField(textFieldName);
-			text = new Text(parent, SWT.BORDER);
-			text.setEditable(false);
-			text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-			textField.set(obj, text);
-
-			inputField = this.getClass().getDeclaredField(inputFieldName);
-			input = new Text(parent, SWT.BORDER);
-			input.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-			inputField.set(obj, input);
-
-			button = new Button(parent, SWT.NONE);
-			button.addSelectionListener(new SelectionAdapter() {
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					setFeatureForSelectedItems(obj, feature, listFieldName, inputFieldName, appendFieldName, maxAppendStringLength);
-				}
-			});
-			button.setText("Set " + title);
-			
-			if(appendFieldName!=null) {
-				// Row 2
-				appendField = this.getClass().getDeclaredField(appendFieldName);
-				append = new Button(parent, SWT.CHECK);
-				append.setSelection(true);
-				append.setText("Append # when multiple items are selected");
-				append.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 4, 1));
-				appendField.set(obj, append);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		Button button = new Button(parent, SWT.NONE);
+		button.addSelectionListener(selectionAdapter);
+		button.setText("Set " + title);
+		return text;
 	}
-	
+
+	/**
+	 * @param parent
+	 * @param title
+	 * @param comboItems
+	 * @param selectionAdapter
+	 * @return
+	 */
+	protected Combo createGridData2ColumnComboInput(Composite parent, String title, String[] comboItems, SelectionAdapter selectionAdapter) {
+		Combo combo = new Combo(parent, SWT.READ_ONLY);
+		combo.setItems(comboItems);
+		combo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		
+		Button button = new Button(parent, SWT.NONE);
+		button.addSelectionListener(selectionAdapter);
+		button.setText("Set " + title);
+		return combo;
+	}
+
+	/**
+	 * @param parent
+	 * @param title
+	 * @param setSelection
+	 * @return
+	 */
+	protected Button createGridData4ColumnCheckButton(Composite parent, String title, boolean setSelection) {
+		Button check = new Button(parent, SWT.CHECK);
+		check.setSelection(setSelection);
+		check.setText(title);
+		check.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 4, 1));
+		return check;
+	}
+
+	protected String[] getLiteralStrings(Enumerator[] enumArray) {
+		String[] literals = new String[enumArray.length];
+		for(int i=0; i<enumArray.length; i++) {
+			literals[i] = enumArray[i].getLiteral();
+		}
+		return literals;
+	}
+
 }
