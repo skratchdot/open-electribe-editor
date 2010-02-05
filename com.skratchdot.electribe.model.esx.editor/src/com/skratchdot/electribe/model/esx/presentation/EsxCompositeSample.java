@@ -5,11 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowLayout;
@@ -38,10 +35,9 @@ public class EsxCompositeSample extends EsxComposite {
 	protected Text textSelectedNotInUse;
 
 	private Group groupSampleName;
-	protected Text inputName;
-	protected Button buttonAppendName;
-	protected Button buttonName;
 	protected Text textName;
+	protected Text inputName;
+	protected Button appendName;
 
 	private Group groupGeneralInfo;
 	protected Text textSampleRate;
@@ -58,6 +54,7 @@ public class EsxCompositeSample extends EsxComposite {
 	protected Text inputEnd;
 	protected Text textLoopStart;
 	protected Text inputLoopStart;
+	private ScrolledComposite scrolledComposite;
 
 	/**
 	 * @param parent
@@ -65,89 +62,77 @@ public class EsxCompositeSample extends EsxComposite {
 	 */
 	public EsxCompositeSample(Composite parent, int style) {
 		super(parent, style);
-		setLayout(new FillLayout(SWT.VERTICAL));
+		setLayout(new FillLayout(SWT.HORIZONTAL));
 		
-		compositeMain = new Composite(this, SWT.NONE);
+		scrolledComposite = new ScrolledComposite(this, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+		scrolledComposite.setExpandHorizontal(true);
+		scrolledComposite.setExpandVertical(true);
+		
+		compositeMain = new Composite(scrolledComposite, SWT.NONE);
 		RowLayout rowLayout = new RowLayout(SWT.VERTICAL);
 		rowLayout.wrap = false;
 		rowLayout.fill = true;
-		rowLayout.center = true;
 		compositeMain.setLayout(rowLayout);
 
+		
 		/* ======================== */
 		/* ROW 1					*/
 		/* ======================== */
 		compositeRow1 = new Composite(compositeMain, SWT.NONE);
-		compositeRow1.setLayout(new RowLayout(SWT.HORIZONTAL));
+		compositeRow1.setLayout(new FillLayout(SWT.HORIZONTAL));
 
 		groupSelectedSamples = new Group(compositeRow1, SWT.NONE);
 		groupSelectedSamples.setText("Selected Samples");
-		groupSelectedSamples.setLayout(new GridLayout(4, false));
+		groupSelectedSamples.setLayout(new GridLayout(2, false));
 
-		this.createTextEditRow4Columns(this, groupSelectedSamples, "Total # Selected", "textSelectedTotal", null, null, null);
-		this.createTextEditRow4Columns(this, groupSelectedSamples, "# of Selected Being Used", "textSelectedBeingUsed", null, null, null);
-		this.createTextEditRow4Columns(this, groupSelectedSamples, "# of Selected Not In Use", "textSelectedNotInUse", null, null, null);
+		this.createGridData2ColumnText(this, groupSelectedSamples, "Total # Selected", "textSelectedTotal");
+		this.createGridData2ColumnText(this, groupSelectedSamples, "# of Selected Being Used", "textSelectedBeingUsed");
+		this.createGridData2ColumnText(this, groupSelectedSamples, "# of Selected Not In Use", "textSelectedNotInUse");
 
 		/* ======================== */
 		/* ROW 2					*/
 		/* ======================== */
 		compositeRow2 = new Composite(compositeMain, SWT.NONE);
-		compositeRow2.setLayout(new RowLayout(SWT.HORIZONTAL));
+		compositeRow2.setLayout(new FillLayout(SWT.HORIZONTAL));
 
 		groupSampleName = new Group(compositeRow2, SWT.NONE);
 		groupSampleName.setText("Sample Name");
-		RowLayout rowLayout2 = new RowLayout(SWT.VERTICAL);
-		groupSampleName.setLayout(rowLayout2);
-		
-		textName = new Text(groupSampleName, SWT.BORDER);
-		textName.setEditable(false);
-		
-		inputName = new Text(groupSampleName, SWT.BORDER);
-		
-		buttonAppendName = new Button(groupSampleName, SWT.CHECK);
-		buttonAppendName.setSelection(true);
-		buttonAppendName.setToolTipText("When multiple samples are selected, numbers will be appended to the end of the sample name. For example: SNARE01, SNARE02");
-		buttonAppendName.setText("Use Multi #");
-		
-		buttonName = new Button(groupSampleName, SWT.NONE);
-		buttonName.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setSelectedSamplesName();
-			}
-		});
-		buttonName.setText("Set Name");
+		groupSampleName.setLayout(new GridLayout(4, false));
 
+		this.createGridData4ColumnTextInput(this, groupSampleName, "Sample Name", "textName", "inputName", "appendName", 8, "samples", EsxPackage.Literals.SAMPLE__NAME);
+		
 		/* ======================== */
 		/* ROW 3					*/
 		/* ======================== */
 		compositeRow3 = new Composite(compositeMain, SWT.NONE);
-		compositeRow3.setLayout(new RowLayout(SWT.HORIZONTAL));
+		compositeRow3.setLayout(new FillLayout(SWT.HORIZONTAL));
 
 		groupGeneralInfo = new Group(compositeRow3, SWT.NONE);
 		groupGeneralInfo.setText("General Info");
 		groupGeneralInfo.setLayout(new GridLayout(4, false));
 
-		this.createTextEditRow4Columns(this, groupGeneralInfo, "Sample Rate", "textSampleRate", null, null, null);
-		this.createTextEditRow4Columns(this, groupGeneralInfo, "Sample Tune", "textSampleTune", null, null, null);
-		this.createTextEditRow4Columns(this, groupGeneralInfo, "Is Slice?", "textIsSlice", null, null, null);
-		this.createTextEditRow4Columns(this, groupGeneralInfo, "Is Loop?", "textIsLoop", null, null, null);
+		this.createGridData2ColumnText(this, groupGeneralInfo, "Sample Rate", "textSampleRate");
+		this.createGridData2ColumnText(this, groupGeneralInfo, "Sample Tune", "textSampleTune");
+		this.createGridData2ColumnText(this, groupGeneralInfo, "Is Slice?", "textIsSlice");
+		this.createGridData2ColumnText(this, groupGeneralInfo, "Is Loop?", "textIsLoop");
 
 		/* ======================== */
 		/* ROW 4					*/
 		/* ======================== */
 		compositeRow4 = new Composite(compositeMain, SWT.NONE);
-		compositeRow4.setLayout(new RowLayout(SWT.HORIZONTAL));
+		compositeRow4.setLayout(new FillLayout(SWT.HORIZONTAL));
 		
 		groupSizeInfo = new Group(compositeRow4, SWT.NONE);
 		groupSizeInfo.setText("Size/Length Info");
 		groupSizeInfo.setLayout(new GridLayout(4, false));
 
-		this.createTextEditRow4Columns(this, groupSizeInfo, "Mem Used", "textMemUsedInBytes", null, null, null);
-		this.createTextEditRow4Columns(this, groupSizeInfo, "Length", "textNumberOfSampleFrames", null, null, null);
-		this.createTextEditRow4Columns(this, groupSizeInfo, "Start", "textStart", "inputStart", "samples", EsxPackage.Literals.SAMPLE__START);
-		this.createTextEditRow4Columns(this, groupSizeInfo, "End", "textEnd", "inputEnd", "samples", EsxPackage.Literals.SAMPLE__END);
-		this.createTextEditRow4Columns(this, groupSizeInfo, "Loop Start", "textLoopStart", "inputLoopStart", "samples", EsxPackage.Literals.SAMPLE__LOOP_START);
+		this.createGridData2ColumnText(this, groupSizeInfo, "Length", "textNumberOfSampleFrames");
+		this.createGridData2ColumnText(this, groupSizeInfo, "Mem Used", "textMemUsedInBytes");
+		this.createGridData4ColumnTextInput(this, groupSizeInfo, "Start", "textStart", "inputStart", null, 100, "samples", EsxPackage.Literals.SAMPLE__START);
+		this.createGridData4ColumnTextInput(this, groupSizeInfo, "End", "textEnd", "inputEnd", null, 100, "samples", EsxPackage.Literals.SAMPLE__END);
+		this.createGridData4ColumnTextInput(this, groupSizeInfo, "Loop Start", "textLoopStart", "inputLoopStart", null, 100, "samples", EsxPackage.Literals.SAMPLE__LOOP_START);
+		scrolledComposite.setContent(compositeMain);
+		scrolledComposite.setMinSize(compositeMain.computeSize(SWT.DEFAULT, SWT.DEFAULT));
 	}
 
 	/**
@@ -252,49 +237,6 @@ public class EsxCompositeSample extends EsxComposite {
 			}
 		}
 		return returnValue;
-	}
-
-	/**
-	 * 
-	 */
-	private void setSelectedSamplesName() {
-		CompoundCommand cmd = new CompoundCommand();
-
-		for(int i=0; i<this.samples.size(); i++) {
-			cmd.append(SetCommand.create(
-				this.getEditingDomain(),
-				this.samples.get(i),
-				EsxPackage.Literals.SAMPLE__NAME,
-				getMultiNumberName(this.inputName.getText(), i, this.samples.size())
-			));
-		}
-
-		if(cmd.canExecute()) {
-			this.getCommandStack().execute(cmd);
-		}
-	}
-
-	/**
-	 * @param name
-	 * @param currentIndex
-	 * @param totalSize
-	 */
-	private String getMultiNumberName(String name, int currentIndex, int totalSize) {
-		name = StringUtils.trim(name);
-		currentIndex = currentIndex<totalSize?currentIndex+1:totalSize+1;
-
-		if(totalSize<=1 || !this.buttonAppendName.getSelection()) {
-			return name;
-		}
-		else if(totalSize<10) {
-			return StringUtils.left(name, 7) + Integer.toString(currentIndex);
-		}
-		else if(totalSize<100) {
-			return StringUtils.left(name, 6) + StringUtils.leftPad(Integer.toString(currentIndex), 2, "0");
-		}
-		else {
-			return StringUtils.left(name, 5) + StringUtils.leftPad(Integer.toString(currentIndex), 3, "0");
-		}
 	}
 
 }
