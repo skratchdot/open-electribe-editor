@@ -289,9 +289,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="SampleMono" eSuperTypes="#//Sample"/>
   <eClassifiers xsi:type="ecore:EClass" name="SampleStereo" eSuperTypes="#//Sample"/>
   <eClassifiers xsi:type="ecore:EClass" name="SampleTune">
+    <eOperations name="calculateSampleTuneFromSampleRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat">
+      <eParameters name="sampleRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
     <eOperations name="getShortFromCurrentValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     <eOperations name="setCurrentValueFromShort">
-      <eParameters name="packedShort" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+      <eParameters name="packedShort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
   </eClassifiers>

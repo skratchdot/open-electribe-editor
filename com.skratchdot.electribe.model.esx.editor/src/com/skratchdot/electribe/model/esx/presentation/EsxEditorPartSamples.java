@@ -94,6 +94,7 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		this.addColumnToTableViewer(this.tableViewer, "Name", 100);
 		this.addColumnToTableViewer(this.tableViewer, "MemSize", 100);
 		this.addColumnToTableViewer(this.tableViewer, "SampleRate", 100);
+		this.addColumnToTableViewer(this.tableViewer, "SampleTune", 100);
 		this.addColumnToTableViewer(this.tableViewer, "StretchStep", 100);
 		this.addColumnToTableViewer(this.tableViewer, "IsLoop?", 100);
 		this.addColumnToTableViewer(this.tableViewer, "IsSlice?", 100);

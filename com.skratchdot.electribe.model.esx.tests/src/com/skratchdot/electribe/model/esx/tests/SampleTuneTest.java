@@ -25,6 +25,7 @@ import junit.textui.TestRunner;
  * <p>
  * The following operations are tested:
  * <ul>
+ *   <li>{@link com.skratchdot.electribe.model.esx.SampleTune#calculateSampleTuneFromSampleRate(short) <em>Calculate Sample Tune From Sample Rate</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.SampleTune#getShortFromCurrentValue() <em>Get Short From Current Value</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.SampleTune#setCurrentValueFromShort(short) <em>Set Current Value From Short</em>}</li>
  * </ul>
@@ -100,6 +101,19 @@ public class SampleTuneTest extends TestCase {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.SampleTune#calculateSampleTuneFromSampleRate(short) <em>Calculate Sample Tune From Sample Rate</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.SampleTune#calculateSampleTuneFromSampleRate(short)
+	 * @generated
+	 */
+	public void testCalculateSampleTuneFromSampleRate__short() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 	/**

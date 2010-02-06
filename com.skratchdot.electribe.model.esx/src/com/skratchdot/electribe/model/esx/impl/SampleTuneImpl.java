@@ -98,6 +98,26 @@ public class SampleTuneImpl extends EObjectImpl implements SampleTune {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Calculates the SampleTune value from the given sampleRate (using a
+	 * baseSamplingRate of 44100)
+	 * <p>Formula Used:</p>
+	 * <table>
+	 * <tr><td></td><td align="center">log(sampleRate/44100)</td><td></td></tr>
+	 * <tr><td>12 *</td><td align="center">----------------------</td><td>= SampleTune</td></tr>
+	 * <tr><td></td><td align="center">log(2)</td><td></td></tr>
+	 * </table>
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public float calculateSampleTuneFromSampleRate(int sampleRate) {
+		float x = ((float)sampleRate)/44100;
+		float y = (float) Math.log(x);
+		float z = (float) (y/Math.log(2));
+		return 12*z;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */

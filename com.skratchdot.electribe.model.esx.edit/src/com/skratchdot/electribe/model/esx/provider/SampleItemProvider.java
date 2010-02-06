@@ -518,22 +518,24 @@ public class SampleItemProvider
 			case 3: return Integer.toString(((Sample) object).getMemUsedInBytes());
 			// SampleRate
 			case 4: return Integer.toString(((Sample) object).getSampleRate());
+			// SampleTune
+			case 5: return Float.toString(((Sample) object).getSampleTune().getValue());
 			// StretchStep
-			case 5: return ((Sample) object).getStretchStep().getLiteral();
+			case 6: return ((Sample) object).getStretchStep().getLiteral();
 			// IsLoop
-			case 6: return ((Sample) object).isLoop()?getString("_UI_Display_Yes"):getString("_UI_Display_No");
+			case 7: return ((Sample) object).isLoop()?getString("_UI_Display_Yes"):getString("_UI_Display_No");
 			// IsSlice?
-			case 7: return ((Sample) object).isSlice()?getString("_UI_Display_Yes"):getString("_UI_Display_No");
+			case 8: return ((Sample) object).isSlice()?getString("_UI_Display_Yes"):getString("_UI_Display_No");
 			// PlayLevel
-			case 8: return ((Sample) object).getPlayLevel().getLiteral();
+			case 9: return ((Sample) object).getPlayLevel().getLiteral();
 			// Start
-			case 9: return Integer.toString(((Sample) object).getStart());
+			case 10: return Integer.toString(((Sample) object).getStart());
 			// End
-			case 10: return Integer.toString(((Sample) object).getEnd());
+			case 11: return Integer.toString(((Sample) object).getEnd());
 			// LoopStart
-			case 11: return Integer.toString(((Sample) object).getLoopStart());
+			case 12: return Integer.toString(((Sample) object).getLoopStart());
 			// NumSampleFrames
-			case 12: return Integer.toString(((Sample) object).getNumberOfSampleFrames());
+			case 13: return Integer.toString(((Sample) object).getNumberOfSampleFrames());
 			default: return getText(object);
 		}
 	}

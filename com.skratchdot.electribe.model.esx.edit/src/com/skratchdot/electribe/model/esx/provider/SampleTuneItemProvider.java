@@ -122,10 +122,21 @@ public class SampleTuneItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
+		SampleTune sampleTune = (SampleTune)object;
+		return "" + sampleTune.getValue();
+	}
+
+	/**
+	 * This returns the label text for the adapted class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTextGen(Object object) {
 		SampleTune sampleTune = (SampleTune)object;
 		return getString("_UI_SampleTune_type") + " " + sampleTune.getValue();
 	}

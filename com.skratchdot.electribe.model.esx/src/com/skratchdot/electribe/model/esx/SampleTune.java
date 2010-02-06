@@ -59,6 +59,14 @@ public interface SampleTune extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	float calculateSampleTuneFromSampleRate(int sampleRate);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -67,7 +75,7 @@ public interface SampleTune extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model packedShortRequired="true"
+	 * @model
 	 * @generated
 	 */
 	void setCurrentValueFromShort(short packedShort);

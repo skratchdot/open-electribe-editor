@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 
+import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.PlayLevel;
@@ -648,7 +649,13 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 			this.setSampleRate((int) audioFormatEncoded.getSampleRate());
 			this.setAudioDataChannel1(EsxUtil.listToByteArray(audioDataListChannel1));
 			this.setAudioDataChannel2(EsxUtil.listToByteArray(audioDataListChannel2));
-		
+
+			// Set calculated Sample Tune (from Sample Rate)
+			SampleTune newSampleTune = EsxFactory.eINSTANCE.createSampleTune();
+			float newFloat = newSampleTune.calculateSampleTuneFromSampleRate(this.getSampleRate());
+			newSampleTune.setValue(newFloat);
+			this.setSampleTune(newSampleTune);
+			
 		} catch (UnsupportedAudioFileException e) {
 			e.printStackTrace();
 			throw new EsxException("Invalid audio file: " + file.getAbsolutePath());
