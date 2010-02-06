@@ -122,22 +122,22 @@ public interface EsxPackage extends EPackage {
 	int ESX_FILE__SAMPLES = 4;
 
 	/**
-	 * The feature id for the '<em><b>Blank Pattern</b></em>' containment reference.
+	 * The feature id for the '<em><b>Empty Pattern</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__BLANK_PATTERN = 5;
+	int ESX_FILE__EMPTY_PATTERN = 5;
 
 	/**
-	 * The feature id for the '<em><b>Blank Song</b></em>' containment reference.
+	 * The feature id for the '<em><b>Empty Song</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__BLANK_SONG = 6;
+	int ESX_FILE__EMPTY_SONG = 6;
 
 	/**
 	 * The feature id for the '<em><b>Mem Used In Bytes</b></em>' attribute.
@@ -158,49 +158,94 @@ public interface EsxPackage extends EPackage {
 	int ESX_FILE__MEM_FREE_IN_BYTES = 8;
 
 	/**
-	 * The feature id for the '<em><b>Num Patterns Used</b></em>' attribute.
+	 * The feature id for the '<em><b>Num Patterns Empty</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__NUM_PATTERNS_USED = 9;
+	int ESX_FILE__NUM_PATTERNS_EMPTY = 9;
 
 	/**
-	 * The feature id for the '<em><b>Num Samples Used</b></em>' attribute.
+	 * The feature id for the '<em><b>Num Patterns Not Empty</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__NUM_SAMPLES_USED = 10;
+	int ESX_FILE__NUM_PATTERNS_NOT_EMPTY = 10;
 
 	/**
-	 * The feature id for the '<em><b>Num Samples Mono Used</b></em>' attribute.
+	 * The feature id for the '<em><b>Num Samples Empty</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__NUM_SAMPLES_MONO_USED = 11;
+	int ESX_FILE__NUM_SAMPLES_EMPTY = 11;
 
 	/**
-	 * The feature id for the '<em><b>Num Samples Stereo Used</b></em>' attribute.
+	 * The feature id for the '<em><b>Num Samples Not Empty</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__NUM_SAMPLES_STEREO_USED = 12;
+	int ESX_FILE__NUM_SAMPLES_NOT_EMPTY = 12;
 
 	/**
-	 * The feature id for the '<em><b>Num Songs Used</b></em>' attribute.
+	 * The feature id for the '<em><b>Num Samples Mono Empty</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__NUM_SONGS_USED = 13;
+	int ESX_FILE__NUM_SAMPLES_MONO_EMPTY = 13;
+
+	/**
+	 * The feature id for the '<em><b>Num Samples Mono Not Empty</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESX_FILE__NUM_SAMPLES_MONO_NOT_EMPTY = 14;
+
+	/**
+	 * The feature id for the '<em><b>Num Samples Stereo Empty</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESX_FILE__NUM_SAMPLES_STEREO_EMPTY = 15;
+
+	/**
+	 * The feature id for the '<em><b>Num Samples Stereo Not Empty</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESX_FILE__NUM_SAMPLES_STEREO_NOT_EMPTY = 16;
+
+	/**
+	 * The feature id for the '<em><b>Num Songs Empty</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESX_FILE__NUM_SONGS_EMPTY = 17;
+
+	/**
+	 * The feature id for the '<em><b>Num Songs Not Empty</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESX_FILE__NUM_SONGS_NOT_EMPTY = 18;
 
 	/**
 	 * The number of structural features of the '<em>File</em>' class.
@@ -209,7 +254,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE_FEATURE_COUNT = 14;
+	int ESX_FILE_FEATURE_COUNT = 19;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.GlobalParametersImpl <em>Global Parameters</em>}' class.
@@ -2314,13 +2359,13 @@ public interface EsxPackage extends EPackage {
 	int PATTERN__MOTION_PARAMETERS = 22;
 
 	/**
-	 * The feature id for the '<em><b>Being Used</b></em>' attribute.
+	 * The feature id for the '<em><b>Empty</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__BEING_USED = 23;
+	int PATTERN__EMPTY = 23;
 
 	/**
 	 * The feature id for the '<em><b>Pattern Number Original</b></em>' attribute.
@@ -2576,13 +2621,13 @@ public interface EsxPackage extends EPackage {
 	int SAMPLE__MEM_USED_IN_BYTES = 23;
 
 	/**
-	 * The feature id for the '<em><b>Being Used</b></em>' attribute.
+	 * The feature id for the '<em><b>Empty</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__BEING_USED = 24;
+	int SAMPLE__EMPTY = 24;
 
 	/**
 	 * The feature id for the '<em><b>Sample Number Original</b></em>' attribute.
@@ -2838,13 +2883,13 @@ public interface EsxPackage extends EPackage {
 	int SAMPLE_MONO__MEM_USED_IN_BYTES = SAMPLE__MEM_USED_IN_BYTES;
 
 	/**
-	 * The feature id for the '<em><b>Being Used</b></em>' attribute.
+	 * The feature id for the '<em><b>Empty</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE_MONO__BEING_USED = SAMPLE__BEING_USED;
+	int SAMPLE_MONO__EMPTY = SAMPLE__EMPTY;
 
 	/**
 	 * The feature id for the '<em><b>Sample Number Original</b></em>' attribute.
@@ -3100,13 +3145,13 @@ public interface EsxPackage extends EPackage {
 	int SAMPLE_STEREO__MEM_USED_IN_BYTES = SAMPLE__MEM_USED_IN_BYTES;
 
 	/**
-	 * The feature id for the '<em><b>Being Used</b></em>' attribute.
+	 * The feature id for the '<em><b>Empty</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE_STEREO__BEING_USED = SAMPLE__BEING_USED;
+	int SAMPLE_STEREO__EMPTY = SAMPLE__EMPTY;
 
 	/**
 	 * The feature id for the '<em><b>Sample Number Original</b></em>' attribute.
@@ -3255,13 +3300,13 @@ public interface EsxPackage extends EPackage {
 	int SONG__SONG_EVENTS = 8;
 
 	/**
-	 * The feature id for the '<em><b>Being Used</b></em>' attribute.
+	 * The feature id for the '<em><b>Empty</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SONG__BEING_USED = 9;
+	int SONG__EMPTY = 9;
 
 	/**
 	 * The feature id for the '<em><b>Song Number Original</b></em>' attribute.
@@ -3320,13 +3365,13 @@ public interface EsxPackage extends EPackage {
 	int SONG_PATTERN__NOTE_OFFSET = 1;
 
 	/**
-	 * The feature id for the '<em><b>Being Used</b></em>' attribute.
+	 * The feature id for the '<em><b>Empty</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_PATTERN__BEING_USED = 2;
+	int SONG_PATTERN__EMPTY = 2;
 
 	/**
 	 * The number of structural features of the '<em>Song Pattern</em>' class.
@@ -4270,26 +4315,26 @@ public interface EsxPackage extends EPackage {
 	EReference getEsxFile_Samples();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link com.skratchdot.electribe.model.esx.EsxFile#getBlankPattern <em>Blank Pattern</em>}'.
+	 * Returns the meta object for the containment reference '{@link com.skratchdot.electribe.model.esx.EsxFile#getEmptyPattern <em>Empty Pattern</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Blank Pattern</em>'.
-	 * @see com.skratchdot.electribe.model.esx.EsxFile#getBlankPattern()
+	 * @return the meta object for the containment reference '<em>Empty Pattern</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getEmptyPattern()
 	 * @see #getEsxFile()
 	 * @generated
 	 */
-	EReference getEsxFile_BlankPattern();
+	EReference getEsxFile_EmptyPattern();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link com.skratchdot.electribe.model.esx.EsxFile#getBlankSong <em>Blank Song</em>}'.
+	 * Returns the meta object for the containment reference '{@link com.skratchdot.electribe.model.esx.EsxFile#getEmptySong <em>Empty Song</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Blank Song</em>'.
-	 * @see com.skratchdot.electribe.model.esx.EsxFile#getBlankSong()
+	 * @return the meta object for the containment reference '<em>Empty Song</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getEmptySong()
 	 * @see #getEsxFile()
 	 * @generated
 	 */
-	EReference getEsxFile_BlankSong();
+	EReference getEsxFile_EmptySong();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getMemUsedInBytes <em>Mem Used In Bytes</em>}'.
@@ -4314,59 +4359,114 @@ public interface EsxPackage extends EPackage {
 	EAttribute getEsxFile_MemFreeInBytes();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsUsed <em>Num Patterns Used</em>}'.
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsEmpty <em>Num Patterns Empty</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Num Patterns Used</em>'.
-	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsUsed()
+	 * @return the meta object for the attribute '<em>Num Patterns Empty</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsEmpty()
 	 * @see #getEsxFile()
 	 * @generated
 	 */
-	EAttribute getEsxFile_NumPatternsUsed();
+	EAttribute getEsxFile_NumPatternsEmpty();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesUsed <em>Num Samples Used</em>}'.
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsNotEmpty <em>Num Patterns Not Empty</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Num Samples Used</em>'.
-	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesUsed()
+	 * @return the meta object for the attribute '<em>Num Patterns Not Empty</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsNotEmpty()
 	 * @see #getEsxFile()
 	 * @generated
 	 */
-	EAttribute getEsxFile_NumSamplesUsed();
+	EAttribute getEsxFile_NumPatternsNotEmpty();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoUsed <em>Num Samples Mono Used</em>}'.
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesEmpty <em>Num Samples Empty</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Num Samples Mono Used</em>'.
-	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoUsed()
+	 * @return the meta object for the attribute '<em>Num Samples Empty</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesEmpty()
 	 * @see #getEsxFile()
 	 * @generated
 	 */
-	EAttribute getEsxFile_NumSamplesMonoUsed();
+	EAttribute getEsxFile_NumSamplesEmpty();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoUsed <em>Num Samples Stereo Used</em>}'.
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesNotEmpty <em>Num Samples Not Empty</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Num Samples Stereo Used</em>'.
-	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoUsed()
+	 * @return the meta object for the attribute '<em>Num Samples Not Empty</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesNotEmpty()
 	 * @see #getEsxFile()
 	 * @generated
 	 */
-	EAttribute getEsxFile_NumSamplesStereoUsed();
+	EAttribute getEsxFile_NumSamplesNotEmpty();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsUsed <em>Num Songs Used</em>}'.
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoEmpty <em>Num Samples Mono Empty</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Num Songs Used</em>'.
-	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSongsUsed()
+	 * @return the meta object for the attribute '<em>Num Samples Mono Empty</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoEmpty()
 	 * @see #getEsxFile()
 	 * @generated
 	 */
-	EAttribute getEsxFile_NumSongsUsed();
+	EAttribute getEsxFile_NumSamplesMonoEmpty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoNotEmpty <em>Num Samples Mono Not Empty</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Num Samples Mono Not Empty</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoNotEmpty()
+	 * @see #getEsxFile()
+	 * @generated
+	 */
+	EAttribute getEsxFile_NumSamplesMonoNotEmpty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoEmpty <em>Num Samples Stereo Empty</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Num Samples Stereo Empty</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoEmpty()
+	 * @see #getEsxFile()
+	 * @generated
+	 */
+	EAttribute getEsxFile_NumSamplesStereoEmpty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoNotEmpty <em>Num Samples Stereo Not Empty</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Num Samples Stereo Not Empty</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoNotEmpty()
+	 * @see #getEsxFile()
+	 * @generated
+	 */
+	EAttribute getEsxFile_NumSamplesStereoNotEmpty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsEmpty <em>Num Songs Empty</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Num Songs Empty</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSongsEmpty()
+	 * @see #getEsxFile()
+	 * @generated
+	 */
+	EAttribute getEsxFile_NumSongsEmpty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsNotEmpty <em>Num Songs Not Empty</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Num Songs Not Empty</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSongsNotEmpty()
+	 * @see #getEsxFile()
+	 * @generated
+	 */
+	EAttribute getEsxFile_NumSongsNotEmpty();
 
 	/**
 	 * Returns the meta object for class '{@link com.skratchdot.electribe.model.esx.GlobalParameters <em>Global Parameters</em>}'.
@@ -5567,15 +5667,15 @@ public interface EsxPackage extends EPackage {
 	EReference getPattern_MotionParameters();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Pattern#isBeingUsed <em>Being Used</em>}'.
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Pattern#isEmpty <em>Empty</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Being Used</em>'.
-	 * @see com.skratchdot.electribe.model.esx.Pattern#isBeingUsed()
+	 * @return the meta object for the attribute '<em>Empty</em>'.
+	 * @see com.skratchdot.electribe.model.esx.Pattern#isEmpty()
 	 * @see #getPattern()
 	 * @generated
 	 */
-	EAttribute getPattern_BeingUsed();
+	EAttribute getPattern_Empty();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Pattern#getPatternNumberOriginal <em>Pattern Number Original</em>}'.
@@ -5621,17 +5721,6 @@ public interface EsxPackage extends EPackage {
 	EAttribute getSample_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Sample#isBeingUsed <em>Being Used</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Being Used</em>'.
-	 * @see com.skratchdot.electribe.model.esx.Sample#isBeingUsed()
-	 * @see #getSample()
-	 * @generated
-	 */
-	EAttribute getSample_BeingUsed();
-
-	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Sample#isStereo <em>Stereo</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5652,6 +5741,17 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSample_MemUsedInBytes();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Sample#isEmpty <em>Empty</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Empty</em>'.
+	 * @see com.skratchdot.electribe.model.esx.Sample#isEmpty()
+	 * @see #getSample()
+	 * @generated
+	 */
+	EAttribute getSample_Empty();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Sample#getOffsetChannel1Start <em>Offset Channel1 Start</em>}'.
@@ -6057,15 +6157,15 @@ public interface EsxPackage extends EPackage {
 	EReference getSong_SongEvents();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Song#isBeingUsed <em>Being Used</em>}'.
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Song#isEmpty <em>Empty</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Being Used</em>'.
-	 * @see com.skratchdot.electribe.model.esx.Song#isBeingUsed()
+	 * @return the meta object for the attribute '<em>Empty</em>'.
+	 * @see com.skratchdot.electribe.model.esx.Song#isEmpty()
 	 * @see #getSong()
 	 * @generated
 	 */
-	EAttribute getSong_BeingUsed();
+	EAttribute getSong_Empty();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Song#getSongNumberOriginal <em>Song Number Original</em>}'.
@@ -6122,15 +6222,15 @@ public interface EsxPackage extends EPackage {
 	EAttribute getSongPattern_NoteOffset();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongPattern#isBeingUsed <em>Being Used</em>}'.
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongPattern#isEmpty <em>Empty</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Being Used</em>'.
-	 * @see com.skratchdot.electribe.model.esx.SongPattern#isBeingUsed()
+	 * @return the meta object for the attribute '<em>Empty</em>'.
+	 * @see com.skratchdot.electribe.model.esx.SongPattern#isEmpty()
 	 * @see #getSongPattern()
 	 * @generated
 	 */
-	EAttribute getSongPattern_BeingUsed();
+	EAttribute getSongPattern_Empty();
 
 	/**
 	 * Returns the meta object for class '{@link com.skratchdot.electribe.model.esx.Tempo <em>Tempo</em>}'.
@@ -6834,20 +6934,20 @@ public interface EsxPackage extends EPackage {
 		EReference ESX_FILE__SAMPLES = eINSTANCE.getEsxFile_Samples();
 
 		/**
-		 * The meta object literal for the '<em><b>Blank Pattern</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Empty Pattern</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ESX_FILE__BLANK_PATTERN = eINSTANCE.getEsxFile_BlankPattern();
+		EReference ESX_FILE__EMPTY_PATTERN = eINSTANCE.getEsxFile_EmptyPattern();
 
 		/**
-		 * The meta object literal for the '<em><b>Blank Song</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Empty Song</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ESX_FILE__BLANK_SONG = eINSTANCE.getEsxFile_BlankSong();
+		EReference ESX_FILE__EMPTY_SONG = eINSTANCE.getEsxFile_EmptySong();
 
 		/**
 		 * The meta object literal for the '<em><b>Mem Used In Bytes</b></em>' attribute feature.
@@ -6866,44 +6966,84 @@ public interface EsxPackage extends EPackage {
 		EAttribute ESX_FILE__MEM_FREE_IN_BYTES = eINSTANCE.getEsxFile_MemFreeInBytes();
 
 		/**
-		 * The meta object literal for the '<em><b>Num Patterns Used</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Num Patterns Empty</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__NUM_PATTERNS_USED = eINSTANCE.getEsxFile_NumPatternsUsed();
+		EAttribute ESX_FILE__NUM_PATTERNS_EMPTY = eINSTANCE.getEsxFile_NumPatternsEmpty();
 
 		/**
-		 * The meta object literal for the '<em><b>Num Samples Used</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Num Patterns Not Empty</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__NUM_SAMPLES_USED = eINSTANCE.getEsxFile_NumSamplesUsed();
+		EAttribute ESX_FILE__NUM_PATTERNS_NOT_EMPTY = eINSTANCE.getEsxFile_NumPatternsNotEmpty();
 
 		/**
-		 * The meta object literal for the '<em><b>Num Samples Mono Used</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Num Samples Empty</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__NUM_SAMPLES_MONO_USED = eINSTANCE.getEsxFile_NumSamplesMonoUsed();
+		EAttribute ESX_FILE__NUM_SAMPLES_EMPTY = eINSTANCE.getEsxFile_NumSamplesEmpty();
 
 		/**
-		 * The meta object literal for the '<em><b>Num Samples Stereo Used</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Num Samples Not Empty</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__NUM_SAMPLES_STEREO_USED = eINSTANCE.getEsxFile_NumSamplesStereoUsed();
+		EAttribute ESX_FILE__NUM_SAMPLES_NOT_EMPTY = eINSTANCE.getEsxFile_NumSamplesNotEmpty();
 
 		/**
-		 * The meta object literal for the '<em><b>Num Songs Used</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Num Samples Mono Empty</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__NUM_SONGS_USED = eINSTANCE.getEsxFile_NumSongsUsed();
+		EAttribute ESX_FILE__NUM_SAMPLES_MONO_EMPTY = eINSTANCE.getEsxFile_NumSamplesMonoEmpty();
+
+		/**
+		 * The meta object literal for the '<em><b>Num Samples Mono Not Empty</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ESX_FILE__NUM_SAMPLES_MONO_NOT_EMPTY = eINSTANCE.getEsxFile_NumSamplesMonoNotEmpty();
+
+		/**
+		 * The meta object literal for the '<em><b>Num Samples Stereo Empty</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ESX_FILE__NUM_SAMPLES_STEREO_EMPTY = eINSTANCE.getEsxFile_NumSamplesStereoEmpty();
+
+		/**
+		 * The meta object literal for the '<em><b>Num Samples Stereo Not Empty</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ESX_FILE__NUM_SAMPLES_STEREO_NOT_EMPTY = eINSTANCE.getEsxFile_NumSamplesStereoNotEmpty();
+
+		/**
+		 * The meta object literal for the '<em><b>Num Songs Empty</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ESX_FILE__NUM_SONGS_EMPTY = eINSTANCE.getEsxFile_NumSongsEmpty();
+
+		/**
+		 * The meta object literal for the '<em><b>Num Songs Not Empty</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ESX_FILE__NUM_SONGS_NOT_EMPTY = eINSTANCE.getEsxFile_NumSongsNotEmpty();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.GlobalParametersImpl <em>Global Parameters</em>}' class.
@@ -7840,12 +7980,12 @@ public interface EsxPackage extends EPackage {
 		EReference PATTERN__MOTION_PARAMETERS = eINSTANCE.getPattern_MotionParameters();
 
 		/**
-		 * The meta object literal for the '<em><b>Being Used</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Empty</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PATTERN__BEING_USED = eINSTANCE.getPattern_BeingUsed();
+		EAttribute PATTERN__EMPTY = eINSTANCE.getPattern_Empty();
 
 		/**
 		 * The meta object literal for the '<em><b>Pattern Number Original</b></em>' attribute feature.
@@ -7882,14 +8022,6 @@ public interface EsxPackage extends EPackage {
 		EAttribute SAMPLE__NAME = eINSTANCE.getSample_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Being Used</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SAMPLE__BEING_USED = eINSTANCE.getSample_BeingUsed();
-
-		/**
 		 * The meta object literal for the '<em><b>Stereo</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -7904,6 +8036,14 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SAMPLE__MEM_USED_IN_BYTES = eINSTANCE.getSample_MemUsedInBytes();
+
+		/**
+		 * The meta object literal for the '<em><b>Empty</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SAMPLE__EMPTY = eINSTANCE.getSample_Empty();
 
 		/**
 		 * The meta object literal for the '<em><b>Offset Channel1 Start</b></em>' attribute feature.
@@ -8210,12 +8350,12 @@ public interface EsxPackage extends EPackage {
 		EReference SONG__SONG_EVENTS = eINSTANCE.getSong_SongEvents();
 
 		/**
-		 * The meta object literal for the '<em><b>Being Used</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Empty</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG__BEING_USED = eINSTANCE.getSong_BeingUsed();
+		EAttribute SONG__EMPTY = eINSTANCE.getSong_Empty();
 
 		/**
 		 * The meta object literal for the '<em><b>Song Number Original</b></em>' attribute feature.
@@ -8260,12 +8400,12 @@ public interface EsxPackage extends EPackage {
 		EAttribute SONG_PATTERN__NOTE_OFFSET = eINSTANCE.getSongPattern_NoteOffset();
 
 		/**
-		 * The meta object literal for the '<em><b>Being Used</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Empty</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_PATTERN__BEING_USED = eINSTANCE.getSongPattern_BeingUsed();
+		EAttribute SONG_PATTERN__EMPTY = eINSTANCE.getSongPattern_Empty();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.TempoImpl <em>Tempo</em>}' class.

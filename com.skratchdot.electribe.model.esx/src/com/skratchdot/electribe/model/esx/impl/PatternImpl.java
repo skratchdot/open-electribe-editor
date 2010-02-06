@@ -80,7 +80,7 @@ import com.skratchdot.electribe.model.esx.util.EsxUtil;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PatternImpl#getAccentPart <em>Accent Part</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PatternImpl#getFxParameters <em>Fx Parameters</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PatternImpl#getMotionParameters <em>Motion Parameters</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.PatternImpl#isBeingUsed <em>Being Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.PatternImpl#isEmpty <em>Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PatternImpl#getPatternNumberOriginal <em>Pattern Number Original</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PatternImpl#getPatternNumberCurrent <em>Pattern Number Current</em>}</li>
  * </ul>
@@ -470,14 +470,14 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	protected EList<ParametersMotion> motionParameters;
 
 	/**
-	 * The default value of the '{@link #isBeingUsed() <em>Being Used</em>}' attribute.
+	 * The default value of the '{@link #isEmpty() <em>Empty</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isBeingUsed()
+	 * @see #isEmpty()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean BEING_USED_EDEFAULT = true;
+	protected static final boolean EMPTY_EDEFAULT = true;
 
 	/**
 	 * The default value of the '{@link #getPatternNumberOriginal() <em>Pattern Number Original</em>}' attribute.
@@ -1131,26 +1131,12 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public boolean isBeingUsed() {
+	public boolean isEmpty() {
 		if(this.eResource()!=null) {
 			Resource resource = (Resource) this.eResource();
 			Object rootObject = resource.getContents().get(0);
 			if(rootObject instanceof EsxFile) {
-				/* TODO: EVENTUALLY WE NEED TO USE EMF COMPARE
-// Loading models
-EObject model1 = ModelUtils.load(model1, resourceSet);
-EObject model2 = ModelUtils.load(model2, resourceSet);
-
-// Matching model elements
-MatchModel match = MatchService.doMatch(model1, model2, Collections.<String, Object> emptyMap());
-// Computing differences
-DiffModel diff = DiffService.doDiff(match, false);
-// Merges all differences from model1 to model2
-List<DiffElement> differences = new ArrayList<DiffElement>(diff.getOwnedElements());
-MergeService.merge(differences, true);
-				 */
-				// Temporarily just checking names
-				return (!this.getName().equals(((EsxFile) rootObject).getBlankPattern().getName()));
+				return (this.getName().equals(((EsxFile) rootObject).getEmptyPattern().getName()));
 			}
 		}
 		return true;
@@ -1275,8 +1261,8 @@ MergeService.merge(differences, true);
 				return getFxParameters();
 			case EsxPackage.PATTERN__MOTION_PARAMETERS:
 				return getMotionParameters();
-			case EsxPackage.PATTERN__BEING_USED:
-				return isBeingUsed();
+			case EsxPackage.PATTERN__EMPTY:
+				return isEmpty();
 			case EsxPackage.PATTERN__PATTERN_NUMBER_ORIGINAL:
 				return getPatternNumberOriginal();
 			case EsxPackage.PATTERN__PATTERN_NUMBER_CURRENT:
@@ -1513,8 +1499,8 @@ MergeService.merge(differences, true);
 				return fxParameters != null && !fxParameters.isEmpty();
 			case EsxPackage.PATTERN__MOTION_PARAMETERS:
 				return motionParameters != null && !motionParameters.isEmpty();
-			case EsxPackage.PATTERN__BEING_USED:
-				return isBeingUsed() != BEING_USED_EDEFAULT;
+			case EsxPackage.PATTERN__EMPTY:
+				return isEmpty() != EMPTY_EDEFAULT;
 			case EsxPackage.PATTERN__PATTERN_NUMBER_ORIGINAL:
 				return patternNumberOriginal != PATTERN_NUMBER_ORIGINAL_EDEFAULT;
 			case EsxPackage.PATTERN__PATTERN_NUMBER_CURRENT:

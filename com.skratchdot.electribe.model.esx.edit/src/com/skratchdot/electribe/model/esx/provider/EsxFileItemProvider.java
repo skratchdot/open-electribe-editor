@@ -80,11 +80,16 @@ public class EsxFileItemProvider
 			addOriginalNonAudioDataPropertyDescriptor(object);
 			addMemUsedInBytesPropertyDescriptor(object);
 			addMemFreeInBytesPropertyDescriptor(object);
-			addNumPatternsUsedPropertyDescriptor(object);
-			addNumSamplesUsedPropertyDescriptor(object);
-			addNumSamplesMonoUsedPropertyDescriptor(object);
-			addNumSamplesStereoUsedPropertyDescriptor(object);
-			addNumSongsUsedPropertyDescriptor(object);
+			addNumPatternsEmptyPropertyDescriptor(object);
+			addNumPatternsNotEmptyPropertyDescriptor(object);
+			addNumSamplesEmptyPropertyDescriptor(object);
+			addNumSamplesNotEmptyPropertyDescriptor(object);
+			addNumSamplesMonoEmptyPropertyDescriptor(object);
+			addNumSamplesMonoNotEmptyPropertyDescriptor(object);
+			addNumSamplesStereoEmptyPropertyDescriptor(object);
+			addNumSamplesStereoNotEmptyPropertyDescriptor(object);
+			addNumSongsEmptyPropertyDescriptor(object);
+			addNumSongsNotEmptyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -156,19 +161,19 @@ public class EsxFileItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Num Patterns Used feature.
+	 * This adds a property descriptor for the Num Patterns Empty feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNumPatternsUsedPropertyDescriptor(Object object) {
+	protected void addNumPatternsEmptyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_EsxFile_numPatternsUsed_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_numPatternsUsed_feature", "_UI_EsxFile_type"),
-				 EsxPackage.Literals.ESX_FILE__NUM_PATTERNS_USED,
+				 getString("_UI_EsxFile_numPatternsEmpty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_numPatternsEmpty_feature", "_UI_EsxFile_type"),
+				 EsxPackage.Literals.ESX_FILE__NUM_PATTERNS_EMPTY,
 				 false,
 				 false,
 				 false,
@@ -178,19 +183,19 @@ public class EsxFileItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Num Samples Used feature.
+	 * This adds a property descriptor for the Num Patterns Not Empty feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNumSamplesUsedPropertyDescriptor(Object object) {
+	protected void addNumPatternsNotEmptyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_EsxFile_numSamplesUsed_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_numSamplesUsed_feature", "_UI_EsxFile_type"),
-				 EsxPackage.Literals.ESX_FILE__NUM_SAMPLES_USED,
+				 getString("_UI_EsxFile_numPatternsNotEmpty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_numPatternsNotEmpty_feature", "_UI_EsxFile_type"),
+				 EsxPackage.Literals.ESX_FILE__NUM_PATTERNS_NOT_EMPTY,
 				 false,
 				 false,
 				 false,
@@ -200,19 +205,19 @@ public class EsxFileItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Num Samples Mono Used feature.
+	 * This adds a property descriptor for the Num Samples Empty feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNumSamplesMonoUsedPropertyDescriptor(Object object) {
+	protected void addNumSamplesEmptyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_EsxFile_numSamplesMonoUsed_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_numSamplesMonoUsed_feature", "_UI_EsxFile_type"),
-				 EsxPackage.Literals.ESX_FILE__NUM_SAMPLES_MONO_USED,
+				 getString("_UI_EsxFile_numSamplesEmpty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_numSamplesEmpty_feature", "_UI_EsxFile_type"),
+				 EsxPackage.Literals.ESX_FILE__NUM_SAMPLES_EMPTY,
 				 false,
 				 false,
 				 false,
@@ -222,19 +227,19 @@ public class EsxFileItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Num Samples Stereo Used feature.
+	 * This adds a property descriptor for the Num Samples Not Empty feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNumSamplesStereoUsedPropertyDescriptor(Object object) {
+	protected void addNumSamplesNotEmptyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_EsxFile_numSamplesStereoUsed_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_numSamplesStereoUsed_feature", "_UI_EsxFile_type"),
-				 EsxPackage.Literals.ESX_FILE__NUM_SAMPLES_STEREO_USED,
+				 getString("_UI_EsxFile_numSamplesNotEmpty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_numSamplesNotEmpty_feature", "_UI_EsxFile_type"),
+				 EsxPackage.Literals.ESX_FILE__NUM_SAMPLES_NOT_EMPTY,
 				 false,
 				 false,
 				 false,
@@ -244,19 +249,129 @@ public class EsxFileItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Num Songs Used feature.
+	 * This adds a property descriptor for the Num Samples Mono Empty feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNumSongsUsedPropertyDescriptor(Object object) {
+	protected void addNumSamplesMonoEmptyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_EsxFile_numSongsUsed_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_numSongsUsed_feature", "_UI_EsxFile_type"),
-				 EsxPackage.Literals.ESX_FILE__NUM_SONGS_USED,
+				 getString("_UI_EsxFile_numSamplesMonoEmpty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_numSamplesMonoEmpty_feature", "_UI_EsxFile_type"),
+				 EsxPackage.Literals.ESX_FILE__NUM_SAMPLES_MONO_EMPTY,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Num Samples Mono Not Empty feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNumSamplesMonoNotEmptyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_EsxFile_numSamplesMonoNotEmpty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_numSamplesMonoNotEmpty_feature", "_UI_EsxFile_type"),
+				 EsxPackage.Literals.ESX_FILE__NUM_SAMPLES_MONO_NOT_EMPTY,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Num Samples Stereo Empty feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNumSamplesStereoEmptyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_EsxFile_numSamplesStereoEmpty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_numSamplesStereoEmpty_feature", "_UI_EsxFile_type"),
+				 EsxPackage.Literals.ESX_FILE__NUM_SAMPLES_STEREO_EMPTY,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Num Samples Stereo Not Empty feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNumSamplesStereoNotEmptyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_EsxFile_numSamplesStereoNotEmpty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_numSamplesStereoNotEmpty_feature", "_UI_EsxFile_type"),
+				 EsxPackage.Literals.ESX_FILE__NUM_SAMPLES_STEREO_NOT_EMPTY,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Num Songs Empty feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNumSongsEmptyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_EsxFile_numSongsEmpty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_numSongsEmpty_feature", "_UI_EsxFile_type"),
+				 EsxPackage.Literals.ESX_FILE__NUM_SONGS_EMPTY,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Num Songs Not Empty feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNumSongsNotEmptyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_EsxFile_numSongsNotEmpty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_numSongsNotEmpty_feature", "_UI_EsxFile_type"),
+				 EsxPackage.Literals.ESX_FILE__NUM_SONGS_NOT_EMPTY,
 				 false,
 				 false,
 				 false,
@@ -281,8 +396,8 @@ public class EsxFileItemProvider
 			childrenFeatures.add(EsxPackage.Literals.ESX_FILE__PATTERNS);
 			childrenFeatures.add(EsxPackage.Literals.ESX_FILE__SONGS);
 			childrenFeatures.add(EsxPackage.Literals.ESX_FILE__SAMPLES);
-			childrenFeatures.add(EsxPackage.Literals.ESX_FILE__BLANK_PATTERN);
-			childrenFeatures.add(EsxPackage.Literals.ESX_FILE__BLANK_SONG);
+			childrenFeatures.add(EsxPackage.Literals.ESX_FILE__EMPTY_PATTERN);
+			childrenFeatures.add(EsxPackage.Literals.ESX_FILE__EMPTY_SONG);
 		}
 		return childrenFeatures;
 	}
@@ -341,19 +456,24 @@ public class EsxFileItemProvider
 			case EsxPackage.ESX_FILE__ORIGINAL_NON_AUDIO_DATA:
 			case EsxPackage.ESX_FILE__MEM_USED_IN_BYTES:
 			case EsxPackage.ESX_FILE__MEM_FREE_IN_BYTES:
-			case EsxPackage.ESX_FILE__NUM_PATTERNS_USED:
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_USED:
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_USED:
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_USED:
-			case EsxPackage.ESX_FILE__NUM_SONGS_USED:
+			case EsxPackage.ESX_FILE__NUM_PATTERNS_EMPTY:
+			case EsxPackage.ESX_FILE__NUM_PATTERNS_NOT_EMPTY:
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_EMPTY:
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_NOT_EMPTY:
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_EMPTY:
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_NOT_EMPTY:
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_EMPTY:
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_NOT_EMPTY:
+			case EsxPackage.ESX_FILE__NUM_SONGS_EMPTY:
+			case EsxPackage.ESX_FILE__NUM_SONGS_NOT_EMPTY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsxPackage.ESX_FILE__GLOBAL_PARAMETERS:
 			case EsxPackage.ESX_FILE__PATTERNS:
 			case EsxPackage.ESX_FILE__SONGS:
 			case EsxPackage.ESX_FILE__SAMPLES:
-			case EsxPackage.ESX_FILE__BLANK_PATTERN:
-			case EsxPackage.ESX_FILE__BLANK_SONG:
+			case EsxPackage.ESX_FILE__EMPTY_PATTERN:
+			case EsxPackage.ESX_FILE__EMPTY_SONG:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -370,6 +490,16 @@ public class EsxFileItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EsxPackage.Literals.ESX_FILE__EMPTY_PATTERN,
+				 EsxFactory.eINSTANCE.createPattern()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EsxPackage.Literals.ESX_FILE__EMPTY_SONG,
+				 EsxFactory.eINSTANCE.createSong()));
 	}
 
 	/**

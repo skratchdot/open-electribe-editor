@@ -743,7 +743,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEsxFile_BlankPattern() {
+	public EReference getEsxFile_EmptyPattern() {
 		return (EReference)esxFileEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -752,7 +752,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEsxFile_BlankSong() {
+	public EReference getEsxFile_EmptySong() {
 		return (EReference)esxFileEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -779,7 +779,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEsxFile_NumPatternsUsed() {
+	public EAttribute getEsxFile_NumPatternsEmpty() {
 		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -788,7 +788,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEsxFile_NumSamplesUsed() {
+	public EAttribute getEsxFile_NumPatternsNotEmpty() {
 		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -797,7 +797,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEsxFile_NumSamplesMonoUsed() {
+	public EAttribute getEsxFile_NumSamplesEmpty() {
 		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -806,7 +806,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEsxFile_NumSamplesStereoUsed() {
+	public EAttribute getEsxFile_NumSamplesNotEmpty() {
 		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -815,8 +815,53 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEsxFile_NumSongsUsed() {
+	public EAttribute getEsxFile_NumSamplesMonoEmpty() {
 		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEsxFile_NumSamplesMonoNotEmpty() {
+		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEsxFile_NumSamplesStereoEmpty() {
+		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEsxFile_NumSamplesStereoNotEmpty() {
+		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEsxFile_NumSongsEmpty() {
+		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEsxFile_NumSongsNotEmpty() {
+		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(18);
 	}
 
 	/**
@@ -1823,7 +1868,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPattern_BeingUsed() {
+	public EAttribute getPattern_Empty() {
 		return (EAttribute)patternEClass.getEStructuralFeatures().get(23);
 	}
 
@@ -1868,15 +1913,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_BeingUsed() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(24);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getSample_Stereo() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(22);
 	}
@@ -1888,6 +1924,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 */
 	public EAttribute getSample_MemUsedInBytes() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(23);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSample_Empty() {
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(24);
 	}
 
 	/**
@@ -2228,7 +2273,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSong_BeingUsed() {
+	public EAttribute getSong_Empty() {
 		return (EAttribute)songEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -2282,7 +2327,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSongPattern_BeingUsed() {
+	public EAttribute getSongPattern_Empty() {
 		return (EAttribute)songPatternEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -2869,15 +2914,20 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEReference(esxFileEClass, ESX_FILE__PATTERNS);
 		createEReference(esxFileEClass, ESX_FILE__SONGS);
 		createEReference(esxFileEClass, ESX_FILE__SAMPLES);
-		createEReference(esxFileEClass, ESX_FILE__BLANK_PATTERN);
-		createEReference(esxFileEClass, ESX_FILE__BLANK_SONG);
+		createEReference(esxFileEClass, ESX_FILE__EMPTY_PATTERN);
+		createEReference(esxFileEClass, ESX_FILE__EMPTY_SONG);
 		createEAttribute(esxFileEClass, ESX_FILE__MEM_USED_IN_BYTES);
 		createEAttribute(esxFileEClass, ESX_FILE__MEM_FREE_IN_BYTES);
-		createEAttribute(esxFileEClass, ESX_FILE__NUM_PATTERNS_USED);
-		createEAttribute(esxFileEClass, ESX_FILE__NUM_SAMPLES_USED);
-		createEAttribute(esxFileEClass, ESX_FILE__NUM_SAMPLES_MONO_USED);
-		createEAttribute(esxFileEClass, ESX_FILE__NUM_SAMPLES_STEREO_USED);
-		createEAttribute(esxFileEClass, ESX_FILE__NUM_SONGS_USED);
+		createEAttribute(esxFileEClass, ESX_FILE__NUM_PATTERNS_EMPTY);
+		createEAttribute(esxFileEClass, ESX_FILE__NUM_PATTERNS_NOT_EMPTY);
+		createEAttribute(esxFileEClass, ESX_FILE__NUM_SAMPLES_EMPTY);
+		createEAttribute(esxFileEClass, ESX_FILE__NUM_SAMPLES_NOT_EMPTY);
+		createEAttribute(esxFileEClass, ESX_FILE__NUM_SAMPLES_MONO_EMPTY);
+		createEAttribute(esxFileEClass, ESX_FILE__NUM_SAMPLES_MONO_NOT_EMPTY);
+		createEAttribute(esxFileEClass, ESX_FILE__NUM_SAMPLES_STEREO_EMPTY);
+		createEAttribute(esxFileEClass, ESX_FILE__NUM_SAMPLES_STEREO_NOT_EMPTY);
+		createEAttribute(esxFileEClass, ESX_FILE__NUM_SONGS_EMPTY);
+		createEAttribute(esxFileEClass, ESX_FILE__NUM_SONGS_NOT_EMPTY);
 
 		globalParametersEClass = createEClass(GLOBAL_PARAMETERS);
 		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED);
@@ -3012,7 +3062,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEReference(patternEClass, PATTERN__ACCENT_PART);
 		createEReference(patternEClass, PATTERN__FX_PARAMETERS);
 		createEReference(patternEClass, PATTERN__MOTION_PARAMETERS);
-		createEAttribute(patternEClass, PATTERN__BEING_USED);
+		createEAttribute(patternEClass, PATTERN__EMPTY);
 		createEAttribute(patternEClass, PATTERN__PATTERN_NUMBER_ORIGINAL);
 		createEAttribute(patternEClass, PATTERN__PATTERN_NUMBER_CURRENT);
 
@@ -3041,7 +3091,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(sampleEClass, SAMPLE__SLICE);
 		createEAttribute(sampleEClass, SAMPLE__STEREO);
 		createEAttribute(sampleEClass, SAMPLE__MEM_USED_IN_BYTES);
-		createEAttribute(sampleEClass, SAMPLE__BEING_USED);
+		createEAttribute(sampleEClass, SAMPLE__EMPTY);
 		createEAttribute(sampleEClass, SAMPLE__SAMPLE_NUMBER_ORIGINAL);
 		createEAttribute(sampleEClass, SAMPLE__SAMPLE_NUMBER_CURRENT);
 
@@ -3062,14 +3112,14 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(songEClass, SONG__NUMBER_OF_SONG_EVENTS);
 		createEReference(songEClass, SONG__SONG_PATTERNS);
 		createEReference(songEClass, SONG__SONG_EVENTS);
-		createEAttribute(songEClass, SONG__BEING_USED);
+		createEAttribute(songEClass, SONG__EMPTY);
 		createEAttribute(songEClass, SONG__SONG_NUMBER_ORIGINAL);
 		createEAttribute(songEClass, SONG__SONG_NUMBER_CURRENT);
 
 		songPatternEClass = createEClass(SONG_PATTERN);
 		createEAttribute(songPatternEClass, SONG_PATTERN__PATTERN_NUMBER);
 		createEAttribute(songPatternEClass, SONG_PATTERN__NOTE_OFFSET);
-		createEAttribute(songPatternEClass, SONG_PATTERN__BEING_USED);
+		createEAttribute(songPatternEClass, SONG_PATTERN__EMPTY);
 
 		songEventEClass = createEClass(SONG_EVENT);
 		createEAttribute(songEventEClass, SONG_EVENT__MEASURE);
@@ -3213,17 +3263,22 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEReference(getEsxFile_Patterns(), this.getPattern(), null, "patterns", null, 256, 256, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEsxFile_Songs(), this.getSong(), null, "songs", null, 64, 64, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEsxFile_Samples(), this.getSample(), null, "samples", null, 384, 384, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEsxFile_BlankPattern(), this.getPattern(), null, "blankPattern", null, 1, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEsxFile_BlankSong(), this.getSong(), null, "blankSong", null, 1, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEsxFile_EmptyPattern(), this.getPattern(), null, "emptyPattern", null, 1, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEsxFile_EmptySong(), this.getSong(), null, "emptySong", null, 1, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEsxFile_MemUsedInBytes(), ecorePackage.getEInt(), "memUsedInBytes", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEsxFile_MemFreeInBytes(), ecorePackage.getEInt(), "memFreeInBytes", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_NumPatternsUsed(), ecorePackage.getEInt(), "numPatternsUsed", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_NumSamplesUsed(), ecorePackage.getEInt(), "numSamplesUsed", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_NumSamplesMonoUsed(), ecorePackage.getEInt(), "numSamplesMonoUsed", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_NumSamplesStereoUsed(), ecorePackage.getEInt(), "numSamplesStereoUsed", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_NumSongsUsed(), ecorePackage.getEInt(), "numSongsUsed", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumPatternsEmpty(), ecorePackage.getEInt(), "numPatternsEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumPatternsNotEmpty(), ecorePackage.getEInt(), "numPatternsNotEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSamplesEmpty(), ecorePackage.getEInt(), "numSamplesEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSamplesNotEmpty(), ecorePackage.getEInt(), "numSamplesNotEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSamplesMonoEmpty(), ecorePackage.getEInt(), "numSamplesMonoEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSamplesMonoNotEmpty(), ecorePackage.getEInt(), "numSamplesMonoNotEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSamplesStereoEmpty(), ecorePackage.getEInt(), "numSamplesStereoEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSamplesStereoNotEmpty(), ecorePackage.getEInt(), "numSamplesStereoNotEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSongsEmpty(), ecorePackage.getEInt(), "numSongsEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSongsNotEmpty(), ecorePackage.getEInt(), "numSongsNotEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
-		EOperation op = addEOperation(esxFileEClass, ecorePackage.getEInt(), "findFirstUnusedSample", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(esxFileEClass, ecorePackage.getEInt(), "findFirstEmptySample", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "searchMono", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "searchStereo", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "startingSampleNumber", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -3386,7 +3441,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEReference(getPattern_AccentPart(), this.getPartAccent(), null, "accentPart", null, 1, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPattern_FxParameters(), this.getParametersFx(), null, "fxParameters", null, 3, 3, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPattern_MotionParameters(), this.getParametersMotion(), null, "motionParameters", null, 24, 24, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_BeingUsed(), ecorePackage.getEBoolean(), "beingUsed", "true", 0, 1, Pattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPattern_Empty(), ecorePackage.getEBoolean(), "empty", "true", 0, 1, Pattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPattern_PatternNumberOriginal(), this.getPatternNumber(), "patternNumberOriginal", "-1", 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPattern_PatternNumberCurrent(), this.getPatternNumber(), "patternNumberCurrent", "-1", 0, 1, Pattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
@@ -3415,7 +3470,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getSample_Slice(), ecorePackage.getEBoolean(), "slice", null, 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_Stereo(), ecorePackage.getEBoolean(), "stereo", "true", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_MemUsedInBytes(), ecorePackage.getEInt(), "memUsedInBytes", "0", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_BeingUsed(), ecorePackage.getEBoolean(), "beingUsed", "true", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_Empty(), ecorePackage.getEBoolean(), "empty", "true", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_SampleNumberOriginal(), this.getSampleNumber(), "sampleNumberOriginal", "-1", 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_SampleNumberCurrent(), this.getSampleNumber(), "sampleNumberCurrent", "-1", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
@@ -3441,14 +3496,14 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getSong_NumberOfSongEvents(), ecorePackage.getEShort(), "numberOfSongEvents", null, 0, 1, Song.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getSong_SongPatterns(), this.getSongPattern(), null, "songPatterns", null, 256, 256, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSong_SongEvents(), this.getSongEvent(), null, "songEvents", null, 0, 20000, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSong_BeingUsed(), ecorePackage.getEBoolean(), "beingUsed", "true", 0, 1, Song.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSong_Empty(), ecorePackage.getEBoolean(), "empty", "true", 0, 1, Song.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSong_SongNumberOriginal(), this.getSongNumber(), "songNumberOriginal", "-1", 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSong_SongNumberCurrent(), this.getSongNumber(), "songNumberCurrent", "-1", 0, 1, Song.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(songPatternEClass, SongPattern.class, "SongPattern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSongPattern_PatternNumber(), this.getPatternNumber(), "patternNumber", null, 0, 1, SongPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongPattern_NoteOffset(), ecorePackage.getEByte(), "noteOffset", null, 0, 1, SongPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongPattern_BeingUsed(), ecorePackage.getEBoolean(), "beingUsed", "true", 0, 1, SongPattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongPattern_Empty(), ecorePackage.getEBoolean(), "empty", "true", 0, 1, SongPattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(songEventEClass, SongEvent.class, "SongEvent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSongEvent_Measure(), ecorePackage.getEByte(), "measure", null, 0, 1, SongEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

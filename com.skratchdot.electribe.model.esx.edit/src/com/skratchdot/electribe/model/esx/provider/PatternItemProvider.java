@@ -81,7 +81,7 @@ public class PatternItemProvider
 			addLastStepPropertyDescriptor(object);
 			addArpeggiatorScalePropertyDescriptor(object);
 			addArpeggiatorCenterNotePropertyDescriptor(object);
-			addBeingUsedPropertyDescriptor(object);
+			addEmptyPropertyDescriptor(object);
 			addPatternNumberOriginalPropertyDescriptor(object);
 			addPatternNumberCurrentPropertyDescriptor(object);
 		}
@@ -309,19 +309,19 @@ public class PatternItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Being Used feature.
+	 * This adds a property descriptor for the Empty feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addBeingUsedPropertyDescriptor(Object object) {
+	protected void addEmptyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Pattern_beingUsed_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Pattern_beingUsed_feature", "_UI_Pattern_type"),
-				 EsxPackage.Literals.PATTERN__BEING_USED,
+				 getString("_UI_Pattern_empty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Pattern_empty_feature", "_UI_Pattern_type"),
+				 EsxPackage.Literals.PATTERN__EMPTY,
 				 false,
 				 false,
 				 false,
@@ -504,7 +504,7 @@ public class PatternItemProvider
 			case EsxPackage.PATTERN__SWING_STATUS:
 			case EsxPackage.PATTERN__OUTPUT_BUS_STATUS:
 			case EsxPackage.PATTERN__ACCENT_STATUS:
-			case EsxPackage.PATTERN__BEING_USED:
+			case EsxPackage.PATTERN__EMPTY:
 			case EsxPackage.PATTERN__PATTERN_NUMBER_ORIGINAL:
 			case EsxPackage.PATTERN__PATTERN_NUMBER_CURRENT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

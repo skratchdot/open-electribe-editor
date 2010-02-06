@@ -133,10 +133,10 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		this.tableViewer.setLabelProvider(new TableViewerColorProvider(
 			this.getAdapterFactory(),
 			this.tableViewer,
-			EsxPreferenceStore.getSamplesBackgroundColorWhenBeingUsed(),
-			EsxPreferenceStore.getSamplesBackgroundColorWhenNotInUse(),
-			EsxPreferenceStore.getSamplesForegroundColorWhenBeingUsed(),
-			EsxPreferenceStore.getSamplesForegroundColorWhenNotInUse()
+			EsxPreferenceStore.getSamplesBackgroundColorWhenNotEmpty(),
+			EsxPreferenceStore.getSamplesBackgroundColorWhenEmpty(),
+			EsxPreferenceStore.getSamplesForegroundColorWhenNotEmpty(),
+			EsxPreferenceStore.getSamplesForegroundColorWhenEmpty()
 		));
 
 		// Sync the scroll speed with our preference
@@ -198,15 +198,15 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		}
 		
 		// Color Changes
-		if(event.getProperty().equals(EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_BEING_USED) ||
-				event.getProperty().equals(EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_NOT_IN_USE) ||
-				event.getProperty().equals(EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_BEING_USED) ||
-				event.getProperty().equals(EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_NOT_IN_USE)) {
+		if(event.getProperty().equals(EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_NOT_EMPTY) ||
+				event.getProperty().equals(EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_EMPTY) ||
+				event.getProperty().equals(EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_NOT_EMPTY) ||
+				event.getProperty().equals(EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_EMPTY)) {
 			((TableViewerColorProvider)this.tableViewer.getLabelProvider()).setAllColors(
-				EsxPreferenceStore.getSamplesBackgroundColorWhenBeingUsed(),
-				EsxPreferenceStore.getSamplesBackgroundColorWhenNotInUse(),
-				EsxPreferenceStore.getSamplesForegroundColorWhenBeingUsed(),
-				EsxPreferenceStore.getSamplesForegroundColorWhenNotInUse()
+				EsxPreferenceStore.getSamplesBackgroundColorWhenNotEmpty(),
+				EsxPreferenceStore.getSamplesBackgroundColorWhenEmpty(),
+				EsxPreferenceStore.getSamplesForegroundColorWhenNotEmpty(),
+				EsxPreferenceStore.getSamplesForegroundColorWhenEmpty()
 			);
 			this.tableViewer.refresh();
 		}

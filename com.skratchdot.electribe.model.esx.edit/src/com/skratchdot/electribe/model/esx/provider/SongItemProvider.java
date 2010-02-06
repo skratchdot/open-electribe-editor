@@ -79,7 +79,7 @@ public class SongItemProvider
 			addMuteHoldPropertyDescriptor(object);
 			addNextSongNumberPropertyDescriptor(object);
 			addNumberOfSongEventsPropertyDescriptor(object);
-			addBeingUsedPropertyDescriptor(object);
+			addEmptyPropertyDescriptor(object);
 			addSongNumberOriginalPropertyDescriptor(object);
 			addSongNumberCurrentPropertyDescriptor(object);
 		}
@@ -241,19 +241,19 @@ public class SongItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Being Used feature.
+	 * This adds a property descriptor for the Empty feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addBeingUsedPropertyDescriptor(Object object) {
+	protected void addEmptyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Song_beingUsed_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Song_beingUsed_feature", "_UI_Song_type"),
-				 EsxPackage.Literals.SONG__BEING_USED,
+				 getString("_UI_Song_empty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Song_empty_feature", "_UI_Song_type"),
+				 EsxPackage.Literals.SONG__EMPTY,
 				 false,
 				 false,
 				 false,
@@ -411,7 +411,7 @@ public class SongItemProvider
 			case EsxPackage.SONG__MUTE_HOLD:
 			case EsxPackage.SONG__NEXT_SONG_NUMBER:
 			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS:
-			case EsxPackage.SONG__BEING_USED:
+			case EsxPackage.SONG__EMPTY:
 			case EsxPackage.SONG__SONG_NUMBER_ORIGINAL:
 			case EsxPackage.SONG__SONG_NUMBER_CURRENT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

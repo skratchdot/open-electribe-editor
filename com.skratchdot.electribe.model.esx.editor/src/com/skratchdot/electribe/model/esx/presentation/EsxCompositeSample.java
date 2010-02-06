@@ -37,8 +37,8 @@ public class EsxCompositeSample extends EsxComposite {
 
 	private Group groupSelectedSamples;
 	private Text textSelectedTotal;
-	private Text textSelectedBeingUsed;
-	private Text textSelectedNotInUse;
+	private Text textSelectedNotEmpty;
+	private Text textSelectedEmpty;
 
 	private Group groupSampleName;
 	private Text textName;
@@ -99,8 +99,8 @@ public class EsxCompositeSample extends EsxComposite {
 		groupSelectedSamples.setLayout(new GridLayout(2, false));
 
 		textSelectedTotal = this.createGridData2ColumnTextLabel(groupSelectedSamples, "Total # Selected");
-		textSelectedBeingUsed = this.createGridData2ColumnTextLabel(groupSelectedSamples, "# of Selected Being Used");
-		textSelectedNotInUse = this.createGridData2ColumnTextLabel(groupSelectedSamples, "# of Selected Not In Use");
+		textSelectedNotEmpty = this.createGridData2ColumnTextLabel(groupSelectedSamples, "# of Selected (Not Empty)");
+		textSelectedEmpty = this.createGridData2ColumnTextLabel(groupSelectedSamples, "# of Selected (Empty)");
 
 		/* ======================== */
 		/* ROW 2					*/
@@ -239,8 +239,8 @@ public class EsxCompositeSample extends EsxComposite {
 		String multipleValueString = "<Multiple Values>";
 
 		this.textSelectedTotal.setText(Integer.toString(this.getNumSelections()));
-		this.textSelectedBeingUsed.setText(Integer.toString(this.getNumSelectionsBeingUsed()));
-		this.textSelectedNotInUse.setText(Integer.toString(this.getNumSelectionsNotInUse()));
+		this.textSelectedNotEmpty.setText(Integer.toString(this.getNumSelectionsNotEmpty()));
+		this.textSelectedEmpty.setText(Integer.toString(this.getNumSelectionsEmpty()));
 
 		this.textName.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__NAME, multipleValueString)));
 
@@ -286,10 +286,10 @@ public class EsxCompositeSample extends EsxComposite {
 	/**
 	 * @return
 	 */
-	private int getNumSelectionsBeingUsed() {
+	private int getNumSelectionsNotEmpty() {
 		int returnValue = 0;
 		for(int i=0; i<this.samples.size(); i++) {
-			if(this.samples.get(i).isBeingUsed()) {
+			if(!this.samples.get(i).isEmpty()) {
 				returnValue++;
 			}
 		}
@@ -299,10 +299,10 @@ public class EsxCompositeSample extends EsxComposite {
 	/**
 	 * @return
 	 */
-	private int getNumSelectionsNotInUse() {
+	private int getNumSelectionsEmpty() {
 		int returnValue = 0;
 		for(int i=0; i<this.samples.size(); i++) {
-			if(!this.samples.get(i).isBeingUsed()) {
+			if(this.samples.get(i).isEmpty()) {
 				returnValue++;
 			}
 		}

@@ -41,23 +41,23 @@ public class EsxPreferenceInitializer extends AbstractPreferenceInitializer {
 			);
 		PreferenceConverter.setDefault(
 				store,
-				EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_BEING_USED,
-				EsxPreferenceDefaults.SAMPLES_BACKGROUND_COLOR_WHEN_BEING_USED
+				EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_NOT_EMPTY,
+				EsxPreferenceDefaults.SAMPLES_BACKGROUND_COLOR_WHEN_NOT_EMPTY
 			);
 		PreferenceConverter.setDefault(
 				store,
-				EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_NOT_IN_USE,
-				EsxPreferenceDefaults.SAMPLES_BACKGROUND_COLOR_WHEN_NOT_IN_USE
+				EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_EMPTY,
+				EsxPreferenceDefaults.SAMPLES_BACKGROUND_COLOR_WHEN_EMPTY
 			);
 		PreferenceConverter.setDefault(
 				store,
-				EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_BEING_USED,
-				EsxPreferenceDefaults.SAMPLES_FOREGROUND_COLOR_WHEN_BEING_USED
+				EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_NOT_EMPTY,
+				EsxPreferenceDefaults.SAMPLES_FOREGROUND_COLOR_WHEN_NOT_EMPTY
 			);
 		PreferenceConverter.setDefault(
 				store,
-				EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_NOT_IN_USE,
-				EsxPreferenceDefaults.SAMPLES_FOREGROUND_COLOR_WHEN_NOT_IN_USE
+				EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_EMPTY,
+				EsxPreferenceDefaults.SAMPLES_FOREGROUND_COLOR_WHEN_EMPTY
 			);
 
 		/* PATTERNS */
@@ -71,23 +71,23 @@ public class EsxPreferenceInitializer extends AbstractPreferenceInitializer {
 			);
 		PreferenceConverter.setDefault(
 				store,
-				EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_BEING_USED,
-				EsxPreferenceDefaults.PATTERNS_BACKGROUND_COLOR_WHEN_BEING_USED
+				EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_NOT_EMPTY,
+				EsxPreferenceDefaults.PATTERNS_BACKGROUND_COLOR_WHEN_NOT_EMPTY
 			);
 		PreferenceConverter.setDefault(
 				store,
-				EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_NOT_IN_USE,
-				EsxPreferenceDefaults.PATTERNS_BACKGROUND_COLOR_WHEN_NOT_IN_USE
+				EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_EMPTY,
+				EsxPreferenceDefaults.PATTERNS_BACKGROUND_COLOR_WHEN_EMPTY
 			);
 		PreferenceConverter.setDefault(
 				store,
-				EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_BEING_USED,
-				EsxPreferenceDefaults.PATTERNS_FOREGROUND_COLOR_WHEN_BEING_USED
+				EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_NOT_EMPTY,
+				EsxPreferenceDefaults.PATTERNS_FOREGROUND_COLOR_WHEN_NOT_EMPTY
 			);
 		PreferenceConverter.setDefault(
 				store,
-				EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_NOT_IN_USE,
-				EsxPreferenceDefaults.PATTERNS_FOREGROUND_COLOR_WHEN_NOT_IN_USE
+				EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_EMPTY,
+				EsxPreferenceDefaults.PATTERNS_FOREGROUND_COLOR_WHEN_EMPTY
 			);
 
 		/* SONGS */
@@ -101,23 +101,23 @@ public class EsxPreferenceInitializer extends AbstractPreferenceInitializer {
 			);
 		PreferenceConverter.setDefault(
 				store,
-				EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_BEING_USED,
-				EsxPreferenceDefaults.SONGS_BACKGROUND_COLOR_WHEN_BEING_USED
+				EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_NOT_EMPTY,
+				EsxPreferenceDefaults.SONGS_BACKGROUND_COLOR_WHEN_NOT_EMPTY
 			);
 		PreferenceConverter.setDefault(
 				store,
-				EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_NOT_IN_USE,
-				EsxPreferenceDefaults.SONGS_BACKGROUND_COLOR_WHEN_NOT_IN_USE
+				EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_EMPTY,
+				EsxPreferenceDefaults.SONGS_BACKGROUND_COLOR_WHEN_EMPTY
 			);
 		PreferenceConverter.setDefault(
 				store,
-				EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_BEING_USED,
-				EsxPreferenceDefaults.SONGS_FOREGROUND_COLOR_WHEN_BEING_USED
+				EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_NOT_EMPTY,
+				EsxPreferenceDefaults.SONGS_FOREGROUND_COLOR_WHEN_NOT_EMPTY
 			);
 		PreferenceConverter.setDefault(
 				store,
-				EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_NOT_IN_USE,
-				EsxPreferenceDefaults.SONGS_FOREGROUND_COLOR_WHEN_NOT_IN_USE
+				EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_EMPTY,
+				EsxPreferenceDefaults.SONGS_FOREGROUND_COLOR_WHEN_EMPTY
 			);
 
 	}

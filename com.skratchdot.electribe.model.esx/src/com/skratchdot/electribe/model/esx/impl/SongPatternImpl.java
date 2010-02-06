@@ -29,7 +29,7 @@ import com.skratchdot.electribe.model.esx.SongPattern;
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongPatternImpl#getPatternNumber <em>Pattern Number</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongPatternImpl#getNoteOffset <em>Note Offset</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongPatternImpl#isBeingUsed <em>Being Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongPatternImpl#isEmpty <em>Empty</em>}</li>
  * </ul>
  * </p>
  *
@@ -77,14 +77,14 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 	protected byte noteOffset = NOTE_OFFSET_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isBeingUsed() <em>Being Used</em>}' attribute.
+	 * The default value of the '{@link #isEmpty() <em>Empty</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isBeingUsed()
+	 * @see #isEmpty()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean BEING_USED_EDEFAULT = true;
+	protected static final boolean EMPTY_EDEFAULT = true;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,7 +152,7 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public boolean isBeingUsed() {
+	public boolean isEmpty() {
 		// TODO: This needs to be implemented. Should return true when position
 		// is less than or equal to SongLength
 		return false;
@@ -170,8 +170,8 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 				return getPatternNumber();
 			case EsxPackage.SONG_PATTERN__NOTE_OFFSET:
 				return getNoteOffset();
-			case EsxPackage.SONG_PATTERN__BEING_USED:
-				return isBeingUsed();
+			case EsxPackage.SONG_PATTERN__EMPTY:
+				return isEmpty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -224,8 +224,8 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 				return patternNumber != PATTERN_NUMBER_EDEFAULT;
 			case EsxPackage.SONG_PATTERN__NOTE_OFFSET:
 				return noteOffset != NOTE_OFFSET_EDEFAULT;
-			case EsxPackage.SONG_PATTERN__BEING_USED:
-				return isBeingUsed() != BEING_USED_EDEFAULT;
+			case EsxPackage.SONG_PATTERN__EMPTY:
+				return isEmpty() != EMPTY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

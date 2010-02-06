@@ -1721,7 +1721,6 @@
           ecoreFeature="ecore:EReference esx.ecore#//Pattern/fxParameters"/>
       <genFeatures property="None" children="true" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference esx.ecore#//Pattern/motionParameters"/>
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/beingUsed"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/patternNumberOriginal"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/patternNumberCurrent"/>
     </genClasses>
@@ -1750,7 +1749,6 @@
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/slice"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/stereo"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/memUsedInBytes"/>
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/beingUsed"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/sampleNumberOriginal"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/sampleNumberCurrent"/>
     </genClasses>
@@ -1773,14 +1771,12 @@
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/numberOfSongEvents"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esx.ecore#//Song/songPatterns"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esx.ecore#//Song/songEvents"/>
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/beingUsed"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/songNumberOriginal"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/songNumberCurrent"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//SongPattern">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongPattern/patternNumber"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongPattern/noteOffset"/>
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongPattern/beingUsed"/>
     </genClasses>
     <genClasses image="false" ecoreClass="esx.ecore#//SongEvent">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongEvent/measure"/>

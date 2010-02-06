@@ -47,42 +47,42 @@ public class EsxPreferenceStore {
 	}
 
 	/**
-	 * @return the value of the '<em>SAMPLES_BACKGROUND_COLOR_WHEN_BEING_USED</em>' preference.
+	 * @return the value of the '<em>SAMPLES_BACKGROUND_COLOR_WHEN_NOT_EMPTY</em>' preference.
 	 */
-	public static RGB getSamplesBackgroundColorWhenBeingUsed() {
+	public static RGB getSamplesBackgroundColorWhenNotEmpty() {
 		return PreferenceConverter.getColor(
 				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_BEING_USED
+				EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_NOT_EMPTY
 		);
 	}
 
 	/**
-	 * @return the value of the '<em>SAMPLES_BACKGROUND_COLOR_WHEN_NOT_IN_USE</em>' preference.
+	 * @return the value of the '<em>SAMPLES_BACKGROUND_COLOR_WHEN_EMPTY</em>' preference.
 	 */
-	public static RGB getSamplesBackgroundColorWhenNotInUse() {
+	public static RGB getSamplesBackgroundColorWhenEmpty() {
 		return PreferenceConverter.getColor(
 				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_NOT_IN_USE
+				EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_EMPTY
 		);
 	}
 
 	/**
-	 * @return the value of the '<em>SAMPLES_FOREGROUND_COLOR_WHEN_BEING_USED</em>' preference.
+	 * @return the value of the '<em>SAMPLES_FOREGROUND_COLOR_WHEN_NOT_EMPTY</em>' preference.
 	 */
-	public static RGB getSamplesForegroundColorWhenBeingUsed() {
+	public static RGB getSamplesForegroundColorWhenNotEmpty() {
 		return PreferenceConverter.getColor(
 				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_BEING_USED
+				EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_NOT_EMPTY
 		);
 	}
 
 	/**
-	 * @return the value of the '<em>SAMPLES_FOREGROUND_COLOR_WHEN_NOT_IN_USE</em>' preference.
+	 * @return the value of the '<em>SAMPLES_FOREGROUND_COLOR_WHEN_EMPTY</em>' preference.
 	 */
-	public static RGB getSamplesForegroundColorWhenNotInUse() {
+	public static RGB getSamplesForegroundColorWhenEmpty() {
 		return PreferenceConverter.getColor(
 				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_NOT_IN_USE
+				EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_EMPTY
 		);
 	}
 
@@ -101,42 +101,42 @@ public class EsxPreferenceStore {
 	}
 
 	/**
-	 * @return the value of the '<em>PATTERNS_BACKGROUND_COLOR_WHEN_BEING_USED</em>' preference.
+	 * @return the value of the '<em>PATTERNS_BACKGROUND_COLOR_WHEN_NOT_EMPTY</em>' preference.
 	 */
-	public static RGB getPatternsBackgroundColorWhenBeingUsed() {
+	public static RGB getPatternsBackgroundColorWhenNotEmpty() {
 		return PreferenceConverter.getColor(
 				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_BEING_USED
+				EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_NOT_EMPTY
 		);
 	}
 
 	/**
-	 * @return the value of the '<em>PATTERNS_BACKGROUND_COLOR_WHEN_NOT_IN_USE</em>' preference.
+	 * @return the value of the '<em>PATTERNS_BACKGROUND_COLOR_WHEN_EMPTY</em>' preference.
 	 */
-	public static RGB getPatternsBackgroundColorWhenNotInUse() {
+	public static RGB getPatternsBackgroundColorWhenEmpty() {
 		return PreferenceConverter.getColor(
 				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_NOT_IN_USE
+				EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_EMPTY
 		);
 	}
 
 	/**
-	 * @return the value of the '<em>PATTERNS_FOREGROUND_COLOR_WHEN_BEING_USED</em>' preference.
+	 * @return the value of the '<em>PATTERNS_FOREGROUND_COLOR_WHEN_NOT_EMPTY</em>' preference.
 	 */
-	public static RGB getPatternsForegroundColorWhenBeingUsed() {
+	public static RGB getPatternsForegroundColorWhenNotEmpty() {
 		return PreferenceConverter.getColor(
 				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_BEING_USED
+				EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_NOT_EMPTY
 		);
 	}
 
 	/**
-	 * @return the value of the '<em>PATTERNS_FOREGROUND_COLOR_WHEN_NOT_IN_USE</em>' preference.
+	 * @return the value of the '<em>PATTERNS_FOREGROUND_COLOR_WHEN_EMPTY</em>' preference.
 	 */
-	public static RGB getPatternsForegroundColorWhenNotInUse() {
+	public static RGB getPatternsForegroundColorWhenEmpty() {
 		return PreferenceConverter.getColor(
 				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_NOT_IN_USE
+				EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_EMPTY
 		);
 	}
 
@@ -155,42 +155,42 @@ public class EsxPreferenceStore {
 	}
 
 	/**
-	 * @return the value of the '<em>SONGS_BACKGROUND_COLOR_WHEN_BEING_USED</em>' preference.
+	 * @return the value of the '<em>SONGS_BACKGROUND_COLOR_WHEN_NOT_EMPTY</em>' preference.
 	 */
-	public static RGB getSongsBackgroundColorWhenBeingUsed() {
+	public static RGB getSongsBackgroundColorWhenNotEmpty() {
 		return PreferenceConverter.getColor(
 				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_BEING_USED
+				EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_NOT_EMPTY
 		);
 	}
 
 	/**
-	 * @return the value of the '<em>SONGS_BACKGROUND_COLOR_WHEN_NOT_IN_USE</em>' preference.
+	 * @return the value of the '<em>SONGS_BACKGROUND_COLOR_WHEN_EMPTY</em>' preference.
 	 */
-	public static RGB getSongsBackgroundColorWhenNotInUse() {
+	public static RGB getSongsBackgroundColorWhenEmpty() {
 		return PreferenceConverter.getColor(
 				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_NOT_IN_USE
+				EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_EMPTY
 		);
 	}
 
 	/**
-	 * @return the value of the '<em>SONGS_FOREGROUND_COLOR_WHEN_BEING_USED</em>' preference.
+	 * @return the value of the '<em>SONGS_FOREGROUND_COLOR_WHEN_NOT_EMPTY</em>' preference.
 	 */
-	public static RGB getSongsForegroundColorWhenBeingUsed() {
+	public static RGB getSongsForegroundColorWhenNotEmpty() {
 		return PreferenceConverter.getColor(
 				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_BEING_USED
+				EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_NOT_EMPTY
 		);
 	}
 
 	/**
-	 * @return the value of the '<em>SONGS_FOREGROUND_COLOR_WHEN_NOT_IN_USE</em>' preference.
+	 * @return the value of the '<em>SONGS_FOREGROUND_COLOR_WHEN_EMPTY</em>' preference.
 	 */
-	public static RGB getSongsForegroundColorWhenNotInUse() {
+	public static RGB getSongsForegroundColorWhenEmpty() {
 		return PreferenceConverter.getColor(
 				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_NOT_IN_USE
+				EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_EMPTY
 		);
 	}
 

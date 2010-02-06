@@ -35,15 +35,20 @@ import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getPatterns <em>Patterns</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getSongs <em>Songs</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getSamples <em>Samples</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getBlankPattern <em>Blank Pattern</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getBlankSong <em>Blank Song</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getEmptyPattern <em>Empty Pattern</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getEmptySong <em>Empty Song</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMemUsedInBytes <em>Mem Used In Bytes</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMemFreeInBytes <em>Mem Free In Bytes</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsUsed <em>Num Patterns Used</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesUsed <em>Num Samples Used</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoUsed <em>Num Samples Mono Used</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoUsed <em>Num Samples Stereo Used</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsUsed <em>Num Songs Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsEmpty <em>Num Patterns Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsNotEmpty <em>Num Patterns Not Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesEmpty <em>Num Samples Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesNotEmpty <em>Num Samples Not Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoEmpty <em>Num Samples Mono Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoNotEmpty <em>Num Samples Mono Not Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoEmpty <em>Num Samples Stereo Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoNotEmpty <em>Num Samples Stereo Not Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsEmpty <em>Num Songs Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsNotEmpty <em>Num Songs Not Empty</em>}</li>
  * </ul>
  * </p>
  *
@@ -153,56 +158,56 @@ public interface EsxFile extends EObject {
 	EList<Sample> getSamples();
 
 	/**
-	 * Returns the value of the '<em><b>Blank Pattern</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Empty Pattern</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Blank Pattern</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Empty Pattern</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Blank Pattern</em>' containment reference.
-	 * @see #setBlankPattern(Pattern)
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_BlankPattern()
+	 * @return the value of the '<em>Empty Pattern</em>' containment reference.
+	 * @see #setEmptyPattern(Pattern)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_EmptyPattern()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	Pattern getBlankPattern();
+	Pattern getEmptyPattern();
 
 	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.EsxFile#getBlankPattern <em>Blank Pattern</em>}' containment reference.
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.EsxFile#getEmptyPattern <em>Empty Pattern</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Blank Pattern</em>' containment reference.
-	 * @see #getBlankPattern()
+	 * @param value the new value of the '<em>Empty Pattern</em>' containment reference.
+	 * @see #getEmptyPattern()
 	 * @generated
 	 */
-	void setBlankPattern(Pattern value);
+	void setEmptyPattern(Pattern value);
 
 	/**
-	 * Returns the value of the '<em><b>Blank Song</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Empty Song</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Blank Song</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Empty Song</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Blank Song</em>' containment reference.
-	 * @see #setBlankSong(Song)
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_BlankSong()
+	 * @return the value of the '<em>Empty Song</em>' containment reference.
+	 * @see #setEmptySong(Song)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_EmptySong()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	Song getBlankSong();
+	Song getEmptySong();
 
 	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.EsxFile#getBlankSong <em>Blank Song</em>}' containment reference.
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.EsxFile#getEmptySong <em>Empty Song</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Blank Song</em>' containment reference.
-	 * @see #getBlankSong()
+	 * @param value the new value of the '<em>Empty Song</em>' containment reference.
+	 * @see #getEmptySong()
 	 * @generated
 	 */
-	void setBlankSong(Song value);
+	void setEmptySong(Song value);
 
 	/**
 	 * Returns the value of the '<em><b>Mem Used In Bytes</b></em>' attribute.
@@ -237,84 +242,164 @@ public interface EsxFile extends EObject {
 	int getMemFreeInBytes();
 
 	/**
-	 * Returns the value of the '<em><b>Num Patterns Used</b></em>' attribute.
+	 * Returns the value of the '<em><b>Num Patterns Empty</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Num Patterns Used</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Num Patterns Empty</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Num Patterns Used</em>' attribute.
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumPatternsUsed()
+	 * @return the value of the '<em>Num Patterns Empty</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumPatternsEmpty()
 	 * @model default="0" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
-	int getNumPatternsUsed();
+	int getNumPatternsEmpty();
 
 	/**
-	 * Returns the value of the '<em><b>Num Samples Used</b></em>' attribute.
+	 * Returns the value of the '<em><b>Num Patterns Not Empty</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Num Samples Used</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Num Patterns Not Empty</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Num Samples Used</em>' attribute.
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumSamplesUsed()
+	 * @return the value of the '<em>Num Patterns Not Empty</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumPatternsNotEmpty()
 	 * @model default="0" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
-	int getNumSamplesUsed();
+	int getNumPatternsNotEmpty();
 
 	/**
-	 * Returns the value of the '<em><b>Num Samples Mono Used</b></em>' attribute.
+	 * Returns the value of the '<em><b>Num Samples Empty</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Num Samples Mono Used</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Num Samples Empty</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Num Samples Mono Used</em>' attribute.
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumSamplesMonoUsed()
+	 * @return the value of the '<em>Num Samples Empty</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumSamplesEmpty()
 	 * @model default="0" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
-	int getNumSamplesMonoUsed();
+	int getNumSamplesEmpty();
 
 	/**
-	 * Returns the value of the '<em><b>Num Samples Stereo Used</b></em>' attribute.
+	 * Returns the value of the '<em><b>Num Samples Not Empty</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Num Samples Stereo Used</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Num Samples Not Empty</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Num Samples Stereo Used</em>' attribute.
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumSamplesStereoUsed()
+	 * @return the value of the '<em>Num Samples Not Empty</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumSamplesNotEmpty()
 	 * @model default="0" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
-	int getNumSamplesStereoUsed();
+	int getNumSamplesNotEmpty();
 
 	/**
-	 * Returns the value of the '<em><b>Num Songs Used</b></em>' attribute.
+	 * Returns the value of the '<em><b>Num Samples Mono Empty</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Num Songs Used</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Num Samples Mono Empty</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Num Songs Used</em>' attribute.
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumSongsUsed()
+	 * @return the value of the '<em>Num Samples Mono Empty</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumSamplesMonoEmpty()
 	 * @model default="0" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
-	int getNumSongsUsed();
+	int getNumSamplesMonoEmpty();
+
+	/**
+	 * Returns the value of the '<em><b>Num Samples Mono Not Empty</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Num Samples Mono Not Empty</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Num Samples Mono Not Empty</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumSamplesMonoNotEmpty()
+	 * @model default="0" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	int getNumSamplesMonoNotEmpty();
+
+	/**
+	 * Returns the value of the '<em><b>Num Samples Stereo Empty</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Num Samples Stereo Empty</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Num Samples Stereo Empty</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumSamplesStereoEmpty()
+	 * @model default="0" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	int getNumSamplesStereoEmpty();
+
+	/**
+	 * Returns the value of the '<em><b>Num Samples Stereo Not Empty</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Num Samples Stereo Not Empty</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Num Samples Stereo Not Empty</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumSamplesStereoNotEmpty()
+	 * @model default="0" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	int getNumSamplesStereoNotEmpty();
+
+	/**
+	 * Returns the value of the '<em><b>Num Songs Empty</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Num Songs Empty</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Num Songs Empty</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumSongsEmpty()
+	 * @model default="0" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	int getNumSongsEmpty();
+
+	/**
+	 * Returns the value of the '<em><b>Num Songs Not Empty</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Num Songs Not Empty</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Num Songs Not Empty</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_NumSongsNotEmpty()
+	 * @model default="0" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	int getNumSongsNotEmpty();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -322,7 +407,7 @@ public interface EsxFile extends EObject {
 	 * @model skipSampleNumbersDataType="com.skratchdot.electribe.model.esx.ArrayList<org.eclipse.emf.ecore.EIntegerObject>"
 	 * @generated
 	 */
-	int findFirstUnusedSample(boolean searchMono, boolean searchStereo, int startingSampleNumber, ArrayList<Integer> skipSampleNumbers);
+	int findFirstEmptySample(boolean searchMono, boolean searchStereo, int startingSampleNumber, ArrayList<Integer> skipSampleNumbers);
 
 	void write(EsxRandomAccess out, IProgressMonitor monitor) throws IOException, EsxException;
 

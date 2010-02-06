@@ -123,10 +123,10 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		this.tableViewerSongs.setLabelProvider(new TableViewerColorProvider(
 			this.getAdapterFactory(),
 			this.tableViewerSongs,
-			EsxPreferenceStore.getSongsBackgroundColorWhenBeingUsed(),
-			EsxPreferenceStore.getSongsBackgroundColorWhenNotInUse(),
-			EsxPreferenceStore.getSongsForegroundColorWhenBeingUsed(),
-			EsxPreferenceStore.getSongsForegroundColorWhenNotInUse()
+			EsxPreferenceStore.getSongsBackgroundColorWhenNotEmpty(),
+			EsxPreferenceStore.getSongsBackgroundColorWhenEmpty(),
+			EsxPreferenceStore.getSongsForegroundColorWhenNotEmpty(),
+			EsxPreferenceStore.getSongsForegroundColorWhenEmpty()
 		));
 
 		// Sync the scroll speed with our preference
@@ -174,15 +174,15 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		}
 
 		// Color Changes
-		if(event.getProperty().equals(EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_BEING_USED) ||
-				event.getProperty().equals(EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_NOT_IN_USE) ||
-				event.getProperty().equals(EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_BEING_USED) ||
-				event.getProperty().equals(EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_NOT_IN_USE)) {
+		if(event.getProperty().equals(EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_NOT_EMPTY) ||
+				event.getProperty().equals(EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_EMPTY) ||
+				event.getProperty().equals(EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_NOT_EMPTY) ||
+				event.getProperty().equals(EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_EMPTY)) {
 			((TableViewerColorProvider)this.tableViewerSongs.getLabelProvider()).setAllColors(
-				EsxPreferenceStore.getSongsBackgroundColorWhenBeingUsed(),
-				EsxPreferenceStore.getSongsBackgroundColorWhenNotInUse(),
-				EsxPreferenceStore.getSongsForegroundColorWhenBeingUsed(),
-				EsxPreferenceStore.getSongsForegroundColorWhenNotInUse()
+				EsxPreferenceStore.getSongsBackgroundColorWhenNotEmpty(),
+				EsxPreferenceStore.getSongsBackgroundColorWhenEmpty(),
+				EsxPreferenceStore.getSongsForegroundColorWhenNotEmpty(),
+				EsxPreferenceStore.getSongsForegroundColorWhenEmpty()
 			);
 			this.tableViewerSongs.refresh();
 		}

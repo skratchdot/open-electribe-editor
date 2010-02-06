@@ -86,7 +86,7 @@ public class SampleItemProvider
 			addSlicePropertyDescriptor(object);
 			addStereoPropertyDescriptor(object);
 			addMemUsedInBytesPropertyDescriptor(object);
-			addBeingUsedPropertyDescriptor(object);
+			addEmptyPropertyDescriptor(object);
 			addSampleNumberOriginalPropertyDescriptor(object);
 			addSampleNumberCurrentPropertyDescriptor(object);
 		}
@@ -111,28 +111,6 @@ public class SampleItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Being Used feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addBeingUsedPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Sample_beingUsed_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_beingUsed_feature", "_UI_Sample_type"),
-				 EsxPackage.Literals.SAMPLE__BEING_USED,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -177,6 +155,28 @@ public class SampleItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Empty feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEmptyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sample_empty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_empty_feature", "_UI_Sample_type"),
+				 EsxPackage.Literals.SAMPLE__EMPTY,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -573,7 +573,7 @@ public class SampleItemProvider
 			case EsxPackage.SAMPLE__SLICE:
 			case EsxPackage.SAMPLE__STEREO:
 			case EsxPackage.SAMPLE__MEM_USED_IN_BYTES:
-			case EsxPackage.SAMPLE__BEING_USED:
+			case EsxPackage.SAMPLE__EMPTY:
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_ORIGINAL:
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_CURRENT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

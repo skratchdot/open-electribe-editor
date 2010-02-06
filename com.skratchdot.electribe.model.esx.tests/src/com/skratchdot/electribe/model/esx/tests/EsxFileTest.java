@@ -27,17 +27,22 @@ import junit.textui.TestRunner;
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMemUsedInBytes() <em>Mem Used In Bytes</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMemFreeInBytes() <em>Mem Free In Bytes</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsUsed() <em>Num Patterns Used</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesUsed() <em>Num Samples Used</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoUsed() <em>Num Samples Mono Used</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoUsed() <em>Num Samples Stereo Used</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsUsed() <em>Num Songs Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsEmpty() <em>Num Patterns Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsNotEmpty() <em>Num Patterns Not Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesEmpty() <em>Num Samples Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesNotEmpty() <em>Num Samples Not Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoEmpty() <em>Num Samples Mono Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoNotEmpty() <em>Num Samples Mono Not Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoEmpty() <em>Num Samples Stereo Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoNotEmpty() <em>Num Samples Stereo Not Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsEmpty() <em>Num Songs Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsNotEmpty() <em>Num Songs Not Empty</em>}</li>
  * </ul>
  * </p>
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#findFirstUnusedSample(boolean, boolean, int, java.util.ArrayList) <em>Find First Unused Sample</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#findFirstEmptySample(boolean, boolean, int, java.util.ArrayList) <em>Find First Empty Sample</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -140,78 +145,143 @@ public class EsxFileTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsUsed() <em>Num Patterns Used</em>}' feature getter.
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsEmpty() <em>Num Patterns Empty</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsUsed()
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsEmpty()
 	 * @generated
 	 */
-	public void testGetNumPatternsUsed() {
+	public void testGetNumPatternsEmpty() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();
 	}
 
 	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesUsed() <em>Num Samples Used</em>}' feature getter.
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsNotEmpty() <em>Num Patterns Not Empty</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesUsed()
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsNotEmpty()
 	 * @generated
 	 */
-	public void testGetNumSamplesUsed() {
+	public void testGetNumPatternsNotEmpty() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();
 	}
 
 	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoUsed() <em>Num Samples Mono Used</em>}' feature getter.
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesEmpty() <em>Num Samples Empty</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoUsed()
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesEmpty()
 	 * @generated
 	 */
-	public void testGetNumSamplesMonoUsed() {
+	public void testGetNumSamplesEmpty() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();
 	}
 
 	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoUsed() <em>Num Samples Stereo Used</em>}' feature getter.
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesNotEmpty() <em>Num Samples Not Empty</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoUsed()
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesNotEmpty()
 	 * @generated
 	 */
-	public void testGetNumSamplesStereoUsed() {
+	public void testGetNumSamplesNotEmpty() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();
 	}
 
 	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsUsed() <em>Num Songs Used</em>}' feature getter.
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoEmpty() <em>Num Samples Mono Empty</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSongsUsed()
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoEmpty()
 	 * @generated
 	 */
-	public void testGetNumSongsUsed() {
+	public void testGetNumSamplesMonoEmpty() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();
 	}
 
 	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#findFirstUnusedSample(boolean, boolean, int, java.util.ArrayList) <em>Find First Unused Sample</em>}' operation.
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoNotEmpty() <em>Num Samples Mono Not Empty</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.EsxFile#findFirstUnusedSample(boolean, boolean, int, java.util.ArrayList)
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesMonoNotEmpty()
 	 * @generated
 	 */
-	public void testFindFirstUnusedSample__boolean_boolean_int_ArrayList() {
+	public void testGetNumSamplesMonoNotEmpty() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoEmpty() <em>Num Samples Stereo Empty</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoEmpty()
+	 * @generated
+	 */
+	public void testGetNumSamplesStereoEmpty() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoNotEmpty() <em>Num Samples Stereo Not Empty</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoNotEmpty()
+	 * @generated
+	 */
+	public void testGetNumSamplesStereoNotEmpty() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsEmpty() <em>Num Songs Empty</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSongsEmpty()
+	 * @generated
+	 */
+	public void testGetNumSongsEmpty() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsNotEmpty() <em>Num Songs Not Empty</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getNumSongsNotEmpty()
+	 * @generated
+	 */
+	public void testGetNumSongsNotEmpty() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#findFirstEmptySample(boolean, boolean, int, java.util.ArrayList) <em>Find First Empty Sample</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#findFirstEmptySample(boolean, boolean, int, java.util.ArrayList)
+	 * @generated
+	 */
+	public void testFindFirstEmptySample__boolean_boolean_int_ArrayList() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

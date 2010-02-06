@@ -4,7 +4,7 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="esx"
     nsURI="http:///com/skratchdot/electribe/model/esx.ecore" nsPrefix="com.skratchdot.electribe.model.esx">
   <eClassifiers xsi:type="ecore:EClass" name="EsxFile">
-    <eOperations name="findFirstUnusedSample" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+    <eOperations name="findFirstEmptySample" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
       <eParameters name="searchMono" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eParameters name="searchStereo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eParameters name="startingSampleNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -23,9 +23,9 @@
         upperBound="64" eType="#//Song" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="samples" lowerBound="384"
         upperBound="384" eType="#//Sample" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="blankPattern" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="emptyPattern" lowerBound="1"
         eType="#//Pattern" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="blankSong" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="emptySong" lowerBound="1"
         eType="#//Song" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="memUsedInBytes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
@@ -33,19 +33,34 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="memFreeInBytes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
         derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numPatternsUsed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numPatternsEmpty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
         derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numSamplesUsed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numPatternsNotEmpty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
         derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numSamplesMonoUsed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numSamplesEmpty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
         derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numSamplesStereoUsed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numSamplesNotEmpty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
         derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numSongsUsed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numSamplesMonoEmpty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
+        derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numSamplesMonoNotEmpty"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" changeable="false"
+        volatile="true" transient="true" defaultValueLiteral="0" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numSamplesStereoEmpty"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" changeable="false"
+        volatile="true" transient="true" defaultValueLiteral="0" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numSamplesStereoNotEmpty"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" changeable="false"
+        volatile="true" transient="true" defaultValueLiteral="0" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numSongsEmpty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
+        derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numSongsNotEmpty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
         derived="true"/>
   </eClassifiers>
@@ -219,7 +234,7 @@
         upperBound="3" eType="#//ParametersFx" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="motionParameters" lowerBound="24"
         upperBound="24" eType="#//ParametersMotion" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="beingUsed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="empty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="true"
         derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="patternNumberOriginal"
@@ -262,7 +277,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="memUsedInBytes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
         derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="beingUsed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="empty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="true"
         derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleNumberOriginal" eType="#//SampleNumber"
@@ -294,7 +309,7 @@
         upperBound="256" eType="#//SongPattern" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="songEvents" upperBound="20000"
         eType="#//SongEvent" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="beingUsed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="empty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="true"
         derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="songNumberOriginal" eType="#//SongNumber"
@@ -306,7 +321,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="SongPattern">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="patternNumber" eType="#//PatternNumber"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="noteOffset" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="beingUsed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="empty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="true"
         derived="true"/>
   </eClassifiers>

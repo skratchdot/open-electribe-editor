@@ -63,7 +63,7 @@ import com.skratchdot.electribe.model.esx.util.EsxUtil;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getNumberOfSongEvents <em>Number Of Song Events</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getSongPatterns <em>Song Patterns</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getSongEvents <em>Song Events</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#isBeingUsed <em>Being Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#isEmpty <em>Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getSongNumberOriginal <em>Song Number Original</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getSongNumberCurrent <em>Song Number Current</em>}</li>
  * </ul>
@@ -213,14 +213,14 @@ public class SongImpl extends EObjectImpl implements Song {
 	protected EList<SongEvent> songEvents;
 
 	/**
-	 * The default value of the '{@link #isBeingUsed() <em>Being Used</em>}' attribute.
+	 * The default value of the '{@link #isEmpty() <em>Empty</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isBeingUsed()
+	 * @see #isEmpty()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean BEING_USED_EDEFAULT = true;
+	protected static final boolean EMPTY_EDEFAULT = true;
 
 	/**
 	 * The default value of the '{@link #getSongNumberOriginal() <em>Song Number Original</em>}' attribute.
@@ -535,14 +535,12 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public boolean isBeingUsed() {
+	public boolean isEmpty() {
 		if(this.eResource()!=null) {
 			Resource resource = (Resource) this.eResource();
 			Object rootObject = resource.getContents().get(0);
 			if(rootObject instanceof EsxFile) {
-				/* TODO: EVENTUALLY WE NEED TO USE EMF COMPARE (see Pattern#isBeingUsed) */
-				// Temporarily just checking names
-				return (!this.getName().equals(((EsxFile) rootObject).getBlankSong().getName()));
+				return (this.getName().equals(((EsxFile) rootObject).getEmptySong().getName()));
 			}
 		}
 		return true;
@@ -629,8 +627,8 @@ public class SongImpl extends EObjectImpl implements Song {
 				return getSongPatterns();
 			case EsxPackage.SONG__SONG_EVENTS:
 				return getSongEvents();
-			case EsxPackage.SONG__BEING_USED:
-				return isBeingUsed();
+			case EsxPackage.SONG__EMPTY:
+				return isEmpty();
 			case EsxPackage.SONG__SONG_NUMBER_ORIGINAL:
 				return getSongNumberOriginal();
 			case EsxPackage.SONG__SONG_NUMBER_CURRENT:
@@ -746,8 +744,8 @@ public class SongImpl extends EObjectImpl implements Song {
 				return songPatterns != null && !songPatterns.isEmpty();
 			case EsxPackage.SONG__SONG_EVENTS:
 				return songEvents != null && !songEvents.isEmpty();
-			case EsxPackage.SONG__BEING_USED:
-				return isBeingUsed() != BEING_USED_EDEFAULT;
+			case EsxPackage.SONG__EMPTY:
+				return isEmpty() != EMPTY_EDEFAULT;
 			case EsxPackage.SONG__SONG_NUMBER_ORIGINAL:
 				return songNumberOriginal != SONG_NUMBER_ORIGINAL_EDEFAULT;
 			case EsxPackage.SONG__SONG_NUMBER_CURRENT:

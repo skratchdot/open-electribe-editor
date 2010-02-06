@@ -52,15 +52,20 @@ import com.skratchdot.electribe.model.esx.util.EsxUtil;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getPatterns <em>Patterns</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getSongs <em>Songs</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getSamples <em>Samples</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getBlankPattern <em>Blank Pattern</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getBlankSong <em>Blank Song</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getEmptyPattern <em>Empty Pattern</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getEmptySong <em>Empty Song</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getMemUsedInBytes <em>Mem Used In Bytes</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getMemFreeInBytes <em>Mem Free In Bytes</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumPatternsUsed <em>Num Patterns Used</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSamplesUsed <em>Num Samples Used</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSamplesMonoUsed <em>Num Samples Mono Used</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSamplesStereoUsed <em>Num Samples Stereo Used</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSongsUsed <em>Num Songs Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumPatternsEmpty <em>Num Patterns Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumPatternsNotEmpty <em>Num Patterns Not Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSamplesEmpty <em>Num Samples Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSamplesNotEmpty <em>Num Samples Not Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSamplesMonoEmpty <em>Num Samples Mono Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSamplesMonoNotEmpty <em>Num Samples Mono Not Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSamplesStereoEmpty <em>Num Samples Stereo Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSamplesStereoNotEmpty <em>Num Samples Stereo Not Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSongsEmpty <em>Num Songs Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSongsNotEmpty <em>Num Songs Not Empty</em>}</li>
  * </ul>
  * </p>
  *
@@ -128,24 +133,24 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	protected EList<Sample> samples;
 
 	/**
-	 * The cached value of the '{@link #getBlankPattern() <em>Blank Pattern</em>}' containment reference.
+	 * The cached value of the '{@link #getEmptyPattern() <em>Empty Pattern</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBlankPattern()
+	 * @see #getEmptyPattern()
 	 * @generated
 	 * @ordered
 	 */
-	protected Pattern blankPattern;
+	protected Pattern emptyPattern;
 
 	/**
-	 * The cached value of the '{@link #getBlankSong() <em>Blank Song</em>}' containment reference.
+	 * The cached value of the '{@link #getEmptySong() <em>Empty Song</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBlankSong()
+	 * @see #getEmptySong()
 	 * @generated
 	 * @ordered
 	 */
-	protected Song blankSong;
+	protected Song emptySong;
 
 	/**
 	 * The default value of the '{@link #getMemUsedInBytes() <em>Mem Used In Bytes</em>}' attribute.
@@ -168,54 +173,104 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	protected static final int MEM_FREE_IN_BYTES_EDEFAULT = 0;
 
 	/**
-	 * The default value of the '{@link #getNumPatternsUsed() <em>Num Patterns Used</em>}' attribute.
+	 * The default value of the '{@link #getNumPatternsEmpty() <em>Num Patterns Empty</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNumPatternsUsed()
+	 * @see #getNumPatternsEmpty()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int NUM_PATTERNS_USED_EDEFAULT = 0;
+	protected static final int NUM_PATTERNS_EMPTY_EDEFAULT = 0;
 
 	/**
-	 * The default value of the '{@link #getNumSamplesUsed() <em>Num Samples Used</em>}' attribute.
+	 * The default value of the '{@link #getNumPatternsNotEmpty() <em>Num Patterns Not Empty</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNumSamplesUsed()
+	 * @see #getNumPatternsNotEmpty()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int NUM_SAMPLES_USED_EDEFAULT = 0;
+	protected static final int NUM_PATTERNS_NOT_EMPTY_EDEFAULT = 0;
 
 	/**
-	 * The default value of the '{@link #getNumSamplesMonoUsed() <em>Num Samples Mono Used</em>}' attribute.
+	 * The default value of the '{@link #getNumSamplesEmpty() <em>Num Samples Empty</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNumSamplesMonoUsed()
+	 * @see #getNumSamplesEmpty()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int NUM_SAMPLES_MONO_USED_EDEFAULT = 0;
+	protected static final int NUM_SAMPLES_EMPTY_EDEFAULT = 0;
 
 	/**
-	 * The default value of the '{@link #getNumSamplesStereoUsed() <em>Num Samples Stereo Used</em>}' attribute.
+	 * The default value of the '{@link #getNumSamplesNotEmpty() <em>Num Samples Not Empty</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNumSamplesStereoUsed()
+	 * @see #getNumSamplesNotEmpty()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int NUM_SAMPLES_STEREO_USED_EDEFAULT = 0;
+	protected static final int NUM_SAMPLES_NOT_EMPTY_EDEFAULT = 0;
 
 	/**
-	 * The default value of the '{@link #getNumSongsUsed() <em>Num Songs Used</em>}' attribute.
+	 * The default value of the '{@link #getNumSamplesMonoEmpty() <em>Num Samples Mono Empty</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNumSongsUsed()
+	 * @see #getNumSamplesMonoEmpty()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int NUM_SONGS_USED_EDEFAULT = 0;
+	protected static final int NUM_SAMPLES_MONO_EMPTY_EDEFAULT = 0;
+
+	/**
+	 * The default value of the '{@link #getNumSamplesMonoNotEmpty() <em>Num Samples Mono Not Empty</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumSamplesMonoNotEmpty()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int NUM_SAMPLES_MONO_NOT_EMPTY_EDEFAULT = 0;
+
+	/**
+	 * The default value of the '{@link #getNumSamplesStereoEmpty() <em>Num Samples Stereo Empty</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumSamplesStereoEmpty()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int NUM_SAMPLES_STEREO_EMPTY_EDEFAULT = 0;
+
+	/**
+	 * The default value of the '{@link #getNumSamplesStereoNotEmpty() <em>Num Samples Stereo Not Empty</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumSamplesStereoNotEmpty()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int NUM_SAMPLES_STEREO_NOT_EMPTY_EDEFAULT = 0;
+
+	/**
+	 * The default value of the '{@link #getNumSongsEmpty() <em>Num Songs Empty</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumSongsEmpty()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int NUM_SONGS_EMPTY_EDEFAULT = 0;
+
+	/**
+	 * The default value of the '{@link #getNumSongsNotEmpty() <em>Num Songs Not Empty</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumSongsNotEmpty()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int NUM_SONGS_NOT_EMPTY_EDEFAULT = 0;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -275,12 +330,12 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 			}
 
 			// Initialize the blank pattern
-			Pattern blankPattern = EsxFactory.eINSTANCE.createPatternFromEsxFile(in, EsxUtil.NUM_PATTERNS-1);
-			this.setBlankPattern(blankPattern);
+			Pattern emptyPattern = EsxFactory.eINSTANCE.createPatternFromEsxFile(in, EsxUtil.NUM_PATTERNS-1);
+			this.setEmptyPattern(emptyPattern);
 
 			// Initialize the blank pattern
-			Song blankSong = EsxFactory.eINSTANCE.createSongFromEsxFile(in, EsxUtil.NUM_SONGS-1);
-			this.setBlankSong(blankSong);
+			Song emptySong = EsxFactory.eINSTANCE.createSongFromEsxFile(in, EsxUtil.NUM_SONGS-1);
+			this.setEmptySong(emptySong);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -597,8 +652,8 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Pattern getBlankPattern() {
-		return blankPattern;
+	public Pattern getEmptyPattern() {
+		return emptyPattern;
 	}
 
 	/**
@@ -606,11 +661,11 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetBlankPattern(Pattern newBlankPattern, NotificationChain msgs) {
-		Pattern oldBlankPattern = blankPattern;
-		blankPattern = newBlankPattern;
+	public NotificationChain basicSetEmptyPattern(Pattern newEmptyPattern, NotificationChain msgs) {
+		Pattern oldEmptyPattern = emptyPattern;
+		emptyPattern = newEmptyPattern;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__BLANK_PATTERN, oldBlankPattern, newBlankPattern);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__EMPTY_PATTERN, oldEmptyPattern, newEmptyPattern);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -621,18 +676,18 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setBlankPattern(Pattern newBlankPattern) {
-		if (newBlankPattern != blankPattern) {
+	public void setEmptyPattern(Pattern newEmptyPattern) {
+		if (newEmptyPattern != emptyPattern) {
 			NotificationChain msgs = null;
-			if (blankPattern != null)
-				msgs = ((InternalEObject)blankPattern).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.ESX_FILE__BLANK_PATTERN, null, msgs);
-			if (newBlankPattern != null)
-				msgs = ((InternalEObject)newBlankPattern).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.ESX_FILE__BLANK_PATTERN, null, msgs);
-			msgs = basicSetBlankPattern(newBlankPattern, msgs);
+			if (emptyPattern != null)
+				msgs = ((InternalEObject)emptyPattern).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.ESX_FILE__EMPTY_PATTERN, null, msgs);
+			if (newEmptyPattern != null)
+				msgs = ((InternalEObject)newEmptyPattern).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.ESX_FILE__EMPTY_PATTERN, null, msgs);
+			msgs = basicSetEmptyPattern(newEmptyPattern, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__BLANK_PATTERN, newBlankPattern, newBlankPattern));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__EMPTY_PATTERN, newEmptyPattern, newEmptyPattern));
 	}
 
 	/**
@@ -640,8 +695,8 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Song getBlankSong() {
-		return blankSong;
+	public Song getEmptySong() {
+		return emptySong;
 	}
 
 	/**
@@ -649,11 +704,11 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetBlankSong(Song newBlankSong, NotificationChain msgs) {
-		Song oldBlankSong = blankSong;
-		blankSong = newBlankSong;
+	public NotificationChain basicSetEmptySong(Song newEmptySong, NotificationChain msgs) {
+		Song oldEmptySong = emptySong;
+		emptySong = newEmptySong;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__BLANK_SONG, oldBlankSong, newBlankSong);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__EMPTY_SONG, oldEmptySong, newEmptySong);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -664,18 +719,18 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setBlankSong(Song newBlankSong) {
-		if (newBlankSong != blankSong) {
+	public void setEmptySong(Song newEmptySong) {
+		if (newEmptySong != emptySong) {
 			NotificationChain msgs = null;
-			if (blankSong != null)
-				msgs = ((InternalEObject)blankSong).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.ESX_FILE__BLANK_SONG, null, msgs);
-			if (newBlankSong != null)
-				msgs = ((InternalEObject)newBlankSong).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.ESX_FILE__BLANK_SONG, null, msgs);
-			msgs = basicSetBlankSong(newBlankSong, msgs);
+			if (emptySong != null)
+				msgs = ((InternalEObject)emptySong).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.ESX_FILE__EMPTY_SONG, null, msgs);
+			if (newEmptySong != null)
+				msgs = ((InternalEObject)newEmptySong).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.ESX_FILE__EMPTY_SONG, null, msgs);
+			msgs = basicSetEmptySong(newEmptySong, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__BLANK_SONG, newBlankSong, newBlankSong));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__EMPTY_SONG, newEmptySong, newEmptySong));
 	}
 
 	/**
@@ -705,10 +760,10 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public int getNumPatternsUsed() {
+	public int getNumPatternsEmpty() {
 		int returnValue = 0;
 		for(int i=0; i<this.getPatterns().size(); i++) {
-			if (this.getPatterns().get(i).isBeingUsed()) {
+			if (this.getPatterns().get(i).isEmpty()) {
 				returnValue++;
 			}
 		}
@@ -720,8 +775,8 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public int getNumSamplesUsed() {
-		return this.getNumSamplesMonoUsed()+this.getNumSamplesStereoUsed();
+	public int getNumPatternsNotEmpty() {
+		return EsxUtil.NUM_PATTERNS-this.getNumPatternsEmpty();
 	}
 
 	/**
@@ -729,10 +784,34 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public int getNumSamplesMonoUsed() {
+	public int getNumSamplesEmpty() {
+		int returnValue = 0;
+		for(int i=0; i<this.getSamples().size(); i++) {
+			if (this.getSamples().get(i).isEmpty()) {
+				returnValue++;
+			}
+		}
+		return returnValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getNumSamplesNotEmpty() {
+		return EsxUtil.NUM_SAMPLES-this.getNumSamplesEmpty();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getNumSamplesMonoEmpty() {
 		int returnValue = 0;
 		for(int i=0; i<this.getSamples().size() && i<EsxUtil.NUM_SAMPLES_MONO; i++) {
-			if (this.getSamples().get(i).isBeingUsed()) {
+			if (this.getSamples().get(i).isEmpty()) {
 				returnValue++;
 			}
 		}
@@ -744,10 +823,19 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public int getNumSamplesStereoUsed() {
+	public int getNumSamplesMonoNotEmpty() {
+		return EsxUtil.NUM_SAMPLES_MONO - this.getNumSamplesMonoEmpty();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getNumSamplesStereoEmpty() {
 		int returnValue = 0;
 		for(int i=EsxUtil.NUM_SAMPLES_MONO; i<this.getSamples().size() && i<EsxUtil.NUM_SAMPLES; i++) {
-			if (this.getSamples().get(i).isBeingUsed()) {
+			if (this.getSamples().get(i).isEmpty()) {
 				returnValue++;
 			}
 		}
@@ -759,10 +847,19 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public int getNumSongsUsed() {
+	public int getNumSamplesStereoNotEmpty() {
+		return EsxUtil.NUM_SAMPLES_STEREO-this.getNumSamplesStereoEmpty();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getNumSongsEmpty() {
 		int returnValue = 0;
 		for(int i=0; i<this.getSongs().size(); i++) {
-			if (this.getSongs().get(i).isBeingUsed()) {
+			if (this.getSongs().get(i).isEmpty()) {
 				returnValue++;
 			}
 		}
@@ -774,12 +871,21 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public int findFirstUnusedSample(boolean searchMono, boolean searchStereo, int startingSampleNumber, ArrayList<Integer> skipSampleNumbers) {
+	public int getNumSongsNotEmpty() {
+		return EsxUtil.NUM_SONGS-this.getNumSongsEmpty();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int findFirstEmptySample(boolean searchMono, boolean searchStereo, int startingSampleNumber, ArrayList<Integer> skipSampleNumbers) {
 		int returnValue = -1;
 
 		if(searchMono) {
 			for(int i=0; i<EsxUtil.NUM_SAMPLES_MONO; i++) {
-				if(this.getSamples().get(i).isBeingUsed()==false && !skipSampleNumbers.contains(i)) {
+				if(this.getSamples().get(i).isEmpty() && !skipSampleNumbers.contains(i)) {
 					if(i>=startingSampleNumber) {
 						return i;
 					}
@@ -792,7 +898,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		
 		if(searchStereo) {
 			for(int i=EsxUtil.NUM_SAMPLES_MONO; i<EsxUtil.NUM_SAMPLES; i++) {
-				if(this.getSamples().get(i).isBeingUsed()==false && !skipSampleNumbers.contains(i)) {
+				if(this.getSamples().get(i).isEmpty() && !skipSampleNumbers.contains(i)) {
 					if(i>=startingSampleNumber) {
 						return i;
 					}
@@ -822,10 +928,10 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 				return ((InternalEList<?>)getSongs()).basicRemove(otherEnd, msgs);
 			case EsxPackage.ESX_FILE__SAMPLES:
 				return ((InternalEList<?>)getSamples()).basicRemove(otherEnd, msgs);
-			case EsxPackage.ESX_FILE__BLANK_PATTERN:
-				return basicSetBlankPattern(null, msgs);
-			case EsxPackage.ESX_FILE__BLANK_SONG:
-				return basicSetBlankSong(null, msgs);
+			case EsxPackage.ESX_FILE__EMPTY_PATTERN:
+				return basicSetEmptyPattern(null, msgs);
+			case EsxPackage.ESX_FILE__EMPTY_SONG:
+				return basicSetEmptySong(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -848,24 +954,34 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 				return getSongs();
 			case EsxPackage.ESX_FILE__SAMPLES:
 				return getSamples();
-			case EsxPackage.ESX_FILE__BLANK_PATTERN:
-				return getBlankPattern();
-			case EsxPackage.ESX_FILE__BLANK_SONG:
-				return getBlankSong();
+			case EsxPackage.ESX_FILE__EMPTY_PATTERN:
+				return getEmptyPattern();
+			case EsxPackage.ESX_FILE__EMPTY_SONG:
+				return getEmptySong();
 			case EsxPackage.ESX_FILE__MEM_USED_IN_BYTES:
 				return getMemUsedInBytes();
 			case EsxPackage.ESX_FILE__MEM_FREE_IN_BYTES:
 				return getMemFreeInBytes();
-			case EsxPackage.ESX_FILE__NUM_PATTERNS_USED:
-				return getNumPatternsUsed();
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_USED:
-				return getNumSamplesUsed();
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_USED:
-				return getNumSamplesMonoUsed();
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_USED:
-				return getNumSamplesStereoUsed();
-			case EsxPackage.ESX_FILE__NUM_SONGS_USED:
-				return getNumSongsUsed();
+			case EsxPackage.ESX_FILE__NUM_PATTERNS_EMPTY:
+				return getNumPatternsEmpty();
+			case EsxPackage.ESX_FILE__NUM_PATTERNS_NOT_EMPTY:
+				return getNumPatternsNotEmpty();
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_EMPTY:
+				return getNumSamplesEmpty();
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_NOT_EMPTY:
+				return getNumSamplesNotEmpty();
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_EMPTY:
+				return getNumSamplesMonoEmpty();
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_NOT_EMPTY:
+				return getNumSamplesMonoNotEmpty();
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_EMPTY:
+				return getNumSamplesStereoEmpty();
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_NOT_EMPTY:
+				return getNumSamplesStereoNotEmpty();
+			case EsxPackage.ESX_FILE__NUM_SONGS_EMPTY:
+				return getNumSongsEmpty();
+			case EsxPackage.ESX_FILE__NUM_SONGS_NOT_EMPTY:
+				return getNumSongsNotEmpty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -897,11 +1013,11 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 				getSamples().clear();
 				getSamples().addAll((Collection<? extends Sample>)newValue);
 				return;
-			case EsxPackage.ESX_FILE__BLANK_PATTERN:
-				setBlankPattern((Pattern)newValue);
+			case EsxPackage.ESX_FILE__EMPTY_PATTERN:
+				setEmptyPattern((Pattern)newValue);
 				return;
-			case EsxPackage.ESX_FILE__BLANK_SONG:
-				setBlankSong((Song)newValue);
+			case EsxPackage.ESX_FILE__EMPTY_SONG:
+				setEmptySong((Song)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -930,11 +1046,11 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 			case EsxPackage.ESX_FILE__SAMPLES:
 				getSamples().clear();
 				return;
-			case EsxPackage.ESX_FILE__BLANK_PATTERN:
-				setBlankPattern((Pattern)null);
+			case EsxPackage.ESX_FILE__EMPTY_PATTERN:
+				setEmptyPattern((Pattern)null);
 				return;
-			case EsxPackage.ESX_FILE__BLANK_SONG:
-				setBlankSong((Song)null);
+			case EsxPackage.ESX_FILE__EMPTY_SONG:
+				setEmptySong((Song)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -958,24 +1074,34 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 				return songs != null && !songs.isEmpty();
 			case EsxPackage.ESX_FILE__SAMPLES:
 				return samples != null && !samples.isEmpty();
-			case EsxPackage.ESX_FILE__BLANK_PATTERN:
-				return blankPattern != null;
-			case EsxPackage.ESX_FILE__BLANK_SONG:
-				return blankSong != null;
+			case EsxPackage.ESX_FILE__EMPTY_PATTERN:
+				return emptyPattern != null;
+			case EsxPackage.ESX_FILE__EMPTY_SONG:
+				return emptySong != null;
 			case EsxPackage.ESX_FILE__MEM_USED_IN_BYTES:
 				return getMemUsedInBytes() != MEM_USED_IN_BYTES_EDEFAULT;
 			case EsxPackage.ESX_FILE__MEM_FREE_IN_BYTES:
 				return getMemFreeInBytes() != MEM_FREE_IN_BYTES_EDEFAULT;
-			case EsxPackage.ESX_FILE__NUM_PATTERNS_USED:
-				return getNumPatternsUsed() != NUM_PATTERNS_USED_EDEFAULT;
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_USED:
-				return getNumSamplesUsed() != NUM_SAMPLES_USED_EDEFAULT;
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_USED:
-				return getNumSamplesMonoUsed() != NUM_SAMPLES_MONO_USED_EDEFAULT;
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_USED:
-				return getNumSamplesStereoUsed() != NUM_SAMPLES_STEREO_USED_EDEFAULT;
-			case EsxPackage.ESX_FILE__NUM_SONGS_USED:
-				return getNumSongsUsed() != NUM_SONGS_USED_EDEFAULT;
+			case EsxPackage.ESX_FILE__NUM_PATTERNS_EMPTY:
+				return getNumPatternsEmpty() != NUM_PATTERNS_EMPTY_EDEFAULT;
+			case EsxPackage.ESX_FILE__NUM_PATTERNS_NOT_EMPTY:
+				return getNumPatternsNotEmpty() != NUM_PATTERNS_NOT_EMPTY_EDEFAULT;
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_EMPTY:
+				return getNumSamplesEmpty() != NUM_SAMPLES_EMPTY_EDEFAULT;
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_NOT_EMPTY:
+				return getNumSamplesNotEmpty() != NUM_SAMPLES_NOT_EMPTY_EDEFAULT;
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_EMPTY:
+				return getNumSamplesMonoEmpty() != NUM_SAMPLES_MONO_EMPTY_EDEFAULT;
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_NOT_EMPTY:
+				return getNumSamplesMonoNotEmpty() != NUM_SAMPLES_MONO_NOT_EMPTY_EDEFAULT;
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_EMPTY:
+				return getNumSamplesStereoEmpty() != NUM_SAMPLES_STEREO_EMPTY_EDEFAULT;
+			case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_NOT_EMPTY:
+				return getNumSamplesStereoNotEmpty() != NUM_SAMPLES_STEREO_NOT_EMPTY_EDEFAULT;
+			case EsxPackage.ESX_FILE__NUM_SONGS_EMPTY:
+				return getNumSongsEmpty() != NUM_SONGS_EMPTY_EDEFAULT;
+			case EsxPackage.ESX_FILE__NUM_SONGS_NOT_EMPTY:
+				return getNumSongsNotEmpty() != NUM_SONGS_NOT_EMPTY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

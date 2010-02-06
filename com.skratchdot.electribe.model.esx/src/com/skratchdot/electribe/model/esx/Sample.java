@@ -47,7 +47,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isSlice <em>Slice</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isStereo <em>Stereo</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getMemUsedInBytes <em>Mem Used In Bytes</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isBeingUsed <em>Being Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isEmpty <em>Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleNumberOriginal <em>Sample Number Original</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleNumberCurrent <em>Sample Number Current</em>}</li>
  * </ul>
@@ -85,22 +85,6 @@ public interface Sample extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Being Used</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Being Used</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Being Used</em>' attribute.
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_BeingUsed()
-	 * @model default="true" transient="true" changeable="false" volatile="true" derived="true"
-	 * @generated
-	 */
-	boolean isBeingUsed();
-
-	/**
 	 * Returns the value of the '<em><b>Stereo</b></em>' attribute.
 	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
@@ -131,6 +115,22 @@ public interface Sample extends EObject {
 	 * @generated
 	 */
 	int getMemUsedInBytes();
+
+	/**
+	 * Returns the value of the '<em><b>Empty</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Empty</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Empty</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_Empty()
+	 * @model default="true" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	boolean isEmpty();
 
 	/**
 	 * Returns the value of the '<em><b>Offset Channel1 Start</b></em>' attribute.

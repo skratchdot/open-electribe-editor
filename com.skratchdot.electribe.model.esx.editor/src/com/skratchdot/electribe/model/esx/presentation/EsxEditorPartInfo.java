@@ -11,8 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.presentation;
 
-import java.lang.reflect.Field;
-
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.RowData;
@@ -49,17 +47,17 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 	private Composite rowSpacer;
 	private Composite rowComposite;
 	private Label label;
-	private int rowLabelWidth = 150;
+	private int rowLabelWidth = 180;
 	private int rowLabelHeight = 15;
 	private int rowSpacerHeight = 5; // will be added above and below
 	private Text textMemFreeInBytes;
 	private Text textMemUsedInBytes;
-	private Text textNumSamplesUsed;
-	private Text textNumSamplesMonoUsed;
-	private Text textNumSamplesStereoUsed;
-	private Text textNumPatternsUsed;
-	private Text textNumSongsUsed;
-
+	private Text textNumSamplesNotEmpty;
+	private Text textNumSamplesMonoNotEmpty;
+	private Text textNumSamplesStereoNotEmpty;
+	private Text textNumPatternsNotEmpty;
+	private Text textNumSongsNotEmpty;
+	
 	/**
 	 * @param parent
 	 */
@@ -154,29 +152,13 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 	 * @param textFieldToBind
 	 * @param maxValue
 	 */
-	private void createTextRow(String title, String textFieldToBind) {
+	private Text createTextRow(String title) {
 		/* Create The Row */
 		this.createRow(title);
-
-		/* Use reflection to get the private Text field specified by
-		 * textFieldToBind
-		 */
-		try {
-		    Field textField = this.getClass().getDeclaredField(textFieldToBind);
-		    Text text = new Text(rowComposite, SWT.READ_ONLY | SWT.NONE);
-			text.setLayoutData(new RowData(200, SWT.DEFAULT));
-		    textField.set(this, text);
-		} catch (SecurityException e) {
-			e.printStackTrace();
-		} catch (NoSuchFieldException e) {
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
+		Text text = new Text(rowComposite, SWT.READ_ONLY | SWT.NONE);
+		text.setLayoutData(new RowData(250, SWT.DEFAULT));
+		return text;
 	}
 
 	/**
@@ -217,20 +199,20 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 			" memory (or 0)."
 		);
 
-		// Number Of Samples Used:
-		this.createTextRow("# Samples Used:", "textNumSamplesUsed");
+		// Number Of Samples Not Empty:
+		textNumSamplesNotEmpty = this.createTextRow("# Samples Used:");
 
-		// Number Of Mono Samples Used:
-		this.createTextRow("# Samples Used (MONO):", "textNumSamplesMonoUsed");
+		// Number Of Mono Samples Not Empty:
+		textNumSamplesMonoNotEmpty = this.createTextRow("# Samples Used (MONO):");
 
-		// Number Of Stereo Samples Used:
-		this.createTextRow("# Samples Used (STEREO):", "textNumSamplesStereoUsed");
+		// Number Of Stereo Samples Not Empty:
+		textNumSamplesStereoNotEmpty = this.createTextRow("# Samples Used (STEREO):");
 
 		// Memory Used In Bytes:
-		this.createTextRow("Memory Used (In Bytes):", "textMemUsedInBytes");
+		textMemUsedInBytes = this.createTextRow("Memory Used (In Bytes):");
 
 		// Memory Free In Bytes:
-		this.createTextRow("Memory Free (In Bytes):", "textMemFreeInBytes");
+		textMemFreeInBytes = this.createTextRow("Memory Free (In Bytes):");
 	}
 	
 	/**
@@ -248,8 +230,8 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 			"The Patterns tab will let you arrange and edit your patterns."
 		);
 
-		// Number Of Patterns Used:
-		this.createTextRow("# Patterns Used:", "textNumPatternsUsed");
+		// Number Of Patterns Not Empty:
+		textNumPatternsNotEmpty = this.createTextRow("# Patterns Used:");
 	}
 
 	/**
@@ -270,8 +252,8 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 			" have to delete a song events until you have less than 20,000"
 		);
 
-		// Number Of Songs Used:
-		this.createTextRow("# Songs Used:", "textNumSongsUsed");
+		// Number Of Songs Not Empty:
+		textNumSongsNotEmpty = this.createTextRow("# Songs Used:");
 	}
 
 	/* (non-Javadoc)
@@ -305,11 +287,11 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 
 		textMemFreeInBytes.setText(Integer.toString(esxFile.getMemFreeInBytes()));
 		textMemUsedInBytes.setText("Using " + esxFile.getMemUsedInBytes() + " of " + EsxUtil.MAX_NUM_SAMPLES * 2);
-		textNumSamplesUsed.setText("Using " + esxFile.getNumSamplesUsed() + " of " + EsxUtil.NUM_SAMPLES);
-		textNumSamplesMonoUsed.setText("Using " + esxFile.getNumSamplesMonoUsed() + " of " + EsxUtil.NUM_SAMPLES_MONO);
-		textNumSamplesStereoUsed.setText("Using " + esxFile.getNumSamplesStereoUsed() + " of " + EsxUtil.NUM_SAMPLES_STEREO);
-		textNumPatternsUsed.setText("Using " + esxFile.getNumPatternsUsed() + " of " + EsxUtil.NUM_PATTERNS);
-		textNumSongsUsed.setText("Using " + esxFile.getNumSongsUsed() + " of " + EsxUtil.NUM_SONGS);
+		textNumSamplesNotEmpty.setText("Using " + esxFile.getNumSamplesNotEmpty() + " of " + EsxUtil.NUM_SAMPLES);
+		textNumSamplesMonoNotEmpty.setText("Using " + esxFile.getNumSamplesMonoNotEmpty() + " of " + EsxUtil.NUM_SAMPLES_MONO);
+		textNumSamplesStereoNotEmpty.setText("Using " + esxFile.getNumSamplesStereoNotEmpty() + " of " + EsxUtil.NUM_SAMPLES_STEREO);
+		textNumPatternsNotEmpty.setText("Using " + esxFile.getNumPatternsNotEmpty() + " of " + EsxUtil.NUM_PATTERNS);
+		textNumSongsNotEmpty.setText("Using " + esxFile.getNumSongsNotEmpty() + " of " + EsxUtil.NUM_SONGS);
 	}
 
 }

@@ -78,7 +78,7 @@ public class SongPatternItemProvider
 
 			addPatternNumberPropertyDescriptor(object);
 			addNoteOffsetPropertyDescriptor(object);
-			addBeingUsedPropertyDescriptor(object);
+			addEmptyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -128,19 +128,19 @@ public class SongPatternItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Being Used feature.
+	 * This adds a property descriptor for the Empty feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addBeingUsedPropertyDescriptor(Object object) {
+	protected void addEmptyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_SongPattern_beingUsed_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongPattern_beingUsed_feature", "_UI_SongPattern_type"),
-				 EsxPackage.Literals.SONG_PATTERN__BEING_USED,
+				 getString("_UI_SongPattern_empty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SongPattern_empty_feature", "_UI_SongPattern_type"),
+				 EsxPackage.Literals.SONG_PATTERN__EMPTY,
 				 false,
 				 false,
 				 false,
@@ -189,7 +189,7 @@ public class SongPatternItemProvider
 		switch (notification.getFeatureID(SongPattern.class)) {
 			case EsxPackage.SONG_PATTERN__PATTERN_NUMBER:
 			case EsxPackage.SONG_PATTERN__NOTE_OFFSET:
-			case EsxPackage.SONG_PATTERN__BEING_USED:
+			case EsxPackage.SONG_PATTERN__EMPTY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

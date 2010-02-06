@@ -22,53 +22,53 @@ import com.skratchdot.electribe.model.esx.Sample;
 import com.skratchdot.electribe.model.esx.Song;
 
 public class TableViewerColorProvider extends ColorProvider {
-	private Color backgroundColorWhenBeingUsed;
-	private Color backgroundColorWhenNotInUse;
-	private Color foregroundColorWhenBeingUsed;
-	private Color foregroundColorWhenNotInUse;
+	private Color backgroundColorWhenNotEmpty;
+	private Color backgroundColorWhenEmpty;
+	private Color foregroundColorWhenNotEmpty;
+	private Color foregroundColorWhenEmpty;
 
 	/**
 	 * @param adapterFactory
 	 * @param viewer
-	 * @param backgroundColorWhenBeingUsed
-	 * @param backgroundColorWhenNotInUse
-	 * @param foregroundColorWhenBeingUsed
-	 * @param foregroundColorWhenNotInUse
+	 * @param backgroundColorWhenNotEmpty
+	 * @param backgroundColorWhenEmpty
+	 * @param foregroundColorWhenNotEmpty
+	 * @param foregroundColorWhenEmpty
 	 */
 	public TableViewerColorProvider(AdapterFactory adapterFactory, Viewer viewer,
-			Color backgroundColorWhenBeingUsed,
-			Color backgroundColorWhenNotInUse,
-			Color foregroundColorWhenBeingUsed,
-			Color foregroundColorWhenNotInUse) {
+			Color backgroundColorWhenNotEmpty,
+			Color backgroundColorWhenEmpty,
+			Color foregroundColorWhenNotEmpty,
+			Color foregroundColorWhenEmpty) {
 		super(adapterFactory, viewer);
-		this.backgroundColorWhenBeingUsed = backgroundColorWhenBeingUsed;
-		this.backgroundColorWhenNotInUse = backgroundColorWhenNotInUse;
-		this.foregroundColorWhenBeingUsed = foregroundColorWhenBeingUsed;
-		this.foregroundColorWhenNotInUse = foregroundColorWhenNotInUse;
+		this.backgroundColorWhenNotEmpty = backgroundColorWhenNotEmpty;
+		this.backgroundColorWhenEmpty = backgroundColorWhenEmpty;
+		this.foregroundColorWhenNotEmpty = foregroundColorWhenNotEmpty;
+		this.foregroundColorWhenEmpty = foregroundColorWhenEmpty;
 	}
 
 	/**
 	 * @param adapterFactory
 	 * @param viewer
-	 * @param backgroundColorWhenBeingUsed
-	 * @param backgroundColorWhenNotInUse
-	 * @param foregroundColorWhenBeingUsed
-	 * @param foregroundColorWhenNotInUse
+	 * @param backgroundColorWhenNotEmpty
+	 * @param backgroundColorWhenEmpty
+	 * @param foregroundColorWhenNotEmpty
+	 * @param foregroundColorWhenEmpty
 	 */
 	public TableViewerColorProvider(AdapterFactory adapterFactory, Viewer viewer,
-			RGB backgroundColorWhenBeingUsed,
-			RGB backgroundColorWhenNotInUse,
-			RGB foregroundColorWhenBeingUsed,
-			RGB foregroundColorWhenNotInUse) {
+			RGB backgroundColorWhenNotEmpty,
+			RGB backgroundColorWhenEmpty,
+			RGB foregroundColorWhenNotEmpty,
+			RGB foregroundColorWhenEmpty) {
 		super(adapterFactory, viewer);
-		this.backgroundColorWhenBeingUsed = new Color(null,
-				backgroundColorWhenBeingUsed);
-		this.backgroundColorWhenNotInUse = new Color(null,
-				backgroundColorWhenNotInUse);
-		this.foregroundColorWhenBeingUsed = new Color(null,
-				foregroundColorWhenBeingUsed);
-		this.foregroundColorWhenNotInUse = new Color(null,
-				foregroundColorWhenNotInUse);
+		this.backgroundColorWhenNotEmpty = new Color(null,
+				backgroundColorWhenNotEmpty);
+		this.backgroundColorWhenEmpty = new Color(null,
+				backgroundColorWhenEmpty);
+		this.foregroundColorWhenNotEmpty = new Color(null,
+				foregroundColorWhenNotEmpty);
+		this.foregroundColorWhenEmpty = new Color(null,
+				foregroundColorWhenEmpty);
 	}
 
 	/* (non-Javadoc)
@@ -77,14 +77,14 @@ public class TableViewerColorProvider extends ColorProvider {
 	@Override
 	public Color getBackground(Object object, int columnIndex) {
 		if (object instanceof Sample) {
-			return ((Sample) object).isBeingUsed() ? backgroundColorWhenBeingUsed
-					: backgroundColorWhenNotInUse;
+			return ((Sample) object).isEmpty() ? backgroundColorWhenEmpty
+					: backgroundColorWhenNotEmpty;
 		} else if (object instanceof Pattern) {
-			return ((Pattern) object).isBeingUsed() ? backgroundColorWhenBeingUsed
-					: backgroundColorWhenNotInUse;
+			return ((Pattern) object).isEmpty() ? backgroundColorWhenEmpty
+					: backgroundColorWhenNotEmpty;
 		} else if (object instanceof Song) {
-			return ((Song) object).isBeingUsed() ? backgroundColorWhenBeingUsed
-					: backgroundColorWhenNotInUse;
+			return ((Song) object).isEmpty() ? backgroundColorWhenEmpty
+					: backgroundColorWhenNotEmpty;
 		}
 		return super.getBackground(object, columnIndex);
 	}
@@ -95,116 +95,116 @@ public class TableViewerColorProvider extends ColorProvider {
 	@Override
 	public Color getForeground(Object object, int columnIndex) {
 		if (object instanceof Sample) {
-			return ((Sample) object).isBeingUsed() ? foregroundColorWhenBeingUsed
-					: foregroundColorWhenNotInUse;
+			return ((Sample) object).isEmpty() ? foregroundColorWhenEmpty
+					: foregroundColorWhenNotEmpty;
 		} else if (object instanceof Pattern) {
-			return ((Pattern) object).isBeingUsed() ? foregroundColorWhenBeingUsed
-					: foregroundColorWhenNotInUse;
+			return ((Pattern) object).isEmpty() ? foregroundColorWhenEmpty
+					: foregroundColorWhenNotEmpty;
 		} else if (object instanceof Song) {
-			return ((Song) object).isBeingUsed() ? foregroundColorWhenBeingUsed
-					: foregroundColorWhenNotInUse;
+			return ((Song) object).isEmpty() ? foregroundColorWhenEmpty
+					: foregroundColorWhenNotEmpty;
 		}
 		return super.getForeground(object, columnIndex);
 	}
 
 	/**
-	 * @param backgroundColorWhenBeingUsed
-	 * @param backgroundColorWhenNotInUse
-	 * @param foregroundColorWhenBeingUsed
-	 * @param foregroundColorWhenNotInUse
+	 * @param backgroundColorWhenNotEmpty
+	 * @param backgroundColorWhenEmpty
+	 * @param foregroundColorWhenNotEmpty
+	 * @param foregroundColorWhenEmpty
 	 */
 	public void setAllColors(
-		Color backgroundColorWhenBeingUsed,
-		Color backgroundColorWhenNotInUse,
-		Color foregroundColorWhenBeingUsed,
-		Color foregroundColorWhenNotInUse) {
-		this.backgroundColorWhenBeingUsed = backgroundColorWhenBeingUsed;
-		this.backgroundColorWhenNotInUse = backgroundColorWhenNotInUse;
-		this.foregroundColorWhenBeingUsed = foregroundColorWhenBeingUsed;
-		this.foregroundColorWhenNotInUse = foregroundColorWhenNotInUse;
+		Color backgroundColorWhenNotEmpty,
+		Color backgroundColorWhenEmpty,
+		Color foregroundColorWhenNotEmpty,
+		Color foregroundColorWhenEmpty) {
+		this.backgroundColorWhenNotEmpty = backgroundColorWhenNotEmpty;
+		this.backgroundColorWhenEmpty = backgroundColorWhenEmpty;
+		this.foregroundColorWhenNotEmpty = foregroundColorWhenNotEmpty;
+		this.foregroundColorWhenEmpty = foregroundColorWhenEmpty;
 	}
 	
 	/**
-	 * @param backgroundColorWhenBeingUsed
-	 * @param backgroundColorWhenNotInUse
-	 * @param foregroundColorWhenBeingUsed
-	 * @param foregroundColorWhenNotInUse
+	 * @param backgroundColorWhenNotEmpty
+	 * @param backgroundColorWhenEmpty
+	 * @param foregroundColorWhenNotEmpty
+	 * @param foregroundColorWhenEmpty
 	 */
 	public void setAllColors(
-		RGB backgroundColorWhenBeingUsed,
-		RGB backgroundColorWhenNotInUse,
-		RGB foregroundColorWhenBeingUsed,
-		RGB foregroundColorWhenNotInUse) {
-		this.backgroundColorWhenBeingUsed = new Color(null,
-				backgroundColorWhenBeingUsed);
-		this.backgroundColorWhenNotInUse = new Color(null,
-				backgroundColorWhenNotInUse);
-		this.foregroundColorWhenBeingUsed = new Color(null,
-				foregroundColorWhenBeingUsed);
-		this.foregroundColorWhenNotInUse = new Color(null,
-				foregroundColorWhenNotInUse);
+		RGB backgroundColorWhenNotEmpty,
+		RGB backgroundColorWhenEmpty,
+		RGB foregroundColorWhenNotEmpty,
+		RGB foregroundColorWhenEmpty) {
+		this.backgroundColorWhenNotEmpty = new Color(null,
+				backgroundColorWhenNotEmpty);
+		this.backgroundColorWhenEmpty = new Color(null,
+				backgroundColorWhenEmpty);
+		this.foregroundColorWhenNotEmpty = new Color(null,
+				foregroundColorWhenNotEmpty);
+		this.foregroundColorWhenEmpty = new Color(null,
+				foregroundColorWhenEmpty);
 	}
 
 	/**
-	 * @param backgroundColorWhenBeingUsed
+	 * @param backgroundColorWhenNotEmpty
 	 */
-	public void setBackgroundColorWhenBeingUsed(
-			Color backgroundColorWhenBeingUsed) {
-		this.backgroundColorWhenBeingUsed = backgroundColorWhenBeingUsed;
+	public void setBackgroundColorWhenNotEmpty(
+			Color backgroundColorWhenNotEmpty) {
+		this.backgroundColorWhenNotEmpty = backgroundColorWhenNotEmpty;
 	}
 
 	/**
-	 * @param backgroundColorWhenBeingUsed
+	 * @param backgroundColorWhenNotEmpty
 	 */
-	public void setBackgroundColorWhenBeingUsed(RGB backgroundColorWhenBeingUsed) {
-		this.backgroundColorWhenBeingUsed = new Color(null,
-				backgroundColorWhenBeingUsed);
+	public void setBackgroundColorWhenNotEmpty(RGB backgroundColorWhenNotEmpty) {
+		this.backgroundColorWhenNotEmpty = new Color(null,
+				backgroundColorWhenNotEmpty);
 	}
 
 	/**
-	 * @param backgroundColorWhenNotInUse
+	 * @param backgroundColorWhenEmpty
 	 */
-	public void setBackgroundColorWhenNotInUse(Color backgroundColorWhenNotInUse) {
-		this.backgroundColorWhenNotInUse = backgroundColorWhenNotInUse;
+	public void setBackgroundColorWhenEmpty(Color backgroundColorWhenEmpty) {
+		this.backgroundColorWhenEmpty = backgroundColorWhenEmpty;
 	}
 
 	/**
-	 * @param backgroundColorWhenNotInUse
+	 * @param backgroundColorWhenEmpty
 	 */
-	public void setBackgroundColorWhenNotInUse(RGB backgroundColorWhenNotInUse) {
-		this.backgroundColorWhenNotInUse = new Color(null,
-				backgroundColorWhenNotInUse);
+	public void setBackgroundColorWhenEmpty(RGB backgroundColorWhenEmpty) {
+		this.backgroundColorWhenEmpty = new Color(null,
+				backgroundColorWhenEmpty);
 	}
 
 	/**
-	 * @param foregroundColorWhenBeingUsed
+	 * @param foregroundColorWhenNotEmpty
 	 */
-	public void setForegroundColorWhenBeingUsed(
-			Color foregroundColorWhenBeingUsed) {
-		this.foregroundColorWhenBeingUsed = foregroundColorWhenBeingUsed;
+	public void setForegroundColorWhenNotEmpty(
+			Color foregroundColorWhenNotEmpty) {
+		this.foregroundColorWhenNotEmpty = foregroundColorWhenNotEmpty;
 	}
 
 	/**
-	 * @param foregroundColorWhenBeingUsed
+	 * @param foregroundColorWhenNotEmpty
 	 */
-	public void setForegroundColorWhenBeingUsed(RGB foregroundColorWhenBeingUsed) {
-		this.foregroundColorWhenBeingUsed = new Color(null,
-				foregroundColorWhenBeingUsed);
+	public void setForegroundColorWhenNotEmpty(RGB foregroundColorWhenNotEmpty) {
+		this.foregroundColorWhenNotEmpty = new Color(null,
+				foregroundColorWhenNotEmpty);
 	}
 
 	/**
-	 * @param foregroundColorWhenNotInUse
+	 * @param foregroundColorWhenEmpty
 	 */
-	public void setForegroundColorWhenNotInUse(Color foregroundColorWhenNotInUse) {
-		this.foregroundColorWhenNotInUse = foregroundColorWhenNotInUse;
+	public void setForegroundColorWhenEmpty(Color foregroundColorWhenEmpty) {
+		this.foregroundColorWhenEmpty = foregroundColorWhenEmpty;
 	}
 
 	/**
-	 * @param foregroundColorWhenNotInUse
+	 * @param foregroundColorWhenEmpty
 	 */
-	public void setForegroundColorWhenNotInUse(RGB foregroundColorWhenNotInUse) {
-		this.foregroundColorWhenNotInUse = new Color(null,
-				foregroundColorWhenNotInUse);
+	public void setForegroundColorWhenEmpty(RGB foregroundColorWhenEmpty) {
+		this.foregroundColorWhenEmpty = new Color(null,
+				foregroundColorWhenEmpty);
 	}
 
 }

@@ -26,7 +26,7 @@ import junit.textui.TestRunner;
  * The following features are tested:
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.Song#getNumberOfSongEvents() <em>Number Of Song Events</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Song#isBeingUsed() <em>Being Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Song#isEmpty() <em>Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Song#getSongNumberCurrent() <em>Song Number Current</em>}</li>
  * </ul>
  * </p>
@@ -117,13 +117,13 @@ public class SongTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.Song#isBeingUsed() <em>Being Used</em>}' feature getter.
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Song#isEmpty() <em>Empty</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.Song#isBeingUsed()
+	 * @see com.skratchdot.electribe.model.esx.Song#isEmpty()
 	 * @generated
 	 */
-	public void testIsBeingUsed() {
+	public void testIsEmpty() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

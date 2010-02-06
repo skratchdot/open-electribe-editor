@@ -72,7 +72,7 @@ import com.skratchdot.electribe.model.esx.util.EsxUtil;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isSlice <em>Slice</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isStereo <em>Stereo</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getMemUsedInBytes <em>Mem Used In Bytes</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isBeingUsed <em>Being Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isEmpty <em>Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleNumberOriginal <em>Sample Number Original</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleNumberCurrent <em>Sample Number Current</em>}</li>
  * </ul>
@@ -512,14 +512,14 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	protected static final int MEM_USED_IN_BYTES_EDEFAULT = 0;
 
 	/**
-	 * The default value of the '{@link #isBeingUsed() <em>Being Used</em>}' attribute.
+	 * The default value of the '{@link #isEmpty() <em>Empty</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isBeingUsed()
+	 * @see #isEmpty()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean BEING_USED_EDEFAULT = true;
+	protected static final boolean EMPTY_EDEFAULT = true;
 
 	/**
 	 * The default value of the '{@link #getSampleNumberOriginal() <em>Sample Number Original</em>}' attribute.
@@ -1121,43 +1121,6 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SampleNumber getSampleNumberOriginal() {
-		return sampleNumberOriginal;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSampleNumberOriginal(SampleNumber newSampleNumberOriginal) {
-		SampleNumber oldSampleNumberOriginal = sampleNumberOriginal;
-		sampleNumberOriginal = newSampleNumberOriginal == null ? SAMPLE_NUMBER_ORIGINAL_EDEFAULT : newSampleNumberOriginal;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__SAMPLE_NUMBER_ORIGINAL, oldSampleNumberOriginal, sampleNumberOriginal));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public SampleNumber getSampleNumberCurrent() {
-		if(this.eResource()!=null) {
-			Resource resource = (Resource) this.eResource();
-			Object rootObject = resource.getContents().get(0);
-			if(rootObject instanceof EsxFile) {
-				return SampleNumber.get(((EsxFile) rootObject).getSamples().indexOf(this));
-			}
-		}
-		return SampleNumber.get(-1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -1196,18 +1159,6 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public boolean isBeingUsed() {
-		if(this.getAudioDataChannel1()!=null && this.getAudioDataChannel1().length>0)
-			return true;
-		else
-			return false;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
 	public boolean isStereo() {
 		return this.getSampleNumberCurrent().getValue() >= EsxUtil.NUM_SAMPLES_MONO;
 	}
@@ -1218,7 +1169,7 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	 * @generated NOT
 	 */
 	public int getMemUsedInBytes() {
-		if(this.isBeingUsed()) {
+		if(!this.isEmpty()) {
 			if(this.isStereo()) {
 				return this.numberOfSampleFrames * 4;
 			}
@@ -1227,6 +1178,55 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 			}
 		}
 		return 0;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isEmpty() {
+		if(this.getAudioDataChannel1()!=null && this.getAudioDataChannel1().length>0)
+			return false;
+		else
+			return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SampleNumber getSampleNumberOriginal() {
+		return sampleNumberOriginal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSampleNumberOriginal(SampleNumber newSampleNumberOriginal) {
+		SampleNumber oldSampleNumberOriginal = sampleNumberOriginal;
+		sampleNumberOriginal = newSampleNumberOriginal == null ? SAMPLE_NUMBER_ORIGINAL_EDEFAULT : newSampleNumberOriginal;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__SAMPLE_NUMBER_ORIGINAL, oldSampleNumberOriginal, sampleNumberOriginal));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public SampleNumber getSampleNumberCurrent() {
+		if(this.eResource()!=null) {
+			Resource resource = (Resource) this.eResource();
+			Object rootObject = resource.getContents().get(0);
+			if(rootObject instanceof EsxFile) {
+				return SampleNumber.get(((EsxFile) rootObject).getSamples().indexOf(this));
+			}
+		}
+		return SampleNumber.get(-1);
 	}
 
 	/**
@@ -1285,8 +1285,8 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 				return isStereo();
 			case EsxPackage.SAMPLE__MEM_USED_IN_BYTES:
 				return getMemUsedInBytes();
-			case EsxPackage.SAMPLE__BEING_USED:
-				return isBeingUsed();
+			case EsxPackage.SAMPLE__EMPTY:
+				return isEmpty();
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_ORIGINAL:
 				return getSampleNumberOriginal();
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_CURRENT:
@@ -1501,8 +1501,8 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 				return isStereo() != STEREO_EDEFAULT;
 			case EsxPackage.SAMPLE__MEM_USED_IN_BYTES:
 				return getMemUsedInBytes() != MEM_USED_IN_BYTES_EDEFAULT;
-			case EsxPackage.SAMPLE__BEING_USED:
-				return isBeingUsed() != BEING_USED_EDEFAULT;
+			case EsxPackage.SAMPLE__EMPTY:
+				return isEmpty() != EMPTY_EDEFAULT;
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_ORIGINAL:
 				return sampleNumberOriginal != SAMPLE_NUMBER_ORIGINAL_EDEFAULT;
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_CURRENT:

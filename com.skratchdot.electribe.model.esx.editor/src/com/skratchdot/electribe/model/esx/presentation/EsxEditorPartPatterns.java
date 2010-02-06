@@ -162,10 +162,10 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 		this.tableViewer.setLabelProvider(new TableViewerColorProvider(
 			this.getAdapterFactory(),
 			this.tableViewer,
-			EsxPreferenceStore.getPatternsBackgroundColorWhenBeingUsed(),
-			EsxPreferenceStore.getPatternsBackgroundColorWhenNotInUse(),
-			EsxPreferenceStore.getPatternsForegroundColorWhenBeingUsed(),
-			EsxPreferenceStore.getPatternsForegroundColorWhenNotInUse()
+			EsxPreferenceStore.getPatternsBackgroundColorWhenNotEmpty(),
+			EsxPreferenceStore.getPatternsBackgroundColorWhenEmpty(),
+			EsxPreferenceStore.getPatternsForegroundColorWhenNotEmpty(),
+			EsxPreferenceStore.getPatternsForegroundColorWhenEmpty()
 		));
 
 		// Sync the scroll speed with our preference
@@ -206,15 +206,15 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 		}
 		
 		// Color Changes
-		if(event.getProperty().equals(EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_BEING_USED) ||
-				event.getProperty().equals(EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_NOT_IN_USE) ||
-				event.getProperty().equals(EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_BEING_USED) ||
-				event.getProperty().equals(EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_NOT_IN_USE)) {
+		if(event.getProperty().equals(EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_NOT_EMPTY) ||
+				event.getProperty().equals(EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_EMPTY) ||
+				event.getProperty().equals(EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_NOT_EMPTY) ||
+				event.getProperty().equals(EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_EMPTY)) {
 			((TableViewerColorProvider)this.tableViewer.getLabelProvider()).setAllColors(
-				EsxPreferenceStore.getPatternsBackgroundColorWhenBeingUsed(),
-				EsxPreferenceStore.getPatternsBackgroundColorWhenNotInUse(),
-				EsxPreferenceStore.getPatternsForegroundColorWhenBeingUsed(),
-				EsxPreferenceStore.getPatternsForegroundColorWhenNotInUse()
+				EsxPreferenceStore.getPatternsBackgroundColorWhenNotEmpty(),
+				EsxPreferenceStore.getPatternsBackgroundColorWhenEmpty(),
+				EsxPreferenceStore.getPatternsForegroundColorWhenNotEmpty(),
+				EsxPreferenceStore.getPatternsForegroundColorWhenEmpty()
 			);
 			this.tableViewer.refresh();
 		}

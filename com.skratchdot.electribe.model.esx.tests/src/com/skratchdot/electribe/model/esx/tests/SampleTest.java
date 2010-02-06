@@ -26,7 +26,7 @@ import junit.framework.TestCase;
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isSlice() <em>Slice</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isStereo() <em>Stereo</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getMemUsedInBytes() <em>Mem Used In Bytes</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isBeingUsed() <em>Being Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isEmpty() <em>Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleNumberCurrent() <em>Sample Number Current</em>}</li>
  * </ul>
  * </p>
@@ -73,19 +73,6 @@ public abstract class SampleTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#isBeingUsed() <em>Being Used</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.Sample#isBeingUsed()
-	 * @generated
-	 */
-	public void testIsBeingUsed() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
 	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#isStereo() <em>Stereo</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -106,6 +93,19 @@ public abstract class SampleTest extends TestCase {
 	 * @generated
 	 */
 	public void testGetMemUsedInBytes() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#isEmpty() <em>Empty</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.Sample#isEmpty()
+	 * @generated
+	 */
+	public void testIsEmpty() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

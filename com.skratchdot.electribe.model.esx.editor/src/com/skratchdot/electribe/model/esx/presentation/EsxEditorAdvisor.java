@@ -607,27 +607,27 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 
 							// We can only import audio files
 							if(AudioUtil.isAudioFile(file)) {
-								int firstUnusedSampleNumber = -1;
+								int firstEmptySampleNumber = -1;
 								Sample sample;
 
 								if(!AudioUtil.isStereo(file)) {
-									firstUnusedSampleNumber = esxFile.findFirstUnusedSample(true, true, 0, skipSampleNumbers);
+									firstEmptySampleNumber = esxFile.findFirstEmptySample(true, true, 0, skipSampleNumbers);
 									sample = EsxFactory.eINSTANCE.createSampleMonoFromAudioFile(file);
-									sample.setSampleNumberOriginal(esxFile.getSamples().get(firstUnusedSampleNumber).getSampleNumberOriginal());
+									sample.setSampleNumberOriginal(esxFile.getSamples().get(firstEmptySampleNumber).getSampleNumberOriginal());
 								}
 								else {
-									firstUnusedSampleNumber = esxFile.findFirstUnusedSample(true, true, EsxUtil.NUM_SAMPLES_MONO, skipSampleNumbers);
+									firstEmptySampleNumber = esxFile.findFirstEmptySample(true, true, EsxUtil.NUM_SAMPLES_MONO, skipSampleNumbers);
 									sample = EsxFactory.eINSTANCE.createSampleStereoFromAudioFile(file);
-									sample.setSampleNumberOriginal(esxFile.getSamples().get(firstUnusedSampleNumber).getSampleNumberOriginal());
+									sample.setSampleNumberOriginal(esxFile.getSamples().get(firstEmptySampleNumber).getSampleNumberOriginal());
 								}
 
-								if(firstUnusedSampleNumber>=0 && firstUnusedSampleNumber<EsxUtil.NUM_SAMPLES) {
-									skipSampleNumbers.add(firstUnusedSampleNumber);
+								if(firstEmptySampleNumber>=0 && firstEmptySampleNumber<EsxUtil.NUM_SAMPLES) {
+									skipSampleNumbers.add(firstEmptySampleNumber);
 									cmd.append(new ReplaceCommand(
 										editingDomain,
 										esxFile,
 										EsxPackage.eINSTANCE.getEsxFile_Samples(),
-										esxFile.getSamples().get(firstUnusedSampleNumber),
+										esxFile.getSamples().get(firstEmptySampleNumber),
 										sample
 									));
 								}

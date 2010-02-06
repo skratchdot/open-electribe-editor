@@ -25,7 +25,7 @@ import junit.textui.TestRunner;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#isBeingUsed() <em>Being Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#isEmpty() <em>Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#getPatternNumberCurrent() <em>Pattern Number Current</em>}</li>
  * </ul>
  * </p>
@@ -103,13 +103,13 @@ public class PatternTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.Pattern#isBeingUsed() <em>Being Used</em>}' feature getter.
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Pattern#isEmpty() <em>Empty</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.Pattern#isBeingUsed()
+	 * @see com.skratchdot.electribe.model.esx.Pattern#isEmpty()
 	 * @generated
 	 */
-	public void testIsBeingUsed() {
+	public void testIsEmpty() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

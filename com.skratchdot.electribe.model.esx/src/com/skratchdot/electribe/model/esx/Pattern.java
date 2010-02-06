@@ -51,7 +51,7 @@ import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
  *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#getAccentPart <em>Accent Part</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#getFxParameters <em>Fx Parameters</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#getMotionParameters <em>Motion Parameters</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#isBeingUsed <em>Being Used</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#isEmpty <em>Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#getPatternNumberOriginal <em>Pattern Number Original</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#getPatternNumberCurrent <em>Pattern Number Current</em>}</li>
  * </ul>
@@ -635,20 +635,20 @@ public interface Pattern extends EObject {
 	EList<ParametersMotion> getMotionParameters();
 
 	/**
-	 * Returns the value of the '<em><b>Being Used</b></em>' attribute.
+	 * Returns the value of the '<em><b>Empty</b></em>' attribute.
 	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Being Used</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Empty</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Being Used</em>' attribute.
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getPattern_BeingUsed()
+	 * @return the value of the '<em>Empty</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getPattern_Empty()
 	 * @model default="true" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
-	boolean isBeingUsed();
+	boolean isEmpty();
 
 	/**
 	 * Returns the value of the '<em><b>Pattern Number Original</b></em>' attribute.
