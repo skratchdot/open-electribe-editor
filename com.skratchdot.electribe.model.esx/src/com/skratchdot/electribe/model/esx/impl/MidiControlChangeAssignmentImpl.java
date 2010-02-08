@@ -14,6 +14,7 @@ package com.skratchdot.electribe.model.esx.impl;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.MidiControlChangeAssignment;
 
+import com.skratchdot.electribe.model.esx.MidiControlChangeAssignmentName;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -44,7 +45,7 @@ public class MidiControlChangeAssignmentImpl extends EObjectImpl implements Midi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final MidiControlChangeAssignmentName NAME_EDEFAULT = MidiControlChangeAssignmentName.NAME_00;
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -54,7 +55,7 @@ public class MidiControlChangeAssignmentImpl extends EObjectImpl implements Midi
 	 * @generated
 	 * @ordered
 	 */
-	protected String name = NAME_EDEFAULT;
+	protected MidiControlChangeAssignmentName name = NAME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -100,7 +101,7 @@ public class MidiControlChangeAssignmentImpl extends EObjectImpl implements Midi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
+	public MidiControlChangeAssignmentName getName() {
 		return name;
 	}
 
@@ -109,9 +110,9 @@ public class MidiControlChangeAssignmentImpl extends EObjectImpl implements Midi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
+	public void setName(MidiControlChangeAssignmentName newName) {
+		MidiControlChangeAssignmentName oldName = name;
+		name = newName == null ? NAME_EDEFAULT : newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME, oldName, name));
 	}
@@ -162,7 +163,7 @@ public class MidiControlChangeAssignmentImpl extends EObjectImpl implements Midi
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME:
-				setName((String)newValue);
+				setName((MidiControlChangeAssignmentName)newValue);
 				return;
 			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE:
 				setValue((Byte)newValue);
@@ -198,7 +199,7 @@ public class MidiControlChangeAssignmentImpl extends EObjectImpl implements Midi
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+				return name != NAME_EDEFAULT;
 			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE:
 				return value != VALUE_EDEFAULT;
 		}

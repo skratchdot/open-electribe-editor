@@ -15,6 +15,7 @@ package com.skratchdot.electribe.model.esx.provider;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.MidiChannelType;
 
+import com.skratchdot.electribe.model.esx.MidiChannelTypeName;
 import java.util.Collection;
 import java.util.List;
 
@@ -137,7 +138,8 @@ public class MidiChannelTypeItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((MidiChannelType)object).getName();
+		MidiChannelTypeName labelValue = ((MidiChannelType)object).getName();
+		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_MidiChannelType_type") :
 			getString("_UI_MidiChannelType_type") + " " + label;

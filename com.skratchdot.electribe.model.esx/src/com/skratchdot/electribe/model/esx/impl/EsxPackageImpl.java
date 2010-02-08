@@ -42,8 +42,10 @@ import com.skratchdot.electribe.model.esx.GlobalParameters;
 import com.skratchdot.electribe.model.esx.LastStep;
 import com.skratchdot.electribe.model.esx.MidiChannel;
 import com.skratchdot.electribe.model.esx.MidiChannelType;
+import com.skratchdot.electribe.model.esx.MidiChannelTypeName;
 import com.skratchdot.electribe.model.esx.MidiClock;
 import com.skratchdot.electribe.model.esx.MidiControlChangeAssignment;
+import com.skratchdot.electribe.model.esx.MidiControlChangeAssignmentName;
 import com.skratchdot.electribe.model.esx.ModDest;
 import com.skratchdot.electribe.model.esx.ModType;
 import com.skratchdot.electribe.model.esx.MotionSequenceStatus;
@@ -58,6 +60,7 @@ import com.skratchdot.electribe.model.esx.PartAudioIn;
 import com.skratchdot.electribe.model.esx.PartDrum;
 import com.skratchdot.electribe.model.esx.PartKeyboard;
 import com.skratchdot.electribe.model.esx.PartNoteNumber;
+import com.skratchdot.electribe.model.esx.PartNoteNumberName;
 import com.skratchdot.electribe.model.esx.PartStretchSlice;
 import com.skratchdot.electribe.model.esx.PartWithCommon;
 import com.skratchdot.electribe.model.esx.PartWithPitch;
@@ -397,6 +400,13 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EEnum midiControlChangeAssignmentNameEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum enabledFlagEEnum = null;
 
 	/**
@@ -412,6 +422,13 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	private EEnum midiChannelEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum midiChannelTypeNameEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -531,6 +548,13 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	private EEnum noteNumberEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum partNoteNumberNameEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2588,6 +2612,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getMidiControlChangeAssignmentName() {
+		return midiControlChangeAssignmentNameEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getEnabledFlag() {
 		return enabledFlagEEnum;
 	}
@@ -2608,6 +2641,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 */
 	public EEnum getMidiChannel() {
 		return midiChannelEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getMidiChannelTypeName() {
+		return midiChannelTypeNameEEnum;
 	}
 
 	/**
@@ -2761,6 +2803,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 */
 	public EEnum getNoteNumber() {
 		return noteNumberEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getPartNoteNumberName() {
+		return partNoteNumberNameEEnum;
 	}
 
 	/**
@@ -3169,13 +3220,16 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		fxTypeEEnum = createEEnum(FX_TYPE);
 		lastStepEEnum = createEEnum(LAST_STEP);
 		midiChannelEEnum = createEEnum(MIDI_CHANNEL);
+		midiChannelTypeNameEEnum = createEEnum(MIDI_CHANNEL_TYPE_NAME);
 		midiClockEEnum = createEEnum(MIDI_CLOCK);
+		midiControlChangeAssignmentNameEEnum = createEEnum(MIDI_CONTROL_CHANGE_ASSIGNMENT_NAME);
 		modDestEEnum = createEEnum(MOD_DEST);
 		modTypeEEnum = createEEnum(MOD_TYPE);
 		motionSequenceStatusEEnum = createEEnum(MOTION_SEQUENCE_STATUS);
 		muteHoldEEnum = createEEnum(MUTE_HOLD);
 		nextSongNumberEEnum = createEEnum(NEXT_SONG_NUMBER);
 		noteNumberEEnum = createEEnum(NOTE_NUMBER);
+		partNoteNumberNameEEnum = createEEnum(PART_NOTE_NUMBER_NAME);
 		patternLengthEEnum = createEEnum(PATTERN_LENGTH);
 		patternNumberEEnum = createEEnum(PATTERN_NUMBER);
 		pitchBendRangeEEnum = createEEnum(PITCH_BEND_RANGE);
@@ -3323,18 +3377,12 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		g1.getETypeArguments().add(g2);
 		initEAttribute(getGlobalParameters_MidiControlChangeAssignmentNames(), g1, "midiControlChangeAssignmentNames", null, 0, 1, GlobalParameters.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(globalParametersEClass, null, "createAndPopulateMidiChannelNames", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(globalParametersEClass, null, "createAndPopulatePartNoteNumberNames", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(globalParametersEClass, null, "createAndPopulateMidiControlChangeAssignmentNames", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(midiChannelTypeEClass, MidiChannelType.class, "MidiChannelType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMidiChannelType_Name(), ecorePackage.getEString(), "name", null, 0, 1, MidiChannelType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMidiChannelType_Name(), this.getMidiChannelTypeName(), "name", null, 0, 1, MidiChannelType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMidiChannelType_MidiChannel(), this.getMidiChannel(), "midiChannel", null, 0, 1, MidiChannelType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(midiControlChangeAssignmentEClass, MidiControlChangeAssignment.class, "MidiControlChangeAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMidiControlChangeAssignment_Name(), ecorePackage.getEString(), "name", null, 0, 1, MidiControlChangeAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMidiControlChangeAssignment_Name(), this.getMidiControlChangeAssignmentName(), "name", null, 0, 1, MidiControlChangeAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMidiControlChangeAssignment_Value(), ecorePackage.getEByte(), "value", null, 0, 1, MidiControlChangeAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parametersFxEClass, ParametersFx.class, "ParametersFx", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3363,7 +3411,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEReference(getPartKeyboard_SequenceDataNote(), this.getSequenceDataNote(), null, "sequenceDataNote", null, 0, 1, PartKeyboard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(partNoteNumberEClass, PartNoteNumber.class, "PartNoteNumber", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPartNoteNumber_Name(), ecorePackage.getEString(), "name", null, 0, 1, PartNoteNumber.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartNoteNumber_Name(), this.getPartNoteNumberName(), "name", null, 0, 1, PartNoteNumber.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPartNoteNumber_NoteNumber(), this.getNoteNumber(), "noteNumber", null, 0, 1, PartNoteNumber.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(partStretchSliceEClass, PartStretchSlice.class, "PartStretchSlice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3681,10 +3729,50 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEEnumLiteral(midiChannelEEnum, MidiChannel.CHANNEL_15);
 		addEEnumLiteral(midiChannelEEnum, MidiChannel.CHANNEL_16);
 
+		initEEnum(midiChannelTypeNameEEnum, MidiChannelTypeName.class, "MidiChannelTypeName");
+		addEEnumLiteral(midiChannelTypeNameEEnum, MidiChannelTypeName.NAME_00);
+		addEEnumLiteral(midiChannelTypeNameEEnum, MidiChannelTypeName.NAME_01);
+		addEEnumLiteral(midiChannelTypeNameEEnum, MidiChannelTypeName.NAME_02);
+
 		initEEnum(midiClockEEnum, MidiClock.class, "MidiClock");
 		addEEnumLiteral(midiClockEEnum, MidiClock.INT);
 		addEEnumLiteral(midiClockEEnum, MidiClock.EXT);
 		addEEnumLiteral(midiClockEEnum, MidiClock.AUTO);
+
+		initEEnum(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.class, "MidiControlChangeAssignmentName");
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_00);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_01);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_02);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_03);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_04);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_05);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_06);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_07);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_08);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_09);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_10);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_11);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_12);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_13);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_14);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_15);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_16);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_17);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_18);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_19);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_20);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_21);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_22);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_23);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_24);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_25);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_26);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_27);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_28);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_29);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_30);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_31);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_32);
 
 		initEEnum(modDestEEnum, ModDest.class, "ModDest");
 		addEEnumLiteral(modDestEEnum, ModDest.PITCH);
@@ -3904,6 +3992,21 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEEnumLiteral(noteNumberEEnum, NoteNumber.F9);
 		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS9);
 		addEEnumLiteral(noteNumberEEnum, NoteNumber.G9);
+
+		initEEnum(partNoteNumberNameEEnum, PartNoteNumberName.class, "PartNoteNumberName");
+		addEEnumLiteral(partNoteNumberNameEEnum, PartNoteNumberName.NAME_00);
+		addEEnumLiteral(partNoteNumberNameEEnum, PartNoteNumberName.NAME_01);
+		addEEnumLiteral(partNoteNumberNameEEnum, PartNoteNumberName.NAME_02);
+		addEEnumLiteral(partNoteNumberNameEEnum, PartNoteNumberName.NAME_03);
+		addEEnumLiteral(partNoteNumberNameEEnum, PartNoteNumberName.NAME_04);
+		addEEnumLiteral(partNoteNumberNameEEnum, PartNoteNumberName.NAME_05);
+		addEEnumLiteral(partNoteNumberNameEEnum, PartNoteNumberName.NAME_06);
+		addEEnumLiteral(partNoteNumberNameEEnum, PartNoteNumberName.NAME_07);
+		addEEnumLiteral(partNoteNumberNameEEnum, PartNoteNumberName.NAME_08);
+		addEEnumLiteral(partNoteNumberNameEEnum, PartNoteNumberName.NAME_09);
+		addEEnumLiteral(partNoteNumberNameEEnum, PartNoteNumberName.NAME_10);
+		addEEnumLiteral(partNoteNumberNameEEnum, PartNoteNumberName.NAME_11);
+		addEEnumLiteral(partNoteNumberNameEEnum, PartNoteNumberName.NAME_12);
 
 		initEEnum(patternLengthEEnum, PatternLength.class, "PatternLength");
 		addEEnumLiteral(patternLengthEEnum, PatternLength.LENGTH_1);

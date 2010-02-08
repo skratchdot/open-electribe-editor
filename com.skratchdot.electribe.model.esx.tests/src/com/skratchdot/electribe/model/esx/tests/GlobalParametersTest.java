@@ -22,14 +22,6 @@ import junit.textui.TestRunner;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Global Parameters</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link com.skratchdot.electribe.model.esx.GlobalParameters#createAndPopulateMidiChannelNames() <em>Create And Populate Midi Channel Names</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.GlobalParameters#createAndPopulatePartNoteNumberNames() <em>Create And Populate Part Note Number Names</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.GlobalParameters#createAndPopulateMidiControlChangeAssignmentNames() <em>Create And Populate Midi Control Change Assignment Names</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public class GlobalParametersTest extends TestCase {
@@ -101,45 +93,6 @@ public class GlobalParametersTest extends TestCase {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
-	}
-
-	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.GlobalParameters#createAndPopulateMidiChannelNames() <em>Create And Populate Midi Channel Names</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.GlobalParameters#createAndPopulateMidiChannelNames()
-	 * @generated
-	 */
-	public void testCreateAndPopulateMidiChannelNames() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.GlobalParameters#createAndPopulatePartNoteNumberNames() <em>Create And Populate Part Note Number Names</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.GlobalParameters#createAndPopulatePartNoteNumberNames()
-	 * @generated
-	 */
-	public void testCreateAndPopulatePartNoteNumberNames() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.GlobalParameters#createAndPopulateMidiControlChangeAssignmentNames() <em>Create And Populate Midi Control Change Assignment Names</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.GlobalParameters#createAndPopulateMidiControlChangeAssignmentNames()
-	 * @generated
-	 */
-	public void testCreateAndPopulateMidiControlChangeAssignmentNames() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
 	}
 
 } //GlobalParametersTest

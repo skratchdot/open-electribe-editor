@@ -3914,7 +3914,17 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMidiClock()
 	 * @generated
 	 */
-	int MIDI_CLOCK = 52;
+	int MIDI_CLOCK = 53;
+
+	/**
+	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.MidiControlChangeAssignmentName <em>Midi Control Change Assignment Name</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.MidiControlChangeAssignmentName
+	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMidiControlChangeAssignmentName()
+	 * @generated
+	 */
+	int MIDI_CONTROL_CHANGE_ASSIGNMENT_NAME = 54;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.EnabledFlag <em>Enabled Flag</em>}' enum.
@@ -3934,7 +3944,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getPitchBendRange()
 	 * @generated
 	 */
-	int PITCH_BEND_RANGE = 61;
+	int PITCH_BEND_RANGE = 64;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.MidiChannel <em>Midi Channel</em>}' enum.
@@ -3947,6 +3957,16 @@ public interface EsxPackage extends EPackage {
 	int MIDI_CHANNEL = 51;
 
 	/**
+	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.MidiChannelTypeName <em>Midi Channel Type Name</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.MidiChannelTypeName
+	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMidiChannelTypeName()
+	 * @generated
+	 */
+	int MIDI_CHANNEL_TYPE_NAME = 52;
+
+	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.PlayLevel <em>Play Level</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3954,7 +3974,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getPlayLevel()
 	 * @generated
 	 */
-	int PLAY_LEVEL = 62;
+	int PLAY_LEVEL = 65;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.PatternNumber <em>Pattern Number</em>}' enum.
@@ -3964,7 +3984,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getPatternNumber()
 	 * @generated
 	 */
-	int PATTERN_NUMBER = 60;
+	int PATTERN_NUMBER = 63;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.SampleNumber <em>Sample Number</em>}' enum.
@@ -3974,7 +3994,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSampleNumber()
 	 * @generated
 	 */
-	int SAMPLE_NUMBER = 66;
+	int SAMPLE_NUMBER = 69;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.SongNumber <em>Song Number</em>}' enum.
@@ -3984,7 +4004,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSongNumber()
 	 * @generated
 	 */
-	int SONG_NUMBER = 68;
+	int SONG_NUMBER = 71;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.SongLength <em>Song Length</em>}' enum.
@@ -3994,7 +4014,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSongLength()
 	 * @generated
 	 */
-	int SONG_LENGTH = 67;
+	int SONG_LENGTH = 70;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.TempoLock <em>Tempo Lock</em>}' enum.
@@ -4004,7 +4024,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getTempoLock()
 	 * @generated
 	 */
-	int TEMPO_LOCK = 71;
+	int TEMPO_LOCK = 74;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.MuteHold <em>Mute Hold</em>}' enum.
@@ -4014,7 +4034,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMuteHold()
 	 * @generated
 	 */
-	int MUTE_HOLD = 56;
+	int MUTE_HOLD = 58;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.NextSongNumber <em>Next Song Number</em>}' enum.
@@ -4024,7 +4044,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getNextSongNumber()
 	 * @generated
 	 */
-	int NEXT_SONG_NUMBER = 57;
+	int NEXT_SONG_NUMBER = 59;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.StretchStep <em>Stretch Step</em>}' enum.
@@ -4034,7 +4054,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getStretchStep()
 	 * @generated
 	 */
-	int STRETCH_STEP = 69;
+	int STRETCH_STEP = 72;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.Swing <em>Swing</em>}' enum.
@@ -4044,7 +4064,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSwing()
 	 * @generated
 	 */
-	int SWING = 70;
+	int SWING = 73;
 
 
 	/**
@@ -4055,7 +4075,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getPatternLength()
 	 * @generated
 	 */
-	int PATTERN_LENGTH = 59;
+	int PATTERN_LENGTH = 62;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.Beat <em>Beat</em>}' enum.
@@ -4075,7 +4095,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getRollType()
 	 * @generated
 	 */
-	int ROLL_TYPE = 65;
+	int ROLL_TYPE = 68;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.FxChain <em>Fx Chain</em>}' enum.
@@ -4115,7 +4135,17 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getNoteNumber()
 	 * @generated
 	 */
-	int NOTE_NUMBER = 58;
+	int NOTE_NUMBER = 60;
+
+	/**
+	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.PartNoteNumberName <em>Part Note Number Name</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.PartNoteNumberName
+	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getPartNoteNumberName()
+	 * @generated
+	 */
+	int PART_NOTE_NUMBER_NAME = 61;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.FilterType <em>Filter Type</em>}' enum.
@@ -4165,7 +4195,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getRoll()
 	 * @generated
 	 */
-	int ROLL = 64;
+	int ROLL = 67;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.AmpEg <em>Amp Eg</em>}' enum.
@@ -4185,7 +4215,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getReverse()
 	 * @generated
 	 */
-	int REVERSE = 63;
+	int REVERSE = 66;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.ModDest <em>Mod Dest</em>}' enum.
@@ -4195,7 +4225,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getModDest()
 	 * @generated
 	 */
-	int MOD_DEST = 53;
+	int MOD_DEST = 55;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.ModType <em>Mod Type</em>}' enum.
@@ -4205,7 +4235,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getModType()
 	 * @generated
 	 */
-	int MOD_TYPE = 54;
+	int MOD_TYPE = 56;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.BpmSync <em>Bpm Sync</em>}' enum.
@@ -4225,7 +4255,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMotionSequenceStatus()
 	 * @generated
 	 */
-	int MOTION_SEQUENCE_STATUS = 55;
+	int MOTION_SEQUENCE_STATUS = 57;
 
 	/**
 	 * The meta object id for the '<em>Object</em>' data type.
@@ -4235,7 +4265,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getObject()
 	 * @generated
 	 */
-	int OBJECT = 73;
+	int OBJECT = 76;
 
 
 	/**
@@ -4246,7 +4276,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getArrayList()
 	 * @generated
 	 */
-	int ARRAY_LIST = 72;
+	int ARRAY_LIST = 75;
 
 
 	/**
@@ -6530,6 +6560,16 @@ public interface EsxPackage extends EPackage {
 	EEnum getMidiClock();
 
 	/**
+	 * Returns the meta object for enum '{@link com.skratchdot.electribe.model.esx.MidiControlChangeAssignmentName <em>Midi Control Change Assignment Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Midi Control Change Assignment Name</em>'.
+	 * @see com.skratchdot.electribe.model.esx.MidiControlChangeAssignmentName
+	 * @generated
+	 */
+	EEnum getMidiControlChangeAssignmentName();
+
+	/**
 	 * Returns the meta object for enum '{@link com.skratchdot.electribe.model.esx.EnabledFlag <em>Enabled Flag</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6558,6 +6598,16 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getMidiChannel();
+
+	/**
+	 * Returns the meta object for enum '{@link com.skratchdot.electribe.model.esx.MidiChannelTypeName <em>Midi Channel Type Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Midi Channel Type Name</em>'.
+	 * @see com.skratchdot.electribe.model.esx.MidiChannelTypeName
+	 * @generated
+	 */
+	EEnum getMidiChannelTypeName();
 
 	/**
 	 * Returns the meta object for enum '{@link com.skratchdot.electribe.model.esx.PlayLevel <em>Play Level</em>}'.
@@ -6728,6 +6778,16 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getNoteNumber();
+
+	/**
+	 * Returns the meta object for enum '{@link com.skratchdot.electribe.model.esx.PartNoteNumberName <em>Part Note Number Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Part Note Number Name</em>'.
+	 * @see com.skratchdot.electribe.model.esx.PartNoteNumberName
+	 * @generated
+	 */
+	EEnum getPartNoteNumberName();
 
 	/**
 	 * Returns the meta object for enum '{@link com.skratchdot.electribe.model.esx.FilterType <em>Filter Type</em>}'.
@@ -8654,6 +8714,16 @@ public interface EsxPackage extends EPackage {
 		EEnum MIDI_CLOCK = eINSTANCE.getMidiClock();
 
 		/**
+		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.MidiControlChangeAssignmentName <em>Midi Control Change Assignment Name</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.skratchdot.electribe.model.esx.MidiControlChangeAssignmentName
+		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMidiControlChangeAssignmentName()
+		 * @generated
+		 */
+		EEnum MIDI_CONTROL_CHANGE_ASSIGNMENT_NAME = eINSTANCE.getMidiControlChangeAssignmentName();
+
+		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.EnabledFlag <em>Enabled Flag</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -8682,6 +8752,16 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum MIDI_CHANNEL = eINSTANCE.getMidiChannel();
+
+		/**
+		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.MidiChannelTypeName <em>Midi Channel Type Name</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.skratchdot.electribe.model.esx.MidiChannelTypeName
+		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMidiChannelTypeName()
+		 * @generated
+		 */
+		EEnum MIDI_CHANNEL_TYPE_NAME = eINSTANCE.getMidiChannelTypeName();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.PlayLevel <em>Play Level</em>}' enum.
@@ -8852,6 +8932,16 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum NOTE_NUMBER = eINSTANCE.getNoteNumber();
+
+		/**
+		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.PartNoteNumberName <em>Part Note Number Name</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.skratchdot.electribe.model.esx.PartNoteNumberName
+		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getPartNoteNumberName()
+		 * @generated
+		 */
+		EEnum PART_NOTE_NUMBER_NAME = eINSTANCE.getPartNoteNumberName();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.FilterType <em>Filter Type</em>}' enum.

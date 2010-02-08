@@ -15,6 +15,7 @@ import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.NoteNumber;
 import com.skratchdot.electribe.model.esx.PartNoteNumber;
 
+import com.skratchdot.electribe.model.esx.PartNoteNumberName;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -45,7 +46,7 @@ public class PartNoteNumberImpl extends EObjectImpl implements PartNoteNumber {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final PartNoteNumberName NAME_EDEFAULT = PartNoteNumberName.NAME_00;
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -55,7 +56,7 @@ public class PartNoteNumberImpl extends EObjectImpl implements PartNoteNumber {
 	 * @generated
 	 * @ordered
 	 */
-	protected String name = NAME_EDEFAULT;
+	protected PartNoteNumberName name = NAME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getNoteNumber() <em>Note Number</em>}' attribute.
@@ -101,7 +102,7 @@ public class PartNoteNumberImpl extends EObjectImpl implements PartNoteNumber {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
+	public PartNoteNumberName getName() {
 		return name;
 	}
 
@@ -110,9 +111,9 @@ public class PartNoteNumberImpl extends EObjectImpl implements PartNoteNumber {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
+	public void setName(PartNoteNumberName newName) {
+		PartNoteNumberName oldName = name;
+		name = newName == null ? NAME_EDEFAULT : newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_NOTE_NUMBER__NAME, oldName, name));
 	}
@@ -163,7 +164,7 @@ public class PartNoteNumberImpl extends EObjectImpl implements PartNoteNumber {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EsxPackage.PART_NOTE_NUMBER__NAME:
-				setName((String)newValue);
+				setName((PartNoteNumberName)newValue);
 				return;
 			case EsxPackage.PART_NOTE_NUMBER__NOTE_NUMBER:
 				setNoteNumber((NoteNumber)newValue);
@@ -199,7 +200,7 @@ public class PartNoteNumberImpl extends EObjectImpl implements PartNoteNumber {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case EsxPackage.PART_NOTE_NUMBER__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+				return name != NAME_EDEFAULT;
 			case EsxPackage.PART_NOTE_NUMBER__NOTE_NUMBER:
 				return noteNumber != NOTE_NUMBER_EDEFAULT;
 		}

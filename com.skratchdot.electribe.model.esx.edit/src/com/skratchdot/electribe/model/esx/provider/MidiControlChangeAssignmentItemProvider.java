@@ -15,6 +15,7 @@ package com.skratchdot.electribe.model.esx.provider;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.MidiControlChangeAssignment;
 
+import com.skratchdot.electribe.model.esx.MidiControlChangeAssignmentName;
 import java.util.Collection;
 import java.util.List;
 
@@ -137,7 +138,8 @@ public class MidiControlChangeAssignmentItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((MidiControlChangeAssignment)object).getName();
+		MidiControlChangeAssignmentName labelValue = ((MidiControlChangeAssignment)object).getName();
+		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_MidiControlChangeAssignment_type") :
 			getString("_UI_MidiControlChangeAssignment_type") + " " + label;

@@ -13,7 +13,6 @@ package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.IOException;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -34,10 +33,13 @@ import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.GlobalParameters;
 import com.skratchdot.electribe.model.esx.MidiChannel;
 import com.skratchdot.electribe.model.esx.MidiChannelType;
+import com.skratchdot.electribe.model.esx.MidiChannelTypeName;
 import com.skratchdot.electribe.model.esx.MidiClock;
 import com.skratchdot.electribe.model.esx.MidiControlChangeAssignment;
+import com.skratchdot.electribe.model.esx.MidiControlChangeAssignmentName;
 import com.skratchdot.electribe.model.esx.NoteNumber;
 import com.skratchdot.electribe.model.esx.PartNoteNumber;
+import com.skratchdot.electribe.model.esx.PartNoteNumberName;
 import com.skratchdot.electribe.model.esx.PatternNumber;
 import com.skratchdot.electribe.model.esx.PatternSetParameter;
 import com.skratchdot.electribe.model.esx.PitchBendRange;
@@ -399,11 +401,6 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	public GlobalParametersImpl(EsxRandomAccess in) throws IOException {
 		super();
 
-		// Populate our name maps
-		this.createAndPopulateMidiChannelNames();
-		this.createAndPopulateMidiControlChangeAssignmentNames();
-		this.createAndPopulatePartNoteNumberNames();
-
 		// Jump to the start of patternNumber's data
 		in.seek(EsxUtil.ADDR_GLOBAL_PARAMETERS);
 
@@ -429,21 +426,21 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 		// bytes 7~9 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_MIDI_CHANNELS; i++) {
 			MidiChannelType midiChannelType = EsxFactory.eINSTANCE.createMidiChannelType();
-			midiChannelType.setName(this.getMidiChannelNames().get(i));
+			midiChannelType.setName(MidiChannelTypeName.get(i));
 			midiChannelType.setMidiChannel(MidiChannel.get(in.readByte()));
 			this.getMidiChannels().add(i, midiChannelType);
 		}
 		// bytes 10~22 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_PART_NOTE_NUMBERS; i++) {
 			PartNoteNumber partNoteNumber = EsxFactory.eINSTANCE.createPartNoteNumber();
-			partNoteNumber.setName(this.getPartNoteNumberNames().get(i));
+			partNoteNumber.setName(PartNoteNumberName.get(i));
 			partNoteNumber.setNoteNumber(NoteNumber.get(in.readByte()));
 			this.getPartNoteNumbers().add(i, partNoteNumber);
 		}
 		// bytes 23~55 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_MIDI_CONTROL_CHANGE_ASSIGNMENTS; i++) {
 			MidiControlChangeAssignment midiControlChangeAssignment = EsxFactory.eINSTANCE.createMidiControlChangeAssignment();
-			midiControlChangeAssignment.setName(this.getMidiControlChangeAssignmentNames().get(i));
+			midiControlChangeAssignment.setName(MidiControlChangeAssignmentName.get(i));
 			midiControlChangeAssignment.setValue(in.readByte());
 			this.getMidiControlChangeAssignments().add(i, midiControlChangeAssignment);
 		}
@@ -827,85 +824,6 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 		midiControlChangeAssignmentNames = newMidiControlChangeAssignmentNames;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENT_NAMES, oldMidiControlChangeAssignmentNames, midiControlChangeAssignmentNames));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void createAndPopulateMidiChannelNames() {
-		Map<Integer, String> newMidiChannelNames = new HashMap<Integer, String>();
-		newMidiChannelNames.put(0, "Keyboard 1");
-		newMidiChannelNames.put(1, "Keyboard 2");
-		newMidiChannelNames.put(2, "Drum/Stretch/Slice/AudioIn");
-		this.setMidiChannelNames(newMidiChannelNames);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void createAndPopulatePartNoteNumberNames() {
-		Map<Integer, String> newPartNoteNumberNames = new HashMap<Integer, String>();
-		newPartNoteNumberNames.put(0, "Drum1");
-		newPartNoteNumberNames.put(1, "Drum2");
-		newPartNoteNumberNames.put(2, "Drum3");
-		newPartNoteNumberNames.put(3, "Drum4");
-		newPartNoteNumberNames.put(4, "Drum5");
-		newPartNoteNumberNames.put(5, "Drum6a");
-		newPartNoteNumberNames.put(6, "Drum6b");
-		newPartNoteNumberNames.put(7, "Drum7a");
-		newPartNoteNumberNames.put(8, "Drum7b");
-		newPartNoteNumberNames.put(9, "Stretch1");
-		newPartNoteNumberNames.put(10, "Stretch2");
-		newPartNoteNumberNames.put(11, "Slice");
-		newPartNoteNumberNames.put(12, "AudioIn");
-		this.setPartNoteNumberNames(newPartNoteNumberNames);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void createAndPopulateMidiControlChangeAssignmentNames() {
-		Map<Integer, String> newMidiControlChangeAssignmentNames = new HashMap<Integer, String>();
-		newMidiControlChangeAssignmentNames.put(0, "MOD SPEED");
-		newMidiControlChangeAssignmentNames.put(1, "MOD DEPTH");
-		newMidiControlChangeAssignmentNames.put(2, "MOD TYPE");
-		newMidiControlChangeAssignmentNames.put(3, "MOD DEST");
-		newMidiControlChangeAssignmentNames.put(4, "MOD BPMSYNC");
-		newMidiControlChangeAssignmentNames.put(5, "FILTER CUTOFF");
-		newMidiControlChangeAssignmentNames.put(6, "FILTER RESONANCE");
-		newMidiControlChangeAssignmentNames.put(7, "FILTER EGINT");
-		newMidiControlChangeAssignmentNames.put(8, "FILTER TYPE");
-		newMidiControlChangeAssignmentNames.put(9, "GLIDE");
-		newMidiControlChangeAssignmentNames.put(10, "PAN");
-		newMidiControlChangeAssignmentNames.put(11, "EG TIME");
-		newMidiControlChangeAssignmentNames.put(12, "LEVEL");
-		newMidiControlChangeAssignmentNames.put(13, "START POINT");
-		newMidiControlChangeAssignmentNames.put(14, "AMP EG");
-		newMidiControlChangeAssignmentNames.put(15, "ROLL");
-		newMidiControlChangeAssignmentNames.put(16, "REVERSE");
-		newMidiControlChangeAssignmentNames.put(17, "EFFECT SEND");
-		newMidiControlChangeAssignmentNames.put(18, "EFFECT SELECT");
-		newMidiControlChangeAssignmentNames.put(19, "PART MOTION SEQ");
-		newMidiControlChangeAssignmentNames.put(20, "FX1 TYPE");
-		newMidiControlChangeAssignmentNames.put(21, "FX1 EDIT1");
-		newMidiControlChangeAssignmentNames.put(22, "FX1 EDIT2");
-		newMidiControlChangeAssignmentNames.put(23, "FX1 MOTION SEQ");
-		newMidiControlChangeAssignmentNames.put(24, "FX2 TYPE");
-		newMidiControlChangeAssignmentNames.put(25, "FX2 EDIT1");
-		newMidiControlChangeAssignmentNames.put(26, "FX2 EDIT2");
-		newMidiControlChangeAssignmentNames.put(27, "FX2 MOTION SEQ");
-		newMidiControlChangeAssignmentNames.put(28, "FX3 TYPE");
-		newMidiControlChangeAssignmentNames.put(29, "FX3 EDIT1");
-		newMidiControlChangeAssignmentNames.put(30, "FX3 EDIT2");
-		newMidiControlChangeAssignmentNames.put(31, "FX3 MOTION SEQ");
-		newMidiControlChangeAssignmentNames.put(32, "FX CHAIN");
-		this.setMidiControlChangeAssignmentNames(newMidiControlChangeAssignmentNames);
 	}
 
 	/**

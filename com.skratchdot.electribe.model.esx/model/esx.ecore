@@ -65,9 +65,6 @@
         derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GlobalParameters">
-    <eOperations name="createAndPopulateMidiChannelNames"/>
-    <eOperations name="createAndPopulatePartNoteNumberNames"/>
-    <eOperations name="createAndPopulateMidiControlChangeAssignmentNames"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="memoryProtectEnabled" eType="#//EnabledFlag"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedByte" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="arpeggiatorControl" eType="#//ArpeggiatorControl"/>
@@ -110,11 +107,11 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MidiChannelType">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//MidiChannelTypeName"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="midiChannel" eType="#//MidiChannel"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MidiControlChangeAssignment">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//MidiControlChangeAssignmentName"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParametersFx">
@@ -142,7 +139,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PartNoteNumber">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//PartNoteNumberName"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="noteNumber" eType="#//NoteNumber"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PartStretchSlice" eSuperTypes="#//Part #//PartWithCommon #//PartWithPitch #//PartWithSample #//PartWithSequenceData"/>
@@ -500,10 +497,50 @@
     <eLiterals name="Channel_15" value="14" literal="15"/>
     <eLiterals name="Channel_16" value="15" literal="16"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MidiChannelTypeName">
+    <eLiterals name="NAME_00" literal="Keyboard 1"/>
+    <eLiterals name="NAME_01" value="1" literal="Keyboard 2"/>
+    <eLiterals name="NAME_02" value="2" literal="Drum/Stretch/Slice/AudioIn"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="MidiClock">
     <eLiterals name="Int"/>
     <eLiterals name="Ext" value="1"/>
     <eLiterals name="Auto" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MidiControlChangeAssignmentName">
+    <eLiterals name="NAME_00" literal="MOD SPEED"/>
+    <eLiterals name="NAME_01" value="1" literal="MOD DEPTH"/>
+    <eLiterals name="NAME_02" value="2" literal="MOD TYPE"/>
+    <eLiterals name="NAME_03" value="3" literal="MOD DEST"/>
+    <eLiterals name="NAME_04" value="4" literal="MOD BPMSYNC"/>
+    <eLiterals name="NAME_05" value="5" literal="FILTER CUTOFF"/>
+    <eLiterals name="NAME_06" value="6" literal="FILTER RESONANCE"/>
+    <eLiterals name="NAME_07" value="7" literal="FILTER EGINT"/>
+    <eLiterals name="NAME_08" value="8" literal="FILTER TYPE"/>
+    <eLiterals name="NAME_09" value="9" literal="GLIDE"/>
+    <eLiterals name="NAME_10" value="10" literal="PAN"/>
+    <eLiterals name="NAME_11" value="11" literal="EG TIME"/>
+    <eLiterals name="NAME_12" value="12" literal="LEVEL"/>
+    <eLiterals name="NAME_13" value="13" literal="START POINT"/>
+    <eLiterals name="NAME_14" value="14" literal="AMP EG"/>
+    <eLiterals name="NAME_15" value="15" literal="ROLL"/>
+    <eLiterals name="NAME_16" value="16" literal="REVERSE"/>
+    <eLiterals name="NAME_17" value="17" literal="EFFECT SEND"/>
+    <eLiterals name="NAME_18" value="18" literal="EFFECT SELECT"/>
+    <eLiterals name="NAME_19" value="19" literal="PART MOTION SEQ"/>
+    <eLiterals name="NAME_20" value="20" literal="FX1 TYPE"/>
+    <eLiterals name="NAME_21" value="21" literal="FX1 EDIT1"/>
+    <eLiterals name="NAME_22" value="22" literal="FX1 EDIT2"/>
+    <eLiterals name="NAME_23" value="23" literal="FX1 MOTION SEQ"/>
+    <eLiterals name="NAME_24" value="24" literal="FX2 TYPE"/>
+    <eLiterals name="NAME_25" value="25" literal="FX2 EDIT1"/>
+    <eLiterals name="NAME_26" value="26" literal="FX2 EDIT2"/>
+    <eLiterals name="NAME_27" value="27" literal="FX2 MOTION SEQ"/>
+    <eLiterals name="NAME_28" value="28" literal="FX3 TYPE"/>
+    <eLiterals name="NAME_29" value="29" literal="FX3 EDIT1"/>
+    <eLiterals name="NAME_30" value="30" literal="FX3 EDIT2"/>
+    <eLiterals name="NAME_31" value="31" literal="FX3 MOTION SEQ"/>
+    <eLiterals name="NAME_32" value="32" literal="FX CHAIN"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ModDest">
     <eLiterals name="Pitch" literal="Pitch"/>
@@ -723,6 +760,21 @@
     <eLiterals name="F9" value="125" literal="F 9"/>
     <eLiterals name="FS9" value="126" literal="F# 9"/>
     <eLiterals name="G9" value="127" literal="G 9"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PartNoteNumberName">
+    <eLiterals name="NAME_00" literal="Drum1"/>
+    <eLiterals name="NAME_01" value="1" literal="Drum2"/>
+    <eLiterals name="NAME_02" value="2" literal="Drum3"/>
+    <eLiterals name="NAME_03" value="3" literal="Drum4"/>
+    <eLiterals name="NAME_04" value="4" literal="Drum5"/>
+    <eLiterals name="NAME_05" value="5" literal="Drum6a"/>
+    <eLiterals name="NAME_06" value="6" literal="Drum6b"/>
+    <eLiterals name="NAME_07" value="7" literal="Drum7a"/>
+    <eLiterals name="NAME_08" value="8" literal="Drum7b"/>
+    <eLiterals name="NAME_09" value="9" literal="Stretch1"/>
+    <eLiterals name="NAME_10" value="10" literal="Stretch2"/>
+    <eLiterals name="NAME_11" value="11" literal="Slice"/>
+    <eLiterals name="NAME_12" value="12" literal="AudioIn"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="PatternLength">
     <eLiterals name="Length_1" literal="1"/>

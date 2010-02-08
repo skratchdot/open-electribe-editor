@@ -537,30 +537,6 @@ public interface GlobalParameters extends EObject {
 	 */
 	void setMidiControlChangeAssignmentNames(Map<Integer, String> value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void createAndPopulateMidiChannelNames();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void createAndPopulatePartNoteNumberNames();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void createAndPopulateMidiControlChangeAssignmentNames();
-
 	void write(EsxRandomAccess out) throws EsxException, IOException;
 
 } // GlobalParameters

@@ -41,7 +41,6 @@ public class EsxTests extends TestSuite {
 	public static Test suite() {
 		TestSuite suite = new EsxTests("esx Tests");
 		suite.addTestSuite(EsxFileTest.class);
-		suite.addTestSuite(GlobalParametersTest.class);
 		suite.addTestSuite(PatternTest.class);
 		suite.addTestSuite(SampleMonoTest.class);
 		suite.addTestSuite(SampleStereoTest.class);

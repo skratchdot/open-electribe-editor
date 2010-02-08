@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface MidiChannelType extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * The literals are from the enumeration {@link com.skratchdot.electribe.model.esx.MidiChannelTypeName}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
@@ -40,22 +41,24 @@ public interface MidiChannelType extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
+	 * @see com.skratchdot.electribe.model.esx.MidiChannelTypeName
+	 * @see #setName(MidiChannelTypeName)
 	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getMidiChannelType_Name()
 	 * @model
 	 * @generated
 	 */
-	String getName();
+	MidiChannelTypeName getName();
 
 	/**
 	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.MidiChannelType#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.MidiChannelTypeName
 	 * @see #getName()
 	 * @generated
 	 */
-	void setName(String value);
+	void setName(MidiChannelTypeName value);
 
 	/**
 	 * Returns the value of the '<em><b>Midi Channel</b></em>' attribute.

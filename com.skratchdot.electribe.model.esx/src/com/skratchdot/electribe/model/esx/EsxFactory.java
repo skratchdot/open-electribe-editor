@@ -389,6 +389,26 @@ public interface EsxFactory extends EFactory {
 	String convertMidiClock(MidiClock instanceValue);
 
 	/**
+	 * Returns an instance of data type '<em>Midi Control Change Assignment Name</em>' corresponding the given literal.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param literal a literal of the data type.
+	 * @return a new instance value of the data type.
+	 * @generated
+	 */
+	MidiControlChangeAssignmentName createMidiControlChangeAssignmentName(String literal);
+
+	/**
+	 * Returns a literal representation of an instance of data type '<em>Midi Control Change Assignment Name</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param instanceValue an instance value of the data type.
+	 * @return a literal representation of the instance value.
+	 * @generated
+	 */
+	String convertMidiControlChangeAssignmentName(MidiControlChangeAssignmentName instanceValue);
+
+	/**
 	 * Returns an instance of data type '<em>Enabled Flag</em>' corresponding the given literal.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -447,6 +467,26 @@ public interface EsxFactory extends EFactory {
 	 * @generated
 	 */
 	String convertMidiChannel(MidiChannel instanceValue);
+
+	/**
+	 * Returns an instance of data type '<em>Midi Channel Type Name</em>' corresponding the given literal.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param literal a literal of the data type.
+	 * @return a new instance value of the data type.
+	 * @generated
+	 */
+	MidiChannelTypeName createMidiChannelTypeName(String literal);
+
+	/**
+	 * Returns a literal representation of an instance of data type '<em>Midi Channel Type Name</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param instanceValue an instance value of the data type.
+	 * @return a literal representation of the instance value.
+	 * @generated
+	 */
+	String convertMidiChannelTypeName(MidiChannelTypeName instanceValue);
 
 	/**
 	 * Returns an instance of data type '<em>Play Level</em>' corresponding the given literal.
@@ -787,6 +827,26 @@ public interface EsxFactory extends EFactory {
 	 * @generated
 	 */
 	String convertNoteNumber(NoteNumber instanceValue);
+
+	/**
+	 * Returns an instance of data type '<em>Part Note Number Name</em>' corresponding the given literal.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param literal a literal of the data type.
+	 * @return a new instance value of the data type.
+	 * @generated
+	 */
+	PartNoteNumberName createPartNoteNumberName(String literal);
+
+	/**
+	 * Returns a literal representation of an instance of data type '<em>Part Note Number Name</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param instanceValue an instance value of the data type.
+	 * @return a literal representation of the instance value.
+	 * @generated
+	 */
+	String convertPartNoteNumberName(PartNoteNumberName instanceValue);
 
 	/**
 	 * Returns an instance of data type '<em>Filter Type</em>' corresponding the given literal.

@@ -15,6 +15,7 @@ import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.MidiChannel;
 import com.skratchdot.electribe.model.esx.MidiChannelType;
 
+import com.skratchdot.electribe.model.esx.MidiChannelTypeName;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -45,7 +46,7 @@ public class MidiChannelTypeImpl extends EObjectImpl implements MidiChannelType 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final MidiChannelTypeName NAME_EDEFAULT = MidiChannelTypeName.NAME_00;
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -55,7 +56,7 @@ public class MidiChannelTypeImpl extends EObjectImpl implements MidiChannelType 
 	 * @generated
 	 * @ordered
 	 */
-	protected String name = NAME_EDEFAULT;
+	protected MidiChannelTypeName name = NAME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMidiChannel() <em>Midi Channel</em>}' attribute.
@@ -101,7 +102,7 @@ public class MidiChannelTypeImpl extends EObjectImpl implements MidiChannelType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
+	public MidiChannelTypeName getName() {
 		return name;
 	}
 
@@ -110,9 +111,9 @@ public class MidiChannelTypeImpl extends EObjectImpl implements MidiChannelType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
+	public void setName(MidiChannelTypeName newName) {
+		MidiChannelTypeName oldName = name;
+		name = newName == null ? NAME_EDEFAULT : newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.MIDI_CHANNEL_TYPE__NAME, oldName, name));
 	}
@@ -163,7 +164,7 @@ public class MidiChannelTypeImpl extends EObjectImpl implements MidiChannelType 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EsxPackage.MIDI_CHANNEL_TYPE__NAME:
-				setName((String)newValue);
+				setName((MidiChannelTypeName)newValue);
 				return;
 			case EsxPackage.MIDI_CHANNEL_TYPE__MIDI_CHANNEL:
 				setMidiChannel((MidiChannel)newValue);
@@ -199,7 +200,7 @@ public class MidiChannelTypeImpl extends EObjectImpl implements MidiChannelType 
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case EsxPackage.MIDI_CHANNEL_TYPE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+				return name != NAME_EDEFAULT;
 			case EsxPackage.MIDI_CHANNEL_TYPE__MIDI_CHANNEL:
 				return midiChannel != MIDI_CHANNEL_EDEFAULT;
 		}

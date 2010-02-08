@@ -15,6 +15,7 @@ package com.skratchdot.electribe.model.esx.provider;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.PartNoteNumber;
 
+import com.skratchdot.electribe.model.esx.PartNoteNumberName;
 import java.util.Collection;
 import java.util.List;
 
@@ -137,7 +138,8 @@ public class PartNoteNumberItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((PartNoteNumber)object).getName();
+		PartNoteNumberName labelValue = ((PartNoteNumber)object).getName();
+		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_PartNoteNumber_type") :
 			getString("_UI_PartNoteNumber_type") + " " + label;

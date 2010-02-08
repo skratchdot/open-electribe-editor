@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface PartNoteNumber extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * The literals are from the enumeration {@link com.skratchdot.electribe.model.esx.PartNoteNumberName}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
@@ -40,22 +41,24 @@ public interface PartNoteNumber extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
+	 * @see com.skratchdot.electribe.model.esx.PartNoteNumberName
+	 * @see #setName(PartNoteNumberName)
 	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getPartNoteNumber_Name()
 	 * @model
 	 * @generated
 	 */
-	String getName();
+	PartNoteNumberName getName();
 
 	/**
 	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.PartNoteNumber#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.PartNoteNumberName
 	 * @see #getName()
 	 * @generated
 	 */
-	void setName(String value);
+	void setName(PartNoteNumberName value);
 
 	/**
 	 * Returns the value of the '<em><b>Note Number</b></em>' attribute.

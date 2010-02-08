@@ -195,8 +195,12 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return createLastStepFromString(eDataType, initialValue);
 			case EsxPackage.MIDI_CHANNEL:
 				return createMidiChannelFromString(eDataType, initialValue);
+			case EsxPackage.MIDI_CHANNEL_TYPE_NAME:
+				return createMidiChannelTypeNameFromString(eDataType, initialValue);
 			case EsxPackage.MIDI_CLOCK:
 				return createMidiClockFromString(eDataType, initialValue);
+			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT_NAME:
+				return createMidiControlChangeAssignmentNameFromString(eDataType, initialValue);
 			case EsxPackage.MOD_DEST:
 				return createModDestFromString(eDataType, initialValue);
 			case EsxPackage.MOD_TYPE:
@@ -209,6 +213,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return createNextSongNumberFromString(eDataType, initialValue);
 			case EsxPackage.NOTE_NUMBER:
 				return createNoteNumberFromString(eDataType, initialValue);
+			case EsxPackage.PART_NOTE_NUMBER_NAME:
+				return createPartNoteNumberNameFromString(eDataType, initialValue);
 			case EsxPackage.PATTERN_LENGTH:
 				return createPatternLengthFromString(eDataType, initialValue);
 			case EsxPackage.PATTERN_NUMBER:
@@ -280,8 +286,12 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return convertLastStepToString(eDataType, instanceValue);
 			case EsxPackage.MIDI_CHANNEL:
 				return convertMidiChannelToString(eDataType, instanceValue);
+			case EsxPackage.MIDI_CHANNEL_TYPE_NAME:
+				return convertMidiChannelTypeNameToString(eDataType, instanceValue);
 			case EsxPackage.MIDI_CLOCK:
 				return convertMidiClockToString(eDataType, instanceValue);
+			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT_NAME:
+				return convertMidiControlChangeAssignmentNameToString(eDataType, instanceValue);
 			case EsxPackage.MOD_DEST:
 				return convertModDestToString(eDataType, instanceValue);
 			case EsxPackage.MOD_TYPE:
@@ -294,6 +304,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return convertNextSongNumberToString(eDataType, instanceValue);
 			case EsxPackage.NOTE_NUMBER:
 				return convertNoteNumberToString(eDataType, instanceValue);
+			case EsxPackage.PART_NOTE_NUMBER_NAME:
+				return convertPartNoteNumberNameToString(eDataType, instanceValue);
 			case EsxPackage.PATTERN_LENGTH:
 				return convertPatternLengthToString(eDataType, instanceValue);
 			case EsxPackage.PATTERN_NUMBER:
@@ -860,6 +872,44 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public MidiControlChangeAssignmentName createMidiControlChangeAssignmentName(String literal) {
+		MidiControlChangeAssignmentName result = MidiControlChangeAssignmentName.get(literal);
+		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT_NAME.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MidiControlChangeAssignmentName createMidiControlChangeAssignmentNameFromString(EDataType eDataType, String initialValue) {
+		return createMidiControlChangeAssignmentName(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMidiControlChangeAssignmentName(MidiControlChangeAssignmentName instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMidiControlChangeAssignmentNameToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EnabledFlag createEnabledFlag(String literal) {
 		EnabledFlag result = EnabledFlag.get(literal);
 		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.ENABLED_FLAG.getName() + "'");
@@ -966,6 +1016,44 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public String convertMidiChannelToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MidiChannelTypeName createMidiChannelTypeName(String literal) {
+		MidiChannelTypeName result = MidiChannelTypeName.get(literal);
+		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.MIDI_CHANNEL_TYPE_NAME.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MidiChannelTypeName createMidiChannelTypeNameFromString(EDataType eDataType, String initialValue) {
+		return createMidiChannelTypeName(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMidiChannelTypeName(MidiChannelTypeName instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMidiChannelTypeNameToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1612,6 +1700,44 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public String convertNoteNumberToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PartNoteNumberName createPartNoteNumberName(String literal) {
+		PartNoteNumberName result = PartNoteNumberName.get(literal);
+		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.PART_NOTE_NUMBER_NAME.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PartNoteNumberName createPartNoteNumberNameFromString(EDataType eDataType, String initialValue) {
+		return createPartNoteNumberName(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPartNoteNumberName(PartNoteNumberName instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPartNoteNumberNameToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
