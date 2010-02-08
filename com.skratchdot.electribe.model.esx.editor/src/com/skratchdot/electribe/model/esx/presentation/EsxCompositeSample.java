@@ -28,6 +28,7 @@ public class EsxCompositeSample extends EsxComposite {
 
 	private List<Sample> samples;
 
+	private ScrolledComposite scrolledComposite;
 	private Composite compositeMain;
 	private Composite compositeRow1;
 	private Composite compositeRow2;
@@ -66,8 +67,6 @@ public class EsxCompositeSample extends EsxComposite {
 	private Combo comboStretchStep;
 	private Text textPlayLevel;
 	private Combo comboPlayLevel;
-
-	private ScrolledComposite scrolledComposite;
 
 	/**
 	 * @param parent
