@@ -458,12 +458,12 @@ public class SongItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(EsxPackage.Literals.SONG__SONG_EVENTS,
-				 EsxFactory.eINSTANCE.createSongEventTempo()));
+				 EsxFactory.eINSTANCE.createSongEventMuteStatus()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(EsxPackage.Literals.SONG__SONG_EVENTS,
-				 EsxFactory.eINSTANCE.createSongEventMuteStatus()));
+				 EsxFactory.eINSTANCE.createSongEventTempo()));
 	}
 
 	/**

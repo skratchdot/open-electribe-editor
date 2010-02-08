@@ -104,21 +104,9 @@ public class EsxSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EsxPackage.PATTERN_SET_PARAMETER: {
-				PatternSetParameter patternSetParameter = (PatternSetParameter)theEObject;
-				T result = casePatternSetParameter(patternSetParameter);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case EsxPackage.MIDI_CHANNEL_TYPE: {
 				MidiChannelType midiChannelType = (MidiChannelType)theEObject;
 				T result = caseMidiChannelType(midiChannelType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EsxPackage.PART_NOTE_NUMBER: {
-				PartNoteNumber partNoteNumber = (PartNoteNumber)theEObject;
-				T result = casePartNoteNumber(partNoteNumber);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -140,63 +128,9 @@ public class EsxSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EsxPackage.SEQUENCE_DATA: {
-				SequenceData sequenceData = (SequenceData)theEObject;
-				T result = caseSequenceData(sequenceData);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EsxPackage.SEQUENCE_DATA_GATE: {
-				SequenceDataGate sequenceDataGate = (SequenceDataGate)theEObject;
-				T result = caseSequenceDataGate(sequenceDataGate);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EsxPackage.SEQUENCE_DATA_NOTE: {
-				SequenceDataNote sequenceDataNote = (SequenceDataNote)theEObject;
-				T result = caseSequenceDataNote(sequenceDataNote);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case EsxPackage.PART: {
 				Part part = (Part)theEObject;
 				T result = casePart(part);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EsxPackage.PART_WITH_SEQUENCE_DATA: {
-				PartWithSequenceData partWithSequenceData = (PartWithSequenceData)theEObject;
-				T result = casePartWithSequenceData(partWithSequenceData);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EsxPackage.PART_WITH_COMMON: {
-				PartWithCommon partWithCommon = (PartWithCommon)theEObject;
-				T result = casePartWithCommon(partWithCommon);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EsxPackage.PART_WITH_SAMPLE: {
-				PartWithSample partWithSample = (PartWithSample)theEObject;
-				T result = casePartWithSample(partWithSample);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EsxPackage.PART_WITH_SLICE: {
-				PartWithSlice partWithSlice = (PartWithSlice)theEObject;
-				T result = casePartWithSlice(partWithSlice);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EsxPackage.PART_WITH_PITCH: {
-				PartWithPitch partWithPitch = (PartWithPitch)theEObject;
-				T result = casePartWithPitch(partWithPitch);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE: {
-				PartWithSequenceDataGate partWithSequenceDataGate = (PartWithSequenceDataGate)theEObject;
-				T result = casePartWithSequenceDataGate(partWithSequenceDataGate);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -241,6 +175,12 @@ public class EsxSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EsxPackage.PART_NOTE_NUMBER: {
+				PartNoteNumber partNoteNumber = (PartNoteNumber)theEObject;
+				T result = casePartNoteNumber(partNoteNumber);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EsxPackage.PART_STRETCH_SLICE: {
 				PartStretchSlice partStretchSlice = (PartStretchSlice)theEObject;
 				T result = casePartStretchSlice(partStretchSlice);
@@ -252,9 +192,51 @@ public class EsxSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EsxPackage.PART_WITH_COMMON: {
+				PartWithCommon partWithCommon = (PartWithCommon)theEObject;
+				T result = casePartWithCommon(partWithCommon);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsxPackage.PART_WITH_PITCH: {
+				PartWithPitch partWithPitch = (PartWithPitch)theEObject;
+				T result = casePartWithPitch(partWithPitch);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsxPackage.PART_WITH_SAMPLE: {
+				PartWithSample partWithSample = (PartWithSample)theEObject;
+				T result = casePartWithSample(partWithSample);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsxPackage.PART_WITH_SEQUENCE_DATA: {
+				PartWithSequenceData partWithSequenceData = (PartWithSequenceData)theEObject;
+				T result = casePartWithSequenceData(partWithSequenceData);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE: {
+				PartWithSequenceDataGate partWithSequenceDataGate = (PartWithSequenceDataGate)theEObject;
+				T result = casePartWithSequenceDataGate(partWithSequenceDataGate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsxPackage.PART_WITH_SLICE: {
+				PartWithSlice partWithSlice = (PartWithSlice)theEObject;
+				T result = casePartWithSlice(partWithSlice);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EsxPackage.PATTERN: {
 				Pattern pattern = (Pattern)theEObject;
 				T result = casePattern(pattern);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsxPackage.PATTERN_SET_PARAMETER: {
+				PatternSetParameter patternSetParameter = (PatternSetParameter)theEObject;
+				T result = casePatternSetParameter(patternSetParameter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -284,27 +266,33 @@ public class EsxSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EsxPackage.SEQUENCE_DATA: {
+				SequenceData sequenceData = (SequenceData)theEObject;
+				T result = caseSequenceData(sequenceData);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsxPackage.SEQUENCE_DATA_GATE: {
+				SequenceDataGate sequenceDataGate = (SequenceDataGate)theEObject;
+				T result = caseSequenceDataGate(sequenceDataGate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsxPackage.SEQUENCE_DATA_NOTE: {
+				SequenceDataNote sequenceDataNote = (SequenceDataNote)theEObject;
+				T result = caseSequenceDataNote(sequenceDataNote);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EsxPackage.SONG: {
 				Song song = (Song)theEObject;
 				T result = caseSong(song);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EsxPackage.SONG_PATTERN: {
-				SongPattern songPattern = (SongPattern)theEObject;
-				T result = caseSongPattern(songPattern);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case EsxPackage.SONG_EVENT: {
 				SongEvent songEvent = (SongEvent)theEObject;
 				T result = caseSongEvent(songEvent);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EsxPackage.SONG_EVENT_WITH_PART: {
-				SongEventWithPart songEventWithPart = (SongEventWithPart)theEObject;
-				T result = caseSongEventWithPart(songEventWithPart);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -331,6 +319,13 @@ public class EsxSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EsxPackage.SONG_EVENT_MUTE_STATUS: {
+				SongEventMuteStatus songEventMuteStatus = (SongEventMuteStatus)theEObject;
+				T result = caseSongEventMuteStatus(songEventMuteStatus);
+				if (result == null) result = caseSongEvent(songEventMuteStatus);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EsxPackage.SONG_EVENT_TEMPO: {
 				SongEventTempo songEventTempo = (SongEventTempo)theEObject;
 				T result = caseSongEventTempo(songEventTempo);
@@ -338,10 +333,15 @@ public class EsxSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EsxPackage.SONG_EVENT_MUTE_STATUS: {
-				SongEventMuteStatus songEventMuteStatus = (SongEventMuteStatus)theEObject;
-				T result = caseSongEventMuteStatus(songEventMuteStatus);
-				if (result == null) result = caseSongEvent(songEventMuteStatus);
+			case EsxPackage.SONG_EVENT_WITH_PART: {
+				SongEventWithPart songEventWithPart = (SongEventWithPart)theEObject;
+				T result = caseSongEventWithPart(songEventWithPart);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsxPackage.SONG_PATTERN: {
+				SongPattern songPattern = (SongPattern)theEObject;
+				T result = caseSongPattern(songPattern);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

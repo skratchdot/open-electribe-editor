@@ -2950,16 +2950,9 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__PART_NOTE_NUMBER_NAMES);
 		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENT_NAMES);
 
-		patternSetParameterEClass = createEClass(PATTERN_SET_PARAMETER);
-		createEAttribute(patternSetParameterEClass, PATTERN_SET_PARAMETER__PATTERN_NUMBER);
-
 		midiChannelTypeEClass = createEClass(MIDI_CHANNEL_TYPE);
 		createEAttribute(midiChannelTypeEClass, MIDI_CHANNEL_TYPE__NAME);
 		createEAttribute(midiChannelTypeEClass, MIDI_CHANNEL_TYPE__MIDI_CHANNEL);
-
-		partNoteNumberEClass = createEClass(PART_NOTE_NUMBER);
-		createEAttribute(partNoteNumberEClass, PART_NOTE_NUMBER__NAME);
-		createEAttribute(partNoteNumberEClass, PART_NOTE_NUMBER__NOTE_NUMBER);
 
 		midiControlChangeAssignmentEClass = createEClass(MIDI_CONTROL_CHANGE_ASSIGNMENT);
 		createEAttribute(midiControlChangeAssignmentEClass, MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME);
@@ -2975,21 +2968,26 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(parametersMotionEClass, PARAMETERS_MOTION__OPERATION_NUMBER);
 		createEAttribute(parametersMotionEClass, PARAMETERS_MOTION__OPERATION_VALUE);
 
-		sequenceDataEClass = createEClass(SEQUENCE_DATA);
-		createEAttribute(sequenceDataEClass, SEQUENCE_DATA__SEQUENCE_DATA);
-
-		sequenceDataGateEClass = createEClass(SEQUENCE_DATA_GATE);
-		createEAttribute(sequenceDataGateEClass, SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE);
-
-		sequenceDataNoteEClass = createEClass(SEQUENCE_DATA_NOTE);
-		createEAttribute(sequenceDataNoteEClass, SEQUENCE_DATA_NOTE__SEQUENCE_DATA_NOTE);
-
 		partEClass = createEClass(PART);
 		createEAttribute(partEClass, PART__LEVEL);
 		createEAttribute(partEClass, PART__MOTION_SEQUENCE_STATUS);
 
-		partWithSequenceDataEClass = createEClass(PART_WITH_SEQUENCE_DATA);
-		createEReference(partWithSequenceDataEClass, PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA);
+		partAccentEClass = createEClass(PART_ACCENT);
+
+		partAudioInEClass = createEClass(PART_AUDIO_IN);
+		createEAttribute(partAudioInEClass, PART_AUDIO_IN__RESERVED_BITS_BYTE7);
+
+		partDrumEClass = createEClass(PART_DRUM);
+
+		partKeyboardEClass = createEClass(PART_KEYBOARD);
+		createEAttribute(partKeyboardEClass, PART_KEYBOARD__GLIDE);
+		createEReference(partKeyboardEClass, PART_KEYBOARD__SEQUENCE_DATA_NOTE);
+
+		partNoteNumberEClass = createEClass(PART_NOTE_NUMBER);
+		createEAttribute(partNoteNumberEClass, PART_NOTE_NUMBER__NAME);
+		createEAttribute(partNoteNumberEClass, PART_NOTE_NUMBER__NOTE_NUMBER);
+
+		partStretchSliceEClass = createEClass(PART_STRETCH_SLICE);
 
 		partWithCommonEClass = createEClass(PART_WITH_COMMON);
 		createEAttribute(partWithCommonEClass, PART_WITH_COMMON__AMP_EG);
@@ -3009,34 +3007,24 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(partWithCommonEClass, PART_WITH_COMMON__RESONANCE);
 		createEAttribute(partWithCommonEClass, PART_WITH_COMMON__ROLL);
 
+		partWithPitchEClass = createEClass(PART_WITH_PITCH);
+		createEAttribute(partWithPitchEClass, PART_WITH_PITCH__PITCH);
+
 		partWithSampleEClass = createEClass(PART_WITH_SAMPLE);
 		createEAttribute(partWithSampleEClass, PART_WITH_SAMPLE__REVERSE);
 		createEAttribute(partWithSampleEClass, PART_WITH_SAMPLE__SAMPLE_NUMBER);
 		createEAttribute(partWithSampleEClass, PART_WITH_SAMPLE__START_POINT);
 		createEAttribute(partWithSampleEClass, PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE);
 
-		partWithSliceEClass = createEClass(PART_WITH_SLICE);
-		createEAttribute(partWithSliceEClass, PART_WITH_SLICE__RESERVED_BYTE);
-		createEAttribute(partWithSliceEClass, PART_WITH_SLICE__SLICE_NUMBER);
-
-		partWithPitchEClass = createEClass(PART_WITH_PITCH);
-		createEAttribute(partWithPitchEClass, PART_WITH_PITCH__PITCH);
+		partWithSequenceDataEClass = createEClass(PART_WITH_SEQUENCE_DATA);
+		createEReference(partWithSequenceDataEClass, PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA);
 
 		partWithSequenceDataGateEClass = createEClass(PART_WITH_SEQUENCE_DATA_GATE);
 		createEReference(partWithSequenceDataGateEClass, PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE);
 
-		partAccentEClass = createEClass(PART_ACCENT);
-
-		partAudioInEClass = createEClass(PART_AUDIO_IN);
-		createEAttribute(partAudioInEClass, PART_AUDIO_IN__RESERVED_BITS_BYTE7);
-
-		partDrumEClass = createEClass(PART_DRUM);
-
-		partKeyboardEClass = createEClass(PART_KEYBOARD);
-		createEAttribute(partKeyboardEClass, PART_KEYBOARD__GLIDE);
-		createEReference(partKeyboardEClass, PART_KEYBOARD__SEQUENCE_DATA_NOTE);
-
-		partStretchSliceEClass = createEClass(PART_STRETCH_SLICE);
+		partWithSliceEClass = createEClass(PART_WITH_SLICE);
+		createEAttribute(partWithSliceEClass, PART_WITH_SLICE__RESERVED_BYTE);
+		createEAttribute(partWithSliceEClass, PART_WITH_SLICE__SLICE_NUMBER);
 
 		patternEClass = createEClass(PATTERN);
 		createEAttribute(patternEClass, PATTERN__NAME);
@@ -3065,6 +3053,9 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(patternEClass, PATTERN__EMPTY);
 		createEAttribute(patternEClass, PATTERN__PATTERN_NUMBER_ORIGINAL);
 		createEAttribute(patternEClass, PATTERN__PATTERN_NUMBER_CURRENT);
+
+		patternSetParameterEClass = createEClass(PATTERN_SET_PARAMETER);
+		createEAttribute(patternSetParameterEClass, PATTERN_SET_PARAMETER__PATTERN_NUMBER);
 
 		sampleEClass = createEClass(SAMPLE);
 		createEAttribute(sampleEClass, SAMPLE__NAME);
@@ -3102,6 +3093,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		sampleTuneEClass = createEClass(SAMPLE_TUNE);
 		createEAttribute(sampleTuneEClass, SAMPLE_TUNE__VALUE);
 
+		sequenceDataEClass = createEClass(SEQUENCE_DATA);
+		createEAttribute(sequenceDataEClass, SEQUENCE_DATA__SEQUENCE_DATA);
+
+		sequenceDataGateEClass = createEClass(SEQUENCE_DATA_GATE);
+		createEAttribute(sequenceDataGateEClass, SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE);
+
+		sequenceDataNoteEClass = createEClass(SEQUENCE_DATA_NOTE);
+		createEAttribute(sequenceDataNoteEClass, SEQUENCE_DATA_NOTE__SEQUENCE_DATA_NOTE);
+
 		songEClass = createEClass(SONG);
 		createEAttribute(songEClass, SONG__NAME);
 		createEReference(songEClass, SONG__TEMPO);
@@ -3116,19 +3116,11 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(songEClass, SONG__SONG_NUMBER_ORIGINAL);
 		createEAttribute(songEClass, SONG__SONG_NUMBER_CURRENT);
 
-		songPatternEClass = createEClass(SONG_PATTERN);
-		createEAttribute(songPatternEClass, SONG_PATTERN__PATTERN_NUMBER);
-		createEAttribute(songPatternEClass, SONG_PATTERN__NOTE_OFFSET);
-		createEAttribute(songPatternEClass, SONG_PATTERN__EMPTY);
-
 		songEventEClass = createEClass(SONG_EVENT);
 		createEAttribute(songEventEClass, SONG_EVENT__MEASURE);
 		createEAttribute(songEventEClass, SONG_EVENT__OPERATION_NUMBER);
 		createEAttribute(songEventEClass, SONG_EVENT__POSITION_NUMBER);
 		createEAttribute(songEventEClass, SONG_EVENT__STEP);
-
-		songEventWithPartEClass = createEClass(SONG_EVENT_WITH_PART);
-		createEAttribute(songEventWithPartEClass, SONG_EVENT_WITH_PART__PART);
 
 		songEventControlEClass = createEClass(SONG_EVENT_CONTROL);
 		createEAttribute(songEventControlEClass, SONG_EVENT_CONTROL__VALUE);
@@ -3143,56 +3135,64 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(songEventKeyboardNoteEClass, SONG_EVENT_KEYBOARD_NOTE__LENGTH);
 		createEAttribute(songEventKeyboardNoteEClass, SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER);
 
+		songEventMuteStatusEClass = createEClass(SONG_EVENT_MUTE_STATUS);
+		createEAttribute(songEventMuteStatusEClass, SONG_EVENT_MUTE_STATUS__RESERVED_SHORT);
+		createEAttribute(songEventMuteStatusEClass, SONG_EVENT_MUTE_STATUS__MUTE_STATUS);
+
 		songEventTempoEClass = createEClass(SONG_EVENT_TEMPO);
 		createEAttribute(songEventTempoEClass, SONG_EVENT_TEMPO__TEMPO);
 		createEAttribute(songEventTempoEClass, SONG_EVENT_TEMPO__RESERVED_SHORT);
 
-		songEventMuteStatusEClass = createEClass(SONG_EVENT_MUTE_STATUS);
-		createEAttribute(songEventMuteStatusEClass, SONG_EVENT_MUTE_STATUS__RESERVED_SHORT);
-		createEAttribute(songEventMuteStatusEClass, SONG_EVENT_MUTE_STATUS__MUTE_STATUS);
+		songEventWithPartEClass = createEClass(SONG_EVENT_WITH_PART);
+		createEAttribute(songEventWithPartEClass, SONG_EVENT_WITH_PART__PART);
+
+		songPatternEClass = createEClass(SONG_PATTERN);
+		createEAttribute(songPatternEClass, SONG_PATTERN__PATTERN_NUMBER);
+		createEAttribute(songPatternEClass, SONG_PATTERN__NOTE_OFFSET);
+		createEAttribute(songPatternEClass, SONG_PATTERN__EMPTY);
 
 		tempoEClass = createEClass(TEMPO);
 		createEAttribute(tempoEClass, TEMPO__VALUE);
 
 		// Create enums
+		ampEgEEnum = createEEnum(AMP_EG);
 		arpeggiatorControlEEnum = createEEnum(ARPEGGIATOR_CONTROL);
-		audioInModeEEnum = createEEnum(AUDIO_IN_MODE);
-		midiClockEEnum = createEEnum(MIDI_CLOCK);
-		enabledFlagEEnum = createEEnum(ENABLED_FLAG);
-		pitchBendRangeEEnum = createEEnum(PITCH_BEND_RANGE);
-		midiChannelEEnum = createEEnum(MIDI_CHANNEL);
-		playLevelEEnum = createEEnum(PLAY_LEVEL);
-		patternNumberEEnum = createEEnum(PATTERN_NUMBER);
-		sampleNumberEEnum = createEEnum(SAMPLE_NUMBER);
-		songNumberEEnum = createEEnum(SONG_NUMBER);
-		songLengthEEnum = createEEnum(SONG_LENGTH);
-		tempoLockEEnum = createEEnum(TEMPO_LOCK);
-		muteHoldEEnum = createEEnum(MUTE_HOLD);
-		nextSongNumberEEnum = createEEnum(NEXT_SONG_NUMBER);
-		stretchStepEEnum = createEEnum(STRETCH_STEP);
-		swingEEnum = createEEnum(SWING);
-		patternLengthEEnum = createEEnum(PATTERN_LENGTH);
-		beatEEnum = createEEnum(BEAT);
-		rollTypeEEnum = createEEnum(ROLL_TYPE);
-		fxChainEEnum = createEEnum(FX_CHAIN);
-		lastStepEEnum = createEEnum(LAST_STEP);
 		arpeggiatorScaleEEnum = createEEnum(ARPEGGIATOR_SCALE);
-		noteNumberEEnum = createEEnum(NOTE_NUMBER);
+		audioInModeEEnum = createEEnum(AUDIO_IN_MODE);
+		beatEEnum = createEEnum(BEAT);
+		bpmSyncEEnum = createEEnum(BPM_SYNC);
+		enabledFlagEEnum = createEEnum(ENABLED_FLAG);
 		filterTypeEEnum = createEEnum(FILTER_TYPE);
+		fxChainEEnum = createEEnum(FX_CHAIN);
 		fxSelectEEnum = createEEnum(FX_SELECT);
 		fxSendEEnum = createEEnum(FX_SEND);
 		fxTypeEEnum = createEEnum(FX_TYPE);
-		rollEEnum = createEEnum(ROLL);
-		ampEgEEnum = createEEnum(AMP_EG);
-		reverseEEnum = createEEnum(REVERSE);
+		lastStepEEnum = createEEnum(LAST_STEP);
+		midiChannelEEnum = createEEnum(MIDI_CHANNEL);
+		midiClockEEnum = createEEnum(MIDI_CLOCK);
 		modDestEEnum = createEEnum(MOD_DEST);
 		modTypeEEnum = createEEnum(MOD_TYPE);
-		bpmSyncEEnum = createEEnum(BPM_SYNC);
 		motionSequenceStatusEEnum = createEEnum(MOTION_SEQUENCE_STATUS);
+		muteHoldEEnum = createEEnum(MUTE_HOLD);
+		nextSongNumberEEnum = createEEnum(NEXT_SONG_NUMBER);
+		noteNumberEEnum = createEEnum(NOTE_NUMBER);
+		patternLengthEEnum = createEEnum(PATTERN_LENGTH);
+		patternNumberEEnum = createEEnum(PATTERN_NUMBER);
+		pitchBendRangeEEnum = createEEnum(PITCH_BEND_RANGE);
+		playLevelEEnum = createEEnum(PLAY_LEVEL);
+		reverseEEnum = createEEnum(REVERSE);
+		rollEEnum = createEEnum(ROLL);
+		rollTypeEEnum = createEEnum(ROLL_TYPE);
+		sampleNumberEEnum = createEEnum(SAMPLE_NUMBER);
+		songLengthEEnum = createEEnum(SONG_LENGTH);
+		songNumberEEnum = createEEnum(SONG_NUMBER);
+		stretchStepEEnum = createEEnum(STRETCH_STEP);
+		swingEEnum = createEEnum(SWING);
+		tempoLockEEnum = createEEnum(TEMPO_LOCK);
 
 		// Create data types
-		objectEDataType = createEDataType(OBJECT);
 		arrayListEDataType = createEDataType(ARRAY_LIST);
+		objectEDataType = createEDataType(OBJECT);
 	}
 
 	/**
@@ -3253,8 +3253,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		songEventDrumNoteEClass.getESuperTypes().add(this.getSongEventWithPart());
 		songEventKeyboardNoteEClass.getESuperTypes().add(this.getSongEvent());
 		songEventKeyboardNoteEClass.getESuperTypes().add(this.getSongEventWithPart());
-		songEventTempoEClass.getESuperTypes().add(this.getSongEvent());
 		songEventMuteStatusEClass.getESuperTypes().add(this.getSongEvent());
+		songEventTempoEClass.getESuperTypes().add(this.getSongEvent());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(esxFileEClass, EsxFile.class, "EsxFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3329,16 +3329,9 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 
 		addEOperation(globalParametersEClass, null, "createAndPopulateMidiControlChangeAssignmentNames", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(patternSetParameterEClass, PatternSetParameter.class, "PatternSetParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPatternSetParameter_PatternNumber(), this.getPatternNumber(), "patternNumber", null, 0, 1, PatternSetParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(midiChannelTypeEClass, MidiChannelType.class, "MidiChannelType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMidiChannelType_Name(), ecorePackage.getEString(), "name", null, 0, 1, MidiChannelType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMidiChannelType_MidiChannel(), this.getMidiChannel(), "midiChannel", null, 0, 1, MidiChannelType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(partNoteNumberEClass, PartNoteNumber.class, "PartNoteNumber", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPartNoteNumber_Name(), ecorePackage.getEString(), "name", null, 0, 1, PartNoteNumber.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartNoteNumber_NoteNumber(), this.getNoteNumber(), "noteNumber", null, 0, 1, PartNoteNumber.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(midiControlChangeAssignmentEClass, MidiControlChangeAssignment.class, "MidiControlChangeAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMidiControlChangeAssignment_Name(), ecorePackage.getEString(), "name", null, 0, 1, MidiControlChangeAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3354,21 +3347,26 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getParametersMotion_OperationNumber(), ecorePackage.getEShort(), "operationNumber", null, 0, 1, ParametersMotion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParametersMotion_OperationValue(), ecorePackage.getEByteArray(), "operationValue", null, 0, 1, ParametersMotion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(sequenceDataEClass, SequenceData.class, "SequenceData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSequenceData_SequenceData(), ecorePackage.getEByteArray(), "sequenceData", null, 0, 1, SequenceData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(sequenceDataGateEClass, SequenceDataGate.class, "SequenceDataGate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSequenceDataGate_SequenceDataGate(), ecorePackage.getEByteArray(), "sequenceDataGate", null, 0, 1, SequenceDataGate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(sequenceDataNoteEClass, SequenceDataNote.class, "SequenceDataNote", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSequenceDataNote_SequenceDataNote(), ecorePackage.getEByteArray(), "sequenceDataNote", null, 0, 1, SequenceDataNote.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(partEClass, Part.class, "Part", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPart_Level(), ecorePackage.getEByte(), "level", null, 0, 1, Part.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPart_MotionSequenceStatus(), ecorePackage.getEByte(), "motionSequenceStatus", null, 0, 1, Part.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(partWithSequenceDataEClass, PartWithSequenceData.class, "PartWithSequenceData", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPartWithSequenceData_SequenceData(), this.getSequenceData(), null, "sequenceData", null, 0, 1, PartWithSequenceData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(partAccentEClass, PartAccent.class, "PartAccent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(partAudioInEClass, PartAudioIn.class, "PartAudioIn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPartAudioIn_ReservedBitsByte7(), ecorePackage.getEByte(), "reservedBitsByte7", null, 0, 1, PartAudioIn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(partDrumEClass, PartDrum.class, "PartDrum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(partKeyboardEClass, PartKeyboard.class, "PartKeyboard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPartKeyboard_Glide(), ecorePackage.getEByte(), "glide", null, 0, 1, PartKeyboard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPartKeyboard_SequenceDataNote(), this.getSequenceDataNote(), null, "sequenceDataNote", null, 0, 1, PartKeyboard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(partNoteNumberEClass, PartNoteNumber.class, "PartNoteNumber", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPartNoteNumber_Name(), ecorePackage.getEString(), "name", null, 0, 1, PartNoteNumber.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartNoteNumber_NoteNumber(), this.getNoteNumber(), "noteNumber", null, 0, 1, PartNoteNumber.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(partStretchSliceEClass, PartStretchSlice.class, "PartStretchSlice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(partWithCommonEClass, PartWithCommon.class, "PartWithCommon", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPartWithCommon_AmpEg(), this.getAmpEg(), "ampEg", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3388,34 +3386,24 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getPartWithCommon_Resonance(), ecorePackage.getEByte(), "resonance", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPartWithCommon_Roll(), this.getRoll(), "roll", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(partWithPitchEClass, PartWithPitch.class, "PartWithPitch", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPartWithPitch_Pitch(), ecorePackage.getEByte(), "pitch", null, 0, 1, PartWithPitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(partWithSampleEClass, PartWithSample.class, "PartWithSample", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPartWithSample_Reverse(), this.getReverse(), "reverse", null, 0, 1, PartWithSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPartWithSample_SampleNumber(), ecorePackage.getEShort(), "sampleNumber", null, 0, 1, PartWithSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPartWithSample_StartPoint(), ecorePackage.getEByte(), "startPoint", null, 0, 1, PartWithSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPartWithSample_ReservedBitsAfterReverse(), ecorePackage.getEByte(), "reservedBitsAfterReverse", null, 0, 1, PartWithSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(partWithSliceEClass, PartWithSlice.class, "PartWithSlice", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPartWithSlice_ReservedByte(), ecorePackage.getEByte(), "reservedByte", null, 0, 1, PartWithSlice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithSlice_SliceNumber(), ecorePackage.getEByte(), "sliceNumber", null, 0, 1, PartWithSlice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(partWithPitchEClass, PartWithPitch.class, "PartWithPitch", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPartWithPitch_Pitch(), ecorePackage.getEByte(), "pitch", null, 0, 1, PartWithPitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(partWithSequenceDataEClass, PartWithSequenceData.class, "PartWithSequenceData", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPartWithSequenceData_SequenceData(), this.getSequenceData(), null, "sequenceData", null, 0, 1, PartWithSequenceData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(partWithSequenceDataGateEClass, PartWithSequenceDataGate.class, "PartWithSequenceDataGate", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPartWithSequenceDataGate_SequenceDataGate(), this.getSequenceDataGate(), null, "sequenceDataGate", null, 0, 1, PartWithSequenceDataGate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(partAccentEClass, PartAccent.class, "PartAccent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(partAudioInEClass, PartAudioIn.class, "PartAudioIn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPartAudioIn_ReservedBitsByte7(), ecorePackage.getEByte(), "reservedBitsByte7", null, 0, 1, PartAudioIn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(partDrumEClass, PartDrum.class, "PartDrum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(partKeyboardEClass, PartKeyboard.class, "PartKeyboard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPartKeyboard_Glide(), ecorePackage.getEByte(), "glide", null, 0, 1, PartKeyboard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPartKeyboard_SequenceDataNote(), this.getSequenceDataNote(), null, "sequenceDataNote", null, 0, 1, PartKeyboard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(partStretchSliceEClass, PartStretchSlice.class, "PartStretchSlice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(partWithSliceEClass, PartWithSlice.class, "PartWithSlice", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPartWithSlice_ReservedByte(), ecorePackage.getEByte(), "reservedByte", null, 0, 1, PartWithSlice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartWithSlice_SliceNumber(), ecorePackage.getEByte(), "sliceNumber", null, 0, 1, PartWithSlice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(patternEClass, Pattern.class, "Pattern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPattern_Name(), ecorePackage.getEString(), "name", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3444,6 +3432,9 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getPattern_Empty(), ecorePackage.getEBoolean(), "empty", "true", 0, 1, Pattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPattern_PatternNumberOriginal(), this.getPatternNumber(), "patternNumberOriginal", "-1", 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPattern_PatternNumberCurrent(), this.getPatternNumber(), "patternNumberCurrent", "-1", 0, 1, Pattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		initEClass(patternSetParameterEClass, PatternSetParameter.class, "PatternSetParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPatternSetParameter_PatternNumber(), this.getPatternNumber(), "patternNumber", null, 0, 1, PatternSetParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sampleEClass, Sample.class, "Sample", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSample_Name(), ecorePackage.getEString(), "name", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3489,6 +3480,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		op = addEOperation(sampleTuneEClass, null, "setCurrentValueFromShort", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEShort(), "packedShort", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(sequenceDataEClass, SequenceData.class, "SequenceData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSequenceData_SequenceData(), ecorePackage.getEByteArray(), "sequenceData", null, 0, 1, SequenceData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(sequenceDataGateEClass, SequenceDataGate.class, "SequenceDataGate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSequenceDataGate_SequenceDataGate(), ecorePackage.getEByteArray(), "sequenceDataGate", null, 0, 1, SequenceDataGate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(sequenceDataNoteEClass, SequenceDataNote.class, "SequenceDataNote", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSequenceDataNote_SequenceDataNote(), ecorePackage.getEByteArray(), "sequenceDataNote", null, 0, 1, SequenceDataNote.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(songEClass, Song.class, "Song", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSong_Name(), ecorePackage.getEString(), "name", null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSong_Tempo(), this.getTempo(), null, "tempo", null, 1, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3503,19 +3503,11 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getSong_SongNumberOriginal(), this.getSongNumber(), "songNumberOriginal", "-1", 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSong_SongNumberCurrent(), this.getSongNumber(), "songNumberCurrent", "-1", 0, 1, Song.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
-		initEClass(songPatternEClass, SongPattern.class, "SongPattern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSongPattern_PatternNumber(), this.getPatternNumber(), "patternNumber", null, 0, 1, SongPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongPattern_NoteOffset(), ecorePackage.getEByte(), "noteOffset", null, 0, 1, SongPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongPattern_Empty(), ecorePackage.getEBoolean(), "empty", "true", 0, 1, SongPattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-
 		initEClass(songEventEClass, SongEvent.class, "SongEvent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSongEvent_Measure(), ecorePackage.getEByte(), "measure", null, 0, 1, SongEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongEvent_OperationNumber(), ecorePackage.getEShort(), "operationNumber", null, 0, 1, SongEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongEvent_PositionNumber(), ecorePackage.getEByte(), "positionNumber", null, 0, 1, SongEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongEvent_Step(), ecorePackage.getEByte(), "step", null, 0, 1, SongEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(songEventWithPartEClass, SongEventWithPart.class, "SongEventWithPart", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSongEventWithPart_Part(), ecorePackage.getEByte(), "part", null, 0, 1, SongEventWithPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(songEventControlEClass, SongEventControl.class, "SongEventControl", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSongEventControl_Value(), ecorePackage.getEByte(), "value", null, 0, 1, SongEventControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3530,13 +3522,21 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getSongEventKeyboardNote_Length(), ecorePackage.getEShort(), "length", null, 0, 1, SongEventKeyboardNote.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongEventKeyboardNote_NoteNumber(), ecorePackage.getEByte(), "noteNumber", null, 0, 1, SongEventKeyboardNote.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(songEventMuteStatusEClass, SongEventMuteStatus.class, "SongEventMuteStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSongEventMuteStatus_ReservedShort(), ecorePackage.getEShort(), "reservedShort", null, 0, 1, SongEventMuteStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongEventMuteStatus_MuteStatus(), ecorePackage.getEShort(), "muteStatus", null, 0, 1, SongEventMuteStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(songEventTempoEClass, SongEventTempo.class, "SongEventTempo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSongEventTempo_Tempo(), ecorePackage.getEShort(), "tempo", null, 0, 1, SongEventTempo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongEventTempo_ReservedShort(), ecorePackage.getEShort(), "reservedShort", null, 0, 1, SongEventTempo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(songEventMuteStatusEClass, SongEventMuteStatus.class, "SongEventMuteStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSongEventMuteStatus_ReservedShort(), ecorePackage.getEShort(), "reservedShort", null, 0, 1, SongEventMuteStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongEventMuteStatus_MuteStatus(), ecorePackage.getEShort(), "muteStatus", null, 0, 1, SongEventMuteStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(songEventWithPartEClass, SongEventWithPart.class, "SongEventWithPart", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSongEventWithPart_Part(), ecorePackage.getEByte(), "part", null, 0, 1, SongEventWithPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(songPatternEClass, SongPattern.class, "SongPattern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSongPattern_PatternNumber(), this.getPatternNumber(), "patternNumber", null, 0, 1, SongPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongPattern_NoteOffset(), ecorePackage.getEByte(), "noteOffset", null, 0, 1, SongPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongPattern_Empty(), ecorePackage.getEBoolean(), "empty", "true", 0, 1, SongPattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(tempoEClass, Tempo.class, "Tempo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTempo_Value(), ecorePackage.getEFloat(), "value", null, 0, 1, Tempo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3547,49 +3547,121 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEParameter(op, ecorePackage.getEShort(), "packedShort", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
+		initEEnum(ampEgEEnum, AmpEg.class, "AmpEg");
+		addEEnumLiteral(ampEgEEnum, AmpEg.GATE);
+		addEEnumLiteral(ampEgEEnum, AmpEg.EG);
+
 		initEEnum(arpeggiatorControlEEnum, ArpeggiatorControl.class, "ArpeggiatorControl");
 		addEEnumLiteral(arpeggiatorControlEEnum, ArpeggiatorControl.NORMAL);
 		addEEnumLiteral(arpeggiatorControlEEnum, ArpeggiatorControl.REVERSE);
+
+		initEEnum(arpeggiatorScaleEEnum, ArpeggiatorScale.class, "ArpeggiatorScale");
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.CHROMATIC);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.IONIAN);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.DORIAN);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.PHRYGIAN);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.LYDIAN);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MIXOLYDIAN);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.AEOLIAN);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.LOCRIAN);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MAJOR_BLUES);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MINOR_BLUES);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.DIMINISH);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.COMBINATION_DIMINISH);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MAJOR_PENTATONIC);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MINOR_PENTATONIC);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.RAGA_BHAIRAV);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.RAGA_GAMANASRAMA);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.RAGA_TODI);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.SPANISH_SCALE);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.GYPSY_SCALE);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.ARABIAN_SCALE);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.EGYPTIAN_SCALE);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.HAWAIIAN_SCALE);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.BALI_ISLAND_SCALE);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.JAPANESE_MIYAKOBUSHI);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.RYUKYU_SCALE);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.WHOLETONE);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MINOR_3RD_INTERVAL);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MAJOR_3RD_INTERVAL);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.FOURTH_INTERVAL);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.FIFTH_INTERVAL);
+		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.OCTAVE_INTERVAL);
 
 		initEEnum(audioInModeEEnum, AudioInMode.class, "AudioInMode");
 		addEEnumLiteral(audioInModeEEnum, AudioInMode.MONO);
 		addEEnumLiteral(audioInModeEEnum, AudioInMode.STEREO);
 
-		initEEnum(midiClockEEnum, MidiClock.class, "MidiClock");
-		addEEnumLiteral(midiClockEEnum, MidiClock.INT);
-		addEEnumLiteral(midiClockEEnum, MidiClock.EXT);
-		addEEnumLiteral(midiClockEEnum, MidiClock.AUTO);
+		initEEnum(beatEEnum, Beat.class, "Beat");
+		addEEnumLiteral(beatEEnum, Beat.BEAT_16TH);
+		addEEnumLiteral(beatEEnum, Beat.BEAT_32ND);
+		addEEnumLiteral(beatEEnum, Beat.BEAT_8TRI);
+		addEEnumLiteral(beatEEnum, Beat.BEAT_16_TRI);
+
+		initEEnum(bpmSyncEEnum, BpmSync.class, "BpmSync");
+		addEEnumLiteral(bpmSyncEEnum, BpmSync.OFF);
+		addEEnumLiteral(bpmSyncEEnum, BpmSync.ON);
 
 		initEEnum(enabledFlagEEnum, EnabledFlag.class, "EnabledFlag");
 		addEEnumLiteral(enabledFlagEEnum, EnabledFlag.DISABLED);
 		addEEnumLiteral(enabledFlagEEnum, EnabledFlag.ENABLED);
 
-		initEEnum(pitchBendRangeEEnum, PitchBendRange.class, "PitchBendRange");
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N12);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N11);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N10);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N9);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N8);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N7);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N6);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N5);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N4);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N3);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N2);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N1);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_0);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_1);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_2);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_3);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_4);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_5);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_6);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_7);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_8);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_9);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_10);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_11);
-		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_12);
+		initEEnum(filterTypeEEnum, FilterType.class, "FilterType");
+		addEEnumLiteral(filterTypeEEnum, FilterType.LPF);
+		addEEnumLiteral(filterTypeEEnum, FilterType.HPF);
+		addEEnumLiteral(filterTypeEEnum, FilterType.BPF);
+		addEEnumLiteral(filterTypeEEnum, FilterType.BPF_PLUS);
+
+		initEEnum(fxChainEEnum, FxChain.class, "FxChain");
+		addEEnumLiteral(fxChainEEnum, FxChain.NONE);
+		addEEnumLiteral(fxChainEEnum, FxChain.FX_12);
+		addEEnumLiteral(fxChainEEnum, FxChain.FX_23);
+		addEEnumLiteral(fxChainEEnum, FxChain.FX_123);
+
+		initEEnum(fxSelectEEnum, FxSelect.class, "FxSelect");
+		addEEnumLiteral(fxSelectEEnum, FxSelect.FX1);
+		addEEnumLiteral(fxSelectEEnum, FxSelect.FX2);
+		addEEnumLiteral(fxSelectEEnum, FxSelect.FX3);
+
+		initEEnum(fxSendEEnum, FxSend.class, "FxSend");
+		addEEnumLiteral(fxSendEEnum, FxSend.OFF);
+		addEEnumLiteral(fxSendEEnum, FxSend.ON);
+
+		initEEnum(fxTypeEEnum, FxType.class, "FxType");
+		addEEnumLiteral(fxTypeEEnum, FxType.REVERB);
+		addEEnumLiteral(fxTypeEEnum, FxType.BPM_SYNC_DELAY);
+		addEEnumLiteral(fxTypeEEnum, FxType.SHORT_DELAY);
+		addEEnumLiteral(fxTypeEEnum, FxType.MOD_DELAY);
+		addEEnumLiteral(fxTypeEEnum, FxType.GRAIN_SHIFTER);
+		addEEnumLiteral(fxTypeEEnum, FxType.CHO_FLG);
+		addEEnumLiteral(fxTypeEEnum, FxType.PHASER);
+		addEEnumLiteral(fxTypeEEnum, FxType.RING_MOD);
+		addEEnumLiteral(fxTypeEEnum, FxType.TALKING_MOD);
+		addEEnumLiteral(fxTypeEEnum, FxType.PITCH_SHIFTER);
+		addEEnumLiteral(fxTypeEEnum, FxType.COMPRESSOR);
+		addEEnumLiteral(fxTypeEEnum, FxType.DISTORTION);
+		addEEnumLiteral(fxTypeEEnum, FxType.DECIMATOR);
+		addEEnumLiteral(fxTypeEEnum, FxType.EQ);
+		addEEnumLiteral(fxTypeEEnum, FxType.LPF);
+		addEEnumLiteral(fxTypeEEnum, FxType.HPF);
+
+		initEEnum(lastStepEEnum, LastStep.class, "LastStep");
+		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_1);
+		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_2);
+		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_3);
+		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_4);
+		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_5);
+		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_6);
+		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_7);
+		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_8);
+		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_9);
+		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_10);
+		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_11);
+		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_12);
+		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_13);
+		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_14);
+		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_15);
+		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_16);
 
 		initEEnum(midiChannelEEnum, MidiChannel.class, "MidiChannel");
 		addEEnumLiteral(midiChannelEEnum, MidiChannel.CHANNEL_1);
@@ -3609,9 +3681,239 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEEnumLiteral(midiChannelEEnum, MidiChannel.CHANNEL_15);
 		addEEnumLiteral(midiChannelEEnum, MidiChannel.CHANNEL_16);
 
-		initEEnum(playLevelEEnum, PlayLevel.class, "PlayLevel");
-		addEEnumLiteral(playLevelEEnum, PlayLevel.DB_0);
-		addEEnumLiteral(playLevelEEnum, PlayLevel.DB_1);
+		initEEnum(midiClockEEnum, MidiClock.class, "MidiClock");
+		addEEnumLiteral(midiClockEEnum, MidiClock.INT);
+		addEEnumLiteral(midiClockEEnum, MidiClock.EXT);
+		addEEnumLiteral(midiClockEEnum, MidiClock.AUTO);
+
+		initEEnum(modDestEEnum, ModDest.class, "ModDest");
+		addEEnumLiteral(modDestEEnum, ModDest.PITCH);
+		addEEnumLiteral(modDestEEnum, ModDest.CUTOFF);
+		addEEnumLiteral(modDestEEnum, ModDest.AMP);
+		addEEnumLiteral(modDestEEnum, ModDest.PAN);
+
+		initEEnum(modTypeEEnum, ModType.class, "ModType");
+		addEEnumLiteral(modTypeEEnum, ModType.SAWTOOTH);
+		addEEnumLiteral(modTypeEEnum, ModType.SQUARE);
+		addEEnumLiteral(modTypeEEnum, ModType.TRIANGLE);
+		addEEnumLiteral(modTypeEEnum, ModType.SAND_H);
+		addEEnumLiteral(modTypeEEnum, ModType.ENVELOPE);
+
+		initEEnum(motionSequenceStatusEEnum, MotionSequenceStatus.class, "MotionSequenceStatus");
+		addEEnumLiteral(motionSequenceStatusEEnum, MotionSequenceStatus.OFF);
+		addEEnumLiteral(motionSequenceStatusEEnum, MotionSequenceStatus.SMOOTH);
+		addEEnumLiteral(motionSequenceStatusEEnum, MotionSequenceStatus.TRIG_HOLD);
+
+		initEEnum(muteHoldEEnum, MuteHold.class, "MuteHold");
+		addEEnumLiteral(muteHoldEEnum, MuteHold.MUTE_HOLD_OFF);
+		addEEnumLiteral(muteHoldEEnum, MuteHold.MUTE_HOLD_ON);
+
+		initEEnum(nextSongNumberEEnum, NextSongNumber.class, "NextSongNumber");
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_00);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_01);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_02);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_03);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_04);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_05);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_06);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_07);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_08);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_09);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_10);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_11);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_12);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_13);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_14);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_15);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_16);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_17);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_18);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_19);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_20);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_21);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_22);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_23);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_24);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_25);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_26);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_27);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_28);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_29);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_30);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_31);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_32);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_33);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_34);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_35);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_36);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_37);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_38);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_39);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_40);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_41);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_42);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_43);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_44);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_45);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_46);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_47);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_48);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_49);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_50);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_51);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_52);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_53);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_54);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_55);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_56);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_57);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_58);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_59);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_60);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_61);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_62);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_63);
+		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_64);
+
+		initEEnum(noteNumberEEnum, NoteNumber.class, "NoteNumber");
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.CN1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.CSN1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.DN1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.DSN1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.EN1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.FN1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.FSN1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.GN1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.GSN1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.AN1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.ASN1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.BN1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.C0);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS10);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.D0);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS0);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.E0);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.F0);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS0);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.G0);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.GS0);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.A0);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.AS0);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.B0);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.C1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS11);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.D1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.E1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.F1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.G1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.GS1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.A1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.AS1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.B1);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.C2);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS12);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.D2);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS2);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.E2);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.F2);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS2);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.G2);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.GS2);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.A2);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.AS2);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.B2);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.C3);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS13);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.D3);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS3);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.E3);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.F3);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS3);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.G3);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.GS3);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.A3);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.AS3);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.B3);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.C4);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS14);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.D4);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS4);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.E4);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.F4);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS4);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.G4);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.GS4);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.A4);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.AS4);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.B4);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.C5);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS15);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.D5);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS5);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.E5);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.F5);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS5);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.G5);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.GS5);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.A5);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.AS5);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.B5);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.C6);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS16);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.D6);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS6);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.E6);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.F6);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS6);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.G6);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.GS6);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.A6);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.AS6);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.B6);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.C7);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS17);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.D7);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS7);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.E7);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.F7);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS7);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.G7);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.GS7);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.A7);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.AS7);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.B7);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.C8);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS18);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.D8);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS8);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.E8);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.F8);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS8);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.G8);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.GS8);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.A8);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.AS8);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.B8);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.C9);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS19);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.D9);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS9);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.E9);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.F9);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS9);
+		addEEnumLiteral(noteNumberEEnum, NoteNumber.G9);
+
+		initEEnum(patternLengthEEnum, PatternLength.class, "PatternLength");
+		addEEnumLiteral(patternLengthEEnum, PatternLength.LENGTH_1);
+		addEEnumLiteral(patternLengthEEnum, PatternLength.LENGTH_2);
+		addEEnumLiteral(patternLengthEEnum, PatternLength.LENGTH_3);
+		addEEnumLiteral(patternLengthEEnum, PatternLength.LENGTH_4);
+		addEEnumLiteral(patternLengthEEnum, PatternLength.LENGTH_5);
+		addEEnumLiteral(patternLengthEEnum, PatternLength.LENGTH_6);
+		addEEnumLiteral(patternLengthEEnum, PatternLength.LENGTH_7);
+		addEEnumLiteral(patternLengthEEnum, PatternLength.LENGTH_8);
 
 		initEEnum(patternNumberEEnum, PatternNumber.class, "PatternNumber");
 		addEEnumLiteral(patternNumberEEnum, PatternNumber.PATTERN_A01);
@@ -3870,6 +4172,50 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEEnumLiteral(patternNumberEEnum, PatternNumber.PATTERN_D62);
 		addEEnumLiteral(patternNumberEEnum, PatternNumber.PATTERN_D63);
 		addEEnumLiteral(patternNumberEEnum, PatternNumber.PATTERN_D64);
+
+		initEEnum(pitchBendRangeEEnum, PitchBendRange.class, "PitchBendRange");
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N12);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N11);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N10);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N9);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N8);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N7);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N6);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N5);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N4);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N3);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N2);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_N1);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_0);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_1);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_2);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_3);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_4);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_5);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_6);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_7);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_8);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_9);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_10);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_11);
+		addEEnumLiteral(pitchBendRangeEEnum, PitchBendRange.PITCH_BEND_12);
+
+		initEEnum(playLevelEEnum, PlayLevel.class, "PlayLevel");
+		addEEnumLiteral(playLevelEEnum, PlayLevel.DB_0);
+		addEEnumLiteral(playLevelEEnum, PlayLevel.DB_1);
+
+		initEEnum(reverseEEnum, Reverse.class, "Reverse");
+		addEEnumLiteral(reverseEEnum, Reverse.OFF);
+		addEEnumLiteral(reverseEEnum, Reverse.ON);
+
+		initEEnum(rollEEnum, Roll.class, "Roll");
+		addEEnumLiteral(rollEEnum, Roll.OFF);
+		addEEnumLiteral(rollEEnum, Roll.ON);
+
+		initEEnum(rollTypeEEnum, RollType.class, "RollType");
+		addEEnumLiteral(rollTypeEEnum, RollType.ROLL_2);
+		addEEnumLiteral(rollTypeEEnum, RollType.ROLL_3);
+		addEEnumLiteral(rollTypeEEnum, RollType.ROLL_4);
 
 		initEEnum(sampleNumberEEnum, SampleNumber.class, "SampleNumber");
 		addEEnumLiteral(sampleNumberEEnum, SampleNumber.SAMPLE_OFF);
@@ -4258,72 +4604,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEEnumLiteral(sampleNumberEEnum, SampleNumber.SAMPLE_S126);
 		addEEnumLiteral(sampleNumberEEnum, SampleNumber.SAMPLE_S127);
 
-		initEEnum(songNumberEEnum, SongNumber.class, "SongNumber");
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_01);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_02);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_03);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_04);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_05);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_06);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_07);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_08);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_09);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_10);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_11);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_12);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_13);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_14);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_15);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_16);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_17);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_18);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_19);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_20);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_21);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_22);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_23);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_24);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_25);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_26);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_27);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_28);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_29);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_30);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_31);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_32);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_33);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_34);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_35);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_36);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_37);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_38);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_39);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_40);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_41);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_42);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_43);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_44);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_45);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_46);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_47);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_48);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_49);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_50);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_51);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_52);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_53);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_54);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_55);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_56);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_57);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_58);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_59);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_60);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_61);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_62);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_63);
-		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_64);
-
 		initEEnum(songLengthEEnum, SongLength.class, "SongLength");
 		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_001);
 		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_002);
@@ -4582,80 +4862,71 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_255);
 		addEEnumLiteral(songLengthEEnum, SongLength.SONG_LENGTH_256);
 
-		initEEnum(tempoLockEEnum, TempoLock.class, "TempoLock");
-		addEEnumLiteral(tempoLockEEnum, TempoLock.TEMPO_LOCK_OFF);
-		addEEnumLiteral(tempoLockEEnum, TempoLock.TEMPO_LOCK_ON);
-
-		initEEnum(muteHoldEEnum, MuteHold.class, "MuteHold");
-		addEEnumLiteral(muteHoldEEnum, MuteHold.MUTE_HOLD_OFF);
-		addEEnumLiteral(muteHoldEEnum, MuteHold.MUTE_HOLD_ON);
-
-		initEEnum(nextSongNumberEEnum, NextSongNumber.class, "NextSongNumber");
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_00);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_01);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_02);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_03);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_04);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_05);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_06);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_07);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_08);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_09);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_10);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_11);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_12);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_13);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_14);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_15);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_16);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_17);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_18);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_19);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_20);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_21);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_22);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_23);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_24);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_25);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_26);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_27);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_28);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_29);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_30);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_31);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_32);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_33);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_34);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_35);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_36);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_37);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_38);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_39);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_40);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_41);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_42);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_43);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_44);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_45);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_46);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_47);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_48);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_49);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_50);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_51);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_52);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_53);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_54);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_55);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_56);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_57);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_58);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_59);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_60);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_61);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_62);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_63);
-		addEEnumLiteral(nextSongNumberEEnum, NextSongNumber.NEXT_SONG_NUMBER_64);
+		initEEnum(songNumberEEnum, SongNumber.class, "SongNumber");
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_01);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_02);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_03);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_04);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_05);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_06);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_07);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_08);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_09);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_10);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_11);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_12);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_13);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_14);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_15);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_16);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_17);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_18);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_19);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_20);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_21);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_22);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_23);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_24);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_25);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_26);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_27);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_28);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_29);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_30);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_31);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_32);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_33);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_34);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_35);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_36);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_37);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_38);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_39);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_40);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_41);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_42);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_43);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_44);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_45);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_46);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_47);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_48);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_49);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_50);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_51);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_52);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_53);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_54);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_55);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_56);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_57);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_58);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_59);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_60);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_61);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_62);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_63);
+		addEEnumLiteral(songNumberEEnum, SongNumber.SONG_64);
 
 		initEEnum(stretchStepEEnum, StretchStep.class, "StretchStep");
 		addEEnumLiteral(stretchStepEEnum, StretchStep.STRETCH_STEP_OFF);
@@ -4816,284 +5087,13 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEEnumLiteral(swingEEnum, Swing.PERCENT_74);
 		addEEnumLiteral(swingEEnum, Swing.PERCENT_75);
 
-		initEEnum(patternLengthEEnum, PatternLength.class, "PatternLength");
-		addEEnumLiteral(patternLengthEEnum, PatternLength.LENGTH_1);
-		addEEnumLiteral(patternLengthEEnum, PatternLength.LENGTH_2);
-		addEEnumLiteral(patternLengthEEnum, PatternLength.LENGTH_3);
-		addEEnumLiteral(patternLengthEEnum, PatternLength.LENGTH_4);
-		addEEnumLiteral(patternLengthEEnum, PatternLength.LENGTH_5);
-		addEEnumLiteral(patternLengthEEnum, PatternLength.LENGTH_6);
-		addEEnumLiteral(patternLengthEEnum, PatternLength.LENGTH_7);
-		addEEnumLiteral(patternLengthEEnum, PatternLength.LENGTH_8);
-
-		initEEnum(beatEEnum, Beat.class, "Beat");
-		addEEnumLiteral(beatEEnum, Beat.BEAT_16TH);
-		addEEnumLiteral(beatEEnum, Beat.BEAT_32ND);
-		addEEnumLiteral(beatEEnum, Beat.BEAT_8TRI);
-		addEEnumLiteral(beatEEnum, Beat.BEAT_16_TRI);
-
-		initEEnum(rollTypeEEnum, RollType.class, "RollType");
-		addEEnumLiteral(rollTypeEEnum, RollType.ROLL_2);
-		addEEnumLiteral(rollTypeEEnum, RollType.ROLL_3);
-		addEEnumLiteral(rollTypeEEnum, RollType.ROLL_4);
-
-		initEEnum(fxChainEEnum, FxChain.class, "FxChain");
-		addEEnumLiteral(fxChainEEnum, FxChain.NONE);
-		addEEnumLiteral(fxChainEEnum, FxChain.FX_12);
-		addEEnumLiteral(fxChainEEnum, FxChain.FX_23);
-		addEEnumLiteral(fxChainEEnum, FxChain.FX_123);
-
-		initEEnum(lastStepEEnum, LastStep.class, "LastStep");
-		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_1);
-		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_2);
-		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_3);
-		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_4);
-		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_5);
-		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_6);
-		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_7);
-		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_8);
-		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_9);
-		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_10);
-		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_11);
-		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_12);
-		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_13);
-		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_14);
-		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_15);
-		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_16);
-
-		initEEnum(arpeggiatorScaleEEnum, ArpeggiatorScale.class, "ArpeggiatorScale");
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.CHROMATIC);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.IONIAN);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.DORIAN);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.PHRYGIAN);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.LYDIAN);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MIXOLYDIAN);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.AEOLIAN);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.LOCRIAN);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MAJOR_BLUES);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MINOR_BLUES);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.DIMINISH);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.COMBINATION_DIMINISH);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MAJOR_PENTATONIC);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MINOR_PENTATONIC);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.RAGA_BHAIRAV);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.RAGA_GAMANASRAMA);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.RAGA_TODI);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.SPANISH_SCALE);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.GYPSY_SCALE);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.ARABIAN_SCALE);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.EGYPTIAN_SCALE);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.HAWAIIAN_SCALE);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.BALI_ISLAND_SCALE);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.JAPANESE_MIYAKOBUSHI);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.RYUKYU_SCALE);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.WHOLETONE);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MINOR_3RD_INTERVAL);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MAJOR_3RD_INTERVAL);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.FOURTH_INTERVAL);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.FIFTH_INTERVAL);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.OCTAVE_INTERVAL);
-
-		initEEnum(noteNumberEEnum, NoteNumber.class, "NoteNumber");
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.CN1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.CSN1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.DN1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.DSN1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.EN1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.FN1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.FSN1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.GN1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.GSN1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.AN1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.ASN1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.BN1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.C0);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS10);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.D0);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS0);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.E0);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.F0);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS0);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.G0);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.GS0);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.A0);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.AS0);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.B0);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.C1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS11);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.D1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.E1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.F1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.G1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.GS1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.A1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.AS1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.B1);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.C2);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS12);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.D2);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS2);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.E2);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.F2);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS2);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.G2);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.GS2);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.A2);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.AS2);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.B2);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.C3);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS13);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.D3);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS3);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.E3);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.F3);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS3);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.G3);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.GS3);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.A3);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.AS3);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.B3);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.C4);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS14);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.D4);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS4);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.E4);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.F4);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS4);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.G4);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.GS4);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.A4);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.AS4);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.B4);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.C5);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS15);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.D5);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS5);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.E5);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.F5);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS5);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.G5);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.GS5);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.A5);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.AS5);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.B5);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.C6);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS16);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.D6);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS6);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.E6);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.F6);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS6);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.G6);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.GS6);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.A6);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.AS6);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.B6);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.C7);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS17);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.D7);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS7);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.E7);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.F7);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS7);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.G7);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.GS7);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.A7);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.AS7);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.B7);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.C8);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS18);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.D8);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS8);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.E8);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.F8);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS8);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.G8);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.GS8);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.A8);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.AS8);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.B8);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.C9);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.CS19);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.D9);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.DS9);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.E9);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.F9);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS9);
-		addEEnumLiteral(noteNumberEEnum, NoteNumber.G9);
-
-		initEEnum(filterTypeEEnum, FilterType.class, "FilterType");
-		addEEnumLiteral(filterTypeEEnum, FilterType.LPF);
-		addEEnumLiteral(filterTypeEEnum, FilterType.HPF);
-		addEEnumLiteral(filterTypeEEnum, FilterType.BPF);
-		addEEnumLiteral(filterTypeEEnum, FilterType.BPF_PLUS);
-
-		initEEnum(fxSelectEEnum, FxSelect.class, "FxSelect");
-		addEEnumLiteral(fxSelectEEnum, FxSelect.FX1);
-		addEEnumLiteral(fxSelectEEnum, FxSelect.FX2);
-		addEEnumLiteral(fxSelectEEnum, FxSelect.FX3);
-
-		initEEnum(fxSendEEnum, FxSend.class, "FxSend");
-		addEEnumLiteral(fxSendEEnum, FxSend.OFF);
-		addEEnumLiteral(fxSendEEnum, FxSend.ON);
-
-		initEEnum(fxTypeEEnum, FxType.class, "FxType");
-		addEEnumLiteral(fxTypeEEnum, FxType.REVERB);
-		addEEnumLiteral(fxTypeEEnum, FxType.BPM_SYNC_DELAY);
-		addEEnumLiteral(fxTypeEEnum, FxType.SHORT_DELAY);
-		addEEnumLiteral(fxTypeEEnum, FxType.MOD_DELAY);
-		addEEnumLiteral(fxTypeEEnum, FxType.GRAIN_SHIFTER);
-		addEEnumLiteral(fxTypeEEnum, FxType.CHO_FLG);
-		addEEnumLiteral(fxTypeEEnum, FxType.PHASER);
-		addEEnumLiteral(fxTypeEEnum, FxType.RING_MOD);
-		addEEnumLiteral(fxTypeEEnum, FxType.TALKING_MOD);
-		addEEnumLiteral(fxTypeEEnum, FxType.PITCH_SHIFTER);
-		addEEnumLiteral(fxTypeEEnum, FxType.COMPRESSOR);
-		addEEnumLiteral(fxTypeEEnum, FxType.DISTORTION);
-		addEEnumLiteral(fxTypeEEnum, FxType.DECIMATOR);
-		addEEnumLiteral(fxTypeEEnum, FxType.EQ);
-		addEEnumLiteral(fxTypeEEnum, FxType.LPF);
-		addEEnumLiteral(fxTypeEEnum, FxType.HPF);
-
-		initEEnum(rollEEnum, Roll.class, "Roll");
-		addEEnumLiteral(rollEEnum, Roll.OFF);
-		addEEnumLiteral(rollEEnum, Roll.ON);
-
-		initEEnum(ampEgEEnum, AmpEg.class, "AmpEg");
-		addEEnumLiteral(ampEgEEnum, AmpEg.GATE);
-		addEEnumLiteral(ampEgEEnum, AmpEg.EG);
-
-		initEEnum(reverseEEnum, Reverse.class, "Reverse");
-		addEEnumLiteral(reverseEEnum, Reverse.OFF);
-		addEEnumLiteral(reverseEEnum, Reverse.ON);
-
-		initEEnum(modDestEEnum, ModDest.class, "ModDest");
-		addEEnumLiteral(modDestEEnum, ModDest.PITCH);
-		addEEnumLiteral(modDestEEnum, ModDest.CUTOFF);
-		addEEnumLiteral(modDestEEnum, ModDest.AMP);
-		addEEnumLiteral(modDestEEnum, ModDest.PAN);
-
-		initEEnum(modTypeEEnum, ModType.class, "ModType");
-		addEEnumLiteral(modTypeEEnum, ModType.SAWTOOTH);
-		addEEnumLiteral(modTypeEEnum, ModType.SQUARE);
-		addEEnumLiteral(modTypeEEnum, ModType.TRIANGLE);
-		addEEnumLiteral(modTypeEEnum, ModType.SAND_H);
-		addEEnumLiteral(modTypeEEnum, ModType.ENVELOPE);
-
-		initEEnum(bpmSyncEEnum, BpmSync.class, "BpmSync");
-		addEEnumLiteral(bpmSyncEEnum, BpmSync.OFF);
-		addEEnumLiteral(bpmSyncEEnum, BpmSync.ON);
-
-		initEEnum(motionSequenceStatusEEnum, MotionSequenceStatus.class, "MotionSequenceStatus");
-		addEEnumLiteral(motionSequenceStatusEEnum, MotionSequenceStatus.OFF);
-		addEEnumLiteral(motionSequenceStatusEEnum, MotionSequenceStatus.SMOOTH);
-		addEEnumLiteral(motionSequenceStatusEEnum, MotionSequenceStatus.TRIG_HOLD);
+		initEEnum(tempoLockEEnum, TempoLock.class, "TempoLock");
+		addEEnumLiteral(tempoLockEEnum, TempoLock.TEMPO_LOCK_OFF);
+		addEEnumLiteral(tempoLockEEnum, TempoLock.TEMPO_LOCK_ON);
 
 		// Initialize data types
-		initEDataType(objectEDataType, Object.class, "Object", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(arrayListEDataType, ArrayList.class, "ArrayList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(objectEDataType, Object.class, "Object", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

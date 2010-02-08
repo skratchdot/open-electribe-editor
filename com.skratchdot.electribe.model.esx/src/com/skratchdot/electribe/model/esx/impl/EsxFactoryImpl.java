@@ -128,31 +128,31 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 		switch (eClass.getClassifierID()) {
 			case EsxPackage.ESX_FILE: return createEsxFile();
 			case EsxPackage.GLOBAL_PARAMETERS: return createGlobalParameters();
-			case EsxPackage.PATTERN_SET_PARAMETER: return createPatternSetParameter();
 			case EsxPackage.MIDI_CHANNEL_TYPE: return createMidiChannelType();
-			case EsxPackage.PART_NOTE_NUMBER: return createPartNoteNumber();
 			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT: return createMidiControlChangeAssignment();
 			case EsxPackage.PARAMETERS_FX: return createParametersFx();
 			case EsxPackage.PARAMETERS_MOTION: return createParametersMotion();
-			case EsxPackage.SEQUENCE_DATA: return createSequenceData();
-			case EsxPackage.SEQUENCE_DATA_GATE: return createSequenceDataGate();
-			case EsxPackage.SEQUENCE_DATA_NOTE: return createSequenceDataNote();
 			case EsxPackage.PART_ACCENT: return createPartAccent();
 			case EsxPackage.PART_AUDIO_IN: return createPartAudioIn();
 			case EsxPackage.PART_DRUM: return createPartDrum();
 			case EsxPackage.PART_KEYBOARD: return createPartKeyboard();
+			case EsxPackage.PART_NOTE_NUMBER: return createPartNoteNumber();
 			case EsxPackage.PART_STRETCH_SLICE: return createPartStretchSlice();
 			case EsxPackage.PATTERN: return createPattern();
+			case EsxPackage.PATTERN_SET_PARAMETER: return createPatternSetParameter();
 			case EsxPackage.SAMPLE_MONO: return createSampleMono();
 			case EsxPackage.SAMPLE_STEREO: return createSampleStereo();
 			case EsxPackage.SAMPLE_TUNE: return createSampleTune();
+			case EsxPackage.SEQUENCE_DATA: return createSequenceData();
+			case EsxPackage.SEQUENCE_DATA_GATE: return createSequenceDataGate();
+			case EsxPackage.SEQUENCE_DATA_NOTE: return createSequenceDataNote();
 			case EsxPackage.SONG: return createSong();
-			case EsxPackage.SONG_PATTERN: return createSongPattern();
 			case EsxPackage.SONG_EVENT_CONTROL: return createSongEventControl();
 			case EsxPackage.SONG_EVENT_DRUM_NOTE: return createSongEventDrumNote();
 			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE: return createSongEventKeyboardNote();
-			case EsxPackage.SONG_EVENT_TEMPO: return createSongEventTempo();
 			case EsxPackage.SONG_EVENT_MUTE_STATUS: return createSongEventMuteStatus();
+			case EsxPackage.SONG_EVENT_TEMPO: return createSongEventTempo();
+			case EsxPackage.SONG_PATTERN: return createSongPattern();
 			case EsxPackage.TEMPO: return createTempo();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -167,78 +167,78 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case EsxPackage.AMP_EG:
+				return createAmpEgFromString(eDataType, initialValue);
 			case EsxPackage.ARPEGGIATOR_CONTROL:
 				return createArpeggiatorControlFromString(eDataType, initialValue);
-			case EsxPackage.AUDIO_IN_MODE:
-				return createAudioInModeFromString(eDataType, initialValue);
-			case EsxPackage.MIDI_CLOCK:
-				return createMidiClockFromString(eDataType, initialValue);
-			case EsxPackage.ENABLED_FLAG:
-				return createEnabledFlagFromString(eDataType, initialValue);
-			case EsxPackage.PITCH_BEND_RANGE:
-				return createPitchBendRangeFromString(eDataType, initialValue);
-			case EsxPackage.MIDI_CHANNEL:
-				return createMidiChannelFromString(eDataType, initialValue);
-			case EsxPackage.PLAY_LEVEL:
-				return createPlayLevelFromString(eDataType, initialValue);
-			case EsxPackage.PATTERN_NUMBER:
-				return createPatternNumberFromString(eDataType, initialValue);
-			case EsxPackage.SAMPLE_NUMBER:
-				return createSampleNumberFromString(eDataType, initialValue);
-			case EsxPackage.SONG_NUMBER:
-				return createSongNumberFromString(eDataType, initialValue);
-			case EsxPackage.SONG_LENGTH:
-				return createSongLengthFromString(eDataType, initialValue);
-			case EsxPackage.TEMPO_LOCK:
-				return createTempoLockFromString(eDataType, initialValue);
-			case EsxPackage.MUTE_HOLD:
-				return createMuteHoldFromString(eDataType, initialValue);
-			case EsxPackage.NEXT_SONG_NUMBER:
-				return createNextSongNumberFromString(eDataType, initialValue);
-			case EsxPackage.STRETCH_STEP:
-				return createStretchStepFromString(eDataType, initialValue);
-			case EsxPackage.SWING:
-				return createSwingFromString(eDataType, initialValue);
-			case EsxPackage.PATTERN_LENGTH:
-				return createPatternLengthFromString(eDataType, initialValue);
-			case EsxPackage.BEAT:
-				return createBeatFromString(eDataType, initialValue);
-			case EsxPackage.ROLL_TYPE:
-				return createRollTypeFromString(eDataType, initialValue);
-			case EsxPackage.FX_CHAIN:
-				return createFxChainFromString(eDataType, initialValue);
-			case EsxPackage.LAST_STEP:
-				return createLastStepFromString(eDataType, initialValue);
 			case EsxPackage.ARPEGGIATOR_SCALE:
 				return createArpeggiatorScaleFromString(eDataType, initialValue);
-			case EsxPackage.NOTE_NUMBER:
-				return createNoteNumberFromString(eDataType, initialValue);
+			case EsxPackage.AUDIO_IN_MODE:
+				return createAudioInModeFromString(eDataType, initialValue);
+			case EsxPackage.BEAT:
+				return createBeatFromString(eDataType, initialValue);
+			case EsxPackage.BPM_SYNC:
+				return createBpmSyncFromString(eDataType, initialValue);
+			case EsxPackage.ENABLED_FLAG:
+				return createEnabledFlagFromString(eDataType, initialValue);
 			case EsxPackage.FILTER_TYPE:
 				return createFilterTypeFromString(eDataType, initialValue);
+			case EsxPackage.FX_CHAIN:
+				return createFxChainFromString(eDataType, initialValue);
 			case EsxPackage.FX_SELECT:
 				return createFxSelectFromString(eDataType, initialValue);
 			case EsxPackage.FX_SEND:
 				return createFxSendFromString(eDataType, initialValue);
 			case EsxPackage.FX_TYPE:
 				return createFxTypeFromString(eDataType, initialValue);
-			case EsxPackage.ROLL:
-				return createRollFromString(eDataType, initialValue);
-			case EsxPackage.AMP_EG:
-				return createAmpEgFromString(eDataType, initialValue);
-			case EsxPackage.REVERSE:
-				return createReverseFromString(eDataType, initialValue);
+			case EsxPackage.LAST_STEP:
+				return createLastStepFromString(eDataType, initialValue);
+			case EsxPackage.MIDI_CHANNEL:
+				return createMidiChannelFromString(eDataType, initialValue);
+			case EsxPackage.MIDI_CLOCK:
+				return createMidiClockFromString(eDataType, initialValue);
 			case EsxPackage.MOD_DEST:
 				return createModDestFromString(eDataType, initialValue);
 			case EsxPackage.MOD_TYPE:
 				return createModTypeFromString(eDataType, initialValue);
-			case EsxPackage.BPM_SYNC:
-				return createBpmSyncFromString(eDataType, initialValue);
 			case EsxPackage.MOTION_SEQUENCE_STATUS:
 				return createMotionSequenceStatusFromString(eDataType, initialValue);
-			case EsxPackage.OBJECT:
-				return createObjectFromString(eDataType, initialValue);
+			case EsxPackage.MUTE_HOLD:
+				return createMuteHoldFromString(eDataType, initialValue);
+			case EsxPackage.NEXT_SONG_NUMBER:
+				return createNextSongNumberFromString(eDataType, initialValue);
+			case EsxPackage.NOTE_NUMBER:
+				return createNoteNumberFromString(eDataType, initialValue);
+			case EsxPackage.PATTERN_LENGTH:
+				return createPatternLengthFromString(eDataType, initialValue);
+			case EsxPackage.PATTERN_NUMBER:
+				return createPatternNumberFromString(eDataType, initialValue);
+			case EsxPackage.PITCH_BEND_RANGE:
+				return createPitchBendRangeFromString(eDataType, initialValue);
+			case EsxPackage.PLAY_LEVEL:
+				return createPlayLevelFromString(eDataType, initialValue);
+			case EsxPackage.REVERSE:
+				return createReverseFromString(eDataType, initialValue);
+			case EsxPackage.ROLL:
+				return createRollFromString(eDataType, initialValue);
+			case EsxPackage.ROLL_TYPE:
+				return createRollTypeFromString(eDataType, initialValue);
+			case EsxPackage.SAMPLE_NUMBER:
+				return createSampleNumberFromString(eDataType, initialValue);
+			case EsxPackage.SONG_LENGTH:
+				return createSongLengthFromString(eDataType, initialValue);
+			case EsxPackage.SONG_NUMBER:
+				return createSongNumberFromString(eDataType, initialValue);
+			case EsxPackage.STRETCH_STEP:
+				return createStretchStepFromString(eDataType, initialValue);
+			case EsxPackage.SWING:
+				return createSwingFromString(eDataType, initialValue);
+			case EsxPackage.TEMPO_LOCK:
+				return createTempoLockFromString(eDataType, initialValue);
 			case EsxPackage.ARRAY_LIST:
 				return createArrayListFromString(eDataType, initialValue);
+			case EsxPackage.OBJECT:
+				return createObjectFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -252,78 +252,78 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case EsxPackage.AMP_EG:
+				return convertAmpEgToString(eDataType, instanceValue);
 			case EsxPackage.ARPEGGIATOR_CONTROL:
 				return convertArpeggiatorControlToString(eDataType, instanceValue);
-			case EsxPackage.AUDIO_IN_MODE:
-				return convertAudioInModeToString(eDataType, instanceValue);
-			case EsxPackage.MIDI_CLOCK:
-				return convertMidiClockToString(eDataType, instanceValue);
-			case EsxPackage.ENABLED_FLAG:
-				return convertEnabledFlagToString(eDataType, instanceValue);
-			case EsxPackage.PITCH_BEND_RANGE:
-				return convertPitchBendRangeToString(eDataType, instanceValue);
-			case EsxPackage.MIDI_CHANNEL:
-				return convertMidiChannelToString(eDataType, instanceValue);
-			case EsxPackage.PLAY_LEVEL:
-				return convertPlayLevelToString(eDataType, instanceValue);
-			case EsxPackage.PATTERN_NUMBER:
-				return convertPatternNumberToString(eDataType, instanceValue);
-			case EsxPackage.SAMPLE_NUMBER:
-				return convertSampleNumberToString(eDataType, instanceValue);
-			case EsxPackage.SONG_NUMBER:
-				return convertSongNumberToString(eDataType, instanceValue);
-			case EsxPackage.SONG_LENGTH:
-				return convertSongLengthToString(eDataType, instanceValue);
-			case EsxPackage.TEMPO_LOCK:
-				return convertTempoLockToString(eDataType, instanceValue);
-			case EsxPackage.MUTE_HOLD:
-				return convertMuteHoldToString(eDataType, instanceValue);
-			case EsxPackage.NEXT_SONG_NUMBER:
-				return convertNextSongNumberToString(eDataType, instanceValue);
-			case EsxPackage.STRETCH_STEP:
-				return convertStretchStepToString(eDataType, instanceValue);
-			case EsxPackage.SWING:
-				return convertSwingToString(eDataType, instanceValue);
-			case EsxPackage.PATTERN_LENGTH:
-				return convertPatternLengthToString(eDataType, instanceValue);
-			case EsxPackage.BEAT:
-				return convertBeatToString(eDataType, instanceValue);
-			case EsxPackage.ROLL_TYPE:
-				return convertRollTypeToString(eDataType, instanceValue);
-			case EsxPackage.FX_CHAIN:
-				return convertFxChainToString(eDataType, instanceValue);
-			case EsxPackage.LAST_STEP:
-				return convertLastStepToString(eDataType, instanceValue);
 			case EsxPackage.ARPEGGIATOR_SCALE:
 				return convertArpeggiatorScaleToString(eDataType, instanceValue);
-			case EsxPackage.NOTE_NUMBER:
-				return convertNoteNumberToString(eDataType, instanceValue);
+			case EsxPackage.AUDIO_IN_MODE:
+				return convertAudioInModeToString(eDataType, instanceValue);
+			case EsxPackage.BEAT:
+				return convertBeatToString(eDataType, instanceValue);
+			case EsxPackage.BPM_SYNC:
+				return convertBpmSyncToString(eDataType, instanceValue);
+			case EsxPackage.ENABLED_FLAG:
+				return convertEnabledFlagToString(eDataType, instanceValue);
 			case EsxPackage.FILTER_TYPE:
 				return convertFilterTypeToString(eDataType, instanceValue);
+			case EsxPackage.FX_CHAIN:
+				return convertFxChainToString(eDataType, instanceValue);
 			case EsxPackage.FX_SELECT:
 				return convertFxSelectToString(eDataType, instanceValue);
 			case EsxPackage.FX_SEND:
 				return convertFxSendToString(eDataType, instanceValue);
 			case EsxPackage.FX_TYPE:
 				return convertFxTypeToString(eDataType, instanceValue);
-			case EsxPackage.ROLL:
-				return convertRollToString(eDataType, instanceValue);
-			case EsxPackage.AMP_EG:
-				return convertAmpEgToString(eDataType, instanceValue);
-			case EsxPackage.REVERSE:
-				return convertReverseToString(eDataType, instanceValue);
+			case EsxPackage.LAST_STEP:
+				return convertLastStepToString(eDataType, instanceValue);
+			case EsxPackage.MIDI_CHANNEL:
+				return convertMidiChannelToString(eDataType, instanceValue);
+			case EsxPackage.MIDI_CLOCK:
+				return convertMidiClockToString(eDataType, instanceValue);
 			case EsxPackage.MOD_DEST:
 				return convertModDestToString(eDataType, instanceValue);
 			case EsxPackage.MOD_TYPE:
 				return convertModTypeToString(eDataType, instanceValue);
-			case EsxPackage.BPM_SYNC:
-				return convertBpmSyncToString(eDataType, instanceValue);
 			case EsxPackage.MOTION_SEQUENCE_STATUS:
 				return convertMotionSequenceStatusToString(eDataType, instanceValue);
-			case EsxPackage.OBJECT:
-				return convertObjectToString(eDataType, instanceValue);
+			case EsxPackage.MUTE_HOLD:
+				return convertMuteHoldToString(eDataType, instanceValue);
+			case EsxPackage.NEXT_SONG_NUMBER:
+				return convertNextSongNumberToString(eDataType, instanceValue);
+			case EsxPackage.NOTE_NUMBER:
+				return convertNoteNumberToString(eDataType, instanceValue);
+			case EsxPackage.PATTERN_LENGTH:
+				return convertPatternLengthToString(eDataType, instanceValue);
+			case EsxPackage.PATTERN_NUMBER:
+				return convertPatternNumberToString(eDataType, instanceValue);
+			case EsxPackage.PITCH_BEND_RANGE:
+				return convertPitchBendRangeToString(eDataType, instanceValue);
+			case EsxPackage.PLAY_LEVEL:
+				return convertPlayLevelToString(eDataType, instanceValue);
+			case EsxPackage.REVERSE:
+				return convertReverseToString(eDataType, instanceValue);
+			case EsxPackage.ROLL:
+				return convertRollToString(eDataType, instanceValue);
+			case EsxPackage.ROLL_TYPE:
+				return convertRollTypeToString(eDataType, instanceValue);
+			case EsxPackage.SAMPLE_NUMBER:
+				return convertSampleNumberToString(eDataType, instanceValue);
+			case EsxPackage.SONG_LENGTH:
+				return convertSongLengthToString(eDataType, instanceValue);
+			case EsxPackage.SONG_NUMBER:
+				return convertSongNumberToString(eDataType, instanceValue);
+			case EsxPackage.STRETCH_STEP:
+				return convertStretchStepToString(eDataType, instanceValue);
+			case EsxPackage.SWING:
+				return convertSwingToString(eDataType, instanceValue);
+			case EsxPackage.TEMPO_LOCK:
+				return convertTempoLockToString(eDataType, instanceValue);
 			case EsxPackage.ARRAY_LIST:
 				return convertArrayListToString(eDataType, instanceValue);
+			case EsxPackage.OBJECT:
+				return convertObjectToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}

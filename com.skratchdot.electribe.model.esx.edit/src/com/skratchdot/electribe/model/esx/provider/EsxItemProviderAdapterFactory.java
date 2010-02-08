@@ -828,31 +828,31 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	public void dispose() {
 		if (esxFileItemProvider != null) esxFileItemProvider.dispose();
 		if (globalParametersItemProvider != null) globalParametersItemProvider.dispose();
-		if (patternSetParameterItemProvider != null) patternSetParameterItemProvider.dispose();
 		if (midiChannelTypeItemProvider != null) midiChannelTypeItemProvider.dispose();
-		if (partNoteNumberItemProvider != null) partNoteNumberItemProvider.dispose();
 		if (midiControlChangeAssignmentItemProvider != null) midiControlChangeAssignmentItemProvider.dispose();
 		if (parametersFxItemProvider != null) parametersFxItemProvider.dispose();
 		if (parametersMotionItemProvider != null) parametersMotionItemProvider.dispose();
-		if (sequenceDataItemProvider != null) sequenceDataItemProvider.dispose();
-		if (sequenceDataGateItemProvider != null) sequenceDataGateItemProvider.dispose();
-		if (sequenceDataNoteItemProvider != null) sequenceDataNoteItemProvider.dispose();
 		if (partAccentItemProvider != null) partAccentItemProvider.dispose();
 		if (partAudioInItemProvider != null) partAudioInItemProvider.dispose();
 		if (partDrumItemProvider != null) partDrumItemProvider.dispose();
 		if (partKeyboardItemProvider != null) partKeyboardItemProvider.dispose();
+		if (partNoteNumberItemProvider != null) partNoteNumberItemProvider.dispose();
 		if (partStretchSliceItemProvider != null) partStretchSliceItemProvider.dispose();
 		if (patternItemProvider != null) patternItemProvider.dispose();
+		if (patternSetParameterItemProvider != null) patternSetParameterItemProvider.dispose();
 		if (sampleMonoItemProvider != null) sampleMonoItemProvider.dispose();
 		if (sampleStereoItemProvider != null) sampleStereoItemProvider.dispose();
 		if (sampleTuneItemProvider != null) sampleTuneItemProvider.dispose();
+		if (sequenceDataItemProvider != null) sequenceDataItemProvider.dispose();
+		if (sequenceDataGateItemProvider != null) sequenceDataGateItemProvider.dispose();
+		if (sequenceDataNoteItemProvider != null) sequenceDataNoteItemProvider.dispose();
 		if (songItemProvider != null) songItemProvider.dispose();
-		if (songPatternItemProvider != null) songPatternItemProvider.dispose();
 		if (songEventControlItemProvider != null) songEventControlItemProvider.dispose();
 		if (songEventDrumNoteItemProvider != null) songEventDrumNoteItemProvider.dispose();
 		if (songEventKeyboardNoteItemProvider != null) songEventKeyboardNoteItemProvider.dispose();
-		if (songEventTempoItemProvider != null) songEventTempoItemProvider.dispose();
 		if (songEventMuteStatusItemProvider != null) songEventMuteStatusItemProvider.dispose();
+		if (songEventTempoItemProvider != null) songEventTempoItemProvider.dispose();
+		if (songPatternItemProvider != null) songPatternItemProvider.dispose();
 		if (tempoItemProvider != null) tempoItemProvider.dispose();
 	}
 
