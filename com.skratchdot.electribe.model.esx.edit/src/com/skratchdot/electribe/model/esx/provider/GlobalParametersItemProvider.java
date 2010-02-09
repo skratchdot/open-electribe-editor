@@ -12,6 +12,7 @@
 package com.skratchdot.electribe.model.esx.provider;
 
 
+import com.skratchdot.electribe.model.esx.EnabledFlag;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -81,9 +82,6 @@ public class GlobalParametersItemProvider
 			addPitchBendRangePropertyDescriptor(object);
 			addReservedLongPropertyDescriptor(object);
 			addPatternSetParametersPropertyDescriptor(object);
-			addMidiChannelNamesPropertyDescriptor(object);
-			addPartNoteNumberNamesPropertyDescriptor(object);
-			addMidiControlChangeAssignmentNamesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -375,72 +373,6 @@ public class GlobalParametersItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Midi Channel Names feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addMidiChannelNamesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GlobalParameters_midiChannelNames_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GlobalParameters_midiChannelNames_feature", "_UI_GlobalParameters_type"),
-				 EsxPackage.Literals.GLOBAL_PARAMETERS__MIDI_CHANNEL_NAMES,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Part Note Number Names feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPartNoteNumberNamesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GlobalParameters_partNoteNumberNames_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GlobalParameters_partNoteNumberNames_feature", "_UI_GlobalParameters_type"),
-				 EsxPackage.Literals.GLOBAL_PARAMETERS__PART_NOTE_NUMBER_NAMES,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Midi Control Change Assignment Names feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addMidiControlChangeAssignmentNamesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GlobalParameters_midiControlChangeAssignmentNames_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GlobalParameters_midiControlChangeAssignmentNames_feature", "_UI_GlobalParameters_type"),
-				 EsxPackage.Literals.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENT_NAMES,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -492,7 +424,7 @@ public class GlobalParametersItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Map labelValue = ((GlobalParameters)object).getMidiChannelNames();
+		EnabledFlag labelValue = ((GlobalParameters)object).getMemoryProtectEnabled();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_GlobalParameters_type") :
@@ -523,9 +455,6 @@ public class GlobalParametersItemProvider
 			case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED:
 			case EsxPackage.GLOBAL_PARAMETERS__PITCH_BEND_RANGE:
 			case EsxPackage.GLOBAL_PARAMETERS__RESERVED_LONG:
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNEL_NAMES:
-			case EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBER_NAMES:
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENT_NAMES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNELS:

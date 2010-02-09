@@ -70,9 +70,6 @@ import com.skratchdot.electribe.model.esx.util.EsxUtil;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.GlobalParametersImpl#getMidiControlChangeAssignments <em>Midi Control Change Assignments</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.GlobalParametersImpl#getReservedLong <em>Reserved Long</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.GlobalParametersImpl#getPatternSetParameters <em>Pattern Set Parameters</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.GlobalParametersImpl#getMidiChannelNames <em>Midi Channel Names</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.GlobalParametersImpl#getPartNoteNumberNames <em>Part Note Number Names</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.GlobalParametersImpl#getMidiControlChangeAssignmentNames <em>Midi Control Change Assignment Names</em>}</li>
  * </ul>
  * </p>
  *
@@ -358,36 +355,6 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	 * @ordered
 	 */
 	protected EList<PatternSetParameter> patternSetParameters;
-
-	/**
-	 * The cached value of the '{@link #getMidiChannelNames() <em>Midi Channel Names</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMidiChannelNames()
-	 * @generated
-	 * @ordered
-	 */
-	protected Map<Integer, String> midiChannelNames;
-
-	/**
-	 * The cached value of the '{@link #getPartNoteNumberNames() <em>Part Note Number Names</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPartNoteNumberNames()
-	 * @generated
-	 * @ordered
-	 */
-	protected Map<Integer, String> partNoteNumberNames;
-
-	/**
-	 * The cached value of the '{@link #getMidiControlChangeAssignmentNames() <em>Midi Control Change Assignment Names</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMidiControlChangeAssignmentNames()
-	 * @generated
-	 * @ordered
-	 */
-	protected Map<Integer, String> midiControlChangeAssignmentNames;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -768,69 +735,6 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map<Integer, String> getMidiChannelNames() {
-		return midiChannelNames;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMidiChannelNames(Map<Integer, String> newMidiChannelNames) {
-		Map<Integer, String> oldMidiChannelNames = midiChannelNames;
-		midiChannelNames = newMidiChannelNames;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNEL_NAMES, oldMidiChannelNames, midiChannelNames));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Map<Integer, String> getPartNoteNumberNames() {
-		return partNoteNumberNames;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPartNoteNumberNames(Map<Integer, String> newPartNoteNumberNames) {
-		Map<Integer, String> oldPartNoteNumberNames = partNoteNumberNames;
-		partNoteNumberNames = newPartNoteNumberNames;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBER_NAMES, oldPartNoteNumberNames, partNoteNumberNames));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Map<Integer, String> getMidiControlChangeAssignmentNames() {
-		return midiControlChangeAssignmentNames;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMidiControlChangeAssignmentNames(Map<Integer, String> newMidiControlChangeAssignmentNames) {
-		Map<Integer, String> oldMidiControlChangeAssignmentNames = midiControlChangeAssignmentNames;
-		midiControlChangeAssignmentNames = newMidiControlChangeAssignmentNames;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENT_NAMES, oldMidiControlChangeAssignmentNames, midiControlChangeAssignmentNames));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -886,12 +790,6 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 				return getReservedLong();
 			case EsxPackage.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS:
 				return getPatternSetParameters();
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNEL_NAMES:
-				return getMidiChannelNames();
-			case EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBER_NAMES:
-				return getPartNoteNumberNames();
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENT_NAMES:
-				return getMidiControlChangeAssignmentNames();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -957,15 +855,6 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 				getPatternSetParameters().clear();
 				getPatternSetParameters().addAll((Collection<? extends PatternSetParameter>)newValue);
 				return;
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNEL_NAMES:
-				setMidiChannelNames((Map<Integer, String>)newValue);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBER_NAMES:
-				setPartNoteNumberNames((Map<Integer, String>)newValue);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENT_NAMES:
-				setMidiControlChangeAssignmentNames((Map<Integer, String>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1026,15 +915,6 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 			case EsxPackage.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS:
 				getPatternSetParameters().clear();
 				return;
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNEL_NAMES:
-				setMidiChannelNames((Map<Integer, String>)null);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBER_NAMES:
-				setPartNoteNumberNames((Map<Integer, String>)null);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENT_NAMES:
-				setMidiControlChangeAssignmentNames((Map<Integer, String>)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1079,12 +959,6 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 				return reservedLong != RESERVED_LONG_EDEFAULT;
 			case EsxPackage.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS:
 				return patternSetParameters != null && !patternSetParameters.isEmpty();
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNEL_NAMES:
-				return midiChannelNames != null;
-			case EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBER_NAMES:
-				return partNoteNumberNames != null;
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENT_NAMES:
-				return midiControlChangeAssignmentNames != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1123,12 +997,6 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 		result.append(pitchBendRange);
 		result.append(", reservedLong: ");
 		result.append(reservedLong);
-		result.append(", midiChannelNames: ");
-		result.append(midiChannelNames);
-		result.append(", partNoteNumberNames: ");
-		result.append(partNoteNumberNames);
-		result.append(", midiControlChangeAssignmentNames: ");
-		result.append(midiControlChangeAssignmentNames);
 		result.append(')');
 		return result.toString();
 	}

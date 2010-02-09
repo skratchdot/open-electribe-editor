@@ -45,9 +45,6 @@ import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
  *   <li>{@link com.skratchdot.electribe.model.esx.GlobalParameters#getMidiControlChangeAssignments <em>Midi Control Change Assignments</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.GlobalParameters#getReservedLong <em>Reserved Long</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.GlobalParameters#getPatternSetParameters <em>Pattern Set Parameters</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.GlobalParameters#getMidiChannelNames <em>Midi Channel Names</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.GlobalParameters#getPartNoteNumberNames <em>Part Note Number Names</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.GlobalParameters#getMidiControlChangeAssignmentNames <em>Midi Control Change Assignment Names</em>}</li>
  * </ul>
  * </p>
  *
@@ -458,84 +455,6 @@ public interface GlobalParameters extends EObject {
 	 * @generated
 	 */
 	EList<PatternSetParameter> getPatternSetParameters();
-
-	/**
-	 * Returns the value of the '<em><b>Midi Channel Names</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Midi Channel Names</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Midi Channel Names</em>' attribute.
-	 * @see #setMidiChannelNames(Map)
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getGlobalParameters_MidiChannelNames()
-	 * @model transient="true"
-	 * @generated
-	 */
-	Map<Integer, String> getMidiChannelNames();
-
-	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.GlobalParameters#getMidiChannelNames <em>Midi Channel Names</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Midi Channel Names</em>' attribute.
-	 * @see #getMidiChannelNames()
-	 * @generated
-	 */
-	void setMidiChannelNames(Map<Integer, String> value);
-
-	/**
-	 * Returns the value of the '<em><b>Part Note Number Names</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Part Note Number Names</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Part Note Number Names</em>' attribute.
-	 * @see #setPartNoteNumberNames(Map)
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getGlobalParameters_PartNoteNumberNames()
-	 * @model transient="true"
-	 * @generated
-	 */
-	Map<Integer, String> getPartNoteNumberNames();
-
-	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.GlobalParameters#getPartNoteNumberNames <em>Part Note Number Names</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Part Note Number Names</em>' attribute.
-	 * @see #getPartNoteNumberNames()
-	 * @generated
-	 */
-	void setPartNoteNumberNames(Map<Integer, String> value);
-
-	/**
-	 * Returns the value of the '<em><b>Midi Control Change Assignment Names</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Midi Control Change Assignment Names</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Midi Control Change Assignment Names</em>' attribute.
-	 * @see #setMidiControlChangeAssignmentNames(Map)
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getGlobalParameters_MidiControlChangeAssignmentNames()
-	 * @model transient="true"
-	 * @generated
-	 */
-	Map<Integer, String> getMidiControlChangeAssignmentNames();
-
-	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.GlobalParameters#getMidiControlChangeAssignmentNames <em>Midi Control Change Assignment Names</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Midi Control Change Assignment Names</em>' attribute.
-	 * @see #getMidiControlChangeAssignmentNames()
-	 * @generated
-	 */
-	void setMidiControlChangeAssignmentNames(Map<Integer, String> value);
 
 	void write(EsxRandomAccess out) throws EsxException, IOException;
 

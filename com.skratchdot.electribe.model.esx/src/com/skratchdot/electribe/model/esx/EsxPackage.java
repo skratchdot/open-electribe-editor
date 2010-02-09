@@ -411,40 +411,13 @@ public interface EsxPackage extends EPackage {
 	int GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS = 15;
 
 	/**
-	 * The feature id for the '<em><b>Midi Channel Names</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GLOBAL_PARAMETERS__MIDI_CHANNEL_NAMES = 16;
-
-	/**
-	 * The feature id for the '<em><b>Part Note Number Names</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GLOBAL_PARAMETERS__PART_NOTE_NUMBER_NAMES = 17;
-
-	/**
-	 * The feature id for the '<em><b>Midi Control Change Assignment Names</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENT_NAMES = 18;
-
-	/**
 	 * The number of structural features of the '<em>Global Parameters</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GLOBAL_PARAMETERS_FEATURE_COUNT = 19;
+	int GLOBAL_PARAMETERS_FEATURE_COUNT = 16;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.PatternSetParameterImpl <em>Pattern Set Parameter</em>}' class.
@@ -4685,39 +4658,6 @@ public interface EsxPackage extends EPackage {
 	EReference getGlobalParameters_PatternSetParameters();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.GlobalParameters#getMidiChannelNames <em>Midi Channel Names</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Midi Channel Names</em>'.
-	 * @see com.skratchdot.electribe.model.esx.GlobalParameters#getMidiChannelNames()
-	 * @see #getGlobalParameters()
-	 * @generated
-	 */
-	EAttribute getGlobalParameters_MidiChannelNames();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.GlobalParameters#getPartNoteNumberNames <em>Part Note Number Names</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Part Note Number Names</em>'.
-	 * @see com.skratchdot.electribe.model.esx.GlobalParameters#getPartNoteNumberNames()
-	 * @see #getGlobalParameters()
-	 * @generated
-	 */
-	EAttribute getGlobalParameters_PartNoteNumberNames();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.GlobalParameters#getMidiControlChangeAssignmentNames <em>Midi Control Change Assignment Names</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Midi Control Change Assignment Names</em>'.
-	 * @see com.skratchdot.electribe.model.esx.GlobalParameters#getMidiControlChangeAssignmentNames()
-	 * @see #getGlobalParameters()
-	 * @generated
-	 */
-	EAttribute getGlobalParameters_MidiControlChangeAssignmentNames();
-
-	/**
 	 * Returns the meta object for class '{@link com.skratchdot.electribe.model.esx.PatternSetParameter <em>Pattern Set Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7242,30 +7182,6 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EReference GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS = eINSTANCE.getGlobalParameters_PatternSetParameters();
-
-		/**
-		 * The meta object literal for the '<em><b>Midi Channel Names</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GLOBAL_PARAMETERS__MIDI_CHANNEL_NAMES = eINSTANCE.getGlobalParameters_MidiChannelNames();
-
-		/**
-		 * The meta object literal for the '<em><b>Part Note Number Names</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GLOBAL_PARAMETERS__PART_NOTE_NUMBER_NAMES = eINSTANCE.getGlobalParameters_PartNoteNumberNames();
-
-		/**
-		 * The meta object literal for the '<em><b>Midi Control Change Assignment Names</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENT_NAMES = eINSTANCE.getGlobalParameters_MidiControlChangeAssignmentNames();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.PatternSetParameterImpl <em>Pattern Set Parameter</em>}' class.

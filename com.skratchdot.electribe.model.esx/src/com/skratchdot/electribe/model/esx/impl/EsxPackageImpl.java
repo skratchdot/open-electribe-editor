@@ -1046,33 +1046,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGlobalParameters_MidiChannelNames() {
-		return (EAttribute)globalParametersEClass.getEStructuralFeatures().get(16);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getGlobalParameters_PartNoteNumberNames() {
-		return (EAttribute)globalParametersEClass.getEStructuralFeatures().get(17);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getGlobalParameters_MidiControlChangeAssignmentNames() {
-		return (EAttribute)globalParametersEClass.getEStructuralFeatures().get(18);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getPatternSetParameter() {
 		return patternSetParameterEClass;
 	}
@@ -2997,9 +2970,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEReference(globalParametersEClass, GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS);
 		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__RESERVED_LONG);
 		createEReference(globalParametersEClass, GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS);
-		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__MIDI_CHANNEL_NAMES);
-		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__PART_NOTE_NUMBER_NAMES);
-		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENT_NAMES);
 
 		midiChannelTypeEClass = createEClass(MIDI_CHANNEL_TYPE);
 		createEAttribute(midiChannelTypeEClass, MIDI_CHANNEL_TYPE__NAME);
@@ -3358,24 +3328,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEReference(getGlobalParameters_MidiControlChangeAssignments(), this.getMidiControlChangeAssignment(), null, "midiControlChangeAssignments", null, 33, 33, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGlobalParameters_ReservedLong(), ecorePackage.getELong(), "reservedLong", null, 0, 1, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGlobalParameters_PatternSetParameters(), this.getPatternSetParameter(), null, "patternSetParameters", null, 128, 128, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEMap());
-		g2 = createEGenericType(ecorePackage.getEIntegerObject());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(ecorePackage.getEString());
-		g1.getETypeArguments().add(g2);
-		initEAttribute(getGlobalParameters_MidiChannelNames(), g1, "midiChannelNames", null, 0, 1, GlobalParameters.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEMap());
-		g2 = createEGenericType(ecorePackage.getEIntegerObject());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(ecorePackage.getEString());
-		g1.getETypeArguments().add(g2);
-		initEAttribute(getGlobalParameters_PartNoteNumberNames(), g1, "partNoteNumberNames", null, 0, 1, GlobalParameters.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEMap());
-		g2 = createEGenericType(ecorePackage.getEIntegerObject());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(ecorePackage.getEString());
-		g1.getETypeArguments().add(g2);
-		initEAttribute(getGlobalParameters_MidiControlChangeAssignmentNames(), g1, "midiControlChangeAssignmentNames", null, 0, 1, GlobalParameters.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(midiChannelTypeEClass, MidiChannelType.class, "MidiChannelType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMidiChannelType_Name(), this.getMidiChannelTypeName(), "name", null, 0, 1, MidiChannelType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
