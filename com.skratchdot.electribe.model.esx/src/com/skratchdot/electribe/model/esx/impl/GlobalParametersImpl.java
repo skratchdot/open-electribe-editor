@@ -415,6 +415,7 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 		for (int i = 0; i < EsxUtil.NUM_PATTERN_SET_PARAMETERS; i++) {
 			PatternSetParameter patternSetParameter = EsxFactory.eINSTANCE.createPatternSetParameter();
 			patternSetParameter.setPatternNumber(PatternNumber.get(in.readUnsignedByte()));
+			patternSetParameter.setPositionOriginal(i);
 			this.getPatternSetParameters().add(i, patternSetParameter);
 		}
 

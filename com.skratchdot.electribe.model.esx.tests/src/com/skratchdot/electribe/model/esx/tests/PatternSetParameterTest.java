@@ -22,6 +22,12 @@ import junit.textui.TestRunner;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Pattern Set Parameter</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link com.skratchdot.electribe.model.esx.PatternSetParameter#getPositionCurrent() <em>Position Current</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class PatternSetParameterTest extends TestCase {
@@ -93,6 +99,19 @@ public class PatternSetParameterTest extends TestCase {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.PatternSetParameter#getPositionCurrent() <em>Position Current</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.PatternSetParameter#getPositionCurrent()
+	 * @generated
+	 */
+	public void testGetPositionCurrent() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 } //PatternSetParameterTest

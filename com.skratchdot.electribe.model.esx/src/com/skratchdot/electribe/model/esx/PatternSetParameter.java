@@ -22,6 +22,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.PatternSetParameter#getPatternNumber <em>Pattern Number</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.PatternSetParameter#getPositionCurrent <em>Position Current</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.PatternSetParameter#getPositionOriginal <em>Position Original</em>}</li>
  * </ul>
  * </p>
  *
@@ -58,5 +60,48 @@ public interface PatternSetParameter extends EObject {
 	 * @generated
 	 */
 	void setPatternNumber(PatternNumber value);
+
+	/**
+	 * Returns the value of the '<em><b>Position Current</b></em>' attribute.
+	 * The default value is <code>"-1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Position Current</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Position Current</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getPatternSetParameter_PositionCurrent()
+	 * @model default="-1" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	int getPositionCurrent();
+
+	/**
+	 * Returns the value of the '<em><b>Position Original</b></em>' attribute.
+	 * The default value is <code>"-1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Position Original</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Position Original</em>' attribute.
+	 * @see #setPositionOriginal(int)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getPatternSetParameter_PositionOriginal()
+	 * @model default="-1"
+	 * @generated
+	 */
+	int getPositionOriginal();
+
+	/**
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.PatternSetParameter#getPositionOriginal <em>Position Original</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Position Original</em>' attribute.
+	 * @see #getPositionOriginal()
+	 * @generated
+	 */
+	void setPositionOriginal(int value);
 
 } // PatternSetParameter

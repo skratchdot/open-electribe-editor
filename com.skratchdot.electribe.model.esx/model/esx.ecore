@@ -211,6 +211,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PatternSetParameter">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="patternNumber" eType="#//PatternNumber"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="positionCurrent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="-1"
+        derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="positionOriginal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="-1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Sample" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

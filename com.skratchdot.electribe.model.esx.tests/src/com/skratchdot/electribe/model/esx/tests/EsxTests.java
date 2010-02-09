@@ -42,6 +42,7 @@ public class EsxTests extends TestSuite {
 		TestSuite suite = new EsxTests("esx Tests");
 		suite.addTestSuite(EsxFileTest.class);
 		suite.addTestSuite(PatternTest.class);
+		suite.addTestSuite(PatternSetParameterTest.class);
 		suite.addTestSuite(SampleMonoTest.class);
 		suite.addTestSuite(SampleStereoTest.class);
 		suite.addTestSuite(SampleTuneTest.class);

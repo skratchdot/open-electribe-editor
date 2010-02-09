@@ -79,7 +79,8 @@ public class EsxCompositeGlobalParametersPatternSets extends EsxComposite {
 
 		// Create our columns
 		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Current Position", 120);
-		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Value", 120);
+		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Original Position", 120);
+		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Pattern Number", 120);
 
 		// Setup this.tableViewer ContentProvider
 		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
