@@ -73,6 +73,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
@@ -84,6 +86,7 @@ import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -1368,4 +1371,17 @@ public class EsxEditor
 	protected boolean showOutlineView() {
 		return false;
 	}
+
+	/**
+	 * @param tableViewer
+	 * @param text
+	 * @param width
+	 */
+	protected void addColumnToTableViewer(TableViewer tableViewer, String text, int width) {
+		TableViewerColumn tableViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
+		TableColumn column = tableViewerColumn.getColumn();
+		column.setText(text);
+		column.setWidth(width);
+	}
+	
 }

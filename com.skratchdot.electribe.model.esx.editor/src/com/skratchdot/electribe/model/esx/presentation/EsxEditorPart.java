@@ -196,18 +196,6 @@ public abstract class EsxEditorPart extends EditorPart
 	}
 
 	/**
-	 * @param tableViewer
-	 * @param text
-	 * @param width
-	 */
-	protected void addColumnToTableViewer(TableViewer tableViewer, String text, int width) {
-		TableViewerColumn tableViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
-		TableColumn column = tableViewerColumn.getColumn();
-		column.setText(text);
-		column.setWidth(width);
-	}
-
-	/**
 	 * @param viewer
 	 * @param scrollSpeedListener
 	 * @param scrollSpeed

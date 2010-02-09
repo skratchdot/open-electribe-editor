@@ -13,6 +13,7 @@ package com.skratchdot.electribe.model.esx.provider;
 
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.MidiControlChangeAssignment;
 import com.skratchdot.electribe.model.esx.PartNoteNumber;
 
 import com.skratchdot.electribe.model.esx.PartNoteNumberName;
@@ -143,6 +144,20 @@ public class PartNoteNumberItemProvider
 		return label == null || label.length() == 0 ?
 			getString("_UI_PartNoteNumber_type") :
 			getString("_UI_PartNoteNumber_type") + " " + label;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getColumnText(java.lang.Object, int)
+	 */
+	@Override
+	public String getColumnText(Object object, int columnIndex) {
+		switch(columnIndex) {
+			// Name
+			case 0: return ((PartNoteNumber) object).getName().toString();
+			// Value
+			case 1: return ((PartNoteNumber) object).getNoteNumber().getLiteral();
+			default: return getText(object);
+		}
 	}
 
 	/**

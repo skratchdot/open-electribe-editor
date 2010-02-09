@@ -88,15 +88,15 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 
 		// Create our columns
-		this.addColumnToTableViewer(this.tableViewerSongs, "Esx#", 45);
-		this.addColumnToTableViewer(this.tableViewerSongs, "Orig#", 45);
-		this.addColumnToTableViewer(this.tableViewerSongs, "Name", 100);
-		this.addColumnToTableViewer(this.tableViewerSongs, "Tempo", 100);
-		this.addColumnToTableViewer(this.tableViewerSongs, "TempoLock", 100);
-		this.addColumnToTableViewer(this.tableViewerSongs, "Length", 100);
-		this.addColumnToTableViewer(this.tableViewerSongs, "MuteHold", 100);
-		this.addColumnToTableViewer(this.tableViewerSongs, "NextSong", 100);
-		this.addColumnToTableViewer(this.tableViewerSongs, "NumOfEvents", 100);
+		this.parentEditor.addColumnToTableViewer(this.tableViewerSongs, "Esx#", 45);
+		this.parentEditor.addColumnToTableViewer(this.tableViewerSongs, "Orig#", 45);
+		this.parentEditor.addColumnToTableViewer(this.tableViewerSongs, "Name", 100);
+		this.parentEditor.addColumnToTableViewer(this.tableViewerSongs, "Tempo", 100);
+		this.parentEditor.addColumnToTableViewer(this.tableViewerSongs, "TempoLock", 100);
+		this.parentEditor.addColumnToTableViewer(this.tableViewerSongs, "Length", 100);
+		this.parentEditor.addColumnToTableViewer(this.tableViewerSongs, "MuteHold", 100);
+		this.parentEditor.addColumnToTableViewer(this.tableViewerSongs, "NextSong", 100);
+		this.parentEditor.addColumnToTableViewer(this.tableViewerSongs, "NumOfEvents", 100);
 
 		// Allow all the columns to be moved
 		TableColumn[] columns = table.getColumns();

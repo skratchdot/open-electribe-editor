@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -68,6 +69,13 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 */
 	protected BasicCommandStack getCommandStack() {
 		return ((BasicCommandStack)getEditingDomain().getCommandStack());
+	}
+
+	/**
+	 * @return
+	 */
+	protected AdapterFactory getAdapterFactory() {
+		return parentEditor.getAdapterFactory();
 	}
 
 	/**

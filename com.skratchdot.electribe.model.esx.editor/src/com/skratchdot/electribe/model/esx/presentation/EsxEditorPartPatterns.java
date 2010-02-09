@@ -121,21 +121,21 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 
 		// Create our columns
-		this.addColumnToTableViewer(this.tableViewer, "Esx#", 45);
-		this.addColumnToTableViewer(this.tableViewer, "Orig#", 45);
-		this.addColumnToTableViewer(this.tableViewer, "Name", 100);
-		this.addColumnToTableViewer(this.tableViewer, "Tempo", 50);
-		this.addColumnToTableViewer(this.tableViewer, "Swing", 50);
-		this.addColumnToTableViewer(this.tableViewer, "Length", 50);
-		this.addColumnToTableViewer(this.tableViewer, "Beat", 50);
-		this.addColumnToTableViewer(this.tableViewer, "Roll", 50);
-		this.addColumnToTableViewer(this.tableViewer, "FxChain", 50);
-		this.addColumnToTableViewer(this.tableViewer, "LastStep", 50);
-		this.addColumnToTableViewer(this.tableViewer, "ArpScale", 100);
-		this.addColumnToTableViewer(this.tableViewer, "CenterNote", 100);
-		this.addColumnToTableViewer(this.tableViewer, "Fx1 Type", 100);
-		this.addColumnToTableViewer(this.tableViewer, "Fx2 Type", 100);
-		this.addColumnToTableViewer(this.tableViewer, "Fx3 Type", 100);
+		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Esx#", 45);
+		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Orig#", 45);
+		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Name", 100);
+		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Tempo", 50);
+		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Swing", 50);
+		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Length", 50);
+		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Beat", 50);
+		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Roll", 50);
+		this.parentEditor.addColumnToTableViewer(this.tableViewer, "FxChain", 50);
+		this.parentEditor.addColumnToTableViewer(this.tableViewer, "LastStep", 50);
+		this.parentEditor.addColumnToTableViewer(this.tableViewer, "ArpScale", 100);
+		this.parentEditor.addColumnToTableViewer(this.tableViewer, "CenterNote", 100);
+		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Fx1 Type", 100);
+		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Fx2 Type", 100);
+		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Fx3 Type", 100);
 
 		// Allow all the columns to be moved
 		TableColumn[] columns = table.getColumns();

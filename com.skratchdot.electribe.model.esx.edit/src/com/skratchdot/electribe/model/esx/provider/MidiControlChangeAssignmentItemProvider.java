@@ -14,6 +14,7 @@ package com.skratchdot.electribe.model.esx.provider;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.MidiControlChangeAssignment;
+import com.skratchdot.electribe.model.esx.Sample;
 
 import com.skratchdot.electribe.model.esx.MidiControlChangeAssignmentName;
 import java.util.Collection;
@@ -143,6 +144,20 @@ public class MidiControlChangeAssignmentItemProvider
 		return label == null || label.length() == 0 ?
 			getString("_UI_MidiControlChangeAssignment_type") :
 			getString("_UI_MidiControlChangeAssignment_type") + " " + label;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getColumnText(java.lang.Object, int)
+	 */
+	@Override
+	public String getColumnText(Object object, int columnIndex) {
+		switch(columnIndex) {
+			// Name
+			case 0: return ((MidiControlChangeAssignment) object).getName().toString();
+			// Value
+			case 1: return Byte.toString(((MidiControlChangeAssignment) object).getValue());
+			default: return getText(object);
+		}
 	}
 
 	/**

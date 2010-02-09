@@ -33,6 +33,7 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.MidiControlChangeAssignment;
 import com.skratchdot.electribe.model.esx.PatternNumber;
 import com.skratchdot.electribe.model.esx.PatternSetParameter;
 
@@ -118,6 +119,22 @@ public class PatternSetParameterItemProvider
 		return label == null || label.length() == 0 ?
 			getString("_UI_PatternSetParameter_type") :
 			getString("_UI_PatternSetParameter_type") + " " + label;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getColumnText(java.lang.Object, int)
+	 */
+	@Override
+	public String getColumnText(Object object, int columnIndex) {
+		switch(columnIndex) {
+			// Name
+			case 0: {
+				getText(object);
+			}
+			// Value
+			case 1: return ((PatternSetParameter) object).getPatternNumber().getLiteral();
+			default: return getText(object);
+		}
 	}
 
 	/**
