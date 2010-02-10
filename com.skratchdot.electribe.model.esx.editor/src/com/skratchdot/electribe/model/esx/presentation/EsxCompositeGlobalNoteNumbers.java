@@ -146,8 +146,9 @@ public class EsxCompositeGlobalNoteNumbers extends EsxComposite {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.skratchdot.electribe.model.esx.presentation.EsxComposite#refresh()
+	 * @see com.skratchdot.electribe.model.esx.presentation.EsxComposite#refreshInputs()
 	 */
+	@Override
 	public void refreshInputs() {
 		String multipleValueString = "";
 		this.comboPartNoteNumber.setText(StringUtils.trim(getMultiString(this.selectedItems, EsxPackage.Literals.PART_NOTE_NUMBER__NOTE_NUMBER, multipleValueString)));

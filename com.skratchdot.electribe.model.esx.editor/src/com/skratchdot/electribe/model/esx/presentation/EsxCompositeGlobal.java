@@ -245,11 +245,11 @@ public class EsxCompositeGlobal extends EsxComposite {
 		textMidiChannel2.setText(this.globalParameters.getMidiChannels().get(2).getMidiChannel().getLiteral());
 	}
 
-	/**
-	 * This method is called when setInput() is called. It refreshes
-	 * the form inputs.
+	/* (non-Javadoc)
+	 * @see com.skratchdot.electribe.model.esx.presentation.EsxComposite#refreshInputs()
 	 */
-	private void refreshInputs() {
+	@Override
+	public void refreshInputs() {
 		comboArpeggiatorControl.setText(this.globalParameters.getArpeggiatorControl().getLiteral());
 		comboAudioInMode.setText(this.globalParameters.getAudioInMode().getLiteral());
 		comboControlChangeEnabled.setText(this.globalParameters.getControlChangeEnabled().getLiteral());

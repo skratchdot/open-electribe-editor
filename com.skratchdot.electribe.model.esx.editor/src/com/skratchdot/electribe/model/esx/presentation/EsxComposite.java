@@ -59,6 +59,13 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 */
 	public abstract void refresh();
 
+	/**
+	 * This method is similar to the refresh() method, but it should typically
+	 * only be called with setInput() is called. It's goal is to refresh any
+	 * "form inputs".
+	 */
+	public abstract void refreshInputs();
+
 	/* (non-Javadoc)
 	 * @see org.eclipse.emf.edit.domain.IEditingDomainProvider#getEditingDomain()
 	 */

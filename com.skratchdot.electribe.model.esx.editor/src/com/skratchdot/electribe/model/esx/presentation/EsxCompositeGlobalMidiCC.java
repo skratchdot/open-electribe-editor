@@ -145,8 +145,9 @@ public class EsxCompositeGlobalMidiCC extends EsxComposite {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.skratchdot.electribe.model.esx.presentation.EsxComposite#refresh()
+	 * @see com.skratchdot.electribe.model.esx.presentation.EsxComposite#refreshInputs()
 	 */
+	@Override
 	public void refreshInputs() {
 		String multipleValueString = "";
 		this.inputMidiControlChangeAssignment.setText(StringUtils.trim(getMultiString(this.selectedItems, EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE, multipleValueString)));

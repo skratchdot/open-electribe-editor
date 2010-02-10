@@ -150,8 +150,9 @@ public class EsxCompositeGlobalPatternSets extends EsxComposite {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.skratchdot.electribe.model.esx.presentation.EsxComposite#refresh()
+	 * @see com.skratchdot.electribe.model.esx.presentation.EsxComposite#refreshInputs()
 	 */
+	@Override
 	public void refreshInputs() {
 		String multipleValueString = "";
 		this.comboPatternSetParameter.setText(StringUtils.trim(getMultiString(this.selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_NUMBER, multipleValueString)));

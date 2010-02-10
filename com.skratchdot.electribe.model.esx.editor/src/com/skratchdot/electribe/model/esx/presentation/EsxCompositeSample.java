@@ -259,11 +259,11 @@ public class EsxCompositeSample extends EsxComposite {
 		this.textPlayLevel.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__PLAY_LEVEL, multipleValueString)));
 	}
 
-	/**
-	 * This method should only be called when setInput() is called. It will
-	 * refresh the form inputs with the first element in the samples list.
+	/* (non-Javadoc)
+	 * @see com.skratchdot.electribe.model.esx.presentation.EsxComposite#refreshInputs()
 	 */
-	private void refreshInputs() {
+	@Override
+	public void refreshInputs() {
 		String multipleValueString = "";
 
 		this.inputName.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__NAME, multipleValueString)));

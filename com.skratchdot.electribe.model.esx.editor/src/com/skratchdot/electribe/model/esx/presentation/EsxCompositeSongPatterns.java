@@ -36,4 +36,12 @@ public class EsxCompositeSongPatterns extends EsxComposite {
 	public void refresh() {
 	}
 
+	/* (non-Javadoc)
+	 * @see com.skratchdot.electribe.model.esx.presentation.EsxComposite#refreshInputs()
+	 */
+	@Override
+	public void refreshInputs() {
+		
+	}
+
 }
