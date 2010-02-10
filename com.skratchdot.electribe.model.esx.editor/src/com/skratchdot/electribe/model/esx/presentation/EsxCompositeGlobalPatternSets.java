@@ -50,7 +50,7 @@ public class EsxCompositeGlobalPatternSets extends EsxComposite {
 	 * @param style
 	 */
 	public EsxCompositeGlobalPatternSets(EsxEditorPart parentPart, Composite parentComposite, int style) {
-		this(parentComposite, style);
+		super(parentPart, parentComposite, style);
 		this.parentPart = parentPart;
 
 		setLayout(new GridLayout(4, false));

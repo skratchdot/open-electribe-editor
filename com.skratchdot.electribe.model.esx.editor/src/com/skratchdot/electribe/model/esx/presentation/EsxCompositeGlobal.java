@@ -67,6 +67,17 @@ public class EsxCompositeGlobal extends EsxComposite {
 	 */
 	public EsxCompositeGlobal(Composite parent, int style) {
 		super(parent, style);
+	}
+
+	/**
+	 * @param parentPart
+	 * @param parentComposite
+	 * @param style
+	 */
+	public EsxCompositeGlobal(EsxEditorPart parentPart, Composite parentComposite, int style) {
+		super(parentPart, parentComposite, style);
+		this.parentPart = parentPart;
+
 		setLayout(new FillLayout(SWT.HORIZONTAL));
 		
 		scrolledComposite = new ScrolledComposite(this, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
@@ -199,16 +210,6 @@ public class EsxCompositeGlobal extends EsxComposite {
 		
 		scrolledComposite.setContent(compositeMain);
 		scrolledComposite.setMinSize(compositeMain.computeSize(SWT.DEFAULT, SWT.DEFAULT));
-	}
-
-	/**
-	 * @param parentPart
-	 * @param parentComposite
-	 * @param style
-	 */
-	public EsxCompositeGlobal(EsxEditorPart parentPart, Composite parentComposite, int style) {
-		this(parentComposite, style);
-		this.parentPart = parentPart;
 	}
 
 	/* (non-Javadoc)

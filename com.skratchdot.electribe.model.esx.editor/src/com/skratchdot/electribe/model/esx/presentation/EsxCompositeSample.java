@@ -82,7 +82,7 @@ public class EsxCompositeSample extends EsxComposite {
 	 * @param style
 	 */
 	public EsxCompositeSample(EsxEditorPart parentPart, Composite parentComposite, int style) {
-		this(parentComposite, style);
+		super(parentPart, parentComposite, style);
 		this.parentPart = parentPart;
 
 		setLayout(new FillLayout(SWT.HORIZONTAL));
