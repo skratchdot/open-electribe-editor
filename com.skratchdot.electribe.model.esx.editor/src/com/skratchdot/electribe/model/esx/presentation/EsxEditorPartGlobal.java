@@ -50,22 +50,22 @@ public class EsxEditorPartGlobal extends EsxEditorPart {
 		
 		sashForm = new SashForm(parent, SWT.NONE);
 		
-		globalParameters = new EsxCompositeGlobalParameters(this.parentEditor, sashForm, SWT.NONE);
+		globalParameters = new EsxCompositeGlobalParameters(this, sashForm, SWT.NONE);
 
 		tabFolder = new TabFolder(sashForm, SWT.NONE);
 		
 		tabMidiCC = new TabItem(tabFolder, SWT.NONE);
-		globalParametersMidiCC = new EsxCompositeGlobalParametersMidiCC(this.parentEditor, tabFolder, SWT.NONE);
+		globalParametersMidiCC = new EsxCompositeGlobalParametersMidiCC(this, tabFolder, SWT.NONE);
 		tabMidiCC.setText("Midi Control Change Assignments");
 		tabMidiCC.setControl(globalParametersMidiCC);
 
 		tabNoteNumbers = new TabItem(tabFolder, SWT.NONE);
-		globalParametersNoteNumbers = new EsxCompositeGlobalParametersNoteNumbers(this.parentEditor, tabFolder, SWT.NONE);
+		globalParametersNoteNumbers = new EsxCompositeGlobalParametersNoteNumbers(this, tabFolder, SWT.NONE);
 		tabNoteNumbers.setText("Part Note Numbers");
 		tabNoteNumbers.setControl(globalParametersNoteNumbers);
 
 		tabPatternSets = new TabItem(tabFolder, SWT.NONE);
-		globalParametersPatternSets = new EsxCompositeGlobalParametersPatternSets(this.parentEditor, tabFolder, SWT.NONE);
+		globalParametersPatternSets = new EsxCompositeGlobalParametersPatternSets(this, tabFolder, SWT.NONE);
 		tabPatternSets.setText("Pattern Set Assignments");
 		tabPatternSets.setControl(globalParametersPatternSets);
 

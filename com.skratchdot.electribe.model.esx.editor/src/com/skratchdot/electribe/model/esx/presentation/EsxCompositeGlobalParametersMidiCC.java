@@ -48,9 +48,9 @@ public class EsxCompositeGlobalParametersMidiCC extends EsxComposite {
 	 * @param parentComposite
 	 * @param style
 	 */
-	public EsxCompositeGlobalParametersMidiCC(EsxEditor parentEditor, Composite parentComposite, int style) {
+	public EsxCompositeGlobalParametersMidiCC(EsxEditorPart parentPart, Composite parentComposite, int style) {
 		this(parentComposite, style);
-		this.parentEditor = parentEditor;
+		this.parentPart = parentPart;
 
 		setLayout(new GridLayout(4, false));
 
@@ -77,8 +77,8 @@ public class EsxCompositeGlobalParametersMidiCC extends EsxComposite {
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 4, 1));
 
 		// Create our columns
-		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Name", 120);
-		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Value", 50);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Name", 120);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Value", 50);
 
 		// Setup this.tableViewer ContentProvider
 		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {

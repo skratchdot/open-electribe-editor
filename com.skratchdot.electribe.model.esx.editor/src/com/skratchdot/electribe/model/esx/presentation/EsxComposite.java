@@ -24,21 +24,24 @@ import org.eclipse.swt.widgets.Text;
 public abstract class EsxComposite extends Composite implements IEditingDomainProvider {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxComposite"; //$NON-NLS-1$
 
-	protected EsxEditor parentEditor;
+	protected EsxEditorPart parentPart;
 
+	/**
+	 * @param parent
+	 * @param style
+	 */
 	public EsxComposite(Composite parent, int style) {
 		super(parent, style);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @param parentEditor
+	 * @param parentPart
 	 * @param parentComposite
 	 * @param style
 	 */
-	public EsxComposite(EsxEditor parentEditor, Composite parentComposite, int style) {
+	public EsxComposite(EsxEditorPart parentPart, Composite parentComposite, int style) {
 		super(parentComposite, style);
-		this.parentEditor = parentEditor;
+		this.parentPart = parentPart;
 	}
 
 	/**
@@ -61,7 +64,7 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 */
 	@Override
 	public EditingDomain getEditingDomain() {
-		return parentEditor.getEditingDomain();
+		return parentPart.getEditingDomain();
 	}
 
 	/**
@@ -75,7 +78,7 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * @return
 	 */
 	protected AdapterFactory getAdapterFactory() {
-		return parentEditor.getAdapterFactory();
+		return parentPart.getAdapterFactory();
 	}
 
 	/**

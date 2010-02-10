@@ -73,7 +73,7 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		this.initTableViewer();
 
 		// Create sampleEditor
-		this.sampleEditor = new EsxCompositeSample(this.parentEditor, sashForm, SWT.NONE);
+		this.sampleEditor = new EsxCompositeSample(this, sashForm, SWT.NONE);
 
 		sashForm.setWeights(new int[] {3, 1});
 	}
@@ -89,20 +89,20 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 
 		// Create our columns
-		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Esx#", 45);
-		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Orig#", 45);
-		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Name", 100);
-		this.parentEditor.addColumnToTableViewer(this.tableViewer, "MemSize", 100);
-		this.parentEditor.addColumnToTableViewer(this.tableViewer, "SampleRate", 100);
-		this.parentEditor.addColumnToTableViewer(this.tableViewer, "SampleTune", 100);
-		this.parentEditor.addColumnToTableViewer(this.tableViewer, "StretchStep", 100);
-		this.parentEditor.addColumnToTableViewer(this.tableViewer, "IsLoop?", 100);
-		this.parentEditor.addColumnToTableViewer(this.tableViewer, "IsSlice?", 100);
-		this.parentEditor.addColumnToTableViewer(this.tableViewer, "PlayLevel", 100);
-		this.parentEditor.addColumnToTableViewer(this.tableViewer, "Start", 100);
-		this.parentEditor.addColumnToTableViewer(this.tableViewer, "End", 100);
-		this.parentEditor.addColumnToTableViewer(this.tableViewer, "LoopStart", 100);
-		this.parentEditor.addColumnToTableViewer(this.tableViewer, "NumSampleFrames", 100);
+		this.addColumnToTableViewer(this.tableViewer, "Esx#", 45);
+		this.addColumnToTableViewer(this.tableViewer, "Orig#", 45);
+		this.addColumnToTableViewer(this.tableViewer, "Name", 100);
+		this.addColumnToTableViewer(this.tableViewer, "MemSize", 100);
+		this.addColumnToTableViewer(this.tableViewer, "SampleRate", 100);
+		this.addColumnToTableViewer(this.tableViewer, "SampleTune", 100);
+		this.addColumnToTableViewer(this.tableViewer, "StretchStep", 100);
+		this.addColumnToTableViewer(this.tableViewer, "IsLoop?", 100);
+		this.addColumnToTableViewer(this.tableViewer, "IsSlice?", 100);
+		this.addColumnToTableViewer(this.tableViewer, "PlayLevel", 100);
+		this.addColumnToTableViewer(this.tableViewer, "Start", 100);
+		this.addColumnToTableViewer(this.tableViewer, "End", 100);
+		this.addColumnToTableViewer(this.tableViewer, "LoopStart", 100);
+		this.addColumnToTableViewer(this.tableViewer, "NumSampleFrames", 100);
 
 		// Allow all the columns to be moved
 		TableColumn[] columns = table.getColumns();

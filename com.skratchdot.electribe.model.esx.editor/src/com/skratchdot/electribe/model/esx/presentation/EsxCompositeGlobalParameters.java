@@ -202,13 +202,13 @@ public class EsxCompositeGlobalParameters extends EsxComposite {
 	}
 
 	/**
-	 * @param parentEditor
+	 * @param parentPart
 	 * @param parentComposite
 	 * @param style
 	 */
-	public EsxCompositeGlobalParameters(EsxEditor parentEditor, Composite parentComposite, int style) {
+	public EsxCompositeGlobalParameters(EsxEditorPart parentPart, Composite parentComposite, int style) {
 		this(parentComposite, style);
-		this.parentEditor = parentEditor;
+		this.parentPart = parentPart;
 	}
 
 	/* (non-Javadoc)
