@@ -113,6 +113,9 @@ public class EsxCompositeGlobalParametersPatternSets extends EsxComposite {
 				refreshInputs();
 			}
 		});
+		
+		// Context Menu
+	    this.parentPart.createContextMenuFor(this.tableViewer);
 	}
 
 	/* (non-Javadoc)
