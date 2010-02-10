@@ -18,47 +18,48 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.MidiControlChangeAssignment;
+import com.skratchdot.electribe.model.esx.NoteNumber;
+import com.skratchdot.electribe.model.esx.PartNoteNumber;
+public class EsxCompositeGlobalNoteNumbers extends EsxComposite {
+	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositeGlobalParametersNoteNumbers"; //$NON-NLS-1$
 
-public class EsxCompositeGlobalParametersMidiCC extends EsxComposite {
-	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositeGlobalParametersMidiCC"; //$NON-NLS-1$
-
-	private List<MidiControlChangeAssignment> midiControlChangeAssignments;
-	private List<MidiControlChangeAssignment> selectedItems;
+	private List<PartNoteNumber> partNoteNumbers;
+	private List<PartNoteNumber> selectedItems;
 	private TableViewer tableViewer;
 	
-	private Text textMidiControlChangeAssignment;
-	private Text inputMidiControlChangeAssignment;
+	private Text textPartNoteNumber;
+	private Combo comboPartNoteNumber;
 
 	/**
 	 * @param parent
 	 * @param style
 	 */
-	public EsxCompositeGlobalParametersMidiCC(Composite parent, int style) {
+	public EsxCompositeGlobalNoteNumbers(Composite parent, int style) {
 		super(parent, style);
 	}
 
 	/**
-	 * @param parentEditor
+	 * @param parentPart
 	 * @param parentComposite
 	 * @param style
 	 */
-	public EsxCompositeGlobalParametersMidiCC(EsxEditorPart parentPart, Composite parentComposite, int style) {
+	public EsxCompositeGlobalNoteNumbers(EsxEditorPart parentPart, Composite parentComposite, int style) {
 		this(parentComposite, style);
 		this.parentPart = parentPart;
 
 		setLayout(new GridLayout(4, false));
 
-		textMidiControlChangeAssignment = this.createGridData2ColumnTextLabel(this, "Midi CC Assignment");
-		inputMidiControlChangeAssignment = this.createGridData2ColumnTextInput(this, "", new SelectionAdapter() {
+		textPartNoteNumber = this.createGridData2ColumnTextLabel(this, "Note Number");
+		comboPartNoteNumber = this.createGridData2ColumnComboInput(this, "", this.getLiteralStrings(NoteNumber.values()) , new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(selectedItems, EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE, Byte.parseByte(inputMidiControlChangeAssignment.getText()), false, -1);
+				setFeatureForSelectedItems(selectedItems, EsxPackage.Literals.PART_NOTE_NUMBER__NOTE_NUMBER, NoteNumber.get(comboPartNoteNumber.getSelectionIndex()), false, -1);
 			}
 		});
 
@@ -78,13 +79,13 @@ public class EsxCompositeGlobalParametersMidiCC extends EsxComposite {
 
 		// Create our columns
 		this.parentPart.addColumnToTableViewer(this.tableViewer, "Name", 120);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Value", 50);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Value", 120);
 
 		// Setup this.tableViewer ContentProvider
 		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
 			@Override
 			public Object[] getElements(Object object) {
-				return midiControlChangeAssignments.toArray();
+				return partNoteNumbers.toArray();
 			}
 
 			@Override
@@ -101,10 +102,10 @@ public class EsxCompositeGlobalParametersMidiCC extends EsxComposite {
 		        IStructuredSelection selection = (IStructuredSelection) event.getSelection();
 
 		        Object[] objects = ((IStructuredSelection) selection).toArray();
-				selectedItems = new ArrayList<MidiControlChangeAssignment>();
+				selectedItems = new ArrayList<PartNoteNumber>();
 				for (Object obj : objects) {
-					if(obj instanceof MidiControlChangeAssignment) {
-						selectedItems.add((MidiControlChangeAssignment) obj);
+					if(obj instanceof PartNoteNumber) {
+						selectedItems.add((PartNoteNumber) obj);
 					}
 				}
 				refresh();
@@ -118,19 +119,19 @@ public class EsxCompositeGlobalParametersMidiCC extends EsxComposite {
 	 */
 	@Override
 	public void setInput(Object input) {
-		this.midiControlChangeAssignments = new ArrayList<MidiControlChangeAssignment>();
+		this.partNoteNumbers = new ArrayList<PartNoteNumber>();
 
 		if(input instanceof List<?>) {
 			Iterator<?> it = ((List<?>) input).iterator();
 			while (it.hasNext()) {
 				Object obj = it.next();
-				if(obj instanceof MidiControlChangeAssignment) {
-					this.midiControlChangeAssignments.add((MidiControlChangeAssignment) obj);
+				if(obj instanceof PartNoteNumber) {
+					this.partNoteNumbers.add((PartNoteNumber) obj);
 				}
 			}
 		}
 
-		this.tableViewer.setInput(this.midiControlChangeAssignments);
+		this.tableViewer.setInput(this.partNoteNumbers);
 		this.refreshInputs();
 		this.refresh();
 	}
@@ -141,7 +142,7 @@ public class EsxCompositeGlobalParametersMidiCC extends EsxComposite {
 	@Override
 	public void refresh() {
 		String multipleValueString = "<Multiple Values>";
-		this.textMidiControlChangeAssignment.setText(StringUtils.trim(getMultiString(this.selectedItems, EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE, multipleValueString)));
+		this.textPartNoteNumber.setText(StringUtils.trim(getMultiString(this.selectedItems, EsxPackage.Literals.PART_NOTE_NUMBER__NOTE_NUMBER, multipleValueString)));
 	}
 
 	/* (non-Javadoc)
@@ -149,7 +150,7 @@ public class EsxCompositeGlobalParametersMidiCC extends EsxComposite {
 	 */
 	public void refreshInputs() {
 		String multipleValueString = "";
-		this.inputMidiControlChangeAssignment.setText(StringUtils.trim(getMultiString(this.selectedItems, EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE, multipleValueString)));
+		this.comboPartNoteNumber.setText(StringUtils.trim(getMultiString(this.selectedItems, EsxPackage.Literals.PART_NOTE_NUMBER__NOTE_NUMBER, multipleValueString)));
 	}
 
 }

@@ -24,23 +24,23 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.NoteNumber;
-import com.skratchdot.electribe.model.esx.PartNoteNumber;
-public class EsxCompositeGlobalParametersNoteNumbers extends EsxComposite {
-	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositeGlobalParametersNoteNumbers"; //$NON-NLS-1$
+import com.skratchdot.electribe.model.esx.PatternNumber;
+import com.skratchdot.electribe.model.esx.PatternSetParameter;
+public class EsxCompositeGlobalPatternSets extends EsxComposite {
+	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositeGlobalParametersPatternSets"; //$NON-NLS-1$
 
-	private List<PartNoteNumber> partNoteNumbers;
-	private List<PartNoteNumber> selectedItems;
+	private List<PatternSetParameter> patternSetParameters;
+	private List<PatternSetParameter> selectedItems;
 	private TableViewer tableViewer;
 	
-	private Text textPartNoteNumber;
-	private Combo comboPartNoteNumber;
+	private Text textPatternSetParameter;
+	private Combo comboPatternSetParameter;
 
 	/**
 	 * @param parent
 	 * @param style
 	 */
-	public EsxCompositeGlobalParametersNoteNumbers(Composite parent, int style) {
+	public EsxCompositeGlobalPatternSets(Composite parent, int style) {
 		super(parent, style);
 	}
 
@@ -49,17 +49,17 @@ public class EsxCompositeGlobalParametersNoteNumbers extends EsxComposite {
 	 * @param parentComposite
 	 * @param style
 	 */
-	public EsxCompositeGlobalParametersNoteNumbers(EsxEditorPart parentPart, Composite parentComposite, int style) {
+	public EsxCompositeGlobalPatternSets(EsxEditorPart parentPart, Composite parentComposite, int style) {
 		this(parentComposite, style);
 		this.parentPart = parentPart;
 
 		setLayout(new GridLayout(4, false));
 
-		textPartNoteNumber = this.createGridData2ColumnTextLabel(this, "Note Number");
-		comboPartNoteNumber = this.createGridData2ColumnComboInput(this, "", this.getLiteralStrings(NoteNumber.values()) , new SelectionAdapter() {
+		textPatternSetParameter = this.createGridData2ColumnTextLabel(this, "Pattern Number");
+		comboPatternSetParameter = this.createGridData2ColumnComboInput(this, "", this.getLiteralStrings(PatternNumber.values()) , new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(selectedItems, EsxPackage.Literals.PART_NOTE_NUMBER__NOTE_NUMBER, NoteNumber.get(comboPartNoteNumber.getSelectionIndex()), false, -1);
+				setFeatureForSelectedItems(selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_NUMBER, PatternNumber.get(comboPatternSetParameter.getSelectionIndex()), false, -1);
 			}
 		});
 
@@ -78,14 +78,15 @@ public class EsxCompositeGlobalParametersNoteNumbers extends EsxComposite {
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 4, 1));
 
 		// Create our columns
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Name", 120);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Value", 120);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Current Position", 120);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Original Position", 120);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Pattern Number", 120);
 
 		// Setup this.tableViewer ContentProvider
 		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
 			@Override
 			public Object[] getElements(Object object) {
-				return partNoteNumbers.toArray();
+				return patternSetParameters.toArray();
 			}
 
 			@Override
@@ -102,16 +103,19 @@ public class EsxCompositeGlobalParametersNoteNumbers extends EsxComposite {
 		        IStructuredSelection selection = (IStructuredSelection) event.getSelection();
 
 		        Object[] objects = ((IStructuredSelection) selection).toArray();
-				selectedItems = new ArrayList<PartNoteNumber>();
+				selectedItems = new ArrayList<PatternSetParameter>();
 				for (Object obj : objects) {
-					if(obj instanceof PartNoteNumber) {
-						selectedItems.add((PartNoteNumber) obj);
+					if(obj instanceof PatternSetParameter) {
+						selectedItems.add((PatternSetParameter) obj);
 					}
 				}
 				refresh();
 				refreshInputs();
 			}
 		});
+		
+		// Context Menu
+	    this.parentPart.createContextMenuFor(this.tableViewer);
 	}
 
 	/* (non-Javadoc)
@@ -119,19 +123,19 @@ public class EsxCompositeGlobalParametersNoteNumbers extends EsxComposite {
 	 */
 	@Override
 	public void setInput(Object input) {
-		this.partNoteNumbers = new ArrayList<PartNoteNumber>();
+		this.patternSetParameters = new ArrayList<PatternSetParameter>();
 
 		if(input instanceof List<?>) {
 			Iterator<?> it = ((List<?>) input).iterator();
 			while (it.hasNext()) {
 				Object obj = it.next();
-				if(obj instanceof PartNoteNumber) {
-					this.partNoteNumbers.add((PartNoteNumber) obj);
+				if(obj instanceof PatternSetParameter) {
+					this.patternSetParameters.add((PatternSetParameter) obj);
 				}
 			}
 		}
 
-		this.tableViewer.setInput(this.partNoteNumbers);
+		this.tableViewer.setInput(this.patternSetParameters);
 		this.refreshInputs();
 		this.refresh();
 	}
@@ -142,7 +146,7 @@ public class EsxCompositeGlobalParametersNoteNumbers extends EsxComposite {
 	@Override
 	public void refresh() {
 		String multipleValueString = "<Multiple Values>";
-		this.textPartNoteNumber.setText(StringUtils.trim(getMultiString(this.selectedItems, EsxPackage.Literals.PART_NOTE_NUMBER__NOTE_NUMBER, multipleValueString)));
+		this.textPatternSetParameter.setText(StringUtils.trim(getMultiString(this.selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_NUMBER, multipleValueString)));
 	}
 
 	/* (non-Javadoc)
@@ -150,7 +154,7 @@ public class EsxCompositeGlobalParametersNoteNumbers extends EsxComposite {
 	 */
 	public void refreshInputs() {
 		String multipleValueString = "";
-		this.comboPartNoteNumber.setText(StringUtils.trim(getMultiString(this.selectedItems, EsxPackage.Literals.PART_NOTE_NUMBER__NOTE_NUMBER, multipleValueString)));
+		this.comboPatternSetParameter.setText(StringUtils.trim(getMultiString(this.selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_NUMBER, multipleValueString)));
 	}
 
 }

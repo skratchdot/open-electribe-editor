@@ -23,7 +23,7 @@ import com.skratchdot.electribe.model.esx.MidiChannelTypeName;
 import com.skratchdot.electribe.model.esx.MidiClock;
 import com.skratchdot.electribe.model.esx.PitchBendRange;
 
-public class EsxCompositeGlobalParameters extends EsxComposite {
+public class EsxCompositeGlobal extends EsxComposite {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositeGlobalParameters"; //$NON-NLS-1$
 
 	private GlobalParameters globalParameters;
@@ -65,7 +65,7 @@ public class EsxCompositeGlobalParameters extends EsxComposite {
 	 * @param parent
 	 * @param style
 	 */
-	public EsxCompositeGlobalParameters(Composite parent, int style) {
+	public EsxCompositeGlobal(Composite parent, int style) {
 		super(parent, style);
 		setLayout(new FillLayout(SWT.HORIZONTAL));
 		
@@ -206,7 +206,7 @@ public class EsxCompositeGlobalParameters extends EsxComposite {
 	 * @param parentComposite
 	 * @param style
 	 */
-	public EsxCompositeGlobalParameters(EsxEditorPart parentPart, Composite parentComposite, int style) {
+	public EsxCompositeGlobal(EsxEditorPart parentPart, Composite parentComposite, int style) {
 		this(parentComposite, style);
 		this.parentPart = parentPart;
 	}

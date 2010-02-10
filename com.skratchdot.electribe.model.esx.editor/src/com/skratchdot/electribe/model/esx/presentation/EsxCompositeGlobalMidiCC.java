@@ -18,48 +18,47 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.PatternNumber;
-import com.skratchdot.electribe.model.esx.PatternSetParameter;
-public class EsxCompositeGlobalParametersPatternSets extends EsxComposite {
-	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositeGlobalParametersPatternSets"; //$NON-NLS-1$
+import com.skratchdot.electribe.model.esx.MidiControlChangeAssignment;
 
-	private List<PatternSetParameter> patternSetParameters;
-	private List<PatternSetParameter> selectedItems;
+public class EsxCompositeGlobalMidiCC extends EsxComposite {
+	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositeGlobalParametersMidiCC"; //$NON-NLS-1$
+
+	private List<MidiControlChangeAssignment> midiControlChangeAssignments;
+	private List<MidiControlChangeAssignment> selectedItems;
 	private TableViewer tableViewer;
 	
-	private Text textPatternSetParameter;
-	private Combo comboPatternSetParameter;
+	private Text textMidiControlChangeAssignment;
+	private Text inputMidiControlChangeAssignment;
 
 	/**
 	 * @param parent
 	 * @param style
 	 */
-	public EsxCompositeGlobalParametersPatternSets(Composite parent, int style) {
+	public EsxCompositeGlobalMidiCC(Composite parent, int style) {
 		super(parent, style);
 	}
 
 	/**
-	 * @param parentPart
+	 * @param parentEditor
 	 * @param parentComposite
 	 * @param style
 	 */
-	public EsxCompositeGlobalParametersPatternSets(EsxEditorPart parentPart, Composite parentComposite, int style) {
+	public EsxCompositeGlobalMidiCC(EsxEditorPart parentPart, Composite parentComposite, int style) {
 		this(parentComposite, style);
 		this.parentPart = parentPart;
 
 		setLayout(new GridLayout(4, false));
 
-		textPatternSetParameter = this.createGridData2ColumnTextLabel(this, "Pattern Number");
-		comboPatternSetParameter = this.createGridData2ColumnComboInput(this, "", this.getLiteralStrings(PatternNumber.values()) , new SelectionAdapter() {
+		textMidiControlChangeAssignment = this.createGridData2ColumnTextLabel(this, "Midi CC Assignment");
+		inputMidiControlChangeAssignment = this.createGridData2ColumnTextInput(this, "", new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_NUMBER, PatternNumber.get(comboPatternSetParameter.getSelectionIndex()), false, -1);
+				setFeatureForSelectedItems(selectedItems, EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE, Byte.parseByte(inputMidiControlChangeAssignment.getText()), false, -1);
 			}
 		});
 
@@ -78,15 +77,14 @@ public class EsxCompositeGlobalParametersPatternSets extends EsxComposite {
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 4, 1));
 
 		// Create our columns
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Current Position", 120);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Original Position", 120);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Pattern Number", 120);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Name", 120);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Value", 50);
 
 		// Setup this.tableViewer ContentProvider
 		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
 			@Override
 			public Object[] getElements(Object object) {
-				return patternSetParameters.toArray();
+				return midiControlChangeAssignments.toArray();
 			}
 
 			@Override
@@ -103,19 +101,16 @@ public class EsxCompositeGlobalParametersPatternSets extends EsxComposite {
 		        IStructuredSelection selection = (IStructuredSelection) event.getSelection();
 
 		        Object[] objects = ((IStructuredSelection) selection).toArray();
-				selectedItems = new ArrayList<PatternSetParameter>();
+				selectedItems = new ArrayList<MidiControlChangeAssignment>();
 				for (Object obj : objects) {
-					if(obj instanceof PatternSetParameter) {
-						selectedItems.add((PatternSetParameter) obj);
+					if(obj instanceof MidiControlChangeAssignment) {
+						selectedItems.add((MidiControlChangeAssignment) obj);
 					}
 				}
 				refresh();
 				refreshInputs();
 			}
 		});
-		
-		// Context Menu
-	    this.parentPart.createContextMenuFor(this.tableViewer);
 	}
 
 	/* (non-Javadoc)
@@ -123,19 +118,19 @@ public class EsxCompositeGlobalParametersPatternSets extends EsxComposite {
 	 */
 	@Override
 	public void setInput(Object input) {
-		this.patternSetParameters = new ArrayList<PatternSetParameter>();
+		this.midiControlChangeAssignments = new ArrayList<MidiControlChangeAssignment>();
 
 		if(input instanceof List<?>) {
 			Iterator<?> it = ((List<?>) input).iterator();
 			while (it.hasNext()) {
 				Object obj = it.next();
-				if(obj instanceof PatternSetParameter) {
-					this.patternSetParameters.add((PatternSetParameter) obj);
+				if(obj instanceof MidiControlChangeAssignment) {
+					this.midiControlChangeAssignments.add((MidiControlChangeAssignment) obj);
 				}
 			}
 		}
 
-		this.tableViewer.setInput(this.patternSetParameters);
+		this.tableViewer.setInput(this.midiControlChangeAssignments);
 		this.refreshInputs();
 		this.refresh();
 	}
@@ -146,7 +141,7 @@ public class EsxCompositeGlobalParametersPatternSets extends EsxComposite {
 	@Override
 	public void refresh() {
 		String multipleValueString = "<Multiple Values>";
-		this.textPatternSetParameter.setText(StringUtils.trim(getMultiString(this.selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_NUMBER, multipleValueString)));
+		this.textMidiControlChangeAssignment.setText(StringUtils.trim(getMultiString(this.selectedItems, EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE, multipleValueString)));
 	}
 
 	/* (non-Javadoc)
@@ -154,7 +149,7 @@ public class EsxCompositeGlobalParametersPatternSets extends EsxComposite {
 	 */
 	public void refreshInputs() {
 		String multipleValueString = "";
-		this.comboPatternSetParameter.setText(StringUtils.trim(getMultiString(this.selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_NUMBER, multipleValueString)));
+		this.inputMidiControlChangeAssignment.setText(StringUtils.trim(getMultiString(this.selectedItems, EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE, multipleValueString)));
 	}
 
 }
