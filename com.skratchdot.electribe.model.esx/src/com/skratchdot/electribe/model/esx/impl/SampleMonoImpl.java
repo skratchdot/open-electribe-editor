@@ -40,13 +40,23 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected SampleMonoImpl() {
 		super();
+		init();
 	}
-
+	
+	/**
+	 * @param in A valid Esx file in EsxRandomAccess form
+	 * @param monoSampleNumber A valid mono sample number 0-255
+	 * @throws EsxException
+	 * @throws IOException
+	 */
 	public SampleMonoImpl(EsxRandomAccess in, int monoSampleNumber) throws EsxException, IOException {
+		super();
+		init();
+
 		// Stop immediately if we are passed an invalid monoSampleNumber
 		if (monoSampleNumber >= EsxUtil.NUM_SAMPLES_MONO || monoSampleNumber < 0)
 			throw new EsxException("Invalid monoSampleNumber: " + monoSampleNumber);
@@ -126,8 +136,13 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 
 	}
 
+	/**
+	 * @param file A valid Esx file
+	 * @throws EsxException
+	 */
 	public SampleMonoImpl(File file) throws EsxException {
 		super(file);
+		init();
 	}
 
 	/**

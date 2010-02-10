@@ -40,13 +40,23 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected SampleStereoImpl() {
 		super();
+		init();
 	}
 
+	/**
+	 * @param in A valid Esx file in EsxRandomAccess form
+	 * @param stereoSampleNumber A valid stereo sample number 0-127
+	 * @throws EsxException
+	 * @throws IOException
+	 */
 	public SampleStereoImpl(EsxRandomAccess in, int stereoSampleNumber) throws EsxException, IOException {
+		super();
+		init();
+
 		// Stop immediately if we are passed an invalid stereoSampleNumber
 		if (stereoSampleNumber >= EsxUtil.NUM_SAMPLES_STEREO || stereoSampleNumber < 0)
 			throw new EsxException("Invalid stereoSampleNumber: " + stereoSampleNumber);
@@ -132,8 +142,13 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 
 	}
 
+	/**
+	 * @param file A valid Esx File
+	 * @throws EsxException
+	 */
 	public SampleStereoImpl(File file) throws EsxException {
 		super(file);
+		init();
 	}
 
 	/**

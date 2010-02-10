@@ -555,14 +555,20 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected SampleImpl() {
 		super();
+		init();
 	}
 
+	/**
+	 * @param file
+	 * @throws EsxException
+	 */
 	protected SampleImpl(File file) throws EsxException {
 		super();
+		init();
 		
 		// Declare our streams and formats
 		AudioFormat audioFormatEncoded;
@@ -669,6 +675,15 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 
 		String newSampleName = StringUtils.left(StringUtils.trim(file.getName()), 8);
 		this.setName(newSampleName);
+	}
+	
+	/**
+	 * Perform any initializations required.
+	 */
+	protected void init() {
+		SampleTune newSampleTune = EsxFactory.eINSTANCE.createSampleTune();
+		this.setSampleTune(newSampleTune);
+		this.setName("");
 	}
 
 	/**
