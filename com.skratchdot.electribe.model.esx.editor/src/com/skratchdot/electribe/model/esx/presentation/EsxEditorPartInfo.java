@@ -37,7 +37,8 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartInfo"; //$NON-NLS-1$
 	public static final int PAGE_INDEX = 0;
 
-	private EsxFile esxFile;	
+	private EsxFile esxFile;
+
 	private FormToolkit toolkit;
 	private ScrolledForm form;
 	private TableWrapLayout tableWrapLayout;
@@ -57,7 +58,7 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 	private Text textNumSamplesStereoNotEmpty;
 	private Text textNumPatternsNotEmpty;
 	private Text textNumSongsNotEmpty;
-	
+
 	/**
 	 * @param parent
 	 */

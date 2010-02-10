@@ -45,8 +45,9 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 	public static final int PAGE_INDEX = 3;
 
 	private TableViewer tableViewer;
-	private EsxCompositeSample sampleEditor;
 	private TableScrollSpeedListener tableViewerScrollSpeedListener;
+
+	private EsxCompositeSample editorSample;
 
 	/**
 	 * @param parent
@@ -73,7 +74,7 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		this.initTableViewer();
 
 		// Create sampleEditor
-		this.sampleEditor = new EsxCompositeSample(this, sashForm, SWT.NONE);
+		this.editorSample = new EsxCompositeSample(this, sashForm, SWT.NONE);
 
 		sashForm.setWeights(new int[] {3, 1});
 	}
@@ -175,7 +176,7 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 					selectedSamples.add((Sample) obj);
 				}
 			}
-			this.sampleEditor.setInput(selectedSamples);
+			this.editorSample.setInput(selectedSamples);
 		}
 	}
 
@@ -254,7 +255,7 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		if(this.parentEditor.getActivePage()!=EsxEditorPartSamples.PAGE_INDEX) return;
 
 		this.tableViewer.refresh();
-		this.sampleEditor.refresh();
+		this.editorSample.refresh();
 	}
 	
 }

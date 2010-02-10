@@ -27,11 +27,13 @@ public class EsxEditorPartGlobal extends EsxEditorPart {
 	
 	private GlobalParameters globalParameters;
 
-	private SashForm sashForm;
 	private EsxCompositeGlobal editorGlobal;
 	private EsxCompositeGlobalMidiCC editorGlobalMidiCC;
 	private EsxCompositeGlobalNoteNumbers editorGlobalNoteNumbers;
 	private EsxCompositeGlobalPatternSets editorGlobalPatternSets;
+
+	private SashForm sashForm;
+
 	private TabFolder tabFolder;
 	private TabItem tabGlobalMidiCC;
 	private TabItem tabGlobalNoteNumbers;

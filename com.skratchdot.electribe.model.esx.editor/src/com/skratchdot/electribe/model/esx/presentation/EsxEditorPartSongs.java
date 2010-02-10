@@ -39,7 +39,7 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartSongs"; //$NON-NLS-1$
 	public static final int PAGE_INDEX = 4;
 
-	private TableViewer tableViewerSongs;
+	private TableViewer tableViewer;
 	private TableScrollSpeedListener tableViewerScrollSpeedListener;
 
 	private EsxCompositeSong editorSong;
@@ -73,7 +73,7 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		groupSongs.setText("Songs");
 
 		// Create this.tableViewer
-		this.tableViewerSongs = new TableViewer(groupSongs, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
+		this.tableViewer = new TableViewer(groupSongs, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
 		this.initTableViewerSongs();
 
 		// Create groupSelectedSong
@@ -106,21 +106,21 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 	 */
 	private void initTableViewerSongs() {
 		// Create the table
-		Table table = this.tableViewerSongs.getTable();
+		Table table = this.tableViewer.getTable();
 		table.setLinesVisible(true);
 		table.setHeaderVisible(true);
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 
 		// Create our columns
-		this.addColumnToTableViewer(this.tableViewerSongs, "Esx#", 45);
-		this.addColumnToTableViewer(this.tableViewerSongs, "Orig#", 45);
-		this.addColumnToTableViewer(this.tableViewerSongs, "Name", 100);
-		this.addColumnToTableViewer(this.tableViewerSongs, "Tempo", 100);
-		this.addColumnToTableViewer(this.tableViewerSongs, "TempoLock", 100);
-		this.addColumnToTableViewer(this.tableViewerSongs, "Length", 100);
-		this.addColumnToTableViewer(this.tableViewerSongs, "MuteHold", 100);
-		this.addColumnToTableViewer(this.tableViewerSongs, "NextSong", 100);
-		this.addColumnToTableViewer(this.tableViewerSongs, "NumOfEvents", 100);
+		this.addColumnToTableViewer(this.tableViewer, "Esx#", 45);
+		this.addColumnToTableViewer(this.tableViewer, "Orig#", 45);
+		this.addColumnToTableViewer(this.tableViewer, "Name", 100);
+		this.addColumnToTableViewer(this.tableViewer, "Tempo", 100);
+		this.addColumnToTableViewer(this.tableViewer, "TempoLock", 100);
+		this.addColumnToTableViewer(this.tableViewer, "Length", 100);
+		this.addColumnToTableViewer(this.tableViewer, "MuteHold", 100);
+		this.addColumnToTableViewer(this.tableViewer, "NextSong", 100);
+		this.addColumnToTableViewer(this.tableViewer, "NumOfEvents", 100);
 
 		// Allow all the columns to be moved
 		TableColumn[] columns = table.getColumns();
@@ -129,7 +129,7 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		}
 
 		// Setup this.tableViewer ContentProvider
-		this.tableViewerSongs.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
+		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
 
 			@Override
 			public Object[] getElements(Object object) {
@@ -144,9 +144,9 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		});
 
 		// Label Provider		
-		this.tableViewerSongs.setLabelProvider(new TableViewerColorProvider(
+		this.tableViewer.setLabelProvider(new TableViewerColorProvider(
 			this.getAdapterFactory(),
-			this.tableViewerSongs,
+			this.tableViewer,
 			EsxPreferenceStore.getSongsBackgroundColorWhenNotEmpty(),
 			EsxPreferenceStore.getSongsBackgroundColorWhenEmpty(),
 			EsxPreferenceStore.getSongsForegroundColorWhenNotEmpty(),
@@ -155,7 +155,7 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 
 		// Sync the scroll speed with our preference
 		tableViewerScrollSpeedListener = this.syncScrollSpeedWithPreference(
-			this.tableViewerSongs,
+			this.tableViewer,
 			tableViewerScrollSpeedListener,
 			EsxPreferenceStore.getSongsScrollSpeed(),
 			EsxPreferenceStore.getSongsUseScrollSpeed()
@@ -165,10 +165,10 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		PlatformUI.getPreferenceStore().addPropertyChangeListener((IPropertyChangeListener) this);
 
 		// Context Menu
-	    createContextMenuFor(this.tableViewerSongs);
+	    createContextMenuFor(this.tableViewer);
 
 	    // Selection Provider For EsxEditor
-	    getEditorSite().setSelectionProvider(this.tableViewerSongs);
+	    getEditorSite().setSelectionProvider(this.tableViewer);
 	}
 
 	/* (non-Javadoc)
@@ -182,12 +182,12 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		if(event.getProperty().equals(EsxPreferenceNames.SONGS_SCROLL_SPEED) ||
 			event.getProperty().equals(EsxPreferenceNames.SONGS_USE_SCROLL_SPEED)) {
 			tableViewerScrollSpeedListener = this.syncScrollSpeedWithPreference(
-				this.tableViewerSongs,
+				this.tableViewer,
 				tableViewerScrollSpeedListener,
 				EsxPreferenceStore.getSongsScrollSpeed(),
 				EsxPreferenceStore.getSongsUseScrollSpeed()
 			);
-			this.tableViewerSongs.refresh();
+			this.tableViewer.refresh();
 		}
 
 		// Color Changes
@@ -195,13 +195,13 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 				event.getProperty().equals(EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_EMPTY) ||
 				event.getProperty().equals(EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_NOT_EMPTY) ||
 				event.getProperty().equals(EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_EMPTY)) {
-			((TableViewerColorProvider)this.tableViewerSongs.getLabelProvider()).setAllColors(
+			((TableViewerColorProvider)this.tableViewer.getLabelProvider()).setAllColors(
 				EsxPreferenceStore.getSongsBackgroundColorWhenNotEmpty(),
 				EsxPreferenceStore.getSongsBackgroundColorWhenEmpty(),
 				EsxPreferenceStore.getSongsForegroundColorWhenNotEmpty(),
 				EsxPreferenceStore.getSongsForegroundColorWhenEmpty()
 			);
-			this.tableViewerSongs.refresh();
+			this.tableViewer.refresh();
 		}
 	}
 
@@ -221,7 +221,7 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 	 */
 	@Override
 	public void setFocus() {
-		this.tableViewerSongs.getTable().setFocus();
+		this.tableViewer.getTable().setFocus();
 	}
 
 	/* (non-Javadoc)
@@ -233,7 +233,7 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 			(Resource)this.getEditingDomain().getResourceSet().getResources().get(0);
 		Object rootObject = resource.getContents().get(0);
 		if(rootObject instanceof EsxFile) {
-			this.tableViewerSongs.setInput(rootObject);
+			this.tableViewer.setInput(rootObject);
 			this.refresh();
 		}
 	}
@@ -244,7 +244,7 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 	public void refresh() {
 		if(this.parentEditor.getActivePage()!=EsxEditorPartSongs.PAGE_INDEX) return;
 
-		this.tableViewerSongs.refresh();
+		this.tableViewer.refresh();
 	}
 
 }
