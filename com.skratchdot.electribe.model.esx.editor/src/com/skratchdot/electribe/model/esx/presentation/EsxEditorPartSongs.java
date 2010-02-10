@@ -25,6 +25,8 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.TabFolder;
+import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.PlatformUI;
@@ -38,9 +40,18 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 	public static final int PAGE_INDEX = 4;
 
 	private TableViewer tableViewerSongs;
-	private TableViewer tableViewerSongPatterns;
 	private TableScrollSpeedListener tableViewerScrollSpeedListener;
 
+	private EsxCompositeSong editorSong;
+	private EsxCompositeSongEvents editorSongEvents;
+	private EsxCompositeSongPatterns editorSongPatterns;
+
+	private TabFolder tabFolder;
+	private TabItem tabSong;
+	private TabItem tabSongEvents;
+	private TabItem tabSongPatterns;
+
+	
 	/**
 	 * @param parent
 	 */
@@ -69,10 +80,23 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		Group groupSelectedSong = new Group(sashForm, SWT.NONE);
 		groupSelectedSong.setLayout(new FillLayout(SWT.HORIZONTAL));
 		groupSelectedSong.setText("Selected Song");
+		
+		tabFolder = new TabFolder(groupSelectedSong, SWT.NONE);
+		
+		tabSong = new TabItem(tabFolder, SWT.NONE);
+		editorSong = new EsxCompositeSong(this, tabFolder, SWT.NONE);
+		tabSong.setText("Song Editor");
+		tabSong.setControl(editorSong);
+		
+		tabSongEvents = new TabItem(tabFolder, SWT.NONE);
+		editorSongEvents = new EsxCompositeSongEvents(this, tabFolder, SWT.NONE);
+		tabSongEvents.setText("Song Events");
+		tabSongEvents.setControl(editorSongEvents);
 
-		// Create this.listViewer
-		this.tableViewerSongPatterns = new TableViewer(groupSelectedSong, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
-		this.initTableViewerSongPatterns();
+		tabSongPatterns = new TabItem(tabFolder, SWT.NONE);
+		editorSongPatterns = new EsxCompositeSongPatterns(this, tabFolder, SWT.NONE);
+		tabSongPatterns.setText("Song Patterns");
+		tabSongPatterns.setControl(editorSongPatterns);
 
 		sashForm.setWeights(new int[] {3, 1});
 	}
@@ -145,13 +169,6 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 
 	    // Selection Provider For EsxEditor
 	    getEditorSite().setSelectionProvider(this.tableViewerSongs);
-	}
-
-	/**
-	 * 
-	 */
-	private void initTableViewerSongPatterns() {
-		// TODO Auto-generated method stub
 	}
 
 	/* (non-Javadoc)
