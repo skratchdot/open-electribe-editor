@@ -84,29 +84,44 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * item, or if all the feature's toString() valus match, then the toString() value is
 	 * returned.  If there are differing values for toString(), then the param "multiText"
 	 * is returned. 
-	 * @param list
-	 * @param feature
-	 * @param multiText
+	 * @param list A list of EObjects
+	 * @param feature The feature to compare
+	 * @param multiText The String to return if the given features toString() values don't match
 	 * @return
 	 */
 	protected String getMultiString(List<?> list, EStructuralFeature feature, String multiText) {
+		// Return immediately because an invalid list was passed in
 		if(list==null || list.size()<1) {
 			return "";
 		}
-		String returnValue = ((EObject) list.get(0)).eGet(feature).toString();
+
+		// Store the firstString (which we will compare all other strings to
+		Object firstObject = ((EObject) list.get(0)).eGet(feature);
+		String firstString = (firstObject==null?"":firstObject.toString());
+
+		// Compare firstString to all other strings
+		Object currentObject = null;
+		String currentString = "";
 		for(int i=1; i<list.size(); i++) {
-			if(!returnValue.equals(((EObject) list.get(i)).eGet(feature).toString())) {
+			currentObject = ((EObject) list.get(i)).eGet(feature);
+			currentString = (currentObject==null?"":currentObject.toString());
+			if(!firstString.equals(currentString)) {
 				return multiText;
 			}
 		}
-		return returnValue;
+		
+		// If we made it this far, all strings are the same
+		return firstString;
 	}
 
 	/**
-	 * @param string
-	 * @param currentIndex
-	 * @param listSize
-	 * @param maxAppendStringLength
+	 * This function is intended to be called from within a loop, passing
+	 * a different currentIndex each time.  It will return the given string
+	 * with a number appended to the end of it.
+	 * @param string The string to append a number to
+	 * @param currentIndex The current index (the number appended will be currentIndex+1)
+	 * @param listSize The total size of the list you are appending numbers to
+	 * @param maxAppendStringLength The maximum length of the string that is returned
 	 * @return
 	 */
 	protected String getMultiNumberString(final String string, final int currentIndex, final int listSize, final int maxAppendStringLength) {
