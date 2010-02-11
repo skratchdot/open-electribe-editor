@@ -26,6 +26,7 @@ import junit.textui.TestRunner;
  * The following features are tested:
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.SongPattern#isEmpty() <em>Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.SongPattern#getPositionCurrent() <em>Position Current</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -109,6 +110,19 @@ public class SongPatternTest extends TestCase {
 	 * @generated
 	 */
 	public void testIsEmpty() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.SongPattern#getPositionCurrent() <em>Position Current</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.SongPattern#getPositionCurrent()
+	 * @generated
+	 */
+	public void testGetPositionCurrent() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();
