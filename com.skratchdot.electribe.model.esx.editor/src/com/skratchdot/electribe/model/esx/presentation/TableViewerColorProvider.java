@@ -20,6 +20,7 @@ import org.eclipse.swt.graphics.RGB;
 import com.skratchdot.electribe.model.esx.Pattern;
 import com.skratchdot.electribe.model.esx.Sample;
 import com.skratchdot.electribe.model.esx.Song;
+import com.skratchdot.electribe.model.esx.SongPattern;
 
 public class TableViewerColorProvider extends ColorProvider {
 	private Color backgroundColorWhenNotEmpty;
@@ -85,6 +86,9 @@ public class TableViewerColorProvider extends ColorProvider {
 		} else if (object instanceof Song) {
 			return ((Song) object).isEmpty() ? backgroundColorWhenEmpty
 					: backgroundColorWhenNotEmpty;
+		} else if (object instanceof SongPattern) {
+			return ((SongPattern) object).isEmpty() ? backgroundColorWhenEmpty
+					: backgroundColorWhenNotEmpty;
 		}
 		return super.getBackground(object, columnIndex);
 	}
@@ -102,6 +106,9 @@ public class TableViewerColorProvider extends ColorProvider {
 					: foregroundColorWhenNotEmpty;
 		} else if (object instanceof Song) {
 			return ((Song) object).isEmpty() ? foregroundColorWhenEmpty
+					: foregroundColorWhenNotEmpty;
+		} else if (object instanceof SongPattern) {
+			return ((SongPattern) object).isEmpty() ? foregroundColorWhenEmpty
 					: foregroundColorWhenNotEmpty;
 		}
 		return super.getForeground(object, columnIndex);

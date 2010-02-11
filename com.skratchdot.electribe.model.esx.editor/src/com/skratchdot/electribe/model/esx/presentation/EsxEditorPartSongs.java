@@ -82,7 +82,7 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 
 		// Create this.tableViewer
 		this.tableViewer = new TableViewer(groupSongs, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
-		this.initTableViewerSongs();
+		this.initTableViewer();
 
 		// Create groupSelectedSong
 		Group groupSelectedSong = new Group(sashForm, SWT.NONE);
@@ -112,7 +112,7 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 	/**
 	 * 
 	 */
-	private void initTableViewerSongs() {
+	private void initTableViewer() {
 		// Create the table
 		Table table = this.tableViewer.getTable();
 		table.setLinesVisible(true);
@@ -197,6 +197,8 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 				}
 			}
 			this.editorSong.setInput(selectedSongs);
+			//this.editorSongEvents.setInput(selectedSongs);
+			this.editorSongPatterns.setInput(selectedSongs);
 		}
 	}
 	
@@ -274,6 +276,9 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		if(this.parentEditor.getActivePage()!=EsxEditorPartSongs.PAGE_INDEX) return;
 
 		this.tableViewer.refresh();
+		this.editorSong.refresh();
+		this.editorSongEvents.refresh();
+		this.editorSongPatterns.refresh();
 	}
 
 }
