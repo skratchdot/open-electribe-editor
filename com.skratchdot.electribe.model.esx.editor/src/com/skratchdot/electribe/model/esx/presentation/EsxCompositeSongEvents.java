@@ -20,6 +20,8 @@ public class EsxCompositeSongEvents extends EsxComposite {
 	 */
 	public EsxCompositeSongEvents(EsxEditorPart parentPart, Composite parentComposite, int style) {
 		super(parentPart, parentComposite, style);
+		this.parentPart = parentPart;
+
 	}
 
 	/* (non-Javadoc)
