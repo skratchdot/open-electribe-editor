@@ -196,15 +196,20 @@ public abstract class EsxEditorPart extends EditorPart
 	}
 
 	/**
-	 * @param tableViewer
-	 * @param text
-	 * @param width
+	 * @param tableViewer The TableViewer that a column will be added to
+	 * @param text The name of the column. Will show up in the column header.
+	 * @param width If null, then pack() will be called. If a valid integer, then the column will have this width
 	 */
-	protected void addColumnToTableViewer(TableViewer tableViewer, String text, int width) {
+	protected void addColumnToTableViewer(TableViewer tableViewer, String text, Integer width) {
 		TableViewerColumn tableViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
 		TableColumn column = tableViewerColumn.getColumn();
 		column.setText(text);
-		column.setWidth(width);
+		if(width==null) {
+			column.pack();
+		}
+		else {
+			column.setWidth(width);
+		}
 	}
 
 	/**
