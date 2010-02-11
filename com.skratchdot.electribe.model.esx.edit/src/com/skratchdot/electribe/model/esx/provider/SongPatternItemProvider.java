@@ -231,6 +231,7 @@ public class SongPatternItemProvider
 			case 1: return Integer.toString(((SongPattern) object).getPositionOriginal());
 			// Pattern Number
 			case 2: return ((SongPattern) object).getPatternNumber().getLiteral();
+			// Note Offset
 			case 3: return Byte.toString(((SongPattern) object).getNoteOffset());
 			default: return getText(object);
 		}

@@ -12,15 +12,11 @@
 package com.skratchdot.electribe.model.esx.provider;
 
 
-import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.SongEventTempo;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
@@ -33,6 +29,9 @@ import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.SongEventTempo;
 
 /**
  * This is the item provider adapter for a {@link com.skratchdot.electribe.model.esx.SongEventTempo} object.
@@ -136,6 +135,18 @@ public class SongEventTempoItemProvider
 	public String getText(Object object) {
 		SongEventTempo songEventTempo = (SongEventTempo)object;
 		return getString("_UI_SongEventTempo_type") + " " + songEventTempo.getMeasure();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.skratchdot.electribe.model.esx.provider.SongEventItemProvider#getColumnText(java.lang.Object, int)
+	 */
+	@Override
+	public String getColumnText(Object object, int columnIndex) {
+		switch(columnIndex) {
+			// Tempo
+			case 11: return Short.toString(((SongEventTempo) object).getTempo());
+			default: return super.getColumnText(object, columnIndex);
+		}
 	}
 
 	/**

@@ -12,17 +12,12 @@
 package com.skratchdot.electribe.model.esx.provider;
 
 
-import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.SongEvent;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
@@ -36,6 +31,9 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.SongEvent;
 
 /**
  * This is the item provider adapter for a {@link com.skratchdot.electribe.model.esx.SongEvent} object.
@@ -174,6 +172,28 @@ public class SongEventItemProvider
 	public String getText(Object object) {
 		SongEvent songEvent = (SongEvent)object;
 		return getString("_UI_SongEvent_type") + " " + songEvent.getMeasure();
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getColumnText(java.lang.Object, int)
+	 */
+	@Override
+	public String getColumnText(Object object, int columnIndex) {
+		switch(columnIndex) {
+			// Current Position
+			case 0: return "";
+			// Original Position
+			case 1: return "";
+			// Measure
+			case 2: return Byte.toString(((SongEvent) object).getMeasure());
+			// Operation Number
+			case 3: return Short.toString(((SongEvent) object).getOperationNumber());
+			// Position Number
+			case 4: return Byte.toString(((SongEvent) object).getPositionNumber());
+			// Step
+			case 5: return Byte.toString(((SongEvent) object).getStep());
+			default: return "";
+		}
 	}
 
 	/**

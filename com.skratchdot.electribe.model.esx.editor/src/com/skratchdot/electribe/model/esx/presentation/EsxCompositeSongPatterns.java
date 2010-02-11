@@ -6,10 +6,8 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
@@ -25,10 +23,8 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.PartNoteNumber;
 import com.skratchdot.electribe.model.esx.PatternNumber;
 import com.skratchdot.electribe.model.esx.Song;
-import com.skratchdot.electribe.model.esx.SongEvent;
 import com.skratchdot.electribe.model.esx.SongPattern;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
 

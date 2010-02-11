@@ -106,7 +106,7 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		tabSongPatterns.setText("Song Patterns");
 		tabSongPatterns.setControl(editorSongPatterns);
 
-		sashForm.setWeights(new int[] {3, 1});
+		sashForm.setWeights(new int[] {1, 1});
 	}
 
 	/**
@@ -197,7 +197,7 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 				}
 			}
 			this.editorSong.setInput(selectedSongs);
-			//this.editorSongEvents.setInput(selectedSongs);
+			this.editorSongEvents.setInput(selectedSongs);
 			this.editorSongPatterns.setInput(selectedSongs);
 		}
 	}
