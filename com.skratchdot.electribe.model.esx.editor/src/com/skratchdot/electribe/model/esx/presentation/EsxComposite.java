@@ -99,21 +99,21 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * @param multiText The String to return if the given features toString() values don't match
 	 * @return
 	 */
-	protected String getMultiString(List<?> list, EStructuralFeature feature, String multiText) {
+	protected String getMultiString(List<? extends EObject> list, EStructuralFeature feature, String multiText) {
 		// Return immediately because an invalid list was passed in
 		if(list==null || list.size()<1) {
 			return "";
 		}
 
 		// Store the firstString (which we will compare all other strings to
-		Object firstObject = ((EObject) list.get(0)).eGet(feature);
+		Object firstObject = list.get(0).eGet(feature);
 		String firstString = (firstObject==null?"":firstObject.toString());
 
 		// Compare firstString to all other strings
 		Object currentObject = null;
 		String currentString = "";
 		for(int i=1; i<list.size(); i++) {
-			currentObject = ((EObject) list.get(i)).eGet(feature);
+			currentObject = list.get(i).eGet(feature);
 			currentString = (currentObject==null?"":currentObject.toString());
 			if(!firstString.equals(currentString)) {
 				return multiText;
@@ -166,19 +166,19 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	}
 
 	/**
-	 * @param list
-	 * @param feature
-	 * @param value
-	 * @param appendNumber
-	 * @param maxAppendStringLength
+	 * @param list A list of EObjects
+	 * @param feature The feature we will be setting
+	 * @param value The value we will be setting
+	 * @param appendNumber If true, then we will attempt to append a number to the end of value (value should be a string)
+	 * @param maxAppendStringLength Only used if appendNumber is true. This is the maxlength of the string we are trying to append to
 	 */
-	protected void setFeatureForSelectedItems(List<?> list, EStructuralFeature feature, Object value, boolean appendNumber, int maxAppendStringLength) {
+	protected void setFeatureForSelectedItems(List<? extends EObject> list, EStructuralFeature feature, Object value, boolean appendNumber, int maxAppendStringLength) {
 		CompoundCommand cmd = new CompoundCommand();
 		
 		for(int i=0; i<list.size(); i++) {
 			cmd.append(SetCommand.create(
 				this.getEditingDomain(),
-				(EObject) list.get(i),
+				list.get(i),
 				feature,
 				(appendNumber==false?value:getMultiNumberString(value.toString(), i, list.size(), maxAppendStringLength))
 			));
