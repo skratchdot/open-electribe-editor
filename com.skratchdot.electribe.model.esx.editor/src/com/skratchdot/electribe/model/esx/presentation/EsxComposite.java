@@ -146,6 +146,22 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 			) + StringUtils.leftPad(Integer.toString(currentIndex+1), listSizeStringLength, "0");
 		}
 	}
+	
+	/**
+	 * @param list A list of EObjects
+	 * @param feature The feature to compare
+	 * @param value The value to compare
+	 * @return Returns the count of features in the given list that are equal to the given value
+	 */
+	protected int getCountInListWithValue(List<? extends EObject> list, EStructuralFeature feature, Object value) {
+		int returnValue = 0;
+		for(int i=0; i<list.size(); i++) {
+			if(list.get(i).eGet(feature).equals(value)) {
+				returnValue++;
+			}
+		}
+		return returnValue;
+	}
 
 	/**
 	 * @param list

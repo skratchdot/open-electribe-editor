@@ -238,9 +238,9 @@ public class EsxCompositeSample extends EsxComposite {
 	public void refresh() {
 		String multipleValueString = "<Multiple Values>";
 
-		this.textSelectedTotal.setText(Integer.toString(this.getNumSelections()));
-		this.textSelectedNotEmpty.setText(Integer.toString(this.getNumSelectionsNotEmpty()));
-		this.textSelectedEmpty.setText(Integer.toString(this.getNumSelectionsEmpty()));
+		this.textSelectedTotal.setText(Integer.toString(this.samples.size()));
+		this.textSelectedNotEmpty.setText(Integer.toString(this.getCountInListWithValue(this.samples, EsxPackage.Literals.SAMPLE__EMPTY, false)));
+		this.textSelectedEmpty.setText(Integer.toString(this.getCountInListWithValue(this.samples, EsxPackage.Literals.SAMPLE__EMPTY, true)));
 
 		this.textName.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__NAME, multipleValueString)));
 
@@ -274,39 +274,6 @@ public class EsxCompositeSample extends EsxComposite {
 
 		this.comboStretchStep.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__STRETCH_STEP, multipleValueString)));
 		this.comboPlayLevel.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__PLAY_LEVEL, multipleValueString)));
-	}
-	
-	/**
-	 * @return
-	 */
-	private int getNumSelections() {
-		return this.samples.size();
-	}
-
-	/**
-	 * @return
-	 */
-	private int getNumSelectionsNotEmpty() {
-		int returnValue = 0;
-		for(int i=0; i<this.samples.size(); i++) {
-			if(!this.samples.get(i).isEmpty()) {
-				returnValue++;
-			}
-		}
-		return returnValue;
-	}
-
-	/**
-	 * @return
-	 */
-	private int getNumSelectionsEmpty() {
-		int returnValue = 0;
-		for(int i=0; i<this.samples.size(); i++) {
-			if(this.samples.get(i).isEmpty()) {
-				returnValue++;
-			}
-		}
-		return returnValue;
 	}
 
 }
