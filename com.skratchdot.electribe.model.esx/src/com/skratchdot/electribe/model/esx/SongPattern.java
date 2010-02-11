@@ -21,9 +21,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.skratchdot.electribe.model.esx.SongPattern#getPatternNumber <em>Pattern Number</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.SongPattern#getNoteOffset <em>Note Offset</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.SongPattern#isEmpty <em>Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.SongPattern#getNoteOffset <em>Note Offset</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.SongPattern#getPatternNumber <em>Pattern Number</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.SongPattern#getPositionCurrent <em>Position Current</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.SongPattern#getPositionOriginal <em>Position Original</em>}</li>
  * </ul>
  * </p>
  *
@@ -60,6 +62,49 @@ public interface SongPattern extends EObject {
 	 * @generated
 	 */
 	void setPatternNumber(PatternNumber value);
+
+	/**
+	 * Returns the value of the '<em><b>Position Current</b></em>' attribute.
+	 * The default value is <code>"-1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Position Current</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Position Current</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSongPattern_PositionCurrent()
+	 * @model default="-1" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	int getPositionCurrent();
+
+	/**
+	 * Returns the value of the '<em><b>Position Original</b></em>' attribute.
+	 * The default value is <code>"-1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Position Original</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Position Original</em>' attribute.
+	 * @see #setPositionOriginal(int)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSongPattern_PositionOriginal()
+	 * @model default="-1"
+	 * @generated
+	 */
+	int getPositionOriginal();
+
+	/**
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.SongPattern#getPositionOriginal <em>Position Original</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Position Original</em>' attribute.
+	 * @see #getPositionOriginal()
+	 * @generated
+	 */
+	void setPositionOriginal(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Note Offset</b></em>' attribute.

@@ -3823,13 +3823,13 @@ public interface EsxPackage extends EPackage {
 	int SONG_EVENT_WITH_PART_FEATURE_COUNT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Pattern Number</b></em>' attribute.
+	 * The feature id for the '<em><b>Empty</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_PATTERN__PATTERN_NUMBER = 0;
+	int SONG_PATTERN__EMPTY = 0;
 
 	/**
 	 * The feature id for the '<em><b>Note Offset</b></em>' attribute.
@@ -3841,13 +3841,31 @@ public interface EsxPackage extends EPackage {
 	int SONG_PATTERN__NOTE_OFFSET = 1;
 
 	/**
-	 * The feature id for the '<em><b>Empty</b></em>' attribute.
+	 * The feature id for the '<em><b>Pattern Number</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_PATTERN__EMPTY = 2;
+	int SONG_PATTERN__PATTERN_NUMBER = 2;
+
+	/**
+	 * The feature id for the '<em><b>Position Current</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_PATTERN__POSITION_CURRENT = 3;
+
+	/**
+	 * The feature id for the '<em><b>Position Original</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_PATTERN__POSITION_ORIGINAL = 4;
 
 	/**
 	 * The number of structural features of the '<em>Song Pattern</em>' class.
@@ -3856,7 +3874,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_PATTERN_FEATURE_COUNT = 3;
+	int SONG_PATTERN_FEATURE_COUNT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -6221,6 +6239,28 @@ public interface EsxPackage extends EPackage {
 	EAttribute getSongPattern_PatternNumber();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongPattern#getPositionCurrent <em>Position Current</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Position Current</em>'.
+	 * @see com.skratchdot.electribe.model.esx.SongPattern#getPositionCurrent()
+	 * @see #getSongPattern()
+	 * @generated
+	 */
+	EAttribute getSongPattern_PositionCurrent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongPattern#getPositionOriginal <em>Position Original</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Position Original</em>'.
+	 * @see com.skratchdot.electribe.model.esx.SongPattern#getPositionOriginal()
+	 * @see #getSongPattern()
+	 * @generated
+	 */
+	EAttribute getSongPattern_PositionOriginal();
+
+	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongPattern#getNoteOffset <em>Note Offset</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8422,6 +8462,22 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SONG_PATTERN__PATTERN_NUMBER = eINSTANCE.getSongPattern_PatternNumber();
+
+		/**
+		 * The meta object literal for the '<em><b>Position Current</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SONG_PATTERN__POSITION_CURRENT = eINSTANCE.getSongPattern_PositionCurrent();
+
+		/**
+		 * The meta object literal for the '<em><b>Position Original</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SONG_PATTERN__POSITION_ORIGINAL = eINSTANCE.getSongPattern_PositionOriginal();
 
 		/**
 		 * The meta object literal for the '<em><b>Note Offset</b></em>' attribute feature.

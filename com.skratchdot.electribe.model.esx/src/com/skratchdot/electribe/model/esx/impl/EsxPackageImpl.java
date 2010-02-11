@@ -2325,7 +2325,25 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongPattern_PatternNumber() {
-		return (EAttribute)songPatternEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)songPatternEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSongPattern_PositionCurrent() {
+		return (EAttribute)songPatternEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSongPattern_PositionOriginal() {
+		return (EAttribute)songPatternEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -2343,7 +2361,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongPattern_Empty() {
-		return (EAttribute)songPatternEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)songPatternEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3188,9 +3206,11 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(songEventWithPartEClass, SONG_EVENT_WITH_PART__PART);
 
 		songPatternEClass = createEClass(SONG_PATTERN);
-		createEAttribute(songPatternEClass, SONG_PATTERN__PATTERN_NUMBER);
-		createEAttribute(songPatternEClass, SONG_PATTERN__NOTE_OFFSET);
 		createEAttribute(songPatternEClass, SONG_PATTERN__EMPTY);
+		createEAttribute(songPatternEClass, SONG_PATTERN__NOTE_OFFSET);
+		createEAttribute(songPatternEClass, SONG_PATTERN__PATTERN_NUMBER);
+		createEAttribute(songPatternEClass, SONG_PATTERN__POSITION_CURRENT);
+		createEAttribute(songPatternEClass, SONG_PATTERN__POSITION_ORIGINAL);
 
 		tempoEClass = createEClass(TEMPO);
 		createEAttribute(tempoEClass, TEMPO__VALUE);
@@ -3556,9 +3576,11 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getSongEventWithPart_Part(), ecorePackage.getEByte(), "part", null, 0, 1, SongEventWithPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(songPatternEClass, SongPattern.class, "SongPattern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSongPattern_PatternNumber(), this.getPatternNumber(), "patternNumber", null, 0, 1, SongPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongPattern_NoteOffset(), ecorePackage.getEByte(), "noteOffset", null, 0, 1, SongPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongPattern_Empty(), ecorePackage.getEBoolean(), "empty", "true", 0, 1, SongPattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongPattern_NoteOffset(), ecorePackage.getEByte(), "noteOffset", null, 0, 1, SongPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongPattern_PatternNumber(), this.getPatternNumber(), "patternNumber", null, 0, 1, SongPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongPattern_PositionCurrent(), ecorePackage.getEInt(), "positionCurrent", "-1", 0, 1, SongPattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongPattern_PositionOriginal(), ecorePackage.getEInt(), "positionOriginal", "-1", 0, 1, SongPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tempoEClass, Tempo.class, "Tempo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTempo_Value(), ecorePackage.getEFloat(), "value", null, 0, 1, Tempo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
