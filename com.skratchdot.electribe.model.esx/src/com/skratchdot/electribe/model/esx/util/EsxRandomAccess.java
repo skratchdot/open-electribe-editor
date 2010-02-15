@@ -31,8 +31,13 @@ public class EsxRandomAccess extends RandomAccessFile {
 
 	public EsxRandomAccess(File file, InputStream in, IProgressMonitor monitor) throws IOException {
 		super(file, "rwd");
+		
+		int bufferSize = 16384;
+		if(in.available()>bufferSize) {
+			bufferSize = in.available();
+		}
 
-		byte[] buffer = new byte[16384];
+		byte[] buffer = new byte[bufferSize];
 		int len;
 		int total = 0;
 
