@@ -34,7 +34,9 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.dialogs.MessageDialogWithToggle;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.FileTransfer;
@@ -702,9 +704,16 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 				if(rootObject instanceof EsxFile) {
 					EsxFile esxFile = (EsxFile) rootObject;
 
+					// These will be used if we bring up the overwrite files prompt
+					boolean rememberThisDecision = false;
+					boolean overwriteAllFiles = false;
+					boolean writeCurrentFile = false;
+
 					for(int i=0; i<esxFile.getSamples().size(); i++) {
 						Sample currentSample = esxFile.getSamples().get(i);
 						if(currentSample.isEmpty()==false) {
+
+							// Setup Filename
 							String filename = ""+
 								EsxPreferenceStore.getString(EsxPreferenceNames.EXPORT_FILENAME_FORMAT)+
 								".wav";
@@ -713,16 +722,43 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 							filename = filename.replaceAll("[^a-zA-Z0-9 _.-]", "_");
 
 							File file = new File(directory+File.separator+filename);
+							writeCurrentFile = true;
 
-							try {
-								if(currentSample.isStereo()==false) {
-									((SampleMono) currentSample).export(file);
+							// Check if we need to overwrite the file
+							if(file.exists()) {
+								if(rememberThisDecision) {
+									writeCurrentFile = overwriteAllFiles;
 								}
 								else {
-									((SampleStereo) currentSample).export(file);									
+									MessageDialogWithToggle dialog =
+										MessageDialogWithToggle.openYesNoQuestion(
+											window.getShell(),
+											getString("_UI_Export_Samples_Overwrite_Title"),
+											getString("_UI_Export_Samples_Overwrite_Message", file.getAbsoluteFile()),
+											getString("_UI_Export_Samples_Overwrite_Toggle"),
+											rememberThisDecision,
+											null,
+											null
+										);
+									writeCurrentFile = dialog.getReturnCode()==IDialogConstants.YES_ID;
+									if(dialog.getToggleState()==true) {
+										rememberThisDecision = true;
+										overwriteAllFiles = writeCurrentFile;
+									}
 								}
-							} catch (Exception e) {
-								e.printStackTrace();
+							}
+							
+							if(writeCurrentFile==true) {
+								try {
+									if(currentSample.isStereo()==false) {
+										((SampleMono) currentSample).export(file);
+									}
+									else {
+										((SampleStereo) currentSample).export(file);									
+									}
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
 							}
 						}
 					}
