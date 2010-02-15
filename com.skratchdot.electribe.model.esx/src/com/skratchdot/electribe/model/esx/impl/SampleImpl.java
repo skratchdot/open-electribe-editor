@@ -1188,7 +1188,7 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	 * @generated NOT
 	 */
 	public boolean isLoop() {
-		return (this.end!=this.loopStart);
+		return (this.getLoopStart()<this.getEnd() && this.getLoopStart()>=0);
 	}
 
 	/**
@@ -1279,6 +1279,16 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 			}
 		}
 		return SampleNumber.get(-1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void export(File file) throws IOException {
+		// This should be implemented by subclasses
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -1628,7 +1638,7 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 		// TODO: This logic should be fixed so out of bounds
 		// never occurs. Too lazy to fix right now.
 		try {
-			for (int i = 0, j = 0; j < this.getNumberOfSampleFrames()*2; i = i + 4, j = j+2) {
+			for (int i = 0, j = 0; i<both.length && j<left.length; i = i + 4, j = j+2) {
 				both[i] = left[j];
 				both[i + 1] = left[j + 1];
 				both[i + 2] = right[j];

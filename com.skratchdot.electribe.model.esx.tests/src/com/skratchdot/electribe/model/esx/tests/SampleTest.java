@@ -30,6 +30,12 @@ import junit.framework.TestCase;
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleNumberCurrent() <em>Sample Number Current</em>}</li>
  * </ul>
  * </p>
+ * <p>
+ * The following operations are tested:
+ * <ul>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#export(java.io.File) <em>Export</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public abstract class SampleTest extends TestCase {
@@ -120,6 +126,19 @@ public abstract class SampleTest extends TestCase {
 	 */
 	public void testGetSampleNumberCurrent() {
 		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#export(java.io.File) <em>Export</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.Sample#export(java.io.File)
+	 * @generated
+	 */
+	public void testExport__File() {
+		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();
 	}

@@ -26,6 +26,13 @@ import com.skratchdot.electribe.model.esx.StretchStep;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
+import com.skratchdot.riff.wav.ChunkData;
+import com.skratchdot.riff.wav.ChunkFormat;
+import com.skratchdot.riff.wav.ChunkSampler;
+import com.skratchdot.riff.wav.CompressionCode;
+import com.skratchdot.riff.wav.RIFFWave;
+import com.skratchdot.riff.wav.SampleLoop;
+import com.skratchdot.riff.wav.WavFactory;
 
 /**
  * <!-- begin-user-doc -->
@@ -193,6 +200,69 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 		out.writeByte(this.getUnknownByte3());
 		// byte 43
 		out.writeByte(this.getUnknownByte4());
+	}
+
+	/* (non-Javadoc)
+	 * @see com.skratchdot.electribe.model.esx.impl.SampleImpl#export(java.io.File)
+	 */
+	@Override
+	public void export(File file) throws IOException {
+		if(this.isEmpty()) return; // Do nothing if this is an empty sample
+
+		RIFFWave riffWave = WavFactory.eINSTANCE.createRIFFWave();
+
+		// format chunk
+		ChunkFormat chunkFormat = WavFactory.eINSTANCE.createChunkFormat();
+		chunkFormat.setCompressionCode(CompressionCode.COMPRESSION_CODE_1);
+		chunkFormat.setCompressionCodeValue(CompressionCode.COMPRESSION_CODE_1_VALUE);
+		chunkFormat.setNumberOfChannels(2);
+		chunkFormat.setSampleRate((long)this.getSampleRate());
+		chunkFormat.setAverageBytesPerSecond(chunkFormat.getSampleRate()*chunkFormat.getNumberOfChannels()*2);
+		chunkFormat.setBlockAlign(chunkFormat.getNumberOfChannels()*2);
+		chunkFormat.setSignificantBitsPerSample(16);
+		riffWave.getChunks().add(chunkFormat);
+
+		// data chunk
+		ChunkData chunkData = WavFactory.eINSTANCE.createChunkData();
+		byte[] left = this.getAudioDataChannel1();
+		byte[] right = this.getAudioDataChannel2();
+		byte[] both = new byte[left.length + right.length];
+		try {
+			for (int i = 0, j = 0; i<both.length && j<left.length; i = i + 4, j = j+2) {
+				both[i] = left[j + 1];
+				both[i + 1] = left[j];
+				both[i + 2] = right[j + 1];
+				both[i + 3] = right[j];
+			}
+		} catch(Exception e) {}
+		chunkData.setSampleDataOriginal(both);
+		riffWave.getChunks().add(chunkData);
+
+		// sampler chunk
+		if(this.isLoop()) {
+			ChunkSampler chunkSampler = WavFactory.eINSTANCE.createChunkSampler();
+			chunkSampler.setManufacturer((long)0x42);
+			chunkSampler.setProduct((long)0x71);
+			chunkSampler.setSamplePeriod((long)1000000000/this.getSampleRate());
+			chunkSampler.setMidiUnityNote((long)0x3C);
+			chunkSampler.setMidiPitchFraction((long)0);
+			chunkSampler.setSmpteFormat((long)0);
+			chunkSampler.setSmpteOffset((long)0);
+
+			SampleLoop sampleLoop = WavFactory.eINSTANCE.createSampleLoop();
+			sampleLoop.setCuePointID((long)0);
+			sampleLoop.setType((long)0);
+			sampleLoop.setStart((long)this.getLoopStart());
+			sampleLoop.setEnd((long)this.getEnd());
+			sampleLoop.setFraction((long)0);
+			sampleLoop.setPlayCount((long)0);
+			chunkSampler.getSampleLoops().add(sampleLoop);
+
+			riffWave.getChunks().add(chunkSampler);
+		}
+		
+		// Write the file
+		riffWave.write(file);
 	}
 
 } //SampleStereoImpl

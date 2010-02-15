@@ -5,25 +5,31 @@
          point="org.eclipse.ui.preferencePages">
       <page
             class="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePage"
-            id="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePage"
+            id="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePage"
             name="Electribe Editor Preferences">
       </page>
       <page
-            category="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePage"
+            category="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePage"
+            class="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePageExport"
+            id="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePageExport"
+            name="Export">
+      </page>
+      <page
+            category="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePage"
             class="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePagePatterns"
-            id="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePagePatterns"
+            id="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePagePatterns"
             name="Patterns">
       </page>
       <page
-            category="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePage"
+            category="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePage"
             class="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePageSamples"
-            id="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePageSamples"
+            id="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePageSamples"
             name="Samples">
       </page>
       <page
-            category="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePage"
+            category="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePage"
             class="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePageSongs"
-            id="com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePageSongs"
+            id="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePageSongs"
             name="Songs">
       </page>
    </extension>

@@ -29,6 +29,12 @@ public class EsxPreferenceInitializer extends AbstractPreferenceInitializer {
 	 */
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = PlatformUI.getPreferenceStore();
+		
+		/* EXPORT */
+		store.setDefault(
+				EsxPreferenceNames.EXPORT_FILENAME_FORMAT,
+				EsxPreferenceDefaults.EXPORT_FILENAME_FORMAT
+			);
 
 		/* SAMPLES */
 		store.setDefault(

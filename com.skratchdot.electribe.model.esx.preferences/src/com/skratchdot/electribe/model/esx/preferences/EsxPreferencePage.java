@@ -24,7 +24,7 @@ import org.eclipse.ui.preferences.IWorkbenchPreferenceContainer;
 
 public class EsxPreferencePage extends PreferencePage
 		implements IWorkbenchPreferencePage {
-	public static final String ID = "com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePage"; //$NON-NLS-1$
+	public static final String ID = "com.skratchdot.electribe.model.esx.preferences.EsxPreferencePage"; //$NON-NLS-1$
 
 	/**
 	 * Create the preference page.
@@ -52,7 +52,17 @@ public class EsxPreferencePage extends PreferencePage
 		Composite composite = new Composite(parent, SWT.NULL);
 		composite.setLayout(new GridLayout());
 
-		// Link to EsxEditorPreferencePagePatterns
+		// Link to EsxPreferencePageExport
+		new PreferenceLinkArea(
+			composite,
+			SWT.NONE,
+			EsxPreferencePageExport.ID,
+			"See <a>''{0}''</a> to edit the Export preferences.",
+			(IWorkbenchPreferenceContainer) getContainer(),
+			null
+		);
+		
+		// Link to EsxPreferencePagePatterns
 		new PreferenceLinkArea(
 			composite,
 			SWT.NONE,
@@ -62,7 +72,7 @@ public class EsxPreferencePage extends PreferencePage
 			null
 		);
 
-		// Link to EsxEditorPreferencePageSamples
+		// Link to EsxPreferencePageSamples
 		new PreferenceLinkArea(
 			composite,
 			SWT.NONE,
@@ -72,7 +82,7 @@ public class EsxPreferencePage extends PreferencePage
 			null
 		);
 
-		// Link to EsxEditorPreferencePageSongs
+		// Link to EsxPreferencePageSongs
 		new PreferenceLinkArea(
 			composite,
 			SWT.NONE,

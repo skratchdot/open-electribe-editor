@@ -4274,7 +4274,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getObject()
 	 * @generated
 	 */
-	int OBJECT = 76;
+	int OBJECT = 78;
 
 
 	/**
@@ -4286,6 +4286,28 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	int ARRAY_LIST = 75;
+
+
+	/**
+	 * The meta object id for the '<em>File</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.io.File
+	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getFile()
+	 * @generated
+	 */
+	int FILE = 76;
+
+
+	/**
+	 * The meta object id for the '<em>IO Exception</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.io.IOException
+	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getIOException()
+	 * @generated
+	 */
+	int IO_EXCEPTION = 77;
 
 
 	/**
@@ -6942,6 +6964,28 @@ public interface EsxPackage extends EPackage {
 	EDataType getArrayList();
 
 	/**
+	 * Returns the meta object for data type '{@link java.io.File <em>File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>File</em>'.
+	 * @see java.io.File
+	 * @model instanceClass="java.io.File"
+	 * @generated
+	 */
+	EDataType getFile();
+
+	/**
+	 * Returns the meta object for data type '{@link java.io.IOException <em>IO Exception</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>IO Exception</em>'.
+	 * @see java.io.IOException
+	 * @model instanceClass="java.io.IOException"
+	 * @generated
+	 */
+	EDataType getIOException();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9100,6 +9144,26 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType ARRAY_LIST = eINSTANCE.getArrayList();
+
+		/**
+		 * The meta object literal for the '<em>File</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.io.File
+		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getFile()
+		 * @generated
+		 */
+		EDataType FILE = eINSTANCE.getFile();
+
+		/**
+		 * The meta object literal for the '<em>IO Exception</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.io.IOException
+		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getIOException()
+		 * @generated
+		 */
+		EDataType IO_EXCEPTION = eINSTANCE.getIOException();
 
 	}
 

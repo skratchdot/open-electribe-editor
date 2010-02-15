@@ -17,6 +17,9 @@ package com.skratchdot.electribe.model.esx.preferences;
  */
 public class EsxPreferenceNames {
 
+	// EXPORT
+	public static final String EXPORT_FILENAME_FORMAT = "EXPORT_FILENAME_FORMAT";
+
 	// SAMPLES
 	public static final String SAMPLES_USE_SCROLL_SPEED = "SAMPLES_USE_SCROLL_SPEED";
 	public static final String SAMPLES_SCROLL_SPEED = "SAMPLES_SCROLL_SPEED";

@@ -243,6 +243,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return createTempoLockFromString(eDataType, initialValue);
 			case EsxPackage.ARRAY_LIST:
 				return createArrayListFromString(eDataType, initialValue);
+			case EsxPackage.FILE:
+				return createFileFromString(eDataType, initialValue);
+			case EsxPackage.IO_EXCEPTION:
+				return createIOExceptionFromString(eDataType, initialValue);
 			case EsxPackage.OBJECT:
 				return createObjectFromString(eDataType, initialValue);
 			default:
@@ -334,6 +338,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return convertTempoLockToString(eDataType, instanceValue);
 			case EsxPackage.ARRAY_LIST:
 				return convertArrayListToString(eDataType, instanceValue);
+			case EsxPackage.FILE:
+				return convertFileToString(eDataType, instanceValue);
+			case EsxPackage.IO_EXCEPTION:
+				return convertIOExceptionToString(eDataType, instanceValue);
 			case EsxPackage.OBJECT:
 				return convertObjectToString(eDataType, instanceValue);
 			default:
@@ -2229,6 +2237,78 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public String convertArrayListToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public File createFile(String literal) {
+		return (File)super.createFromString(EsxPackage.Literals.FILE, literal);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public File createFileFromString(EDataType eDataType, String initialValue) {
+		return (File)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertFile(File instanceValue) {
+		return super.convertToString(EsxPackage.Literals.FILE, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertFileToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IOException createIOException(String literal) {
+		return (IOException)super.createFromString(EsxPackage.Literals.IO_EXCEPTION, literal);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IOException createIOExceptionFromString(EDataType eDataType, String initialValue) {
+		return (IOException)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertIOException(IOException instanceValue) {
+		return super.convertToString(EsxPackage.Literals.IO_EXCEPTION, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertIOExceptionToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	@Override

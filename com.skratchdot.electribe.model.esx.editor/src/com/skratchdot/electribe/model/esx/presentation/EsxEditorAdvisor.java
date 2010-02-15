@@ -39,6 +39,7 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.FileTransfer;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
@@ -66,7 +67,11 @@ import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.Sample;
+import com.skratchdot.electribe.model.esx.SampleMono;
+import com.skratchdot.electribe.model.esx.SampleStereo;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceInitializer;
+import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceNames;
+import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 
@@ -323,6 +328,11 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 			menu.add(importMenu);
 			menu.add(new Separator());
 
+			IMenuManager exportMenu = new MenuManager(getString("_UI_Menu_Export_label"), "export");
+			exportMenu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
+			menu.add(exportMenu);
+			menu.add(new Separator());
+
 			addToMenuAndRegister(menu, ActionFactory.CLOSE.create(window));
 			addToMenuAndRegister(menu, ActionFactory.CLOSE_ALL.create(window));
 			menu.add(new Separator());
@@ -571,9 +581,28 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 	}
 
 	/**
+	 * Export audio files action for the RCP application.
+	 * This will pop open a "Choose directory" dialog, allowing a user to
+	 * select the folder in which all the .wav files will be exported to.
+	 */
+	public static class ExportAudioFileAction extends WorkbenchWindowActionDelegate {
+		public void run(IAction action) {
+			DirectoryDialog directoryDialog = new DirectoryDialog(getWindow().getShell());
+			directoryDialog.setMessage(getString("_UI_Export_Samples_Select_Dir"));
+
+			String directory = directoryDialog.open();
+			if(directory!=null) {
+				exportAudioFilesToDirectory(getWindow().getWorkbench(), directory);
+			}
+		}
+	}
+
+	/**
 	 * Attempts to add audio files specified by filePaths to the esx editor
 	 * workspace.  It will only load files if there are empty/unused sample
 	 * slots.
+	 * @param workbench
+	 * @param filePaths
 	 */
 	public static void importAudioFiles(IWorkbench workbench, String[] filePaths) {
 		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
@@ -648,7 +677,60 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 			}
 		}
 	}
-	
+
+	/**
+	 * Attempts to export .wav files to the given directory. It will export
+	 * all samples that are being used in the workspace.
+	 * @param workbench
+	 * @param directory A valid, non-null path to the directory in which .wav files will be exported to
+	 */
+	public static void exportAudioFilesToDirectory(IWorkbench workbench, String directory) {
+		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+		IWorkbenchPage page = window.getActivePage();
+		IEditorPart editor = page.getActiveEditor();
+		
+		// We've chosen to load a few audio files into the active editor
+		if(directory!=null) {
+			// If the active editor is an EsxEditor
+			if(editor!=null && editor instanceof EsxEditor) {
+				
+				// Get our EsxFile
+				EditingDomain editingDomain = ((EsxEditor) editor).getEditingDomain();
+				Resource resource =
+					(Resource)editingDomain.getResourceSet().getResources().get(0);
+				Object rootObject = resource.getContents().get(0);
+				if(rootObject instanceof EsxFile) {
+					EsxFile esxFile = (EsxFile) rootObject;
+
+					for(int i=0; i<esxFile.getSamples().size(); i++) {
+						Sample currentSample = esxFile.getSamples().get(i);
+						if(currentSample.isEmpty()==false) {
+							String filename = ""+
+								EsxPreferenceStore.getString(EsxPreferenceNames.EXPORT_FILENAME_FORMAT)+
+								".wav";
+							filename = filename.replace("%s%", currentSample.getName().trim());
+							filename = filename.replace("%n%", currentSample.getSampleNumberCurrent().getLiteral());
+							filename = filename.replaceAll("[^a-zA-Z0-9 _.-]", "_");
+
+							File file = new File(directory+File.separator+filename);
+
+							try {
+								if(currentSample.isStereo()==false) {
+									((SampleMono) currentSample).export(file);
+								}
+								else {
+									((SampleStereo) currentSample).export(file);									
+								}
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

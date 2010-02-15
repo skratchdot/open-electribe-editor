@@ -31,6 +31,15 @@ public class EsxPreferenceStore {
 			preferenceName
 		);
 	}
+	
+	/**
+	 * @see org.eclipse.jface.preference.IPreferenceStore#getString(String)
+	 * @param preferenceName
+	 * @return
+	 */
+	public static String getString(String preferenceName) {
+		return PlatformUI.getPreferenceStore().getString(preferenceName);
+	}
 
 	/**
 	 * @return the value of the '<em>SAMPLES_USE_SCROLL_SPEED</em>' preference.

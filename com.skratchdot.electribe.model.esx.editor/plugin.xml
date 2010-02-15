@@ -65,6 +65,12 @@
                menubarPath="file/import/additions">
          </action>
          <action
+               class="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisor$ExportAudioFileAction"
+               id="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorExportAudioFileAction"
+               label="%_UI_Menu_Export_Audio_File_label"
+               menubarPath="file/export/additions">
+         </action>
+         <action
                class="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisor$OpenAction"
                definitionId="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorOpenCommand"
                id="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorOpenAction"

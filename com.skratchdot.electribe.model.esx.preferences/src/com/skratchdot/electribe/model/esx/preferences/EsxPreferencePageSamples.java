@@ -21,7 +21,7 @@ import org.eclipse.ui.PlatformUI;
 
 public class EsxPreferencePageSamples extends FieldEditorPreferencePage
 		implements IWorkbenchPreferencePage {
-	public static final String ID = "com.skratchdot.electribe.model.esx.preferences.EsxEditorPreferencePageSamples"; //$NON-NLS-1$
+	public static final String ID = "com.skratchdot.electribe.model.esx.preferences.EsxPreferencePageSamples"; //$NON-NLS-1$
 
 	/**
 	 * Create the preference page.

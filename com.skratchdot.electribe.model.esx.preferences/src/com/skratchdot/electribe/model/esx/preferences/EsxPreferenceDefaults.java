@@ -18,6 +18,9 @@ import org.eclipse.swt.graphics.RGB;
  */
 public class EsxPreferenceDefaults {
 
+	// EXPORT
+	public static final String	EXPORT_FILENAME_FORMAT = "%n% - %s%";
+	
 	// SAMPLES
 	public static final Boolean	SAMPLES_USE_SCROLL_SPEED = true;
 	public static final Integer	SAMPLES_SCROLL_SPEED = 40;

@@ -11,6 +11,8 @@
  */
 package com.skratchdot.electribe.model.esx;
 
+import java.io.File;
+import java.io.IOException;
 import javax.sound.sampled.AudioInputStream;
 
 import org.eclipse.emf.ecore.EObject;
@@ -681,6 +683,14 @@ public interface Sample extends EObject {
 	 * @generated
 	 */
 	SampleNumber getSampleNumberCurrent();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model exceptions="com.skratchdot.electribe.model.esx.IOException" fileDataType="com.skratchdot.electribe.model.esx.File"
+	 * @generated
+	 */
+	void export(File file) throws IOException;
 
 	/**
 	 * Returns the value of the '<em><b>Loop</b></em>' attribute.
