@@ -462,18 +462,14 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 
 		// bytes 12~27 (16 bytes)
 		tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA];
-		for (int i = 0; i < EsxUtil.NUM_SEQUENCE_DATA; i++) {
-			tempBytes[i] = in.readByte();
-		}
+		in.readFully(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA);
 		SequenceData newSequenceData = EsxFactory.eINSTANCE.createSequenceData();
 		newSequenceData.setSequenceData(tempBytes);
 		this.setSequenceData(newSequenceData);
 
 		// bytes 28~155 (128 bytes)
 		tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA_GATE];
-		for (int i = 0; i < EsxUtil.NUM_SEQUENCE_DATA_GATE; i++) {
-			tempBytes[i] = in.readByte();
-		}
+		in.readFully(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA_GATE);
 		SequenceDataGate newSequenceDataGate = EsxFactory.eINSTANCE.createSequenceDataGate();
 		newSequenceDataGate.setSequenceDataGate(tempBytes);
 		this.setSequenceDataGate(newSequenceDataGate);

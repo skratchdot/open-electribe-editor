@@ -591,9 +591,7 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 
 		// bytes 18~145 (128 bytes)
 		tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA_NOTE];
-		for (int i = 0; i < EsxUtil.NUM_SEQUENCE_DATA_NOTE; i++) {
-			tempBytes[i] = in.readByte();
-		}
+		in.readFully(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA_NOTE);
 		SequenceDataNote newSequenceDataNote = EsxFactory.eINSTANCE.createSequenceDataNote();
 		newSequenceDataNote.setSequenceDataNote(tempBytes);
 		this.setSequenceDataNote(newSequenceDataNote);
@@ -601,9 +599,7 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 
 		// bytes 146~273 (128 bytes)
 		tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA_GATE];
-		for (int i = 0; i < EsxUtil.NUM_SEQUENCE_DATA_GATE; i++) {
-			tempBytes[i] = in.readByte();
-		}
+		in.readFully(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA_GATE);
 		SequenceDataGate newSequenceDataGate = EsxFactory.eINSTANCE.createSequenceDataGate();
 		newSequenceDataGate.setSequenceDataGate(tempBytes);
 		this.setSequenceDataGate(newSequenceDataGate);

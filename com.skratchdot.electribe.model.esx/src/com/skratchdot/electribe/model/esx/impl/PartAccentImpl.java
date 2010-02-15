@@ -85,9 +85,7 @@ public class PartAccentImpl extends PartImpl implements PartAccent {
 		this.setMotionSequenceStatus(in.readByte());
 		// bytes 2~17
 		byte[] tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA];
-		for (int i = 0; i < EsxUtil.NUM_SEQUENCE_DATA; i++) {
-			tempBytes[i] = in.readByte();
-		}
+		in.readFully(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA);
 		SequenceData newSequenceData = EsxFactory.eINSTANCE.createSequenceData();
 		newSequenceData.setSequenceData(tempBytes);
 		this.setSequenceData(newSequenceData);

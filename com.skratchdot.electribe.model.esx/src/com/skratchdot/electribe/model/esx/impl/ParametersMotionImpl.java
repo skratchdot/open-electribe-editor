@@ -113,9 +113,7 @@ public class ParametersMotionImpl extends EObjectImpl implements ParametersMotio
 
 		// bytes 2~129
 		byte[] tempBytes = new byte[EsxUtil.NUM_MOTION_OPERATIONS];
-		for (int i = 0; i < EsxUtil.NUM_MOTION_OPERATIONS; i++) {
-			tempBytes[i] = in.readByte();
-		}
+		in.readFully(tempBytes, 0, EsxUtil.NUM_MOTION_OPERATIONS);
 		this.setOperationValue(tempBytes);
 
 	}
