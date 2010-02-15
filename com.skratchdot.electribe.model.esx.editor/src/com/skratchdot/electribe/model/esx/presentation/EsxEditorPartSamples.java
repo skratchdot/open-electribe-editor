@@ -101,8 +101,8 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		this.addColumnToTableViewer(this.tableViewer, "IsSlice?", 100);
 		this.addColumnToTableViewer(this.tableViewer, "PlayLevel", 100);
 		this.addColumnToTableViewer(this.tableViewer, "Start", 100);
-		this.addColumnToTableViewer(this.tableViewer, "End", 100);
 		this.addColumnToTableViewer(this.tableViewer, "LoopStart", 100);
+		this.addColumnToTableViewer(this.tableViewer, "End", 100);
 		this.addColumnToTableViewer(this.tableViewer, "NumSampleFrames", 100);
 
 		// Allow all the columns to be moved

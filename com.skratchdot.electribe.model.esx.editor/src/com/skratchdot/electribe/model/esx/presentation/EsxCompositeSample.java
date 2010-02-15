@@ -165,18 +165,18 @@ public class EsxCompositeSample extends EsxComposite {
 				setFeatureForSelectedItems(samples, EsxPackage.Literals.SAMPLE__START, Integer.parseInt(inputStart.getText()), false, -1);
 			}
 		});
-		textEnd = this.createGridData2ColumnTextLabel(groupSizeInfo, "End");
-		inputEnd = this.createGridData2ColumnTextInput(groupSizeInfo, "End", new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(samples, EsxPackage.Literals.SAMPLE__END, Integer.parseInt(inputEnd.getText()), false, -1);
-			}
-		});
 		textLoopStart = this.createGridData2ColumnTextLabel(groupSizeInfo, "Loop Start");
 		inputLoopStart = this.createGridData2ColumnTextInput(groupSizeInfo, "Loop Start", new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				setFeatureForSelectedItems(samples, EsxPackage.Literals.SAMPLE__LOOP_START, Integer.parseInt(inputLoopStart.getText()), false, -1);
+			}
+		});
+		textEnd = this.createGridData2ColumnTextLabel(groupSizeInfo, "End");
+		inputEnd = this.createGridData2ColumnTextInput(groupSizeInfo, "End", new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				setFeatureForSelectedItems(samples, EsxPackage.Literals.SAMPLE__END, Integer.parseInt(inputEnd.getText()), false, -1);
 			}
 		});
 

@@ -530,10 +530,10 @@ public class SampleItemProvider
 			case 9: return ((Sample) object).getPlayLevel().getLiteral();
 			// Start
 			case 10: return Integer.toString(((Sample) object).getStart());
-			// End
-			case 11: return Integer.toString(((Sample) object).getEnd());
 			// LoopStart
-			case 12: return Integer.toString(((Sample) object).getLoopStart());
+			case 11: return Integer.toString(((Sample) object).getLoopStart());
+			// End
+			case 12: return Integer.toString(((Sample) object).getEnd());
 			// NumSampleFrames
 			case 13: return Integer.toString(((Sample) object).getNumberOfSampleFrames());
 			default: return getText(object);
