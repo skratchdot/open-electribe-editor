@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2010 SKRATCHDOT.COM&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA;http://www.eclipse.org/legal/epl-v10.html&#xD;&#xA;&#xD;&#xA;Initial modeling finished using information provided by:&#xD;&#xA;&#x9;http://www.sonicspot.com/guide/wavefiles.html&#xD;&#xA;&#xD;&#xA;Contributors:&#xD;&#xA;    JEFF |:at:| SKRATCHDOT |:dot:| COM"
+    modelDirectory="/com.skratchdot.riff.wav/src" modelPluginID="com.skratchdot.riff.wav"
+    modelName="RIFFWave" richClientPlatform="true" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>RIFFWave.ecore</foreignModel>
+  <genPackages prefix="Wav" basePackage="com.skratchdot.riff" resource="Basic" disposableProviderFactory="true"
+      generateModelWizard="false" ecorePackage="RIFFWave.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RIFFWave.ecore#//ChunkDataListTypeID">
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//ChunkDataListTypeID/UNKNOWN"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//ChunkDataListTypeID/ADTL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RIFFWave.ecore#//ChunkTypeID">
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//ChunkTypeID/UNKNOWN"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//ChunkTypeID/RIFF"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//ChunkTypeID/WAVE"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//ChunkTypeID/CUE_"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//ChunkTypeID/DATA"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//ChunkTypeID/FACT"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//ChunkTypeID/FMT_"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//ChunkTypeID/INST"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//ChunkTypeID/LABL"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//ChunkTypeID/LIST"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//ChunkTypeID/LTXT"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//ChunkTypeID/NOTE"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//ChunkTypeID/PLST"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//ChunkTypeID/SINT"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//ChunkTypeID/SMPL"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//ChunkTypeID/WAVL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RIFFWave.ecore#//CompressionCode">
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//CompressionCode/COMPRESSION_CODE_0"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//CompressionCode/COMPRESSION_CODE_1"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//CompressionCode/COMPRESSION_CODE_2"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//CompressionCode/COMPRESSION_CODE_6"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//CompressionCode/COMPRESSION_CODE_7"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//CompressionCode/COMPRESSION_CODE_17"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//CompressionCode/COMPRESSION_CODE_20"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//CompressionCode/COMPRESSION_CODE_49"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//CompressionCode/COMPRESSION_CODE_64"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//CompressionCode/COMPRESSION_CODE_80"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//CompressionCode/COMPRESSION_CODE_65536"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RIFFWave.ecore#//SampleLoopType">
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//SampleLoopType/UNKNOWN"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//SampleLoopType/FORWARD"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//SampleLoopType/PING_PONG"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//SampleLoopType/BACKWARD"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RIFFWave.ecore#//SMPTEFormat">
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//SMPTEFormat/SMPTE_0"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//SMPTEFormat/SMPTE_24"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//SMPTEFormat/SMPTE_25"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//SMPTEFormat/SMPTE_29"/>
+      <genEnumLiterals ecoreEnumLiteral="RIFFWave.ecore#//SMPTEFormat/SMPTE_30"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="RIFFWave.ecore#//Exception"/>
+    <genDataTypes ecoreDataType="RIFFWave.ecore#//UnsignedShort"/>
+    <genDataTypes ecoreDataType="RIFFWave.ecore#//UnsignedInt"/>
+    <genClasses ecoreClass="RIFFWave.ecore#//RIFFWave">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RIFFWave.ecore#//RIFFWave/chunks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RIFFWave.ecore#//RIFFWave/parseChunkExceptions"/>
+    </genClasses>
+    <genClasses ecoreClass="RIFFWave.ecore#//Channel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RIFFWave.ecore#//Channel/sampleData"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RIFFWave.ecore#//Chunk">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//Chunk/size"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//Chunk/chunkTypeID"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//Chunk/chunkTypeIDValue"/>
+    </genClasses>
+    <genClasses ecoreClass="RIFFWave.ecore#//ChunkCue">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkCue/numberOfCuePoints"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RIFFWave.ecore#//ChunkCue/cuePoints"/>
+    </genClasses>
+    <genClasses ecoreClass="RIFFWave.ecore#//ChunkData">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RIFFWave.ecore#//ChunkData/channels"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkData/sampleDataOriginal"/>
+    </genClasses>
+    <genClasses ecoreClass="RIFFWave.ecore#//ChunkDataList">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkDataList/typeID"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
+          ecoreFeature="ecore:EReference RIFFWave.ecore#//ChunkDataList/dataListChunks"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RIFFWave.ecore#//ChunkDataListType">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkDataListType/cuePointID"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkDataListType/text"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkDataListType/textAsString"/>
+    </genClasses>
+    <genClasses ecoreClass="RIFFWave.ecore#//ChunkDataListTypeLabel"/>
+    <genClasses ecoreClass="RIFFWave.ecore#//ChunkDataListTypeLabeledText">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkDataListTypeLabeledText/sampleLength"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkDataListTypeLabeledText/purposeID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkDataListTypeLabeledText/country"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkDataListTypeLabeledText/language"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkDataListTypeLabeledText/dialect"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkDataListTypeLabeledText/codePage"/>
+    </genClasses>
+    <genClasses ecoreClass="RIFFWave.ecore#//ChunkDataListTypeNote"/>
+    <genClasses ecoreClass="RIFFWave.ecore#//ChunkFact">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkFact/formatDependantData"/>
+    </genClasses>
+    <genClasses ecoreClass="RIFFWave.ecore#//ChunkFormat">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkFormat/compressionCode"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkFormat/numberOfChannels"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkFormat/sampleRate"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkFormat/averageBytesPerSecond"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkFormat/blockAlign"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkFormat/significantBitsPerSample"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkFormat/numberOfExtraFormatBytes"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkFormat/extraFormatBytes"/>
+    </genClasses>
+    <genClasses ecoreClass="RIFFWave.ecore#//ChunkInstrument">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkInstrument/unshiftedNote"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkInstrument/fineTune"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkInstrument/gain"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkInstrument/lowNote"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkInstrument/highNote"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkInstrument/lowVelocity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkInstrument/highVelocity"/>
+    </genClasses>
+    <genClasses ecoreClass="RIFFWave.ecore#//ChunkPlayList">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkPlayList/numberOfSegments"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RIFFWave.ecore#//ChunkPlayList/segments"/>
+    </genClasses>
+    <genClasses ecoreClass="RIFFWave.ecore#//ChunkSampler">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkSampler/manufacturer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkSampler/product"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkSampler/samplePeriod"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkSampler/midiUnityNote"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkSampler/midiPitchFraction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkSampler/smpteFormat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkSampler/smpteOffset"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkSampler/numberOfSampleLoops"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkSampler/samplerDataSize"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RIFFWave.ecore#//ChunkSampler/sampleLoops"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkSampler/samplerData"/>
+    </genClasses>
+    <genClasses ecoreClass="RIFFWave.ecore#//ChunkSilent">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkSilent/numberOfSilentSamples"/>
+    </genClasses>
+    <genClasses ecoreClass="RIFFWave.ecore#//ChunkUnknown">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkUnknown/data"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ChunkUnknown/wavRandomAccessFilePointer"/>
+    </genClasses>
+    <genClasses ecoreClass="RIFFWave.ecore#//ChunkWaveList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RIFFWave.ecore#//ChunkWaveList/alternatingSilentAndDataChunks"/>
+    </genClasses>
+    <genClasses ecoreClass="RIFFWave.ecore#//CuePoint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//CuePoint/cuePointID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//CuePoint/position"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//CuePoint/dataChunkID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//CuePoint/chunkStart"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//CuePoint/blockStart"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//CuePoint/sampleOffset"/>
+    </genClasses>
+    <genClasses ecoreClass="RIFFWave.ecore#//ParseChunkException" labelFeature="#//wav/ParseChunkException/stringMessage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ParseChunkException/exception"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ParseChunkException/stringCause"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ParseChunkException/stringMessage"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//ParseChunkException/stringStackTrace"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RIFFWave.ecore#//SampleData"/>
+    <genClasses ecoreClass="RIFFWave.ecore#//SampleData8Bit">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//SampleData8Bit/sample"/>
+    </genClasses>
+    <genClasses ecoreClass="RIFFWave.ecore#//SampleData16Bit">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//SampleData16Bit/sample"/>
+    </genClasses>
+    <genClasses ecoreClass="RIFFWave.ecore#//SampleLoop">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//SampleLoop/cuePointID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//SampleLoop/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//SampleLoop/start"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//SampleLoop/end"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//SampleLoop/fraction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//SampleLoop/playCount"/>
+    </genClasses>
+    <genClasses ecoreClass="RIFFWave.ecore#//Segment">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//Segment/cuePointID"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//Segment/lengthInSamples"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute RIFFWave.ecore#//Segment/numberOfRepeats"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
