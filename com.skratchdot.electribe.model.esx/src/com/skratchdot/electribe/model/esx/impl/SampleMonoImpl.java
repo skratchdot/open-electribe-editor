@@ -44,7 +44,6 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 	 */
 	protected SampleMonoImpl() {
 		super();
-		init();
 	}
 	
 	/**
@@ -54,7 +53,6 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 	 * @throws IOException
 	 */
 	public SampleMonoImpl(EsxRandomAccess in, int monoSampleNumber) throws EsxException, IOException {
-		super();
 		init();
 
 		// Stop immediately if we are passed an invalid monoSampleNumber
@@ -117,9 +115,7 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 			// Read in audioDataChannel1
 			newAudioDataChannel = new byte[newNumberOfSampleFrames * 2];
 			in.seek(EsxUtil.ADDR_SAMPLE_DATA + this.getOffsetChannel1Start() + 16);
-			for (int i = 0; i < newAudioDataChannel.length; i++) {
-				newAudioDataChannel[i] = in.readByte();
-			}
+			in.readFully(newAudioDataChannel, 0, newAudioDataChannel.length);
 			this.setAudioDataChannel1(newAudioDataChannel);
 
 			// Read in audioDataChannel2 (same as audioDataChannel1)
@@ -142,7 +138,6 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 	 */
 	public SampleMonoImpl(File file) throws EsxException {
 		super(file);
-		init();
 	}
 
 	/**

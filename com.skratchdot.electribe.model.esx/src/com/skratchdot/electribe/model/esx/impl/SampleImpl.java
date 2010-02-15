@@ -25,7 +25,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
@@ -41,6 +43,10 @@ import com.skratchdot.electribe.model.esx.SampleTune;
 import com.skratchdot.electribe.model.esx.StretchStep;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
+import com.skratchdot.riff.wav.RIFFWave;
+import com.skratchdot.riff.wav.SampleLoop;
+import com.skratchdot.riff.wav.WavFactory;
+import com.skratchdot.riff.wav.impl.SampleLoopImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -661,6 +667,33 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 			float newFloat = newSampleTune.calculateSampleTuneFromSampleRate(this.getSampleRate());
 			newSampleTune.setValue(newFloat);
 			this.setSampleTune(newSampleTune);
+
+			// Set name
+			String newSampleName = new String();
+			newSampleName = StringUtils.left(StringUtils.trim(file.getName()), 8);
+			this.setName(newSampleName);
+
+			// Attempt to set loopStart and End from .wav smpl chunk
+			if(file.getAbsolutePath().toLowerCase().endsWith(".wav")) {
+				RIFFWave riffWave = WavFactory.eINSTANCE.createRIFFWave(file);
+				TreeIterator<EObject> iter = riffWave.eAllContents();
+				boolean sampleLoopFound = false;
+				while (iter.hasNext() && sampleLoopFound==false) {
+					EObject next = iter.next();
+					if(next.getClass()==SampleLoopImpl.class) {
+						SampleLoop sampleLoop = (SampleLoop) next;
+						Long tempLoopStart = sampleLoop.getStart();
+						Long tempLoopEnd = sampleLoop.getEnd();
+						if(tempLoopStart<this.getEnd() && tempLoopStart>=0) {
+							this.setLoopStart(tempLoopStart.intValue());
+						}
+						if(tempLoopEnd<this.getEnd() && tempLoopEnd>this.getLoopStart()) {
+							this.setEnd(tempLoopEnd.intValue());
+						}
+						sampleLoopFound = true;
+					}
+				}
+			}
 			
 		} catch (UnsupportedAudioFileException e) {
 			e.printStackTrace();
@@ -672,9 +705,6 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 			e.printStackTrace();
 			throw new EsxException("Invalid audio file: " + file.getAbsolutePath());
 		}
-
-		String newSampleName = StringUtils.left(StringUtils.trim(file.getName()), 8);
-		this.setName(newSampleName);
 	}
 	
 	/**
@@ -683,7 +713,7 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	protected void init() {
 		SampleTune newSampleTune = EsxFactory.eINSTANCE.createSampleTune();
 		this.setSampleTune(newSampleTune);
-		this.setName("");
+		this.setName(new String(""));
 	}
 
 	/**

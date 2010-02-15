@@ -44,7 +44,6 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 	 */
 	protected SampleStereoImpl() {
 		super();
-		init();
 	}
 
 	/**
@@ -54,7 +53,6 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 	 * @throws IOException
 	 */
 	public SampleStereoImpl(EsxRandomAccess in, int stereoSampleNumber) throws EsxException, IOException {
-		super();
 		init();
 
 		// Stop immediately if we are passed an invalid stereoSampleNumber
@@ -124,17 +122,13 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 			// Read in audioDataChannel1
 			newAudioDataChannel = new byte[newNumberOfSampleFrames * 2];
 			in.seek(EsxUtil.ADDR_SAMPLE_DATA + this.getOffsetChannel1Start() + 16);
-			for (int i = 0; i < newAudioDataChannel.length; i++) {
-				newAudioDataChannel[i] = in.readByte();
-			}
+			in.readFully(newAudioDataChannel, 0, newAudioDataChannel.length);
 			this.setAudioDataChannel1(newAudioDataChannel);
 
 			// Read in audioDataChannel2
 			newAudioDataChannel = new byte[newNumberOfSampleFrames * 2];
 			in.seek(EsxUtil.ADDR_SAMPLE_DATA + this.getOffsetChannel2Start() + 16);
-			for (int i = 0; i < newAudioDataChannel.length; i++) {
-				newAudioDataChannel[i] = in.readByte();
-			}
+			in.readFully(newAudioDataChannel, 0, newAudioDataChannel.length);
 			this.setAudioDataChannel2(newAudioDataChannel);
 
 		}
@@ -148,7 +142,6 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 	 */
 	public SampleStereoImpl(File file) throws EsxException {
 		super(file);
-		init();
 	}
 
 	/**
