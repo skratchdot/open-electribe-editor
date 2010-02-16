@@ -301,6 +301,7 @@ public class RIFFWaveImpl extends EObjectImpl implements RIFFWave {
 	 * @generated NOT
 	 */
 	public void write(RIFFWave riffWave, WavRandomAccessFile out) throws IOException {
+		out.getRandomAccessFile().setLength(0);
 
 		out.writeUnsignedInt(ChunkTypeID.RIFF_VALUE);
 		out.writeUnsignedInt(this.getSize());
