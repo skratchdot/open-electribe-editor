@@ -16,15 +16,11 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.common.util.URI;
 
 public class EsxUtil {
 	public static final int DEFAULT_SAMPLING_RATE = 44100;
@@ -246,73 +242,28 @@ public class EsxUtil {
 	}
 
 	/**
-	 * Gets the absolute temp folder path with is a folder named "temp" in the
-	 * main application's root folder
-	 * @return
+	 * Returns a file path in the format: "[directory]/[prefix]_[TIMESTAMP].esx"
+	 * @param directory A valid directory.
+	 * @param prefix 
+	 * @return returns a path name for a temporary .esx file
 	 */
-	public static String getTempFolderPath() {
-		return Platform.getInstanceLocation().getURL().getPath() + "temp/";
-	}
-
-	/**
-	 * Creates a temp file in the format: "temp/[prefix]_[TIMESTAMP].esx"
-	 * @param prefix
-	 * @return
-	 */
-	public static String getTempFilePath(String prefix) {
+	public static String getTempEsxFilePath(File directory, String prefix) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
-		String defaultTempFilePath = "" + getTempFolderPath() + prefix + "_" +
+		String defaultTempFilePath = directory.getAbsolutePath() + prefix + "_" +
 			dateFormat.format(new Date()) +
 			".esx";
 		return defaultTempFilePath;
 	}
 
 	/**
-	 * Get the path to "defaults/default.esx".
-	 * @return
-	 */
-	public static String getDefaultEsxFilePath() {
-		String defaultEsxFilePath = "" +
-			Platform.getInstanceLocation().getURL().getPath() +
-			"defaults/default.esx";
-		return defaultEsxFilePath;
-	}
-
-	/**
-	 * Creates a copy of "default/default.esx" with the given path.
-	 * @param path
-	 * @return
-	 * @throws IOException
-	 */
-	public static URI createNewDefaultURI(String path) throws IOException {
-		String defaultPath = getDefaultEsxFilePath();
-		String newPath = path;
-
-		if(!defaultPath.equalsIgnoreCase(newPath)) {
-			InputStream in = new FileInputStream(defaultPath);
-			OutputStream out = new FileOutputStream(newPath);
-
-			// Copy bytes from in to out
-			byte[] buf = new byte[1024];
-			int len;
-			while ((len = in.read(buf)) > 0) {
-				out.write(buf, 0, len);
-			}
-			in.close();
-			out.close();
-		}
-
-		return URI.createFileURI(newPath);
-	}
-
-	/**
 	 * This removes all "esxLoad_*.esx" and "esxSave_*.esx" files
-	 * from the temp folder.
+	 * from the given directory.
+	 * @param directory A valid directory.
 	 */
-	public static void clearTempFolder() {
-		File tempFolderPath = new File(getTempFolderPath());
+	public static void clearTempDirectory(File directory) {
+		if(!directory.isDirectory()) return;
 
-		File[] tempFiles = tempFolderPath.listFiles(new FilenameFilter() {
+		File[] tempFiles = directory.listFiles(new FilenameFilter() {
 			@Override
 			public boolean accept(File fDir, String strName) {
 				return (
@@ -324,6 +275,24 @@ public class EsxUtil {
 
 		for (int i=0; i<tempFiles.length; i++) {
 			tempFiles[i].delete();
+		}
+	}
+	
+	/**
+	 * @param in Input (source) file.
+	 * @param out Output (destination) file
+	 * @throws IOException
+	 */
+	public static void copyFile(File in, File out) throws IOException {
+		FileChannel inChannel = new FileInputStream(in).getChannel();
+		FileChannel outChannel = new FileOutputStream(out).getChannel();
+		try {
+			inChannel.transferTo(0, inChannel.size(), outChannel);
+		} catch (IOException e) {
+			throw e;
+		} finally {
+			if (inChannel != null) inChannel.close();
+			if (outChannel != null) outChannel.close();
 		}
 	}
 

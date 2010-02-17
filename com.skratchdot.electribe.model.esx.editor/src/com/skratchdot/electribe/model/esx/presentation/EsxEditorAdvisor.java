@@ -556,8 +556,22 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 			try {
 				String[] filePaths = openFilePathDialog(getWindow().getShell(), SWT.SAVE, null);
 				if (filePaths.length > 0) {
-					URI newDefaultURI = EsxUtil.createNewDefaultURI(filePaths[0]);
-					openEditor(getWindow().getWorkbench(), newDefaultURI);
+					String defaultEsxFileString =  EsxPreferenceStore.getString(
+							EsxPreferenceNames.FILES_DEFAULT_ESX_FILE);
+					File defaultEsxFile = new File(defaultEsxFileString);
+					File newEsxFile = new File(filePaths[0]);
+
+					if(defaultEsxFile.isFile()) {
+						EsxUtil.copyFile(defaultEsxFile, newEsxFile);
+						openEditor(getWindow().getWorkbench(), URI.createFileURI(newEsxFile.getAbsolutePath()));
+					} else {
+						// Display missing default .esx message
+						MessageDialog.openInformation(
+							getWindow().getShell(),
+							getString("_UI_NewActionError_NoDefault_title"),
+							getString("_UI_NewActionError_NoDefault_message")
+						);
+					}
 				}
 			} catch (IOException e) {
 				MessageDialog.openError(
@@ -931,8 +945,12 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		@Override
 	public void postShutdown() {
 		super.postShutdown();
+
 		// Attempt to clear up space in the temp folder
-		EsxUtil.clearTempFolder();
+		String tempDirectoryString = EsxPreferenceStore.getString(
+				EsxPreferenceNames.FILES_TEMP_DIRECTORY);
+		File tempDirectory = new File(tempDirectoryString);
+		EsxUtil.clearTempDirectory(tempDirectory);
 	}
 
 }

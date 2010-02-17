@@ -19,6 +19,10 @@ public class EsxPreferenceNames {
 
 	// EXPORT
 	public static final String EXPORT_FILENAME_FORMAT = "EXPORT_FILENAME_FORMAT";
+	
+	// FILES
+	public static final String	FILES_DEFAULT_ESX_FILE = "FILES_DEFAULT_ESX_FILE";
+	public static final String	FILES_TEMP_DIRECTORY = "FILES_TEMP_DIRECTORY";
 
 	// SAMPLES
 	public static final String SAMPLES_USE_SCROLL_SPEED = "SAMPLES_USE_SCROLL_SPEED";

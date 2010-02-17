@@ -16,6 +16,12 @@
       </page>
       <page
             category="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePage"
+            class="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePageFiles"
+            id="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePageFiles"
+            name="Files">
+      </page>
+      <page
+            category="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePage"
             class="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePagePatterns"
             id="com.skratchdot.electribe.model.esx.preferences.EsxPreferencePagePatterns"
             name="Patterns">

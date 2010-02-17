@@ -61,6 +61,16 @@ public class EsxPreferencePage extends PreferencePage
 			(IWorkbenchPreferenceContainer) getContainer(),
 			null
 		);
+
+		// Link to EsxPreferencePageFiles
+		new PreferenceLinkArea(
+			composite,
+			SWT.NONE,
+			EsxPreferencePageFiles.ID,
+			"See <a>''{0}''</a> to edit the File preferences.",
+			(IWorkbenchPreferenceContainer) getContainer(),
+			null
+		);
 		
 		// Link to EsxPreferencePagePatterns
 		new PreferenceLinkArea(

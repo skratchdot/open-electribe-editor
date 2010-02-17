@@ -47,7 +47,10 @@ public class EsxResourceImpl extends ResourceImpl {
 	@Override
 	protected void doLoad(InputStream inputStream, Map<?, ?> options)
 			throws IOException {
-		File tempFile = new File(EsxUtil.getTempFilePath("esxLoad"));
+		if(!options.containsKey("tempDirectory")) return;
+
+		File tempDirectory = (File) options.get("tempDirectory");
+		File tempFile = new File(EsxUtil.getTempEsxFilePath(tempDirectory, "esxLoad"));
 		tempFile.deleteOnExit();
 		try {
 			IProgressMonitor monitor;
@@ -93,8 +96,9 @@ public class EsxResourceImpl extends ResourceImpl {
 			// We have finished loading
 			monitor.done();
 
-		} catch (EsxException e) {
-			throw new IOException(e.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new IOException(e);
 		} finally {
 			tempFile.delete();
 		}
@@ -104,7 +108,10 @@ public class EsxResourceImpl extends ResourceImpl {
 	@Override
 	protected void doSave(OutputStream outputStream, Map<?, ?> options)
 			throws IOException {
-		File tempFile = new File(EsxUtil.getTempFilePath("esxSave"));
+		if(!options.containsKey("tempDirectory")) return;
+
+		File tempDirectory = (File) options.get("tempDirectory");
+		File tempFile = new File(EsxUtil.getTempEsxFilePath(tempDirectory, "esxSave"));
 		tempFile.deleteOnExit();
 		try {
 			IProgressMonitor monitor;
@@ -152,9 +159,9 @@ public class EsxResourceImpl extends ResourceImpl {
 			// We have finished saving
 			monitor.done();
 
-		} catch (EsxException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
 			e.printStackTrace();
+			throw new IOException(e);
 		} finally {
 			tempFile.delete();
 		}

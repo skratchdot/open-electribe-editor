@@ -11,6 +11,9 @@
  */
 package com.skratchdot.electribe.model.esx.preferences;
 
+import java.io.File;
+
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
@@ -34,6 +37,18 @@ public class EsxPreferenceInitializer extends AbstractPreferenceInitializer {
 		store.setDefault(
 				EsxPreferenceNames.EXPORT_FILENAME_FORMAT,
 				EsxPreferenceDefaults.EXPORT_FILENAME_FORMAT
+			);
+
+		/* FILES */
+		File file = new File(Platform.getInstanceLocation().getURL().getPath()+"defaults/default.esx");
+		File temp = new File(Platform.getInstanceLocation().getURL().getPath()+"temp/");
+		store.setDefault(
+				EsxPreferenceNames.FILES_DEFAULT_ESX_FILE,
+				file.getAbsolutePath()
+			);
+		store.setDefault(
+				EsxPreferenceNames.FILES_TEMP_DIRECTORY,
+				temp.getAbsolutePath()
 			);
 
 		/* SAMPLES */

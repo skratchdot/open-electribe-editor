@@ -21,6 +21,10 @@ public class EsxPreferenceDefaults {
 	// EXPORT
 	public static final String	EXPORT_FILENAME_FORMAT = "%n% - %s%";
 	
+	// FILES
+	public static final String	FILES_DEFAULT_ESX_FILE = "";
+	public static final String	FILES_TEMP_DIRECTORY = "";
+
 	// SAMPLES
 	public static final Boolean	SAMPLES_USE_SCROLL_SPEED = true;
 	public static final Integer	SAMPLES_SCROLL_SPEED = 40;

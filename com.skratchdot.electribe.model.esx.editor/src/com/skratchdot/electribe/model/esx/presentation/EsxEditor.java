@@ -13,6 +13,7 @@ package com.skratchdot.electribe.model.esx.presentation;
 
 
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -100,6 +101,8 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
+import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceNames;
+import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
 import com.skratchdot.electribe.model.esx.provider.EsxItemProviderAdapterFactory;
 
 
@@ -713,6 +716,18 @@ public class EsxEditor
 	 * @generated NOT
 	 */
 	public void createModel() {
+		// Validate temp directory
+		final String tempDirectoryString = EsxPreferenceStore.getString(EsxPreferenceNames.FILES_TEMP_DIRECTORY);
+		final File tempDirectory = new File(tempDirectoryString);
+		if(tempDirectory==null || !tempDirectory.isDirectory()) {
+			MessageDialog.openWarning(
+				getSite().getShell(),
+				getString("_UI_TempDirectoryError_title"),
+				getString("_UI_TempDirectoryError_message")
+			);
+			return;
+		}
+
 		// Do the work within an operation because this is a long running activity that modifies the workbench.
 		//
 		IRunnableWithProgress operation =
@@ -725,6 +740,7 @@ public class EsxEditor
 				//
 				public void run(IProgressMonitor monitor) {
 					try {
+						editingDomain.getResourceSet().getLoadOptions().put("tempDirectory", tempDirectory);
 						editingDomain.getResourceSet().getLoadOptions().put("IProgressMonitor", monitor);
 
 						// Load the resource through the editing domain.
@@ -1104,6 +1120,18 @@ public class EsxEditor
 	 */
 	@Override
 	public void doSave(IProgressMonitor progressMonitor) {
+		// Validate temp directory
+		final String tempDirectoryString = EsxPreferenceStore.getString(EsxPreferenceNames.FILES_TEMP_DIRECTORY);
+		final File tempDirectory = new File(tempDirectoryString);
+		if(tempDirectory==null || !tempDirectory.isDirectory()) {
+			MessageDialog.openWarning(
+				getSite().getShell(),
+				getString("_UI_TempDirectoryError_title"),
+				getString("_UI_TempDirectoryError_message")
+			);
+			return;
+		}
+
 		// Save only resources that have actually changed.
 		//
 		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
@@ -1122,6 +1150,7 @@ public class EsxEditor
 					for (Resource resource : editingDomain.getResourceSet().getResources()) {
 						if ((first || !resource.getContents().isEmpty() || isPersisted(resource)) && !editingDomain.isReadOnly(resource)) {
 							try {
+								saveOptions.put("tempDirectory", tempDirectory);
 								// Pass IProgressMonitor to EsxResourceImpl#doSave()
 								saveOptions.put("IProgressMonitor", monitor);
 								
