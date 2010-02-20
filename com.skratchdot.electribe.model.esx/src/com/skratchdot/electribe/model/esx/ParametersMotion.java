@@ -88,6 +88,14 @@ public interface ParametersMotion extends EObject {
 	 */
 	void setOperationValue(byte[] value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toByteArray();
+
 	void write(EsxRandomAccess out, int patternNumber, int parametersMotionNumber)  throws EsxException, IOException;
 
 } // ParametersMotion

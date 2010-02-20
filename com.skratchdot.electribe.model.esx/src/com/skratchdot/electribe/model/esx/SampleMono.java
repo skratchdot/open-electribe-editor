@@ -28,6 +28,22 @@ import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
  * @generated
  */
 public interface SampleMono extends Sample {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toHeaderByteArray();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toSliceByteArray();
+
 	void writeHeader(EsxRandomAccess out, int monoSampleNumber) throws EsxException, IOException;
 
 	void writeSlice(EsxRandomAccess out, int monoSampleNumber) throws EsxException, IOException;

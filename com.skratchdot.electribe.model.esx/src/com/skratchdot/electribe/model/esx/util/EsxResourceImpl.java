@@ -108,63 +108,39 @@ public class EsxResourceImpl extends ResourceImpl {
 	@Override
 	protected void doSave(OutputStream outputStream, Map<?, ?> options)
 			throws IOException {
-		if(!options.containsKey("tempDirectory")) return;
-
-		File tempDirectory = (File) options.get("tempDirectory");
-		File tempFile = new File(EsxUtil.getTempEsxFilePath(tempDirectory, "esxSave"));
-		tempFile.deleteOnExit();
-		try {
-			IProgressMonitor monitor;
-			// Get IProgressMonitor from options, else create one
-			if(options.containsKey("IProgressMonitor")) {
-				monitor = (IProgressMonitor) options.get("IProgressMonitor");
-			}
-			else {
-				monitor = new NullProgressMonitor();
-			}
-
-			// Setup monitor
-			monitor.beginTask("Saving ESX file...", 1 +
-				EsxUtil.NUM_PATTERNS +
-				EsxUtil.NUM_SONGS +
-				EsxUtil.NUM_SAMPLES_MONO +
-				EsxUtil.NUM_SAMPLES_STEREO
-			);
-
-			// Get EsxRandomAccess which will be passed to our model's write() functions
-			monitor.subTask("Starting");
-			EsxRandomAccess out = new EsxRandomAccess(tempFile, "rwd");
-
-			// Get our models root object (the EsxFile)
-			monitor.subTask("Getting EsxFile");
-			EsxFile root = (EsxFile) this.getContents().get(0);
-
-			// Begin writing
-			monitor.subTask("Begin writing");
-			root.write(out, monitor);
-
-			// Write our constructed EsxRandomAccess to the outputStream
-			monitor.subTask("Finishing up");
-			byte[] buffer = new byte[16384];
-			int len;
-			out.seek(0);
-			while((len = out.read(buffer)) >= 0) {
-				outputStream.write(buffer, 0, len);
-			}
-
-			// Close our stream, and delete temp file
-			out.close();
-			tempFile.delete();
-
-			// We have finished saving
-			monitor.done();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new IOException(e);
-		} finally {
-			tempFile.delete();
+		IProgressMonitor monitor;
+		// Get IProgressMonitor from options, else create one
+		if(options.containsKey("IProgressMonitor")) {
+			monitor = (IProgressMonitor) options.get("IProgressMonitor");
 		}
+		else {
+			monitor = new NullProgressMonitor();
+		}
+
+		// Setup monitor
+		monitor.beginTask("Saving ESX file...", 1 +
+			EsxUtil.NUM_PATTERNS +
+			EsxUtil.NUM_SONGS +
+			EsxUtil.NUM_SONGS + // Song Event Data
+			EsxUtil.NUM_SAMPLES_MONO +
+			EsxUtil.NUM_SAMPLES_STEREO
+		);
+
+		// Get our models root object (the EsxFile)
+		monitor.subTask("Getting contents...");
+		EsxFile esxFile = (EsxFile) this.getContents().get(0);
+
+		// Begin writing
+		monitor.subTask("Begin writing");
+
+		// Now write the byte array to our outputStream
+		outputStream.write(esxFile.toByteArray(monitor));
+
+		// Write our constructed EsxRandomAccess to the outputStream
+		monitor.subTask("Finishing up");
+
+		// We have finished saving
+		monitor.done();
 	}
 
 } //EsxResourceImpl

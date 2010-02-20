@@ -61,6 +61,14 @@ public interface PartAudioIn extends Part, PartWithCommon, PartWithSequenceData,
 	 */
 	void setReservedBitsByte7(byte value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toByteArray();
+
 	void write(EsxRandomAccess out, int patternNumber, int partAudioInNumber)  throws EsxException, IOException;
 
 } // PartAudioIn

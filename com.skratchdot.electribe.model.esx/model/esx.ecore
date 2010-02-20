@@ -14,6 +14,10 @@
         </eGenericType>
       </eParameters>
     </eOperations>
+    <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray">
+      <eParameters name="monitor" eType="#//IProgressMonitor"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="originalNonAudioData" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="globalParameters" lowerBound="1"
         eType="#//GlobalParameters" containment="true"/>
@@ -65,6 +69,7 @@
         derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GlobalParameters">
+    <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="memoryProtectEnabled" eType="#//EnabledFlag"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedByte" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="arpeggiatorControl" eType="#//ArpeggiatorControl"/>
@@ -96,12 +101,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParametersFx">
+    <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="effectType" eType="#//FxType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="edit1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="edit2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="motionSequenceStatus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParametersMotion">
+    <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
   </eClassifiers>
@@ -109,12 +116,18 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="motionSequenceStatus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PartAccent" eSuperTypes="#//Part #//PartWithSequenceData"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PartAccent" eSuperTypes="#//Part #//PartWithSequenceData">
+    <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PartAudioIn" eSuperTypes="#//Part #//PartWithCommon #//PartWithSequenceData #//PartWithSequenceDataGate">
+    <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedBitsByte7" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PartDrum" eSuperTypes="#//Part #//PartWithCommon #//PartWithPitch #//PartWithSample #//PartWithSequenceData #//PartWithSlice"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PartDrum" eSuperTypes="#//Part #//PartWithCommon #//PartWithPitch #//PartWithSample #//PartWithSequenceData #//PartWithSlice">
+    <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PartKeyboard" eSuperTypes="#//Part #//PartWithCommon #//PartWithSample #//PartWithSequenceDataGate #//PartWithSlice">
+    <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="glide" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceDataNote" eType="#//SequenceDataNote"
         containment="true"/>
@@ -123,7 +136,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//PartNoteNumberName"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="noteNumber" eType="#//NoteNumber"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PartStretchSlice" eSuperTypes="#//Part #//PartWithCommon #//PartWithPitch #//PartWithSample #//PartWithSequenceData"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PartStretchSlice" eSuperTypes="#//Part #//PartWithCommon #//PartWithPitch #//PartWithSample #//PartWithSequenceData">
+    <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PartWithCommon" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ampEg" eType="#//AmpEg"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="bpmSync" eType="#//BpmSync"/>
@@ -166,6 +181,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sliceNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Pattern">
+    <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tempo" lowerBound="1" eType="#//Tempo"
         containment="true"/>
@@ -263,8 +279,13 @@
         changeable="false" volatile="true" transient="true" defaultValueLiteral="-1"
         derived="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SampleMono" eSuperTypes="#//Sample"/>
-  <eClassifiers xsi:type="ecore:EClass" name="SampleStereo" eSuperTypes="#//Sample"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SampleMono" eSuperTypes="#//Sample">
+    <eOperations name="toHeaderByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    <eOperations name="toSliceByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SampleStereo" eSuperTypes="#//Sample">
+    <eOperations name="toHeaderByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SampleTune">
     <eOperations name="calculateSampleTuneFromSampleRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat">
       <eParameters name="sampleRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -285,6 +306,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceDataNote" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Song">
+    <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    <eOperations name="toSongEventByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tempo" lowerBound="1" eType="#//Tempo"
         containment="true"/>
@@ -314,24 +337,29 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="step" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SongEventControl" eSuperTypes="#//SongEvent">
+    <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedByte" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedShort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"
         defaultValueLiteral="-21846"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SongEventDrumNote" eSuperTypes="#//SongEvent #//SongEventWithPart">
+    <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedByte" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedShort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SongEventKeyboardNote" eSuperTypes="#//SongEvent #//SongEventWithPart">
+    <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="noteNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SongEventMuteStatus" eSuperTypes="#//SongEvent">
+    <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedShort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="muteStatus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SongEventTempo" eSuperTypes="#//SongEvent">
+    <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tempo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedShort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
   </eClassifiers>
@@ -1961,5 +1989,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="File" instanceClassName="java.io.File"/>
   <eClassifiers xsi:type="ecore:EDataType" name="IOException" instanceClassName="java.io.IOException"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="IProgressMonitor" instanceClassName="org.eclipse.core.runtime.IProgressMonitor"/>
   <eClassifiers xsi:type="ecore:EDataType" name="Object" instanceClassName="java.lang.Object"/>
 </ecore:EPackage>

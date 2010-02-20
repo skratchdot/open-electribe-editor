@@ -84,6 +84,7 @@ public class EsxUtil {
 	public static final int ADDR_SLICE_DATA				= 0x001B4200;
 	public static final int ADDR_SAMPLE_DATA			= 0x00250000;
 
+	public static final int CHUNKSIZE_GLOBAL_PARAMETERS = 192;
 	public static final int CHUNKSIZE_PATTERN = 4280;
 	public static final int CHUNKSIZE_SONG = 528;
 	public static final int CHUNKSIZE_SONG_EVENT = 8;
@@ -184,8 +185,6 @@ public class EsxUtil {
 		}
 		return byteArray;
 	}
-
-	
 	
 	public static boolean isValidEsxFile(EsxRandomAccess in) throws EsxException, IOException {
 		// File is not big enough
@@ -249,7 +248,8 @@ public class EsxUtil {
 	 */
 	public static String getTempEsxFilePath(File directory, String prefix) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
-		String defaultTempFilePath = directory.getAbsolutePath() + prefix + "_" +
+		String defaultTempFilePath = directory.getAbsolutePath() + 
+			File.separatorChar + prefix + "_" +
 			dateFormat.format(new Date()) +
 			".esx";
 		return defaultTempFilePath;

@@ -87,6 +87,14 @@ public interface SongEventMuteStatus extends SongEvent {
 	 */
 	void setMuteStatus(short value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toByteArray();
+
 	void write(EsxRandomAccess out, int songEventNumber) throws EsxException, IOException;
 
 } // SongEventMuteStatus

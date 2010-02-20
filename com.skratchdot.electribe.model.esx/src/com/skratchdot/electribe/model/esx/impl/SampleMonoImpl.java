@@ -13,6 +13,7 @@ package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -157,6 +158,61 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 		return EsxPackage.Literals.SAMPLE_MONO;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toHeaderByteArray() {
+		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_SAMPLE_HEADER_MONO);
+		// bytes 0~7
+		buf.put(EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00), 0, 8);
+		// bytes 8~11
+		buf.putInt(this.getOffsetChannel1Start());
+		// bytes 12~15
+		buf.putInt(this.getOffsetChannel1End());
+		// bytes 16~19
+		buf.putInt(this.getStart());
+		// bytes 20~23
+		buf.putInt(this.getEnd());
+		// bytes 24~27
+		buf.putInt(this.getLoopStart());
+		// bytes 28~31
+		buf.putInt(this.getSampleRate());
+		// bytes 32~33
+		buf.putShort(this.getSampleTune().getShortFromCurrentValue());
+		// byte 34
+		buf.put((byte) this.getPlayLevel().getValue());
+		// byte 35
+		buf.put(this.getUnknownByte1());
+		// byte 36
+		buf.put((byte) this.getStretchStep().getValue());
+		// byte 37
+		buf.put(this.getUnknownByte2());
+		// byte 38
+		buf.put(this.getUnknownByte3());
+		// byte 39
+		buf.put(this.getUnknownByte4());
+		return buf.array();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toSliceByteArray() {
+		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_SLICE_DATA);
+		// Write slice info
+		if(this.getSliceArray()!=null) {
+			buf.put(this.getSliceArray());
+		}
+		else {
+			buf.put(EsxUtil.getByteArrayWithLength("", EsxUtil.CHUNKSIZE_SLICE_DATA, (byte) 0x00));
+		}
+		return buf.array();
+	}
+
 	@Override
 	public void writeHeader(EsxRandomAccess out, int monoSampleNumber) throws EsxException, IOException {
 		// Stop immediately if we are passed an invalid monoSampleNumber
@@ -166,34 +222,6 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 		// Jump to the start of monoSampleNumber's header data
 		out.seek(EsxUtil.ADDR_SAMPLE_HEADER_MONO + (monoSampleNumber * EsxUtil.CHUNKSIZE_SAMPLE_HEADER_MONO));
 
-		// bytes 0~7
-		out.write(EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00), 0, 8);
-		// bytes 8~11
-		out.writeInt(this.getOffsetChannel1Start());
-		// bytes 12~15
-		out.writeInt(this.getOffsetChannel1End());
-		// bytes 16~19
-		out.writeInt(this.getStart());
-		// bytes 20~23
-		out.writeInt(this.getEnd());
-		// bytes 24~27
-		out.writeInt(this.getLoopStart());
-		// bytes 28~31
-		out.writeInt(this.getSampleRate());
-		// bytes 32~33
-		out.writeShort(this.getSampleTune().getShortFromCurrentValue());
-		// byte 34
-		out.writeByte(this.getPlayLevel().getValue());
-		// byte 35
-		out.writeByte(this.getUnknownByte1());
-		// byte 36
-		out.writeByte(this.getStretchStep().getValue());
-		// byte 37
-		out.writeByte(this.getUnknownByte2());
-		// byte 38
-		out.writeByte(this.getUnknownByte3());
-		// byte 39
-		out.writeByte(this.getUnknownByte4());
 	}
 
 	@Override
@@ -205,13 +233,6 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 		// Jump to the start of monoSampleNumber's slice data
 		out.seek(EsxUtil.ADDR_SLICE_DATA + (monoSampleNumber * EsxUtil.CHUNKSIZE_SLICE_DATA));
 
-		// Write slice info
-		if(this.getSliceArray()!=null) {
-			out.write(this.getSliceArray());
-		}
-		else {
-			out.write(EsxUtil.getByteArrayWithLength("", EsxUtil.CHUNKSIZE_SLICE_DATA, (byte) 0x00));
-		}
 	}
 
 	/* (non-Javadoc)

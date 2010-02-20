@@ -12,6 +12,7 @@
 package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
@@ -252,6 +253,24 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 		motionSequenceStatus = newMotionSequenceStatus;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PARAMETERS_FX__MOTION_SEQUENCE_STATUS, oldMotionSequenceStatus, motionSequenceStatus));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toByteArray() {
+		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_PARAMETERS_FX);
+		// byte 0
+		buf.put((byte) this.getEffectType().getValue());
+		// byte 1
+		buf.put(this.getEdit1());
+		// byte 2
+		buf.put(this.getEdit2());
+		// byte 3
+		buf.put(this.getMotionSequenceStatus());
+		return buf.array();
 	}
 
 	/**

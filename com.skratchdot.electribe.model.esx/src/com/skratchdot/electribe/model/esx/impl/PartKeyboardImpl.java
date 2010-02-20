@@ -14,6 +14,7 @@ package com.skratchdot.electribe.model.esx.impl;
 import com.skratchdot.electribe.model.esx.AmpEg;
 import com.skratchdot.electribe.model.esx.BpmSync;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 
 import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxPackage;
@@ -1183,6 +1184,66 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_NOTE, newSequenceDataNote, newSequenceDataNote));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toByteArray() {
+		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_PARTS_KEYBOARD);
+		// bytes 0~1
+		buf.putShort(this.getSampleNumber());
+		// byte 2
+		buf.put(this.getSliceNumber());
+		// byte 3
+		buf.put(this.getReservedByte());
+		// byte 4
+		buf.put(this.getGlide());
+		// byte 5
+		buf.put((byte) this.getFilterType().getValue());
+		// byte 6
+		buf.put(this.getCutoff());
+		// byte 7
+		buf.put(this.getResonance());
+		// byte 8
+		buf.put(this.getEgIntensity());
+		// byte 9
+		buf.put(this.getLevel());
+		// byte 10
+		buf.put(this.getPan());
+		// byte 11
+		buf.put(this.getEgTime());
+		// byte 12
+		buf.put(this.getStartPoint());
+		// byte 13
+		int packedByte13 = 0x00;
+		packedByte13 = EsxUtil.packInt(packedByte13, this.getFxSelect().getValue(), 2, 0);
+		packedByte13 = EsxUtil.packInt(packedByte13, this.getFxSend().getValue(), 1, 2);
+		packedByte13 = EsxUtil.packInt(packedByte13, this.getRoll().getValue(), 1, 3);
+		packedByte13 = EsxUtil.packInt(packedByte13, this.getAmpEg().getValue(), 1, 4);
+		packedByte13 = EsxUtil.packInt(packedByte13, this.getReverse().getValue(), 1, 5);
+		packedByte13 = EsxUtil.packInt(packedByte13, this.getReservedBitsAfterReverse(), 2, 6);
+		buf.put((byte) packedByte13);
+		// byte 14
+		int packedByte14 = 0x00;
+		packedByte14 = EsxUtil.packInt(packedByte14, this.getModDest().getValue(), 3, 0);
+		packedByte14 = EsxUtil.packInt(packedByte14, this.getReservedBitAfterModDepth(), 1, 3);
+		packedByte14 = EsxUtil.packInt(packedByte14, this.getModType().getValue(), 3, 4);
+		packedByte14 = EsxUtil.packInt(packedByte14, this.getBpmSync().getValue(), 1, 7);
+		buf.put((byte) packedByte14);
+		// byte 15
+		buf.put(this.getModSpeed());
+		// byte 16
+		buf.put(this.getModDepth());
+		// byte 17
+		buf.put(this.getMotionSequenceStatus());
+		// bytes 18~145 (128 bytes)
+		buf.put(this.getSequenceDataNote().getSequenceDataNote());
+		// bytes 146~273 (128 bytes)
+		buf.put(this.getSequenceDataGate().getSequenceDataGate());
+		return buf.array();
 	}
 
 	/**

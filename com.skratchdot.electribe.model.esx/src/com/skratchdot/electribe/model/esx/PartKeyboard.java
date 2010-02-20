@@ -88,6 +88,14 @@ public interface PartKeyboard extends Part, PartWithCommon, PartWithSample, Part
 	 */
 	void setSequenceDataNote(SequenceDataNote value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toByteArray();
+
 	void write(EsxRandomAccess out, int patternNumber, int partKeyboardNumber)  throws EsxException, IOException;
 
 } // PartKeyboard

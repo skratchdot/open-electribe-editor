@@ -29,6 +29,14 @@ import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
  */
 public interface PartDrum extends Part, PartWithCommon, PartWithPitch, PartWithSample, PartWithSequenceData, PartWithSlice {
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toByteArray();
+
 	void write(EsxRandomAccess out, int patternNumber, int partDrumNumber)  throws EsxException, IOException;
 
 } // PartDrum

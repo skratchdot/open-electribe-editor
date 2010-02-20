@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -343,201 +344,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 
 	}
 
-    @Override
-	public void write(EsxRandomAccess out, IProgressMonitor monitor) throws IOException, EsxException {
-		// Write original data (we will overwrite invalid data with our known
-		// data structures)
-		monitor.subTask("Saving original non-audio data");
-		out.seek(0);
-		out.write(this.getOriginalNonAudioData());
-		monitor.worked(1);
-
-		// Write global parameters
-		this.getGlobalParameters().write(out);
-
-		// Write Pattern Data
-		for (int i = 0; i < EsxUtil.NUM_PATTERNS; i++) {
-			monitor.subTask("Saving pattern " + (i + 1) + " of " + EsxUtil.NUM_PATTERNS);
-			this.getPatterns().get(i).write(out, i);
-			monitor.worked(1);
-		}
-
-		// Write Song Data
-		int currentSongEventNumber = 0;
-		for (int i = 0; i < EsxUtil.NUM_SONGS; i++) {
-			monitor.subTask("Saving song " + (i + 1) + " of " + EsxUtil.NUM_SONGS);
-			this.getSongs().get(i).write(out, i, currentSongEventNumber);
-			currentSongEventNumber += this.getSongs().get(i).getNumberOfSongEvents();
-			monitor.worked(1);
-		}
-
-		// This is a temporary variable to hold start/end offsets for
-		// mono/stereo samples
-		int currentOffset = 0x00;
-		int currentNumberOfSampleFrames = 0x00;
-		int padOddOrEven = 0x00;
-		int padOne = 0x00;
-
-		// Write Mono Sample Data
-		for (int i = 0; i < EsxUtil.NUM_SAMPLES_MONO; i++) {
-			monitor.subTask("Saving mono sample " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES_MONO);
-
-			// Get current mono sample
-			SampleMono mono = (SampleMono) this.getSamples().get(i);
-
-			// Get current number of sample frames
-			currentNumberOfSampleFrames = mono.getNumberOfSampleFrames();
-
-			if(currentNumberOfSampleFrames>0) {
-				// Setup pad bytes
-				if(currentNumberOfSampleFrames==1) {
-					padOne = 2;
-					padOddOrEven = 4;
-				}
-				else if(currentNumberOfSampleFrames%2==0) {
-					padOne = 0;
-					padOddOrEven = 4;
-				}
-				else {
-					padOne = 0;
-					padOddOrEven = 2;
-				}
-
-				// Setup Channel 1 & 2 (as mono) start offset
-				mono.setOffsetChannel1Start(currentOffset);
-				mono.setOffsetChannel2Start(currentOffset);
-
-				// Setup Channel 1 & 2 (as mono) end offset
-				currentOffset = currentOffset + (mono.getNumberOfSampleFrames() * 2) + 16 + padOne;
-				mono.setOffsetChannel1End(currentOffset);
-				mono.setOffsetChannel2End(currentOffset);
-				currentOffset = currentOffset + padOddOrEven;
-
-				// Write Channel 1 & 2 (as mono) Sample Data
-				ByteBuffer bufferChannel1 = ByteBuffer.wrap(mono.getAudioDataChannel1());
-				ByteBuffer bufferChannel2 = ByteBuffer.wrap(mono.getAudioDataChannel2());
-				ByteBuffer bufferBoth = ByteBuffer.allocate(bufferChannel1.capacity());
-				short shortChannel1;
-				short shortChannel2;
-				short shortBoth;
-				for (int j = 0; j < mono.getNumberOfSampleFrames(); j++) {
-					shortChannel1 = bufferChannel1.getShort();
-					shortChannel2 = bufferChannel2.getShort();
-					shortBoth = (short) (((int)shortChannel1 + (int)shortChannel2) / 2);
-					bufferBoth.putShort(shortBoth);
-				}
-				out.seek(EsxUtil.ADDR_SAMPLE_DATA + mono.getOffsetChannel1Start());
-				out.writeInt(0x80007FFF);
-				out.writeInt(mono.getOffsetChannel1Start());
-				out.writeInt(mono.getOffsetChannel1End());
-				out.writeByte(i); // sample number
-				out.writeByte(0); // denotes mono / channel 1
-				out.writeShort(0xffff);
-				out.write(bufferBoth.array());
-				out.write(EsxUtil.getByteArrayWithLength("", padOddOrEven + padOne, (byte) 0x00));
-			}
-			else {
-				mono.setOffsetChannel1Start(0xFFFFFFFF);
-				mono.setOffsetChannel1End(0);
-				mono.setSliceArray(EsxUtil.getByteArrayWithLength("", EsxUtil.CHUNKSIZE_SLICE_DATA, (byte) 0xFF));
-			}
-
-			// Write Sample Header Info
-			mono.writeHeader(out, i);
-
-			// Write Slice Info
-			mono.writeSlice(out, i);
-
-			monitor.worked(1);
-		}
-
-		// Write Stereo Sample Data
-		for (int i = 0; i < EsxUtil.NUM_SAMPLES_STEREO; i++) {
-			monitor.subTask("Saving stereo sample " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES_STEREO);
-
-			// Get current stereo sample
-			SampleStereo stereo = (SampleStereo) this.getSamples().get(i + EsxUtil.NUM_SAMPLES_MONO);
-
-			// Get current number of sample frames
-			currentNumberOfSampleFrames = stereo.getNumberOfSampleFrames();
-
-			if(currentNumberOfSampleFrames>0) {
-				// Setup pad bytes
-				if(currentNumberOfSampleFrames==1) {
-					padOne = 2;
-					padOddOrEven = 4;
-				}
-				else if(currentNumberOfSampleFrames%2==0) {
-					padOne = 0;
-					padOddOrEven = 4;
-				}
-				else {
-					padOne = 0;
-					padOddOrEven = 2;
-				}
-
-				// Setup Channel 1 start offset
-				stereo.setOffsetChannel1Start(currentOffset);
-
-				// Setup Channel 1 end offset
-				currentOffset = currentOffset + (stereo.getNumberOfSampleFrames() * 2) + 16 + padOne;
-				stereo.setOffsetChannel1End(currentOffset);
-				currentOffset = currentOffset + padOddOrEven;
-
-				// Write Channel 1 Sample Data
-				out.seek(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel1Start());
-				out.writeInt(0x80007FFF);
-				out.writeInt(stereo.getOffsetChannel1Start());
-				out.writeInt(stereo.getOffsetChannel1End());
-				out.writeByte(i); // sample number
-				out.writeByte(0); // denotes stereo / channel 1
-				out.writeShort(0xffff);
-				out.write(stereo.getAudioDataChannel1());
-				out.write(EsxUtil.getByteArrayWithLength("", padOddOrEven + padOne, (byte) 0x00));
-
-				// Setup Channel 2 start offset
-				stereo.setOffsetChannel2Start(currentOffset);
-
-				// Setup Channel 2 end offset
-				currentOffset = currentOffset + (stereo.getNumberOfSampleFrames() * 2) + 16 + padOne;
-				stereo.setOffsetChannel2End(currentOffset);
-				currentOffset = currentOffset + padOddOrEven;
-
-				// Write Channel 2 Sample Data
-				out.seek(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel2Start());
-				out.writeInt(0x80007FFF);
-				out.writeInt(stereo.getOffsetChannel2Start());
-				out.writeInt(stereo.getOffsetChannel2End());
-				out.writeByte(i); // sample number
-				out.writeByte(0); // denotes stereo / channel 2
-				out.writeShort(0xffff);
-				out.write(stereo.getAudioDataChannel2());
-				out.write(EsxUtil.getByteArrayWithLength("", padOddOrEven + padOne, (byte) 0x00));
-			}
-			else {
-				stereo.setOffsetChannel1Start(0xFFFFFFFF);
-				stereo.setOffsetChannel1End(0);
-				stereo.setOffsetChannel2Start(0xFFFFFFFF);
-				stereo.setOffsetChannel2End(0);
-			}
-
-
-			// Write Sample Header Info
-			stereo.writeHeader(out, i);
-
-			monitor.worked(1);
-		}
-
-		// Write EOF data
-		out.seek(EsxUtil.ADDR_SAMPLE_DATA + currentOffset);
-		out.writeInt(0x80007FFF);
-		out.writeInt(currentOffset);
-		out.writeInt(0x017FFFFE);
-		out.writeInt(0x00FFFFFF);
-
-	}
-
-	/**
+    /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -910,6 +717,243 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		}
 		
 		return returnValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toByteArray() {
+		return this.toByteArray(new NullProgressMonitor());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toByteArray(IProgressMonitor monitor) {
+		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.SIZE_FILE_MAX);
+
+		// Write original data (we will overwrite invalid data with our known
+		// data structures)
+		monitor.subTask("Saving original non-audio data");
+		buf.position(0);
+		buf.put(this.getOriginalNonAudioData());
+		monitor.worked(1);
+
+		// Write global parameters
+		buf.position(EsxUtil.ADDR_GLOBAL_PARAMETERS);
+		buf.put(this.getGlobalParameters().toByteArray());
+	
+		// Write Pattern Data
+		buf.position(EsxUtil.ADDR_PATTERN_DATA);
+		for (int i = 0; i < EsxUtil.NUM_PATTERNS; i++) {
+			monitor.subTask("Saving pattern " + (i + 1) + " of " + EsxUtil.NUM_PATTERNS);
+			buf.put(this.getPatterns().get(i).toByteArray());
+			monitor.worked(1);
+		}
+	
+		// Write Song Data
+		buf.position(EsxUtil.ADDR_SONG_DATA);
+		for (int i = 0; i < EsxUtil.NUM_SONGS; i++) {
+			monitor.subTask("Saving song " + (i + 1) + " of " + EsxUtil.NUM_SONGS);
+			buf.put(this.getSongs().get(i).toByteArray());
+			monitor.worked(1);
+		}
+		
+		// Write Song Event Data
+		buf.position(EsxUtil.ADDR_SONG_EVENT_DATA);
+		for (int i = 0; i < EsxUtil.NUM_SONGS; i++) {
+			monitor.subTask("Saving song event data for song " + (i + 1) + " of " + EsxUtil.NUM_SONGS);
+			buf.put(this.getSongs().get(i).toSongEventByteArray());
+			monitor.worked(1);
+		}
+	
+		// This is a temporary variable to hold start/end offsets for
+		// mono/stereo samples
+		int currentOffset = 0x00;
+		int currentNumberOfSampleFrames = 0x00;
+		int padOddOrEven = 0x00;
+		int padOne = 0x00;
+	
+		// Write Mono Sample Data
+		for (int i = 0; i < EsxUtil.NUM_SAMPLES_MONO; i++) {
+			monitor.subTask("Saving mono sample " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES_MONO);
+	
+			// Get current mono sample
+			SampleMono mono = (SampleMono) this.getSamples().get(i);
+	
+			// Get current number of sample frames
+			currentNumberOfSampleFrames = mono.getNumberOfSampleFrames();
+	
+			if(currentNumberOfSampleFrames>0) {
+				// Setup pad bytes
+				if(currentNumberOfSampleFrames==1) {
+					padOne = 2;
+					padOddOrEven = 4;
+				}
+				else if(currentNumberOfSampleFrames%2==0) {
+					padOne = 0;
+					padOddOrEven = 4;
+				}
+				else {
+					padOne = 0;
+					padOddOrEven = 2;
+				}
+	
+				// Setup Channel 1 & 2 (as mono) start offset
+				mono.setOffsetChannel1Start(currentOffset);
+				mono.setOffsetChannel2Start(currentOffset);
+	
+				// Setup Channel 1 & 2 (as mono) end offset
+				currentOffset = currentOffset + (mono.getNumberOfSampleFrames() * 2) + 16 + padOne;
+				mono.setOffsetChannel1End(currentOffset);
+				mono.setOffsetChannel2End(currentOffset);
+				currentOffset = currentOffset + padOddOrEven;
+	
+				// Write Channel 1 & 2 (as mono) Sample Data
+				ByteBuffer bufferChannel1 = ByteBuffer.wrap(mono.getAudioDataChannel1());
+				ByteBuffer bufferChannel2 = ByteBuffer.wrap(mono.getAudioDataChannel2());
+				ByteBuffer bufferBoth = ByteBuffer.allocate(bufferChannel1.capacity());
+				short shortChannel1;
+				short shortChannel2;
+				short shortBoth;
+				for (int j = 0; j < mono.getNumberOfSampleFrames(); j++) {
+					shortChannel1 = bufferChannel1.getShort();
+					shortChannel2 = bufferChannel2.getShort();
+					shortBoth = (short) (((int)shortChannel1 + (int)shortChannel2) / 2);
+					bufferBoth.putShort(shortBoth);
+				}
+				buf.position(EsxUtil.ADDR_SAMPLE_DATA + mono.getOffsetChannel1Start());
+				buf.putInt(0x80007FFF);
+				buf.putInt(mono.getOffsetChannel1Start());
+				buf.putInt(mono.getOffsetChannel1End());
+				buf.put((byte) i); // sample number
+				buf.put((byte) 0); // denotes mono / channel 1
+				buf.putShort((short) 0xffff);
+				buf.put(bufferBoth.array());
+				buf.put(EsxUtil.getByteArrayWithLength("", padOddOrEven + padOne, (byte) 0x00));
+			}
+			else {
+				mono.setOffsetChannel1Start(0xFFFFFFFF);
+				mono.setOffsetChannel1End(0);
+				mono.setSliceArray(EsxUtil.getByteArrayWithLength("", EsxUtil.CHUNKSIZE_SLICE_DATA, (byte) 0xFF));
+			}
+	
+			// Write Sample Header Info
+			buf.position(EsxUtil.ADDR_SAMPLE_HEADER_MONO + (i * EsxUtil.CHUNKSIZE_SAMPLE_HEADER_MONO));
+			buf.put(mono.toHeaderByteArray());
+	
+			// Write Slice Info
+			buf.position(EsxUtil.ADDR_SLICE_DATA + (i * EsxUtil.CHUNKSIZE_SLICE_DATA));
+			buf.put(mono.toSliceByteArray());
+	
+			monitor.worked(1);
+		}
+	
+		// Write Stereo Sample Data
+		for (int i = 0; i < EsxUtil.NUM_SAMPLES_STEREO; i++) {
+			monitor.subTask("Saving stereo sample " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES_STEREO);
+	
+			// Get current stereo sample
+			SampleStereo stereo = (SampleStereo) this.getSamples().get(i + EsxUtil.NUM_SAMPLES_MONO);
+	
+			// Get current number of sample frames
+			currentNumberOfSampleFrames = stereo.getNumberOfSampleFrames();
+	
+			if(currentNumberOfSampleFrames>0) {
+				// Setup pad bytes
+				if(currentNumberOfSampleFrames==1) {
+					padOne = 2;
+					padOddOrEven = 4;
+				}
+				else if(currentNumberOfSampleFrames%2==0) {
+					padOne = 0;
+					padOddOrEven = 4;
+				}
+				else {
+					padOne = 0;
+					padOddOrEven = 2;
+				}
+	
+				// Setup Channel 1 start offset
+				stereo.setOffsetChannel1Start(currentOffset);
+	
+				// Setup Channel 1 end offset
+				currentOffset = currentOffset + (stereo.getNumberOfSampleFrames() * 2) + 16 + padOne;
+				stereo.setOffsetChannel1End(currentOffset);
+				currentOffset = currentOffset + padOddOrEven;
+	
+				// Write Channel 1 Sample Data
+				buf.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel1Start());
+				buf.putInt(0x80007FFF);
+				buf.putInt(stereo.getOffsetChannel1Start());
+				buf.putInt(stereo.getOffsetChannel1End());
+				buf.put((byte) i); // sample number
+				buf.put((byte) 0); // denotes stereo / channel 1
+				buf.putShort((short) 0xffff);
+				buf.put(stereo.getAudioDataChannel1());
+				buf.put(EsxUtil.getByteArrayWithLength("", padOddOrEven + padOne, (byte) 0x00));
+
+				// Setup Channel 2 start offset
+				stereo.setOffsetChannel2Start(currentOffset);
+
+				// Setup Channel 2 end offset
+				currentOffset = currentOffset + (stereo.getNumberOfSampleFrames() * 2) + 16 + padOne;
+				stereo.setOffsetChannel2End(currentOffset);
+				currentOffset = currentOffset + padOddOrEven;
+	
+				// Write Channel 2 Sample Data
+				buf.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel2Start());
+				buf.putInt(0x80007FFF);
+				buf.putInt(stereo.getOffsetChannel2Start());
+				buf.putInt(stereo.getOffsetChannel2End());
+				buf.put((byte) i); // sample number
+				buf.put((byte) 0); // denotes stereo / channel 2
+				buf.putShort((short) 0xffff);
+				buf.put(stereo.getAudioDataChannel2());
+				buf.put(EsxUtil.getByteArrayWithLength("", padOddOrEven + padOne, (byte) 0x00));
+			}
+			else {
+				stereo.setOffsetChannel1Start(0xFFFFFFFF);
+				stereo.setOffsetChannel1End(0);
+				stereo.setOffsetChannel2Start(0xFFFFFFFF);
+				stereo.setOffsetChannel2End(0);
+			}
+	
+	
+			// Write Sample Header Info
+			buf.position(EsxUtil.ADDR_SAMPLE_HEADER_STEREO + (i * EsxUtil.CHUNKSIZE_SAMPLE_HEADER_STEREO));
+			buf.put(stereo.toHeaderByteArray());
+	
+			monitor.worked(1);
+		}
+	
+		// Write EOF data
+		buf.position(EsxUtil.ADDR_SAMPLE_DATA + currentOffset);
+		buf.putInt(0x80007FFF);
+		buf.putInt(currentOffset);
+		buf.putInt(0x017FFFFE);
+		buf.putInt(0x00FFFFFF);
+
+		int fileSize = buf.position();
+		buf.position(0);
+		byte[] returnBuffer = new byte[fileSize];
+		buf.get(returnBuffer, 0, fileSize);
+		return returnBuffer;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#write(com.skratchdot.electribe.model.esx.util.EsxRandomAccess, org.eclipse.core.runtime.IProgressMonitor)
+	 */
+	@Override
+	public void write(EsxRandomAccess out, IProgressMonitor monitor)
+			throws IOException, EsxException {
+		// TODO Auto-generated method stub
+		
 	}
 
 	/**

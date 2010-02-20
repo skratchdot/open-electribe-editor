@@ -247,6 +247,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return createFileFromString(eDataType, initialValue);
 			case EsxPackage.IO_EXCEPTION:
 				return createIOExceptionFromString(eDataType, initialValue);
+			case EsxPackage.IPROGRESS_MONITOR:
+				return createIProgressMonitorFromString(eDataType, initialValue);
 			case EsxPackage.OBJECT:
 				return createObjectFromString(eDataType, initialValue);
 			default:
@@ -342,6 +344,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return convertFileToString(eDataType, instanceValue);
 			case EsxPackage.IO_EXCEPTION:
 				return convertIOExceptionToString(eDataType, instanceValue);
+			case EsxPackage.IPROGRESS_MONITOR:
+				return convertIProgressMonitorToString(eDataType, instanceValue);
 			case EsxPackage.OBJECT:
 				return convertObjectToString(eDataType, instanceValue);
 			default:
@@ -2308,6 +2312,42 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public String convertIOExceptionToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IProgressMonitor createIProgressMonitor(String literal) {
+		return (IProgressMonitor)super.createFromString(EsxPackage.Literals.IPROGRESS_MONITOR, literal);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IProgressMonitor createIProgressMonitorFromString(EDataType eDataType, String initialValue) {
+		return (IProgressMonitor)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertIProgressMonitor(IProgressMonitor instanceValue) {
+		return super.convertToString(EsxPackage.Literals.IPROGRESS_MONITOR, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertIProgressMonitorToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

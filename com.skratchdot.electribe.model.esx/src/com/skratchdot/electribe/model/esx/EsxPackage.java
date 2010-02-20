@@ -4274,7 +4274,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getObject()
 	 * @generated
 	 */
-	int OBJECT = 78;
+	int OBJECT = 79;
 
 
 	/**
@@ -4308,6 +4308,17 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	int IO_EXCEPTION = 77;
+
+
+	/**
+	 * The meta object id for the '<em>IProgress Monitor</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.core.runtime.IProgressMonitor
+	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getIProgressMonitor()
+	 * @generated
+	 */
+	int IPROGRESS_MONITOR = 78;
 
 
 	/**
@@ -6986,6 +6997,17 @@ public interface EsxPackage extends EPackage {
 	EDataType getIOException();
 
 	/**
+	 * Returns the meta object for data type '{@link org.eclipse.core.runtime.IProgressMonitor <em>IProgress Monitor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>IProgress Monitor</em>'.
+	 * @see org.eclipse.core.runtime.IProgressMonitor
+	 * @model instanceClass="org.eclipse.core.runtime.IProgressMonitor"
+	 * @generated
+	 */
+	EDataType getIProgressMonitor();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9164,6 +9186,16 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType IO_EXCEPTION = eINSTANCE.getIOException();
+
+		/**
+		 * The meta object literal for the '<em>IProgress Monitor</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.core.runtime.IProgressMonitor
+		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getIProgressMonitor()
+		 * @generated
+		 */
+		EDataType IPROGRESS_MONITOR = eINSTANCE.getIProgressMonitor();
 
 	}
 

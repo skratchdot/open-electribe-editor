@@ -12,6 +12,7 @@
 package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.ParametersMotion;
@@ -168,6 +169,20 @@ public class ParametersMotionImpl extends EObjectImpl implements ParametersMotio
 		operationValue = newOperationValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PARAMETERS_MOTION__OPERATION_VALUE, oldOperationValue, operationValue));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toByteArray() {
+		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_PARAMETERS_MOTION);
+		// bytes 0~1
+		buf.putShort(this.getOperationNumber());
+		// bytes 2~129
+		buf.put(this.getOperationValue());
+		return buf.array();
 	}
 
 	/**

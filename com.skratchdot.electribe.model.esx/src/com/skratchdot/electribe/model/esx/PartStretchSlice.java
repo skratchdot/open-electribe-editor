@@ -29,6 +29,14 @@ import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
  */
 public interface PartStretchSlice extends Part, PartWithCommon, PartWithPitch, PartWithSample, PartWithSequenceData {
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toByteArray();
+
 	void write(EsxRandomAccess out, int patternNumber, int partStretchSliceNumber)  throws EsxException, IOException;
 
 } // PartStretchSlice

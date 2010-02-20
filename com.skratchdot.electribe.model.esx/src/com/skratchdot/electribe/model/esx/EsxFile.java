@@ -409,6 +409,22 @@ public interface EsxFile extends EObject {
 	 */
 	int findFirstEmptySample(boolean searchMono, boolean searchStereo, int startingSampleNumber, ArrayList<Integer> skipSampleNumbers);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toByteArray();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model monitorDataType="com.skratchdot.electribe.model.esx.IProgressMonitor"
+	 * @generated
+	 */
+	byte[] toByteArray(IProgressMonitor monitor);
+
 	void write(EsxRandomAccess out, IProgressMonitor monitor) throws IOException, EsxException;
 
 }

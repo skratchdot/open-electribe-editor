@@ -12,6 +12,7 @@
 package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.SongEventKeyboardNote;
@@ -213,6 +214,31 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 		noteNumber = newNoteNumber;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER, oldNoteNumber, noteNumber));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toByteArray() {
+		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_SONG_EVENT);
+		// byte 0
+		buf.put(this.getPositionNumber());
+		// byte 1
+		int packedByte1 = 0x00;
+		packedByte1 = EsxUtil.packInt(packedByte1, this.getStep(), 4, 0);
+		packedByte1 = EsxUtil.packInt(packedByte1, this.getMeasure(), 4, 4);
+		buf.put((byte) packedByte1);
+		// bytes 2~3
+		buf.putShort(this.getOperationNumber());
+		// byte 4
+		buf.put(this.getPart());
+		// byte 5
+		buf.put(this.getNoteNumber());
+		// bytes 6~7
+		buf.putShort(this.getLength());
+		return buf.array();
 	}
 
 	/**

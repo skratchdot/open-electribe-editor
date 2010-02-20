@@ -29,6 +29,14 @@ import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
  */
 public interface SampleStereo extends Sample {
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toHeaderByteArray();
+
 	void writeHeader(EsxRandomAccess out, int stereoSampleNumber) throws EsxException, IOException;
 
 } // SampleStereo

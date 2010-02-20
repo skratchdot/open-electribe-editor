@@ -12,6 +12,7 @@
 package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -582,6 +583,72 @@ public class SongImpl extends EObjectImpl implements Song {
 			}
 		}
 		return SongNumber.get(-1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toByteArray() {
+		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_SONG);
+		// bytes 0~7
+		buf.put(EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00), 0, 8);
+		// bytes 8~9
+		buf.putShort(this.getTempo().getShortFromCurrentValue());
+		// byte 10
+		buf.put((byte) this.getTempoLock().getValue());
+		// byte 11
+		buf.put((byte) this.getSongLength().getValue());
+		// byte 12
+		buf.put((byte) this.getMuteHold().getValue());
+		// byte 13
+		buf.put((byte) this.getNextSongNumber().getValue());
+		// bytes 14~15
+		buf.putShort(this.getNumberOfSongEvents());
+		// bytes 16~271 (SongPatterns - PatternNumber)
+		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
+			buf.put((byte) this.getSongPatterns().get(i).getPatternNumber().getValue());
+		}
+		// bytes 272~527
+		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
+			buf.put(this.getSongPatterns().get(i).getNoteOffset());
+		}
+		return buf.array();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toSongEventByteArray() {
+		short numEvents = this.getNumberOfSongEvents();
+		if(numEvents>0) {
+			ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_SONG_EVENT*numEvents);
+			// write song events
+			SongEvent songEvent;
+			for(int i=0; i<numEvents; i++) {
+				songEvent = this.getSongEvents().get(i);
+				if(songEvent instanceof SongEventControl) {
+					buf.put(((SongEventControl) songEvent).toByteArray());
+				}
+				else if(songEvent instanceof SongEventDrumNote) {
+					buf.put(((SongEventDrumNote) songEvent).toByteArray());
+				}
+				else if(songEvent instanceof SongEventKeyboardNote) {
+					buf.put(((SongEventKeyboardNote) songEvent).toByteArray());
+				}
+				else if(songEvent instanceof SongEventMuteStatus) {
+					buf.put(((SongEventMuteStatus) songEvent).toByteArray());
+				}
+				else if(songEvent instanceof SongEventTempo) {
+					buf.put(((SongEventTempo) songEvent).toByteArray());
+				}
+			}
+			return buf.array();
+		}
+		return new byte[0];
 	}
 
 	/**

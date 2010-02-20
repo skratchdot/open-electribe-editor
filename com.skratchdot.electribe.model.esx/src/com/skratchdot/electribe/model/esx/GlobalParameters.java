@@ -456,6 +456,14 @@ public interface GlobalParameters extends EObject {
 	 */
 	EList<PatternSetParameter> getPatternSetParameters();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toByteArray();
+
 	void write(EsxRandomAccess out) throws EsxException, IOException;
 
 } // GlobalParameters

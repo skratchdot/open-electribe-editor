@@ -12,6 +12,7 @@
 package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.SongEventMuteStatus;
@@ -167,6 +168,29 @@ public class SongEventMuteStatusImpl extends SongEventImpl implements SongEventM
 		muteStatus = newMuteStatus;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT_MUTE_STATUS__MUTE_STATUS, oldMuteStatus, muteStatus));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toByteArray() {
+		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_SONG_EVENT);
+		// byte 0
+		buf.put(this.getPositionNumber());
+		// byte 1
+		int packedByte1 = 0x00;
+		packedByte1 = EsxUtil.packInt(packedByte1, this.getStep(), 4, 0);
+		packedByte1 = EsxUtil.packInt(packedByte1, this.getMeasure(), 4, 4);
+		buf.put((byte) packedByte1);
+		// bytes 2~3
+		buf.putShort(this.getOperationNumber());
+		// bytes 4~5
+		buf.putShort(this.getReservedShort());
+		// bytes 6~7
+		buf.putShort(this.getMuteStatus());
+		return buf.array();
 	}
 
 	/**

@@ -326,6 +326,22 @@ public interface Song extends EObject {
 	 */
 	SongNumber getSongNumberCurrent();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toByteArray();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toSongEventByteArray();
+
 	public int getNumberOfPreviousSongEvents(EsxRandomAccess in, int songNumber) throws EsxException, IOException;
 
 	public int getSongEventType(EsxRandomAccess in, int songEventNumber) throws EsxException, IOException;

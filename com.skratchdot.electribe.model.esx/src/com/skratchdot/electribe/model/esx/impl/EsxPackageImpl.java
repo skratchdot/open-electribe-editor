@@ -13,6 +13,7 @@ package com.skratchdot.electribe.model.esx.impl;
 
 import java.util.ArrayList;
 
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -662,6 +663,13 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	private EDataType ioExceptionEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType iProgressMonitorEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -2979,6 +2987,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getIProgressMonitor() {
+		return iProgressMonitorEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EsxFactory getEsxFactory() {
 		return (EsxFactory)getEFactoryInstance();
 	}
@@ -3292,6 +3309,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		arrayListEDataType = createEDataType(ARRAY_LIST);
 		fileEDataType = createEDataType(FILE);
 		ioExceptionEDataType = createEDataType(IO_EXCEPTION);
+		iProgressMonitorEDataType = createEDataType(IPROGRESS_MONITOR);
 		objectEDataType = createEDataType(OBJECT);
 	}
 
@@ -3387,6 +3405,11 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "skipSampleNumbers", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(esxFileEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(esxFileEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIProgressMonitor(), "monitor", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(globalParametersEClass, GlobalParameters.class, "GlobalParameters", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGlobalParameters_MemoryProtectEnabled(), this.getEnabledFlag(), "memoryProtectEnabled", null, 0, 1, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGlobalParameters_ReservedByte(), ecorePackage.getEByte(), "reservedByte", null, 0, 1, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3405,6 +3428,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getGlobalParameters_ReservedLong(), ecorePackage.getELong(), "reservedLong", null, 0, 1, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGlobalParameters_PatternSetParameters(), this.getPatternSetParameter(), null, "patternSetParameters", null, 128, 128, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		addEOperation(globalParametersEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(midiChannelTypeEClass, MidiChannelType.class, "MidiChannelType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMidiChannelType_Name(), this.getMidiChannelTypeName(), "name", null, 0, 1, MidiChannelType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMidiChannelType_MidiChannel(), this.getMidiChannel(), "midiChannel", null, 0, 1, MidiChannelType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3419,9 +3444,13 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getParametersFx_Edit2(), ecorePackage.getEByte(), "edit2", null, 0, 1, ParametersFx.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParametersFx_MotionSequenceStatus(), ecorePackage.getEByte(), "motionSequenceStatus", null, 0, 1, ParametersFx.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		addEOperation(parametersFxEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(parametersMotionEClass, ParametersMotion.class, "ParametersMotion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getParametersMotion_OperationNumber(), ecorePackage.getEShort(), "operationNumber", null, 0, 1, ParametersMotion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParametersMotion_OperationValue(), ecorePackage.getEByteArray(), "operationValue", null, 0, 1, ParametersMotion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(parametersMotionEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(partEClass, Part.class, "Part", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPart_Level(), ecorePackage.getEByte(), "level", null, 0, 1, Part.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3429,20 +3458,30 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 
 		initEClass(partAccentEClass, PartAccent.class, "PartAccent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		addEOperation(partAccentEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(partAudioInEClass, PartAudioIn.class, "PartAudioIn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPartAudioIn_ReservedBitsByte7(), ecorePackage.getEByte(), "reservedBitsByte7", null, 0, 1, PartAudioIn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		addEOperation(partAudioInEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(partDrumEClass, PartDrum.class, "PartDrum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(partDrumEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(partKeyboardEClass, PartKeyboard.class, "PartKeyboard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPartKeyboard_Glide(), ecorePackage.getEByte(), "glide", null, 0, 1, PartKeyboard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPartKeyboard_SequenceDataNote(), this.getSequenceDataNote(), null, "sequenceDataNote", null, 0, 1, PartKeyboard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(partKeyboardEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(partNoteNumberEClass, PartNoteNumber.class, "PartNoteNumber", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPartNoteNumber_Name(), this.getPartNoteNumberName(), "name", null, 0, 1, PartNoteNumber.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPartNoteNumber_NoteNumber(), this.getNoteNumber(), "noteNumber", null, 0, 1, PartNoteNumber.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(partStretchSliceEClass, PartStretchSlice.class, "PartStretchSlice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(partStretchSliceEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(partWithCommonEClass, PartWithCommon.class, "PartWithCommon", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPartWithCommon_AmpEg(), this.getAmpEg(), "ampEg", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3509,6 +3548,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getPattern_PatternNumberOriginal(), this.getPatternNumber(), "patternNumberOriginal", "-1", 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPattern_PatternNumberCurrent(), this.getPatternNumber(), "patternNumberCurrent", "-1", 0, 1, Pattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
+		addEOperation(patternEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(patternSetParameterEClass, PatternSetParameter.class, "PatternSetParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPatternSetParameter_PatternNumber(), this.getPatternNumber(), "patternNumber", null, 0, 1, PatternSetParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPatternSetParameter_PositionCurrent(), ecorePackage.getEInt(), "positionCurrent", "-1", 0, 1, PatternSetParameter.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -3549,7 +3590,13 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 
 		initEClass(sampleMonoEClass, SampleMono.class, "SampleMono", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		addEOperation(sampleMonoEClass, ecorePackage.getEByteArray(), "toHeaderByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(sampleMonoEClass, ecorePackage.getEByteArray(), "toSliceByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(sampleStereoEClass, SampleStereo.class, "SampleStereo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(sampleStereoEClass, ecorePackage.getEByteArray(), "toHeaderByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(sampleTuneEClass, SampleTune.class, "SampleTune", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSampleTune_Value(), ecorePackage.getEFloat(), "value", null, 0, 1, SampleTune.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3585,6 +3632,10 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getSong_SongNumberOriginal(), this.getSongNumber(), "songNumberOriginal", "-1", 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSong_SongNumberCurrent(), this.getSongNumber(), "songNumberCurrent", "-1", 0, 1, Song.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
+		addEOperation(songEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(songEClass, ecorePackage.getEByteArray(), "toSongEventByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(songEventEClass, SongEvent.class, "SongEvent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSongEvent_Measure(), ecorePackage.getEByte(), "measure", null, 0, 1, SongEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongEvent_OperationNumber(), ecorePackage.getEShort(), "operationNumber", null, 0, 1, SongEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3596,21 +3647,31 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getSongEventControl_ReservedByte(), ecorePackage.getEByte(), "reservedByte", null, 0, 1, SongEventControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongEventControl_ReservedShort(), ecorePackage.getEShort(), "reservedShort", "-21846", 0, 1, SongEventControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		addEOperation(songEventControlEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(songEventDrumNoteEClass, SongEventDrumNote.class, "SongEventDrumNote", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSongEventDrumNote_ReservedByte(), ecorePackage.getEByte(), "reservedByte", null, 0, 1, SongEventDrumNote.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongEventDrumNote_ReservedShort(), ecorePackage.getEShort(), "reservedShort", null, 0, 1, SongEventDrumNote.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(songEventDrumNoteEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(songEventKeyboardNoteEClass, SongEventKeyboardNote.class, "SongEventKeyboardNote", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSongEventKeyboardNote_Length(), ecorePackage.getEShort(), "length", null, 0, 1, SongEventKeyboardNote.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongEventKeyboardNote_NoteNumber(), ecorePackage.getEByte(), "noteNumber", null, 0, 1, SongEventKeyboardNote.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		addEOperation(songEventKeyboardNoteEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(songEventMuteStatusEClass, SongEventMuteStatus.class, "SongEventMuteStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSongEventMuteStatus_ReservedShort(), ecorePackage.getEShort(), "reservedShort", null, 0, 1, SongEventMuteStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongEventMuteStatus_MuteStatus(), ecorePackage.getEShort(), "muteStatus", null, 0, 1, SongEventMuteStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		addEOperation(songEventMuteStatusEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(songEventTempoEClass, SongEventTempo.class, "SongEventTempo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSongEventTempo_Tempo(), ecorePackage.getEShort(), "tempo", null, 0, 1, SongEventTempo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongEventTempo_ReservedShort(), ecorePackage.getEShort(), "reservedShort", null, 0, 1, SongEventTempo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(songEventTempoEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(songEventWithPartEClass, SongEventWithPart.class, "SongEventWithPart", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSongEventWithPart_Part(), ecorePackage.getEByte(), "part", null, 0, 1, SongEventWithPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5234,6 +5295,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEDataType(arrayListEDataType, ArrayList.class, "ArrayList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(fileEDataType, File.class, "File", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(ioExceptionEDataType, IOException.class, "IOException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(iProgressMonitorEDataType, IProgressMonitor.class, "IProgressMonitor", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(objectEDataType, Object.class, "Object", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource

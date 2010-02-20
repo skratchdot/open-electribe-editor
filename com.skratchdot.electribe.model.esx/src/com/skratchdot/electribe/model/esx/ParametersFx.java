@@ -145,6 +145,14 @@ public interface ParametersFx extends EObject {
 	 */
 	void setMotionSequenceStatus(byte value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toByteArray();
+
 	void write(EsxRandomAccess out, int patternNumber, int parametersFxNumber)  throws EsxException, IOException;
 
 } // ParametersFx

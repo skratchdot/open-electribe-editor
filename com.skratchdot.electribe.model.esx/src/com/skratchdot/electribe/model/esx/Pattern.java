@@ -698,6 +698,14 @@ public interface Pattern extends EObject {
 	 */
 	PatternNumber getPatternNumberCurrent();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toByteArray();
+
 	void write(EsxRandomAccess out, int patternNumber) throws EsxException, IOException;
 
 } // Pattern

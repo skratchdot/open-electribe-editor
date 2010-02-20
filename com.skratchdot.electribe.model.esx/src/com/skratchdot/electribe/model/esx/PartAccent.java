@@ -29,6 +29,14 @@ import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
  */
 public interface PartAccent extends Part, PartWithSequenceData {
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toByteArray();
+
 	void write(EsxRandomAccess out, int patternNumber, int partAccentNumber)  throws EsxException, IOException;
 
 } // PartAccent

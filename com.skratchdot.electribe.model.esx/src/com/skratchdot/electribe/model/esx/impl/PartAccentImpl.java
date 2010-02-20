@@ -12,6 +12,7 @@
 package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
 
 import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxPackage;
@@ -143,6 +144,22 @@ public class PartAccentImpl extends PartImpl implements PartAccent {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_ACCENT__SEQUENCE_DATA, newSequenceData, newSequenceData));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toByteArray() {
+		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_PARTS_ACCENT);
+		// byte 0
+		buf.put(this.getLevel());
+		// byte 1
+		buf.put(this.getMotionSequenceStatus());
+		// bytes 2~17
+		buf.put(this.getSequenceData().getSequenceData());
+		return buf.array();
 	}
 
 	/**

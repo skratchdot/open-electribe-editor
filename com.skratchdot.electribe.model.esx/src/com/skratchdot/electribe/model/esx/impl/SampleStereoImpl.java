@@ -13,6 +13,7 @@ package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -161,45 +162,44 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 		return EsxPackage.Literals.SAMPLE_STEREO;
 	}
 
-	@Override
-	public void writeHeader(EsxRandomAccess out, int stereoSampleNumber) throws EsxException, IOException {
-		// Stop immediately if we are passed an invalid stereoSampleNumber
-		if (stereoSampleNumber >= EsxUtil.NUM_SAMPLES_STEREO || stereoSampleNumber < 0)
-			throw new EsxException("Invalid stereoSampleNumber: " + stereoSampleNumber);
-
-		// Jump to the start of stereoSampleNumber's header data
-		out.seek(EsxUtil.ADDR_SAMPLE_HEADER_STEREO + (stereoSampleNumber * EsxUtil.CHUNKSIZE_SAMPLE_HEADER_STEREO));
-
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toHeaderByteArray() {
+		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_SAMPLE_HEADER_STEREO);
 		// bytes 0~7
-		out.write(EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00), 0, 8);
+		buf.put(EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00), 0, 8);
 		// bytes 8~11
-		out.writeInt(this.getOffsetChannel1Start());
+		buf.putInt(this.getOffsetChannel1Start());
 		// bytes 12~15
-		out.writeInt(this.getOffsetChannel1End());
+		buf.putInt(this.getOffsetChannel1End());
 		// bytes 16~19
-		out.writeInt(this.getOffsetChannel2Start());
+		buf.putInt(this.getOffsetChannel2Start());
 		// bytes 20~23
-		out.writeInt(this.getOffsetChannel2End());
+		buf.putInt(this.getOffsetChannel2End());
 		// bytes 24~27
-		out.writeInt(this.getStart());
+		buf.putInt(this.getStart());
 		// bytes 28~31
-		out.writeInt(this.getEnd());
+		buf.putInt(this.getEnd());
 		// bytes 32~35
-		out.writeInt(this.getSampleRate());
+		buf.putInt(this.getSampleRate());
 		// bytes 36~37
-		out.writeShort(this.getSampleTune().getShortFromCurrentValue());
+		buf.putShort(this.getSampleTune().getShortFromCurrentValue());
 		// byte 38
-		out.writeByte(this.getPlayLevel().getValue());
+		buf.put((byte) this.getPlayLevel().getValue());
 		// byte 39
-		out.writeByte(this.getUnknownByte1());
+		buf.put(this.getUnknownByte1());
 		// byte 40
-		out.writeByte(this.getStretchStep().getValue());
+		buf.put((byte) this.getStretchStep().getValue());
 		// byte 41
-		out.writeByte(this.getUnknownByte2());
+		buf.put(this.getUnknownByte2());
 		// byte 42
-		out.writeByte(this.getUnknownByte3());
+		buf.put(this.getUnknownByte3());
 		// byte 43
-		out.writeByte(this.getUnknownByte4());
+		buf.put(this.getUnknownByte4());
+		return buf.array();
 	}
 
 	/* (non-Javadoc)
@@ -263,6 +263,13 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 		
 		// Write the file
 		riffWave.write(file);
+	}
+
+	@Override
+	public void writeHeader(EsxRandomAccess out, int stereoSampleNumber)
+			throws EsxException, IOException {
+		// TODO Auto-generated method stub
+		
 	}
 
 } //SampleStereoImpl

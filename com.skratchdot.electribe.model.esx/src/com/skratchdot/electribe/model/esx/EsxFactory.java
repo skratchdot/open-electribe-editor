@@ -1148,6 +1148,26 @@ public interface EsxFactory extends EFactory {
 	 */
 	String convertIOException(IOException instanceValue);
 
+	/**
+	 * Returns an instance of data type '<em>IProgress Monitor</em>' corresponding the given literal.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param literal a literal of the data type.
+	 * @return a new instance value of the data type.
+	 * @generated
+	 */
+	IProgressMonitor createIProgressMonitor(String literal);
+
+	/**
+	 * Returns a literal representation of an instance of data type '<em>IProgress Monitor</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param instanceValue an instance value of the data type.
+	 * @return a literal representation of the instance value.
+	 * @generated
+	 */
+	String convertIProgressMonitor(IProgressMonitor instanceValue);
+
 	SongEventMuteStatus createSongEventMuteStatusFromEsxFile(EsxRandomAccess in, int songEventNumber) throws EsxException, IOException;
 
 	/**
