@@ -15,6 +15,7 @@ import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.SampleTune;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -123,9 +124,9 @@ public class SampleTuneImpl extends EObjectImpl implements SampleTune {
 	 */
 	public short getShortFromCurrentValue() {
 		float sampleTuneAbsolute = Math.abs(this.getValue());
-		int sampleTuneNegative = this.getValue()<1?1:0;
+		int sampleTuneNegative = this.getValue()<0?1:0;
 		int sampleTuneWhole = (int) (sampleTuneAbsolute / 1);
-		int sampleTuneDecimal = (int) ((sampleTuneAbsolute - sampleTuneWhole) * 10);
+		int sampleTuneDecimal = (int) Math.round(((sampleTuneAbsolute - sampleTuneWhole) * 100f));
 
 		// valid sampleTuneDecimal values are between 0-99
 		if(sampleTuneDecimal>99 || sampleTuneDecimal<0) {
@@ -145,9 +146,9 @@ public class SampleTuneImpl extends EObjectImpl implements SampleTune {
 	 * @generated NOT
 	 */
 	public void setCurrentValueFromShort(short packedShort) {
-		int sampleTuneNegative = EsxUtil.unpackInt(packedShort, 1, 15);
-		int sampleTuneWhole = EsxUtil.unpackInt(packedShort, 7, 8);
-		int sampleTuneDecimal = EsxUtil.unpackInt(packedShort, 8, 0);
+		byte sampleTuneNegative = (byte) EsxUtil.unpackInt(packedShort, 1, 15);
+		byte sampleTuneWhole = (byte) EsxUtil.unpackInt(packedShort, 7, 8);
+		byte sampleTuneDecimal = (byte) EsxUtil.unpackInt(packedShort, 8, 0);
 
 		// valid sampleTuneDecimal values are between 0-99
 		if(sampleTuneDecimal>99 || sampleTuneDecimal<0) {
@@ -156,15 +157,15 @@ public class SampleTuneImpl extends EObjectImpl implements SampleTune {
 
 		// Now construct the float value as a string
 		String sampleTuneAsString = "";		
-		if(sampleTuneNegative==0) {
-			sampleTuneAsString = "" + sampleTuneWhole + "." + sampleTuneDecimal + "";
+		if(sampleTuneNegative==1 && sampleTuneWhole>0) {
+			sampleTuneAsString = "-";
 		}
-		else {
-			sampleTuneAsString = "-" + sampleTuneWhole + "." + sampleTuneDecimal + "";
-		}
+		sampleTuneAsString = sampleTuneAsString +
+			sampleTuneWhole +
+			"." +
+			StringUtils.leftPad(Integer.toString(sampleTuneDecimal), 2, "0");
 
-		Float sampleTuneAsFloat = new Float(sampleTuneAsString);
-		this.setValue(sampleTuneAsFloat.floatValue());
+		this.setValue(Float.parseFloat(sampleTuneAsString));
 	}
 
 	/**
