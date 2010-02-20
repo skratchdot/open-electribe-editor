@@ -43,7 +43,6 @@ import com.skratchdot.electribe.model.esx.PartNoteNumberName;
 import com.skratchdot.electribe.model.esx.PatternNumber;
 import com.skratchdot.electribe.model.esx.PatternSetParameter;
 import com.skratchdot.electribe.model.esx.PitchBendRange;
-import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 
@@ -779,49 +778,6 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 			buf.put((byte) this.getPatternSetParameters().get(i).getPatternNumber().getValue());
 		}
 		return buf.array();
-	}
-
-	@Override
-	public void write(EsxRandomAccess out) throws EsxException, IOException {
-		// Jump to the start of patternNumber's data
-		out.seek(EsxUtil.ADDR_GLOBAL_PARAMETERS);
-	
-		// byte 0
-		out.writeByte(this.getMemoryProtectEnabled().getValue());
-		// byte 1
-		out.writeByte(this.getReservedByte());
-		// byte 2
-		out.writeByte(this.getArpeggiatorControl().getValue());
-		// byte 3
-		out.writeByte(this.getAudioInMode().getValue());
-		// byte 4
-		out.writeByte(this.getMidiClock().getValue());
-		// byte 5
-		int packedByte5 = 0x00;
-		packedByte5 = EsxUtil.packInt(packedByte5, this.getNoteMessageEnabled().getValue(), 1, 0);
-		packedByte5 = EsxUtil.packInt(packedByte5, this.getSystemExEnabled().getValue(), 1, 1);
-		packedByte5 = EsxUtil.packInt(packedByte5, this.getControlChangeEnabled().getValue(), 1, 2);
-		packedByte5 = EsxUtil.packInt(packedByte5, this.getProgramChangeEnabled().getValue(), 1, 3);
-		packedByte5 = EsxUtil.packInt(packedByte5, this.getReservedBitsAfterProgramChangeEnabled(), 4, 4);
-		out.writeByte(packedByte5);
-		// byte 6
-		out.writeByte(this.getPitchBendRange().getValue());
-		// bytes 7~9 (1 byte each)
-		for (int i = 0; i < EsxUtil.NUM_MIDI_CHANNELS; i++) {
-			out.writeByte(this.getMidiChannels().get(i).getMidiChannel().getValue());
-		}
-		// bytes 10~22 (1 byte each)
-		for (int i = 0; i < EsxUtil.NUM_PART_NOTE_NUMBERS; i++) {
-			out.writeByte(this.getPartNoteNumbers().get(i).getNoteNumber().getValue());
-		}
-		// bytes 23~55 (1 byte each)
-		for (int i = 0; i < EsxUtil.NUM_MIDI_CONTROL_CHANGE_ASSIGNMENTS; i++) {
-			out.writeByte(this.getMidiControlChangeAssignments().get(i).getValue());
-		}
-		// bytes 64~191 (1 byte each)
-		for (int i = 0; i < EsxUtil.NUM_PATTERN_SET_PARAMETERS; i++) {
-			out.writeByte(this.getPatternSetParameters().get(i).getPatternNumber().getValue());
-		}
 	}
 
 	/**

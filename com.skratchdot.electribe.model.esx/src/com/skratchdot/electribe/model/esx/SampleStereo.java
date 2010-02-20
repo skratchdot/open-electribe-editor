@@ -11,10 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx;
 
-import java.io.IOException;
-
-import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 
 
 /**
@@ -36,7 +32,5 @@ public interface SampleStereo extends Sample {
 	 * @generated
 	 */
 	byte[] toHeaderByteArray();
-
-	void writeHeader(EsxRandomAccess out, int stereoSampleNumber) throws EsxException, IOException;
 
 } // SampleStereo

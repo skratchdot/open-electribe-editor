@@ -265,11 +265,4 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 		riffWave.write(file);
 	}
 
-	@Override
-	public void writeHeader(EsxRandomAccess out, int stereoSampleNumber)
-			throws EsxException, IOException {
-		// TODO Auto-generated method stub
-		
-	}
-
 } //SampleStereoImpl

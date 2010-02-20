@@ -11,10 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx;
 
-import java.io.IOException;
-
-import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 
 
 /**
@@ -36,7 +32,5 @@ public interface PartAccent extends Part, PartWithSequenceData {
 	 * @generated
 	 */
 	byte[] toByteArray();
-
-	void write(EsxRandomAccess out, int patternNumber, int partAccentNumber)  throws EsxException, IOException;
 
 } // PartAccent

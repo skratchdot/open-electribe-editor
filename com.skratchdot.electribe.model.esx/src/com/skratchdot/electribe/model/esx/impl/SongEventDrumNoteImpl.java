@@ -372,37 +372,4 @@ public class SongEventDrumNoteImpl extends SongEventImpl implements SongEventDru
 		return result.toString();
 	}
 
-	@Override
-	public void write(EsxRandomAccess out, int songEventNumber)
-			throws EsxException, IOException {
-		// Stop immediately if we are passed an invalid songEventNumber
-		if (songEventNumber > EsxUtil.MAX_NUM_SONG_EVENTS || songEventNumber < 0)
-			throw new EsxException("Invalid songEventNumber: " + songEventNumber);
-
-		// Jump to the start of songNumber's data
-		out.seek(EsxUtil.ADDR_SONG_EVENT_DATA + (songEventNumber * EsxUtil.CHUNKSIZE_SONG_EVENT));
-
-		// byte 0
-		out.writeByte(this.getPositionNumber());
-
-		// byte 1
-		int packedByte1 = 0x00;
-		packedByte1 = EsxUtil.packInt(packedByte1, this.getStep(), 4, 0);
-		packedByte1 = EsxUtil.packInt(packedByte1, this.getMeasure(), 4, 4);
-		out.writeByte(packedByte1);
-
-		// bytes 2~3
-		out.writeShort(this.getOperationNumber());
-
-		// byte 4
-		out.writeByte(this.getPart());
-
-		// byte 5
-		out.writeByte(this.getReservedByte());
-
-		// bytes 6~7
-		out.writeShort(this.getReservedShort());
-
-	}
-
 } //SongEventDrumNoteImpl

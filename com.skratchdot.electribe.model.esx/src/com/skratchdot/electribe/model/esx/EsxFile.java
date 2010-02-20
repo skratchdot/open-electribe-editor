@@ -11,16 +11,11 @@
  */
 package com.skratchdot.electribe.model.esx;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
-
-import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 
 /**
  * <!-- begin-user-doc -->
@@ -424,7 +419,5 @@ public interface EsxFile extends EObject {
 	 * @generated
 	 */
 	byte[] toByteArray(IProgressMonitor monitor);
-
-	void write(EsxRandomAccess out, IProgressMonitor monitor) throws IOException, EsxException;
 
 }

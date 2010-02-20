@@ -213,28 +213,6 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 		return buf.array();
 	}
 
-	@Override
-	public void writeHeader(EsxRandomAccess out, int monoSampleNumber) throws EsxException, IOException {
-		// Stop immediately if we are passed an invalid monoSampleNumber
-		if (monoSampleNumber >= EsxUtil.NUM_SAMPLES_MONO || monoSampleNumber < 0)
-			throw new EsxException("Invalid monoSampleNumber: " + monoSampleNumber);
-
-		// Jump to the start of monoSampleNumber's header data
-		out.seek(EsxUtil.ADDR_SAMPLE_HEADER_MONO + (monoSampleNumber * EsxUtil.CHUNKSIZE_SAMPLE_HEADER_MONO));
-
-	}
-
-	@Override
-	public void writeSlice(EsxRandomAccess out, int monoSampleNumber) throws EsxException, IOException {
-		// Stop immediately if we are passed an invalid monoSampleNumber
-		if (monoSampleNumber >= EsxUtil.NUM_SAMPLES_MONO || monoSampleNumber < 0)
-			throw new EsxException("Invalid monoSampleNumber: " + monoSampleNumber);
-
-		// Jump to the start of monoSampleNumber's slice data
-		out.seek(EsxUtil.ADDR_SLICE_DATA + (monoSampleNumber * EsxUtil.CHUNKSIZE_SLICE_DATA));
-
-	}
-
 	/* (non-Javadoc)
 	 * @see com.skratchdot.electribe.model.esx.impl.SampleImpl#export(java.io.File)
 	 */

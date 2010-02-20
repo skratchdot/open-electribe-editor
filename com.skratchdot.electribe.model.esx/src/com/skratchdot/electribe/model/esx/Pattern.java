@@ -11,14 +11,8 @@
  */
 package com.skratchdot.electribe.model.esx;
 
-import java.io.IOException;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
-
-import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 
 /**
  * <!-- begin-user-doc -->
@@ -705,7 +699,5 @@ public interface Pattern extends EObject {
 	 * @generated
 	 */
 	byte[] toByteArray();
-
-	void write(EsxRandomAccess out, int patternNumber) throws EsxException, IOException;
 
 } // Pattern

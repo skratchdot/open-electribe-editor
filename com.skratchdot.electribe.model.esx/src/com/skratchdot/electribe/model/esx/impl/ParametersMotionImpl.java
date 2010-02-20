@@ -271,29 +271,4 @@ public class ParametersMotionImpl extends EObjectImpl implements ParametersMotio
 		return result.toString();
 	}
 
-	@Override
-	public void write(EsxRandomAccess out, int patternNumber,
-			int parametersMotionNumber) throws EsxException, IOException {
-
-		// Stop immediately if we are passed an invalid patternNumber
-		if (patternNumber >= EsxUtil.NUM_PATTERNS || patternNumber < 0)
-			throw new EsxException("Invalid patternNumber: " + patternNumber);
-
-		// Stop immediately if we are passed an invalid parametersMotionNumber
-		if (parametersMotionNumber >= EsxUtil.NUM_PARAMETERS_MOTION || parametersMotionNumber < 0)
-			throw new EsxException("Invalid parametersMotionNumber: " + parametersMotionNumber);
-
-		// Jump to the start of parametersMotionNumber's data
-		out.seek(EsxUtil.ADDR_PATTERN_DATA +
-				(patternNumber * EsxUtil.CHUNKSIZE_PATTERN) +
-				EsxUtil.PATTERN_OFFSET_PARAMETERS_MOTION +
-				(parametersMotionNumber * EsxUtil.CHUNKSIZE_PARAMETERS_MOTION));
-
-		// bytes 0~1
-		out.writeShort(this.getOperationNumber());
-		// bytes 2~129
-		out.write(this.getOperationValue());
-
-	}
-
 } //ParametersMotionImpl

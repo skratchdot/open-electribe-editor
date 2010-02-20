@@ -346,6 +346,4 @@ public interface Song extends EObject {
 
 	public int getSongEventType(EsxRandomAccess in, int songEventNumber) throws EsxException, IOException;
 
-	void write(EsxRandomAccess out, int songNumber, int startingSongEventNumber) throws EsxException, IOException;
-
 } // Song

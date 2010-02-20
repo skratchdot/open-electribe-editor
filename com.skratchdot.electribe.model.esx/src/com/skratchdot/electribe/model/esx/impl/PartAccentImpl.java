@@ -266,31 +266,4 @@ public class PartAccentImpl extends PartImpl implements PartAccent {
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
-	@Override
-	public void write(EsxRandomAccess out, int patternNumber,
-			int partAccentNumber) throws EsxException, IOException {
-
-		// Stop immediately if we are passed an invalid patternNumber
-		if (patternNumber >= EsxUtil.NUM_PATTERNS || patternNumber < 0)
-			throw new EsxException("Invalid patternNumber: " + patternNumber);
-
-		// Stop immediately if we are passed an invalid partAccentNumber
-		if (partAccentNumber >= EsxUtil.NUM_PARTS_ACCENT || partAccentNumber < 0)
-			throw new EsxException("Invalid partAccentNumber: " + partAccentNumber);
-
-		// Jump to the start of partAccentNumber's data
-		out.seek(EsxUtil.ADDR_PATTERN_DATA +
-				(patternNumber * EsxUtil.CHUNKSIZE_PATTERN) +
-				EsxUtil.PATTERN_OFFSET_PARTS_ACCENT +
-				(partAccentNumber * EsxUtil.CHUNKSIZE_PARTS_ACCENT));
-
-		// byte 0
-		out.writeByte(this.getLevel());
-		// byte 1
-		out.writeByte(this.getMotionSequenceStatus());
-		// bytes 2~17
-		out.write(this.getSequenceData().getSequenceData());
-
-	}
-
 } //PartAccentImpl

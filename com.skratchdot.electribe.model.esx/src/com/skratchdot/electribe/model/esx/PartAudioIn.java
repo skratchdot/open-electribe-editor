@@ -11,10 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx;
 
-import java.io.IOException;
-
-import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 
 
 /**
@@ -68,7 +64,5 @@ public interface PartAudioIn extends Part, PartWithCommon, PartWithSequenceData,
 	 * @generated
 	 */
 	byte[] toByteArray();
-
-	void write(EsxRandomAccess out, int patternNumber, int partAudioInNumber)  throws EsxException, IOException;
 
 } // PartAudioIn

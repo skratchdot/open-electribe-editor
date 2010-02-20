@@ -383,33 +383,4 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 		return result.toString();
 	}
 
-	@Override
-	public void write(EsxRandomAccess out, int patternNumber,
-			int parametersFxNumber) throws EsxException, IOException {
-
-		// Stop immediately if we are passed an invalid patternNumber
-		if (patternNumber >= EsxUtil.NUM_PATTERNS || patternNumber < 0)
-			throw new EsxException("Invalid patternNumber: " + patternNumber);
-
-		// Stop immediately if we are passed an invalid parametersFxNumber
-		if (parametersFxNumber >= EsxUtil.NUM_PARAMETERS_FX || parametersFxNumber < 0)
-			throw new EsxException("Invalid parametersFxNumber: " + parametersFxNumber);
-
-		// Jump to the start of parametersFxNumber's data
-		out.seek(EsxUtil.ADDR_PATTERN_DATA +
-				(patternNumber * EsxUtil.CHUNKSIZE_PATTERN) +
-				EsxUtil.PATTERN_OFFSET_PARAMETERS_FX +
-				(parametersFxNumber * EsxUtil.CHUNKSIZE_PARAMETERS_FX));
-
-		// byte 0
-		out.writeByte(this.getEffectType().getValue());
-		// byte 1
-		out.writeByte(this.getEdit1());
-		// byte 2
-		out.writeByte(this.getEdit2());
-		// byte 3
-		out.writeByte(this.getMotionSequenceStatus());
-
-	}
-
 } //ParametersFxImpl

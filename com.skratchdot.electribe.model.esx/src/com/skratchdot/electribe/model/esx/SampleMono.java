@@ -11,10 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx;
 
-import java.io.IOException;
-
-import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 
 
 /**
@@ -43,9 +39,5 @@ public interface SampleMono extends Sample {
 	 * @generated
 	 */
 	byte[] toSliceByteArray();
-
-	void writeHeader(EsxRandomAccess out, int monoSampleNumber) throws EsxException, IOException;
-
-	void writeSlice(EsxRandomAccess out, int monoSampleNumber) throws EsxException, IOException;
 
 } // SampleMono

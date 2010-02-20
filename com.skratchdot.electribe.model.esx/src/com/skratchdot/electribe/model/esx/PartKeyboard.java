@@ -11,10 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx;
 
-import java.io.IOException;
-
-import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 
 
 /**
@@ -95,7 +91,5 @@ public interface PartKeyboard extends Part, PartWithCommon, PartWithSample, Part
 	 * @generated
 	 */
 	byte[] toByteArray();
-
-	void write(EsxRandomAccess out, int patternNumber, int partKeyboardNumber)  throws EsxException, IOException;
 
 } // PartKeyboard

@@ -11,15 +11,8 @@
  */
 package com.skratchdot.electribe.model.esx;
 
-import java.io.IOException;
-import java.util.Map;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
-
-import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 
 /**
  * <!-- begin-user-doc -->
@@ -463,7 +456,5 @@ public interface GlobalParameters extends EObject {
 	 * @generated
 	 */
 	byte[] toByteArray();
-
-	void write(EsxRandomAccess out) throws EsxException, IOException;
 
 } // GlobalParameters

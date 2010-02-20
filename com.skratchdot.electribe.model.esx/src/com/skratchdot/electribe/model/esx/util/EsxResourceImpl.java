@@ -118,7 +118,7 @@ public class EsxResourceImpl extends ResourceImpl {
 		}
 
 		// Setup monitor
-		monitor.beginTask("Saving ESX file...", 1 +
+		monitor.beginTask("Saving ESX file...", 3 +
 			EsxUtil.NUM_PATTERNS +
 			EsxUtil.NUM_SONGS +
 			EsxUtil.NUM_SONGS + // Song Event Data
@@ -128,16 +128,19 @@ public class EsxResourceImpl extends ResourceImpl {
 
 		// Get our models root object (the EsxFile)
 		monitor.subTask("Getting contents...");
+		monitor.worked(1);
 		EsxFile esxFile = (EsxFile) this.getContents().get(0);
 
 		// Begin writing
 		monitor.subTask("Begin writing");
+		monitor.worked(1);
 
 		// Now write the byte array to our outputStream
 		outputStream.write(esxFile.toByteArray(monitor));
 
 		// Write our constructed EsxRandomAccess to the outputStream
 		monitor.subTask("Finishing up");
+		monitor.worked(1);
 
 		// We have finished saving
 		monitor.done();

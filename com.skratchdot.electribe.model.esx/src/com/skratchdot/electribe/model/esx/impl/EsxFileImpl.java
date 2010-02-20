@@ -945,17 +945,6 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		return returnBuffer;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see com.skratchdot.electribe.model.esx.EsxFile#write(com.skratchdot.electribe.model.esx.util.EsxRandomAccess, org.eclipse.core.runtime.IProgressMonitor)
-	 */
-	@Override
-	public void write(EsxRandomAccess out, IProgressMonitor monitor)
-			throws IOException, EsxException {
-		// TODO Auto-generated method stub
-		
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
