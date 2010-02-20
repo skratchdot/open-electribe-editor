@@ -654,7 +654,7 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 			}
 
 			// Set member variables
-			int frameLength = audioDataListChannel1.size();
+			int frameLength = audioDataListChannel1.size()/2;
 			this.setNumberOfSampleFrames(frameLength);
 			this.setEnd(frameLength-1);
 			this.setLoopStart(frameLength-1);
