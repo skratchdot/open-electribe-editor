@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getSamples <em>Samples</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getEmptyPattern <em>Empty Pattern</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getEmptySong <em>Empty Song</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMaxSampleOffset <em>Max Sample Offset</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMemUsedInBytes <em>Mem Used In Bytes</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMemFreeInBytes <em>Mem Free In Bytes</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsEmpty <em>Num Patterns Empty</em>}</li>
@@ -203,6 +204,33 @@ public interface EsxFile extends EObject {
 	 * @generated
 	 */
 	void setEmptySong(Song value);
+
+	/**
+	 * Returns the value of the '<em><b>Max Sample Offset</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Max Sample Offset</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Max Sample Offset</em>' attribute.
+	 * @see #setMaxSampleOffset(int)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_MaxSampleOffset()
+	 * @model default="0"
+	 * @generated
+	 */
+	int getMaxSampleOffset();
+
+	/**
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.EsxFile#getMaxSampleOffset <em>Max Sample Offset</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Max Sample Offset</em>' attribute.
+	 * @see #getMaxSampleOffset()
+	 * @generated
+	 */
+	void setMaxSampleOffset(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Mem Used In Bytes</b></em>' attribute.
@@ -403,6 +431,14 @@ public interface EsxFile extends EObject {
 	 * @generated
 	 */
 	int findFirstEmptySample(boolean searchMono, boolean searchStereo, int startingSampleNumber, ArrayList<Integer> skipSampleNumbers);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void setAllOffsets();
 
 	/**
 	 * <!-- begin-user-doc -->

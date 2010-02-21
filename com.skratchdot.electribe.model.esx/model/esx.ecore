@@ -14,6 +14,7 @@
         </eGenericType>
       </eParameters>
     </eOperations>
+    <eOperations name="setAllOffsets"/>
     <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray">
       <eParameters name="monitor" eType="#//IProgressMonitor"/>
@@ -31,6 +32,8 @@
         eType="#//Pattern" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="emptySong" lowerBound="1"
         eType="#//Song" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxSampleOffset" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="memUsedInBytes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
         derived="true"/>
@@ -259,6 +262,10 @@
         defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="audioDataChannel2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"
         defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="audioDataChannelBoth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="audioDataLoopStart" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"
+        changeable="false" volatile="true" transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sliceArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="loop" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         changeable="false" volatile="true" transient="true" derived="true"/>
@@ -281,10 +288,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SampleMono" eSuperTypes="#//Sample">
     <eOperations name="toHeaderByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    <eOperations name="toOffsetChannel1ByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eOperations name="toSliceByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SampleStereo" eSuperTypes="#//Sample">
     <eOperations name="toHeaderByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    <eOperations name="toOffsetChannel1ByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    <eOperations name="toOffsetChannel2ByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SampleTune">
     <eOperations name="calculateSampleTuneFromSampleRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat">

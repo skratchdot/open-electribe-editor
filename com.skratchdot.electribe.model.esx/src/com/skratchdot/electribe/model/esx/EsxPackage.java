@@ -140,13 +140,22 @@ public interface EsxPackage extends EPackage {
 	int ESX_FILE__EMPTY_SONG = 6;
 
 	/**
+	 * The feature id for the '<em><b>Max Sample Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESX_FILE__MAX_SAMPLE_OFFSET = 7;
+
+	/**
 	 * The feature id for the '<em><b>Mem Used In Bytes</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__MEM_USED_IN_BYTES = 7;
+	int ESX_FILE__MEM_USED_IN_BYTES = 8;
 
 	/**
 	 * The feature id for the '<em><b>Mem Free In Bytes</b></em>' attribute.
@@ -155,7 +164,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__MEM_FREE_IN_BYTES = 8;
+	int ESX_FILE__MEM_FREE_IN_BYTES = 9;
 
 	/**
 	 * The feature id for the '<em><b>Num Patterns Empty</b></em>' attribute.
@@ -164,7 +173,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__NUM_PATTERNS_EMPTY = 9;
+	int ESX_FILE__NUM_PATTERNS_EMPTY = 10;
 
 	/**
 	 * The feature id for the '<em><b>Num Patterns Not Empty</b></em>' attribute.
@@ -173,7 +182,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__NUM_PATTERNS_NOT_EMPTY = 10;
+	int ESX_FILE__NUM_PATTERNS_NOT_EMPTY = 11;
 
 	/**
 	 * The feature id for the '<em><b>Num Samples Empty</b></em>' attribute.
@@ -182,7 +191,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__NUM_SAMPLES_EMPTY = 11;
+	int ESX_FILE__NUM_SAMPLES_EMPTY = 12;
 
 	/**
 	 * The feature id for the '<em><b>Num Samples Not Empty</b></em>' attribute.
@@ -191,7 +200,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__NUM_SAMPLES_NOT_EMPTY = 12;
+	int ESX_FILE__NUM_SAMPLES_NOT_EMPTY = 13;
 
 	/**
 	 * The feature id for the '<em><b>Num Samples Mono Empty</b></em>' attribute.
@@ -200,7 +209,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__NUM_SAMPLES_MONO_EMPTY = 13;
+	int ESX_FILE__NUM_SAMPLES_MONO_EMPTY = 14;
 
 	/**
 	 * The feature id for the '<em><b>Num Samples Mono Not Empty</b></em>' attribute.
@@ -209,7 +218,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__NUM_SAMPLES_MONO_NOT_EMPTY = 14;
+	int ESX_FILE__NUM_SAMPLES_MONO_NOT_EMPTY = 15;
 
 	/**
 	 * The feature id for the '<em><b>Num Samples Stereo Empty</b></em>' attribute.
@@ -218,7 +227,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__NUM_SAMPLES_STEREO_EMPTY = 15;
+	int ESX_FILE__NUM_SAMPLES_STEREO_EMPTY = 16;
 
 	/**
 	 * The feature id for the '<em><b>Num Samples Stereo Not Empty</b></em>' attribute.
@@ -227,7 +236,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__NUM_SAMPLES_STEREO_NOT_EMPTY = 16;
+	int ESX_FILE__NUM_SAMPLES_STEREO_NOT_EMPTY = 17;
 
 	/**
 	 * The feature id for the '<em><b>Num Songs Empty</b></em>' attribute.
@@ -236,7 +245,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__NUM_SONGS_EMPTY = 17;
+	int ESX_FILE__NUM_SONGS_EMPTY = 18;
 
 	/**
 	 * The feature id for the '<em><b>Num Songs Not Empty</b></em>' attribute.
@@ -245,7 +254,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__NUM_SONGS_NOT_EMPTY = 18;
+	int ESX_FILE__NUM_SONGS_NOT_EMPTY = 19;
 
 	/**
 	 * The number of structural features of the '<em>File</em>' class.
@@ -254,7 +263,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE_FEATURE_COUNT = 19;
+	int ESX_FILE_FEATURE_COUNT = 20;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.GlobalParametersImpl <em>Global Parameters</em>}' class.
@@ -2513,13 +2522,31 @@ public interface EsxPackage extends EPackage {
 	int SAMPLE__AUDIO_DATA_CHANNEL2 = 18;
 
 	/**
+	 * The feature id for the '<em><b>Audio Data Channel Both</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE__AUDIO_DATA_CHANNEL_BOTH = 19;
+
+	/**
+	 * The feature id for the '<em><b>Audio Data Loop Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE__AUDIO_DATA_LOOP_START = 20;
+
+	/**
 	 * The feature id for the '<em><b>Slice Array</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__SLICE_ARRAY = 19;
+	int SAMPLE__SLICE_ARRAY = 21;
 
 	/**
 	 * The feature id for the '<em><b>Loop</b></em>' attribute.
@@ -2528,7 +2555,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__LOOP = 20;
+	int SAMPLE__LOOP = 22;
 
 	/**
 	 * The feature id for the '<em><b>Slice</b></em>' attribute.
@@ -2537,7 +2564,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__SLICE = 21;
+	int SAMPLE__SLICE = 23;
 
 	/**
 	 * The feature id for the '<em><b>Stereo</b></em>' attribute.
@@ -2546,7 +2573,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__STEREO = 22;
+	int SAMPLE__STEREO = 24;
 
 	/**
 	 * The feature id for the '<em><b>Mem Used In Bytes</b></em>' attribute.
@@ -2555,7 +2582,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__MEM_USED_IN_BYTES = 23;
+	int SAMPLE__MEM_USED_IN_BYTES = 25;
 
 	/**
 	 * The feature id for the '<em><b>Empty</b></em>' attribute.
@@ -2564,7 +2591,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__EMPTY = 24;
+	int SAMPLE__EMPTY = 26;
 
 	/**
 	 * The feature id for the '<em><b>Sample Number Original</b></em>' attribute.
@@ -2573,7 +2600,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__SAMPLE_NUMBER_ORIGINAL = 25;
+	int SAMPLE__SAMPLE_NUMBER_ORIGINAL = 27;
 
 	/**
 	 * The feature id for the '<em><b>Sample Number Current</b></em>' attribute.
@@ -2582,7 +2609,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__SAMPLE_NUMBER_CURRENT = 26;
+	int SAMPLE__SAMPLE_NUMBER_CURRENT = 28;
 
 	/**
 	 * The number of structural features of the '<em>Sample</em>' class.
@@ -2591,7 +2618,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE_FEATURE_COUNT = 27;
+	int SAMPLE_FEATURE_COUNT = 29;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.SampleMonoImpl <em>Sample Mono</em>}' class.
@@ -2773,6 +2800,24 @@ public interface EsxPackage extends EPackage {
 	 * @ordered
 	 */
 	int SAMPLE_MONO__AUDIO_DATA_CHANNEL2 = SAMPLE__AUDIO_DATA_CHANNEL2;
+
+	/**
+	 * The feature id for the '<em><b>Audio Data Channel Both</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE_MONO__AUDIO_DATA_CHANNEL_BOTH = SAMPLE__AUDIO_DATA_CHANNEL_BOTH;
+
+	/**
+	 * The feature id for the '<em><b>Audio Data Loop Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE_MONO__AUDIO_DATA_LOOP_START = SAMPLE__AUDIO_DATA_LOOP_START;
 
 	/**
 	 * The feature id for the '<em><b>Slice Array</b></em>' attribute.
@@ -3035,6 +3080,24 @@ public interface EsxPackage extends EPackage {
 	 * @ordered
 	 */
 	int SAMPLE_STEREO__AUDIO_DATA_CHANNEL2 = SAMPLE__AUDIO_DATA_CHANNEL2;
+
+	/**
+	 * The feature id for the '<em><b>Audio Data Channel Both</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE_STEREO__AUDIO_DATA_CHANNEL_BOTH = SAMPLE__AUDIO_DATA_CHANNEL_BOTH;
+
+	/**
+	 * The feature id for the '<em><b>Audio Data Loop Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE_STEREO__AUDIO_DATA_LOOP_START = SAMPLE__AUDIO_DATA_LOOP_START;
 
 	/**
 	 * The feature id for the '<em><b>Slice Array</b></em>' attribute.
@@ -4407,6 +4470,17 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEsxFile_EmptySong();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getMaxSampleOffset <em>Max Sample Offset</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max Sample Offset</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getMaxSampleOffset()
+	 * @see #getEsxFile()
+	 * @generated
+	 */
+	EAttribute getEsxFile_MaxSampleOffset();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#getMemUsedInBytes <em>Mem Used In Bytes</em>}'.
@@ -6013,6 +6087,28 @@ public interface EsxPackage extends EPackage {
 	EAttribute getSample_AudioDataChannel2();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Sample#getAudioDataChannelBoth <em>Audio Data Channel Both</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Audio Data Channel Both</em>'.
+	 * @see com.skratchdot.electribe.model.esx.Sample#getAudioDataChannelBoth()
+	 * @see #getSample()
+	 * @generated
+	 */
+	EAttribute getSample_AudioDataChannelBoth();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Sample#getAudioDataLoopStart <em>Audio Data Loop Start</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Audio Data Loop Start</em>'.
+	 * @see com.skratchdot.electribe.model.esx.Sample#getAudioDataLoopStart()
+	 * @see #getSample()
+	 * @generated
+	 */
+	EAttribute getSample_AudioDataLoopStart();
+
+	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Sample#getSliceArray <em>Slice Array</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7094,6 +7190,14 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ESX_FILE__EMPTY_SONG = eINSTANCE.getEsxFile_EmptySong();
+
+		/**
+		 * The meta object literal for the '<em><b>Max Sample Offset</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ESX_FILE__MAX_SAMPLE_OFFSET = eINSTANCE.getEsxFile_MaxSampleOffset();
 
 		/**
 		 * The meta object literal for the '<em><b>Mem Used In Bytes</b></em>' attribute feature.
@@ -8326,6 +8430,22 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SAMPLE__AUDIO_DATA_CHANNEL2 = eINSTANCE.getSample_AudioDataChannel2();
+
+		/**
+		 * The meta object literal for the '<em><b>Audio Data Channel Both</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SAMPLE__AUDIO_DATA_CHANNEL_BOTH = eINSTANCE.getSample_AudioDataChannelBoth();
+
+		/**
+		 * The meta object literal for the '<em><b>Audio Data Loop Start</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SAMPLE__AUDIO_DATA_LOOP_START = eINSTANCE.getSample_AudioDataLoopStart();
 
 		/**
 		 * The meta object literal for the '<em><b>Slice Array</b></em>' attribute feature.

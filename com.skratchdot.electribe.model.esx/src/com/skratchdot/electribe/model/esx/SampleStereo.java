@@ -33,4 +33,20 @@ public interface SampleStereo extends Sample {
 	 */
 	byte[] toHeaderByteArray();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toOffsetChannel1ByteArray();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toOffsetChannel2ByteArray();
+
 } // SampleStereo

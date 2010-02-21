@@ -44,6 +44,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByte4 <em>Unknown Byte4</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getAudioDataChannel1 <em>Audio Data Channel1</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getAudioDataChannel2 <em>Audio Data Channel2</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getAudioDataChannelBoth <em>Audio Data Channel Both</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getAudioDataLoopStart <em>Audio Data Loop Start</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSliceArray <em>Slice Array</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isLoop <em>Loop</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isSlice <em>Slice</em>}</li>
@@ -609,6 +611,36 @@ public interface Sample extends EObject {
 	 * @generated
 	 */
 	void setAudioDataChannel2(byte[] value);
+
+	/**
+	 * Returns the value of the '<em><b>Audio Data Channel Both</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Audio Data Channel Both</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Audio Data Channel Both</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_AudioDataChannelBoth()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	byte[] getAudioDataChannelBoth();
+
+	/**
+	 * Returns the value of the '<em><b>Audio Data Loop Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Audio Data Loop Start</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Audio Data Loop Start</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_AudioDataLoopStart()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	byte[] getAudioDataLoopStart();
 
 	/**
 	 * Returns the value of the '<em><b>Slice Array</b></em>' attribute.

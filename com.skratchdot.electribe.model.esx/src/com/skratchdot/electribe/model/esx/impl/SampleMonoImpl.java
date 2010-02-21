@@ -201,6 +201,25 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	public byte[] toOffsetChannel1ByteArray() {
+		byte[] audioData = this.getAudioDataChannelBoth();
+		ByteBuffer buf = ByteBuffer.allocate(audioData.length+18);
+		buf.putInt(0x80007FFF);
+		buf.putInt(this.getOffsetChannel1Start());
+		buf.putInt(this.getOffsetChannel1End());
+		buf.put((byte) this.getSampleNumberCurrent().getValue());
+		buf.put((byte) 0); // denotes mono / channel 1
+		buf.putShort((short) 0xffff);
+		buf.put(audioData);
+		buf.put(this.getAudioDataLoopStart());
+		return buf.array();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	public byte[] toSliceByteArray() {
 		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_SLICE_DATA);
 		// Write slice info

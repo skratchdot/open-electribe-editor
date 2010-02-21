@@ -14,6 +14,7 @@ package com.skratchdot.electribe.model.esx.impl;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,6 +75,8 @@ import com.skratchdot.riff.wav.impl.SampleLoopImpl;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getUnknownByte4 <em>Unknown Byte4</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getAudioDataChannel1 <em>Audio Data Channel1</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getAudioDataChannel2 <em>Audio Data Channel2</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getAudioDataChannelBoth <em>Audio Data Channel Both</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getAudioDataLoopStart <em>Audio Data Loop Start</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSliceArray <em>Slice Array</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isLoop <em>Loop</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isSlice <em>Slice</em>}</li>
@@ -457,6 +460,26 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	 * @ordered
 	 */
 	protected byte[] audioDataChannel2 = AUDIO_DATA_CHANNEL2_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getAudioDataChannelBoth() <em>Audio Data Channel Both</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAudioDataChannelBoth()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final byte[] AUDIO_DATA_CHANNEL_BOTH_EDEFAULT = null;
+
+	/**
+	 * The default value of the '{@link #getAudioDataLoopStart() <em>Audio Data Loop Start</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAudioDataLoopStart()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final byte[] AUDIO_DATA_LOOP_START_EDEFAULT = null;
 
 	/**
 	 * The default value of the '{@link #getSliceArray() <em>Slice Array</em>}' attribute.
@@ -1149,6 +1172,48 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * @return Returns a byte array that combines/mixes channel1 and channel2
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] getAudioDataChannelBoth() {
+		ByteBuffer bufferChannel1 = ByteBuffer.wrap(this.getAudioDataChannel1());
+		ByteBuffer bufferChannel2 = ByteBuffer.wrap(this.getAudioDataChannel2());
+		ByteBuffer bufferChannelBoth = ByteBuffer.allocate(bufferChannel1.capacity());
+		int dataChannel1;
+		int dataChannel2;
+		short dataChannelBoth;
+		for (int j = 0; j < this.getNumberOfSampleFrames(); j++) {
+			dataChannel1 = bufferChannel1.getShort();
+			dataChannel2 = bufferChannel2.getShort();
+			dataChannelBoth = (short) ((dataChannel1 + dataChannel2) / 2);
+			bufferChannelBoth.putShort(dataChannelBoth);
+		}
+		return bufferChannelBoth.array();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] getAudioDataLoopStart() {
+		byte[] returnBytes = {0,0};
+		if(this.isLoop()) {
+			// 16 bit samples
+			byte[] audioData = this.getAudioDataChannelBoth();
+			int audioDataIndex = this.getLoopStart()*2;
+			// returnBytes will contain the 16 sample that is the start of the loop
+			if(audioDataIndex>=0 && audioDataIndex+1<audioData.length) {
+				returnBytes[0] = audioData[audioDataIndex];
+				returnBytes[1] = audioData[audioDataIndex+1];
+			}
+		}
+		return returnBytes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1337,6 +1402,10 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 				return getAudioDataChannel1();
 			case EsxPackage.SAMPLE__AUDIO_DATA_CHANNEL2:
 				return getAudioDataChannel2();
+			case EsxPackage.SAMPLE__AUDIO_DATA_CHANNEL_BOTH:
+				return getAudioDataChannelBoth();
+			case EsxPackage.SAMPLE__AUDIO_DATA_LOOP_START:
+				return getAudioDataLoopStart();
 			case EsxPackage.SAMPLE__SLICE_ARRAY:
 				return getSliceArray();
 			case EsxPackage.SAMPLE__LOOP:
@@ -1553,6 +1622,10 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 				return AUDIO_DATA_CHANNEL1_EDEFAULT == null ? audioDataChannel1 != null : !AUDIO_DATA_CHANNEL1_EDEFAULT.equals(audioDataChannel1);
 			case EsxPackage.SAMPLE__AUDIO_DATA_CHANNEL2:
 				return AUDIO_DATA_CHANNEL2_EDEFAULT == null ? audioDataChannel2 != null : !AUDIO_DATA_CHANNEL2_EDEFAULT.equals(audioDataChannel2);
+			case EsxPackage.SAMPLE__AUDIO_DATA_CHANNEL_BOTH:
+				return AUDIO_DATA_CHANNEL_BOTH_EDEFAULT == null ? getAudioDataChannelBoth() != null : !AUDIO_DATA_CHANNEL_BOTH_EDEFAULT.equals(getAudioDataChannelBoth());
+			case EsxPackage.SAMPLE__AUDIO_DATA_LOOP_START:
+				return AUDIO_DATA_LOOP_START_EDEFAULT == null ? getAudioDataLoopStart() != null : !AUDIO_DATA_LOOP_START_EDEFAULT.equals(getAudioDataLoopStart());
 			case EsxPackage.SAMPLE__SLICE_ARRAY:
 				return SLICE_ARRAY_EDEFAULT == null ? sliceArray != null : !SLICE_ARRAY_EDEFAULT.equals(sliceArray);
 			case EsxPackage.SAMPLE__LOOP:

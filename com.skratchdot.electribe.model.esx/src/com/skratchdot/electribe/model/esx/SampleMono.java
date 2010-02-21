@@ -38,6 +38,14 @@ public interface SampleMono extends Sample {
 	 * @model
 	 * @generated
 	 */
+	byte[] toOffsetChannel1ByteArray();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
 	byte[] toSliceByteArray();
 
 } // SampleMono

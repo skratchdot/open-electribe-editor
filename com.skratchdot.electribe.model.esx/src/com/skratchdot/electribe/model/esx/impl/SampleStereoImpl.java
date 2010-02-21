@@ -202,6 +202,42 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 		return buf.array();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toOffsetChannel1ByteArray() {
+		byte[] audioData = this.getAudioDataChannel1();
+		ByteBuffer buf = ByteBuffer.allocate(audioData.length+16);
+		buf.putInt(0x80007FFF);
+		buf.putInt(this.getOffsetChannel1Start());
+		buf.putInt(this.getOffsetChannel1End());
+		buf.put((byte) this.getSampleNumberCurrent().getValue());
+		buf.put((byte) 0); // denotes mono / channel 1
+		buf.putShort((short) 0xffff);
+		buf.put(audioData);
+		return buf.array();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toOffsetChannel2ByteArray() {
+		byte[] audioData = this.getAudioDataChannel2();
+		ByteBuffer buf = ByteBuffer.allocate(audioData.length+16);
+		buf.putInt(0x80007FFF);
+		buf.putInt(this.getOffsetChannel2Start());
+		buf.putInt(this.getOffsetChannel2End());
+		buf.put((byte) this.getSampleNumberCurrent().getValue());
+		buf.put((byte) 0); // denotes mono / channel 1
+		buf.putShort((short) 0xffff);
+		buf.put(audioData);
+		return buf.array();
+	}
+
 	/* (non-Javadoc)
 	 * @see com.skratchdot.electribe.model.esx.impl.SampleImpl#export(java.io.File)
 	 */

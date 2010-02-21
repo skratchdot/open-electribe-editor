@@ -55,6 +55,7 @@ import com.skratchdot.electribe.model.esx.util.EsxUtil;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getSamples <em>Samples</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getEmptyPattern <em>Empty Pattern</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getEmptySong <em>Empty Song</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getMaxSampleOffset <em>Max Sample Offset</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getMemUsedInBytes <em>Mem Used In Bytes</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getMemFreeInBytes <em>Mem Free In Bytes</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumPatternsEmpty <em>Num Patterns Empty</em>}</li>
@@ -152,6 +153,26 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * @ordered
 	 */
 	protected Song emptySong;
+
+	/**
+	 * The default value of the '{@link #getMaxSampleOffset() <em>Max Sample Offset</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxSampleOffset()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int MAX_SAMPLE_OFFSET_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getMaxSampleOffset() <em>Max Sample Offset</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxSampleOffset()
+	 * @generated
+	 * @ordered
+	 */
+	protected int maxSampleOffset = MAX_SAMPLE_OFFSET_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMemUsedInBytes() <em>Mem Used In Bytes</em>}' attribute.
@@ -543,6 +564,27 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getMaxSampleOffset() {
+		return maxSampleOffset;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMaxSampleOffset(int newMaxSampleOffset) {
+		int oldMaxSampleOffset = maxSampleOffset;
+		maxSampleOffset = newMaxSampleOffset;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__MAX_SAMPLE_OFFSET, oldMaxSampleOffset, maxSampleOffset));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public int getMemUsedInBytes() {
@@ -724,6 +766,49 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	public void setAllOffsets() {
+		// Initialize max sample offset
+		this.setMaxSampleOffset(0);
+
+		for (int i=0; i<EsxUtil.NUM_SAMPLES; i++) {
+			Sample currentSample = this.getSamples().get(i);
+
+			if(currentSample.getNumberOfSampleFrames()>0) {
+				// offsetChannel1Start
+				currentSample.setOffsetChannel1Start(this.getMaxSampleOffset());
+				// update offset
+				this.setMaxSampleOffset(this.getMaxSampleOffset() + (currentSample.getNumberOfSampleFrames() * 2) + 16);
+				// offsetChannel1End
+				currentSample.setOffsetChannel1End(this.getMaxSampleOffset());
+				// update offset: blockAlign/loopStartSample
+				this.setMaxSampleOffset(this.getMaxSampleOffset() + (currentSample.getNumberOfSampleFrames()%2==0?4:2));
+
+				// NEED TO HANDLE CHANNEL 2
+				if(currentSample.isStereo()) {
+					// offsetChannel2Start
+					currentSample.setOffsetChannel2Start(this.getMaxSampleOffset());
+					// update offset
+					this.setMaxSampleOffset(this.getMaxSampleOffset() + (currentSample.getNumberOfSampleFrames() * 2) + 16);
+					// offsetChannel1End
+					currentSample.setOffsetChannel2End(this.getMaxSampleOffset());
+					// update offset: blockAlign
+					this.setMaxSampleOffset(this.getMaxSampleOffset() + (currentSample.getNumberOfSampleFrames()%2==0?4:2));
+				}
+			}
+			else {
+				currentSample.setOffsetChannel1Start(0xFFFFFFFF);
+				currentSample.setOffsetChannel2Start(0xFFFFFFFF);
+				currentSample.setOffsetChannel1End(0);
+				currentSample.setOffsetChannel2End(0);
+			}
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	public byte[] toByteArray() {
 		return this.toByteArray(new NullProgressMonitor());
 	}
@@ -749,7 +834,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	
 		// Write Pattern Data
 		buf.position(EsxUtil.ADDR_PATTERN_DATA);
-		for (int i = 0; i < EsxUtil.NUM_PATTERNS; i++) {
+		for (int i=0; i<EsxUtil.NUM_PATTERNS; i++) {
 			monitor.subTask("Saving pattern " + (i + 1) + " of " + EsxUtil.NUM_PATTERNS);
 			buf.put(this.getPatterns().get(i).toByteArray());
 			monitor.worked(1);
@@ -757,7 +842,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	
 		// Write Song Data
 		buf.position(EsxUtil.ADDR_SONG_DATA);
-		for (int i = 0; i < EsxUtil.NUM_SONGS; i++) {
+		for (int i=0; i<EsxUtil.NUM_SONGS; i++) {
 			monitor.subTask("Saving song " + (i + 1) + " of " + EsxUtil.NUM_SONGS);
 			buf.put(this.getSongs().get(i).toByteArray());
 			monitor.worked(1);
@@ -765,83 +850,21 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		
 		// Write Song Event Data
 		buf.position(EsxUtil.ADDR_SONG_EVENT_DATA);
-		for (int i = 0; i < EsxUtil.NUM_SONGS; i++) {
+		for (int i=0; i<EsxUtil.NUM_SONGS; i++) {
 			monitor.subTask("Saving song event data for song " + (i + 1) + " of " + EsxUtil.NUM_SONGS);
 			buf.put(this.getSongs().get(i).toSongEventByteArray());
 			monitor.worked(1);
 		}
-	
-		// This is a temporary variable to hold start/end offsets for
-		// mono/stereo samples
-		int currentOffset = 0x00;
-		int currentNumberOfSampleFrames = 0x00;
-		int padOddOrEven = 0x00;
-		int padOne = 0x00;
-	
+
+		// We need to set the offsets for mono and stereo samples.
+		monitor.subTask("Calculating sample offsets...");
+		this.setAllOffsets();
+
 		// Write Mono Sample Data
 		for (int i = 0; i < EsxUtil.NUM_SAMPLES_MONO; i++) {
 			monitor.subTask("Saving mono sample " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES_MONO);
-	
-			// Get current mono sample
 			SampleMono mono = (SampleMono) this.getSamples().get(i);
-	
-			// Get current number of sample frames
-			currentNumberOfSampleFrames = mono.getNumberOfSampleFrames();
-	
-			if(currentNumberOfSampleFrames>0) {
-				// Setup pad bytes
-				if(currentNumberOfSampleFrames==1) {
-					padOne = 2;
-					padOddOrEven = 4;
-				}
-				else if(currentNumberOfSampleFrames%2==0) {
-					padOne = 0;
-					padOddOrEven = 4;
-				}
-				else {
-					padOne = 0;
-					padOddOrEven = 2;
-				}
-	
-				// Setup Channel 1 & 2 (as mono) start offset
-				mono.setOffsetChannel1Start(currentOffset);
-				mono.setOffsetChannel2Start(currentOffset);
-	
-				// Setup Channel 1 & 2 (as mono) end offset
-				currentOffset = currentOffset + (mono.getNumberOfSampleFrames() * 2) + 16 + padOne;
-				mono.setOffsetChannel1End(currentOffset);
-				mono.setOffsetChannel2End(currentOffset);
-				currentOffset = currentOffset + padOddOrEven;
-	
-				// Write Channel 1 & 2 (as mono) Sample Data
-				ByteBuffer bufferChannel1 = ByteBuffer.wrap(mono.getAudioDataChannel1());
-				ByteBuffer bufferChannel2 = ByteBuffer.wrap(mono.getAudioDataChannel2());
-				ByteBuffer bufferBoth = ByteBuffer.allocate(bufferChannel1.capacity());
-				short shortChannel1;
-				short shortChannel2;
-				short shortBoth;
-				for (int j = 0; j < mono.getNumberOfSampleFrames(); j++) {
-					shortChannel1 = bufferChannel1.getShort();
-					shortChannel2 = bufferChannel2.getShort();
-					shortBoth = (short) (((int)shortChannel1 + (int)shortChannel2) / 2);
-					bufferBoth.putShort(shortBoth);
-				}
-				buf.position(EsxUtil.ADDR_SAMPLE_DATA + mono.getOffsetChannel1Start());
-				buf.putInt(0x80007FFF);
-				buf.putInt(mono.getOffsetChannel1Start());
-				buf.putInt(mono.getOffsetChannel1End());
-				buf.put((byte) i); // sample number
-				buf.put((byte) 0); // denotes mono / channel 1
-				buf.putShort((short) 0xffff);
-				buf.put(bufferBoth.array());
-				buf.put(EsxUtil.getByteArrayWithLength("", padOddOrEven + padOne, (byte) 0x00));
-			}
-			else {
-				mono.setOffsetChannel1Start(0xFFFFFFFF);
-				mono.setOffsetChannel1End(0);
-				mono.setSliceArray(EsxUtil.getByteArrayWithLength("", EsxUtil.CHUNKSIZE_SLICE_DATA, (byte) 0xFF));
-			}
-	
+
 			// Write Sample Header Info
 			buf.position(EsxUtil.ADDR_SAMPLE_HEADER_MONO + (i * EsxUtil.CHUNKSIZE_SAMPLE_HEADER_MONO));
 			buf.put(mono.toHeaderByteArray());
@@ -849,95 +872,52 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 			// Write Slice Info
 			buf.position(EsxUtil.ADDR_SLICE_DATA + (i * EsxUtil.CHUNKSIZE_SLICE_DATA));
 			buf.put(mono.toSliceByteArray());
+
+			// Write Sample Data
+			if(!mono.isEmpty() && mono.getNumberOfSampleFrames()>0) {
+				buf.position(EsxUtil.ADDR_SAMPLE_DATA + mono.getOffsetChannel1Start());
+				buf.put(mono.toOffsetChannel1ByteArray());
+			}
 	
 			monitor.worked(1);
 		}
-	
+
 		// Write Stereo Sample Data
 		for (int i = 0; i < EsxUtil.NUM_SAMPLES_STEREO; i++) {
 			monitor.subTask("Saving stereo sample " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES_STEREO);
-	
-			// Get current stereo sample
 			SampleStereo stereo = (SampleStereo) this.getSamples().get(i + EsxUtil.NUM_SAMPLES_MONO);
-	
-			// Get current number of sample frames
-			currentNumberOfSampleFrames = stereo.getNumberOfSampleFrames();
-	
-			if(currentNumberOfSampleFrames>0) {
-				// Setup pad bytes
-				if(currentNumberOfSampleFrames==1) {
-					padOne = 2;
-					padOddOrEven = 4;
-				}
-				else if(currentNumberOfSampleFrames%2==0) {
-					padOne = 0;
-					padOddOrEven = 4;
-				}
-				else {
-					padOne = 0;
-					padOddOrEven = 2;
-				}
-	
-				// Setup Channel 1 start offset
-				stereo.setOffsetChannel1Start(currentOffset);
-	
-				// Setup Channel 1 end offset
-				currentOffset = currentOffset + (stereo.getNumberOfSampleFrames() * 2) + 16 + padOne;
-				stereo.setOffsetChannel1End(currentOffset);
-				currentOffset = currentOffset + padOddOrEven;
-	
-				// Write Channel 1 Sample Data
-				buf.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel1Start());
-				buf.putInt(0x80007FFF);
-				buf.putInt(stereo.getOffsetChannel1Start());
-				buf.putInt(stereo.getOffsetChannel1End());
-				buf.put((byte) i); // sample number
-				buf.put((byte) 0); // denotes stereo / channel 1
-				buf.putShort((short) 0xffff);
-				buf.put(stereo.getAudioDataChannel1());
-				buf.put(EsxUtil.getByteArrayWithLength("", padOddOrEven + padOne, (byte) 0x00));
 
-				// Setup Channel 2 start offset
-				stereo.setOffsetChannel2Start(currentOffset);
-
-				// Setup Channel 2 end offset
-				currentOffset = currentOffset + (stereo.getNumberOfSampleFrames() * 2) + 16 + padOne;
-				stereo.setOffsetChannel2End(currentOffset);
-				currentOffset = currentOffset + padOddOrEven;
-	
-				// Write Channel 2 Sample Data
-				buf.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel2Start());
-				buf.putInt(0x80007FFF);
-				buf.putInt(stereo.getOffsetChannel2Start());
-				buf.putInt(stereo.getOffsetChannel2End());
-				buf.put((byte) i); // sample number
-				buf.put((byte) 0); // denotes stereo / channel 2
-				buf.putShort((short) 0xffff);
-				buf.put(stereo.getAudioDataChannel2());
-				buf.put(EsxUtil.getByteArrayWithLength("", padOddOrEven + padOne, (byte) 0x00));
-			}
-			else {
-				stereo.setOffsetChannel1Start(0xFFFFFFFF);
-				stereo.setOffsetChannel1End(0);
-				stereo.setOffsetChannel2Start(0xFFFFFFFF);
-				stereo.setOffsetChannel2End(0);
-			}
-	
-	
 			// Write Sample Header Info
 			buf.position(EsxUtil.ADDR_SAMPLE_HEADER_STEREO + (i * EsxUtil.CHUNKSIZE_SAMPLE_HEADER_STEREO));
 			buf.put(stereo.toHeaderByteArray());
-	
+
+			// Write Sample Data
+			if(!stereo.isEmpty() && stereo.getNumberOfSampleFrames()>0) {
+				buf.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel1Start());
+				buf.put(stereo.toOffsetChannel1ByteArray());
+				buf.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel2Start());
+				buf.put(stereo.toOffsetChannel2ByteArray());
+			}
+
 			monitor.worked(1);
 		}
-	
+
+		// Write: Number of Mono Samples, Number of Stereo Samples, and last offset
+		buf.position(EsxUtil.ADDR_NUM_MONO_SAMPLES);
+		buf.putInt(this.getNumSamplesMonoNotEmpty());
+		buf.position(EsxUtil.ADDR_NUM_STEREO_SAMPLES);
+		buf.putInt(this.getNumSamplesStereoNotEmpty());
+		buf.position(EsxUtil.ADDR_CURRENT_OFFSET);
+		buf.putInt(this.getMaxSampleOffset());
+
 		// Write EOF data
-		buf.position(EsxUtil.ADDR_SAMPLE_DATA + currentOffset);
+		buf.position(EsxUtil.ADDR_SAMPLE_DATA + this.getMaxSampleOffset());
 		buf.putInt(0x80007FFF);
-		buf.putInt(currentOffset);
+		buf.putInt(this.getMaxSampleOffset());
 		buf.putInt(0x017FFFFE);
 		buf.putInt(0x00FFFFFF);
 
+		// Crop to correct file size, and return the byte buffer
 		int fileSize = buf.position();
 		buf.position(0);
 		byte[] returnBuffer = new byte[fileSize];
@@ -991,6 +971,8 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 				return getEmptyPattern();
 			case EsxPackage.ESX_FILE__EMPTY_SONG:
 				return getEmptySong();
+			case EsxPackage.ESX_FILE__MAX_SAMPLE_OFFSET:
+				return getMaxSampleOffset();
 			case EsxPackage.ESX_FILE__MEM_USED_IN_BYTES:
 				return getMemUsedInBytes();
 			case EsxPackage.ESX_FILE__MEM_FREE_IN_BYTES:
@@ -1052,6 +1034,9 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 			case EsxPackage.ESX_FILE__EMPTY_SONG:
 				setEmptySong((Song)newValue);
 				return;
+			case EsxPackage.ESX_FILE__MAX_SAMPLE_OFFSET:
+				setMaxSampleOffset((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1085,6 +1070,9 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 			case EsxPackage.ESX_FILE__EMPTY_SONG:
 				setEmptySong((Song)null);
 				return;
+			case EsxPackage.ESX_FILE__MAX_SAMPLE_OFFSET:
+				setMaxSampleOffset(MAX_SAMPLE_OFFSET_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1111,6 +1099,8 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 				return emptyPattern != null;
 			case EsxPackage.ESX_FILE__EMPTY_SONG:
 				return emptySong != null;
+			case EsxPackage.ESX_FILE__MAX_SAMPLE_OFFSET:
+				return maxSampleOffset != MAX_SAMPLE_OFFSET_EDEFAULT;
 			case EsxPackage.ESX_FILE__MEM_USED_IN_BYTES:
 				return getMemUsedInBytes() != MEM_USED_IN_BYTES_EDEFAULT;
 			case EsxPackage.ESX_FILE__MEM_FREE_IN_BYTES:
@@ -1151,6 +1141,8 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (originalNonAudioData: ");
 		result.append(originalNonAudioData);
+		result.append(", maxSampleOffset: ");
+		result.append(maxSampleOffset);
 		result.append(')');
 		return result.toString();
 	}
