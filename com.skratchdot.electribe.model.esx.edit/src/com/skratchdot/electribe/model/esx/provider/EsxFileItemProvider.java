@@ -78,6 +78,7 @@ public class EsxFileItemProvider
 			super.getPropertyDescriptors(object);
 
 			addOriginalNonAudioDataPropertyDescriptor(object);
+			addMaxSampleOffsetPropertyDescriptor(object);
 			addMemUsedInBytesPropertyDescriptor(object);
 			addMemFreeInBytesPropertyDescriptor(object);
 			addNumPatternsEmptyPropertyDescriptor(object);
@@ -112,6 +113,28 @@ public class EsxFileItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Max Sample Offset feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMaxSampleOffsetPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_EsxFile_maxSampleOffset_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_maxSampleOffset_feature", "_UI_EsxFile_type"),
+				 EsxPackage.Literals.ESX_FILE__MAX_SAMPLE_OFFSET,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -454,6 +477,7 @@ public class EsxFileItemProvider
 
 		switch (notification.getFeatureID(EsxFile.class)) {
 			case EsxPackage.ESX_FILE__ORIGINAL_NON_AUDIO_DATA:
+			case EsxPackage.ESX_FILE__MAX_SAMPLE_OFFSET:
 			case EsxPackage.ESX_FILE__MEM_USED_IN_BYTES:
 			case EsxPackage.ESX_FILE__MEM_FREE_IN_BYTES:
 			case EsxPackage.ESX_FILE__NUM_PATTERNS_EMPTY:

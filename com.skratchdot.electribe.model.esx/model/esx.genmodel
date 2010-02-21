@@ -1625,6 +1625,7 @@
       <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference esx.ecore#//EsxFile/samples"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esx.ecore#//EsxFile/emptyPattern"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esx.ecore#//EsxFile/emptySong"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/maxSampleOffset"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/memUsedInBytes"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/memFreeInBytes"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/numPatternsEmpty"/>
@@ -1643,6 +1644,7 @@
         <genParameters ecoreParameter="esx.ecore#//EsxFile/findFirstEmptySample/startingSampleNumber"/>
         <genParameters ecoreParameter="esx.ecore#//EsxFile/findFirstEmptySample/skipSampleNumbers"/>
       </genOperations>
+      <genOperations ecoreOperation="esx.ecore#//EsxFile/setAllOffsets"/>
       <genOperations ecoreOperation="esx.ecore#//EsxFile/toByteArray"/>
       <genOperations ecoreOperation="esx.ecore#//EsxFile/toByteArray.1">
         <genParameters ecoreParameter="esx.ecore#//EsxFile/toByteArray.1/monitor"/>
@@ -1827,10 +1829,13 @@
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//SampleMono">
       <genOperations ecoreOperation="esx.ecore#//SampleMono/toHeaderByteArray"/>
+      <genOperations ecoreOperation="esx.ecore#//SampleMono/toOffsetChannel1ByteArray"/>
       <genOperations ecoreOperation="esx.ecore#//SampleMono/toSliceByteArray"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//SampleStereo">
       <genOperations ecoreOperation="esx.ecore#//SampleStereo/toHeaderByteArray"/>
+      <genOperations ecoreOperation="esx.ecore#//SampleStereo/toOffsetChannel1ByteArray"/>
+      <genOperations ecoreOperation="esx.ecore#//SampleStereo/toOffsetChannel2ByteArray"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//SampleTune">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SampleTune/value"/>

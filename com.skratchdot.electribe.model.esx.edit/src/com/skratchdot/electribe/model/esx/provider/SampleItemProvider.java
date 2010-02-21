@@ -570,6 +570,8 @@ public class SampleItemProvider
 			case EsxPackage.SAMPLE__UNKNOWN_BYTE4:
 			case EsxPackage.SAMPLE__AUDIO_DATA_CHANNEL1:
 			case EsxPackage.SAMPLE__AUDIO_DATA_CHANNEL2:
+			case EsxPackage.SAMPLE__AUDIO_DATA_CHANNEL_BOTH:
+			case EsxPackage.SAMPLE__AUDIO_DATA_LOOP_START:
 			case EsxPackage.SAMPLE__SLICE_ARRAY:
 			case EsxPackage.SAMPLE__LOOP:
 			case EsxPackage.SAMPLE__SLICE:
