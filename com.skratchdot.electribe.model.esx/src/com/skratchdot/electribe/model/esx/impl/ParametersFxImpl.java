@@ -12,7 +12,6 @@
 package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.IOException;
-import java.nio.ByteBuffer;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
@@ -25,6 +24,7 @@ import com.skratchdot.electribe.model.esx.ParametersFx;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
+import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
 /**
  * <!-- begin-user-doc -->
@@ -261,15 +261,15 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_PARAMETERS_FX);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_PARAMETERS_FX);
 		// byte 0
-		buf.put((byte) this.getEffectType().getValue());
+		buf.putUnsignedByte(this.getEffectType().getValue());
 		// byte 1
-		buf.put(this.getEdit1());
+		buf.putByte(this.getEdit1());
 		// byte 2
-		buf.put(this.getEdit2());
+		buf.putByte(this.getEdit2());
 		// byte 3
-		buf.put(this.getMotionSequenceStatus());
+		buf.putByte(this.getMotionSequenceStatus());
 		return buf.array();
 	}
 

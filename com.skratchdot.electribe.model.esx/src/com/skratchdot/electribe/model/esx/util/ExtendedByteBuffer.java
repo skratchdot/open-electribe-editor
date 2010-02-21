@@ -194,8 +194,26 @@ public class ExtendedByteBuffer  {
 	 * @return
 	 * @see java.nio.ByteBuffer#get()
 	 */
-	public byte get() {
+	public byte getByte() {
 		return buf.get();
+	}
+
+	/**
+	 * @param index
+	 * @return
+	 * @see java.nio.ByteBuffer#get(int)
+	 */
+	public byte getByte(int index) {
+		return buf.get(index);
+	}
+
+	/**
+	 * @param dst
+	 * @return
+	 * @see java.nio.ByteBuffer#get(byte[])
+	 */
+	public ByteBuffer getBytes(byte[] dst) {
+		return buf.get(dst);
 	}
 
 	/**
@@ -205,26 +223,8 @@ public class ExtendedByteBuffer  {
 	 * @return
 	 * @see java.nio.ByteBuffer#get(byte[], int, int)
 	 */
-	public ByteBuffer get(byte[] dst, int offset, int length) {
+	public ByteBuffer getBytes(byte[] dst, int offset, int length) {
 		return buf.get(dst, offset, length);
-	}
-
-	/**
-	 * @param dst
-	 * @return
-	 * @see java.nio.ByteBuffer#get(byte[])
-	 */
-	public ByteBuffer get(byte[] dst) {
-		return buf.get(dst);
-	}
-
-	/**
-	 * @param index
-	 * @return
-	 * @see java.nio.ByteBuffer#get(int)
-	 */
-	public byte get(int index) {
-		return buf.get(index);
 	}
 
 	/**
@@ -478,8 +478,36 @@ public class ExtendedByteBuffer  {
 	 * @return
 	 * @see java.nio.ByteBuffer#put(byte)
 	 */
-	public ByteBuffer put(byte b) {
+	public ByteBuffer putByte(byte b) {
 		return buf.put(b);
+	}
+
+	/**
+	 * @param index
+	 * @param b
+	 * @return
+	 * @see java.nio.ByteBuffer#put(int, byte)
+	 */
+	public ByteBuffer putByte(int index, byte b) {
+		return buf.put(index, b);
+	}
+
+	/**
+	 * @param src
+	 * @return
+	 * @see java.nio.ByteBuffer#put(java.nio.ByteBuffer)
+	 */
+	public ByteBuffer putByteBuffer(ByteBuffer src) {
+		return buf.put(src);
+	}
+
+	/**
+	 * @param src
+	 * @return
+	 * @see java.nio.ByteBuffer#put(byte[])
+	 */
+	public final ByteBuffer putBytes(byte[] src) {
+		return buf.put(src);
 	}
 
 	/**
@@ -489,36 +517,8 @@ public class ExtendedByteBuffer  {
 	 * @return
 	 * @see java.nio.ByteBuffer#put(byte[], int, int)
 	 */
-	public ByteBuffer put(byte[] src, int offset, int length) {
+	public ByteBuffer putBytes(byte[] src, int offset, int length) {
 		return buf.put(src, offset, length);
-	}
-
-	/**
-	 * @param src
-	 * @return
-	 * @see java.nio.ByteBuffer#put(byte[])
-	 */
-	public final ByteBuffer put(byte[] src) {
-		return buf.put(src);
-	}
-
-	/**
-	 * @param src
-	 * @return
-	 * @see java.nio.ByteBuffer#put(java.nio.ByteBuffer)
-	 */
-	public ByteBuffer put(ByteBuffer src) {
-		return buf.put(src);
-	}
-
-	/**
-	 * @param index
-	 * @param b
-	 * @return
-	 * @see java.nio.ByteBuffer#put(int, byte)
-	 */
-	public ByteBuffer put(int index, byte b) {
-		return buf.put(index, b);
 	}
 
 	/**

@@ -12,7 +12,6 @@
 package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.IOException;
-import java.nio.ByteBuffer;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -39,6 +38,7 @@ import com.skratchdot.electribe.model.esx.SequenceDataGate;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
+import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
 /**
  * <!-- begin-user-doc -->
@@ -936,21 +936,21 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_PARTS_AUDIOIN);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_PARTS_AUDIOIN);
 		// byte 0
-		buf.put((byte) this.getFilterType().getValue());
+		buf.putUnsignedByte(this.getFilterType().getValue());
 		// byte 1
-		buf.put(this.getCutoff());
+		buf.putByte(this.getCutoff());
 		// byte 2
-		buf.put(this.getResonance());
+		buf.putByte(this.getResonance());
 		// byte 3
-		buf.put(this.getEgIntensity());
+		buf.putByte(this.getEgIntensity());
 		// byte 4
-		buf.put(this.getLevel());
+		buf.putByte(this.getLevel());
 		// byte 5
-		buf.put(this.getPan());
+		buf.putByte(this.getPan());
 		// byte 6
-		buf.put(this.getEgTime());
+		buf.putByte(this.getEgTime());
 		// byte 7
 		int packedByte7 = 0x00;
 		packedByte7 = EsxUtil.packInt(packedByte7, this.getFxSelect().getValue(), 2, 0);
@@ -958,24 +958,24 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		packedByte7 = EsxUtil.packInt(packedByte7, this.getRoll().getValue(), 1, 3);
 		packedByte7 = EsxUtil.packInt(packedByte7, this.getAmpEg().getValue(), 1, 4);
 		packedByte7 = EsxUtil.packInt(packedByte7, this.getReservedBitsByte7(), 3, 5);
-		buf.put((byte) packedByte7);
+		buf.putUnsignedByte(packedByte7);
 		// byte 8
 		int packedByte8 = 0x00;
 		packedByte8 = EsxUtil.packInt(packedByte8, this.getModDest().getValue(), 3, 0);
 		packedByte8 = EsxUtil.packInt(packedByte8, this.getReservedBitAfterModDepth(), 1, 3);
 		packedByte8 = EsxUtil.packInt(packedByte8, this.getModType().getValue(), 3, 4);
 		packedByte8 = EsxUtil.packInt(packedByte8, this.getBpmSync().getValue(), 1, 7);
-		buf.put((byte) packedByte8);
+		buf.putUnsignedByte(packedByte8);
 		// byte 9
-		buf.put(this.getModSpeed());
+		buf.putByte(this.getModSpeed());
 		// byte 10
-		buf.put(this.getModDepth());
+		buf.putByte(this.getModDepth());
 		// byte 11
-		buf.put(this.getMotionSequenceStatus());
+		buf.putByte(this.getMotionSequenceStatus());
 		// bytes 12~27 (16 bytes)
-		buf.put(this.getSequenceData().getSequenceData());
+		buf.putBytes(this.getSequenceData().getSequenceData());
 		// bytes 28~155 (128 bytes)
-		buf.put(this.getSequenceDataGate().getSequenceDataGate());
+		buf.putBytes(this.getSequenceDataGate().getSequenceDataGate());
 		return buf.array();
 	}
 

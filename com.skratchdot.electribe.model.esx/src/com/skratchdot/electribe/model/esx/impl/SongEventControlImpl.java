@@ -12,19 +12,17 @@
 package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.IOException;
-import java.nio.ByteBuffer;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.SongEventControl;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
 /**
  * <!-- begin-user-doc -->
@@ -222,20 +220,20 @@ public class SongEventControlImpl extends SongEventImpl implements SongEventCont
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_SONG_EVENT);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_SONG_EVENT);
 		// byte 0
-		buf.put(this.getPositionNumber());
+		buf.putByte(this.getPositionNumber());
 		// byte 1
 		int packedByte1 = 0x00;
 		packedByte1 = EsxUtil.packInt(packedByte1, this.getStep(), 4, 0);
 		packedByte1 = EsxUtil.packInt(packedByte1, this.getMeasure(), 4, 4);
-		buf.put((byte) packedByte1);
+		buf.putUnsignedByte(packedByte1);
 		// bytes 2~3
 		buf.putShort(this.getOperationNumber());
 		// byte 4
-		buf.put(this.getReservedByte());
+		buf.putByte(this.getReservedByte());
 		// byte 5
-		buf.put(this.getValue());
+		buf.putByte(this.getValue());
 		// bytes 6~7
 		buf.putShort(this.getReservedShort());
 		return buf.array();

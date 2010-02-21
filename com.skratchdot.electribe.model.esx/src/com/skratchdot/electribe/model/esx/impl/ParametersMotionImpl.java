@@ -12,20 +12,18 @@
 package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.IOException;
-import java.nio.ByteBuffer;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.ParametersMotion;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
 /**
  * <!-- begin-user-doc -->
@@ -177,11 +175,11 @@ public class ParametersMotionImpl extends EObjectImpl implements ParametersMotio
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_PARAMETERS_MOTION);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_PARAMETERS_MOTION);
 		// bytes 0~1
 		buf.putShort(this.getOperationNumber());
 		// bytes 2~129
-		buf.put(this.getOperationValue());
+		buf.putBytes(this.getOperationValue());
 		return buf.array();
 	}
 

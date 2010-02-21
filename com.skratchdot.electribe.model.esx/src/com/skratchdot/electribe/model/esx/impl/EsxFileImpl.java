@@ -12,7 +12,6 @@
 package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.IOException;
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -40,6 +39,7 @@ import com.skratchdot.electribe.model.esx.Song;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
+import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
 /**
  * <!-- begin-user-doc -->
@@ -798,8 +798,8 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 			else {
 				currentSample.setOffsetChannel1Start(0xFFFFFFFF);
 				currentSample.setOffsetChannel2Start(0xFFFFFFFF);
-				currentSample.setOffsetChannel1End(0);
-				currentSample.setOffsetChannel2End(0);
+				currentSample.setOffsetChannel1End(0xFFFFFFFF);
+				currentSample.setOffsetChannel2End(0xFFFFFFFF);
 			}
 		}
 	}
@@ -819,24 +819,24 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * @generated NOT
 	 */
 	public byte[] toByteArray(IProgressMonitor monitor) {
-		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.SIZE_FILE_MAX);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.SIZE_FILE_MAX);
 
 		// Write original data (we will overwrite invalid data with our known
 		// data structures)
 		monitor.subTask("Saving original non-audio data");
 		buf.position(0);
-		buf.put(this.getOriginalNonAudioData());
+		buf.putBytes(this.getOriginalNonAudioData());
 		monitor.worked(1);
 
 		// Write global parameters
 		buf.position(EsxUtil.ADDR_GLOBAL_PARAMETERS);
-		buf.put(this.getGlobalParameters().toByteArray());
+		buf.putBytes(this.getGlobalParameters().toByteArray());
 	
 		// Write Pattern Data
 		buf.position(EsxUtil.ADDR_PATTERN_DATA);
 		for (int i=0; i<EsxUtil.NUM_PATTERNS; i++) {
 			monitor.subTask("Saving pattern " + (i + 1) + " of " + EsxUtil.NUM_PATTERNS);
-			buf.put(this.getPatterns().get(i).toByteArray());
+			buf.putBytes(this.getPatterns().get(i).toByteArray());
 			monitor.worked(1);
 		}
 	
@@ -844,7 +844,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		buf.position(EsxUtil.ADDR_SONG_DATA);
 		for (int i=0; i<EsxUtil.NUM_SONGS; i++) {
 			monitor.subTask("Saving song " + (i + 1) + " of " + EsxUtil.NUM_SONGS);
-			buf.put(this.getSongs().get(i).toByteArray());
+			buf.putBytes(this.getSongs().get(i).toByteArray());
 			monitor.worked(1);
 		}
 		
@@ -852,7 +852,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		buf.position(EsxUtil.ADDR_SONG_EVENT_DATA);
 		for (int i=0; i<EsxUtil.NUM_SONGS; i++) {
 			monitor.subTask("Saving song event data for song " + (i + 1) + " of " + EsxUtil.NUM_SONGS);
-			buf.put(this.getSongs().get(i).toSongEventByteArray());
+			buf.putBytes(this.getSongs().get(i).toSongEventByteArray());
 			monitor.worked(1);
 		}
 
@@ -867,16 +867,16 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 
 			// Write Sample Header Info
 			buf.position(EsxUtil.ADDR_SAMPLE_HEADER_MONO + (i * EsxUtil.CHUNKSIZE_SAMPLE_HEADER_MONO));
-			buf.put(mono.toHeaderByteArray());
+			buf.putBytes(mono.toHeaderByteArray());
 	
 			// Write Slice Info
 			buf.position(EsxUtil.ADDR_SLICE_DATA + (i * EsxUtil.CHUNKSIZE_SLICE_DATA));
-			buf.put(mono.toSliceByteArray());
+			buf.putBytes(mono.toSliceByteArray());
 
 			// Write Sample Data
 			if(!mono.isEmpty() && mono.getNumberOfSampleFrames()>0) {
 				buf.position(EsxUtil.ADDR_SAMPLE_DATA + mono.getOffsetChannel1Start());
-				buf.put(mono.toOffsetChannel1ByteArray());
+				buf.putBytes(mono.toOffsetChannel1ByteArray());
 			}
 	
 			monitor.worked(1);
@@ -889,14 +889,14 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 
 			// Write Sample Header Info
 			buf.position(EsxUtil.ADDR_SAMPLE_HEADER_STEREO + (i * EsxUtil.CHUNKSIZE_SAMPLE_HEADER_STEREO));
-			buf.put(stereo.toHeaderByteArray());
+			buf.putBytes(stereo.toHeaderByteArray());
 
 			// Write Sample Data
 			if(!stereo.isEmpty() && stereo.getNumberOfSampleFrames()>0) {
 				buf.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel1Start());
-				buf.put(stereo.toOffsetChannel1ByteArray());
+				buf.putBytes(stereo.toOffsetChannel1ByteArray());
 				buf.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel2Start());
-				buf.put(stereo.toOffsetChannel2ByteArray());
+				buf.putBytes(stereo.toOffsetChannel2ByteArray());
 			}
 
 			monitor.worked(1);
@@ -921,7 +921,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		int fileSize = buf.position();
 		buf.position(0);
 		byte[] returnBuffer = new byte[fileSize];
-		buf.get(returnBuffer, 0, fileSize);
+		buf.getBytes(returnBuffer, 0, fileSize);
 		return returnBuffer;
 	}
 

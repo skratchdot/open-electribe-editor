@@ -11,11 +11,16 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
+import java.io.IOException;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import com.skratchdot.electribe.model.esx.AmpEg;
 import com.skratchdot.electribe.model.esx.BpmSync;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
 import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.FilterType;
@@ -32,15 +37,10 @@ import com.skratchdot.electribe.model.esx.PartWithSlice;
 import com.skratchdot.electribe.model.esx.Reverse;
 import com.skratchdot.electribe.model.esx.Roll;
 import com.skratchdot.electribe.model.esx.SequenceData;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
 /**
  * <!-- begin-user-doc -->
@@ -1127,31 +1127,31 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_PARTS_DRUM);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_PARTS_DRUM);
 		// bytes 0~1
 		buf.putShort(this.getSampleNumber());
 		// byte 2
-		buf.put(this.getSliceNumber());
+		buf.putByte(this.getSliceNumber());
 		// byte 3
-		buf.put(this.getReservedByte());
+		buf.putByte(this.getReservedByte());
 		// byte 4
-		buf.put((byte) this.getFilterType().getValue());
+		buf.putUnsignedByte(this.getFilterType().getValue());
 		// byte 5
-		buf.put(this.getCutoff());
+		buf.putByte(this.getCutoff());
 		// byte 6
-		buf.put(this.getResonance());
+		buf.putByte(this.getResonance());
 		// byte 7
-		buf.put(this.getEgIntensity());
+		buf.putByte(this.getEgIntensity());
 		// byte 8
-		buf.put(this.getPitch());
+		buf.putByte(this.getPitch());
 		// byte 9
-		buf.put(this.getLevel());
+		buf.putByte(this.getLevel());
 		// byte 10
-		buf.put(this.getPan());
+		buf.putByte(this.getPan());
 		// byte 11
-		buf.put(this.getEgTime());
+		buf.putByte(this.getEgTime());
 		// byte 12
-		buf.put(this.getStartPoint());
+		buf.putByte(this.getStartPoint());
 		// byte 13
 		int packedByte13 = 0x00;
 		packedByte13 = EsxUtil.packInt(packedByte13, this.getFxSelect().getValue(), 2, 0);
@@ -1160,22 +1160,22 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		packedByte13 = EsxUtil.packInt(packedByte13, this.getAmpEg().getValue(), 1, 4);
 		packedByte13 = EsxUtil.packInt(packedByte13, this.getReverse().getValue(), 1, 5);
 		packedByte13 = EsxUtil.packInt(packedByte13, this.getReservedBitsAfterReverse(), 2, 6);
-		buf.put((byte) packedByte13);
+		buf.putUnsignedByte(packedByte13);
 		// byte 14
 		int packedByte14 = 0x00;
 		packedByte14 = EsxUtil.packInt(packedByte14, this.getModDest().getValue(), 3, 0);
 		packedByte14 = EsxUtil.packInt(packedByte14, this.getReservedBitAfterModDepth(), 1, 3);
 		packedByte14 = EsxUtil.packInt(packedByte14, this.getModType().getValue(), 3, 4);
 		packedByte14 = EsxUtil.packInt(packedByte14, this.getBpmSync().getValue(), 1, 7);
-		buf.put((byte) packedByte14);
+		buf.putUnsignedByte(packedByte14);
 		// byte 15
-		buf.put(this.getModSpeed());
+		buf.putByte(this.getModSpeed());
 		// byte 16
-		buf.put(this.getModDepth());
+		buf.putByte(this.getModDepth());
 		// byte 17
-		buf.put(this.getMotionSequenceStatus());
+		buf.putByte(this.getMotionSequenceStatus());
 		// bytes 18~33
-		buf.put(this.getSequenceData().getSequenceData());
+		buf.putBytes(this.getSequenceData().getSequenceData());
 		return buf.array();
 	}
 

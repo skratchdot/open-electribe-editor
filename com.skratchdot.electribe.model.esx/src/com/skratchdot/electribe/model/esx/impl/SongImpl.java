@@ -12,7 +12,6 @@
 package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.IOException;
-import java.nio.ByteBuffer;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -47,6 +46,7 @@ import com.skratchdot.electribe.model.esx.TempoLock;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
+import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
 /**
  * <!-- begin-user-doc -->
@@ -591,28 +591,28 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_SONG);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_SONG);
 		// bytes 0~7
-		buf.put(EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00), 0, 8);
+		buf.putBytes(EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00), 0, 8);
 		// bytes 8~9
 		buf.putShort(this.getTempo().getShortFromCurrentValue());
 		// byte 10
-		buf.put((byte) this.getTempoLock().getValue());
+		buf.putUnsignedByte(this.getTempoLock().getValue());
 		// byte 11
-		buf.put((byte) this.getSongLength().getValue());
+		buf.putUnsignedByte(this.getSongLength().getValue());
 		// byte 12
-		buf.put((byte) this.getMuteHold().getValue());
+		buf.putUnsignedByte(this.getMuteHold().getValue());
 		// byte 13
-		buf.put((byte) this.getNextSongNumber().getValue());
+		buf.putUnsignedByte(this.getNextSongNumber().getValue());
 		// bytes 14~15
 		buf.putShort(this.getNumberOfSongEvents());
 		// bytes 16~271 (SongPatterns - PatternNumber)
 		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
-			buf.put((byte) this.getSongPatterns().get(i).getPatternNumber().getValue());
+			buf.putUnsignedByte(this.getSongPatterns().get(i).getPatternNumber().getValue());
 		}
 		// bytes 272~527
 		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
-			buf.put(this.getSongPatterns().get(i).getNoteOffset());
+			buf.putByte(this.getSongPatterns().get(i).getNoteOffset());
 		}
 		return buf.array();
 	}
@@ -625,25 +625,25 @@ public class SongImpl extends EObjectImpl implements Song {
 	public byte[] toSongEventByteArray() {
 		short numEvents = this.getNumberOfSongEvents();
 		if(numEvents>0) {
-			ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_SONG_EVENT*numEvents);
+			ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_SONG_EVENT*numEvents);
 			// write song events
 			SongEvent songEvent;
 			for(int i=0; i<numEvents; i++) {
 				songEvent = this.getSongEvents().get(i);
 				if(songEvent instanceof SongEventControl) {
-					buf.put(((SongEventControl) songEvent).toByteArray());
+					buf.putBytes(((SongEventControl) songEvent).toByteArray());
 				}
 				else if(songEvent instanceof SongEventDrumNote) {
-					buf.put(((SongEventDrumNote) songEvent).toByteArray());
+					buf.putBytes(((SongEventDrumNote) songEvent).toByteArray());
 				}
 				else if(songEvent instanceof SongEventKeyboardNote) {
-					buf.put(((SongEventKeyboardNote) songEvent).toByteArray());
+					buf.putBytes(((SongEventKeyboardNote) songEvent).toByteArray());
 				}
 				else if(songEvent instanceof SongEventMuteStatus) {
-					buf.put(((SongEventMuteStatus) songEvent).toByteArray());
+					buf.putBytes(((SongEventMuteStatus) songEvent).toByteArray());
 				}
 				else if(songEvent instanceof SongEventTempo) {
-					buf.put(((SongEventTempo) songEvent).toByteArray());
+					buf.putBytes(((SongEventTempo) songEvent).toByteArray());
 				}
 			}
 			return buf.array();

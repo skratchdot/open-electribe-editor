@@ -13,7 +13,6 @@ package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.ByteBuffer;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -27,6 +26,7 @@ import com.skratchdot.electribe.model.esx.StretchStep;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
+import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 import com.skratchdot.riff.wav.ChunkData;
 import com.skratchdot.riff.wav.ChunkFormat;
 import com.skratchdot.riff.wav.ChunkSampler;
@@ -164,9 +164,9 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 	 * @generated NOT
 	 */
 	public byte[] toHeaderByteArray() {
-		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_SAMPLE_HEADER_MONO);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_SAMPLE_HEADER_MONO);
 		// bytes 0~7
-		buf.put(EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00), 0, 8);
+		buf.putBytes(EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00), 0, 8);
 		// bytes 8~11
 		buf.putInt(this.getOffsetChannel1Start());
 		// bytes 12~15
@@ -182,17 +182,17 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 		// bytes 32~33
 		buf.putShort(this.getSampleTune().getShortFromCurrentValue());
 		// byte 34
-		buf.put((byte) this.getPlayLevel().getValue());
+		buf.putUnsignedByte(this.getPlayLevel().getValue());
 		// byte 35
-		buf.put(this.getUnknownByte1());
+		buf.putByte(this.getUnknownByte1());
 		// byte 36
-		buf.put((byte) this.getStretchStep().getValue());
+		buf.putUnsignedByte(this.getStretchStep().getValue());
 		// byte 37
-		buf.put(this.getUnknownByte2());
+		buf.putByte(this.getUnknownByte2());
 		// byte 38
-		buf.put(this.getUnknownByte3());
+		buf.putByte(this.getUnknownByte3());
 		// byte 39
-		buf.put(this.getUnknownByte4());
+		buf.putByte(this.getUnknownByte4());
 		return buf.array();
 	}
 
@@ -203,15 +203,15 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 	 */
 	public byte[] toOffsetChannel1ByteArray() {
 		byte[] audioData = this.getAudioDataChannelBoth();
-		ByteBuffer buf = ByteBuffer.allocate(audioData.length+18);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(audioData.length+18);
 		buf.putInt(0x80007FFF);
 		buf.putInt(this.getOffsetChannel1Start());
 		buf.putInt(this.getOffsetChannel1End());
-		buf.put((byte) this.getSampleNumberCurrent().getValue());
-		buf.put((byte) 0); // denotes mono / channel 1
+		buf.putUnsignedByte(this.getSampleNumberCurrent().getValue());
+		buf.putUnsignedByte(0); // denotes mono / channel 1
 		buf.putShort((short) 0xffff);
-		buf.put(audioData);
-		buf.put(this.getAudioDataLoopStart());
+		buf.putBytes(audioData);
+		buf.putBytes(this.getAudioDataLoopStart());
 		return buf.array();
 	}
 
@@ -221,13 +221,13 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 	 * @generated NOT
 	 */
 	public byte[] toSliceByteArray() {
-		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_SLICE_DATA);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_SLICE_DATA);
 		// Write slice info
 		if(this.getSliceArray()!=null) {
-			buf.put(this.getSliceArray());
+			buf.putBytes(this.getSliceArray());
 		}
 		else {
-			buf.put(EsxUtil.getByteArrayWithLength("", EsxUtil.CHUNKSIZE_SLICE_DATA, (byte) 0x00));
+			buf.putBytes(EsxUtil.getByteArrayWithLength("", EsxUtil.CHUNKSIZE_SLICE_DATA, (byte) 0x00));
 		}
 		return buf.array();
 	}

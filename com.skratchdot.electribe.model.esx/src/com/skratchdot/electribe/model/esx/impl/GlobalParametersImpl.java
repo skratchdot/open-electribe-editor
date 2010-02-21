@@ -12,7 +12,6 @@
 package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.IOException;
-import java.nio.ByteBuffer;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -45,6 +44,7 @@ import com.skratchdot.electribe.model.esx.PatternSetParameter;
 import com.skratchdot.electribe.model.esx.PitchBendRange;
 import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
+import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
 /**
  * <!-- begin-user-doc -->
@@ -738,17 +738,17 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_GLOBAL_PARAMETERS);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_GLOBAL_PARAMETERS);
 		// byte 0
-		buf.put((byte) this.getMemoryProtectEnabled().getValue());
+		buf.putUnsignedByte(this.getMemoryProtectEnabled().getValue());
 		// byte 1
-		buf.put(this.getReservedByte());
+		buf.putByte(this.getReservedByte());
 		// byte 2
-		buf.put((byte) this.getArpeggiatorControl().getValue());
+		buf.putUnsignedByte(this.getArpeggiatorControl().getValue());
 		// byte 3
-		buf.put((byte) this.getAudioInMode().getValue());
+		buf.putUnsignedByte(this.getAudioInMode().getValue());
 		// byte 4
-		buf.put((byte) this.getMidiClock().getValue());
+		buf.putUnsignedByte(this.getMidiClock().getValue());
 		// byte 5
 		int packedByte5 = 0x00;
 		packedByte5 = EsxUtil.packInt(packedByte5, this.getNoteMessageEnabled().getValue(), 1, 0);
@@ -756,26 +756,26 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 		packedByte5 = EsxUtil.packInt(packedByte5, this.getControlChangeEnabled().getValue(), 1, 2);
 		packedByte5 = EsxUtil.packInt(packedByte5, this.getProgramChangeEnabled().getValue(), 1, 3);
 		packedByte5 = EsxUtil.packInt(packedByte5, this.getReservedBitsAfterProgramChangeEnabled(), 4, 4);
-		buf.put((byte) packedByte5);
+		buf.putUnsignedByte(packedByte5);
 		// byte 6
-		buf.put((byte) this.getPitchBendRange().getValue());
+		buf.putUnsignedByte(this.getPitchBendRange().getValue());
 		// bytes 7~9 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_MIDI_CHANNELS; i++) {
-			buf.put((byte) this.getMidiChannels().get(i).getMidiChannel().getValue());
+			buf.putUnsignedByte(this.getMidiChannels().get(i).getMidiChannel().getValue());
 		}
 		// bytes 10~22 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_PART_NOTE_NUMBERS; i++) {
-			buf.put((byte) this.getPartNoteNumbers().get(i).getNoteNumber().getValue());
+			buf.putUnsignedByte(this.getPartNoteNumbers().get(i).getNoteNumber().getValue());
 		}
 		// bytes 23~55 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_MIDI_CONTROL_CHANGE_ASSIGNMENTS; i++) {
-			buf.put(this.getMidiControlChangeAssignments().get(i).getValue());
+			buf.putByte(this.getMidiControlChangeAssignments().get(i).getValue());
 		}
 		// bytes 56~63
 		buf.putLong(this.getReservedLong());
 		// bytes 64~191 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_PATTERN_SET_PARAMETERS; i++) {
-			buf.put((byte) this.getPatternSetParameters().get(i).getPatternNumber().getValue());
+			buf.putUnsignedByte(this.getPatternSetParameters().get(i).getPatternNumber().getValue());
 		}
 		return buf.array();
 	}

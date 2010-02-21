@@ -12,7 +12,6 @@
 package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.IOException;
-import java.nio.ByteBuffer;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -50,6 +49,7 @@ import com.skratchdot.electribe.model.esx.Tempo;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
+import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
 /**
  * <!-- begin-user-doc -->
@@ -1186,31 +1186,31 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_PATTERN);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_PATTERN);
 		// bytes 0~7
-		buf.put(EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00), 0, 8);
+		buf.putBytes(EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00), 0, 8);
 		// bytes 8~9
 		buf.putShort(this.getTempo().getShortFromCurrentValue());
 		// byte 10
-		buf.put((byte) this.getSwing().getValue());
+		buf.putUnsignedByte(this.getSwing().getValue());
 		// byte 11
 		int packedByte11 = 0x00;
 		packedByte11 = EsxUtil.packInt(packedByte11, this.getPatternLength().getValue(), 3, 0);
 		packedByte11 = EsxUtil.packInt(packedByte11, this.getReservedBitAfterPatternLength(), 1, 3);
 		packedByte11 = EsxUtil.packInt(packedByte11, this.getBeat().getValue(), 2, 4);
 		packedByte11 = EsxUtil.packInt(packedByte11, this.getRollType().getValue(), 2, 6);
-		buf.put((byte) packedByte11);
+		buf.putUnsignedByte(packedByte11);
 		// byte 12
-		buf.put((byte) this.getFxChain().getValue());
+		buf.putUnsignedByte(this.getFxChain().getValue());
 		// byte 13
-		buf.put((byte) this.getLastStep().getValue());
+		buf.putUnsignedByte(this.getLastStep().getValue());
 		// byte 14
 		int packedByte14 = 0x00;
 		packedByte14 = EsxUtil.packInt(packedByte14, this.getArpeggiatorScale().getValue(), 5, 0);
 		packedByte14 = EsxUtil.packInt(packedByte14, this.getReservedBitsAfterArpeggiatorScale(), 3, 5);
-		buf.put((byte) packedByte14);
+		buf.putUnsignedByte(packedByte14);
 		// byte 15
-		buf.put((byte) this.getArpeggiatorCenterNote().getValue());
+		buf.putUnsignedByte(this.getArpeggiatorCenterNote().getValue());
 		// byte 16~17
 		buf.putShort(this.getMuteStatus());
 		// bytes 18~19
@@ -1221,31 +1221,31 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		buf.putShort(this.getAccentStatus());
 		// bytes 24~329 (34 bytes each)
 		for (int i = 0; i < EsxUtil.NUM_PARTS_DRUM; i++) {
-			buf.put(this.getDrumParts().get(i).toByteArray());
+			buf.putBytes(this.getDrumParts().get(i).toByteArray());
 		}
 		// bytes 330~877 (274 bytes each)
 		for (int i = 0; i < EsxUtil.NUM_PARTS_KEYBOARD; i++) {
-			buf.put(this.getKeyboardParts().get(i).toByteArray());
+			buf.putBytes(this.getKeyboardParts().get(i).toByteArray());
 		}
 		// bytes 878~973 (32 bytes each)
 		for (int i = 0; i < EsxUtil.NUM_PARTS_STRETCHSLICE; i++) {
-			buf.put(this.getStretchSliceParts().get(i).toByteArray());
+			buf.putBytes(this.getStretchSliceParts().get(i).toByteArray());
 		}
 		// bytes 974~1129 (156 bytes)
 		for (int i = 0; i < EsxUtil.NUM_PARTS_AUDIOIN; i++) {
-			buf.put(this.getAudioInPart().toByteArray());
+			buf.putBytes(this.getAudioInPart().toByteArray());
 		}
 		// bytes 1130~1147 (18 bytes)
 		for (int i = 0; i < EsxUtil.NUM_PARTS_ACCENT; i++) {
-			buf.put(this.getAccentPart().toByteArray());
+			buf.putBytes(this.getAccentPart().toByteArray());
 		}
 		// bytes 1148~1159 (4 bytes each)
 		for (int i = 0; i < EsxUtil.NUM_PARAMETERS_FX; i++) {
-			buf.put(this.getFxParameters().get(i).toByteArray());
+			buf.putBytes(this.getFxParameters().get(i).toByteArray());
 		}
 		// bytes 1160~4279 (130 bytes each)
 		for (int i = 0; i < EsxUtil.NUM_PARAMETERS_MOTION; i++) {
-			buf.put(this.getMotionParameters().get(i).toByteArray());
+			buf.putBytes(this.getMotionParameters().get(i).toByteArray());
 		}
 		return buf.array();
 	}

@@ -13,7 +13,6 @@ package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.ByteBuffer;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -27,6 +26,7 @@ import com.skratchdot.electribe.model.esx.StretchStep;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
+import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 import com.skratchdot.riff.wav.ChunkData;
 import com.skratchdot.riff.wav.ChunkFormat;
 import com.skratchdot.riff.wav.ChunkSampler;
@@ -168,9 +168,9 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 	 * @generated NOT
 	 */
 	public byte[] toHeaderByteArray() {
-		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_SAMPLE_HEADER_STEREO);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_SAMPLE_HEADER_STEREO);
 		// bytes 0~7
-		buf.put(EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00), 0, 8);
+		buf.putBytes(EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00), 0, 8);
 		// bytes 8~11
 		buf.putInt(this.getOffsetChannel1Start());
 		// bytes 12~15
@@ -188,17 +188,17 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 		// bytes 36~37
 		buf.putShort(this.getSampleTune().getShortFromCurrentValue());
 		// byte 38
-		buf.put((byte) this.getPlayLevel().getValue());
+		buf.putUnsignedByte(this.getPlayLevel().getValue());
 		// byte 39
-		buf.put(this.getUnknownByte1());
+		buf.putByte(this.getUnknownByte1());
 		// byte 40
-		buf.put((byte) this.getStretchStep().getValue());
+		buf.putUnsignedByte(this.getStretchStep().getValue());
 		// byte 41
-		buf.put(this.getUnknownByte2());
+		buf.putByte(this.getUnknownByte2());
 		// byte 42
-		buf.put(this.getUnknownByte3());
+		buf.putByte(this.getUnknownByte3());
 		// byte 43
-		buf.put(this.getUnknownByte4());
+		buf.putByte(this.getUnknownByte4());
 		return buf.array();
 	}
 
@@ -209,14 +209,14 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 	 */
 	public byte[] toOffsetChannel1ByteArray() {
 		byte[] audioData = this.getAudioDataChannel1();
-		ByteBuffer buf = ByteBuffer.allocate(audioData.length+16);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(audioData.length+16);
 		buf.putInt(0x80007FFF);
 		buf.putInt(this.getOffsetChannel1Start());
 		buf.putInt(this.getOffsetChannel1End());
-		buf.put((byte) this.getSampleNumberCurrent().getValue());
-		buf.put((byte) 0); // denotes mono / channel 1
+		buf.putUnsignedByte(this.getSampleNumberCurrent().getValue());
+		buf.putUnsignedByte(0); // denotes mono / channel 1
 		buf.putShort((short) 0xffff);
-		buf.put(audioData);
+		buf.putBytes(audioData);
 		return buf.array();
 	}
 
@@ -227,14 +227,14 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 	 */
 	public byte[] toOffsetChannel2ByteArray() {
 		byte[] audioData = this.getAudioDataChannel2();
-		ByteBuffer buf = ByteBuffer.allocate(audioData.length+16);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(audioData.length+16);
 		buf.putInt(0x80007FFF);
 		buf.putInt(this.getOffsetChannel2Start());
 		buf.putInt(this.getOffsetChannel2End());
-		buf.put((byte) this.getSampleNumberCurrent().getValue());
-		buf.put((byte) 0); // denotes mono / channel 1
+		buf.putUnsignedByte(this.getSampleNumberCurrent().getValue());
+		buf.putUnsignedByte(0); // denotes mono / channel 1
 		buf.putShort((short) 0xffff);
-		buf.put(audioData);
+		buf.putBytes(audioData);
 		return buf.array();
 	}
 

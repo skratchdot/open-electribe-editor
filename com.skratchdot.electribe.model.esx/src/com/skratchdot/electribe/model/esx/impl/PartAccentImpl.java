@@ -12,22 +12,22 @@
 package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.IOException;
-import java.nio.ByteBuffer;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.PartAccent;
 import com.skratchdot.electribe.model.esx.PartWithSequenceData;
 import com.skratchdot.electribe.model.esx.SequenceData;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
 /**
  * <!-- begin-user-doc -->
@@ -152,13 +152,13 @@ public class PartAccentImpl extends PartImpl implements PartAccent {
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ByteBuffer buf = ByteBuffer.allocate(EsxUtil.CHUNKSIZE_PARTS_ACCENT);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_PARTS_ACCENT);
 		// byte 0
-		buf.put(this.getLevel());
+		buf.putByte(this.getLevel());
 		// byte 1
-		buf.put(this.getMotionSequenceStatus());
+		buf.putByte(this.getMotionSequenceStatus());
 		// bytes 2~17
-		buf.put(this.getSequenceData().getSequenceData());
+		buf.putBytes(this.getSequenceData().getSequenceData());
 		return buf.array();
 	}
 
