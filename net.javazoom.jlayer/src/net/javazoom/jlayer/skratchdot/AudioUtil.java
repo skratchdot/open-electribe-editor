@@ -13,7 +13,6 @@ package net.javazoom.jlayer.skratchdot;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
 
 import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioSystem;
@@ -21,18 +20,6 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class AudioUtil {
 
-	public static Collection<Integer> getLoopPoints(File file) {
-		return null;
-	}
-
-	public static int getFirstLoopPoint(File file) {
-		return -1;
-	}
-
-	public static boolean containsLoopPoints(File file) {
-		return false;
-	}
-	
 	public static boolean isStereo(File file) {
 		try {
 			AudioFileFormat audioFileFormat = AudioSystem.getAudioFileFormat(file);

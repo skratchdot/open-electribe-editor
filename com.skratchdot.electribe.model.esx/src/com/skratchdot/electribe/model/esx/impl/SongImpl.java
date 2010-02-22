@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
-import java.io.IOException;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -43,8 +42,6 @@ import com.skratchdot.electribe.model.esx.SongNumber;
 import com.skratchdot.electribe.model.esx.SongPattern;
 import com.skratchdot.electribe.model.esx.Tempo;
 import com.skratchdot.electribe.model.esx.TempoLock;
-import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
@@ -352,21 +349,6 @@ public class SongImpl extends EObjectImpl implements Song {
 			SongEvent songEvent = EsxFactory.eINSTANCE.createSongEvent(songEventBytes);
 			this.getSongEvents().add(songEvent);			
 		}
-	}
-
-	protected SongImpl(EsxRandomAccess in, int songNumber) throws EsxException, IOException {
-		super();
-
-		// Stop immediately if we are passed an invalid songNumber
-		if (songNumber >= EsxUtil.NUM_SONGS || songNumber < 0)
-			throw new EsxException("Invalid songNumber: " + songNumber);
-
-		// Jump to the start of songNumber's data
-		in.seek(EsxUtil.ADDR_SONG_DATA + (songNumber * EsxUtil.CHUNKSIZE_SONG));
-
-
-		// read in song events
-
 	}
 
 	/**

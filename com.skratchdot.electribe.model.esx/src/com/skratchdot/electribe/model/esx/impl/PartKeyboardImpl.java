@@ -11,8 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
-import java.io.IOException;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
@@ -37,8 +35,6 @@ import com.skratchdot.electribe.model.esx.Reverse;
 import com.skratchdot.electribe.model.esx.Roll;
 import com.skratchdot.electribe.model.esx.SequenceDataGate;
 import com.skratchdot.electribe.model.esx.SequenceDataNote;
-import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
@@ -591,27 +587,6 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		SequenceDataGate newSequenceDataGate = EsxFactory.eINSTANCE.createSequenceDataGate();
 		newSequenceDataGate.setSequenceDataGate(tempBytes);
 		this.setSequenceDataGate(newSequenceDataGate);
-	}
-
-	public PartKeyboardImpl(EsxRandomAccess in, int patternNumber,
-			int partKeyboardNumber) throws EsxException, IOException {
-		super();
-
-		// Stop immediately if we are passed an invalid patternNumber
-		if (patternNumber >= EsxUtil.NUM_PATTERNS || patternNumber < 0)
-			throw new EsxException("Invalid patternNumber: " + patternNumber);
-
-		// Stop immediately if we are passed an invalid patternNumber
-		if (partKeyboardNumber >= EsxUtil.NUM_PARTS_KEYBOARD || partKeyboardNumber < 0)
-			throw new EsxException("Invalid partKeyboardNumber: " + partKeyboardNumber);
-
-		// Jump to the start of partKeyboardNumber's data
-		in.seek(EsxUtil.ADDR_PATTERN_DATA +
-				(patternNumber * EsxUtil.CHUNKSIZE_PATTERN) +
-				EsxUtil.PATTERN_OFFSET_PARTS_KEYBOARD +
-				(partKeyboardNumber * EsxUtil.CHUNKSIZE_PARTS_KEYBOARD));
-
-
 	}
 
 	/**

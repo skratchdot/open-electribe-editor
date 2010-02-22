@@ -11,8 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
-import java.io.IOException;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
@@ -37,8 +35,6 @@ import com.skratchdot.electribe.model.esx.PartWithSlice;
 import com.skratchdot.electribe.model.esx.Reverse;
 import com.skratchdot.electribe.model.esx.Roll;
 import com.skratchdot.electribe.model.esx.SequenceData;
-import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
@@ -572,26 +568,6 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		SequenceData newSequenceData = EsxFactory.eINSTANCE.createSequenceData();
 		newSequenceData.setSequenceData(tempBytes);
 		this.setSequenceData(newSequenceData);
-	}
-
-	public PartDrumImpl(EsxRandomAccess in, int patternNumber, int partDrumNumber) throws EsxException, IOException {
-		super();
-
-		// Stop immediately if we are passed an invalid patternNumber
-		if (patternNumber >= EsxUtil.NUM_PATTERNS || patternNumber < 0)
-			throw new EsxException("Invalid patternNumber: " + patternNumber);
-
-		// Stop immediately if we are passed an invalid partDrumNumber
-		if (partDrumNumber >= EsxUtil.NUM_PARTS_DRUM || partDrumNumber < 0)
-			throw new EsxException("Invalid partDrumNumber: " + partDrumNumber);
-
-		// Jump to the start of partDrumNumber's data
-		in.seek(EsxUtil.ADDR_PATTERN_DATA +
-				(patternNumber * EsxUtil.CHUNKSIZE_PATTERN) +
-				EsxUtil.PATTERN_OFFSET_PARTS_DRUM +
-				(partDrumNumber * EsxUtil.CHUNKSIZE_PARTS_DRUM));
-
-
 	}
 
 	/**

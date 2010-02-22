@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
-import java.io.IOException;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -46,8 +45,6 @@ import com.skratchdot.electribe.model.esx.PatternNumber;
 import com.skratchdot.electribe.model.esx.RollType;
 import com.skratchdot.electribe.model.esx.Swing;
 import com.skratchdot.electribe.model.esx.Tempo;
-import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
@@ -624,19 +621,6 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 			parametersMotion.init(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_PARAMETERS_MOTION));
 			this.getMotionParameters().add(i, parametersMotion);
 		}
-	}
-
-	public PatternImpl(EsxRandomAccess in, int patternNumber) throws EsxException, IOException {
-		super();
-
-		// Stop immediately if we are passed an invalid patternNumber
-		if (patternNumber >= EsxUtil.NUM_PATTERNS || patternNumber < 0)
-			throw new EsxException("Invalid patternNumber: " + patternNumber);
-
-		// Jump to the start of patternNumber's data
-		in.seek(EsxUtil.ADDR_PATTERN_DATA + (patternNumber * EsxUtil.CHUNKSIZE_PATTERN));
-
-
 	}
 
 	/**

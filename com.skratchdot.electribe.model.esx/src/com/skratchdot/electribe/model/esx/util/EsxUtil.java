@@ -190,31 +190,45 @@ public class EsxUtil {
 	
 	public static byte[] inputStreamToByteArray(InputStream in) throws IOException {
 		int len = 0;
+		int available = in.available();
 		int bufferSize = 1024;
+
+		// Set bigger bufferSize
+		if(available>bufferSize) {
+			bufferSize = available;
+		}
+
+		// Allocate buffers
 		ByteArrayOutputStream out = new ByteArrayOutputStream(bufferSize);
 		byte[] buffer = new byte[bufferSize];
-		
+
+		// Read in data
 		while((len = in.read(buffer)) >= 0) {
 			out.write(buffer, 0, len);
 		}
+
+		// Close streams
 		in.close();
 		out.close();
+
 		return out.toByteArray();
 	}
 	
-	public static boolean isValidEsxFile(EsxRandomAccess in) throws EsxException, IOException {
+	public static boolean isValidEsxFile(byte[] b) throws IOException {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+
 		// File is not big enough
-		if (in.length() < SIZE_FILE_MIN)
-			throw new EsxException("Invalid Esx File Format: File is too small");
+		if (in.limit() < SIZE_FILE_MIN)
+			throw new IOException("Invalid Esx File Format: File is too small");
 
 		// File is too big
-		if (in.length() > SIZE_FILE_MAX)
-			throw new EsxException("Invalid Esx File Format: File is too big");
+		if (in.limit() > SIZE_FILE_MAX)
+			throw new IOException("Invalid Esx File Format: File is too big");
 
 		// ESX Check 1
 		byte[] byteCheckOne = new byte[12];
-		in.seek(ADDR_VALID_ESX_CHECK_1);
-		in.read(byteCheckOne, 0, 12);
+		in.position(ADDR_VALID_ESX_CHECK_1);
+		in.getBytes(byteCheckOne);
 		if (
 				byteCheckOne[0]  != 0x4b || // K
 				byteCheckOne[1]  != 0x4f || // O
@@ -229,12 +243,12 @@ public class EsxUtil {
 				byteCheckOne[10] != 0x58 || // X
 				byteCheckOne[11] != 0x00    // .
 			)
-			throw new EsxException("Invalid Esx File Format: Failed Esx Check 1");
+			throw new IOException("Invalid Esx File Format: Failed Esx Check 1");
 
 		// ESX Check 2
 		byte[] byteCheckTwo = new byte[12];
-		in.seek(ADDR_VALID_ESX_CHECK_2);
-		in.read(byteCheckTwo, 0, 12);
+		in.position(ADDR_VALID_ESX_CHECK_2);
+		in.getBytes(byteCheckTwo);
 		if (
 				byteCheckTwo[0]  != 0x4b || // K
 				byteCheckTwo[1]  != 0x4f || // O
@@ -250,7 +264,7 @@ public class EsxUtil {
 				byteCheckTwo[11] != 0x20    // .
 				*/
 			)
-			throw new EsxException("Invalid Esx File Format: Failed Esx Check 2");
+			throw new IOException("Invalid Esx File Format: Failed Esx Check 2");
 
 		// File must be valid if we've reached this point
 		return true;

@@ -60,14 +60,22 @@ public class EsxResourceImpl extends ResourceImpl {
 			EsxUtil.NUM_PATTERNS +
 			EsxUtil.NUM_SONGS +
 			EsxUtil.NUM_SONGS + // Song Event Data
-			EsxUtil.NUM_SAMPLES_MONO +
-			EsxUtil.NUM_SAMPLES_STEREO
+			EsxUtil.NUM_SAMPLES +
+			EsxUtil.NUM_SLICE_DATA +
+			EsxUtil.NUM_SAMPLES
 		);
 		
-		// Setup esxFileBuffer
+		// Setup esxFileBytes
 		monitor.subTask("Getting contents...");
+		monitor.worked(1);
+		byte[] esxFileBytes = EsxUtil.inputStreamToByteArray(inputStream);
+
+		// Confirm bytes are valid
+		EsxUtil.isValidEsxFile(esxFileBytes);
+
+		// Now create the EsxFile
 		EsxFile esxFile = EsxFactory.eINSTANCE.createEsxFile();
-		esxFile.init(EsxUtil.inputStreamToByteArray(inputStream), monitor);
+		esxFile.init(esxFileBytes, monitor);
 		this.getContents().add(esxFile);
 		monitor.worked(1);
 

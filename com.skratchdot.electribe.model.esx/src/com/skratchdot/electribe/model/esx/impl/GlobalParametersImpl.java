@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
-import java.io.IOException;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -42,7 +41,6 @@ import com.skratchdot.electribe.model.esx.PartNoteNumberName;
 import com.skratchdot.electribe.model.esx.PatternNumber;
 import com.skratchdot.electribe.model.esx.PatternSetParameter;
 import com.skratchdot.electribe.model.esx.PitchBendRange;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
@@ -420,15 +418,6 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 			patternSetParameter.setPositionOriginal(i);
 			this.getPatternSetParameters().add(i, patternSetParameter);
 		}
-	}
-
-	public GlobalParametersImpl(EsxRandomAccess in) throws IOException {
-		super();
-
-		// Jump to the start of patternNumber's data
-		in.seek(EsxUtil.ADDR_GLOBAL_PARAMETERS);
-
-
 	}
 
 	/**

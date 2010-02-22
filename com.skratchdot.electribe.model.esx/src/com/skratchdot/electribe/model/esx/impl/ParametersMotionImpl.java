@@ -11,8 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
-import java.io.IOException;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -20,8 +18,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.ParametersMotion;
-import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
@@ -102,27 +98,6 @@ public class ParametersMotionImpl extends EObjectImpl implements ParametersMotio
 		byte[] tempBytes = new byte[EsxUtil.NUM_MOTION_OPERATIONS];
 		in.getBytes(tempBytes, 0, EsxUtil.NUM_MOTION_OPERATIONS);
 		this.setOperationValue(tempBytes);
-	}
-
-	public ParametersMotionImpl(EsxRandomAccess in, int patternNumber,
-			int parametersMotionNumber) throws EsxException, IOException {
-		super();
-
-		// Stop immediately if we are passed an invalid patternNumber
-		if (patternNumber >= EsxUtil.NUM_PATTERNS || patternNumber < 0)
-			throw new EsxException("Invalid patternNumber: " + patternNumber);
-
-		// Stop immediately if we are passed an invalid parametersMotionNumber
-		if (parametersMotionNumber >= EsxUtil.NUM_PARAMETERS_MOTION || parametersMotionNumber < 0)
-			throw new EsxException("Invalid parametersMotionNumber: " + parametersMotionNumber);
-
-		// Jump to the start of parametersMotionNumber's data
-		in.seek(EsxUtil.ADDR_PATTERN_DATA +
-				(patternNumber * EsxUtil.CHUNKSIZE_PATTERN) +
-				EsxUtil.PATTERN_OFFSET_PARAMETERS_MOTION +
-				(parametersMotionNumber * EsxUtil.CHUNKSIZE_PARAMETERS_MOTION));
-
-
 	}
 
 	/**

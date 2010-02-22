@@ -11,8 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
-import java.io.IOException;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
@@ -35,8 +33,6 @@ import com.skratchdot.electribe.model.esx.PartWithSequenceDataGate;
 import com.skratchdot.electribe.model.esx.Roll;
 import com.skratchdot.electribe.model.esx.SequenceData;
 import com.skratchdot.electribe.model.esx.SequenceDataGate;
-import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
@@ -461,27 +457,6 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		SequenceDataGate newSequenceDataGate = EsxFactory.eINSTANCE.createSequenceDataGate();
 		newSequenceDataGate.setSequenceDataGate(tempBytes);
 		this.setSequenceDataGate(newSequenceDataGate);
-	}
-
-	public PartAudioInImpl(EsxRandomAccess in, int patternNumber,
-			int partAudioInNumber) throws EsxException, IOException {
-		super();
-
-		// Stop immediately if we are passed an invalid patternNumber
-		if (patternNumber >= EsxUtil.NUM_PATTERNS || patternNumber < 0)
-			throw new EsxException("Invalid patternNumber: " + patternNumber);
-
-		// Stop immediately if we are passed an invalid partAudioInNumber
-		if (partAudioInNumber >= EsxUtil.NUM_PARTS_AUDIOIN || partAudioInNumber < 0)
-			throw new EsxException("Invalid partAudioInNumber: " + partAudioInNumber);
-
-		// Jump to the start of partAudioInNumber's data
-		in.seek(EsxUtil.ADDR_PATTERN_DATA +
-				(patternNumber * EsxUtil.CHUNKSIZE_PATTERN) +
-				EsxUtil.PATTERN_OFFSET_PARTS_AUDIOIN +
-				(partAudioInNumber * EsxUtil.CHUNKSIZE_PARTS_AUDIOIN));
-
-
 	}
 
 	/**

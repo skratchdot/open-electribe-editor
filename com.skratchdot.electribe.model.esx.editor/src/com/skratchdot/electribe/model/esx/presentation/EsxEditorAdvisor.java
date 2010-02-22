@@ -74,7 +74,6 @@ import com.skratchdot.electribe.model.esx.SampleStereo;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceInitializer;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceNames;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
-import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 
 
@@ -677,9 +676,7 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 									));
 								}
 							}
-						} catch (EsxException e) {
-							e.printStackTrace();
-						} catch (IOException e) {
+						} catch (Exception e) {
 							e.printStackTrace();
 						}
 					}

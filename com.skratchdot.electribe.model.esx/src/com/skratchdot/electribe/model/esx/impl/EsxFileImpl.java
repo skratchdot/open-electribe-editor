@@ -35,8 +35,6 @@ import com.skratchdot.electribe.model.esx.Sample;
 import com.skratchdot.electribe.model.esx.SampleMono;
 import com.skratchdot.electribe.model.esx.SampleStereo;
 import com.skratchdot.electribe.model.esx.Song;
-import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
@@ -403,7 +401,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 						&& mono.getOffsetChannel1End() != 0xFFFFFFFF) {
 					// Read in sample data
 					in.position(EsxUtil.ADDR_SAMPLE_DATA + mono.getOffsetChannel1Start());
-					mono.initOffsetChannelBoth(in.getBytes(in.position(), offset1Size + 18));
+					mono.initOffsetChannelBoth(in.getBytes(in.position(), offset1Size));
 				}
 			}
 			else {
@@ -420,9 +418,9 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 						&& stereo.getOffsetChannel2End() != 0xFFFFFFFF) {
 					// Read in sample data
 					in.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel1Start());
-					stereo.initOffsetChannel1(in.getBytes(in.position(), offset1Size + 16));
+					stereo.initOffsetChannel1(in.getBytes(in.position(), offset1Size));
 					in.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel2Start());
-					stereo.initOffsetChannel2(in.getBytes(in.position(), offset2Size + 16));
+					stereo.initOffsetChannel2(in.getBytes(in.position(), offset2Size));
 				}
 			}
 			monitor.worked(1);
@@ -439,10 +437,6 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		emptySong.initSongEvents(this.getSongs().get(EsxUtil.NUM_SONGS-1).toSongEventsByteArray());
 		this.setEmptySong(emptySong);
 
-	}
-
-	protected EsxFileImpl(EsxRandomAccess in, IProgressMonitor monitor) throws EsxException {
-		super();
 	}
 
     /**

@@ -24,7 +24,6 @@ import com.skratchdot.electribe.model.esx.SampleStereo;
 import com.skratchdot.electribe.model.esx.SampleTune;
 import com.skratchdot.electribe.model.esx.StretchStep;
 import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 import com.skratchdot.riff.wav.ChunkData;
@@ -52,58 +51,6 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 	 */
 	protected SampleStereoImpl() {
 		super();
-	}
-
-	/**
-	 * @param in A valid Esx file in EsxRandomAccess form
-	 * @param stereoSampleNumber A valid stereo sample number 0-127
-	 * @throws EsxException
-	 * @throws IOException
-	 */
-	public SampleStereoImpl(EsxRandomAccess in, int stereoSampleNumber) throws EsxException, IOException {
-		init();
-
-		// Stop immediately if we are passed an invalid stereoSampleNumber
-		if (stereoSampleNumber >= EsxUtil.NUM_SAMPLES_STEREO || stereoSampleNumber < 0)
-			throw new EsxException("Invalid stereoSampleNumber: " + stereoSampleNumber);
-
-		// Jump to the start of stereoSampleNumber's header data
-		in.seek(EsxUtil.ADDR_SAMPLE_HEADER_STEREO + (stereoSampleNumber * EsxUtil.CHUNKSIZE_SAMPLE_HEADER_STEREO));
-
-
-		// Determine if there is a valid sample to read in
-		int offset1Size = this.getOffsetChannel1End() - this.getOffsetChannel1Start();
-		int offset2Size = this.getOffsetChannel2End() - this.getOffsetChannel2Start();
-		if (offset1Size == offset2Size
-				&& offset1Size > 0
-				&& offset2Size > 0
-				&& this.getOffsetChannel1Start() != 0xFFFFFFFF
-				&& this.getOffsetChannel1End() != 0xFFFFFFFF
-				&& this.getOffsetChannel2Start() != 0xFFFFFFFF
-				&& this.getOffsetChannel2End() != 0xFFFFFFFF) {
-
-			// Declare temp byte[]
-			byte[] newAudioDataChannel;
-
-			// Get number of sample frames
-			int newNumberOfSampleFrames = ((offset1Size - 16) / 2);
-			this.setNumberOfSampleFrames(newNumberOfSampleFrames);
-
-			// Read in audioDataChannel1
-			newAudioDataChannel = new byte[newNumberOfSampleFrames * 2];
-			in.seek(EsxUtil.ADDR_SAMPLE_DATA + this.getOffsetChannel1Start() + 16);
-			in.readFully(newAudioDataChannel, 0, newAudioDataChannel.length);
-			this.setAudioDataChannel1(newAudioDataChannel);
-
-			// Read in audioDataChannel2
-			newAudioDataChannel = new byte[newNumberOfSampleFrames * 2];
-			in.seek(EsxUtil.ADDR_SAMPLE_DATA + this.getOffsetChannel2Start() + 16);
-			in.readFully(newAudioDataChannel, 0, newAudioDataChannel.length);
-			this.setAudioDataChannel2(newAudioDataChannel);
-
-		}
-
-
 	}
 
 	/**

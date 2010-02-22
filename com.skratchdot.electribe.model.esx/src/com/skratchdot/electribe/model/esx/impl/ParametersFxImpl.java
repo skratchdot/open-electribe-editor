@@ -11,8 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
-import java.io.IOException;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -21,8 +19,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.FxType;
 import com.skratchdot.electribe.model.esx.ParametersFx;
-import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
@@ -147,27 +143,6 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 		this.setEdit2(in.getByte());
 		// byte 3
 		this.setMotionSequenceStatus(in.getByte());
-	}
-
-	public ParametersFxImpl(EsxRandomAccess in, int patternNumber,
-			int parametersFxNumber) throws EsxException, IOException {
-		super();
-
-		// Stop immediately if we are passed an invalid patternNumber
-		if (patternNumber >= EsxUtil.NUM_PATTERNS || patternNumber < 0)
-			throw new EsxException("Invalid patternNumber: " + patternNumber);
-
-		// Stop immediately if we are passed an invalid parametersFxNumber
-		if (parametersFxNumber >= EsxUtil.NUM_PARAMETERS_FX || parametersFxNumber < 0)
-			throw new EsxException("Invalid parametersFxNumber: " + parametersFxNumber);
-
-		// Jump to the start of parametersFxNumber's data
-		in.seek(EsxUtil.ADDR_PATTERN_DATA +
-				(patternNumber * EsxUtil.CHUNKSIZE_PATTERN) +
-				EsxUtil.PATTERN_OFFSET_PARAMETERS_FX +
-				(parametersFxNumber * EsxUtil.CHUNKSIZE_PARAMETERS_FX));
-
-
 	}
 
 	/**

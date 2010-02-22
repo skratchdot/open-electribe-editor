@@ -92,7 +92,6 @@ import com.skratchdot.electribe.model.esx.Swing;
 import com.skratchdot.electribe.model.esx.Tempo;
 import com.skratchdot.electribe.model.esx.TempoLock;
 import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
 /**
@@ -424,11 +423,6 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	public MidiControlChangeAssignment createMidiControlChangeAssignment() {
 		MidiControlChangeAssignmentImpl midiControlChangeAssignment = new MidiControlChangeAssignmentImpl();
 		return midiControlChangeAssignment;
-	}
-
-	public EsxFile createEsxFileFromEsxFile(EsxRandomAccess in, IProgressMonitor monitor) throws EsxException {
-		EsxFileImpl esxFile = new EsxFileImpl(in, monitor);
-		return esxFile;
 	}
 
 	/**

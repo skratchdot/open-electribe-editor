@@ -24,7 +24,6 @@ import com.skratchdot.electribe.model.esx.SampleNumber;
 import com.skratchdot.electribe.model.esx.SampleTune;
 import com.skratchdot.electribe.model.esx.StretchStep;
 import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 import com.skratchdot.riff.wav.ChunkData;
@@ -52,26 +51,6 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 	 */
 	protected SampleMonoImpl() {
 		super();
-	}
-	
-	/**
-	 * @param in A valid Esx file in EsxRandomAccess form
-	 * @param monoSampleNumber A valid mono sample number 0-255
-	 * @throws EsxException
-	 * @throws IOException
-	 */
-	public SampleMonoImpl(EsxRandomAccess in, int monoSampleNumber) throws EsxException, IOException {
-		init();
-
-		// Stop immediately if we are passed an invalid monoSampleNumber
-		if (monoSampleNumber >= EsxUtil.NUM_SAMPLES_MONO || monoSampleNumber < 0)
-			throw new EsxException("Invalid monoSampleNumber: " + monoSampleNumber);
-
-		// Jump to the start of monoSampleNumber's header data
-		in.seek(EsxUtil.ADDR_SAMPLE_HEADER_MONO + (monoSampleNumber * EsxUtil.CHUNKSIZE_SAMPLE_HEADER_MONO));
-
-
-
 	}
 
 	/**
@@ -155,7 +134,7 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
 
 		// Get number of sample frames
-		int newNumberOfSampleFrames = ((in.limit() - 18) / 2);
+		int newNumberOfSampleFrames = ((in.limit() - 16) / 2);
 		if(newNumberOfSampleFrames>0) {
 			// Store number of sample frames
 			this.setNumberOfSampleFrames(newNumberOfSampleFrames);			

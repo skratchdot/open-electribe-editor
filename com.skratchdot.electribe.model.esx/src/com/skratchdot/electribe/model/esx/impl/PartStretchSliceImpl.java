@@ -11,8 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
-import java.io.IOException;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
@@ -36,8 +34,6 @@ import com.skratchdot.electribe.model.esx.PartWithSequenceData;
 import com.skratchdot.electribe.model.esx.Reverse;
 import com.skratchdot.electribe.model.esx.Roll;
 import com.skratchdot.electribe.model.esx.SequenceData;
-import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
@@ -526,27 +522,6 @@ public class PartStretchSliceImpl extends PartImpl implements PartStretchSlice {
 		SequenceData newSequenceData = EsxFactory.eINSTANCE.createSequenceData();
 		newSequenceData.setSequenceData(tempBytes);
 		this.setSequenceData(newSequenceData);
-	}
-
-	public PartStretchSliceImpl(EsxRandomAccess in, int patternNumber,
-			int partStretchSliceNumber) throws EsxException, IOException {
-		super();
-
-		// Stop immediately if we are passed an invalid patternNumber
-		if (patternNumber >= EsxUtil.NUM_PATTERNS || patternNumber < 0)
-			throw new EsxException("Invalid patternNumber: " + patternNumber);
-
-		// Stop immediately if we are passed an invalid partStretchSliceNumber
-		if (partStretchSliceNumber >= EsxUtil.NUM_PARTS_STRETCHSLICE || partStretchSliceNumber < 0)
-			throw new EsxException("Invalid partStretchSliceNumber: " + partStretchSliceNumber);
-
-		// Jump to the start of partStretchSliceNumber's data
-		in.seek(EsxUtil.ADDR_PATTERN_DATA +
-				(patternNumber * EsxUtil.CHUNKSIZE_PATTERN) +
-				EsxUtil.PATTERN_OFFSET_PARTS_STRETCHSLICE +
-				(partStretchSliceNumber * EsxUtil.CHUNKSIZE_PARTS_STRETCHSLICE));
-
-
 	}
 
 	/**

@@ -11,8 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
-import java.io.IOException;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
@@ -24,8 +22,6 @@ import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.PartAccent;
 import com.skratchdot.electribe.model.esx.PartWithSequenceData;
 import com.skratchdot.electribe.model.esx.SequenceData;
-import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
@@ -79,27 +75,6 @@ public class PartAccentImpl extends PartImpl implements PartAccent {
 		SequenceData newSequenceData = EsxFactory.eINSTANCE.createSequenceData();
 		newSequenceData.setSequenceData(tempBytes);
 		this.setSequenceData(newSequenceData);
-	}
-
-	public PartAccentImpl(EsxRandomAccess in, int patternNumber,
-			int partAccentNumber) throws EsxException, IOException {
-		super();
-
-		// Stop immediately if we are passed an invalid patternNumber
-		if (patternNumber >= EsxUtil.NUM_PATTERNS || patternNumber < 0)
-			throw new EsxException("Invalid patternNumber: " + patternNumber);
-
-		// Stop immediately if we are passed an invalid partAccentNumber
-		if (partAccentNumber >= EsxUtil.NUM_PARTS_ACCENT || partAccentNumber < 0)
-			throw new EsxException("Invalid partAccentNumber: " + partAccentNumber);
-
-		// Jump to the start of partAccentNumber's data
-		in.seek(EsxUtil.ADDR_PATTERN_DATA +
-				(patternNumber * EsxUtil.CHUNKSIZE_PATTERN) +
-				EsxUtil.PATTERN_OFFSET_PARTS_ACCENT +
-				(partAccentNumber * EsxUtil.CHUNKSIZE_PARTS_ACCENT));
-
-
 	}
 
 	/**
