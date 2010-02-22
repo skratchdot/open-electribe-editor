@@ -88,6 +88,27 @@ public class SongEventMuteStatusImpl extends SongEventImpl implements SongEventM
 		super();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void init(byte[] b) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+		// byte 0
+		this.setPositionNumber(in.getByte());
+		// byte 1
+		int packedByte1 = in.getUnsignedByte();
+		this.setStep((byte) EsxUtil.unpackInt(packedByte1, 4, 0));
+		this.setMeasure((byte) EsxUtil.unpackInt(packedByte1, 4, 4));
+		// bytes 2~3
+		this.setOperationNumber(in.getShort());
+		// bytes 4~5
+		this.setReservedShort(in.getShort());
+		// bytes 6~7
+		this.setMuteStatus(in.getShort());
+	}
+
 	public SongEventMuteStatusImpl(EsxRandomAccess in, int songEventNumber) throws EsxException, IOException {
 		super();
 
@@ -98,22 +119,6 @@ public class SongEventMuteStatusImpl extends SongEventImpl implements SongEventM
 		// Jump to the start of songEventNumber's data
 		in.seek(EsxUtil.ADDR_SONG_EVENT_DATA + (songEventNumber * EsxUtil.CHUNKSIZE_SONG_EVENT));
 
-		// byte 0
-		this.setPositionNumber(in.readByte());
-
-		// byte 1
-		int packedByte1 = in.readUnsignedByte();
-		this.setStep((byte) EsxUtil.unpackInt(packedByte1, 4, 0));
-		this.setMeasure((byte) EsxUtil.unpackInt(packedByte1, 4, 4));
-
-		// bytes 2~3
-		this.setOperationNumber(in.readShort());
-
-		// bytes 4~5
-		this.setReservedShort(in.readShort());
-
-		// bytes 6~7
-		this.setMuteStatus(in.readShort());
 	}
 
 	/**

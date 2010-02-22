@@ -1177,6 +1177,9 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	 * @generated NOT
 	 */
 	public byte[] getAudioDataChannelBoth() {
+		if(this.isEmpty()) {
+			return new byte[0];
+		}
 		ByteBuffer bufferChannel1 = ByteBuffer.wrap(this.getAudioDataChannel1());
 		ByteBuffer bufferChannel2 = ByteBuffer.wrap(this.getAudioDataChannel2());
 		ByteBuffer bufferChannelBoth = ByteBuffer.allocate(bufferChannel1.capacity());
@@ -1303,10 +1306,14 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	 * @generated NOT
 	 */
 	public boolean isEmpty() {
-		if(this.getAudioDataChannel1()!=null && this.getAudioDataChannel1().length>0)
+		if(	this.getAudioDataChannel1()!=null && 
+			this.getAudioDataChannel2()!=null &&
+			this.getAudioDataChannel1().length>0 &&
+			this.getAudioDataChannel1().length==this.getAudioDataChannel2().length
+		) {
 			return false;
-		else
-			return true;
+		}
+		return true;
 	}
 
 	/**

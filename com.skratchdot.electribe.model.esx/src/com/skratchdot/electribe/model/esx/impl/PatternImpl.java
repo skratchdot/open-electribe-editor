@@ -519,6 +519,113 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		super();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void init(byte[] b) {
+		this.init(b, -1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void init(byte[] b, int patternNumber) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+
+		// Set the original .esx file pattern number
+		this.setPatternNumberOriginal(PatternNumber.get(patternNumber));
+
+		// bytes 0~7
+		byte[] newPatternName = new byte[8];
+		in.getBytes(newPatternName, 0, 8);
+		this.setName(new String(newPatternName));
+
+		// bytes 8~9
+		Tempo newTempo = EsxFactory.eINSTANCE.createTempo();
+		newTempo.setCurrentValueFromShort(in.getShort());
+		this.setTempo(newTempo);
+
+		// byte 10
+		this.setSwing(Swing.get(in.getByte()));
+		// byte 11
+		int packedByte11 = in.getUnsignedByte();
+		this.setPatternLength(PatternLength.get(EsxUtil.unpackInt(packedByte11, 3, 0)));
+		this.setReservedBitAfterPatternLength((byte) EsxUtil.unpackInt(packedByte11, 1, 3));
+		this.setBeat(Beat.get(EsxUtil.unpackInt(packedByte11, 2, 4)));
+		this.setRollType(RollType.get(EsxUtil.unpackInt(packedByte11, 2, 6)));
+		// byte 12
+		this.setFxChain(FxChain.get(in.getByte()));
+		// byte 13
+		this.setLastStep(LastStep.get(in.getByte()));
+		// byte 14
+		int packedByte14 = in.getUnsignedByte();
+		this.setArpeggiatorScale(ArpeggiatorScale.get(EsxUtil.unpackInt(packedByte14, 5, 0)));
+		this.setReservedBitsAfterArpeggiatorScale((byte) EsxUtil.unpackInt(packedByte14, 3, 5));
+		// byte 15
+		this.setArpeggiatorCenterNote(NoteNumber.get(in.getByte()));
+		// byte 16~17
+		this.setMuteStatus(in.getShort());
+		// bytes 18~19
+		this.setSwingStatus(in.getShort());
+		// bytes 20-21
+		this.setOutputBusStatus(in.getShort());
+		// bytes 22~23
+		this.setAccentStatus(in.getShort());
+
+		// bytes 24~329 (34 bytes each)
+		for (int i = 0; i < EsxUtil.NUM_PARTS_DRUM; i++) {
+			PartDrum partDrum = EsxFactory.eINSTANCE.createPartDrum();
+			partDrum.init(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_PARTS_DRUM));
+			this.getDrumParts().add(i, partDrum);
+		}
+
+		// bytes 330~877 (274 bytes each)
+		for (int i = 0; i < EsxUtil.NUM_PARTS_KEYBOARD; i++) {
+			PartKeyboard partKeyboard = EsxFactory.eINSTANCE.createPartKeyboard();
+			partKeyboard.init(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_PARTS_KEYBOARD));
+			this.getKeyboardParts().add(i, partKeyboard);
+		}
+
+		// bytes 878~973 (32 bytes each)
+		for (int i = 0; i < EsxUtil.NUM_PARTS_STRETCHSLICE; i++) {
+			PartStretchSlice partStretchSlice = EsxFactory.eINSTANCE.createPartStretchSlice();
+			partStretchSlice.init(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_PARTS_STRETCHSLICE));
+			this.getStretchSliceParts().add(i, partStretchSlice);
+		}
+
+		// bytes 974~1129 (156 bytes)
+		for (int i = 0; i < EsxUtil.NUM_PARTS_AUDIOIN; i++) {
+			PartAudioIn partAudioIn = EsxFactory.eINSTANCE.createPartAudioIn();
+			partAudioIn.init(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_PARTS_AUDIOIN));
+			this.setAudioInPart(partAudioIn);
+		}
+
+		// bytes 1130~1147 (18 bytes)
+		for (int i = 0; i < EsxUtil.NUM_PARTS_ACCENT; i++) {
+			PartAccent partAccent = EsxFactory.eINSTANCE.createPartAccent();
+			partAccent.init(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_PARTS_ACCENT));
+			this.setAccentPart(partAccent);
+		}
+
+		// bytes 1148~1159 (4 bytes each)
+		for (int i = 0; i < EsxUtil.NUM_PARAMETERS_FX; i++) {
+			ParametersFx parametersFx = EsxFactory.eINSTANCE.createParametersFx();
+			parametersFx.init(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_PARAMETERS_FX));
+			this.getFxParameters().add(i, parametersFx);
+		}
+
+		// bytes 1160~4279 (130 bytes each)
+		for (int i = 0; i < EsxUtil.NUM_PARAMETERS_MOTION; i++) {
+			ParametersMotion parametersMotion = EsxFactory.eINSTANCE.createParametersMotion();
+			parametersMotion.init(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_PARAMETERS_MOTION));
+			this.getMotionParameters().add(i, parametersMotion);
+		}
+	}
+
 	public PatternImpl(EsxRandomAccess in, int patternNumber) throws EsxException, IOException {
 		super();
 
@@ -529,87 +636,6 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		// Jump to the start of patternNumber's data
 		in.seek(EsxUtil.ADDR_PATTERN_DATA + (patternNumber * EsxUtil.CHUNKSIZE_PATTERN));
 
-		// Set the original .esx file pattern number
-		this.setPatternNumberOriginal(PatternNumber.get(patternNumber));
-
-		// bytes 0~7
-		byte[] newPatternName = new byte[8];
-		in.read(newPatternName, 0, 8);
-		this.setName(new String(newPatternName));
-
-		// bytes 8~9
-		Tempo newTempo = EsxFactory.eINSTANCE.createTempo();
-		newTempo.setCurrentValueFromShort(in.readShort());
-		this.setTempo(newTempo);
-
-		// byte 10
-		this.setSwing(Swing.get(in.readByte()));
-		// byte 11
-		int packedByte11 = in.readUnsignedByte();
-		this.setPatternLength(PatternLength.get(EsxUtil.unpackInt(packedByte11, 3, 0)));
-		this.setReservedBitAfterPatternLength((byte) EsxUtil.unpackInt(packedByte11, 1, 3));
-		this.setBeat(Beat.get(EsxUtil.unpackInt(packedByte11, 2, 4)));
-		this.setRollType(RollType.get(EsxUtil.unpackInt(packedByte11, 2, 6)));
-		// byte 12
-		this.setFxChain(FxChain.get(in.readByte()));
-		// byte 13
-		this.setLastStep(LastStep.get(in.readByte()));
-		// byte 14
-		int packedByte14 = in.readUnsignedByte();
-		this.setArpeggiatorScale(ArpeggiatorScale.get(EsxUtil.unpackInt(packedByte14, 5, 0)));
-		this.setReservedBitsAfterArpeggiatorScale((byte) EsxUtil.unpackInt(packedByte14, 3, 5));
-		// byte 15
-		this.setArpeggiatorCenterNote(NoteNumber.get(in.readByte()));
-		// byte 16~17
-		this.setMuteStatus(in.readShort());
-		// bytes 18~19
-		this.setSwingStatus(in.readShort());
-		// bytes 20-21
-		this.setOutputBusStatus(in.readShort());
-		// bytes 22~23
-		this.setAccentStatus(in.readShort());
-
-		// bytes 24~329 (34 bytes each)
-		for (int i = 0; i < EsxUtil.NUM_PARTS_DRUM; i++) {
-			PartDrum partDrum = EsxFactory.eINSTANCE.createPartDrum(in, patternNumber, i);
-			this.getDrumParts().add(i, partDrum);
-		}
-
-		// bytes 330~877 (274 bytes each)
-		for (int i = 0; i < EsxUtil.NUM_PARTS_KEYBOARD; i++) {
-			PartKeyboard partKeyboard = EsxFactory.eINSTANCE.createPartKeyboard(in, patternNumber, i);
-			this.getKeyboardParts().add(i, partKeyboard);
-		}
-
-		// bytes 878~973 (32 bytes each)
-		for (int i = 0; i < EsxUtil.NUM_PARTS_STRETCHSLICE; i++) {
-			PartStretchSlice partStretchSlice = EsxFactory.eINSTANCE.createPartStretchSlice(in, patternNumber, i);
-			this.getStretchSliceParts().add(i, partStretchSlice);
-		}
-
-		// bytes 974~1129 (156 bytes)
-		for (int i = 0; i < EsxUtil.NUM_PARTS_AUDIOIN; i++) {
-			PartAudioIn partAudioIn = EsxFactory.eINSTANCE.createPartAudioIn(in, patternNumber, i);
-			this.setAudioInPart(partAudioIn);
-		}
-
-		// bytes 1130~1147 (18 bytes)
-		for (int i = 0; i < EsxUtil.NUM_PARTS_ACCENT; i++) {
-			PartAccent partAccent = EsxFactory.eINSTANCE.createPartAccent(in, patternNumber, i);
-			this.setAccentPart(partAccent);
-		}
-
-		// bytes 1148~1159 (4 bytes each)
-		for (int i = 0; i < EsxUtil.NUM_PARAMETERS_FX; i++) {
-			ParametersFx parametersFx = EsxFactory.eINSTANCE.createParametersFx(in, patternNumber, i);
-			this.getFxParameters().add(i, parametersFx);
-		}
-
-		// bytes 1160~4279 (130 bytes each)
-		for (int i = 0; i < EsxUtil.NUM_PARAMETERS_MOTION; i++) {
-			ParametersMotion parametersMotion = EsxFactory.eINSTANCE.createParametersMotion(in, patternNumber, i);
-			this.getMotionParameters().add(i, parametersMotion);
-		}
 
 	}
 

@@ -20,6 +20,13 @@ import junit.textui.TestRunner;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Part Audio In</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following operations are tested:
+ * <ul>
+ *   <li>{@link com.skratchdot.electribe.model.esx.PartAudioIn#init(byte[]) <em>Init</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.PartAudioIn#toByteArray() <em>To Byte Array</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class PartAudioInTest extends PartTest {
@@ -74,6 +81,32 @@ public class PartAudioInTest extends PartTest {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.PartAudioIn#init(byte[]) <em>Init</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.PartAudioIn#init(byte[])
+	 * @generated
+	 */
+	public void testInit__byte() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.PartAudioIn#toByteArray() <em>To Byte Array</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.PartAudioIn#toByteArray()
+	 * @generated
+	 */
+	public void testToByteArray() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 } //PartAudioInTest

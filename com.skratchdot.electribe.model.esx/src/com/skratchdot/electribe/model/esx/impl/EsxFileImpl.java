@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -303,66 +302,147 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		super();
 	}
 
-	protected EsxFileImpl(EsxRandomAccess in, IProgressMonitor monitor) throws EsxException {
-		super();
-		try {
-			// Store all our "non-sample data" which will be overwritten when saving
-			// the file
-			monitor.subTask("Loading original non-audio data");
-			byte[] newOriginalNonAudioData = new byte[EsxUtil.SIZE_FILE_MIN];
-			in.seek(EsxUtil.ADDR_VALID_ESX_CHECK_1);
-			in.read(newOriginalNonAudioData, 0, EsxUtil.SIZE_FILE_MIN);
-			this.setOriginalNonAudioData(newOriginalNonAudioData);
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void init(byte[] b) {
+		this.init(b, new NullProgressMonitor());
+	}
 
-			// Get global parameters
-			monitor.subTask("Loading Global Parameters");
-			GlobalParameters newGlobalParameters = EsxFactory.eINSTANCE.createGlobalParametersFromEsxFile(in);
-			this.setGlobalParameters(newGlobalParameters);
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void init(byte[] b, IProgressMonitor monitor) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
 
-			// Get pattern info
-			for (int i = 0; i < EsxUtil.NUM_PATTERNS; i++) {
-				monitor.subTask("Loading pattern " + (i + 1) + " of " + EsxUtil.NUM_PATTERNS);
-				Pattern pattern = EsxFactory.eINSTANCE.createPatternFromEsxFile(in, i);
-				this.getPatterns().add(i, pattern);
-				monitor.worked(1);
-			}
+		// Store all our "non-sample data" which will be overwritten when saving
+		// the file
+		monitor.subTask("Loading original non-audio data");
+		this.setOriginalNonAudioData(in.getBytes(EsxUtil.ADDR_VALID_ESX_CHECK_1, EsxUtil.SIZE_FILE_MIN));
 
-			// Get song info
-			for (int i = 0; i < EsxUtil.NUM_SONGS; i++) {
-				monitor.subTask("Loading song " + (i + 1) + " of " + EsxUtil.NUM_SONGS);
-				Song song = EsxFactory.eINSTANCE.createSongFromEsxFile(in, i);
-				this.getSongs().add(i, song);
-				monitor.worked(1);
-			}
+		// Get Global Parameters
+		monitor.subTask("Loading Global Parameters");
+		GlobalParameters newGlobalParameters = EsxFactory.eINSTANCE.createGlobalParameters();
+		newGlobalParameters.init(in.getBytes(EsxUtil.ADDR_GLOBAL_PARAMETERS, EsxUtil.CHUNKSIZE_GLOBAL_PARAMETERS));		
+		this.setGlobalParameters(newGlobalParameters);
 
-			// Get sample info
-			for (int i = 0; i < EsxUtil.NUM_SAMPLES; i++) {
-				if(i < EsxUtil.NUM_SAMPLES_MONO) {
-					monitor.subTask("Loading mono sample " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES_MONO);
-					SampleMono mono = EsxFactory.eINSTANCE.createSampleMonoFromEsxFile(in, i);
-					this.getSamples().add(i, mono);
-					monitor.worked(1);
-				}
-				else {
-					monitor.subTask("Loading stereo sample " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES_STEREO);
-					SampleStereo stereo = EsxFactory.eINSTANCE.createSampleStereoFromEsxFile(in, i-EsxUtil.NUM_SAMPLES_MONO);
-					this.getSamples().add(i, stereo);
-					monitor.worked(1);
-				}
-			}
-
-			// Initialize the blank pattern
-			Pattern emptyPattern = EsxFactory.eINSTANCE.createPatternFromEsxFile(in, EsxUtil.NUM_PATTERNS-1);
-			this.setEmptyPattern(emptyPattern);
-
-			// Initialize the blank pattern
-			Song emptySong = EsxFactory.eINSTANCE.createSongFromEsxFile(in, EsxUtil.NUM_SONGS-1);
-			this.setEmptySong(emptySong);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		// Get Patterns
+		in.position(EsxUtil.ADDR_PATTERN_DATA);
+		for (int i = 0; i < EsxUtil.NUM_PATTERNS; i++) {
+			monitor.subTask("Loading pattern " + (i + 1) + " of " + EsxUtil.NUM_PATTERNS);
+			Pattern pattern = EsxFactory.eINSTANCE.createPattern();
+			pattern.init(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_PATTERN), i);
+			this.getPatterns().add(i, pattern);
+			monitor.worked(1);
 		}
 
+		// Get Songs
+		in.position(EsxUtil.ADDR_SONG_DATA);
+		for (int i = 0; i < EsxUtil.NUM_SONGS; i++) {
+			monitor.subTask("Loading song " + (i + 1) + " of " + EsxUtil.NUM_SONGS);
+			Song song = EsxFactory.eINSTANCE.createSong();
+			song.initSong(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_SONG), i);
+			this.getSongs().add(i, song);
+			monitor.worked(1);
+		}
+
+		// Get Song Events
+		in.position(EsxUtil.ADDR_SONG_EVENT_DATA);
+		for (int i=0; i<EsxUtil.NUM_SONGS; i++) {
+			monitor.subTask("Saving song event data for song " + (i + 1) + " of " + EsxUtil.NUM_SONGS);
+			Song song = this.getSongs().get(i);
+			if(song.getNumberOfSongEventsOriginal() > 0) {
+				byte[] songEventBytes = new byte[song.getNumberOfSongEventsOriginal()*EsxUtil.CHUNKSIZE_SONG_EVENT];
+				in.getBytes(songEventBytes);
+				song.initSongEvents(songEventBytes);				
+			}
+			monitor.worked(1);
+		}
+
+		// Get Sample Headers: MONO
+		in.position(EsxUtil.ADDR_SAMPLE_HEADER_MONO);
+		for(int i=0; i<EsxUtil.NUM_SAMPLES_MONO; i++) {
+			monitor.subTask("Loading sample header " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES);
+			SampleMono mono = EsxFactory.eINSTANCE.createSampleMono();
+			mono.initHeader(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_SAMPLE_HEADER_MONO), i);
+			this.getSamples().add(i, mono);
+			monitor.worked(1);
+		}
+
+		// Get Sample Headers: STEREO
+		in.position(EsxUtil.ADDR_SAMPLE_HEADER_STEREO);
+		for(int i=EsxUtil.NUM_SAMPLES_MONO; i<EsxUtil.NUM_SAMPLES; i++) {
+			monitor.subTask("Loading sample header " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES);
+			SampleStereo stereo = EsxFactory.eINSTANCE.createSampleStereo();
+			stereo.initHeader(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_SAMPLE_HEADER_STEREO), i);
+			this.getSamples().add(i, stereo);
+			monitor.worked(1);
+		}
+
+		// Get Slice Info
+		in.position(EsxUtil.ADDR_SLICE_DATA);
+		for(int i=0; i<EsxUtil.NUM_SAMPLES_MONO && i<EsxUtil.NUM_SLICE_DATA; i++) {
+			monitor.subTask("Loading slice data " + (i + 1) + " of " + EsxUtil.NUM_SLICE_DATA);
+			SampleMono mono = (SampleMono) this.getSamples().get(i);
+			mono.initSliceArray(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_SLICE_DATA));
+			monitor.worked(i);
+		}
+
+		// Get sample info
+		for (int i = 0; i < EsxUtil.NUM_SAMPLES; i++) {
+			monitor.subTask("Loading sample data " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES);
+			if(i < EsxUtil.NUM_SAMPLES_MONO) {
+				SampleMono mono = (SampleMono) this.getSamples().get(i);
+				int offset1Size = mono.getOffsetChannel1End() - mono.getOffsetChannel1Start();
+				if (offset1Size > 0
+						&& mono.getOffsetChannel1Start() != 0xFFFFFFFF
+						&& mono.getOffsetChannel1End() != 0xFFFFFFFF) {
+					// Read in sample data
+					in.position(EsxUtil.ADDR_SAMPLE_DATA + mono.getOffsetChannel1Start());
+					mono.initOffsetChannelBoth(in.getBytes(in.position(), offset1Size + 18));
+				}
+			}
+			else {
+				SampleStereo stereo = (SampleStereo) this.getSamples().get(i);
+
+				int offset1Size = stereo.getOffsetChannel1End() - stereo.getOffsetChannel1Start();
+				int offset2Size = stereo.getOffsetChannel2End() - stereo.getOffsetChannel2Start();
+				if (offset1Size == offset2Size
+						&& offset1Size > 0
+						&& offset2Size > 0
+						&& stereo.getOffsetChannel1Start() != 0xFFFFFFFF
+						&& stereo.getOffsetChannel1End() != 0xFFFFFFFF
+						&& stereo.getOffsetChannel2Start() != 0xFFFFFFFF
+						&& stereo.getOffsetChannel2End() != 0xFFFFFFFF) {
+					// Read in sample data
+					in.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel1Start());
+					stereo.initOffsetChannel1(in.getBytes(in.position(), offset1Size + 16));
+					in.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel2Start());
+					stereo.initOffsetChannel2(in.getBytes(in.position(), offset2Size + 16));
+				}
+			}
+			monitor.worked(1);
+		}
+
+		// Initialize the blank pattern
+		Pattern emptyPattern = EsxFactory.eINSTANCE.createPattern();
+		emptyPattern.init(this.getPatterns().get(EsxUtil.NUM_PATTERNS-1).toByteArray());
+		this.setEmptyPattern(emptyPattern);
+
+		// Initialize the blank pattern
+		Song emptySong = EsxFactory.eINSTANCE.createSong();
+		emptySong.initSong(this.getSongs().get(EsxUtil.NUM_SONGS-1).toSongByteArray());
+		emptySong.initSongEvents(this.getSongs().get(EsxUtil.NUM_SONGS-1).toSongEventsByteArray());
+		this.setEmptySong(emptySong);
+
+	}
+
+	protected EsxFileImpl(EsxRandomAccess in, IProgressMonitor monitor) throws EsxException {
+		super();
 	}
 
     /**
@@ -844,7 +924,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		buf.position(EsxUtil.ADDR_SONG_DATA);
 		for (int i=0; i<EsxUtil.NUM_SONGS; i++) {
 			monitor.subTask("Saving song " + (i + 1) + " of " + EsxUtil.NUM_SONGS);
-			buf.putBytes(this.getSongs().get(i).toByteArray());
+			buf.putBytes(this.getSongs().get(i).toSongByteArray());
 			monitor.worked(1);
 		}
 		
@@ -852,7 +932,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		buf.position(EsxUtil.ADDR_SONG_EVENT_DATA);
 		for (int i=0; i<EsxUtil.NUM_SONGS; i++) {
 			monitor.subTask("Saving song event data for song " + (i + 1) + " of " + EsxUtil.NUM_SONGS);
-			buf.putBytes(this.getSongs().get(i).toSongEventByteArray());
+			buf.putBytes(this.getSongs().get(i).toSongEventsByteArray());
 			monitor.worked(1);
 		}
 
@@ -876,7 +956,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 			// Write Sample Data
 			if(!mono.isEmpty() && mono.getNumberOfSampleFrames()>0) {
 				buf.position(EsxUtil.ADDR_SAMPLE_DATA + mono.getOffsetChannel1Start());
-				buf.putBytes(mono.toOffsetChannel1ByteArray());
+				buf.putBytes(mono.toOffsetChannelBothByteArray());
 			}
 	
 			monitor.worked(1);

@@ -473,6 +473,61 @@ public class PartStretchSliceImpl extends PartImpl implements PartStretchSlice {
 		super();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void init(byte[] b) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+		// bytes 0~1
+		this.setSampleNumber(in.getShort());
+		// byte 2
+		this.setFilterType(FilterType.get(in.getByte()));
+		// byte 3
+		this.setCutoff(in.getByte());
+		// byte 4
+		this.setResonance(in.getByte());
+		// byte 5
+		this.setEgIntensity(in.getByte());
+		// byte 6
+		this.setPitch(in.getByte());
+		// byte 7
+		this.setLevel(in.getByte());
+		// byte 8
+		this.setPan(in.getByte());
+		// byte 9
+		this.setEgTime(in.getByte());
+		// byte 10
+		this.setStartPoint(in.getByte());
+		// byte 11
+		int packedByte11 = in.getUnsignedByte();
+		this.setFxSelect(FxSelect.get(EsxUtil.unpackInt(packedByte11, 2, 0)));
+		this.setFxSend(FxSend.get(EsxUtil.unpackInt(packedByte11, 1, 2)));
+		this.setRoll(Roll.get(EsxUtil.unpackInt(packedByte11, 1, 3)));
+		this.setAmpEg(AmpEg.get(EsxUtil.unpackInt(packedByte11, 1, 4)));
+		this.setReverse(Reverse.get(EsxUtil.unpackInt(packedByte11, 1, 5)));
+		this.setReservedBitsAfterReverse((byte) EsxUtil.unpackInt(packedByte11, 2, 6));
+		// byte 12
+		int packedByte12 = in.getUnsignedByte();
+		this.setModDest(ModDest.get(EsxUtil.unpackInt(packedByte12, 3, 0)));
+		this.setReservedBitAfterModDepth((byte) EsxUtil.unpackInt(packedByte12, 1, 3));
+		this.setModType(ModType.get(EsxUtil.unpackInt(packedByte12, 3, 4)));
+		this.setBpmSync(BpmSync.get(EsxUtil.unpackInt(packedByte12, 1, 7)));
+		// byte 13
+		this.setModSpeed(in.getByte());
+		// byte 14
+		this.setModDepth(in.getByte());
+		// byte 15
+		this.setMotionSequenceStatus(in.getByte());
+		// bytes 16~31
+		byte[] tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA];
+		in.getBytes(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA);
+		SequenceData newSequenceData = EsxFactory.eINSTANCE.createSequenceData();
+		newSequenceData.setSequenceData(tempBytes);
+		this.setSequenceData(newSequenceData);
+	}
+
 	public PartStretchSliceImpl(EsxRandomAccess in, int patternNumber,
 			int partStretchSliceNumber) throws EsxException, IOException {
 		super();
@@ -491,52 +546,6 @@ public class PartStretchSliceImpl extends PartImpl implements PartStretchSlice {
 				EsxUtil.PATTERN_OFFSET_PARTS_STRETCHSLICE +
 				(partStretchSliceNumber * EsxUtil.CHUNKSIZE_PARTS_STRETCHSLICE));
 
-		// bytes 0~1
-		this.setSampleNumber(in.readShort());
-		// byte 2
-		this.setFilterType(FilterType.get(in.readByte()));
-		// byte 3
-		this.setCutoff(in.readByte());
-		// byte 4
-		this.setResonance(in.readByte());
-		// byte 5
-		this.setEgIntensity(in.readByte());
-		// byte 6
-		this.setPitch(in.readByte());
-		// byte 7
-		this.setLevel(in.readByte());
-		// byte 8
-		this.setPan(in.readByte());
-		// byte 9
-		this.setEgTime(in.readByte());
-		// byte 10
-		this.setStartPoint(in.readByte());
-		// byte 11
-		int packedByte11 = in.readUnsignedByte();
-		this.setFxSelect(FxSelect.get(EsxUtil.unpackInt(packedByte11, 2, 0)));
-		this.setFxSend(FxSend.get(EsxUtil.unpackInt(packedByte11, 1, 2)));
-		this.setRoll(Roll.get(EsxUtil.unpackInt(packedByte11, 1, 3)));
-		this.setAmpEg(AmpEg.get(EsxUtil.unpackInt(packedByte11, 1, 4)));
-		this.setReverse(Reverse.get(EsxUtil.unpackInt(packedByte11, 1, 5)));
-		this.setReservedBitsAfterReverse((byte) EsxUtil.unpackInt(packedByte11, 2, 6));
-		// byte 12
-		int packedByte12 = in.readUnsignedByte();
-		this.setModDest(ModDest.get(EsxUtil.unpackInt(packedByte12, 3, 0)));
-		this.setReservedBitAfterModDepth((byte) EsxUtil.unpackInt(packedByte12, 1, 3));
-		this.setModType(ModType.get(EsxUtil.unpackInt(packedByte12, 3, 4)));
-		this.setBpmSync(BpmSync.get(EsxUtil.unpackInt(packedByte12, 1, 7)));
-		// byte 13
-		this.setModSpeed(in.readByte());
-		// byte 14
-		this.setModDepth(in.readByte());
-		// byte 15
-		this.setMotionSequenceStatus(in.readByte());
-		// bytes 16~31
-		byte[] tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA];
-		in.readFully(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA);
-		SequenceData newSequenceData = EsxFactory.eINSTANCE.createSequenceData();
-		newSequenceData.setSequenceData(tempBytes);
-		this.setSequenceData(newSequenceData);
 
 	}
 

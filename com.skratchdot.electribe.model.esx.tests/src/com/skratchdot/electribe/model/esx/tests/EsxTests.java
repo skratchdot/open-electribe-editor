@@ -41,12 +41,25 @@ public class EsxTests extends TestSuite {
 	public static Test suite() {
 		TestSuite suite = new EsxTests("esx Tests");
 		suite.addTestSuite(EsxFileTest.class);
+		suite.addTestSuite(GlobalParametersTest.class);
+		suite.addTestSuite(ParametersFxTest.class);
+		suite.addTestSuite(ParametersMotionTest.class);
+		suite.addTestSuite(PartAccentTest.class);
+		suite.addTestSuite(PartAudioInTest.class);
+		suite.addTestSuite(PartDrumTest.class);
+		suite.addTestSuite(PartKeyboardTest.class);
+		suite.addTestSuite(PartStretchSliceTest.class);
 		suite.addTestSuite(PatternTest.class);
 		suite.addTestSuite(PatternSetParameterTest.class);
 		suite.addTestSuite(SampleMonoTest.class);
 		suite.addTestSuite(SampleStereoTest.class);
 		suite.addTestSuite(SampleTuneTest.class);
 		suite.addTestSuite(SongTest.class);
+		suite.addTestSuite(SongEventControlTest.class);
+		suite.addTestSuite(SongEventDrumNoteTest.class);
+		suite.addTestSuite(SongEventKeyboardNoteTest.class);
+		suite.addTestSuite(SongEventMuteStatusTest.class);
+		suite.addTestSuite(SongEventTempoTest.class);
 		suite.addTestSuite(SongPatternTest.class);
 		suite.addTestSuite(TempoTest.class);
 		return suite;

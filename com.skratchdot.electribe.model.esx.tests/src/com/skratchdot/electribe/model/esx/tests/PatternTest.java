@@ -29,6 +29,14 @@ import junit.textui.TestRunner;
  *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#getPatternNumberCurrent() <em>Pattern Number Current</em>}</li>
  * </ul>
  * </p>
+ * <p>
+ * The following operations are tested:
+ * <ul>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#init(byte[]) <em>Init</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#init(byte[], int) <em>Init</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#toByteArray() <em>To Byte Array</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class PatternTest extends TestCase {
@@ -124,6 +132,45 @@ public class PatternTest extends TestCase {
 	 */
 	public void testGetPatternNumberCurrent() {
 		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Pattern#init(byte[]) <em>Init</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.Pattern#init(byte[])
+	 * @generated
+	 */
+	public void testInit__byte() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Pattern#init(byte[], int) <em>Init</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.Pattern#init(byte[], int)
+	 * @generated
+	 */
+	public void testInit__byte_int() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Pattern#toByteArray() <em>To Byte Array</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.Pattern#toByteArray()
+	 * @generated
+	 */
+	public void testToByteArray() {
+		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();
 	}

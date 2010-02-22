@@ -110,6 +110,29 @@ public class SongEventDrumNoteImpl extends SongEventImpl implements SongEventDru
 		super();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void init(byte[] b) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+		// byte 0
+		this.setPositionNumber(in.getByte());
+		// byte 1
+		int packedByte1 = in.getUnsignedByte();
+		this.setStep((byte) EsxUtil.unpackInt(packedByte1, 4, 0));
+		this.setMeasure((byte) EsxUtil.unpackInt(packedByte1, 4, 4));
+		// bytes 2~3
+		this.setOperationNumber(in.getShort());
+		// byte 4
+		this.setPart(in.getByte());
+		// byte 5
+		this.setReservedByte(in.getByte());
+		// bytes 6~7
+		this.setReservedShort(in.getShort());
+	}
+
 	public SongEventDrumNoteImpl(EsxRandomAccess in, int songEventNumber) throws EsxException, IOException {
 		super();
 
@@ -120,25 +143,6 @@ public class SongEventDrumNoteImpl extends SongEventImpl implements SongEventDru
 		// Jump to the start of songEventNumber's data
 		in.seek(EsxUtil.ADDR_SONG_EVENT_DATA + (songEventNumber * EsxUtil.CHUNKSIZE_SONG_EVENT));
 
-		// byte 0
-		this.setPositionNumber(in.readByte());
-
-		// byte 1
-		int packedByte1 = in.readUnsignedByte();
-		this.setStep((byte) EsxUtil.unpackInt(packedByte1, 4, 0));
-		this.setMeasure((byte) EsxUtil.unpackInt(packedByte1, 4, 4));
-
-		// bytes 2~3
-		this.setOperationNumber(in.readShort());
-
-		// byte 4
-		this.setPart(in.readByte());
-
-		// byte 5
-		this.setReservedByte(in.readByte());
-
-		// bytes 6~7
-		this.setReservedShort(in.readShort());
 
 	}
 

@@ -3327,13 +3327,22 @@ public interface EsxPackage extends EPackage {
 	int SONG__NEXT_SONG_NUMBER = 5;
 
 	/**
-	 * The feature id for the '<em><b>Number Of Song Events</b></em>' attribute.
+	 * The feature id for the '<em><b>Number Of Song Events Current</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SONG__NUMBER_OF_SONG_EVENTS = 6;
+	int SONG__NUMBER_OF_SONG_EVENTS_CURRENT = 6;
+
+	/**
+	 * The feature id for the '<em><b>Number Of Song Events Original</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL = 7;
 
 	/**
 	 * The feature id for the '<em><b>Song Patterns</b></em>' containment reference list.
@@ -3342,7 +3351,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG__SONG_PATTERNS = 7;
+	int SONG__SONG_PATTERNS = 8;
 
 	/**
 	 * The feature id for the '<em><b>Song Events</b></em>' containment reference list.
@@ -3351,7 +3360,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG__SONG_EVENTS = 8;
+	int SONG__SONG_EVENTS = 9;
 
 	/**
 	 * The feature id for the '<em><b>Empty</b></em>' attribute.
@@ -3360,7 +3369,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG__EMPTY = 9;
+	int SONG__EMPTY = 10;
 
 	/**
 	 * The feature id for the '<em><b>Song Number Original</b></em>' attribute.
@@ -3369,7 +3378,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG__SONG_NUMBER_ORIGINAL = 10;
+	int SONG__SONG_NUMBER_ORIGINAL = 11;
 
 	/**
 	 * The feature id for the '<em><b>Song Number Current</b></em>' attribute.
@@ -3378,7 +3387,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG__SONG_NUMBER_CURRENT = 11;
+	int SONG__SONG_NUMBER_CURRENT = 12;
 
 	/**
 	 * The number of structural features of the '<em>Song</em>' class.
@@ -3387,7 +3396,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_FEATURE_COUNT = 12;
+	int SONG_FEATURE_COUNT = 13;
 
 
 	/**
@@ -6281,15 +6290,26 @@ public interface EsxPackage extends EPackage {
 	EAttribute getSong_NextSongNumber();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Song#getNumberOfSongEvents <em>Number Of Song Events</em>}'.
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Song#getNumberOfSongEventsCurrent <em>Number Of Song Events Current</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Number Of Song Events</em>'.
-	 * @see com.skratchdot.electribe.model.esx.Song#getNumberOfSongEvents()
+	 * @return the meta object for the attribute '<em>Number Of Song Events Current</em>'.
+	 * @see com.skratchdot.electribe.model.esx.Song#getNumberOfSongEventsCurrent()
 	 * @see #getSong()
 	 * @generated
 	 */
-	EAttribute getSong_NumberOfSongEvents();
+	EAttribute getSong_NumberOfSongEventsCurrent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Song#getNumberOfSongEventsOriginal <em>Number Of Song Events Original</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Number Of Song Events Original</em>'.
+	 * @see com.skratchdot.electribe.model.esx.Song#getNumberOfSongEventsOriginal()
+	 * @see #getSong()
+	 * @generated
+	 */
+	EAttribute getSong_NumberOfSongEventsOriginal();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link com.skratchdot.electribe.model.esx.Song#getSongPatterns <em>Song Patterns</em>}'.
@@ -8584,12 +8604,20 @@ public interface EsxPackage extends EPackage {
 		EAttribute SONG__NEXT_SONG_NUMBER = eINSTANCE.getSong_NextSongNumber();
 
 		/**
-		 * The meta object literal for the '<em><b>Number Of Song Events</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Number Of Song Events Current</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG__NUMBER_OF_SONG_EVENTS = eINSTANCE.getSong_NumberOfSongEvents();
+		EAttribute SONG__NUMBER_OF_SONG_EVENTS_CURRENT = eINSTANCE.getSong_NumberOfSongEventsCurrent();
+
+		/**
+		 * The meta object literal for the '<em><b>Number Of Song Events Original</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL = eINSTANCE.getSong_NumberOfSongEventsOriginal();
 
 		/**
 		 * The meta object literal for the '<em><b>Song Patterns</b></em>' containment reference list feature.

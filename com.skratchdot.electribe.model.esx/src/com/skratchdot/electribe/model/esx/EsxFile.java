@@ -427,6 +427,22 @@ public interface EsxFile extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void init(byte[] b);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model monitorDataType="com.skratchdot.electribe.model.esx.IProgressMonitor"
+	 * @generated
+	 */
+	void init(byte[] b, IProgressMonitor monitor);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model skipSampleNumbersDataType="com.skratchdot.electribe.model.esx.ArrayList<org.eclipse.emf.ecore.EIntegerObject>"
 	 * @generated
 	 */

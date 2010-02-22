@@ -30,6 +30,38 @@ public interface SampleMono extends Sample {
 	 * @model
 	 * @generated
 	 */
+	void initHeader(byte[] b);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void initHeader(byte[] b, int sampleNumber);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void initOffsetChannelBoth(byte[] b);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void initSliceArray(byte[] b);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
 	byte[] toHeaderByteArray();
 
 	/**
@@ -38,7 +70,7 @@ public interface SampleMono extends Sample {
 	 * @model
 	 * @generated
 	 */
-	byte[] toOffsetChannel1ByteArray();
+	byte[] toOffsetChannelBothByteArray();
 
 	/**
 	 * <!-- begin-user-doc -->

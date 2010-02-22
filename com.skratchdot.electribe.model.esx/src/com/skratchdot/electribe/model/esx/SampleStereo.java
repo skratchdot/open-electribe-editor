@@ -31,6 +31,38 @@ public interface SampleStereo extends Sample {
 	 * @model
 	 * @generated
 	 */
+	void initHeader(byte[] b);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void initHeader(byte[] b, int sampleNumber);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void initOffsetChannel1(byte[] b);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void initOffsetChannel2(byte[] b);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
 	byte[] toHeaderByteArray();
 
 	/**

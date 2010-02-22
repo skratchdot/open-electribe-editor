@@ -12,12 +12,7 @@
 package com.skratchdot.electribe.model.esx;
 
 import org.eclipse.emf.common.util.EList;
-import java.io.IOException;
-
 import org.eclipse.emf.ecore.EObject;
-
-import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +28,8 @@ import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
  *   <li>{@link com.skratchdot.electribe.model.esx.Song#getSongLength <em>Song Length</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Song#getMuteHold <em>Mute Hold</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Song#getNextSongNumber <em>Next Song Number</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Song#getNumberOfSongEvents <em>Number Of Song Events</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Song#getNumberOfSongEventsCurrent <em>Number Of Song Events Current</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Song#getNumberOfSongEventsOriginal <em>Number Of Song Events Original</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Song#getSongPatterns <em>Song Patterns</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Song#getSongEvents <em>Song Events</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Song#isEmpty <em>Empty</em>}</li>
@@ -216,19 +212,46 @@ public interface Song extends EObject {
 	void setNextSongNumber(NextSongNumber value);
 
 	/**
-	 * Returns the value of the '<em><b>Number Of Song Events</b></em>' attribute.
+	 * Returns the value of the '<em><b>Number Of Song Events Current</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Number Of Song Events</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Number Of Song Events Current</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Number Of Song Events</em>' attribute.
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSong_NumberOfSongEvents()
+	 * @return the value of the '<em>Number Of Song Events Current</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSong_NumberOfSongEventsCurrent()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
-	short getNumberOfSongEvents();
+	short getNumberOfSongEventsCurrent();
+
+	/**
+	 * Returns the value of the '<em><b>Number Of Song Events Original</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Number Of Song Events Original</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Number Of Song Events Original</em>' attribute.
+	 * @see #setNumberOfSongEventsOriginal(short)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSong_NumberOfSongEventsOriginal()
+	 * @model default="0"
+	 * @generated
+	 */
+	short getNumberOfSongEventsOriginal();
+
+	/**
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Song#getNumberOfSongEventsOriginal <em>Number Of Song Events Original</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Number Of Song Events Original</em>' attribute.
+	 * @see #getNumberOfSongEventsOriginal()
+	 * @generated
+	 */
+	void setNumberOfSongEventsOriginal(short value);
 
 	/**
 	 * Returns the value of the '<em><b>Song Patterns</b></em>' containment reference list.
@@ -332,7 +355,7 @@ public interface Song extends EObject {
 	 * @model
 	 * @generated
 	 */
-	byte[] toByteArray();
+	void initSong(byte[] b);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -340,10 +363,30 @@ public interface Song extends EObject {
 	 * @model
 	 * @generated
 	 */
-	byte[] toSongEventByteArray();
+	void initSong(byte[] b, int songNumber);
 
-	public int getNumberOfPreviousSongEvents(EsxRandomAccess in, int songNumber) throws EsxException, IOException;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void initSongEvents(byte[] b);
 
-	public int getSongEventType(EsxRandomAccess in, int songEventNumber) throws EsxException, IOException;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toSongByteArray();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toSongEventsByteArray();
 
 } // Song

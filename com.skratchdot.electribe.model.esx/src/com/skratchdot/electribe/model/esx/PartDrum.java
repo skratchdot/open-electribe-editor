@@ -31,6 +31,14 @@ public interface PartDrum extends Part, PartWithCommon, PartWithPitch, PartWithS
 	 * @model
 	 * @generated
 	 */
+	void init(byte[] b);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
 	byte[] toByteArray();
 
 } // PartDrum

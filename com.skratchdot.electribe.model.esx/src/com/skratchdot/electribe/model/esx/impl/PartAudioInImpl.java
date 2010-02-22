@@ -407,6 +407,62 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		super();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void init(byte[] b) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+		// byte 0
+		this.setFilterType(FilterType.get(in.getByte()));
+		// byte 1
+		this.setCutoff(in.getByte());
+		// byte 2
+		this.setResonance(in.getByte());
+		// byte 3
+		this.setEgIntensity(in.getByte());
+		// byte 4
+		this.setLevel(in.getByte());
+		// byte 5
+		this.setPan(in.getByte());
+		// byte 6
+		this.setEgTime(in.getByte());
+		// byte 7
+		int packedByte7 = in.getUnsignedByte();
+		this.setFxSelect(FxSelect.get(EsxUtil.unpackInt(packedByte7, 2, 0)));
+		this.setFxSend(FxSend.get(EsxUtil.unpackInt(packedByte7, 1, 2)));
+		this.setRoll(Roll.get(EsxUtil.unpackInt(packedByte7, 1, 3)));
+		this.setAmpEg(AmpEg.get(EsxUtil.unpackInt(packedByte7, 1, 4)));
+		this.setReservedBitsByte7((byte) EsxUtil.unpackInt(packedByte7, 3, 5));
+		// byte 8
+		int packedByte8 = in.getUnsignedByte();
+		this.setModDest(ModDest.get(EsxUtil.unpackInt(packedByte8, 3, 0)));
+		this.setReservedBitAfterModDepth((byte) EsxUtil.unpackInt(packedByte8, 1, 3));
+		this.setModType(ModType.get(EsxUtil.unpackInt(packedByte8, 3, 4)));
+		this.setBpmSync(BpmSync.get(EsxUtil.unpackInt(packedByte8, 1, 7)));
+		// byte 9
+		this.setModSpeed(in.getByte());
+		// byte 10
+		this.setModDepth(in.getByte());
+		// byte 11
+		this.setMotionSequenceStatus(in.getByte());
+
+		byte[] tempBytes;
+		// bytes 12~27 (16 bytes)
+		tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA];
+		in.getBytes(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA);
+		SequenceData newSequenceData = EsxFactory.eINSTANCE.createSequenceData();
+		newSequenceData.setSequenceData(tempBytes);
+		this.setSequenceData(newSequenceData);
+		// bytes 28~155 (128 bytes)
+		tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA_GATE];
+		in.getBytes(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA_GATE);
+		SequenceDataGate newSequenceDataGate = EsxFactory.eINSTANCE.createSequenceDataGate();
+		newSequenceDataGate.setSequenceDataGate(tempBytes);
+		this.setSequenceDataGate(newSequenceDataGate);
+	}
+
 	public PartAudioInImpl(EsxRandomAccess in, int patternNumber,
 			int partAudioInNumber) throws EsxException, IOException {
 		super();
@@ -425,55 +481,6 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 				EsxUtil.PATTERN_OFFSET_PARTS_AUDIOIN +
 				(partAudioInNumber * EsxUtil.CHUNKSIZE_PARTS_AUDIOIN));
 
-		// byte 0
-		this.setFilterType(FilterType.get(in.readByte()));
-		// byte 1
-		this.setCutoff(in.readByte());
-		// byte 2
-		this.setResonance(in.readByte());
-		// byte 3
-		this.setEgIntensity(in.readByte());
-		// byte 4
-		this.setLevel(in.readByte());
-		// byte 5
-		this.setPan(in.readByte());
-		// byte 6
-		this.setEgTime(in.readByte());
-		// byte 7
-		int packedByte7 = in.readUnsignedByte();
-		this.setFxSelect(FxSelect.get(EsxUtil.unpackInt(packedByte7, 2, 0)));
-		this.setFxSend(FxSend.get(EsxUtil.unpackInt(packedByte7, 1, 2)));
-		this.setRoll(Roll.get(EsxUtil.unpackInt(packedByte7, 1, 3)));
-		this.setAmpEg(AmpEg.get(EsxUtil.unpackInt(packedByte7, 1, 4)));
-		this.setReservedBitsByte7((byte) EsxUtil.unpackInt(packedByte7, 3, 5));
-		// byte 8
-		int packedByte8 = in.readUnsignedByte();
-		this.setModDest(ModDest.get(EsxUtil.unpackInt(packedByte8, 3, 0)));
-		this.setReservedBitAfterModDepth((byte) EsxUtil.unpackInt(packedByte8, 1, 3));
-		this.setModType(ModType.get(EsxUtil.unpackInt(packedByte8, 3, 4)));
-		this.setBpmSync(BpmSync.get(EsxUtil.unpackInt(packedByte8, 1, 7)));
-		// byte 9
-		this.setModSpeed(in.readByte());
-		// byte 10
-		this.setModDepth(in.readByte());
-		// byte 11
-		this.setMotionSequenceStatus(in.readByte());
-
-		byte[] tempBytes;
-
-		// bytes 12~27 (16 bytes)
-		tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA];
-		in.readFully(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA);
-		SequenceData newSequenceData = EsxFactory.eINSTANCE.createSequenceData();
-		newSequenceData.setSequenceData(tempBytes);
-		this.setSequenceData(newSequenceData);
-
-		// bytes 28~155 (128 bytes)
-		tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA_GATE];
-		in.readFully(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA_GATE);
-		SequenceDataGate newSequenceDataGate = EsxFactory.eINSTANCE.createSequenceDataGate();
-		newSequenceDataGate.setSequenceDataGate(tempBytes);
-		this.setSequenceDataGate(newSequenceDataGate);
 
 	}
 

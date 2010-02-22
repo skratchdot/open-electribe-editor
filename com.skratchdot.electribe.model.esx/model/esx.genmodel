@@ -1638,6 +1638,13 @@
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/numSamplesStereoNotEmpty"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/numSongsEmpty"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/numSongsNotEmpty"/>
+      <genOperations ecoreOperation="esx.ecore#//EsxFile/init">
+        <genParameters ecoreParameter="esx.ecore#//EsxFile/init/b"/>
+      </genOperations>
+      <genOperations ecoreOperation="esx.ecore#//EsxFile/init.1">
+        <genParameters ecoreParameter="esx.ecore#//EsxFile/init.1/b"/>
+        <genParameters ecoreParameter="esx.ecore#//EsxFile/init.1/monitor"/>
+      </genOperations>
       <genOperations ecoreOperation="esx.ecore#//EsxFile/findFirstEmptySample">
         <genParameters ecoreParameter="esx.ecore#//EsxFile/findFirstEmptySample/searchMono"/>
         <genParameters ecoreParameter="esx.ecore#//EsxFile/findFirstEmptySample/searchStereo"/>
@@ -1667,6 +1674,9 @@
       <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference esx.ecore#//GlobalParameters/midiControlChangeAssignments"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//GlobalParameters/reservedLong"/>
       <genFeatures children="true" createChild="false" ecoreFeature="ecore:EReference esx.ecore#//GlobalParameters/patternSetParameters"/>
+      <genOperations ecoreOperation="esx.ecore#//GlobalParameters/init">
+        <genParameters ecoreParameter="esx.ecore#//GlobalParameters/init/b"/>
+      </genOperations>
       <genOperations ecoreOperation="esx.ecore#//GlobalParameters/toByteArray"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//MidiChannelType">
@@ -1682,11 +1692,17 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//ParametersFx/edit1"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//ParametersFx/edit2"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//ParametersFx/motionSequenceStatus"/>
+      <genOperations ecoreOperation="esx.ecore#//ParametersFx/init">
+        <genParameters ecoreParameter="esx.ecore#//ParametersFx/init/b"/>
+      </genOperations>
       <genOperations ecoreOperation="esx.ecore#//ParametersFx/toByteArray"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//ParametersMotion">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//ParametersMotion/operationNumber"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//ParametersMotion/operationValue"/>
+      <genOperations ecoreOperation="esx.ecore#//ParametersMotion/init">
+        <genParameters ecoreParameter="esx.ecore#//ParametersMotion/init/b"/>
+      </genOperations>
       <genOperations ecoreOperation="esx.ecore#//ParametersMotion/toByteArray"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//Part">
@@ -1694,18 +1710,30 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Part/motionSequenceStatus"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//PartAccent">
+      <genOperations ecoreOperation="esx.ecore#//PartAccent/init">
+        <genParameters ecoreParameter="esx.ecore#//PartAccent/init/b"/>
+      </genOperations>
       <genOperations ecoreOperation="esx.ecore#//PartAccent/toByteArray"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//PartAudioIn">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//PartAudioIn/reservedBitsByte7"/>
+      <genOperations ecoreOperation="esx.ecore#//PartAudioIn/init">
+        <genParameters ecoreParameter="esx.ecore#//PartAudioIn/init/b"/>
+      </genOperations>
       <genOperations ecoreOperation="esx.ecore#//PartAudioIn/toByteArray"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//PartDrum">
+      <genOperations ecoreOperation="esx.ecore#//PartDrum/init">
+        <genParameters ecoreParameter="esx.ecore#//PartDrum/init/b"/>
+      </genOperations>
       <genOperations ecoreOperation="esx.ecore#//PartDrum/toByteArray"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//PartKeyboard">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//PartKeyboard/glide"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esx.ecore#//PartKeyboard/sequenceDataNote"/>
+      <genOperations ecoreOperation="esx.ecore#//PartKeyboard/init">
+        <genParameters ecoreParameter="esx.ecore#//PartKeyboard/init/b"/>
+      </genOperations>
       <genOperations ecoreOperation="esx.ecore#//PartKeyboard/toByteArray"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//PartNoteNumber">
@@ -1713,6 +1741,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//PartNoteNumber/noteNumber"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//PartStretchSlice">
+      <genOperations ecoreOperation="esx.ecore#//PartStretchSlice/init">
+        <genParameters ecoreParameter="esx.ecore#//PartStretchSlice/init/b"/>
+      </genOperations>
       <genOperations ecoreOperation="esx.ecore#//PartStretchSlice/toByteArray"/>
     </genClasses>
     <genClasses image="false" ecoreClass="esx.ecore#//PartWithCommon">
@@ -1786,6 +1817,13 @@
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/empty"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/patternNumberOriginal"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Pattern/patternNumberCurrent"/>
+      <genOperations ecoreOperation="esx.ecore#//Pattern/init">
+        <genParameters ecoreParameter="esx.ecore#//Pattern/init/b"/>
+      </genOperations>
+      <genOperations ecoreOperation="esx.ecore#//Pattern/init.1">
+        <genParameters ecoreParameter="esx.ecore#//Pattern/init.1/b"/>
+        <genParameters ecoreParameter="esx.ecore#//Pattern/init.1/patternNumber"/>
+      </genOperations>
       <genOperations ecoreOperation="esx.ecore#//Pattern/toByteArray"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//PatternSetParameter">
@@ -1828,11 +1866,37 @@
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//SampleMono">
+      <genOperations ecoreOperation="esx.ecore#//SampleMono/initHeader">
+        <genParameters ecoreParameter="esx.ecore#//SampleMono/initHeader/b"/>
+      </genOperations>
+      <genOperations ecoreOperation="esx.ecore#//SampleMono/initHeader.1">
+        <genParameters ecoreParameter="esx.ecore#//SampleMono/initHeader.1/b"/>
+        <genParameters ecoreParameter="esx.ecore#//SampleMono/initHeader.1/sampleNumber"/>
+      </genOperations>
+      <genOperations ecoreOperation="esx.ecore#//SampleMono/initOffsetChannel1">
+        <genParameters ecoreParameter="esx.ecore#//SampleMono/initOffsetChannel1/b"/>
+      </genOperations>
+      <genOperations ecoreOperation="esx.ecore#//SampleMono/initSliceArray">
+        <genParameters ecoreParameter="esx.ecore#//SampleMono/initSliceArray/b"/>
+      </genOperations>
       <genOperations ecoreOperation="esx.ecore#//SampleMono/toHeaderByteArray"/>
       <genOperations ecoreOperation="esx.ecore#//SampleMono/toOffsetChannel1ByteArray"/>
       <genOperations ecoreOperation="esx.ecore#//SampleMono/toSliceByteArray"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//SampleStereo">
+      <genOperations ecoreOperation="esx.ecore#//SampleStereo/initHeader">
+        <genParameters ecoreParameter="esx.ecore#//SampleStereo/initHeader/b"/>
+      </genOperations>
+      <genOperations ecoreOperation="esx.ecore#//SampleStereo/initHeader.1">
+        <genParameters ecoreParameter="esx.ecore#//SampleStereo/initHeader.1/b"/>
+        <genParameters ecoreParameter="esx.ecore#//SampleStereo/initHeader.1/sampleNumber"/>
+      </genOperations>
+      <genOperations ecoreOperation="esx.ecore#//SampleStereo/initOffsetChannel1">
+        <genParameters ecoreParameter="esx.ecore#//SampleStereo/initOffsetChannel1/b"/>
+      </genOperations>
+      <genOperations ecoreOperation="esx.ecore#//SampleStereo/initOffsetChannel2">
+        <genParameters ecoreParameter="esx.ecore#//SampleStereo/initOffsetChannel2/b"/>
+      </genOperations>
       <genOperations ecoreOperation="esx.ecore#//SampleStereo/toHeaderByteArray"/>
       <genOperations ecoreOperation="esx.ecore#//SampleStereo/toOffsetChannel1ByteArray"/>
       <genOperations ecoreOperation="esx.ecore#//SampleStereo/toOffsetChannel2ByteArray"/>
@@ -1864,13 +1928,24 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/muteHold"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/nextSongNumber"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/numberOfSongEvents"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/originalNumberOfSongEvents"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esx.ecore#//Song/songPatterns"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esx.ecore#//Song/songEvents"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/empty"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/songNumberOriginal"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/songNumberCurrent"/>
+      <genOperations ecoreOperation="esx.ecore#//Song/initSong">
+        <genParameters ecoreParameter="esx.ecore#//Song/initSong/b"/>
+      </genOperations>
+      <genOperations ecoreOperation="esx.ecore#//Song/initSong.1">
+        <genParameters ecoreParameter="esx.ecore#//Song/initSong.1/b"/>
+        <genParameters ecoreParameter="esx.ecore#//Song/initSong.1/songNumber"/>
+      </genOperations>
+      <genOperations ecoreOperation="esx.ecore#//Song/initSongEvents">
+        <genParameters ecoreParameter="esx.ecore#//Song/initSongEvents/b"/>
+      </genOperations>
       <genOperations ecoreOperation="esx.ecore#//Song/toByteArray"/>
-      <genOperations ecoreOperation="esx.ecore#//Song/toSongEventByteArray"/>
+      <genOperations ecoreOperation="esx.ecore#//Song/toSongEventsByteArray"/>
     </genClasses>
     <genClasses image="false" ecoreClass="esx.ecore#//SongEvent">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongEvent/measure"/>
@@ -1882,26 +1957,41 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongEventControl/value"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongEventControl/reservedByte"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongEventControl/reservedShort"/>
+      <genOperations ecoreOperation="esx.ecore#//SongEventControl/init">
+        <genParameters ecoreParameter="esx.ecore#//SongEventControl/init/b"/>
+      </genOperations>
       <genOperations ecoreOperation="esx.ecore#//SongEventControl/toByteArray"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//SongEventDrumNote">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongEventDrumNote/reservedByte"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongEventDrumNote/reservedShort"/>
+      <genOperations ecoreOperation="esx.ecore#//SongEventDrumNote/init">
+        <genParameters ecoreParameter="esx.ecore#//SongEventDrumNote/init/b"/>
+      </genOperations>
       <genOperations ecoreOperation="esx.ecore#//SongEventDrumNote/toByteArray"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//SongEventKeyboardNote">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongEventKeyboardNote/length"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongEventKeyboardNote/noteNumber"/>
+      <genOperations ecoreOperation="esx.ecore#//SongEventKeyboardNote/init">
+        <genParameters ecoreParameter="esx.ecore#//SongEventKeyboardNote/init/b"/>
+      </genOperations>
       <genOperations ecoreOperation="esx.ecore#//SongEventKeyboardNote/toByteArray"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//SongEventMuteStatus">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongEventMuteStatus/reservedShort"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongEventMuteStatus/muteStatus"/>
+      <genOperations ecoreOperation="esx.ecore#//SongEventMuteStatus/init">
+        <genParameters ecoreParameter="esx.ecore#//SongEventMuteStatus/init/b"/>
+      </genOperations>
       <genOperations ecoreOperation="esx.ecore#//SongEventMuteStatus/toByteArray"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//SongEventTempo">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongEventTempo/tempo"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SongEventTempo/reservedShort"/>
+      <genOperations ecoreOperation="esx.ecore#//SongEventTempo/init">
+        <genParameters ecoreParameter="esx.ecore#//SongEventTempo/init/b"/>
+      </genOperations>
       <genOperations ecoreOperation="esx.ecore#//SongEventTempo/toByteArray"/>
     </genClasses>
     <genClasses image="false" ecoreClass="esx.ecore#//SongEventWithPart">

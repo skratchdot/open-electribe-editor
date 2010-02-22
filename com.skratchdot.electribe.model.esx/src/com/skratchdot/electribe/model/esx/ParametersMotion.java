@@ -89,6 +89,14 @@ public interface ParametersMotion extends EObject {
 	 * @model
 	 * @generated
 	 */
+	void init(byte[] b);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
 	byte[] toByteArray();
 
 } // ParametersMotion

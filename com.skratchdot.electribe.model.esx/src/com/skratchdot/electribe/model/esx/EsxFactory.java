@@ -11,15 +11,14 @@
  */
 package com.skratchdot.electribe.model.esx;
 
-import java.util.ArrayList;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EFactory;
 
 import com.skratchdot.electribe.model.esx.util.EsxException;
-import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
 
 /**
  * <!-- begin-user-doc -->
@@ -47,8 +46,6 @@ public interface EsxFactory extends EFactory {
 	 */
 	EsxFile createEsxFile();
 
-	EsxFile createEsxFileFromEsxFile(EsxRandomAccess in, IProgressMonitor monitor) throws EsxException;
-
 	/**
 	 * Returns a new object of class '<em>Global Parameters</em>'.
 	 * <!-- begin-user-doc -->
@@ -66,8 +63,6 @@ public interface EsxFactory extends EFactory {
 	 * @generated
 	 */
 	PatternSetParameter createPatternSetParameter();
-
-	GlobalParameters createGlobalParametersFromEsxFile(EsxRandomAccess in) throws EsxException, IOException;
 
 	/**
 	 * Returns a new object of class '<em>Midi Channel Type</em>'.
@@ -105,8 +100,6 @@ public interface EsxFactory extends EFactory {
 	 */
 	ParametersFx createParametersFx();
 
-	ParametersFx createParametersFx(EsxRandomAccess in, int patternNumber, int parametersFxNumber) throws EsxException, IOException;
-
 	/**
 	 * Returns a new object of class '<em>Parameters Motion</em>'.
 	 * <!-- begin-user-doc -->
@@ -115,8 +108,6 @@ public interface EsxFactory extends EFactory {
 	 * @generated
 	 */
 	ParametersMotion createParametersMotion();
-
-	ParametersMotion createParametersMotion(EsxRandomAccess in, int patternNumber, int parametersMotionNumber) throws EsxException, IOException;
 
 	/**
 	 * Returns a new object of class '<em>Sequence Data</em>'.
@@ -154,8 +145,6 @@ public interface EsxFactory extends EFactory {
 	 */
 	PartAccent createPartAccent();
 
-	PartAccent createPartAccent(EsxRandomAccess in, int patternNumber, int partAccentNumber) throws EsxException, IOException;
-
 	/**
 	 * Returns a new object of class '<em>Part Audio In</em>'.
 	 * <!-- begin-user-doc -->
@@ -164,8 +153,6 @@ public interface EsxFactory extends EFactory {
 	 * @generated
 	 */
 	PartAudioIn createPartAudioIn();
-
-	PartAudioIn createPartAudioIn(EsxRandomAccess in, int patternNumber, int partAudioInNumber) throws EsxException, IOException;
 
 	/**
 	 * Returns a new object of class '<em>Part Drum</em>'.
@@ -176,8 +163,6 @@ public interface EsxFactory extends EFactory {
 	 */
 	PartDrum createPartDrum();
 
-	PartDrum createPartDrum(EsxRandomAccess in, int patternNumber, int partDrumNumber) throws EsxException, IOException;
-
 	/**
 	 * Returns a new object of class '<em>Part Keyboard</em>'.
 	 * <!-- begin-user-doc -->
@@ -186,8 +171,6 @@ public interface EsxFactory extends EFactory {
 	 * @generated
 	 */
 	PartKeyboard createPartKeyboard();
-
-	PartKeyboard createPartKeyboard(EsxRandomAccess in, int patternNumber, int partKeyboardNumber) throws EsxException, IOException;
 
 	/**
 	 * Returns a new object of class '<em>Part Stretch Slice</em>'.
@@ -198,8 +181,6 @@ public interface EsxFactory extends EFactory {
 	 */
 	PartStretchSlice createPartStretchSlice();
 
-	PartStretchSlice createPartStretchSlice(EsxRandomAccess in, int patternNumber, int partStretchSliceNumber) throws EsxException, IOException;
-
 	/**
 	 * Returns a new object of class '<em>Pattern</em>'.
 	 * <!-- begin-user-doc -->
@@ -209,8 +190,6 @@ public interface EsxFactory extends EFactory {
 	 */
 	Pattern createPattern();
 
-	Pattern createPatternFromEsxFile(EsxRandomAccess in, int patternNumber) throws EsxException, IOException;
-
 	/**
 	 * Returns a new object of class '<em>Sample Mono</em>'.
 	 * <!-- begin-user-doc -->
@@ -219,8 +198,6 @@ public interface EsxFactory extends EFactory {
 	 * @generated
 	 */
 	SampleMono createSampleMono();
-
-	SampleMono createSampleMonoFromEsxFile(EsxRandomAccess in, int monoSampleNumber) throws EsxException, IOException;
 
 	SampleMono createSampleMonoFromAudioFile(File file) throws EsxException, IOException;
 
@@ -242,8 +219,6 @@ public interface EsxFactory extends EFactory {
 	 */
 	SampleTune createSampleTune();
 
-	SampleStereo createSampleStereoFromEsxFile(EsxRandomAccess in, int stereoSampleNumber) throws EsxException, IOException;
-
 	SampleStereo createSampleStereoFromAudioFile(File file) throws EsxException, IOException;
 
 	/**
@@ -264,8 +239,6 @@ public interface EsxFactory extends EFactory {
 	 */
 	SongPattern createSongPattern();
 
-	Song createSongFromEsxFile(EsxRandomAccess in, int songNumber) throws EsxException, IOException;
-
 	/**
 	 * Returns a new object of class '<em>Tempo</em>'.
 	 * <!-- begin-user-doc -->
@@ -276,6 +249,12 @@ public interface EsxFactory extends EFactory {
 	Tempo createTempo();
 
 	/**
+	 * @param b a byte array containing song event data. This factory will determine which type of '<em>SongEvent</em>' to create.
+	 * @return a new object that is a subclass of '<em>SongEvent</em>'. It detemines which subclass to create by evaluating the byte array passed in.
+	 */
+	public SongEvent createSongEvent(byte[] b);
+
+	/**
 	 * Returns a new object of class '<em>Song Event Control</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -283,8 +262,6 @@ public interface EsxFactory extends EFactory {
 	 * @generated
 	 */
 	SongEventControl createSongEventControl();
-
-	SongEventControl createSongEventControlFromEsxFile(EsxRandomAccess in, int songEventNumber) throws EsxException, IOException;
 
 	/**
 	 * Returns a new object of class '<em>Song Event Drum Note</em>'.
@@ -295,8 +272,6 @@ public interface EsxFactory extends EFactory {
 	 */
 	SongEventDrumNote createSongEventDrumNote();
 
-	SongEventDrumNote createSongEventDrumNoteFromEsxFile(EsxRandomAccess in, int songEventNumber) throws EsxException, IOException;
-
 	/**
 	 * Returns a new object of class '<em>Song Event Keyboard Note</em>'.
 	 * <!-- begin-user-doc -->
@@ -306,8 +281,6 @@ public interface EsxFactory extends EFactory {
 	 */
 	SongEventKeyboardNote createSongEventKeyboardNote();
 
-	SongEventKeyboardNote createSongEventKeyboardNoteFromEsxFile(EsxRandomAccess in, int songEventNumber) throws EsxException, IOException;
-
 	/**
 	 * Returns a new object of class '<em>Song Event Tempo</em>'.
 	 * <!-- begin-user-doc -->
@@ -316,8 +289,6 @@ public interface EsxFactory extends EFactory {
 	 * @generated
 	 */
 	SongEventTempo createSongEventTempo();
-
-	SongEventTempo createSongEventTempoFromEsxFile(EsxRandomAccess in, int songEventNumber) throws EsxException, IOException;
 
 	/**
 	 * Returns a new object of class '<em>Song Event Mute Status</em>'.
@@ -1167,8 +1138,6 @@ public interface EsxFactory extends EFactory {
 	 * @generated
 	 */
 	String convertIProgressMonitor(IProgressMonitor instanceValue);
-
-	SongEventMuteStatus createSongEventMuteStatusFromEsxFile(EsxRandomAccess in, int songEventNumber) throws EsxException, IOException;
 
 	/**
 	 * Returns the package supported by this factory.

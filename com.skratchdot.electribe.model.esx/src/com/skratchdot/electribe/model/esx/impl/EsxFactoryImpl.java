@@ -11,11 +11,9 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
-import com.skratchdot.electribe.model.esx.*;
-
-import java.util.ArrayList;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EClass;
@@ -39,15 +37,20 @@ import com.skratchdot.electribe.model.esx.FilterType;
 import com.skratchdot.electribe.model.esx.FxChain;
 import com.skratchdot.electribe.model.esx.FxSelect;
 import com.skratchdot.electribe.model.esx.FxSend;
+import com.skratchdot.electribe.model.esx.FxType;
 import com.skratchdot.electribe.model.esx.GlobalParameters;
 import com.skratchdot.electribe.model.esx.LastStep;
 import com.skratchdot.electribe.model.esx.MidiChannel;
 import com.skratchdot.electribe.model.esx.MidiChannelType;
+import com.skratchdot.electribe.model.esx.MidiChannelTypeName;
 import com.skratchdot.electribe.model.esx.MidiClock;
 import com.skratchdot.electribe.model.esx.MidiControlChangeAssignment;
+import com.skratchdot.electribe.model.esx.MidiControlChangeAssignmentName;
 import com.skratchdot.electribe.model.esx.ModDest;
 import com.skratchdot.electribe.model.esx.ModType;
 import com.skratchdot.electribe.model.esx.MotionSequenceStatus;
+import com.skratchdot.electribe.model.esx.MuteHold;
+import com.skratchdot.electribe.model.esx.NextSongNumber;
 import com.skratchdot.electribe.model.esx.NoteNumber;
 import com.skratchdot.electribe.model.esx.ParametersFx;
 import com.skratchdot.electribe.model.esx.ParametersMotion;
@@ -56,31 +59,41 @@ import com.skratchdot.electribe.model.esx.PartAudioIn;
 import com.skratchdot.electribe.model.esx.PartDrum;
 import com.skratchdot.electribe.model.esx.PartKeyboard;
 import com.skratchdot.electribe.model.esx.PartNoteNumber;
+import com.skratchdot.electribe.model.esx.PartNoteNumberName;
 import com.skratchdot.electribe.model.esx.PartStretchSlice;
 import com.skratchdot.electribe.model.esx.Pattern;
 import com.skratchdot.electribe.model.esx.PatternLength;
 import com.skratchdot.electribe.model.esx.PatternNumber;
 import com.skratchdot.electribe.model.esx.PatternSetParameter;
 import com.skratchdot.electribe.model.esx.PitchBendRange;
+import com.skratchdot.electribe.model.esx.PlayLevel;
 import com.skratchdot.electribe.model.esx.Reverse;
 import com.skratchdot.electribe.model.esx.Roll;
 import com.skratchdot.electribe.model.esx.RollType;
 import com.skratchdot.electribe.model.esx.SampleMono;
 import com.skratchdot.electribe.model.esx.SampleNumber;
 import com.skratchdot.electribe.model.esx.SampleStereo;
+import com.skratchdot.electribe.model.esx.SampleTune;
 import com.skratchdot.electribe.model.esx.SequenceData;
 import com.skratchdot.electribe.model.esx.SequenceDataGate;
 import com.skratchdot.electribe.model.esx.SequenceDataNote;
 import com.skratchdot.electribe.model.esx.Song;
+import com.skratchdot.electribe.model.esx.SongEvent;
 import com.skratchdot.electribe.model.esx.SongEventControl;
 import com.skratchdot.electribe.model.esx.SongEventDrumNote;
 import com.skratchdot.electribe.model.esx.SongEventKeyboardNote;
 import com.skratchdot.electribe.model.esx.SongEventMuteStatus;
 import com.skratchdot.electribe.model.esx.SongEventTempo;
+import com.skratchdot.electribe.model.esx.SongLength;
+import com.skratchdot.electribe.model.esx.SongNumber;
+import com.skratchdot.electribe.model.esx.SongPattern;
+import com.skratchdot.electribe.model.esx.StretchStep;
 import com.skratchdot.electribe.model.esx.Swing;
 import com.skratchdot.electribe.model.esx.Tempo;
+import com.skratchdot.electribe.model.esx.TempoLock;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxRandomAccess;
+import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
 /**
  * <!-- begin-user-doc -->
@@ -383,13 +396,6 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 		return patternSetParameter;
 	}
 
-	@Override
-	public GlobalParameters createGlobalParametersFromEsxFile(EsxRandomAccess in)
-			throws EsxException, IOException {
-		GlobalParametersImpl globalParameters = new GlobalParametersImpl(in);
-		return globalParameters;
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -435,14 +441,6 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 		return parametersFx;
 	}
 
-	@Override
-	public ParametersFx createParametersFx(EsxRandomAccess in,
-			int patternNumber, int parametersFxNumber) throws EsxException,
-			IOException {
-		ParametersFxImpl parametersFx = new ParametersFxImpl(in, patternNumber, parametersFxNumber);
-		return parametersFx;
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -450,14 +448,6 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public ParametersMotion createParametersMotion() {
 		ParametersMotionImpl parametersMotion = new ParametersMotionImpl();
-		return parametersMotion;
-	}
-
-	@Override
-	public ParametersMotion createParametersMotion(EsxRandomAccess in,
-			int patternNumber, int parametersMotionNumber) throws EsxException,
-			IOException {
-		ParametersMotionImpl parametersMotion = new ParametersMotionImpl(in, patternNumber, parametersMotionNumber);
 		return parametersMotion;
 	}
 
@@ -501,13 +491,6 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 		return partAccent;
 	}
 
-	@Override
-	public PartAccent createPartAccent(EsxRandomAccess in, int patternNumber,
-			int partAccentNumber) throws EsxException, IOException {
-		PartAccentImpl partAccent = new PartAccentImpl(in, patternNumber, partAccentNumber);
-		return partAccent;
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -515,13 +498,6 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public PartAudioIn createPartAudioIn() {
 		PartAudioInImpl partAudioIn = new PartAudioInImpl();
-		return partAudioIn;
-	}
-
-	@Override
-	public PartAudioIn createPartAudioIn(EsxRandomAccess in, int patternNumber,
-			int partAudioInNumber) throws EsxException, IOException {
-		PartAudioInImpl partAudioIn = new PartAudioInImpl(in, patternNumber, partAudioInNumber);
 		return partAudioIn;
 	}
 
@@ -535,13 +511,6 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 		return partDrum;
 	}
 
-	@Override
-	public PartDrum createPartDrum(EsxRandomAccess in, int patternNumber,
-			int partDrumNumber) throws EsxException, IOException {
-		PartDrumImpl partDrum = new PartDrumImpl(in, patternNumber, partDrumNumber);
-		return partDrum;
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -549,14 +518,6 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public PartKeyboard createPartKeyboard() {
 		PartKeyboardImpl partKeyboard = new PartKeyboardImpl();
-		return partKeyboard;
-	}
-
-	@Override
-	public PartKeyboard createPartKeyboard(EsxRandomAccess in,
-			int patternNumber, int partKeyboardNumber) throws EsxException,
-			IOException {
-		PartKeyboardImpl partKeyboard = new PartKeyboardImpl(in, patternNumber, partKeyboardNumber);
 		return partKeyboard;
 	}
 
@@ -570,14 +531,6 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 		return partStretchSlice;
 	}
 
-	@Override
-	public PartStretchSlice createPartStretchSlice(EsxRandomAccess in,
-			int patternNumber, int partStretchSliceNumber) throws EsxException,
-			IOException {
-		PartStretchSliceImpl partStretchSlice = new PartStretchSliceImpl(in, patternNumber, partStretchSliceNumber);
-		return partStretchSlice;
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -588,11 +541,6 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 		return pattern;
 	}
 
-	public Pattern createPatternFromEsxFile(EsxRandomAccess in, int patternNumber) throws EsxException, IOException {
-		PatternImpl pattern = new PatternImpl(in, patternNumber);
-		return pattern;
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -600,12 +548,6 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public SampleMono createSampleMono() {
 		SampleMonoImpl sampleMono = new SampleMonoImpl();
-		return sampleMono;
-	}
-
-	public SampleMono createSampleMonoFromEsxFile(EsxRandomAccess in,
-			int monoSampleNumber) throws EsxException, IOException {
-		SampleMonoImpl sampleMono = new SampleMonoImpl(in, monoSampleNumber);
 		return sampleMono;
 	}
 
@@ -636,12 +578,6 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 		return sampleTune;
 	}
 
-	public SampleStereo createSampleStereoFromEsxFile(EsxRandomAccess in,
-			int stereoSampleNumber) throws EsxException, IOException {
-		SampleStereoImpl sampleStereo = new SampleStereoImpl(in, stereoSampleNumber);
-		return sampleStereo;
-	}
-
 	@Override
 	public SampleStereo createSampleStereoFromAudioFile(File file)
 			throws EsxException, IOException {
@@ -669,11 +605,6 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 		return songPattern;
 	}
 
-	public Song createSongFromEsxFile(EsxRandomAccess in, int songNumber) throws EsxException, IOException {
-		SongImpl song = new SongImpl(in, songNumber);
-		return song;
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -685,20 +616,52 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	}
 
 	/**
+	 * @param b a byte array containing song event data. This factory will determine which type of song event to create
+	 * @return Returns the correct subclass of SongEvent by evaluating the byte array passed in
+	 */
+	public SongEvent createSongEvent(byte[] b) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+
+		// Ignore bytes 0~1
+		in.getShort();
+		// bytes 2~3
+		short operationNumber = in.getShort();
+
+		switch(operationNumber) {
+			case 503:
+				SongEventMuteStatus songEventMuteStatus = this.createSongEventMuteStatus();
+				songEventMuteStatus.init(b);
+				return songEventMuteStatus;
+			case 515:
+				SongEventTempo songEventTempo = this.createSongEventTempo();
+				songEventTempo.init(b);
+				return songEventTempo;
+			case 0x4000:
+				int partNumber = in.getByte();
+				if(partNumber==10 || partNumber==11) {
+					SongEventKeyboardNote songEventKeyboardNote = this.createSongEventKeyboardNote();
+					songEventKeyboardNote.init(b);
+					return songEventKeyboardNote;
+				}
+				else {
+					SongEventDrumNote songEventDrumNote = this.createSongEventDrumNote();
+					songEventDrumNote.init(b);
+					return songEventDrumNote;	
+				}			
+			default:
+				SongEventControl songEventControl = this.createSongEventControl();
+				songEventControl.init(b);
+				return songEventControl;
+		}
+	}
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public SongEventControl createSongEventControl() {
 		SongEventControlImpl songEventControl = new SongEventControlImpl();
-		return songEventControl;
-	}
-
-	@Override
-	public SongEventControl createSongEventControlFromEsxFile(
-			EsxRandomAccess in, int songEventNumber) throws EsxException,
-			IOException {
-		SongEventControlImpl songEventControl = new SongEventControlImpl(in, songEventNumber);
 		return songEventControl;
 	}
 
@@ -712,14 +675,6 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 		return songEventDrumNote;
 	}
 
-	@Override
-	public SongEventDrumNote createSongEventDrumNoteFromEsxFile(
-			EsxRandomAccess in, int songEventNumber) throws EsxException,
-			IOException {
-		SongEventDrumNoteImpl songEventDrumNote = new SongEventDrumNoteImpl(in, songEventNumber);
-		return songEventDrumNote;
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -730,14 +685,6 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 		return songEventKeyboardNote;
 	}
 
-	@Override
-	public SongEventKeyboardNote createSongEventKeyboardNoteFromEsxFile(
-			EsxRandomAccess in, int songEventNumber) throws EsxException,
-			IOException {
-		SongEventKeyboardNoteImpl songEventKeyboardNote = new SongEventKeyboardNoteImpl(in, songEventNumber);
-		return songEventKeyboardNote;
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -745,13 +692,6 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public SongEventTempo createSongEventTempo() {
 		SongEventTempoImpl songEventTempo = new SongEventTempoImpl();
-		return songEventTempo;
-	}
-
-	@Override
-	public SongEventTempo createSongEventTempoFromEsxFile(EsxRandomAccess in,
-			int songEventNumber) throws EsxException, IOException {
-		SongEventTempoImpl songEventTempo = new SongEventTempoImpl(in, songEventNumber);
 		return songEventTempo;
 	}
 
@@ -2349,14 +2289,6 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public String convertIProgressMonitorToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
-	}
-
-	@Override
-	public SongEventMuteStatus createSongEventMuteStatusFromEsxFile(
-			EsxRandomAccess in, int songEventNumber) throws EsxException,
-			IOException {
-		SongEventMuteStatusImpl songEventMuteStatus = new SongEventMuteStatusImpl(in, songEventNumber);
-		return songEventMuteStatus;
 	}
 
 	/**

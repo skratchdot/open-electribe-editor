@@ -89,6 +89,14 @@ public interface SongEventDrumNote extends SongEvent, SongEventWithPart {
 	 * @model
 	 * @generated
 	 */
+	void init(byte[] b);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
 	byte[] toByteArray();
 
 } // SongEventDrumNote

@@ -89,6 +89,21 @@ public class ParametersMotionImpl extends EObjectImpl implements ParametersMotio
 		super();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void init(byte[] b) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+		// bytes 0~1
+		this.setOperationNumber(in.getShort());
+		// bytes 2~129
+		byte[] tempBytes = new byte[EsxUtil.NUM_MOTION_OPERATIONS];
+		in.getBytes(tempBytes, 0, EsxUtil.NUM_MOTION_OPERATIONS);
+		this.setOperationValue(tempBytes);
+	}
+
 	public ParametersMotionImpl(EsxRandomAccess in, int patternNumber,
 			int parametersMotionNumber) throws EsxException, IOException {
 		super();
@@ -107,13 +122,6 @@ public class ParametersMotionImpl extends EObjectImpl implements ParametersMotio
 				EsxUtil.PATTERN_OFFSET_PARAMETERS_MOTION +
 				(parametersMotionNumber * EsxUtil.CHUNKSIZE_PARAMETERS_MOTION));
 
-		// bytes 0~1
-		this.setOperationNumber(in.readShort());
-
-		// bytes 2~129
-		byte[] tempBytes = new byte[EsxUtil.NUM_MOTION_OPERATIONS];
-		in.readFully(tempBytes, 0, EsxUtil.NUM_MOTION_OPERATIONS);
-		this.setOperationValue(tempBytes);
 
 	}
 

@@ -61,7 +61,8 @@ import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getSongLength <em>Song Length</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getMuteHold <em>Mute Hold</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getNextSongNumber <em>Next Song Number</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getNumberOfSongEvents <em>Number Of Song Events</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getNumberOfSongEventsCurrent <em>Number Of Song Events Current</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getNumberOfSongEventsOriginal <em>Number Of Song Events Original</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getSongPatterns <em>Song Patterns</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#getSongEvents <em>Song Events</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongImpl#isEmpty <em>Empty</em>}</li>
@@ -184,14 +185,34 @@ public class SongImpl extends EObjectImpl implements Song {
 	protected NextSongNumber nextSongNumber = NEXT_SONG_NUMBER_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getNumberOfSongEvents() <em>Number Of Song Events</em>}' attribute.
+	 * The default value of the '{@link #getNumberOfSongEventsCurrent() <em>Number Of Song Events Current</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNumberOfSongEvents()
+	 * @see #getNumberOfSongEventsCurrent()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final short NUMBER_OF_SONG_EVENTS_EDEFAULT = 0;
+	protected static final short NUMBER_OF_SONG_EVENTS_CURRENT_EDEFAULT = 0;
+
+	/**
+	 * The default value of the '{@link #getNumberOfSongEventsOriginal() <em>Number Of Song Events Original</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumberOfSongEventsOriginal()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final short NUMBER_OF_SONG_EVENTS_ORIGINAL_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getNumberOfSongEventsOriginal() <em>Number Of Song Events Original</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumberOfSongEventsOriginal()
+	 * @generated
+	 * @ordered
+	 */
+	protected short numberOfSongEventsOriginal = NUMBER_OF_SONG_EVENTS_ORIGINAL_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getSongPatterns() <em>Song Patterns</em>}' containment reference list.
@@ -262,6 +283,77 @@ public class SongImpl extends EObjectImpl implements Song {
 		super();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void initSong(byte[] b) {
+		this.initSong(b, -1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void initSong(byte[] b, int songNumber) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+
+		// Set the original .esx file song number
+		this.setSongNumberOriginal(SongNumber.get(songNumber));
+
+		// bytes 0~7
+		byte[] newSongName = new byte[8];
+		in.getBytes(newSongName, 0, 8);
+		this.setName(new String(newSongName));
+		// bytes 8~9
+		Tempo newTempo = EsxFactory.eINSTANCE.createTempo();
+		newTempo.setCurrentValueFromShort(in.getShort());
+		this.setTempo(newTempo);
+		// byte 10
+		this.setTempoLock(TempoLock.get(in.getByte()));
+		// byte 11
+		this.setSongLength(SongLength.get(in.getByte()));
+		// byte 12
+		this.setMuteHold(MuteHold.get(in.getByte()));
+		// byte 13
+		this.setNextSongNumber(NextSongNumber.get(in.getByte()));
+		// bytes 14~15
+		this.setNumberOfSongEventsOriginal(in.getShort());
+
+		// Create our list of SongPatterns
+		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
+			SongPattern songPattern = EsxFactory.eINSTANCE.createSongPattern();
+			songPattern.setPositionOriginal(i);
+			this.getSongPatterns().add(i, songPattern);
+		}
+		// bytes 16~271 (SongPatterns - PatternNumber)
+		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
+			this.getSongPatterns().get(i).setPatternNumber(PatternNumber.get(in.getUnsignedByte()));
+		}
+		// bytes 272~527
+		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
+			this.getSongPatterns().get(i).setNoteOffset(in.getByte());
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void initSongEvents(byte[] b) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+
+		byte[] songEventBytes = new byte[EsxUtil.CHUNKSIZE_SONG_EVENT];
+		while(in.position()<in.limit()) {
+			in.getBytes(songEventBytes);
+			SongEvent songEvent = EsxFactory.eINSTANCE.createSongEvent(songEventBytes);
+			this.getSongEvents().add(songEvent);			
+		}
+	}
+
 	protected SongImpl(EsxRandomAccess in, int songNumber) throws EsxException, IOException {
 		super();
 
@@ -272,72 +364,8 @@ public class SongImpl extends EObjectImpl implements Song {
 		// Jump to the start of songNumber's data
 		in.seek(EsxUtil.ADDR_SONG_DATA + (songNumber * EsxUtil.CHUNKSIZE_SONG));
 
-		// Set the original .esx file song number
-		this.setSongNumberOriginal(SongNumber.get(songNumber));
-
-		// bytes 0~7
-		byte[] newSongName = new byte[8];
-		in.read(newSongName, 0, 8);
-		this.setName(new String(newSongName));
-
-		// bytes 8~9
-		Tempo newTempo = EsxFactory.eINSTANCE.createTempo();
-		newTempo.setCurrentValueFromShort(in.readShort());
-		this.setTempo(newTempo);
-
-		// byte 10
-		this.setTempoLock(TempoLock.get(in.readByte()));
-		// byte 11
-		this.setSongLength(SongLength.get(in.readByte()));
-		// byte 12
-		this.setMuteHold(MuteHold.get(in.readByte()));
-		// byte 13
-		this.setNextSongNumber(NextSongNumber.get(in.readByte()));
-		// bytes 14~15
-		short tempNumberOfSongEvents = in.readShort();
-
-		// Create our list of SongPatterns
-		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
-			SongPattern songPattern = EsxFactory.eINSTANCE.createSongPattern();
-			songPattern.setPositionOriginal(i);
-			this.getSongPatterns().add(i, songPattern);
-		}
-		// bytes 16~271 (SongPatterns - PatternNumber)
-		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
-			this.getSongPatterns().get(i).setPatternNumber(PatternNumber.get(in.readUnsignedByte()));
-		}
-		// bytes 272~527
-		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
-			this.getSongPatterns().get(i).setNoteOffset(in.readByte());
-		}
 
 		// read in song events
-		if(tempNumberOfSongEvents > 0) {
-			int currentSongEventNumber = this.getNumberOfPreviousSongEvents(in, songNumber);
-			SongEvent songEvent;
-			for(int i=0; i<tempNumberOfSongEvents; i++) {
-				int songEventType = this.getSongEventType(in, currentSongEventNumber);
-				switch(songEventType) {
-					case EsxPackage.SONG_EVENT_KEYBOARD_NOTE:
-						songEvent = EsxFactory.eINSTANCE.createSongEventKeyboardNoteFromEsxFile(in, currentSongEventNumber);
-						break;
-					case EsxPackage.SONG_EVENT_DRUM_NOTE:
-						songEvent = EsxFactory.eINSTANCE.createSongEventDrumNoteFromEsxFile(in, currentSongEventNumber);
-						break;
-					case EsxPackage.SONG_EVENT_MUTE_STATUS:
-						songEvent = EsxFactory.eINSTANCE.createSongEventMuteStatusFromEsxFile(in, currentSongEventNumber);
-						break;
-					case EsxPackage.SONG_EVENT_TEMPO:
-						songEvent = EsxFactory.eINSTANCE.createSongEventTempoFromEsxFile(in, currentSongEventNumber);
-						break;
-					default:
-						songEvent = EsxFactory.eINSTANCE.createSongEventControlFromEsxFile(in, currentSongEventNumber);
-						break;
-				}
-				currentSongEventNumber++;
-				this.getSongEvents().add(songEvent);
-			}
-		}
 
 	}
 
@@ -504,8 +532,29 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public short getNumberOfSongEvents() {
+	public short getNumberOfSongEventsCurrent() {
 		return (short) this.getSongEvents().size();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public short getNumberOfSongEventsOriginal() {
+		return numberOfSongEventsOriginal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNumberOfSongEventsOriginal(short newNumberOfSongEventsOriginal) {
+		short oldNumberOfSongEventsOriginal = numberOfSongEventsOriginal;
+		numberOfSongEventsOriginal = newNumberOfSongEventsOriginal;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL, oldNumberOfSongEventsOriginal, numberOfSongEventsOriginal));
 	}
 
 	/**
@@ -590,7 +639,7 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public byte[] toByteArray() {
+	public byte[] toSongByteArray() {
 		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_SONG);
 		// bytes 0~7
 		buf.putBytes(EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00), 0, 8);
@@ -605,7 +654,7 @@ public class SongImpl extends EObjectImpl implements Song {
 		// byte 13
 		buf.putUnsignedByte(this.getNextSongNumber().getValue());
 		// bytes 14~15
-		buf.putShort(this.getNumberOfSongEvents());
+		buf.putShort(this.getNumberOfSongEventsCurrent());
 		// bytes 16~271 (SongPatterns - PatternNumber)
 		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
 			buf.putUnsignedByte(this.getSongPatterns().get(i).getPatternNumber().getValue());
@@ -622,8 +671,8 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public byte[] toSongEventByteArray() {
-		short numEvents = this.getNumberOfSongEvents();
+	public byte[] toSongEventsByteArray() {
+		short numEvents = this.getNumberOfSongEventsCurrent();
 		if(numEvents>0) {
 			ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_SONG_EVENT*numEvents);
 			// write song events
@@ -689,8 +738,10 @@ public class SongImpl extends EObjectImpl implements Song {
 				return getMuteHold();
 			case EsxPackage.SONG__NEXT_SONG_NUMBER:
 				return getNextSongNumber();
-			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS:
-				return getNumberOfSongEvents();
+			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_CURRENT:
+				return getNumberOfSongEventsCurrent();
+			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL:
+				return getNumberOfSongEventsOriginal();
 			case EsxPackage.SONG__SONG_PATTERNS:
 				return getSongPatterns();
 			case EsxPackage.SONG__SONG_EVENTS:
@@ -731,6 +782,9 @@ public class SongImpl extends EObjectImpl implements Song {
 				return;
 			case EsxPackage.SONG__NEXT_SONG_NUMBER:
 				setNextSongNumber((NextSongNumber)newValue);
+				return;
+			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL:
+				setNumberOfSongEventsOriginal((Short)newValue);
 				return;
 			case EsxPackage.SONG__SONG_PATTERNS:
 				getSongPatterns().clear();
@@ -773,6 +827,9 @@ public class SongImpl extends EObjectImpl implements Song {
 			case EsxPackage.SONG__NEXT_SONG_NUMBER:
 				setNextSongNumber(NEXT_SONG_NUMBER_EDEFAULT);
 				return;
+			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL:
+				setNumberOfSongEventsOriginal(NUMBER_OF_SONG_EVENTS_ORIGINAL_EDEFAULT);
+				return;
 			case EsxPackage.SONG__SONG_PATTERNS:
 				getSongPatterns().clear();
 				return;
@@ -806,8 +863,10 @@ public class SongImpl extends EObjectImpl implements Song {
 				return muteHold != MUTE_HOLD_EDEFAULT;
 			case EsxPackage.SONG__NEXT_SONG_NUMBER:
 				return nextSongNumber != NEXT_SONG_NUMBER_EDEFAULT;
-			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS:
-				return getNumberOfSongEvents() != NUMBER_OF_SONG_EVENTS_EDEFAULT;
+			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_CURRENT:
+				return getNumberOfSongEventsCurrent() != NUMBER_OF_SONG_EVENTS_CURRENT_EDEFAULT;
+			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL:
+				return numberOfSongEventsOriginal != NUMBER_OF_SONG_EVENTS_ORIGINAL_EDEFAULT;
 			case EsxPackage.SONG__SONG_PATTERNS:
 				return songPatterns != null && !songPatterns.isEmpty();
 			case EsxPackage.SONG__SONG_EVENTS:
@@ -842,57 +901,12 @@ public class SongImpl extends EObjectImpl implements Song {
 		result.append(muteHold);
 		result.append(", nextSongNumber: ");
 		result.append(nextSongNumber);
+		result.append(", numberOfSongEventsOriginal: ");
+		result.append(numberOfSongEventsOriginal);
 		result.append(", songNumberOriginal: ");
 		result.append(songNumberOriginal);
 		result.append(')');
 		return result.toString();
-	}
-
-	@Override
-	public int getNumberOfPreviousSongEvents(EsxRandomAccess in, int songNumber) throws EsxException, IOException {
-		// Stop immediately if we are passed an invalid songNumber
-		if (songNumber >= EsxUtil.NUM_SONGS || songNumber < 0)
-			throw new EsxException("Invalid songNumber: " + songNumber);
-
-		int songEventCount = 0;
-		int numberOfSongEventsOffset = 14; // byte 14~15 holds the numberOfSongEvents
-
-		// Loop through previous songs increment event count
-		for(int i=0; i<songNumber; i++) {
-			in.seek(EsxUtil.ADDR_SONG_DATA + (i * EsxUtil.CHUNKSIZE_SONG) + numberOfSongEventsOffset);
-			songEventCount = songEventCount + in.readShort();
-		}
-
-		return songEventCount;
-	}
-
-	@Override
-	public int getSongEventType(EsxRandomAccess in, int songEventNumber) throws EsxException, IOException {
-		// Stop immediately if we are passed an invalid songEventNumber
-		if (songEventNumber >= EsxUtil.MAX_NUM_SONG_EVENTS || songEventNumber < 0)
-			throw new EsxException("Invalid songEventNumber: " + songEventNumber);
-
-		int operationNumberOffset = 2; // byte 2~3 holds the operationNumber
-
-		in.seek(EsxUtil.ADDR_SONG_EVENT_DATA + (songEventNumber * EsxUtil.CHUNKSIZE_SONG_EVENT) + operationNumberOffset);
-		short operationNumber = in.readShort();
-
-		if(operationNumber==503) {
-			return EsxPackage.SONG_EVENT_MUTE_STATUS;
-		}
-		else if(operationNumber==515) {
-			return EsxPackage.SONG_EVENT_TEMPO;
-		}
-		else if(operationNumber==0x4000) {
-			int partNumber = in.readByte();
-			if(partNumber==10 || partNumber==11)
-				return EsxPackage.SONG_EVENT_KEYBOARD_NOTE;
-			else
-				return EsxPackage.SONG_EVENT_DRUM_NOTE;
-		}
-		else {
-			return EsxPackage.SONG_EVENT_CONTROL;
-		}
 	}
 
 } //SongImpl

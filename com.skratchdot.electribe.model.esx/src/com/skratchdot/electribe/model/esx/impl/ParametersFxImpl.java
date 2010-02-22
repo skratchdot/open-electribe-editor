@@ -132,6 +132,23 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 		super();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void init(byte[] b) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+		// byte 0
+		this.setEffectType(FxType.get(in.getByte()));
+		// byte 1
+		this.setEdit1(in.getByte());
+		// byte 2
+		this.setEdit2(in.getByte());
+		// byte 3
+		this.setMotionSequenceStatus(in.getByte());
+	}
+
 	public ParametersFxImpl(EsxRandomAccess in, int patternNumber,
 			int parametersFxNumber) throws EsxException, IOException {
 		super();
@@ -150,14 +167,6 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 				EsxUtil.PATTERN_OFFSET_PARAMETERS_FX +
 				(parametersFxNumber * EsxUtil.CHUNKSIZE_PARAMETERS_FX));
 
-		// byte 0
-		this.setEffectType(FxType.get(in.readByte()));
-		// byte 1
-		this.setEdit1(in.readByte());
-		// byte 2
-		this.setEdit2(in.readByte());
-		// byte 3
-		this.setMotionSequenceStatus(in.readByte());
 
 	}
 

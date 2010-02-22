@@ -52,7 +52,25 @@ public class ExtendedByteBuffer  {
 			buf = ByteBuffer.allocate(capacity);
 		}
 	}
+	
+	/**
+	 * Allocates an ExtendedByteBuffer by calling {@link java.nio.ByteBuffer#wrap(byte[])} internally
+	 * @param array
+	 */
+	public ExtendedByteBuffer(byte[] array) {
+		buf = ByteBuffer.wrap(array);
+	}
 
+	/**
+	 * Allocates an ExtendedByteBuffer by calling {@link java.nio.ByteBuffer#wrap(byte[], int, int)} internally
+	 * @param array
+	 * @param offset
+	 * @param length
+	 */
+	public ExtendedByteBuffer(byte[] array, int offset, int length) {
+		buf = ByteBuffer.wrap(array, offset, length);
+	}
+	
 	/**
 	 * @return
 	 * @see java.nio.ByteBuffer#array()
@@ -225,6 +243,18 @@ public class ExtendedByteBuffer  {
 	 */
 	public ByteBuffer getBytes(byte[] dst, int offset, int length) {
 		return buf.get(dst, offset, length);
+	}
+	
+	/**
+	 * @param position The position in which to start getting bytes. Must be non-negative and no larger than the current limit
+	 * @param length The number of bytes to get.  Must be non-negative, and position+length should be no larger than the current limit.
+	 * @return Returns a byte array from the ExtendedByteBuffer starting at the given position with the given length. New newPostion of the EsxByteBuffer will be postion+length.
+	 */
+	public byte[] getBytes(int position, int length) {
+		byte[] returnBytes = new byte[length];
+		buf.position(position);
+		buf.get(returnBytes);
+		return returnBytes;
 	}
 
 	/**
@@ -712,6 +742,8 @@ public class ExtendedByteBuffer  {
 		return buf.slice();
 	}
 
+	
+	
 	/**
 	 * @return
 	 * @see java.nio.ByteBuffer#toString()

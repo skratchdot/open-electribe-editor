@@ -42,7 +42,12 @@ import junit.textui.TestRunner;
  * <p>
  * The following operations are tested:
  * <ul>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#init(byte[]) <em>Init</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#init(byte[], org.eclipse.core.runtime.IProgressMonitor) <em>Init</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#findFirstEmptySample(boolean, boolean, int, java.util.ArrayList) <em>Find First Empty Sample</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#setAllOffsets() <em>Set All Offsets</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#toByteArray() <em>To Byte Array</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#toByteArray(org.eclipse.core.runtime.IProgressMonitor) <em>To Byte Array</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -275,6 +280,32 @@ public class EsxFileTest extends TestCase {
 	}
 
 	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#init(byte[]) <em>Init</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#init(byte[])
+	 * @generated
+	 */
+	public void testInit__byte() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#init(byte[], org.eclipse.core.runtime.IProgressMonitor) <em>Init</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#init(byte[], org.eclipse.core.runtime.IProgressMonitor)
+	 * @generated
+	 */
+	public void testInit__byte_IProgressMonitor() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
 	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#findFirstEmptySample(boolean, boolean, int, java.util.ArrayList) <em>Find First Empty Sample</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -282,6 +313,45 @@ public class EsxFileTest extends TestCase {
 	 * @generated
 	 */
 	public void testFindFirstEmptySample__boolean_boolean_int_ArrayList() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#setAllOffsets() <em>Set All Offsets</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#setAllOffsets()
+	 * @generated
+	 */
+	public void testSetAllOffsets() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#toByteArray() <em>To Byte Array</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#toByteArray()
+	 * @generated
+	 */
+	public void testToByteArray() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#toByteArray(org.eclipse.core.runtime.IProgressMonitor) <em>To Byte Array</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#toByteArray(org.eclipse.core.runtime.IProgressMonitor)
+	 * @generated
+	 */
+	public void testToByteArray__IProgressMonitor() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

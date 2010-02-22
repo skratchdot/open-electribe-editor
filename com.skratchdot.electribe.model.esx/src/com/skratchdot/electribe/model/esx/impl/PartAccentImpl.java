@@ -62,6 +62,25 @@ public class PartAccentImpl extends PartImpl implements PartAccent {
 		super();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void init(byte[] b) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+		// byte 0
+		this.setLevel(in.getByte());
+		// byte 1
+		this.setMotionSequenceStatus(in.getByte());
+		// bytes 2~17
+		byte[] tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA];
+		in.getBytes(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA);
+		SequenceData newSequenceData = EsxFactory.eINSTANCE.createSequenceData();
+		newSequenceData.setSequenceData(tempBytes);
+		this.setSequenceData(newSequenceData);
+	}
+
 	public PartAccentImpl(EsxRandomAccess in, int patternNumber,
 			int partAccentNumber) throws EsxException, IOException {
 		super();
@@ -80,16 +99,6 @@ public class PartAccentImpl extends PartImpl implements PartAccent {
 				EsxUtil.PATTERN_OFFSET_PARTS_ACCENT +
 				(partAccentNumber * EsxUtil.CHUNKSIZE_PARTS_ACCENT));
 
-		// byte 0
-		this.setLevel(in.readByte());
-		// byte 1
-		this.setMotionSequenceStatus(in.readByte());
-		// bytes 2~17
-		byte[] tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA];
-		in.readFully(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA);
-		SequenceData newSequenceData = EsxFactory.eINSTANCE.createSequenceData();
-		newSequenceData.setSequenceData(tempBytes);
-		this.setSequenceData(newSequenceData);
 
 	}
 

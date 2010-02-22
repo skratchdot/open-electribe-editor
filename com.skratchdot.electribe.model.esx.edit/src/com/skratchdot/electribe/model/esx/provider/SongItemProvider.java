@@ -78,7 +78,8 @@ public class SongItemProvider
 			addSongLengthPropertyDescriptor(object);
 			addMuteHoldPropertyDescriptor(object);
 			addNextSongNumberPropertyDescriptor(object);
-			addNumberOfSongEventsPropertyDescriptor(object);
+			addNumberOfSongEventsCurrentPropertyDescriptor(object);
+			addNumberOfSongEventsOriginalPropertyDescriptor(object);
 			addEmptyPropertyDescriptor(object);
 			addSongNumberOriginalPropertyDescriptor(object);
 			addSongNumberCurrentPropertyDescriptor(object);
@@ -219,20 +220,42 @@ public class SongItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Number Of Song Events feature.
+	 * This adds a property descriptor for the Number Of Song Events Current feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNumberOfSongEventsPropertyDescriptor(Object object) {
+	protected void addNumberOfSongEventsCurrentPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Song_numberOfSongEvents_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Song_numberOfSongEvents_feature", "_UI_Song_type"),
-				 EsxPackage.Literals.SONG__NUMBER_OF_SONG_EVENTS,
+				 getString("_UI_Song_numberOfSongEventsCurrent_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Song_numberOfSongEventsCurrent_feature", "_UI_Song_type"),
+				 EsxPackage.Literals.SONG__NUMBER_OF_SONG_EVENTS_CURRENT,
 				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Number Of Song Events Original feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNumberOfSongEventsOriginalPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Song_numberOfSongEventsOriginal_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Song_numberOfSongEventsOriginal_feature", "_UI_Song_type"),
+				 EsxPackage.Literals.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL,
+				 true,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
@@ -387,7 +410,7 @@ public class SongItemProvider
 			// NextSong
 			case 7: return ((Song) object).getNextSongNumber().getLiteral();
 			// NumOfEvents
-			case 8: return Short.toString(((Song) object).getNumberOfSongEvents());
+			case 8: return Short.toString(((Song) object).getNumberOfSongEventsCurrent());
 			default: return getText(object);
 		}
 	}
@@ -410,7 +433,8 @@ public class SongItemProvider
 			case EsxPackage.SONG__SONG_LENGTH:
 			case EsxPackage.SONG__MUTE_HOLD:
 			case EsxPackage.SONG__NEXT_SONG_NUMBER:
-			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS:
+			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_CURRENT:
+			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL:
 			case EsxPackage.SONG__EMPTY:
 			case EsxPackage.SONG__SONG_NUMBER_ORIGINAL:
 			case EsxPackage.SONG__SONG_NUMBER_CURRENT:

@@ -512,6 +512,68 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		super();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void init(byte[] b) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+		// bytes 0~1
+		this.setSampleNumber(in.getShort());
+		// byte 2
+		this.setSliceNumber(in.getByte());
+		// byte 3
+		// There is conflicting info on this in the "ESX1_Midi_Imp.txt" file
+		// TABLE6 says "reserved", but TABLE1 infers byte2 and byte3 are
+		// sliceNumber
+		this.setReservedByte(in.getByte());
+		// byte 4
+		this.setFilterType(FilterType.get(in.getByte()));
+		// byte 5
+		this.setCutoff(in.getByte());
+		// byte 6
+		this.setResonance(in.getByte());
+		// byte 7
+		this.setEgIntensity(in.getByte());
+		// byte 8
+		this.setPitch(in.getByte());
+		// byte 9
+		this.setLevel(in.getByte());
+		// byte 10
+		this.setPan(in.getByte());
+		// byte 11
+		this.setEgTime(in.getByte());
+		// byte 12
+		this.setStartPoint(in.getByte());
+		// byte 13
+		int packedByte13 = in.getUnsignedByte();
+		this.setFxSelect(FxSelect.get(EsxUtil.unpackInt(packedByte13, 2, 0)));
+		this.setFxSend(FxSend.get(EsxUtil.unpackInt(packedByte13, 1, 2)));
+		this.setRoll(Roll.get(EsxUtil.unpackInt(packedByte13, 1, 3)));
+		this.setAmpEg(AmpEg.get(EsxUtil.unpackInt(packedByte13, 1, 4)));
+		this.setReverse(Reverse.get(EsxUtil.unpackInt(packedByte13, 1, 5)));
+		this.setReservedBitsAfterReverse((byte) EsxUtil.unpackInt(packedByte13, 2, 6));
+		// byte 14
+		int packedByte14 = in.getUnsignedByte();
+		this.setModDest(ModDest.get(EsxUtil.unpackInt(packedByte14, 3, 0)));
+		this.setReservedBitAfterModDepth((byte) EsxUtil.unpackInt(packedByte14, 1, 3));
+		this.setModType(ModType.get(EsxUtil.unpackInt(packedByte14, 3, 4)));
+		this.setBpmSync(BpmSync.get(EsxUtil.unpackInt(packedByte14, 1, 7)));
+		// byte 15
+		this.setModSpeed(in.getByte());
+		// byte 16
+		this.setModDepth(in.getByte());
+		// byte 17
+		this.setMotionSequenceStatus(in.getByte());
+		// bytes 18~33
+		byte[] tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA];
+		in.getBytes(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA);
+		SequenceData newSequenceData = EsxFactory.eINSTANCE.createSequenceData();
+		newSequenceData.setSequenceData(tempBytes);
+		this.setSequenceData(newSequenceData);
+	}
+
 	public PartDrumImpl(EsxRandomAccess in, int patternNumber, int partDrumNumber) throws EsxException, IOException {
 		super();
 
@@ -529,59 +591,6 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 				EsxUtil.PATTERN_OFFSET_PARTS_DRUM +
 				(partDrumNumber * EsxUtil.CHUNKSIZE_PARTS_DRUM));
 
-		// bytes 0~1
-		this.setSampleNumber(in.readShort());
-		// byte 2
-		this.setSliceNumber(in.readByte());
-		// byte 3
-		// There is conflicting info on this in the "ESX1_Midi_Imp.txt" file
-		// TABLE6 says "reserved", but TABLE1 infers byte2 and byte3 are
-		// sliceNumber
-		this.setReservedByte(in.readByte());
-		// byte 4
-		this.setFilterType(FilterType.get(in.readByte()));
-		// byte 5
-		this.setCutoff(in.readByte());
-		// byte 6
-		this.setResonance(in.readByte());
-		// byte 7
-		this.setEgIntensity(in.readByte());
-		// byte 8
-		this.setPitch(in.readByte());
-		// byte 9
-		this.setLevel(in.readByte());
-		// byte 10
-		this.setPan(in.readByte());
-		// byte 11
-		this.setEgTime(in.readByte());
-		// byte 12
-		this.setStartPoint(in.readByte());
-		// byte 13
-		int packedByte13 = in.readUnsignedByte();
-		this.setFxSelect(FxSelect.get(EsxUtil.unpackInt(packedByte13, 2, 0)));
-		this.setFxSend(FxSend.get(EsxUtil.unpackInt(packedByte13, 1, 2)));
-		this.setRoll(Roll.get(EsxUtil.unpackInt(packedByte13, 1, 3)));
-		this.setAmpEg(AmpEg.get(EsxUtil.unpackInt(packedByte13, 1, 4)));
-		this.setReverse(Reverse.get(EsxUtil.unpackInt(packedByte13, 1, 5)));
-		this.setReservedBitsAfterReverse((byte) EsxUtil.unpackInt(packedByte13, 2, 6));
-		// byte 14
-		int packedByte14 = in.readUnsignedByte();
-		this.setModDest(ModDest.get(EsxUtil.unpackInt(packedByte14, 3, 0)));
-		this.setReservedBitAfterModDepth((byte) EsxUtil.unpackInt(packedByte14, 1, 3));
-		this.setModType(ModType.get(EsxUtil.unpackInt(packedByte14, 3, 4)));
-		this.setBpmSync(BpmSync.get(EsxUtil.unpackInt(packedByte14, 1, 7)));
-		// byte 15
-		this.setModSpeed(in.readByte());
-		// byte 16
-		this.setModDepth(in.readByte());
-		// byte 17
-		this.setMotionSequenceStatus(in.readByte());
-		// bytes 18~33
-		byte[] tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA];
-		in.readFully(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA);
-		SequenceData newSequenceData = EsxFactory.eINSTANCE.createSequenceData();
-		newSequenceData.setSequenceData(tempBytes);
-		this.setSequenceData(newSequenceData);
 
 	}
 

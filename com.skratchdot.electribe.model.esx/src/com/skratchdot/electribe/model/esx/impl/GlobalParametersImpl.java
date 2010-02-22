@@ -364,61 +364,70 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 		super();
 	}
 
-	public GlobalParametersImpl(EsxRandomAccess in) throws IOException {
-		super();
-
-		// Jump to the start of patternNumber's data
-		in.seek(EsxUtil.ADDR_GLOBAL_PARAMETERS);
-
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void init(byte[] b) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
 		// byte 0
-		this.setMemoryProtectEnabled(EnabledFlag.get(in.readByte()));
+		this.setMemoryProtectEnabled(EnabledFlag.get(in.getByte()));
 		// byte 1
-		this.setReservedByte(in.readByte());
+		this.setReservedByte(in.getByte());
 		// byte 2
-		this.setArpeggiatorControl(ArpeggiatorControl.get(in.readByte()));
+		this.setArpeggiatorControl(ArpeggiatorControl.get(in.getByte()));
 		// byte 3
-		this.setAudioInMode(AudioInMode.get(in.readByte()));
+		this.setAudioInMode(AudioInMode.get(in.getByte()));
 		// byte 4
-		this.setMidiClock(MidiClock.get(in.readByte()));
+		this.setMidiClock(MidiClock.get(in.getByte()));
 		// byte 5
-		int packedByte5 = in.readUnsignedByte();
+		int packedByte5 = in.getUnsignedByte();
 		this.setNoteMessageEnabled(EnabledFlag.get(EsxUtil.unpackInt(packedByte5, 1, 0)));
 		this.setSystemExEnabled(EnabledFlag.get(EsxUtil.unpackInt(packedByte5, 1, 1)));
 		this.setControlChangeEnabled(EnabledFlag.get(EsxUtil.unpackInt(packedByte5, 1, 2)));
 		this.setProgramChangeEnabled(EnabledFlag.get(EsxUtil.unpackInt(packedByte5, 1, 3)));
 		this.setReservedBitsAfterProgramChangeEnabled((byte) EsxUtil.unpackInt(packedByte5, 4, 4));
 		// byte 6
-		this.setPitchBendRange(PitchBendRange.get(in.readByte()));
+		this.setPitchBendRange(PitchBendRange.get(in.getByte()));
 		// bytes 7~9 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_MIDI_CHANNELS; i++) {
 			MidiChannelType midiChannelType = EsxFactory.eINSTANCE.createMidiChannelType();
 			midiChannelType.setName(MidiChannelTypeName.get(i));
-			midiChannelType.setMidiChannel(MidiChannel.get(in.readByte()));
+			midiChannelType.setMidiChannel(MidiChannel.get(in.getByte()));
 			this.getMidiChannels().add(i, midiChannelType);
 		}
 		// bytes 10~22 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_PART_NOTE_NUMBERS; i++) {
 			PartNoteNumber partNoteNumber = EsxFactory.eINSTANCE.createPartNoteNumber();
 			partNoteNumber.setName(PartNoteNumberName.get(i));
-			partNoteNumber.setNoteNumber(NoteNumber.get(in.readByte()));
+			partNoteNumber.setNoteNumber(NoteNumber.get(in.getByte()));
 			this.getPartNoteNumbers().add(i, partNoteNumber);
 		}
 		// bytes 23~55 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_MIDI_CONTROL_CHANGE_ASSIGNMENTS; i++) {
 			MidiControlChangeAssignment midiControlChangeAssignment = EsxFactory.eINSTANCE.createMidiControlChangeAssignment();
 			midiControlChangeAssignment.setName(MidiControlChangeAssignmentName.get(i));
-			midiControlChangeAssignment.setValue(in.readByte());
+			midiControlChangeAssignment.setValue(in.getByte());
 			this.getMidiControlChangeAssignments().add(i, midiControlChangeAssignment);
 		}
 		// bytes 56~63
-		this.setReservedLong(in.readLong());
+		this.setReservedLong(in.getLong());
 		// bytes 64~191 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_PATTERN_SET_PARAMETERS; i++) {
 			PatternSetParameter patternSetParameter = EsxFactory.eINSTANCE.createPatternSetParameter();
-			patternSetParameter.setPatternNumber(PatternNumber.get(in.readUnsignedByte()));
+			patternSetParameter.setPatternNumber(PatternNumber.get(in.getUnsignedByte()));
 			patternSetParameter.setPositionOriginal(i);
 			this.getPatternSetParameters().add(i, patternSetParameter);
 		}
+	}
+
+	public GlobalParametersImpl(EsxRandomAccess in) throws IOException {
+		super();
+
+		// Jump to the start of patternNumber's data
+		in.seek(EsxUtil.ADDR_GLOBAL_PARAMETERS);
+
 
 	}
 

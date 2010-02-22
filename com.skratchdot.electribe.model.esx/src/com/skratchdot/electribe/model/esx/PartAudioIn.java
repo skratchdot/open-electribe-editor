@@ -63,6 +63,14 @@ public interface PartAudioIn extends Part, PartWithCommon, PartWithSequenceData,
 	 * @model
 	 * @generated
 	 */
+	void init(byte[] b);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
 	byte[] toByteArray();
 
 } // PartAudioIn

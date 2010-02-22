@@ -70,44 +70,6 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 		// Jump to the start of stereoSampleNumber's header data
 		in.seek(EsxUtil.ADDR_SAMPLE_HEADER_STEREO + (stereoSampleNumber * EsxUtil.CHUNKSIZE_SAMPLE_HEADER_STEREO));
 
-		// Set the original .esx file sample number
-		this.setSampleNumberOriginal(SampleNumber.get(stereoSampleNumber+EsxUtil.NUM_SAMPLES_MONO));
-
-		// bytes 0~7
-		byte[] newSampleName = new byte[8];
-		in.read(newSampleName, 0, 8);
-		this.setName(new String(newSampleName));
-
-		// bytes 8~11
-		this.setOffsetChannel1Start(in.readInt());
-		// bytes 12~15
-		this.setOffsetChannel1End(in.readInt());
-		// bytes 16~19
-		this.setOffsetChannel2Start(in.readInt());
-		// bytes 20~23
-		this.setOffsetChannel2End(in.readInt());
-		// bytes 24~27
-		this.setStart(in.readInt());
-		// bytes 28~31
-		this.setEnd(in.readInt());
-		// bytes 32~35
-		this.setSampleRate(in.readInt());
-		// bytes 36~37
-		SampleTune newSampleTune = EsxFactory.eINSTANCE.createSampleTune();
-		newSampleTune.setCurrentValueFromShort(in.readShort());
-		this.setSampleTune(newSampleTune);
-		// byte 38
-		this.setPlayLevel(PlayLevel.get(in.readByte()));
-		// byte 39
-		this.setUnknownByte1(in.readByte());
-		// byte 40
-		this.setStretchStep(StretchStep.get(in.readByte()));
-		// byte 41
-		this.setUnknownByte2(in.readByte());
-		// byte 42
-		this.setUnknownByte3(in.readByte());
-		// byte 43
-		this.setUnknownByte4(in.readByte());
 
 		// Determine if there is a valid sample to read in
 		int offset1Size = this.getOffsetChannel1End() - this.getOffsetChannel1Start();
@@ -160,6 +122,110 @@ public class SampleStereoImpl extends SampleImpl implements SampleStereo {
 	@Override
 	protected EClass eStaticClass() {
 		return EsxPackage.Literals.SAMPLE_STEREO;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void initHeader(byte[] b) {
+		this.initHeader(b, -1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void initHeader(byte[] b, int sampleNumber) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+
+		// Set the original .esx file sample number
+		this.setSampleNumberOriginal(SampleNumber.get(sampleNumber));
+
+		// bytes 0~7
+		byte[] newSampleName = new byte[8];
+		in.getBytes(newSampleName, 0, 8);
+		this.setName(new String(newSampleName));
+		// bytes 8~11
+		this.setOffsetChannel1Start(in.getInt());
+		// bytes 12~15
+		this.setOffsetChannel1End(in.getInt());
+		// bytes 16~19
+		this.setOffsetChannel2Start(in.getInt());
+		// bytes 20~23
+		this.setOffsetChannel2End(in.getInt());
+		// bytes 24~27
+		this.setStart(in.getInt());
+		// bytes 28~31
+		this.setEnd(in.getInt());
+		// bytes 32~35
+		this.setSampleRate(in.getInt());
+		// bytes 36~37
+		SampleTune newSampleTune = EsxFactory.eINSTANCE.createSampleTune();
+		newSampleTune.setCurrentValueFromShort(in.getShort());
+		this.setSampleTune(newSampleTune);
+		// byte 38
+		this.setPlayLevel(PlayLevel.get(in.getByte()));
+		// byte 39
+		this.setUnknownByte1(in.getByte());
+		// byte 40
+		this.setStretchStep(StretchStep.get(in.getByte()));
+		// byte 41
+		this.setUnknownByte2(in.getByte());
+		// byte 42
+		this.setUnknownByte3(in.getByte());
+		// byte 43
+		this.setUnknownByte4(in.getByte());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void initOffsetChannel1(byte[] b) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+
+		// Get number of sample frames
+		int newNumberOfSampleFrames = ((in.limit() - 16) / 2);
+		if(newNumberOfSampleFrames>0) {
+			// Store number of sample frames
+			this.setNumberOfSampleFrames(newNumberOfSampleFrames);
+			// Ignore first 16 bytes
+			in.getLong();
+			in.getLong();
+			// Declare temp byte[]
+			byte[] newAudioDataChannel = new byte[newNumberOfSampleFrames * 2];
+			in.getBytes(newAudioDataChannel);
+			// Store audio data
+			this.setAudioDataChannel1(newAudioDataChannel);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void initOffsetChannel2(byte[] b) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+
+		// Get number of sample frames
+		int newNumberOfSampleFrames = ((in.limit() - 16) / 2);
+		if(newNumberOfSampleFrames>0) {
+			// Store number of sample frames
+			this.setNumberOfSampleFrames(newNumberOfSampleFrames);
+			// Ignore first 16 bytes
+			in.getLong();
+			in.getLong();
+			// Declare temp byte[]
+			byte[] newAudioDataChannel = new byte[newNumberOfSampleFrames * 2];
+			in.getBytes(newAudioDataChannel);
+			// Store audio data
+			this.setAudioDataChannel2(newAudioDataChannel);
+		}
 	}
 
 	/**

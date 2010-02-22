@@ -11,11 +11,13 @@
  */
 package com.skratchdot.electribe.model.esx.util;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -184,6 +186,20 @@ public class EsxUtil {
 			byteArray[i] = list.get(i);
 		}
 		return byteArray;
+	}
+	
+	public static byte[] inputStreamToByteArray(InputStream in) throws IOException {
+		int len = 0;
+		int bufferSize = 1024;
+		ByteArrayOutputStream out = new ByteArrayOutputStream(bufferSize);
+		byte[] buffer = new byte[bufferSize];
+		
+		while((len = in.read(buffer)) >= 0) {
+			out.write(buffer, 0, len);
+		}
+		in.close();
+		out.close();
+		return out.toByteArray();
 	}
 	
 	public static boolean isValidEsxFile(EsxRandomAccess in) throws EsxException, IOException {

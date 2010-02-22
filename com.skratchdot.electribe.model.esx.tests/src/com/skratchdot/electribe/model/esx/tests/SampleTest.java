@@ -22,6 +22,8 @@ import junit.framework.TestCase;
  * <p>
  * The following features are tested:
  * <ul>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getAudioDataChannelBoth() <em>Audio Data Channel Both</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getAudioDataLoopStart() <em>Audio Data Loop Start</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isLoop() <em>Loop</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isSlice() <em>Slice</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isStereo() <em>Stereo</em>}</li>
@@ -76,6 +78,32 @@ public abstract class SampleTest extends TestCase {
 	 */
 	protected Sample getFixture() {
 		return fixture;
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#getAudioDataChannelBoth() <em>Audio Data Channel Both</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.Sample#getAudioDataChannelBoth()
+	 * @generated
+	 */
+	public void testGetAudioDataChannelBoth() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#getAudioDataLoopStart() <em>Audio Data Loop Start</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.Sample#getAudioDataLoopStart()
+	 * @generated
+	 */
+	public void testGetAudioDataLoopStart() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 	/**

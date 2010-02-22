@@ -698,6 +698,22 @@ public interface Pattern extends EObject {
 	 * @model
 	 * @generated
 	 */
+	void init(byte[] b);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void init(byte[] b, int patternNumber);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
 	byte[] toByteArray();
 
 } // Pattern
