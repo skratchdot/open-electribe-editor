@@ -14,7 +14,7 @@
  */
 package com.skratchdot.riff.wav.impl;
 
-import java.io.IOException;
+import java.nio.ByteOrder;
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
@@ -28,8 +28,8 @@ import com.skratchdot.riff.wav.RIFFWave;
 import com.skratchdot.riff.wav.Segment;
 import com.skratchdot.riff.wav.WavFactory;
 import com.skratchdot.riff.wav.WavPackage;
+import com.skratchdot.riff.wav.util.ExtendedByteBuffer;
 import com.skratchdot.riff.wav.util.RiffWaveException;
-import com.skratchdot.riff.wav.util.WavRandomAccessFile;
 
 /**
  * <!-- begin-user-doc -->
@@ -74,43 +74,33 @@ public class ChunkPlayListImpl extends ChunkImpl implements ChunkPlayList {
 		super();
 	}
 
-	/**
-	 * @param riffWave a valid RIFFWave object
-	 * @param in a valid WavRandomAccessFile
-	 * @throws RiffWaveException
-	 */
-	public ChunkPlayListImpl(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException {
-		super();
-		try {
-			// Check Chunk Type ID
-			if(ChunkTypeID.get((int)in.readUnsignedInt())!=this.getChunkTypeID())
-				throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+	@Override
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+		// Check Chunk Type ID
+		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
 
-			// Read in data size
-			long chunkSize = in.readUnsignedInt();
+		// Read in data size
+		long chunkSize = buf.getUnsignedInt();
 
-			// Read in segments
-			long numSegments = in.readUnsignedInt();
-			for(int i=0; i<numSegments; i++) {
-				Segment segment = WavFactory.eINSTANCE.createSegment();
-				segment.setCuePointID(in.readUnsignedInt());
-				segment.setLengthInSamples(in.readUnsignedInt());
-				segment.setNumberOfRepeats(in.readUnsignedInt());
-				this.getSegments().add(segment);
-			}
+		// Read in segments
+		long numSegments = buf.getUnsignedInt();
+		for(int i=0; i<numSegments; i++) {
+			Segment segment = WavFactory.eINSTANCE.createSegment();
+			segment.setCuePointID(buf.getUnsignedInt());
+			segment.setLengthInSamples(buf.getUnsignedInt());
+			segment.setNumberOfRepeats(buf.getUnsignedInt());
+			this.getSegments().add(segment);
+		}
 
-			// Does the size we read in match the size we calculate from the data read in?
-			if(chunkSize!=this.getSize()) {
-				ParseChunkException pce = WavFactory.eINSTANCE.createParseChunkException();
-				pce.setException(new Exception("Invalid chunk size for format chunk." +
-					"From File: " + Long.toString(chunkSize) +
-					"Calculated: " + Long.toString(this.getSize())
-				));
-				riffWave.getParseChunkExceptions().add(pce);
-			}
-
-		} catch (Exception e) {
-			throw new RiffWaveException(e.getMessage(), e.getCause());
+		// Does the size we read in match the size we calculate from the data read in?
+		if(chunkSize!=this.getSize()) {
+			ParseChunkException pce = WavFactory.eINSTANCE.createParseChunkException();
+			pce.setException(new Exception("Invalid chunk size for format chunk." +
+				"From File: " + Long.toString(chunkSize) +
+				"Calculated: " + Long.toString(this.getSize())
+			));
+			riffWave.getParseChunkExceptions().add(pce);
 		}
 	}
 
@@ -233,22 +223,23 @@ public class ChunkPlayListImpl extends ChunkImpl implements ChunkPlayList {
 		return super.eIsSet(featureID);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void write(RIFFWave riffWave, WavRandomAccessFile out) throws IOException {
-		out.writeUnsignedInt(this.getChunkTypeIDValue());
-		out.writeUnsignedInt(this.getSize());
+	@Override
+	public byte[] toByteArray() {
+		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		buf.order(ByteOrder.LITTLE_ENDIAN);
+
+		buf.putUnsignedInt(this.getChunkTypeIDValue());
+		buf.putUnsignedInt(this.getSize());
 		
-		out.writeUnsignedInt(this.getNumberOfSegments());
+		buf.putUnsignedInt(this.getNumberOfSegments());
 
 		for(int i=0; i<this.getNumberOfSegments(); i++) {
-			out.writeUnsignedInt(this.getSegments().get(i).getCuePointID());
-			out.writeUnsignedInt(this.getSegments().get(i).getLengthInSamples());
-			out.writeUnsignedInt(this.getSegments().get(i).getNumberOfRepeats());
+			buf.putUnsignedInt(this.getSegments().get(i).getCuePointID());
+			buf.putUnsignedInt(this.getSegments().get(i).getLengthInSamples());
+			buf.putUnsignedInt(this.getSegments().get(i).getNumberOfRepeats());
 		}
+
+		return buf.array();
 	}
 
 } //ChunkPlayListImpl

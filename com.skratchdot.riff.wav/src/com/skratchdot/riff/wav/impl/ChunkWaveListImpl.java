@@ -14,6 +14,16 @@
  */
 package com.skratchdot.riff.wav.impl;
 
+import java.nio.ByteOrder;
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import com.skratchdot.riff.wav.Chunk;
 import com.skratchdot.riff.wav.ChunkData;
 import com.skratchdot.riff.wav.ChunkSilent;
@@ -23,22 +33,9 @@ import com.skratchdot.riff.wav.ParseChunkException;
 import com.skratchdot.riff.wav.RIFFWave;
 import com.skratchdot.riff.wav.WavFactory;
 import com.skratchdot.riff.wav.WavPackage;
+import com.skratchdot.riff.wav.util.ExtendedByteBuffer;
 import com.skratchdot.riff.wav.util.RiffWaveException;
-import com.skratchdot.riff.wav.util.WavRandomAccessFile;
 import com.skratchdot.riff.wav.util.WavUtil;
-
-import java.io.IOException;
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -73,56 +70,46 @@ public class ChunkWaveListImpl extends ChunkImpl implements ChunkWaveList {
 		super();
 	}
 
-	/**
-	 * @param riffWave a valid RIFFWave object
-	 * @param in a valid WavRandomAccessFile
-	 * @throws RiffWaveException
-	 */
-	public ChunkWaveListImpl(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException {
-		super();
-		try {
-			// Check Chunk Type ID
-			if(ChunkTypeID.get((int)in.readUnsignedInt())!=this.getChunkTypeID())
-				throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+	@Override
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+		// Check Chunk Type ID
+		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
 
-			// Read in data size
-			long chunkSize = in.readUnsignedInt();
-			
-			// We cannot read in chunks past this point
-			long maxPointer = in.getFilePointer() + chunkSize;
+		// Read in data size
+		long chunkSize = buf.getUnsignedInt();
+		
+		// We cannot read in chunks past this point
+		long maxPointer = buf.position() + chunkSize;
 
-			// loopPointer prevents an infinite loop if we try to parse a
-			// chunk and the filePointer doesn't advance for some reason
-			long loopPointer = 0;
+		// loopPointer prevents an infinite loop if we try to parse a
+		// chunk and the filePointer doesn't advance for some reason
+		long loopPointer = 0;
 
-			// Loop through file reading in chunks
-			while(in.getFilePointer()<in.length() && in.getFilePointer()!=loopPointer && in.getFilePointer()<maxPointer) {
-				// If the filePointer doesn't advance in this loop iteration,
-				// then we'll break out of the loop
-				loopPointer = in.getFilePointer();
+		// Loop through file reading in chunks
+		while(buf.position()<buf.limit() && buf.position()!=loopPointer && buf.position()<maxPointer) {
+			// If the filePointer doesn't advance in this loop iteration,
+			// then we'll break out of the loop
+			loopPointer = buf.position();
 
-				// Grab the current chunk
-				Chunk currentChunk = WavUtil.parseChunk(riffWave, in);
+			// Grab the current chunk
+			Chunk currentChunk = WavUtil.parseChunk(riffWave, buf);
 
-				// If we got a chunk, add it to our list
-				if(currentChunk!=null) {
-					// Wave List chunks are only supposed to contain sInt and data chunks
-					if(currentChunk instanceof ChunkSilent == false && 
-						currentChunk instanceof ChunkData == false) {
-						ParseChunkException pce = WavFactory.eINSTANCE.createParseChunkException();
-						pce.setException(new Exception("Invalid Chunk Type: Not sInt or data"));
-						riffWave.getParseChunkExceptions().add(pce);
-					}
-					// Add to our list of chunks
-					this.getAlternatingSilentAndDataChunks().add(currentChunk);
+			// If we got a chunk, add it to our list
+			if(currentChunk!=null) {
+				// Wave List chunks are only supposed to contain sInt and data chunks
+				if(currentChunk instanceof ChunkSilent == false && 
+					currentChunk instanceof ChunkData == false) {
+					ParseChunkException pce = WavFactory.eINSTANCE.createParseChunkException();
+					pce.setException(new Exception("Invalid Chunk Type: Not sInt or data"));
+					riffWave.getParseChunkExceptions().add(pce);
 				}
+				// Add to our list of chunks
+				this.getAlternatingSilentAndDataChunks().add(currentChunk);
+			}
 
-				// We need to block align
-				in.blockAlign();
-				
-			}	
-		} catch (Exception e) {
-			throw new RiffWaveException(e.getMessage(), e.getCause());
+			// We need to block align
+			buf.blockAlign();		
 		}
 	}
 
@@ -250,20 +237,21 @@ public class ChunkWaveListImpl extends ChunkImpl implements ChunkWaveList {
 		return super.eIsSet(featureID);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void write(RIFFWave riffWave, WavRandomAccessFile out) throws IOException {
-		out.writeUnsignedInt(this.getChunkTypeIDValue());
-		out.writeUnsignedInt(this.getSize());
+	@Override
+	public byte[] toByteArray() throws RiffWaveException {
+		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		buf.order(ByteOrder.LITTLE_ENDIAN);
+
+		buf.putUnsignedInt(this.getChunkTypeIDValue());
+		buf.putUnsignedInt(this.getSize());
 
 		for(int i=0; i<this.getAlternatingSilentAndDataChunks().size(); i++) {
 			Chunk currentChunk = this.getAlternatingSilentAndDataChunks().get(i);
-			currentChunk.write(riffWave, out);
-			out.writeBlockAlign();
+			buf.putBytes(currentChunk.toByteArray());
+			buf.putBlockAlign();
 		}
+
+		return buf.array();
 	}
 
 } //ChunkWaveListImpl

@@ -14,20 +14,18 @@
  */
 package com.skratchdot.riff.wav.impl;
 
-import java.io.IOException;
+import java.nio.ByteOrder;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import com.skratchdot.riff.wav.ChunkInstrument;
 import com.skratchdot.riff.wav.ChunkTypeID;
 import com.skratchdot.riff.wav.RIFFWave;
 import com.skratchdot.riff.wav.WavPackage;
+import com.skratchdot.riff.wav.util.ExtendedByteBuffer;
 import com.skratchdot.riff.wav.util.RiffWaveException;
-import com.skratchdot.riff.wav.util.WavRandomAccessFile;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -198,33 +196,23 @@ public class ChunkInstrumentImpl extends ChunkImpl implements ChunkInstrument {
 		super();
 	}
 
-	/**
-	 * @param riffWave a valid RIFFWave object
-	 * @param in a valid WavRandomAccessFile
-	 * @throws RiffWaveException
-	 */
-	public ChunkInstrumentImpl(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException {
-		super();
-		try {
-			// Check Chunk Type ID
-			if(ChunkTypeID.get((int)in.readUnsignedInt())!=this.getChunkTypeID())
-				throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+	@Override
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+		// Check Chunk Type ID
+		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
 
-			// Read in data size
-			if(in.readUnsignedInt()!=this.getSize())
-				throw new RiffWaveException("inst Chunk Size is too big. Should be 7.");
+		// Read in data size
+		if(buf.getUnsignedInt()!=this.getSize())
+			throw new RiffWaveException("inst Chunk Size is too big. Should be 7.");
 
-			this.setUnshiftedNote(in.readByte());
-			this.setFineTune(in.readByte());
-			this.setGain(in.readByte());
-			this.setLowNote(in.readByte());
-			this.setHighNote(in.readByte());
-			this.setLowVelocity(in.readByte());
-			this.setHighVelocity(in.readByte());
-			
-		} catch (Exception e) {
-			throw new RiffWaveException(e.getMessage(), e.getCause());
-		}
+		this.setUnshiftedNote(buf.getByte());
+		this.setFineTune(buf.getByte());
+		this.setGain(buf.getByte());
+		this.setLowNote(buf.getByte());
+		this.setHighNote(buf.getByte());
+		this.setLowVelocity(buf.getByte());
+		this.setHighVelocity(buf.getByte());
 	}
 
 	/**
@@ -554,21 +542,23 @@ public class ChunkInstrumentImpl extends ChunkImpl implements ChunkInstrument {
 		return result.toString();
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void write(RIFFWave riffWave, WavRandomAccessFile out) throws IOException {
-		out.writeUnsignedInt(this.getChunkTypeIDValue());
-		out.writeUnsignedInt(this.getSize());
-		out.writeByte(this.getUnshiftedNote());
-		out.writeByte(this.getFineTune());
-		out.writeByte(this.getGain());
-		out.writeByte(this.getLowNote());
-		out.writeByte(this.getHighNote());
-		out.writeByte(this.getLowVelocity());
-		out.writeByte(this.getHighVelocity());	
+	@Override
+	public byte[] toByteArray() {
+		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		buf.order(ByteOrder.LITTLE_ENDIAN);
+
+		buf.putUnsignedInt(this.getChunkTypeIDValue());
+		buf.putUnsignedInt(this.getSize());
+		buf.putByte(this.getUnshiftedNote());
+		buf.putByte(this.getFineTune());
+		buf.putByte(this.getGain());
+		buf.putByte(this.getLowNote());
+		buf.putByte(this.getHighNote());
+		buf.putByte(this.getLowVelocity());
+		buf.putByte(this.getHighVelocity());
+
+		return buf.array();
 	}
+
 
 } //ChunkInstrumentImpl

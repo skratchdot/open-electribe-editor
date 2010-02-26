@@ -14,9 +14,6 @@
  */
 package com.skratchdot.riff.wav;
 
-import java.io.IOException;
-
-import com.skratchdot.riff.wav.util.WavRandomAccessFile;
 
 
 /**
@@ -30,12 +27,4 @@ import com.skratchdot.riff.wav.util.WavRandomAccessFile;
  * @generated
  */
 public interface ChunkDataListTypeLabel extends ChunkDataListType {
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model exceptions="com.skratchdot.riff.wav.IOException" outDataType="com.skratchdot.riff.wav.WavRandomAccessFile"
-	 * @generated
-	 */
-	void write(RIFFWave riffWave, WavRandomAccessFile out) throws IOException;
 } // ChunkDataListTypeLabel

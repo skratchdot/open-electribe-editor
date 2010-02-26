@@ -14,29 +14,25 @@
  */
 package com.skratchdot.riff.wav.impl;
 
+import java.nio.ByteOrder;
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import com.skratchdot.riff.wav.Channel;
 import com.skratchdot.riff.wav.ChunkData;
 import com.skratchdot.riff.wav.ChunkTypeID;
 import com.skratchdot.riff.wav.RIFFWave;
 import com.skratchdot.riff.wav.WavPackage;
+import com.skratchdot.riff.wav.util.ExtendedByteBuffer;
 import com.skratchdot.riff.wav.util.RiffWaveException;
-import com.skratchdot.riff.wav.util.WavRandomAccessFile;
-
-import java.io.IOException;
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -92,29 +88,19 @@ public class ChunkDataImpl extends ChunkImpl implements ChunkData {
 		super();
 	}
 
-	/**
-	 * @param riffWave a valid RIFFWave object
-	 * @param in a valid WavRandomAccessFile
-	 * @throws RiffWaveException
-	 */
-	public ChunkDataImpl(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException {
-		super();
-		try {
-			// Check Chunk Type ID
-			if(ChunkTypeID.get((int)in.readUnsignedInt())!=this.getChunkTypeID())
-				throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+	@Override
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+		// Check Chunk Type ID
+		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
 
-			// Read in data size
-			int chunkSize = (int) in.readUnsignedInt();
+		// Read in data size
+		int chunkSize = (int) buf.getUnsignedInt();
 
-			// Read in original sample data
-			byte[] b = new byte[chunkSize];
-			in.readFully(b, 0, chunkSize);
-			this.setSampleDataOriginal(b);
-			
-		} catch (Exception e) {
-			throw new RiffWaveException(e.getMessage(), e.getCause());
-		}
+		// Read in original sample data
+		byte[] newSampleDataOriginal = new byte[chunkSize];
+		buf.getBytes(newSampleDataOriginal);
+		this.setSampleDataOriginal(newSampleDataOriginal);
 	}
 
 	/**
@@ -287,17 +273,18 @@ public class ChunkDataImpl extends ChunkImpl implements ChunkData {
 		return result.toString();
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void write(RIFFWave riffWave, WavRandomAccessFile out) throws IOException {
-		out.writeUnsignedInt(this.getChunkTypeIDValue());
-		out.writeUnsignedInt(this.getSize());
+	@Override
+	public byte[] toByteArray() {
+		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		buf.order(ByteOrder.LITTLE_ENDIAN);
+
+		buf.putUnsignedInt(this.getChunkTypeIDValue());
+		buf.putUnsignedInt(this.getSize());
 		if(this.getSampleDataOriginal()!=null) {
-			out.write(this.getSampleDataOriginal());
+			buf.putBytes(this.getSampleDataOriginal());
 		}
+
+		return buf.array();
 	}
 
 } //ChunkDataImpl

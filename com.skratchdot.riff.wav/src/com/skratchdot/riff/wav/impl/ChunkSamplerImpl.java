@@ -14,7 +14,7 @@
  */
 package com.skratchdot.riff.wav.impl;
 
-import java.io.IOException;
+import java.nio.ByteOrder;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -33,8 +33,8 @@ import com.skratchdot.riff.wav.RIFFWave;
 import com.skratchdot.riff.wav.SampleLoop;
 import com.skratchdot.riff.wav.WavFactory;
 import com.skratchdot.riff.wav.WavPackage;
+import com.skratchdot.riff.wav.util.ExtendedByteBuffer;
 import com.skratchdot.riff.wav.util.RiffWaveException;
-import com.skratchdot.riff.wav.util.WavRandomAccessFile;
 
 /**
  * <!-- begin-user-doc -->
@@ -259,63 +259,54 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 		super();
 	}
 
-	/**
-	 * @param riffWave a valid RIFFWave object
-	 * @param in a valid WavRandomAccessFile
-	 * @throws RiffWaveException
-	 */
-	public ChunkSamplerImpl(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException {
-		super();
-		try {
-			// Check Chunk Type ID
-			if(ChunkTypeID.get((int)in.readUnsignedInt())!=this.getChunkTypeID())
-				throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+	@Override
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+		// Check Chunk Type ID
+		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
 
-			// Read in data size
-			long chunkSize = in.readUnsignedInt();
+		// Read in data size
+		long chunkSize = buf.getUnsignedInt();
 
-			// Set member variables
-			this.setManufacturer(in.readUnsignedInt());
-			this.setProduct(in.readUnsignedInt());
-			this.setSamplePeriod(in.readUnsignedInt());
-			this.setMidiUnityNote(in.readUnsignedInt());
-			this.setMidiPitchFraction(in.readUnsignedInt());
-			this.setSmpteFormat(in.readUnsignedInt());
-			this.setSmpteOffset(in.readUnsignedInt());
+		// Set member variables
+		this.setManufacturer(buf.getUnsignedInt());
+		this.setProduct(buf.getUnsignedInt());
+		this.setSamplePeriod(buf.getUnsignedInt());
+		this.setMidiUnityNote(buf.getUnsignedInt());
+		this.setMidiPitchFraction(buf.getUnsignedInt());
+		this.setSmpteFormat(buf.getUnsignedInt());
+		this.setSmpteOffset(buf.getUnsignedInt());
 
-			long numSampleLoops = in.readUnsignedInt();
-			int samplerDataSize = (int) in.readUnsignedInt();
+		long numSampleLoops = buf.getUnsignedInt();
+		int samplerDataSize = (int) buf.getUnsignedInt();
 
-			// Read in sampleLoops
-			for(int i=0; i<numSampleLoops; i++) {
-				SampleLoop sampleLoop = WavFactory.eINSTANCE.createSampleLoop();
-				sampleLoop.setCuePointID(in.readUnsignedInt());
-				sampleLoop.setType(in.readUnsignedInt());
-				sampleLoop.setStart(in.readUnsignedInt());
-				sampleLoop.setEnd(in.readUnsignedInt());
-				sampleLoop.setFraction(in.readUnsignedInt());
-				sampleLoop.setPlayCount(in.readUnsignedInt());
-				this.getSampleLoops().add(sampleLoop);
-			}
+		// Read in sampleLoops
+		for(int i=0; i<numSampleLoops; i++) {
+			SampleLoop sampleLoop = WavFactory.eINSTANCE.createSampleLoop();
+			sampleLoop.setCuePointID(buf.getUnsignedInt());
+			sampleLoop.setType(buf.getUnsignedInt());
+			sampleLoop.setStart(buf.getUnsignedInt());
+			sampleLoop.setEnd(buf.getUnsignedInt());
+			sampleLoop.setFraction(buf.getUnsignedInt());
+			sampleLoop.setPlayCount(buf.getUnsignedInt());
+			this.getSampleLoops().add(sampleLoop);
+		}
 
-			// Read in sampler data
-			if(samplerDataSize>0) {
-				byte[] b = new byte[samplerDataSize];
-				in.readFully(b, 0, samplerDataSize);
-			}
+		// Read in sampler data
+		if(samplerDataSize>0) {
+			byte[] newSamplerData = new byte[samplerDataSize];
+			buf.getBytes(newSamplerData);
+			this.setSamplerData(newSamplerData);
+		}
 
-			// Does the size we read in match the size we calculate from the data read in?
-			if(chunkSize!=this.getSize()) {
-				ParseChunkException pce = WavFactory.eINSTANCE.createParseChunkException();
-				pce.setException(new Exception("Invalid chunk size for format chunk." +
-					"From File: " + Long.toString(chunkSize) +
-					"Calculated: " + Long.toString(this.getSize())
-				));
-				riffWave.getParseChunkExceptions().add(pce);
-			}
-			
-		} catch (Exception e) {
-			throw new RiffWaveException(e.getMessage(), e.getCause());
+		// Does the size we read in match the size we calculate from the data read in?
+		if(chunkSize!=this.getSize()) {
+			ParseChunkException pce = WavFactory.eINSTANCE.createParseChunkException();
+			pce.setException(new Exception("Invalid chunk size for format chunk." +
+				"From File: " + Long.toString(chunkSize) +
+				"Calculated: " + Long.toString(this.getSize())
+			));
+			riffWave.getParseChunkExceptions().add(pce);
 		}
 	}
 
@@ -743,40 +734,41 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 		return result.toString();
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void write(RIFFWave riffWave, WavRandomAccessFile out) throws IOException {
-		out.writeUnsignedInt(this.getChunkTypeIDValue());
-		out.writeUnsignedInt(this.getSize());
+	@Override
+	public byte[] toByteArray() {
+		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		buf.order(ByteOrder.LITTLE_ENDIAN);
 
-		out.writeUnsignedInt(this.getManufacturer());
-		out.writeUnsignedInt(this.getProduct());
-		out.writeUnsignedInt(this.getSamplePeriod());
-		out.writeUnsignedInt(this.getMidiUnityNote());
-		out.writeUnsignedInt(this.getMidiPitchFraction());
-		out.writeUnsignedInt(this.getSmpteFormat());
-		out.writeUnsignedInt(this.getSmpteOffset());
+		buf.putUnsignedInt(this.getChunkTypeIDValue());
+		buf.putUnsignedInt(this.getSize());
+
+		buf.putUnsignedInt(this.getManufacturer());
+		buf.putUnsignedInt(this.getProduct());
+		buf.putUnsignedInt(this.getSamplePeriod());
+		buf.putUnsignedInt(this.getMidiUnityNote());
+		buf.putUnsignedInt(this.getMidiPitchFraction());
+		buf.putUnsignedInt(this.getSmpteFormat());
+		buf.putUnsignedInt(this.getSmpteOffset());
 		
-		out.writeUnsignedInt(this.getNumberOfSampleLoops());
-		out.writeUnsignedInt(this.getSamplerDataSize());
+		buf.putUnsignedInt(this.getNumberOfSampleLoops());
+		buf.putUnsignedInt(this.getSamplerDataSize());
 
 		// Write sampleLoops
 		for(int i=0; i<this.getNumberOfSampleLoops(); i++) {
-			out.writeUnsignedInt(this.getSampleLoops().get(i).getCuePointID());
-			out.writeUnsignedInt(this.getSampleLoops().get(i).getType());
-			out.writeUnsignedInt(this.getSampleLoops().get(i).getStart());
-			out.writeUnsignedInt(this.getSampleLoops().get(i).getEnd());
-			out.writeUnsignedInt(this.getSampleLoops().get(i).getFraction());
-			out.writeUnsignedInt(this.getSampleLoops().get(i).getPlayCount());
+			buf.putUnsignedInt(this.getSampleLoops().get(i).getCuePointID());
+			buf.putUnsignedInt(this.getSampleLoops().get(i).getType());
+			buf.putUnsignedInt(this.getSampleLoops().get(i).getStart());
+			buf.putUnsignedInt(this.getSampleLoops().get(i).getEnd());
+			buf.putUnsignedInt(this.getSampleLoops().get(i).getFraction());
+			buf.putUnsignedInt(this.getSampleLoops().get(i).getPlayCount());
 		}
 		
 		// Write Sampler Data
 		if(this.getSamplerDataSize()>0) {
-			out.write(this.getSamplerData());
-		}	
+			buf.putBytes(this.getSamplerData());
+		}
+
+		return buf.array();
 	}
 
 } //ChunkSamplerImpl

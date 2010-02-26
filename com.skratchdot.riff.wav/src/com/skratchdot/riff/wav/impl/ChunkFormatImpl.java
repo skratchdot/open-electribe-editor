@@ -14,7 +14,7 @@
  */
 package com.skratchdot.riff.wav.impl;
 
-import java.io.IOException;
+import java.nio.ByteOrder;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
@@ -27,8 +27,8 @@ import com.skratchdot.riff.wav.ParseChunkException;
 import com.skratchdot.riff.wav.RIFFWave;
 import com.skratchdot.riff.wav.WavFactory;
 import com.skratchdot.riff.wav.WavPackage;
+import com.skratchdot.riff.wav.util.ExtendedByteBuffer;
 import com.skratchdot.riff.wav.util.RiffWaveException;
-import com.skratchdot.riff.wav.util.WavRandomAccessFile;
 
 /**
  * <!-- begin-user-doc -->
@@ -231,52 +231,42 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 		super();
 	}
 
-	/**
-	 * @param riffWave a valid RIFFWave object
-	 * @param in a valid WavRandomAccessFile
-	 * @throws RiffWaveException
-	 */
-	public ChunkFormatImpl(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException {
-		super();
-		try {
-			// Check Chunk Type ID
-			if(ChunkTypeID.get((int)in.readUnsignedInt())!=this.getChunkTypeID())
-				throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+	@Override
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+		// Check Chunk Type ID
+		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
 
-			// Read in data size
-			long chunkSize = in.readUnsignedInt();
+		// Read in data size
+		long chunkSize = buf.getUnsignedInt();
 
-			// Set member variables
-			this.setCompressionCodeValue(in.readUnsignedShort());
-			this.setCompressionCode(CompressionCode.get(this.getCompressionCodeValue()));
-			this.setNumberOfChannels(in.readUnsignedShort());
-			this.setSampleRate(in.readUnsignedInt());
-			this.setAverageBytesPerSecond(in.readUnsignedInt());
-			this.setBlockAlign(in.readUnsignedShort());
-			this.setSignificantBitsPerSample(in.readUnsignedShort());
+		// Set member variables
+		this.setCompressionCodeValue(buf.getUnsignedShort());
+		this.setCompressionCode(CompressionCode.get(this.getCompressionCodeValue()));
+		this.setNumberOfChannels(buf.getUnsignedShort());
+		this.setSampleRate(buf.getUnsignedInt());
+		this.setAverageBytesPerSecond(buf.getUnsignedInt());
+		this.setBlockAlign(buf.getUnsignedShort());
+		this.setSignificantBitsPerSample(buf.getUnsignedShort());
 
-			if(this.getCompressionCodeValue()!=CompressionCode.COMPRESSION_CODE_1_VALUE) {
-				int numberOfExtraFormatBytes = in.readUnsignedShort();
+		if(this.getCompressionCodeValue()!=CompressionCode.COMPRESSION_CODE_1_VALUE) {
+			int numberOfExtraFormatBytes = buf.getUnsignedShort();
 
-				if(numberOfExtraFormatBytes>0) {
-					byte[] b = new byte[numberOfExtraFormatBytes];
-					in.readFully(b, 0, numberOfExtraFormatBytes);
-					this.setExtraFormatBytes(b);
-				}
+			if(numberOfExtraFormatBytes>0) {
+				byte[] newExtraFormatBytes = new byte[numberOfExtraFormatBytes];
+				buf.getBytes(newExtraFormatBytes);
+				this.setExtraFormatBytes(newExtraFormatBytes);
 			}
+		}
 
-			// Does the size we read in, match the size we calculate from the data read
-			if(chunkSize!=this.getSize()) {
-				ParseChunkException pce = WavFactory.eINSTANCE.createParseChunkException();
-				pce.setException(new Exception("Invalid chunk size for format chunk." +
-					"From File: " + Long.toString(chunkSize) +
-					"Calculated: " + Long.toString(this.getSize())
-				));
-				riffWave.getParseChunkExceptions().add(pce);
-			}
-
-		} catch (Exception e) {
-			throw new RiffWaveException(e.getMessage(), e.getCause());
+		// Does the size we read in, match the size we calculate from the data read
+		if(chunkSize!=this.getSize()) {
+			ParseChunkException pce = WavFactory.eINSTANCE.createParseChunkException();
+			pce.setException(new Exception("Invalid chunk size for format chunk." +
+				"From File: " + Long.toString(chunkSize) +
+				"Calculated: " + Long.toString(this.getSize())
+			));
+			riffWave.getParseChunkExceptions().add(pce);
 		}
 	}
 
@@ -656,26 +646,28 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 		return result.toString();
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void write(RIFFWave riffWave, WavRandomAccessFile out) throws IOException {
-		out.writeUnsignedInt(this.getChunkTypeIDValue());
-		out.writeUnsignedInt(this.getSize());
+	@Override
+	public byte[] toByteArray() {
+		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		buf.order(ByteOrder.LITTLE_ENDIAN);
+
+		buf.putUnsignedInt(this.getChunkTypeIDValue());
+		buf.putUnsignedInt(this.getSize());
 		
-		out.writeUnsignedShort(this.getCompressionCodeValue());
-		out.writeUnsignedShort(this.getNumberOfChannels());
-		out.writeUnsignedInt(this.getSampleRate());
-		out.writeUnsignedInt(this.getAverageBytesPerSecond());
-		out.writeUnsignedShort(this.getBlockAlign());
-		out.writeUnsignedShort(this.getSignificantBitsPerSample());
+		buf.putUnsignedShort(this.getCompressionCodeValue());
+		buf.putUnsignedShort(this.getNumberOfChannels());
+		buf.putUnsignedInt(this.getSampleRate());
+		buf.putUnsignedInt(this.getAverageBytesPerSecond());
+		buf.putUnsignedShort(this.getBlockAlign());
+		buf.putUnsignedShort(this.getSignificantBitsPerSample());
 
 		if(this.getCompressionCodeValue()!=CompressionCode.COMPRESSION_CODE_1_VALUE) {
-			out.writeUnsignedShort(this.getNumberOfExtraFormatBytes());
-			out.write(this.getExtraFormatBytes());
+			buf.putUnsignedShort(this.getNumberOfExtraFormatBytes());
+			buf.putBytes(this.getExtraFormatBytes());
 		}
+
+		return buf.array();
 	}
+
 
 } //ChunkFormatImpl

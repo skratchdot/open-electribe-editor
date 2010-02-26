@@ -14,10 +14,10 @@
  */
 package com.skratchdot.riff.wav;
 
-import java.io.IOException;
-
-import com.skratchdot.riff.wav.util.WavRandomAccessFile;
 import org.eclipse.emf.ecore.EObject;
+
+import com.skratchdot.riff.wav.util.ExtendedByteBuffer;
+import com.skratchdot.riff.wav.util.RiffWaveException;
 
 /**
  * <!-- begin-user-doc -->
@@ -104,9 +104,17 @@ public interface Chunk extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model exceptions="com.skratchdot.riff.wav.IOException" outDataType="com.skratchdot.riff.wav.WavRandomAccessFile"
+	 * @model exceptions="com.skratchdot.riff.wav.RiffWaveException" bufDataType="com.skratchdot.riff.wav.ExtendedByteBuffer"
 	 * @generated
 	 */
-	void write(RIFFWave riffWave, WavRandomAccessFile out) throws IOException;
+	void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model exceptions="com.skratchdot.riff.wav.RiffWaveException"
+	 * @generated
+	 */
+	byte[] toByteArray() throws RiffWaveException;
 
 } // Chunk

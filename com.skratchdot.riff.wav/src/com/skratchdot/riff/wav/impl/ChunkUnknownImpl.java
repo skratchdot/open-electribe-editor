@@ -14,18 +14,17 @@
  */
 package com.skratchdot.riff.wav.impl;
 
-import java.io.IOException;
+import java.nio.ByteOrder;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import com.skratchdot.riff.wav.ChunkTypeID;
 import com.skratchdot.riff.wav.ChunkUnknown;
 import com.skratchdot.riff.wav.RIFFWave;
 import com.skratchdot.riff.wav.WavPackage;
-import org.eclipse.emf.common.notify.Notification;
-import com.skratchdot.riff.wav.util.RiffWaveException;
-import com.skratchdot.riff.wav.util.WavRandomAccessFile;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import com.skratchdot.riff.wav.util.ExtendedByteBuffer;
 
 /**
  * <!-- begin-user-doc -->
@@ -106,33 +105,23 @@ public class ChunkUnknownImpl extends ChunkImpl implements ChunkUnknown {
 		super();
 	}
 
-	/**
-	 * @param riffWave a valid RIFFWave object
-	 * @param in a valid WavRandomAccessFile
-	 * @throws RiffWaveException
-	 */
-	public ChunkUnknownImpl(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException {
-		super();
-		try {
-			// ChunkUnknown is special.  We're going to store the original
-			// offset in the WavRandomAccessFile in case we decide to later
-			// come back to try to find "incorrectly" written chunks.
-			this.setWavRandomAccessFilePointer(in.getFilePointer());
+	@Override
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) {
+		// ChunkUnknown is special.  We're going to store the original
+		// offset in the WavRandomAccessFile in case we decide to later
+		// come back to try to find "incorrectly" written chunks.
+		this.setWavRandomAccessFilePointer(buf.position());
 
-			// Check Chunk Type ID
-			this.setUnknownChunkTypeIdValue(in.readUnsignedInt());
+		// Check Chunk Type ID
+		this.setUnknownChunkTypeIdValue(buf.getUnsignedInt());
 
-			// Read in data size
-			int chunkDataSize = (int) in.readUnsignedInt();
+		// Read in data size
+		int chunkDataSize = (int) buf.getUnsignedInt();
 
-			// Read in the unknown data
-			byte[] unknownData = new byte[chunkDataSize];
-			in.readFully(unknownData, 0, chunkDataSize);
-			this.setData(unknownData);
-			
-		} catch (Exception e) {
-			throw new RiffWaveException(e.getMessage(), e.getCause());
-		}
+		// Read in the unknown data
+		byte[] unknownData = new byte[chunkDataSize];
+		buf.getBytes(unknownData);
+		this.setData(unknownData);
 	}
 
 	/* (non-Javadoc)
@@ -333,18 +322,18 @@ public class ChunkUnknownImpl extends ChunkImpl implements ChunkUnknown {
 		return result.toString();
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void write(RIFFWave riffWave, WavRandomAccessFile out) throws IOException {
-		out.writeUnsignedInt(this.getUnknownChunkTypeIdValue());
-		out.writeUnsignedInt(this.getSize());
-		if(this.getData()!=null) {
-			out.write(this.getData());
-		}
+	@Override
+	public byte[] toByteArray() {
+		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		buf.order(ByteOrder.LITTLE_ENDIAN);
 
+		buf.putUnsignedInt(this.getUnknownChunkTypeIdValue());
+		buf.putUnsignedInt(this.getSize());
+		if(this.getData()!=null) {
+			buf.putBytes(this.getData());
+		}
+		
+		return buf.array();
 	}
 
 } //ChunkUnknownImpl

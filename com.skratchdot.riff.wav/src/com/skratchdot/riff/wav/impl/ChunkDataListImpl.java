@@ -14,7 +14,7 @@
  */
 package com.skratchdot.riff.wav.impl;
 
-import java.io.IOException;
+import java.nio.ByteOrder;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -30,8 +30,8 @@ import com.skratchdot.riff.wav.ChunkDataListTypeID;
 import com.skratchdot.riff.wav.ChunkTypeID;
 import com.skratchdot.riff.wav.RIFFWave;
 import com.skratchdot.riff.wav.WavPackage;
+import com.skratchdot.riff.wav.util.ExtendedByteBuffer;
 import com.skratchdot.riff.wav.util.RiffWaveException;
-import com.skratchdot.riff.wav.util.WavRandomAccessFile;
 import com.skratchdot.riff.wav.util.WavUtil;
 
 /**
@@ -88,54 +88,43 @@ public class ChunkDataListImpl extends ChunkImpl implements ChunkDataList {
 		super();
 	}
 
-	/**
-	 * @param riffWave a valid RIFFWave object
-	 * @param in a valid WavRandomAccessFile
-	 * @throws RiffWaveException
-	 */
-	public ChunkDataListImpl(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException {
-		super();
-		try {
-			// Check Chunk Type ID
-			if(ChunkTypeID.get((int)in.readUnsignedInt())!=this.getChunkTypeID())
-				throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+	@Override
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+		// Check Chunk Type ID
+		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
 
-			// Read in data size
-			long chunkSize = in.readUnsignedInt();
+		// Read in data size
+		long chunkSize = buf.getUnsignedInt();
 
-			// We cannot read in chunks past this point
-			long maxPointer = in.getFilePointer() + chunkSize;
+		// We cannot read in chunks past this point
+		long maxPointer = buf.position() + chunkSize;
 
-			// Check Chunk Data List Type ID
-			if(ChunkDataListTypeID.get((int)in.readUnsignedInt())!=ChunkDataListTypeID.ADTL)
-				throw new RiffWaveException("Invalid Chunk Data List Type ID");
+		// Check Chunk Data List Type ID
+		if(ChunkDataListTypeID.get((int)buf.getUnsignedInt())!=ChunkDataListTypeID.ADTL)
+			throw new RiffWaveException("Invalid Chunk Data List Type ID");
 
-			// loopPointer prevents an infinite loop if we try to parse a
-			// chunk and the filePointer doesn't advance for some reason
-			long loopPointer = 0;
+		// loopPointer prevents an infinite loop if we try to parse a
+		// chunk and the filePointer doesn't advance for some reason
+		long loopPointer = 0;
 
-			// Loop through file reading in chunks
-			while(in.getFilePointer()<in.length() && in.getFilePointer()!=loopPointer && in.getFilePointer()<maxPointer) {
-				// If the filePointer doesn't advance in this loop iteration,
-				// then we'll break out of the loop
-				loopPointer = in.getFilePointer();
+		// Loop through file reading in chunks
+		while(buf.position()<buf.limit() && buf.position()!=loopPointer && buf.position()<maxPointer) {
+			// If the filePointer doesn't advance in this loop iteration,
+			// then we'll break out of the loop
+			loopPointer = buf.position();
 
-				// Grab the current chunk
-				Chunk currentChunk = WavUtil.parseChunk(riffWave, in);
+			// Grab the current chunk
+			Chunk currentChunk = WavUtil.parseChunk(riffWave, buf);
 
-				// If we got a chunk, add it to our list
-				if(currentChunk!=null) {
-					// Add to our list of chunks
-					this.getDataListChunks().add((ChunkDataListType) currentChunk);
-				}
-
-				// We need to block align
-				in.blockAlign();
-
+			// If we got a chunk, add it to our list
+			if(currentChunk!=null) {
+				// Add to our list of chunks
+				this.getDataListChunks().add((ChunkDataListType) currentChunk);
 			}
-			
-		} catch (Exception e) {
-			throw new RiffWaveException(e.getMessage(), e.getCause());
+
+			// We need to block align
+			buf.blockAlign();
 		}
 	}
 
@@ -296,20 +285,21 @@ public class ChunkDataListImpl extends ChunkImpl implements ChunkDataList {
 		return result.toString();
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void write(RIFFWave riffWave, WavRandomAccessFile out) throws IOException {
-		out.writeUnsignedInt(this.getChunkTypeIDValue());
-		out.writeUnsignedInt(this.getSize());
-		out.writeUnsignedInt(ChunkDataListTypeID.ADTL_VALUE);
+	@Override
+	public byte[] toByteArray() throws RiffWaveException {
+		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		buf.order(ByteOrder.LITTLE_ENDIAN);
+
+		buf.putUnsignedInt(this.getChunkTypeIDValue());
+		buf.putUnsignedInt(this.getSize());
+		buf.putUnsignedInt(ChunkDataListTypeID.ADTL_VALUE);
 		for(int i=0; i<this.getDataListChunks().size(); i++) {
 			Chunk currentChunk = this.getDataListChunks().get(i);
-			currentChunk.write(riffWave, out);
-			out.writeBlockAlign();
+			buf.putBytes(currentChunk.toByteArray());
+			buf.putBlockAlign();
 		}
+
+		return buf.array();
 	}
 
 } //ChunkDataListImpl

@@ -14,16 +14,16 @@
  */
 package com.skratchdot.riff.wav.impl;
 
-import java.io.IOException;
+import java.nio.ByteOrder;
+
+import org.eclipse.emf.ecore.EClass;
 
 import com.skratchdot.riff.wav.ChunkDataListTypeNote;
 import com.skratchdot.riff.wav.ChunkTypeID;
 import com.skratchdot.riff.wav.RIFFWave;
 import com.skratchdot.riff.wav.WavPackage;
+import com.skratchdot.riff.wav.util.ExtendedByteBuffer;
 import com.skratchdot.riff.wav.util.RiffWaveException;
-import com.skratchdot.riff.wav.util.WavRandomAccessFile;
-
-import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -44,32 +44,22 @@ public class ChunkDataListTypeNoteImpl extends ChunkDataListTypeImpl implements 
 		super();
 	}
 
-	/**
-	 * @param riffWave a valid RIFFWave object
-	 * @param in a valid WavRandomAccessFile
-	 * @throws RiffWaveException
-	 */
-	public ChunkDataListTypeNoteImpl(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException {
-		super();
-		try {
-			// Check Chunk Type ID
-			if(ChunkTypeID.get((int)in.readUnsignedInt())!=this.getChunkTypeID())
-				throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+	@Override
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+		// Check Chunk Type ID
+		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
 
-			// Read in data size
-			int chunkSize = (int) in.readUnsignedInt();
+		// Read in data size
+		int chunkSize = (int) buf.getUnsignedInt();
 
-			this.setCuePointID(in.readUnsignedInt());
+		this.setCuePointID(buf.getUnsignedInt());
 
-			int textSize = chunkSize-4;
-			if(textSize>0) {
-				byte[] b = new byte[textSize];
-				in.readFully(b, 0, textSize);
-				this.setText(b);
-			}
-			
-		} catch (Exception e) {
-			throw new RiffWaveException(e.getMessage(), e.getCause());
+		int textSize = chunkSize-4;
+		if(textSize>0) {
+			byte[] newText = new byte[textSize];
+			buf.getBytes(newText);
+			this.setText(newText);
 		}
 	}
 
@@ -107,18 +97,19 @@ public class ChunkDataListTypeNoteImpl extends ChunkDataListTypeImpl implements 
 		return WavPackage.Literals.CHUNK_DATA_LIST_TYPE_NOTE;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void write(RIFFWave riffWave, WavRandomAccessFile out) throws IOException {
-		out.writeUnsignedInt(this.getChunkTypeIDValue());
-		out.writeUnsignedInt(this.getSize());
-		out.writeUnsignedInt(this.getCuePointID());
+	@Override
+	public byte[] toByteArray() {
+		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		buf.order(ByteOrder.LITTLE_ENDIAN);
+
+		buf.putUnsignedInt(this.getChunkTypeIDValue());
+		buf.putUnsignedInt(this.getSize());
+		buf.putUnsignedInt(this.getCuePointID());
 		if(this.getText()!=null) {
-			out.write(this.getText());
+			buf.putBytes(this.getText());
 		}
+
+		return buf.array();
 	}
 
 } //ChunkDataListTypeNoteImpl

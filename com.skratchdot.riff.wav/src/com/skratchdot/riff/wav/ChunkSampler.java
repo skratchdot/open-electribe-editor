@@ -14,9 +14,6 @@
  */
 package com.skratchdot.riff.wav;
 
-import java.io.IOException;
-
-import com.skratchdot.riff.wav.util.WavRandomAccessFile;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -283,14 +280,6 @@ public interface ChunkSampler extends Chunk {
 	 * @generated
 	 */
 	void setSamplerData(byte[] value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model exceptions="com.skratchdot.riff.wav.IOException" outDataType="com.skratchdot.riff.wav.WavRandomAccessFile"
-	 * @generated
-	 */
-	void write(RIFFWave riffWave, WavRandomAccessFile out) throws IOException;
 
 	/**
 	 * Returns the value of the '<em><b>Sample Loops</b></em>' containment reference list.

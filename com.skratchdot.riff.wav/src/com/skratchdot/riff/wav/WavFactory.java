@@ -19,7 +19,6 @@ import java.io.File;
 import org.eclipse.emf.ecore.EFactory;
 
 import com.skratchdot.riff.wav.util.RiffWaveException;
-import com.skratchdot.riff.wav.util.WavRandomAccessFile;
 
 /**
  * <!-- begin-user-doc -->
@@ -74,14 +73,6 @@ public interface WavFactory extends EFactory {
 	ChunkCue createChunkCue();
 
 	/**
-	 * @param riffWave a valid RIFFWave object (in case we need to log ParseChunkExceptions)
-	 * @param in a valid WavRandomAccessFile with it's current FilePointer at the beginning of the chunk
-	 * @return
-	 * @throws RiffWaveException 
-	 */
-	ChunkCue createChunkCue(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException;
-
-	/**
 	 * Returns a new object of class '<em>Chunk Data</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -89,14 +80,6 @@ public interface WavFactory extends EFactory {
 	 * @generated
 	 */
 	ChunkData createChunkData();
-
-	/**
-	 * @param riffWave a valid RIFFWave object (in case we need to log ParseChunkExceptions)
-	 * @param in a valid WavRandomAccessFile with it's current FilePointer at the beginning of the chunk
-	 * @return
-	 * @throws RiffWaveException 
-	 */
-	ChunkData createChunkData(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException;
 
 	/**
 	 * Returns a new object of class '<em>Chunk Data List</em>'.
@@ -108,14 +91,6 @@ public interface WavFactory extends EFactory {
 	ChunkDataList createChunkDataList();
 
 	/**
-	 * @param riffWave a valid RIFFWave object (in case we need to log ParseChunkExceptions)
-	 * @param in a valid WavRandomAccessFile with it's current FilePointer at the beginning of the chunk
-	 * @return
-	 * @throws RiffWaveException 
-	 */
-	ChunkDataList createChunkDataList(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException;
-
-	/**
 	 * Returns a new object of class '<em>Chunk Data List Type Label</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -123,14 +98,6 @@ public interface WavFactory extends EFactory {
 	 * @generated
 	 */
 	ChunkDataListTypeLabel createChunkDataListTypeLabel();
-
-	/**
-	 * @param riffWave a valid RIFFWave object (in case we need to log ParseChunkExceptions)
-	 * @param in a valid WavRandomAccessFile with it's current FilePointer at the beginning of the chunk
-	 * @return
-	 * @throws RiffWaveException 
-	 */
-	ChunkDataListTypeLabel createChunkDataListTypeLabel(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException;
 
 	/**
 	 * Returns a new object of class '<em>Chunk Data List Type Labeled Text</em>'.
@@ -142,14 +109,6 @@ public interface WavFactory extends EFactory {
 	ChunkDataListTypeLabeledText createChunkDataListTypeLabeledText();
 
 	/**
-	 * @param riffWave a valid RIFFWave object (in case we need to log ParseChunkExceptions)
-	 * @param in a valid WavRandomAccessFile with it's current FilePointer at the beginning of the chunk
-	 * @return
-	 * @throws RiffWaveException 
-	 */
-	ChunkDataListTypeLabeledText createChunkDataListTypeLabeledText(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException;
-
-	/**
 	 * Returns a new object of class '<em>Chunk Data List Type Note</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -157,14 +116,6 @@ public interface WavFactory extends EFactory {
 	 * @generated
 	 */
 	ChunkDataListTypeNote createChunkDataListTypeNote();
-
-	/**
-	 * @param riffWave a valid RIFFWave object (in case we need to log ParseChunkExceptions)
-	 * @param in a valid WavRandomAccessFile with it's current FilePointer at the beginning of the chunk
-	 * @return
-	 * @throws RiffWaveException 
-	 */
-	ChunkDataListTypeNote createChunkDataListTypeNote(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException;
 
 	/**
 	 * Returns a new object of class '<em>Chunk Fact</em>'.
@@ -176,14 +127,6 @@ public interface WavFactory extends EFactory {
 	ChunkFact createChunkFact();
 
 	/**
-	 * @param riffWave a valid RIFFWave object (in case we need to log ParseChunkExceptions)
-	 * @param in a valid WavRandomAccessFile with it's current FilePointer at the beginning of the chunk
-	 * @return
-	 * @throws RiffWaveException 
-	 */
-	ChunkFact createChunkFact(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException;
-
-	/**
 	 * Returns a new object of class '<em>Chunk Format</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -191,14 +134,6 @@ public interface WavFactory extends EFactory {
 	 * @generated
 	 */
 	ChunkFormat createChunkFormat();
-
-	/**
-	 * @param riffWave a valid RIFFWave object (in case we need to log ParseChunkExceptions)
-	 * @param in a valid WavRandomAccessFile with it's current FilePointer at the beginning of the chunk
-	 * @return
-	 * @throws RiffWaveException 
-	 */
-	ChunkFormat createChunkFormat(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException;
 
 	/**
 	 * Returns a new object of class '<em>Chunk Instrument</em>'.
@@ -210,14 +145,6 @@ public interface WavFactory extends EFactory {
 	ChunkInstrument createChunkInstrument();
 
 	/**
-	 * @param riffWave a valid RIFFWave object (in case we need to log ParseChunkExceptions)
-	 * @param in a valid WavRandomAccessFile with it's current FilePointer at the beginning of the chunk
-	 * @return
-	 * @throws RiffWaveException 
-	 */
-	ChunkInstrument createChunkInstrument(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException;
-
-	/**
 	 * Returns a new object of class '<em>Chunk Play List</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -225,14 +152,6 @@ public interface WavFactory extends EFactory {
 	 * @generated
 	 */
 	ChunkPlayList createChunkPlayList();
-
-	/**
-	 * @param riffWave a valid RIFFWave object (in case we need to log ParseChunkExceptions)
-	 * @param in a valid WavRandomAccessFile with it's current FilePointer at the beginning of the chunk
-	 * @return
-	 * @throws RiffWaveException 
-	 */
-	ChunkPlayList createChunkPlayList(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException;
 
 	/**
 	 * Returns a new object of class '<em>Chunk Sampler</em>'.
@@ -244,14 +163,6 @@ public interface WavFactory extends EFactory {
 	ChunkSampler createChunkSampler();
 
 	/**
-	 * @param riffWave a valid RIFFWave object (in case we need to log ParseChunkExceptions)
-	 * @param in a valid WavRandomAccessFile with it's current FilePointer at the beginning of the chunk
-	 * @return
-	 * @throws RiffWaveException 
-	 */
-	ChunkSampler createChunkSampler(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException;
-
-	/**
 	 * Returns a new object of class '<em>Chunk Silent</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -259,14 +170,6 @@ public interface WavFactory extends EFactory {
 	 * @generated
 	 */
 	ChunkSilent createChunkSilent();
-
-	/**
-	 * @param riffWave a valid RIFFWave object (in case we need to log ParseChunkExceptions)
-	 * @param in a valid WavRandomAccessFile with it's current FilePointer at the beginning of the chunk
-	 * @return
-	 * @throws RiffWaveException 
-	 */
-	ChunkSilent createChunkSilent(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException;
 
 	/**
 	 * Returns a new object of class '<em>Chunk Unknown</em>'.
@@ -278,14 +181,6 @@ public interface WavFactory extends EFactory {
 	ChunkUnknown createChunkUnknown();
 
 	/**
-	 * @param riffWave a valid RIFFWave object (in case we need to log ParseChunkExceptions)
-	 * @param in a valid WavRandomAccessFile with it's current FilePointer at the beginning of the chunk
-	 * @return
-	 * @throws RiffWaveException 
-	 */
-	ChunkUnknown createChunkUnknown(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException;
-
-	/**
 	 * Returns a new object of class '<em>Chunk Wave List</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -293,14 +188,6 @@ public interface WavFactory extends EFactory {
 	 * @generated
 	 */
 	ChunkWaveList createChunkWaveList();
-
-	/**
-	 * @param riffWave a valid RIFFWave object (in case we need to log ParseChunkExceptions)
-	 * @param in a valid WavRandomAccessFile with it's current FilePointer at the beginning of the chunk
-	 * @return
-	 * @throws RiffWaveException 
-	 */
-	ChunkWaveList createChunkWaveList(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException;
 
 	/**
 	 * Returns a new object of class '<em>Cue Point</em>'.

@@ -1927,6 +1927,36 @@ public interface WavPackage extends EPackage {
 	int SMPTE_FORMAT = 29;
 
 	/**
+	 * The meta object id for the '<em>Audio File Format</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see javax.sound.sampled.AudioFileFormat
+	 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getAudioFileFormat()
+	 * @generated
+	 */
+	int AUDIO_FILE_FORMAT = 30;
+
+	/**
+	 * The meta object id for the '<em>Audio Format</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see javax.sound.sampled.AudioFormat
+	 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getAudioFormat()
+	 * @generated
+	 */
+	int AUDIO_FORMAT = 31;
+
+	/**
+	 * The meta object id for the '<em>Audio Input Stream</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see javax.sound.sampled.AudioInputStream
+	 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getAudioInputStream()
+	 * @generated
+	 */
+	int AUDIO_INPUT_STREAM = 32;
+
+	/**
 	 * The meta object id for the '<em>Exception</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1934,7 +1964,17 @@ public interface WavPackage extends EPackage {
 	 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getException()
 	 * @generated
 	 */
-	int EXCEPTION = 30;
+	int EXCEPTION = 33;
+
+	/**
+	 * The meta object id for the '<em>Extended Byte Buffer</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.riff.wav.util.ExtendedByteBuffer
+	 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getExtendedByteBuffer()
+	 * @generated
+	 */
+	int EXTENDED_BYTE_BUFFER = 34;
 
 	/**
 	 * The meta object id for the '<em>File</em>' data type.
@@ -1944,7 +1984,7 @@ public interface WavPackage extends EPackage {
 	 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getFile()
 	 * @generated
 	 */
-	int FILE = 31;
+	int FILE = 35;
 
 	/**
 	 * The meta object id for the '<em>IO Exception</em>' data type.
@@ -1954,7 +1994,17 @@ public interface WavPackage extends EPackage {
 	 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getIOException()
 	 * @generated
 	 */
-	int IO_EXCEPTION = 32;
+	int IO_EXCEPTION = 36;
+
+	/**
+	 * The meta object id for the '<em>Riff Wave Exception</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.riff.wav.util.RiffWaveException
+	 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getRiffWaveException()
+	 * @generated
+	 */
+	int RIFF_WAVE_EXCEPTION = 37;
 
 	/**
 	 * The meta object id for the '<em>Unsigned Short</em>' data type.
@@ -1964,7 +2014,7 @@ public interface WavPackage extends EPackage {
 	 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getUnsignedShort()
 	 * @generated
 	 */
-	int UNSIGNED_SHORT = 33;
+	int UNSIGNED_SHORT = 38;
 
 	/**
 	 * The meta object id for the '<em>Unsigned Int</em>' data type.
@@ -1974,17 +2024,17 @@ public interface WavPackage extends EPackage {
 	 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getUnsignedInt()
 	 * @generated
 	 */
-	int UNSIGNED_INT = 34;
+	int UNSIGNED_INT = 39;
 
 	/**
-	 * The meta object id for the '<em>Random Access File</em>' data type.
+	 * The meta object id for the '<em>Unsupported Audio File Exception</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.riff.wav.util.WavRandomAccessFile
-	 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getWavRandomAccessFile()
+	 * @see javax.sound.sampled.UnsupportedAudioFileException
+	 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getUnsupportedAudioFileException()
 	 * @generated
 	 */
-	int WAV_RANDOM_ACCESS_FILE = 35;
+	int UNSUPPORTED_AUDIO_FILE_EXCEPTION = 40;
 
 	/**
 	 * Returns the meta object for class '{@link com.skratchdot.riff.wav.RIFFWave <em>RIFF Wave</em>}'.
@@ -3156,6 +3206,39 @@ public interface WavPackage extends EPackage {
 	EEnum getSMPTEFormat();
 
 	/**
+	 * Returns the meta object for data type '{@link javax.sound.sampled.AudioFileFormat <em>Audio File Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Audio File Format</em>'.
+	 * @see javax.sound.sampled.AudioFileFormat
+	 * @model instanceClass="javax.sound.sampled.AudioFileFormat"
+	 * @generated
+	 */
+	EDataType getAudioFileFormat();
+
+	/**
+	 * Returns the meta object for data type '{@link javax.sound.sampled.AudioFormat <em>Audio Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Audio Format</em>'.
+	 * @see javax.sound.sampled.AudioFormat
+	 * @model instanceClass="javax.sound.sampled.AudioFormat"
+	 * @generated
+	 */
+	EDataType getAudioFormat();
+
+	/**
+	 * Returns the meta object for data type '{@link javax.sound.sampled.AudioInputStream <em>Audio Input Stream</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Audio Input Stream</em>'.
+	 * @see javax.sound.sampled.AudioInputStream
+	 * @model instanceClass="javax.sound.sampled.AudioInputStream"
+	 * @generated
+	 */
+	EDataType getAudioInputStream();
+
+	/**
 	 * Returns the meta object for data type '{@link java.lang.Exception <em>Exception</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3165,6 +3248,17 @@ public interface WavPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getException();
+
+	/**
+	 * Returns the meta object for data type '{@link com.skratchdot.riff.wav.util.ExtendedByteBuffer <em>Extended Byte Buffer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Extended Byte Buffer</em>'.
+	 * @see com.skratchdot.riff.wav.util.ExtendedByteBuffer
+	 * @model instanceClass="com.skratchdot.riff.wav.util.ExtendedByteBuffer"
+	 * @generated
+	 */
+	EDataType getExtendedByteBuffer();
 
 	/**
 	 * Returns the meta object for data type '{@link java.io.File <em>File</em>}'.
@@ -3189,6 +3283,17 @@ public interface WavPackage extends EPackage {
 	EDataType getIOException();
 
 	/**
+	 * Returns the meta object for data type '{@link com.skratchdot.riff.wav.util.RiffWaveException <em>Riff Wave Exception</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Riff Wave Exception</em>'.
+	 * @see com.skratchdot.riff.wav.util.RiffWaveException
+	 * @model instanceClass="com.skratchdot.riff.wav.util.RiffWaveException"
+	 * @generated
+	 */
+	EDataType getRiffWaveException();
+
+	/**
 	 * Returns the meta object for data type '{@link java.lang.Integer <em>Unsigned Short</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3211,15 +3316,15 @@ public interface WavPackage extends EPackage {
 	EDataType getUnsignedInt();
 
 	/**
-	 * Returns the meta object for data type '{@link com.skratchdot.riff.wav.util.WavRandomAccessFile <em>Random Access File</em>}'.
+	 * Returns the meta object for data type '{@link javax.sound.sampled.UnsupportedAudioFileException <em>Unsupported Audio File Exception</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Random Access File</em>'.
-	 * @see com.skratchdot.riff.wav.util.WavRandomAccessFile
-	 * @model instanceClass="com.skratchdot.riff.wav.util.WavRandomAccessFile"
+	 * @return the meta object for data type '<em>Unsupported Audio File Exception</em>'.
+	 * @see javax.sound.sampled.UnsupportedAudioFileException
+	 * @model instanceClass="javax.sound.sampled.UnsupportedAudioFileException"
 	 * @generated
 	 */
-	EDataType getWavRandomAccessFile();
+	EDataType getUnsupportedAudioFileException();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -4176,6 +4281,36 @@ public interface WavPackage extends EPackage {
 		EEnum SMPTE_FORMAT = eINSTANCE.getSMPTEFormat();
 
 		/**
+		 * The meta object literal for the '<em>Audio File Format</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see javax.sound.sampled.AudioFileFormat
+		 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getAudioFileFormat()
+		 * @generated
+		 */
+		EDataType AUDIO_FILE_FORMAT = eINSTANCE.getAudioFileFormat();
+
+		/**
+		 * The meta object literal for the '<em>Audio Format</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see javax.sound.sampled.AudioFormat
+		 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getAudioFormat()
+		 * @generated
+		 */
+		EDataType AUDIO_FORMAT = eINSTANCE.getAudioFormat();
+
+		/**
+		 * The meta object literal for the '<em>Audio Input Stream</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see javax.sound.sampled.AudioInputStream
+		 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getAudioInputStream()
+		 * @generated
+		 */
+		EDataType AUDIO_INPUT_STREAM = eINSTANCE.getAudioInputStream();
+
+		/**
 		 * The meta object literal for the '<em>Exception</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4184,6 +4319,16 @@ public interface WavPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType EXCEPTION = eINSTANCE.getException();
+
+		/**
+		 * The meta object literal for the '<em>Extended Byte Buffer</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.skratchdot.riff.wav.util.ExtendedByteBuffer
+		 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getExtendedByteBuffer()
+		 * @generated
+		 */
+		EDataType EXTENDED_BYTE_BUFFER = eINSTANCE.getExtendedByteBuffer();
 
 		/**
 		 * The meta object literal for the '<em>File</em>' data type.
@@ -4206,6 +4351,16 @@ public interface WavPackage extends EPackage {
 		EDataType IO_EXCEPTION = eINSTANCE.getIOException();
 
 		/**
+		 * The meta object literal for the '<em>Riff Wave Exception</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.skratchdot.riff.wav.util.RiffWaveException
+		 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getRiffWaveException()
+		 * @generated
+		 */
+		EDataType RIFF_WAVE_EXCEPTION = eINSTANCE.getRiffWaveException();
+
+		/**
 		 * The meta object literal for the '<em>Unsigned Short</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4226,14 +4381,14 @@ public interface WavPackage extends EPackage {
 		EDataType UNSIGNED_INT = eINSTANCE.getUnsignedInt();
 
 		/**
-		 * The meta object literal for the '<em>Random Access File</em>' data type.
+		 * The meta object literal for the '<em>Unsupported Audio File Exception</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see com.skratchdot.riff.wav.util.WavRandomAccessFile
-		 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getWavRandomAccessFile()
+		 * @see javax.sound.sampled.UnsupportedAudioFileException
+		 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getUnsupportedAudioFileException()
 		 * @generated
 		 */
-		EDataType WAV_RANDOM_ACCESS_FILE = eINSTANCE.getWavRandomAccessFile();
+		EDataType UNSUPPORTED_AUDIO_FILE_EXCEPTION = eINSTANCE.getUnsupportedAudioFileException();
 
 	}
 

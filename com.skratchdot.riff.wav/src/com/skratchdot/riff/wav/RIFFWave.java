@@ -17,10 +17,17 @@ package com.skratchdot.riff.wav;
 import java.io.File;
 import java.io.IOException;
 
-import com.skratchdot.riff.wav.util.WavRandomAccessFile;
-import org.eclipse.emf.common.util.EList;
+import javax.sound.sampled.AudioFileFormat;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+
+import com.skratchdot.riff.wav.util.ExtendedByteBuffer;
+import com.skratchdot.riff.wav.util.RiffWaveException;
 
 /**
  * <!-- begin-user-doc -->
@@ -91,18 +98,66 @@ public interface RIFFWave extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model exceptions="com.skratchdot.riff.wav.IOException" fileDataType="com.skratchdot.riff.wav.File"
+	 * @model many="false"
 	 * @generated
 	 */
-	void write(File file) throws IOException;
+	EList<Chunk> getChunksByEClass(EClass eClass);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model exceptions="com.skratchdot.riff.wav.IOException" outDataType="com.skratchdot.riff.wav.WavRandomAccessFile"
+	 * @model
 	 * @generated
 	 */
-	void write(RIFFWave riffWave, WavRandomAccessFile out) throws IOException;
+	Chunk getFirstChunkByEClass(EClass eClass);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model exceptions="com.skratchdot.riff.wav.RiffWaveException" bufDataType="com.skratchdot.riff.wav.ExtendedByteBuffer"
+	 * @generated
+	 */
+	void init(ExtendedByteBuffer buf) throws RiffWaveException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="com.skratchdot.riff.wav.AudioFileFormat" exceptions="com.skratchdot.riff.wav.UnsupportedAudioFileException"
+	 * @generated
+	 */
+	AudioFileFormat toAudioFileFormat() throws UnsupportedAudioFileException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="com.skratchdot.riff.wav.AudioFormat" exceptions="com.skratchdot.riff.wav.UnsupportedAudioFileException"
+	 * @generated
+	 */
+	AudioFormat toAudioFormat() throws UnsupportedAudioFileException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="com.skratchdot.riff.wav.AudioInputStream" exceptions="com.skratchdot.riff.wav.UnsupportedAudioFileException"
+	 * @generated
+	 */
+	AudioInputStream toAudioInputStream() throws UnsupportedAudioFileException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model exceptions="com.skratchdot.riff.wav.IOException com.skratchdot.riff.wav.RiffWaveException" fileDataType="com.skratchdot.riff.wav.File"
+	 * @generated
+	 */
+	void write(File file) throws IOException, RiffWaveException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model exceptions="com.skratchdot.riff.wav.RiffWaveException"
+	 * @generated
+	 */
+	byte[] toByteArray() throws RiffWaveException;
 
 
 } // RIFFWave

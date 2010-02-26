@@ -17,6 +17,11 @@ package com.skratchdot.riff.wav.impl;
 import java.io.File;
 import java.io.IOException;
 
+import javax.sound.sampled.AudioFileFormat;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -53,8 +58,8 @@ import com.skratchdot.riff.wav.SampleLoopType;
 import com.skratchdot.riff.wav.Segment;
 import com.skratchdot.riff.wav.WavFactory;
 import com.skratchdot.riff.wav.WavPackage;
+import com.skratchdot.riff.wav.util.ExtendedByteBuffer;
 import com.skratchdot.riff.wav.util.RiffWaveException;
-import com.skratchdot.riff.wav.util.WavRandomAccessFile;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
@@ -142,18 +147,28 @@ public class WavFactoryImpl extends EFactoryImpl implements WavFactory {
 				return createSampleLoopTypeFromString(eDataType, initialValue);
 			case WavPackage.SMPTE_FORMAT:
 				return createSMPTEFormatFromString(eDataType, initialValue);
+			case WavPackage.AUDIO_FILE_FORMAT:
+				return createAudioFileFormatFromString(eDataType, initialValue);
+			case WavPackage.AUDIO_FORMAT:
+				return createAudioFormatFromString(eDataType, initialValue);
+			case WavPackage.AUDIO_INPUT_STREAM:
+				return createAudioInputStreamFromString(eDataType, initialValue);
 			case WavPackage.EXCEPTION:
 				return createExceptionFromString(eDataType, initialValue);
+			case WavPackage.EXTENDED_BYTE_BUFFER:
+				return createExtendedByteBufferFromString(eDataType, initialValue);
 			case WavPackage.FILE:
 				return createFileFromString(eDataType, initialValue);
 			case WavPackage.IO_EXCEPTION:
 				return createIOExceptionFromString(eDataType, initialValue);
+			case WavPackage.RIFF_WAVE_EXCEPTION:
+				return createRiffWaveExceptionFromString(eDataType, initialValue);
 			case WavPackage.UNSIGNED_SHORT:
 				return createUnsignedShortFromString(eDataType, initialValue);
 			case WavPackage.UNSIGNED_INT:
 				return createUnsignedIntFromString(eDataType, initialValue);
-			case WavPackage.WAV_RANDOM_ACCESS_FILE:
-				return createWavRandomAccessFileFromString(eDataType, initialValue);
+			case WavPackage.UNSUPPORTED_AUDIO_FILE_EXCEPTION:
+				return createUnsupportedAudioFileExceptionFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -176,18 +191,28 @@ public class WavFactoryImpl extends EFactoryImpl implements WavFactory {
 				return convertSampleLoopTypeToString(eDataType, instanceValue);
 			case WavPackage.SMPTE_FORMAT:
 				return convertSMPTEFormatToString(eDataType, instanceValue);
+			case WavPackage.AUDIO_FILE_FORMAT:
+				return convertAudioFileFormatToString(eDataType, instanceValue);
+			case WavPackage.AUDIO_FORMAT:
+				return convertAudioFormatToString(eDataType, instanceValue);
+			case WavPackage.AUDIO_INPUT_STREAM:
+				return convertAudioInputStreamToString(eDataType, instanceValue);
 			case WavPackage.EXCEPTION:
 				return convertExceptionToString(eDataType, instanceValue);
+			case WavPackage.EXTENDED_BYTE_BUFFER:
+				return convertExtendedByteBufferToString(eDataType, instanceValue);
 			case WavPackage.FILE:
 				return convertFileToString(eDataType, instanceValue);
 			case WavPackage.IO_EXCEPTION:
 				return convertIOExceptionToString(eDataType, instanceValue);
+			case WavPackage.RIFF_WAVE_EXCEPTION:
+				return convertRiffWaveExceptionToString(eDataType, instanceValue);
 			case WavPackage.UNSIGNED_SHORT:
 				return convertUnsignedShortToString(eDataType, instanceValue);
 			case WavPackage.UNSIGNED_INT:
 				return convertUnsignedIntToString(eDataType, instanceValue);
-			case WavPackage.WAV_RANDOM_ACCESS_FILE:
-				return convertWavRandomAccessFileToString(eDataType, instanceValue);
+			case WavPackage.UNSUPPORTED_AUDIO_FILE_EXCEPTION:
+				return convertUnsupportedAudioFileExceptionToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -232,24 +257,12 @@ public class WavFactoryImpl extends EFactoryImpl implements WavFactory {
 		return chunkCue;
 	}
 
-	@Override
-	public ChunkCue createChunkCue(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException {
-		ChunkCueImpl chunkCue = new ChunkCueImpl(riffWave, in);
-		return chunkCue;
-	}
-
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ChunkData createChunkData() {
 		ChunkDataImpl chunkData = new ChunkDataImpl();
-		return chunkData;
-	}
-
-	@Override
-	public ChunkData createChunkData(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException {
-		ChunkData chunkData = new ChunkDataImpl(riffWave, in);
 		return chunkData;
 	}
 
@@ -262,27 +275,12 @@ public class WavFactoryImpl extends EFactoryImpl implements WavFactory {
 		return chunkDataList;
 	}
 
-	@Override
-	public ChunkDataList createChunkDataList(RIFFWave riffWave,
-			WavRandomAccessFile in) throws RiffWaveException {
-		ChunkDataList chunkDataList = new ChunkDataListImpl(riffWave, in);
-		return chunkDataList;
-	}
-
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ChunkDataListTypeLabel createChunkDataListTypeLabel() {
 		ChunkDataListTypeLabelImpl chunkDataListTypeLabel = new ChunkDataListTypeLabelImpl();
-		return chunkDataListTypeLabel;
-	}
-
-	@Override
-	public ChunkDataListTypeLabel createChunkDataListTypeLabel(
-			RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException {
-		ChunkDataListTypeLabel chunkDataListTypeLabel = new ChunkDataListTypeLabelImpl(
-				riffWave, in);
 		return chunkDataListTypeLabel;
 	}
 
@@ -295,28 +293,12 @@ public class WavFactoryImpl extends EFactoryImpl implements WavFactory {
 		return chunkDataListTypeLabeledText;
 	}
 
-	@Override
-	public ChunkDataListTypeLabeledText createChunkDataListTypeLabeledText(
-			RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException {
-		ChunkDataListTypeLabeledText chunkDataListTypeLabeledText = new ChunkDataListTypeLabeledTextImpl(
-				riffWave, in);
-		return chunkDataListTypeLabeledText;
-	}
-
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ChunkDataListTypeNote createChunkDataListTypeNote() {
 		ChunkDataListTypeNoteImpl chunkDataListTypeNote = new ChunkDataListTypeNoteImpl();
-		return chunkDataListTypeNote;
-	}
-
-	@Override
-	public ChunkDataListTypeNote createChunkDataListTypeNote(RIFFWave riffWave,
-			WavRandomAccessFile in) throws RiffWaveException {
-		ChunkDataListTypeNote chunkDataListTypeNote = new ChunkDataListTypeNoteImpl(
-				riffWave, in);
 		return chunkDataListTypeNote;
 	}
 
@@ -329,25 +311,12 @@ public class WavFactoryImpl extends EFactoryImpl implements WavFactory {
 		return chunkFact;
 	}
 
-	@Override
-	public ChunkFact createChunkFact(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException {
-		ChunkFact chunkFact = new ChunkFactImpl(riffWave, in);
-		return chunkFact;
-	}
-
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ChunkFormat createChunkFormat() {
 		ChunkFormatImpl chunkFormat = new ChunkFormatImpl();
-		return chunkFormat;
-	}
-
-	@Override
-	public ChunkFormat createChunkFormat(RIFFWave riffWave,
-			WavRandomAccessFile in) throws RiffWaveException {
-		ChunkFormat chunkFormat = new ChunkFormatImpl(riffWave, in);
 		return chunkFormat;
 	}
 
@@ -360,26 +329,12 @@ public class WavFactoryImpl extends EFactoryImpl implements WavFactory {
 		return chunkInstrument;
 	}
 
-	@Override
-	public ChunkInstrument createChunkInstrument(RIFFWave riffWave,
-			WavRandomAccessFile in) throws RiffWaveException {
-		ChunkInstrument chunkInstrument = new ChunkInstrumentImpl(riffWave, in);
-		return chunkInstrument;
-	}
-
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ChunkPlayList createChunkPlayList() {
 		ChunkPlayListImpl chunkPlayList = new ChunkPlayListImpl();
-		return chunkPlayList;
-	}
-
-	@Override
-	public ChunkPlayList createChunkPlayList(RIFFWave riffWave,
-			WavRandomAccessFile in) throws RiffWaveException {
-		ChunkPlayList chunkPlayList = new ChunkPlayListImpl(riffWave, in);
 		return chunkPlayList;
 	}
 
@@ -392,26 +347,12 @@ public class WavFactoryImpl extends EFactoryImpl implements WavFactory {
 		return chunkSampler;
 	}
 
-	@Override
-	public ChunkSampler createChunkSampler(RIFFWave riffWave,
-			WavRandomAccessFile in) throws RiffWaveException {
-		ChunkSampler chunkSampler = new ChunkSamplerImpl(riffWave, in);
-		return chunkSampler;
-	}
-
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ChunkSilent createChunkSilent() {
 		ChunkSilentImpl chunkSilent = new ChunkSilentImpl();
-		return chunkSilent;
-	}
-
-	@Override
-	public ChunkSilent createChunkSilent(RIFFWave riffWave,
-			WavRandomAccessFile in) throws RiffWaveException {
-		ChunkSilent chunkSilent = new ChunkSilentImpl(riffWave, in);
 		return chunkSilent;
 	}
 
@@ -424,26 +365,12 @@ public class WavFactoryImpl extends EFactoryImpl implements WavFactory {
 		return chunkUnknown;
 	}
 
-	@Override
-	public ChunkUnknown createChunkUnknown(RIFFWave riffWave,
-			WavRandomAccessFile in) throws RiffWaveException {
-		ChunkUnknown chunkUnknown = new ChunkUnknownImpl(riffWave, in);
-		return chunkUnknown;
-	}
-
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ChunkWaveList createChunkWaveList() {
 		ChunkWaveListImpl chunkWaveList = new ChunkWaveListImpl();
-		return chunkWaveList;
-	}
-
-	@Override
-	public ChunkWaveList createChunkWaveList(RIFFWave riffWave,
-			WavRandomAccessFile in) throws RiffWaveException {
-		ChunkWaveList chunkWaveList = new ChunkWaveListImpl(riffWave, in);
 		return chunkWaveList;
 	}
 
@@ -602,6 +529,60 @@ public class WavFactoryImpl extends EFactoryImpl implements WavFactory {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AudioFileFormat createAudioFileFormatFromString(EDataType eDataType, String initialValue) {
+		return (AudioFileFormat)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertAudioFileFormatToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AudioFormat createAudioFormatFromString(EDataType eDataType, String initialValue) {
+		return (AudioFormat)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertAudioFormatToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AudioInputStream createAudioInputStreamFromString(EDataType eDataType, String initialValue) {
+		return (AudioInputStream)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertAudioInputStreamToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -616,6 +597,24 @@ public class WavFactoryImpl extends EFactoryImpl implements WavFactory {
 	 */
 	public String convertExceptionToString(EDataType eDataType,
 			Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExtendedByteBuffer createExtendedByteBufferFromString(EDataType eDataType, String initialValue) {
+		return (ExtendedByteBuffer)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertExtendedByteBufferToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -652,6 +651,24 @@ public class WavFactoryImpl extends EFactoryImpl implements WavFactory {
 	 * @generated
 	 */
 	public String convertIOExceptionToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RiffWaveException createRiffWaveExceptionFromString(EDataType eDataType, String initialValue) {
+		return (RiffWaveException)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertRiffWaveExceptionToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -696,8 +713,8 @@ public class WavFactoryImpl extends EFactoryImpl implements WavFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public WavRandomAccessFile createWavRandomAccessFileFromString(EDataType eDataType, String initialValue) {
-		return (WavRandomAccessFile)super.createFromString(eDataType, initialValue);
+	public UnsupportedAudioFileException createUnsupportedAudioFileExceptionFromString(EDataType eDataType, String initialValue) {
+		return (UnsupportedAudioFileException)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -705,7 +722,7 @@ public class WavFactoryImpl extends EFactoryImpl implements WavFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertWavRandomAccessFileToString(EDataType eDataType, Object instanceValue) {
+	public String convertUnsupportedAudioFileExceptionToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

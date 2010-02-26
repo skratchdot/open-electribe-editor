@@ -14,7 +14,7 @@
  */
 package com.skratchdot.riff.wav.impl;
 
-import java.io.IOException;
+import java.nio.ByteOrder;
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
@@ -27,8 +27,8 @@ import com.skratchdot.riff.wav.CuePoint;
 import com.skratchdot.riff.wav.RIFFWave;
 import com.skratchdot.riff.wav.WavFactory;
 import com.skratchdot.riff.wav.WavPackage;
+import com.skratchdot.riff.wav.util.ExtendedByteBuffer;
 import com.skratchdot.riff.wav.util.RiffWaveException;
-import com.skratchdot.riff.wav.util.WavRandomAccessFile;
 
 /**
  * <!-- begin-user-doc -->
@@ -74,44 +74,34 @@ public class ChunkCueImpl extends ChunkImpl implements ChunkCue {
 		super();
 	}
 
-	/**
-	 * @param riffWave a valid RIFFWave object
-	 * @param in a valid WavRandomAccessFile
-	 * @throws RiffWaveException
-	 */
-	public ChunkCueImpl(RIFFWave riffWave, WavRandomAccessFile in) throws RiffWaveException {
-		super();
-		try {
-			// Check Chunk Type ID
-			if(ChunkTypeID.get((int)in.readUnsignedInt())!=this.getChunkTypeID())
-				throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+	@Override
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+		// Check Chunk Type ID
+		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
 
-			// Read in data size
-			long chunkSize = in.readUnsignedInt();
+		// Read in data size
+		long chunkSize = buf.getUnsignedInt();
 
-			// Read in cue points
-			long numCuePoints = in.readUnsignedInt();
-			for(int i=0; i<numCuePoints; i++) {
-				CuePoint cuePoint = WavFactory.eINSTANCE.createCuePoint();
-				cuePoint.setCuePointID(in.readUnsignedInt());
-				cuePoint.setPosition(in.readUnsignedInt());
-				cuePoint.setDataChunkID(in.readUnsignedInt());
-				cuePoint.setChunkStart(in.readUnsignedInt());
-				cuePoint.setBlockStart(in.readUnsignedInt());
-				cuePoint.setSampleOffset(in.readUnsignedInt());
-				this.getCuePoints().add(cuePoint);
-			}
+		// Read in cue points
+		long numCuePoints = buf.getUnsignedInt();
+		for(int i=0; i<numCuePoints; i++) {
+			CuePoint cuePoint = WavFactory.eINSTANCE.createCuePoint();
+			cuePoint.setCuePointID(buf.getUnsignedInt());
+			cuePoint.setPosition(buf.getUnsignedInt());
+			cuePoint.setDataChunkID(buf.getUnsignedInt());
+			cuePoint.setChunkStart(buf.getUnsignedInt());
+			cuePoint.setBlockStart(buf.getUnsignedInt());
+			cuePoint.setSampleOffset(buf.getUnsignedInt());
+			this.getCuePoints().add(cuePoint);
+		}
 
-			// Does the size we read in match the size we calculate from the data read in?
-			if(chunkSize!=this.getSize()) {
-				throw new RiffWaveException("Invalid chunk size for cue chunk." +
-					"From File: " + Long.toString(chunkSize) +
-					"Calculated: " + Long.toString(this.getSize())
-				);
-			}
-			
-		} catch (Exception e) {
-			throw new RiffWaveException(e.getMessage(), e.getCause());
+		// Does the size we read in match the size we calculate from the data read in?
+		if(chunkSize!=this.getSize()) {
+			throw new RiffWaveException("Invalid chunk size for cue chunk." +
+				"From File: " + Long.toString(chunkSize) +
+				"Calculated: " + Long.toString(this.getSize())
+			);
 		}
 	}
 
@@ -234,32 +224,26 @@ public class ChunkCueImpl extends ChunkImpl implements ChunkCue {
 		return super.eIsSet(featureID);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @throws IOException 
-	 * @generated NOT
-	 */
-	public void write(RIFFWave riffWave, WavRandomAccessFile out) throws IOException {
-		out.writeUnsignedInt(this.getChunkTypeIDValue());
-		out.writeUnsignedInt(this.getSize());
+	@Override
+	public byte[] toByteArray() {
+		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		buf.order(ByteOrder.LITTLE_ENDIAN);
+
+		buf.putUnsignedInt(this.getChunkTypeIDValue());
+		buf.putUnsignedInt(this.getSize());
 		
-		out.writeUnsignedInt(this.getNumberOfCuePoints());
+		buf.putUnsignedInt(this.getNumberOfCuePoints());
 
 		for(int i=0; i<this.getNumberOfCuePoints(); i++) {
-			out.writeUnsignedInt(this.getCuePoints().get(i).getCuePointID());
-			out.writeUnsignedInt(this.getCuePoints().get(i).getPosition());
-			out.writeUnsignedInt(this.getCuePoints().get(i).getDataChunkID());
-			out.writeUnsignedInt(this.getCuePoints().get(i).getChunkStart());
-			out.writeUnsignedInt(this.getCuePoints().get(i).getBlockStart());
-			out.writeUnsignedInt(this.getCuePoints().get(i).getSampleOffset());
-			out.writeUnsignedInt(this.getCuePoints().get(i).getCuePointID());
+			buf.putUnsignedInt(this.getCuePoints().get(i).getCuePointID());
+			buf.putUnsignedInt(this.getCuePoints().get(i).getPosition());
+			buf.putUnsignedInt(this.getCuePoints().get(i).getDataChunkID());
+			buf.putUnsignedInt(this.getCuePoints().get(i).getChunkStart());
+			buf.putUnsignedInt(this.getCuePoints().get(i).getBlockStart());
+			buf.putUnsignedInt(this.getCuePoints().get(i).getSampleOffset());
+			buf.putUnsignedInt(this.getCuePoints().get(i).getCuePointID());
 		}
-
+		return buf.array();
 	}
-
-
-
-
 
 } //ChunkCueImpl

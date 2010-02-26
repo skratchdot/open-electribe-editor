@@ -14,8 +14,6 @@
  */
 package com.skratchdot.riff.wav.impl;
 
-import java.io.IOException;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
@@ -23,7 +21,8 @@ import com.skratchdot.riff.wav.Chunk;
 import com.skratchdot.riff.wav.ChunkTypeID;
 import com.skratchdot.riff.wav.RIFFWave;
 import com.skratchdot.riff.wav.WavPackage;
-import com.skratchdot.riff.wav.util.WavRandomAccessFile;
+import com.skratchdot.riff.wav.util.ExtendedByteBuffer;
+import com.skratchdot.riff.wav.util.RiffWaveException;
 
 /**
  * <!-- begin-user-doc -->
@@ -145,7 +144,17 @@ public abstract class ChunkImpl extends EObjectImpl implements Chunk {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public void write(RIFFWave riffWave, WavRandomAccessFile out) throws IOException {
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+		// Implementation should be handled by subclasses
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toByteArray() throws RiffWaveException {
 		// Implementation should be handled by subclasses
 		throw new UnsupportedOperationException();
 	}
