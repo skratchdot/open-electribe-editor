@@ -11,8 +11,10 @@
  */
 package com.skratchdot.electribe.model.esx;
 
+import com.skratchdot.riff.wav.RIFFWave;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -1060,6 +1062,26 @@ public interface EsxFactory extends EFactory {
 	String convertObject(Object instanceValue);
 
 	/**
+	 * Returns an instance of data type '<em>RIFF Wave</em>' corresponding the given literal.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param literal a literal of the data type.
+	 * @return a new instance value of the data type.
+	 * @generated
+	 */
+	RIFFWave createRIFFWave(String literal);
+
+	/**
+	 * Returns a literal representation of an instance of data type '<em>RIFF Wave</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param instanceValue an instance value of the data type.
+	 * @return a literal representation of the instance value.
+	 * @generated
+	 */
+	String convertRIFFWave(RIFFWave instanceValue);
+
+	/**
 	 * Returns an instance of data type '<em>Array List</em>' corresponding the given literal.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1098,6 +1120,26 @@ public interface EsxFactory extends EFactory {
 	 * @generated
 	 */
 	String convertFile(File instanceValue);
+
+	/**
+	 * Returns an instance of data type '<em>Input Stream</em>' corresponding the given literal.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param literal a literal of the data type.
+	 * @return a new instance value of the data type.
+	 * @generated
+	 */
+	InputStream createInputStream(String literal);
+
+	/**
+	 * Returns a literal representation of an instance of data type '<em>Input Stream</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param instanceValue an instance value of the data type.
+	 * @return a literal representation of the instance value.
+	 * @generated
+	 */
+	String convertInputStream(InputStream instanceValue);
 
 	/**
 	 * Returns an instance of data type '<em>IO Exception</em>' corresponding the given literal.

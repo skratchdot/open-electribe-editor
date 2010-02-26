@@ -12,7 +12,6 @@
 package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.File;
-import java.io.IOException;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -253,11 +252,11 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.skratchdot.electribe.model.esx.impl.SampleImpl#export(java.io.File)
+	 * @see com.skratchdot.electribe.model.esx.impl.SampleImpl#toRIFFWave()
 	 */
 	@Override
-	public void export(File file) throws IOException {
-		if(this.isEmpty()) return; // Do nothing if this is an empty sample
+	public RIFFWave toRIFFWave() {
+		if(this.isEmpty()) return null; // Do nothing if this is an empty sample
 
 		RIFFWave riffWave = WavFactory.eINSTANCE.createRIFFWave();
 
@@ -307,8 +306,7 @@ public class SampleMonoImpl extends SampleImpl implements SampleMono {
 			riffWave.getChunks().add(chunkSampler);
 		}
 
-		// Write the file
-		riffWave.write(file);
+		return riffWave;
 	}
 
 } //SampleMonoImpl

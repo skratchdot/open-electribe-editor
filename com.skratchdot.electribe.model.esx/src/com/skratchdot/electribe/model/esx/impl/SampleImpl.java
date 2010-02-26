@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -26,9 +25,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
@@ -44,10 +41,11 @@ import com.skratchdot.electribe.model.esx.SampleTune;
 import com.skratchdot.electribe.model.esx.StretchStep;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
+import com.skratchdot.riff.wav.ChunkSampler;
 import com.skratchdot.riff.wav.RIFFWave;
 import com.skratchdot.riff.wav.SampleLoop;
 import com.skratchdot.riff.wav.WavFactory;
-import com.skratchdot.riff.wav.impl.SampleLoopImpl;
+import com.skratchdot.riff.wav.WavPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -699,21 +697,16 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 			// Attempt to set loopStart and End from .wav smpl chunk
 			if(file.getAbsolutePath().toLowerCase().endsWith(".wav")) {
 				RIFFWave riffWave = WavFactory.eINSTANCE.createRIFFWave(file);
-				TreeIterator<EObject> iter = riffWave.eAllContents();
-				boolean sampleLoopFound = false;
-				while (iter.hasNext() && sampleLoopFound==false) {
-					EObject next = iter.next();
-					if(next.getClass()==SampleLoopImpl.class) {
-						SampleLoop sampleLoop = (SampleLoop) next;
-						Long tempLoopStart = sampleLoop.getStart();
-						Long tempLoopEnd = sampleLoop.getEnd();
-						if(tempLoopStart<this.getEnd() && tempLoopStart>=0) {
-							this.setLoopStart(tempLoopStart.intValue());
-						}
-						if(tempLoopEnd<this.getEnd() && tempLoopEnd>this.getLoopStart()) {
-							this.setEnd(tempLoopEnd.intValue());
-						}
-						sampleLoopFound = true;
+				ChunkSampler chunkSampler = (ChunkSampler) riffWave.getFirstChunkByEClass(WavPackage.Literals.CHUNK_SAMPLER);
+				if(chunkSampler!=null && chunkSampler.getSampleLoops().size()>0) {
+					SampleLoop sampleLoop = chunkSampler.getSampleLoops().get(0);
+					Long tempLoopStart = sampleLoop.getStart();
+					Long tempLoopEnd = sampleLoop.getEnd();
+					if(tempLoopStart<this.getEnd() && tempLoopStart>=0) {
+						this.setLoopStart(tempLoopStart.intValue());
+					}
+					if(tempLoopEnd<this.getEnd() && tempLoopEnd>this.getLoopStart()) {
+						this.setEnd(tempLoopEnd.intValue());
 					}
 				}
 			}
@@ -1359,8 +1352,34 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	 * @generated NOT
 	 */
 	public void export(File file) throws IOException {
-		// This should be implemented by subclasses
+		this.toRIFFWaveFile(file);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public RIFFWave toRIFFWave() {
+		// To be implemented by subclass
 		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void toRIFFWaveFile(File file) throws IOException {
+		try {
+			RIFFWave riffWave = this.toRIFFWave();
+			if(riffWave!=null) {
+				riffWave.write(file);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new IOException(e);
+		}
 	}
 
 	/**
@@ -1705,43 +1724,6 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 		result.append(sampleNumberOriginal);
 		result.append(')');
 		return result.toString();
-	}
-
-	@Override
-	public AudioInputStream getAudioInputStream() {
-		byte[] left = this.getAudioDataChannel1();
-		byte[] right = this.getAudioDataChannel2();
-		byte[] both = new byte[left.length + right.length];
-
-		// Combine left and right channels to one stream
-		// In try/catch to catch array out of bounds
-		// TODO: This logic should be fixed so out of bounds
-		// never occurs. Too lazy to fix right now.
-		try {
-			for (int i = 0, j = 0; i<both.length && j<left.length; i = i + 4, j = j+2) {
-				both[i] = left[j];
-				both[i + 1] = left[j + 1];
-				both[i + 2] = right[j];
-				both[i + 3] = right[j + 1];
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-
-		// Create audioInputStream
-		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(both);
-		AudioFormat audioFormat = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, // Encoding
-				(float) this.getSampleRate(), // sampleRate
-				16, // sampleSizeInBits
-				2, // channels
-				4, // frameSize ( (sampleSizeInBits*channels)/8 )
-				this.getSampleRate(), // frameRate
-				true // bigEndian
-		);
-		AudioInputStream audioInputStream = new AudioInputStream(byteArrayInputStream, audioFormat,
-				this.getNumberOfSampleFrames()*2);
-
-		return audioInputStream;
 	}
 
 } //SampleImpl

@@ -55,7 +55,6 @@ http://www.eclipse.org/legal/epl-v10.html
       <plugin id="com.skratchdot.electribe.model.esx.preferences"/>
       <plugin id="com.skratchdot.riff.wav"/>
       <plugin id="javax.transaction" fragment="true"/>
-      <plugin id="net.javazoom.jlayer"/>
       <plugin id="org.apache.commons.codec"/>
       <plugin id="org.apache.commons.httpclient"/>
       <plugin id="org.apache.commons.lang"/>

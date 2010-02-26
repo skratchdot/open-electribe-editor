@@ -101,8 +101,10 @@ import com.skratchdot.electribe.model.esx.StretchStep;
 import com.skratchdot.electribe.model.esx.Swing;
 import com.skratchdot.electribe.model.esx.Tempo;
 import com.skratchdot.electribe.model.esx.TempoLock;
+import com.skratchdot.riff.wav.RIFFWave;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * <!-- begin-user-doc -->
@@ -648,6 +650,13 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EDataType riffWaveEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType arrayListEDataType = null;
 
 	/**
@@ -656,6 +665,13 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	private EDataType fileEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType inputStreamEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2996,6 +3012,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getRIFFWave() {
+		return riffWaveEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getArrayList() {
 		return arrayListEDataType;
 	}
@@ -3007,6 +3032,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 */
 	public EDataType getFile() {
 		return fileEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getInputStream() {
+		return inputStreamEDataType;
 	}
 
 	/**
@@ -3348,9 +3382,11 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		// Create data types
 		arrayListEDataType = createEDataType(ARRAY_LIST);
 		fileEDataType = createEDataType(FILE);
+		inputStreamEDataType = createEDataType(INPUT_STREAM);
 		ioExceptionEDataType = createEDataType(IO_EXCEPTION);
 		iProgressMonitorEDataType = createEDataType(IPROGRESS_MONITOR);
 		objectEDataType = createEDataType(OBJECT);
+		riffWaveEDataType = createEDataType(RIFF_WAVE);
 	}
 
 	/**
@@ -3668,6 +3704,12 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getSample_SampleNumberCurrent(), this.getSampleNumber(), "sampleNumberCurrent", "-1", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(sampleEClass, null, "export", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getFile(), "file", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, this.getIOException());
+
+		addEOperation(sampleEClass, this.getRIFFWave(), "toRIFFWave", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(sampleEClass, null, "toRIFFWaveFile", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getFile(), "file", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getIOException());
 
@@ -5435,9 +5477,11 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		// Initialize data types
 		initEDataType(arrayListEDataType, ArrayList.class, "ArrayList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(fileEDataType, File.class, "File", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(inputStreamEDataType, InputStream.class, "InputStream", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(ioExceptionEDataType, IOException.class, "IOException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(iProgressMonitorEDataType, IProgressMonitor.class, "IProgressMonitor", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(objectEDataType, Object.class, "Object", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(riffWaveEDataType, RIFFWave.class, "RIFFWave", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

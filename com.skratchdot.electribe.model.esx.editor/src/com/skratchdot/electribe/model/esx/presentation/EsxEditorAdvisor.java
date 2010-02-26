@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import net.javazoom.jlayer.skratchdot.AudioUtil;
+import com.skratchdot.electribe.audioplayer.util.AudioUtil;
 
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.ui.URIEditorInput;

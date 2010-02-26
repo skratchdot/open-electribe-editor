@@ -4346,8 +4346,18 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getObject()
 	 * @generated
 	 */
-	int OBJECT = 79;
+	int OBJECT = 80;
 
+
+	/**
+	 * The meta object id for the '<em>RIFF Wave</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.riff.wav.RIFFWave
+	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getRIFFWave()
+	 * @generated
+	 */
+	int RIFF_WAVE = 81;
 
 	/**
 	 * The meta object id for the '<em>Array List</em>' data type.
@@ -4372,6 +4382,16 @@ public interface EsxPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '<em>Input Stream</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.io.InputStream
+	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getInputStream()
+	 * @generated
+	 */
+	int INPUT_STREAM = 77;
+
+	/**
 	 * The meta object id for the '<em>IO Exception</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4379,7 +4399,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getIOException()
 	 * @generated
 	 */
-	int IO_EXCEPTION = 77;
+	int IO_EXCEPTION = 78;
 
 
 	/**
@@ -4390,7 +4410,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getIProgressMonitor()
 	 * @generated
 	 */
-	int IPROGRESS_MONITOR = 78;
+	int IPROGRESS_MONITOR = 79;
 
 
 	/**
@@ -7080,6 +7100,17 @@ public interface EsxPackage extends EPackage {
 	EDataType getObject();
 
 	/**
+	 * Returns the meta object for data type '{@link com.skratchdot.riff.wav.RIFFWave <em>RIFF Wave</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>RIFF Wave</em>'.
+	 * @see com.skratchdot.riff.wav.RIFFWave
+	 * @model instanceClass="com.skratchdot.riff.wav.RIFFWave"
+	 * @generated
+	 */
+	EDataType getRIFFWave();
+
+	/**
 	 * Returns the meta object for data type '{@link java.util.ArrayList <em>Array List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7100,6 +7131,17 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getFile();
+
+	/**
+	 * Returns the meta object for data type '{@link java.io.InputStream <em>Input Stream</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Input Stream</em>'.
+	 * @see java.io.InputStream
+	 * @model instanceClass="java.io.InputStream"
+	 * @generated
+	 */
+	EDataType getInputStream();
 
 	/**
 	 * Returns the meta object for data type '{@link java.io.IOException <em>IO Exception</em>}'.
@@ -9306,6 +9348,16 @@ public interface EsxPackage extends EPackage {
 		EDataType OBJECT = eINSTANCE.getObject();
 
 		/**
+		 * The meta object literal for the '<em>RIFF Wave</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.skratchdot.riff.wav.RIFFWave
+		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getRIFFWave()
+		 * @generated
+		 */
+		EDataType RIFF_WAVE = eINSTANCE.getRIFFWave();
+
+		/**
 		 * The meta object literal for the '<em>Array List</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -9324,6 +9376,16 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType FILE = eINSTANCE.getFile();
+
+		/**
+		 * The meta object literal for the '<em>Input Stream</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.io.InputStream
+		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getInputStream()
+		 * @generated
+		 */
+		EDataType INPUT_STREAM = eINSTANCE.getInputStream();
 
 		/**
 		 * The meta object literal for the '<em>IO Exception</em>' data type.

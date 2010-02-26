@@ -13,9 +13,10 @@ package com.skratchdot.electribe.model.esx;
 
 import java.io.File;
 import java.io.IOException;
-import javax.sound.sampled.AudioInputStream;
 
 import org.eclipse.emf.ecore.EObject;
+
+import com.skratchdot.riff.wav.RIFFWave;
 
 /**
  * <!-- begin-user-doc -->
@@ -725,6 +726,22 @@ public interface Sample extends EObject {
 	void export(File file) throws IOException;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="com.skratchdot.electribe.model.esx.RIFFWave"
+	 * @generated
+	 */
+	RIFFWave toRIFFWave();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model exceptions="com.skratchdot.electribe.model.esx.IOException" fileDataType="com.skratchdot.electribe.model.esx.File"
+	 * @generated
+	 */
+	void toRIFFWaveFile(File file) throws IOException;
+
+	/**
 	 * Returns the value of the '<em><b>Loop</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -753,7 +770,5 @@ public interface Sample extends EObject {
 	 * @generated
 	 */
 	boolean isSlice();
-
-	AudioInputStream getAudioInputStream();
 
 } // Sample

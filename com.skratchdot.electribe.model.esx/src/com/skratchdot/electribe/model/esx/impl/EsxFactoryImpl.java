@@ -13,6 +13,7 @@ package com.skratchdot.electribe.model.esx.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -93,6 +94,7 @@ import com.skratchdot.electribe.model.esx.Tempo;
 import com.skratchdot.electribe.model.esx.TempoLock;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
+import com.skratchdot.riff.wav.RIFFWave;
 
 /**
  * <!-- begin-user-doc -->
@@ -257,12 +259,16 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return createArrayListFromString(eDataType, initialValue);
 			case EsxPackage.FILE:
 				return createFileFromString(eDataType, initialValue);
+			case EsxPackage.INPUT_STREAM:
+				return createInputStreamFromString(eDataType, initialValue);
 			case EsxPackage.IO_EXCEPTION:
 				return createIOExceptionFromString(eDataType, initialValue);
 			case EsxPackage.IPROGRESS_MONITOR:
 				return createIProgressMonitorFromString(eDataType, initialValue);
 			case EsxPackage.OBJECT:
 				return createObjectFromString(eDataType, initialValue);
+			case EsxPackage.RIFF_WAVE:
+				return createRIFFWaveFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -354,12 +360,16 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return convertArrayListToString(eDataType, instanceValue);
 			case EsxPackage.FILE:
 				return convertFileToString(eDataType, instanceValue);
+			case EsxPackage.INPUT_STREAM:
+				return convertInputStreamToString(eDataType, instanceValue);
 			case EsxPackage.IO_EXCEPTION:
 				return convertIOExceptionToString(eDataType, instanceValue);
 			case EsxPackage.IPROGRESS_MONITOR:
 				return convertIProgressMonitorToString(eDataType, instanceValue);
 			case EsxPackage.OBJECT:
 				return convertObjectToString(eDataType, instanceValue);
+			case EsxPackage.RIFF_WAVE:
+				return convertRIFFWaveToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -2146,6 +2156,42 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public RIFFWave createRIFFWave(String literal) {
+		return (RIFFWave)super.createFromString(EsxPackage.Literals.RIFF_WAVE, literal);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RIFFWave createRIFFWaveFromString(EDataType eDataType, String initialValue) {
+		return (RIFFWave)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertRIFFWave(RIFFWave instanceValue) {
+		return super.convertToString(EsxPackage.Literals.RIFF_WAVE, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertRIFFWaveToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ArrayList<?> createArrayList(String literal) {
 		return (ArrayList<?>)super.createFromString(literal);
 	}
@@ -2210,6 +2256,42 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public String convertFileToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputStream createInputStream(String literal) {
+		return (InputStream)super.createFromString(EsxPackage.Literals.INPUT_STREAM, literal);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputStream createInputStreamFromString(EDataType eDataType, String initialValue) {
+		return (InputStream)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertInputStream(InputStream instanceValue) {
+		return super.convertToString(EsxPackage.Literals.INPUT_STREAM, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertInputStreamToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

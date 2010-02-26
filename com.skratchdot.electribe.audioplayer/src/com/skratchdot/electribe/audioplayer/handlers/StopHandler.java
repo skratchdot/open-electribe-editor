@@ -16,7 +16,6 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
 import com.skratchdot.electribe.audioplayer.AudioPlayer;
-import com.skratchdot.electribe.audioplayer.IAudioPlayerStates.PlayState;
 
 public class StopHandler extends AbstractHandler {
 
@@ -25,11 +24,12 @@ public class StopHandler extends AbstractHandler {
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
-		PlayState currentPlayState = AudioPlayer.getInstance().getPlayState();
-		if(currentPlayState==PlayState.PLAYING || currentPlayState==PlayState.PAUSED) {
-			AudioPlayer.getInstance().audioStop();
+		try {
+			AudioPlayer.getInstance().stop();			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
+		
 		return null;
 	}
 }

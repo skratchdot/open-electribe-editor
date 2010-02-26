@@ -5,10 +5,10 @@ Bundle-SymbolicName: com.skratchdot.electribe.fileexplorer;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Activator: com.skratchdot.electribe.fileexplorer.Activator
 Bundle-Vendor: SKRATCHDOT
-Require-Bundle: net.javazoom.jlayer;bundle-version="1.0.0",
- org.eclipse.ui,
+Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.ui.views;bundle-version="3.4.0"
+ org.eclipse.ui.views;bundle-version="3.4.0",
+ com.skratchdot.electribe.audioplayer;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.ui.ide,

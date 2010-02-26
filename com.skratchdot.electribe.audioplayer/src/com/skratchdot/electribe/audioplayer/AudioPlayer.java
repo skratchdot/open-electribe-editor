@@ -12,42 +12,48 @@
 package com.skratchdot.electribe.audioplayer;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.SourceDataLine;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.sampled.Mixer;
 
-import com.skratchdot.electribe.model.esx.SampleMono;
-import com.skratchdot.electribe.model.esx.SampleStereo;
+import javazoom.jlgui.basicplayer.BasicController;
+import javazoom.jlgui.basicplayer.BasicPlayer;
+import javazoom.jlgui.basicplayer.BasicPlayerEvent;
+import javazoom.jlgui.basicplayer.BasicPlayerException;
+import javazoom.jlgui.basicplayer.BasicPlayerListener;
 
-public class AudioPlayer implements Runnable, IAudioPlayerStates {
-	private static int PLAY_BUFFER_SIZE = 4096;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IPath;
+
+import com.skratchdot.electribe.model.esx.Sample;
+import com.skratchdot.riff.wav.RIFFWave;
+
+public class AudioPlayer implements BasicPlayerListener {
+	//private final static String ID = "com.skratchdot.electribe.audioplayer.AudioPlayer";
 	private static AudioPlayer instance = null;
-	private static Thread thread = null;
-	private Object audioIn = null;
-	private AudioInputStream audioInEncoded = null;
-	private AudioInputStream audioInDecoded = null;
-	private AudioFormat audioFormatEncoded = null;
-	private AudioFormat audioFormatDecoded = null;
-	private SourceDataLine line = null;
-	private LoopState loopState = null;
-	private PlayState playState = null;
-	private long seekByte = -1;
-	private long startByte = -1;
-	private long endByte = -1;
+	private static BasicPlayer player = null;
+    private static BasicController control = null;
 
-	public AudioPlayer() {
-		loopState = LoopState.OFF;
-		playState = PlayState.UNKNOWN;
+    private int audioHashCode = 0;
+	private boolean isLooping = false;
+	private boolean isPaused = false;
+	private int loopStart = 0;
+
+    /**
+	 * @return the control
+	 */
+	public static BasicController getControl() {
+		return control;
 	}
 
+	/**
+	 * @return the instance
+	 */
 	public static AudioPlayer getInstance() {
 		if (instance == null) {
 			instance = new AudioPlayer();
@@ -55,234 +61,398 @@ public class AudioPlayer implements Runnable, IAudioPlayerStates {
 		return instance;
 	}
 
-	@Override
-	public void run() {
-		byte[] data = new byte[PLAY_BUFFER_SIZE];
-		int nBytesRead = 0;
-		long nTotalBytesRead = 0;
-		Boolean stopPlaying = false;
+	/**
+	 * @return the player
+	 */
+	public static BasicPlayer getPlayer() {
+		return player;
+	}
 
+	/**
+	 * @param control the control to set
+	 */
+	public static void setControl(BasicController control) {
+		AudioPlayer.control = control;
+	}
+
+	public AudioPlayer() {
+		player = new BasicPlayer();
+		control = (BasicController) player;
+		player.addBasicPlayerListener(this);
+	}
+
+	/**
+	 * @return the audioHashCode
+	 */
+	public int getAudioHashCode() {
+		return audioHashCode;
+	}
+	
+	/**
+	 * @return
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#getGainValue()
+	 */
+	public float getGainValue() {
+		return player.getGainValue();
+	}
+
+	/**
+	 * @return
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#getLineBufferSize()
+	 */
+	public int getLineBufferSize() {
+		return player.getLineBufferSize();
+	}
+
+	/**
+	 * @return
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#getLineCurrentBufferSize()
+	 */
+	public int getLineCurrentBufferSize() {
+		return player.getLineCurrentBufferSize();
+	}
+
+	/**
+	 * @return the loopStart
+	 */
+	public int getLoopStart() {
+		return loopStart;
+	}
+
+	/**
+	 * @return
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#getMaximumGain()
+	 */
+	public float getMaximumGain() {
+		return player.getMaximumGain();
+	}
+
+	/**
+	 * @return
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#getMinimumGain()
+	 */
+	public float getMinimumGain() {
+		return player.getMinimumGain();
+	}
+
+	/**
+	 * @param arg0
+	 * @return
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#getMixer(java.lang.String)
+	 */
+	public Mixer getMixer(String arg0) {
+		return player.getMixer(arg0);
+	}
+
+	/**
+	 * @return
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#getMixerName()
+	 */
+	public String getMixerName() {
+		return player.getMixerName();
+	}
+
+	/**
+	 * @return
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#getMixers()
+	 */
+	public List<?> getMixers() {
+		return player.getMixers();
+	}
+
+	/**
+	 * @return
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#getPan()
+	 */
+	public float getPan() {
+		return player.getPan();
+	}
+
+	/**
+	 * @return
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#getPrecision()
+	 */
+	public float getPrecision() {
+		return player.getPrecision();
+	}
+
+	/**
+	 * @return
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#getSleepTime()
+	 */
+	public long getSleepTime() {
+		return player.getSleepTime();
+	}
+
+	/**
+	 * @return
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#getStatus()
+	 */
+	public int getStatus() {
+		return player.getStatus();
+	}
+
+	/**
+	 * @return
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#hasGainControl()
+	 */
+	public boolean hasGainControl() {
+		return player.hasGainControl();
+	}
+
+	/**
+	 * @return
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#hasPanControl()
+	 */
+	public boolean hasPanControl() {
+		return player.hasPanControl();
+	}
+
+	/**
+	 * @param obj
+	 */
+	public void initAudio(Object obj) {
 		try {
-			initAudioInEncoded(audioIn);
-			initAudioInDecoded();
-			initLine();
-			while (!stopPlaying) {
+			if(this.getAudioHashCode()==obj.hashCode() &&
+					(this.getStatus()==BasicPlayer.PLAYING ||
+					this.getStatus()==BasicPlayer.PAUSED)
+			) return;
 
-				// If we're paused
-				while (playState==PlayState.PAUSED) {
-					if(line.isRunning()) {
-						line.drain();
-						line.stop();
-					}
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-
-				// Make sure line is running
-				if(!line.isRunning()) {
-					line.start();
-				}
-				
-				// If we are seeking
-				if(playState==PlayState.SEEKING) {
-					initAudioInEncoded(audioIn);
-					initAudioInDecoded();
-					nTotalBytesRead = 0;
-					playState=PlayState.PLAYING;
-				}
-
-				// If we are playing
-				if(playState==PlayState.PLAYING) {
-					nBytesRead = audioInDecoded.read(data, 0, data.length);
-					if(nBytesRead>=0) {
-						nTotalBytesRead = nTotalBytesRead+nBytesRead;
-						line.write(data, 0, nBytesRead);
-					}
-					else if (loopState==LoopState.ON){
-						initAudioInEncoded(audioIn);
-						initAudioInDecoded();
-						nTotalBytesRead = 0;
-					}
-					else if (loopState==LoopState.OFF) {
-						stopPlaying = true;
-					}
-				}
-
-				// If we are stopping
-				if(playState==PlayState.STOPPED) {
-					stopPlaying = true;
-				}
-
+			// Get the audioInputStream
+			if(obj instanceof File) {
+				AudioPlayer.getControl().open((File) obj);
 			}
-			closeLine();
-			audioInDecoded.close();
-		} catch (IOException e) {
-			e.printStackTrace();
+			else if(obj instanceof InputStream) {
+				AudioPlayer.getControl().open((InputStream) obj);
+			}
+			else if(obj instanceof URL) {
+				AudioPlayer.getControl().open((URL) obj);
+			}
+			else if(obj instanceof Sample) {
+				Sample sample = (Sample) obj;
+				RIFFWave riffWave = sample.toRIFFWave();
+				AudioPlayer.getControl().open(riffWave);
+			}
+			else if(obj instanceof IAdaptable) {
+				Object resource = ((IAdaptable) obj).getAdapter(IResource.class);
+				if (resource != null && resource instanceof IFile) {
+					IPath path = ((IFile) resource).getRawLocation();
+					File file = new File(path.toOSString());
+					AudioPlayer.getControl().open(file);
+				}
+				else {
+					return;
+				}
+			}
+			else {
+				return;
+			}
+
+			// If we've gotten here, then we were successful
+			this.setAudioHashCode(obj.hashCode());
+
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			if(audioInDecoded != null) {
-				try {
-					audioInDecoded.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		thread = null;
-	}
-
-	private void initAudioInEncoded() {
-		audioInEncoded = null;
-		audioFormatEncoded = null;
-	}
-	private void initAudioInEncoded(Object obj) {
-		try {
-			if(obj instanceof File) {
-				audioInEncoded = AudioSystem.getAudioInputStream((File) obj);				
-			}
-			else if(obj instanceof InputStream) {
-				audioInEncoded = AudioSystem.getAudioInputStream((InputStream) obj);				
-			}
-			else if(obj instanceof URL) {
-				audioInEncoded = AudioSystem.getAudioInputStream((URL) obj);				
-			}
-			else if(obj instanceof SampleMono) {
-				audioInEncoded = ((SampleMono) obj).getAudioInputStream();
-			}
-			else if(obj instanceof SampleStereo) {
-				audioInEncoded = ((SampleStereo) obj).getAudioInputStream();
-			}
-			audioFormatEncoded = audioInEncoded.getFormat();
-		} catch (UnsupportedAudioFileException e) {
-			e.printStackTrace();
-			initAudioInEncoded();
-		} catch (IOException e) {
-			e.printStackTrace();
-			initAudioInEncoded();
 		}
 	}
 
-	private void initAudioInDecoded() {
-		audioFormatDecoded = new AudioFormat(
-			AudioFormat.Encoding.PCM_SIGNED,
-			audioFormatEncoded.getSampleRate(),
-			16,
-			audioFormatEncoded.getChannels(),
-			audioFormatEncoded.getChannels()*2,
-			audioFormatEncoded.getSampleRate(),
-			false
-		);
-		audioInDecoded = AudioSystem.getAudioInputStream(audioFormatDecoded, audioInEncoded);
+	/**
+	 * @return the isLooping
+	 */
+	public boolean isLooping() {
+		return isLooping;
 	}
 
-	private void initLine() {
-		if(line!=null && line.isOpen()) {
-			closeLine();
-		}
-		try {
-			DataLine.Info info = new DataLine.Info(SourceDataLine.class, audioFormatDecoded);
-			line = (SourceDataLine) AudioSystem.getLine(info);
-			line.open();
-			line.start();
-		} catch (LineUnavailableException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	private void closeLine() {
-		if(line!=null && line.isOpen()) {
-			line.drain();
-			line.stop();
-			line.close();
-		}
+	/**
+	 * @return the isPaused
+	 */
+	public boolean isPaused() {
+		return isPaused;
 	}
 
-	
-	public synchronized void audioPlay() {
-		audioPlay(-1,-1);
-	}
-	public synchronized void audioPlay(long start, long end) {
-		startByte = start;
-		endByte = end;
-		if(thread!=null && thread.isAlive()) {
-			audioSeek(startByte);
-		}
-		if(thread==null) {
-			thread = new Thread(this,"AudioPlayer");
-			thread.start();
-			playState = PlayState.PLAYING;
-		}
-	}
-	public synchronized void audioPause() {
-		playState = PlayState.PAUSED;
-	}
-	public synchronized void audioResume() {
-		playState = PlayState.PLAYING;
-	}
-	public synchronized void audioStop() {
-		playState = PlayState.STOPPED;		
-	}
-	public synchronized void audioSeek(long seekTo) {
-		seekByte = seekTo;
-		playState = PlayState.SEEKING;
+	/**
+	 * @param inputStream
+	 * @throws BasicPlayerException
+	 * @see javazoom.jlgui.basicplayer.BasicController#open(java.io.InputStream)
+	 */
+	public void open(InputStream inputStream) throws BasicPlayerException {
+		control.open(inputStream);
 	}
 
-	public synchronized LoopState getLoopState() {
-		return loopState;
+	/**
+	 * Open callback, stream is ready to play.
+	 * 
+	 * properties map includes audio format dependant features such as bitrate,
+	 * duration, frequency, channels, number of frames, vbr flag, ...
+	 * 
+	 * @param stream
+	 *            could be File, URL or InputStream
+	 * @param properties
+	 *            audio stream properties.
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void opened(Object stream, Map properties) {
 	}
 
-	public synchronized void setLoopState(LoopState loopState) {
-		this.loopState = loopState;
+	/**
+	 * @throws BasicPlayerException
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#pause()
+	 */
+	public void pause() throws BasicPlayerException {
+		player.pause();
 	}
 
-	public synchronized PlayState getPlayState() {
-		return playState;
+	/**
+	 * @throws BasicPlayerException
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#play()
+	 */
+	public void play() throws BasicPlayerException {
+		player.play();
 	}
 
-	public synchronized void setPlayState(PlayState playState) {
-		this.playState = playState;
+	/**
+	 * * Progress callback while playing.
+	 * 
+	 * This method is called severals time per seconds while playing. properties
+	 * map includes audio format features such as instant bitrate, microseconds
+	 * position, current frame number, ...
+	 * 
+	 * @param bytesread
+	 *            from encoded stream.
+	 * @param microseconds
+	 *            elapsed (<b>reseted after a seek !</b>).
+	 * @param pcmdata
+	 *            PCM samples.
+	 * @param properties
+	 *            audio stream parameters.
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void progress(int bytesread, long microseconds, byte[] pcmdata, Map properties) {
 	}
 
-	public synchronized Object getAudioIn() {
-		return audioIn;
+	/**
+	 * @throws BasicPlayerException
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#resume()
+	 */
+	public void resume() throws BasicPlayerException {
+		player.resume();
 	}
 
-	public synchronized void setAudioIn(Object audioIn) {
-		this.audioIn = audioIn;
+	/**
+	 * @param arg0
+	 * @return
+	 * @throws BasicPlayerException
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#seek(long)
+	 */
+	public long seek(long arg0) throws BasicPlayerException {
+		return player.seek(arg0);
 	}
 
-	public synchronized boolean isValidAudioInObject(Object obj) {
-		try {
-			if(obj instanceof File) {
-				AudioSystem.getAudioInputStream((File) obj);
-				return true;
-			}
-			else if(obj instanceof InputStream) {
-				AudioSystem.getAudioInputStream((InputStream) obj);
-				return true;
-			}
-			else if(obj instanceof URL) {
-				AudioSystem.getAudioInputStream((URL) obj);
-				return true;
-			}
-			else if(obj instanceof SampleMono) {
-				if(((SampleMono) obj).getAudioInputStream()!=null)
-					return true;
-			}
-			else if(obj instanceof SampleStereo) {
-				if(((SampleStereo) obj).getAudioInputStream()!=null)
-					return true;
-			}
-		} catch (UnsupportedAudioFileException e) {
-		} catch (IOException e) {
-		}
-		return false;
+	/**
+	 * @param audioHashCode the audioHashCode to set
+	 */
+	public void setAudioHashCode(int audioHashCode) {
+		this.audioHashCode = audioHashCode;
+	}
+
+	/**
+	 * A handle to the BasicPlayer, plugins may control the player through the
+	 * controller (play, stop, ...)
+	 * 
+	 * @param controller
+	 *            : a handle to the player
+	 */
+	@Override
+	public void setController(BasicController controller) {
+	}
+
+	/**
+	 * @param arg0
+	 * @throws BasicPlayerException
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#setGain(double)
+	 */
+	public void setGain(double arg0) throws BasicPlayerException {
+		player.setGain(arg0);
+	}
+
+	/**
+	 * @param arg0
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#setLineBufferSize(int)
+	 */
+	public void setLineBufferSize(int arg0) {
+		player.setLineBufferSize(arg0);
+	}
+
+	/**
+	 * @param isLooping the isLooping to set
+	 */
+	public void setLooping(boolean isLooping) {
+		this.isLooping = isLooping;
+	}
+
+	/**
+	 * @param loopStart the loopStart to set
+	 */
+	public void setLoopStart(int loopStart) {
+		this.loopStart = loopStart;
+	}
+
+	/**
+	 * @param arg0
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#setMixerName(java.lang.String)
+	 */
+	public void setMixerName(String arg0) {
+		player.setMixerName(arg0);
+	}
+
+	/**
+	 * @param arg0
+	 * @throws BasicPlayerException
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#setPan(double)
+	 */
+	public void setPan(double arg0) throws BasicPlayerException {
+		player.setPan(arg0);
+	}
+
+	/**
+	 * @param isPaused the isPaused to set
+	 */
+	public void setPaused(boolean isPaused) {
+		this.isPaused = isPaused;
+	}
+
+	/**
+	 * @param player the player to set
+	 */
+	public void setPlayer(BasicPlayer player) {
+		AudioPlayer.player = player;
+	}
+
+	/**
+	 * @param arg0
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#setSleepTime(long)
+	 */
+	public void setSleepTime(long arg0) {
+		player.setSleepTime(arg0);
+	}
+
+	/**
+	 * Notification callback for basicplayer events such as opened, eom ...
+	 * 
+	 * @param event
+	 */
+	@Override
+	public void stateUpdated(BasicPlayerEvent event) {
+	}
+
+	/**
+	 * @throws BasicPlayerException
+	 * @see javazoom.jlgui.basicplayer.BasicPlayer#stop()
+	 */
+	public void stop() throws BasicPlayerException {
+		player.stop();
 	}
 
 }

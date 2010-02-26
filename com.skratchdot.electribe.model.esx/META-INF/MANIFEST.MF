@@ -12,7 +12,6 @@ Export-Package: com.skratchdot.electribe.model.esx,
  com.skratchdot.electribe.model.esx.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- net.javazoom.jlayer;bundle-version="1.0.0",
  org.apache.commons.lang;bundle-version="2.4.0",
  com.skratchdot.riff.wav;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
