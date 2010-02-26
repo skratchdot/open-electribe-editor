@@ -43,7 +43,7 @@ public interface BasicPlayerListener {
 	 * @param properties
 	 *            audio stream properties.
 	 */
-	public void opened(Object stream, Map properties);
+	public void opened(Object stream, Map<?,?> properties);
 
 	/**
 	 * Progress callback while playing.
@@ -62,7 +62,7 @@ public interface BasicPlayerListener {
 	 *            audio stream parameters.
 	 */
 	public void progress(int bytesread, long microseconds, byte[] pcmdata,
-			Map properties);
+			Map<?,?> properties);
 
 	/**
 	 * A handle to the BasicPlayer, plugins may control the player through the

@@ -31,6 +31,7 @@ import java.io.PrintWriter;
  * This class implements custom exception for basicplayer.
  */
 public class BasicPlayerException extends Exception {
+	private static final long serialVersionUID = 2367959581803809031L;
 	public static final String GAINCONTROLNOTSUPPORTED = "Gain control not supported";
 	public static final String PANCONTROLNOTSUPPORTED = "Pan control not supported";
 	public static final String WAITERROR = "Wait error";

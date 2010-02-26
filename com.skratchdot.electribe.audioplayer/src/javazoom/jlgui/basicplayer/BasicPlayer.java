@@ -90,15 +90,15 @@ public class BasicPlayer implements BasicController, Runnable {
 	public static final int SEEKING = 4;
 	private int m_status = UNKNOWN;
 	// Listeners to be notified.
-	private Collection m_listeners = null;
-	private Map empty_map = new HashMap();
+	private Collection<BasicPlayerListener> m_listeners = null;
+	private Map<Object, Object> empty_map = new HashMap<Object, Object>();
 
 	/**
 	 * Constructs a Basic Player.
 	 */
 	public BasicPlayer() {
 		m_dataSource = null;
-		m_listeners = new ArrayList();
+		m_listeners = new ArrayList<BasicPlayerListener>();
 		reset();
 	}
 
@@ -196,10 +196,10 @@ public class BasicPlayer implements BasicController, Runnable {
 	 * @param src
 	 * @return
 	 */
-	protected Map deepCopy(Map src) {
-		HashMap map = new HashMap();
+	protected Map<Object, Object> deepCopy(Map<Object, Object> src) {
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
 		if (src != null) {
-			Iterator it = src.keySet().iterator();
+			Iterator<Object> it = src.keySet().iterator();
 			while (it.hasNext()) {
 				Object key = it.next();
 				Object value = src.get(key);
@@ -258,7 +258,7 @@ public class BasicPlayer implements BasicController, Runnable {
 	 * 
 	 * @return
 	 */
-	public Collection getListeners() {
+	public Collection<BasicPlayerListener> getListeners() {
 		return m_listeners;
 	}
 
@@ -304,8 +304,8 @@ public class BasicPlayer implements BasicController, Runnable {
 		return m_mixerName;
 	}
 
-	public List getMixers() {
-		ArrayList mixers = new ArrayList();
+	public List<String> getMixers() {
+		ArrayList<String> mixers = new ArrayList<String>();
 		Mixer.Info[] mInfos = AudioSystem.getMixerInfo();
 		if (mInfos != null) {
 			for (int i = 0; i < mInfos.length; i++) {
@@ -393,6 +393,7 @@ public class BasicPlayer implements BasicController, Runnable {
 	 * 
 	 * @throws BasicPlayerException
 	 */
+	@SuppressWarnings("unchecked")
 	protected void initAudioInputStream() throws BasicPlayerException {
 		try {
 			reset();
@@ -409,7 +410,7 @@ public class BasicPlayer implements BasicController, Runnable {
 			}
 			createLine();
 			// Notify listeners with AudioFileFormat properties.
-			Map properties = null;
+			Map<Object, Object> properties = null;
 			if (m_audioFileFormat instanceof TAudioFileFormat) {
 				// Tritonus SPI compliant audio file format.
 				properties = ((TAudioFileFormat) m_audioFileFormat)
@@ -417,7 +418,7 @@ public class BasicPlayer implements BasicController, Runnable {
 				// Clone the Map because it is not mutable.
 				properties = deepCopy(properties);
 			} else
-				properties = new HashMap();
+				properties = new HashMap<Object, Object>();
 			// Add JavaSound properties.
 			if (m_audioFileFormat.getByteLength() > 0)
 				properties.put("audio.length.bytes", new Integer(
@@ -447,14 +448,14 @@ public class BasicPlayer implements BasicController, Runnable {
 						.getChannels()));
 			if (audioFormat instanceof TAudioFormat) {
 				// Tritonus SPI compliant audio format.
-				Map addproperties = ((TAudioFormat) audioFormat).properties();
+				Map<?, ?> addproperties = ((TAudioFormat) audioFormat).properties();
 				properties.putAll(addproperties);
 			}
 			// Add SourceDataLine
 			properties.put("basicplayer.sourcedataline", m_line);
-			Iterator it = m_listeners.iterator();
+			Iterator<BasicPlayerListener> it = m_listeners.iterator();
 			while (it.hasNext()) {
-				BasicPlayerListener bpl = (BasicPlayerListener) it.next();
+				BasicPlayerListener bpl = it.next();
 				bpl.opened(m_dataSource, properties);
 			}
 			m_status = OPENED;
@@ -536,7 +537,7 @@ public class BasicPlayer implements BasicController, Runnable {
 	protected void notifyEvent(int code, int position, double value,
 			Object description) {
 		BasicPlayerEventLauncher trigger = new BasicPlayerEventLauncher(code,
-				position, value, description, new ArrayList(m_listeners), this);
+				position, value, description, new ArrayList<BasicPlayerListener>(m_listeners), this);
 		trigger.start();
 	}
 
@@ -735,19 +736,20 @@ public class BasicPlayer implements BasicController, Runnable {
 							if (m_line.available() >= m_line.getBufferSize())
 								log.debug("Underrun : " + m_line.available()
 										+ "/" + m_line.getBufferSize());
+							@SuppressWarnings("unused")
 							int nBytesWritten = m_line.write(abData, 0,
 									nBytesRead);
 							// Compute position in bytes in encoded stream.
 							int nEncodedBytes = getEncodedStreamPosition();
 							// Notify listeners
-							Iterator it = m_listeners.iterator();
+							Iterator<BasicPlayerListener> it = m_listeners.iterator();
 							while (it.hasNext()) {
-								BasicPlayerListener bpl = (BasicPlayerListener) it
+								BasicPlayerListener bpl = it
 										.next();
 								if (m_audioInputStream instanceof PropertiesContainer) {
 									// Pass audio parameters such as instant
 									// bitrate, ...
-									Map properties = ((PropertiesContainer) m_audioInputStream)
+									Map<?, ?> properties = ((PropertiesContainer) m_audioInputStream)
 											.properties();
 									bpl.progress(nEncodedBytes, m_line
 											.getMicrosecondPosition(), pcm,

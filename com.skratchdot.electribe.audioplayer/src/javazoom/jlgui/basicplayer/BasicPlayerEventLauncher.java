@@ -35,7 +35,7 @@ public class BasicPlayerEventLauncher extends Thread {
 	private int position = -1;
 	private double value = 0.0;
 	private Object description = null;
-	private Collection listeners = null;
+	private Collection<?> listeners = null;
 	private Object source = null;
 
 	/**
@@ -49,7 +49,7 @@ public class BasicPlayerEventLauncher extends Thread {
 	 * @param source
 	 */
 	public BasicPlayerEventLauncher(int code, int position, double value,
-			Object description, Collection listeners, Object source) {
+			Object description, Collection<?> listeners, Object source) {
 		super();
 		this.code = code;
 		this.position = position;
@@ -61,7 +61,7 @@ public class BasicPlayerEventLauncher extends Thread {
 
 	public void run() {
 		if (listeners != null) {
-			Iterator it = listeners.iterator();
+			Iterator<?> it = listeners.iterator();
 			while (it.hasNext()) {
 				BasicPlayerListener bpl = (BasicPlayerListener) it.next();
 				BasicPlayerEvent event = new BasicPlayerEvent(source, code,
