@@ -12,10 +12,8 @@
 package com.skratchdot.electribe.model.esx.provider;
 
 
-import com.skratchdot.electribe.model.esx.EnabledFlag;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -35,6 +33,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import com.skratchdot.electribe.model.esx.EnabledFlag;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.GlobalParameters;
 
