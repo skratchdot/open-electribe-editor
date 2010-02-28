@@ -6,7 +6,8 @@
       provider-name="SKRATCHDOT">
 
    <description>
-      This feature ensures that the defaults folder exists, along with the default.esx file that is used when creating &quot;new&quot; esx files.
+      This feature ensures that the &quot;temp&quot; and &quot;defaults&quot; folders exists, along with
+the default.esx file that is used when creating new .esx files.
    </description>
 
    <copyright>
