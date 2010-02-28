@@ -139,7 +139,7 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 			return string;
 		}
 		else {
-			int listSizeStringLength = StringUtils.length(Integer.toString(listSize));
+			int listSizeStringLength = Integer.toString(listSize).length();
 			return StringUtils.left(
 				string,
 				maxAppendStringLength-listSizeStringLength
