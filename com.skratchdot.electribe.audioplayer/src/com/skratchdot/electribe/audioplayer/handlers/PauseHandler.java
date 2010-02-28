@@ -11,13 +11,12 @@
  */
 package com.skratchdot.electribe.audioplayer.handlers;
 
-import javazoom.jlgui.basicplayer.BasicPlayer;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
 import com.skratchdot.electribe.audioplayer.AudioPlayer;
+import com.skratchdot.electribe.audioplayer.AudioPlayer.PlayState;
 
 public class PauseHandler extends AbstractHandler {
 
@@ -27,10 +26,10 @@ public class PauseHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
 		try {
-			if(AudioPlayer.getPlayer().getStatus()==BasicPlayer.PLAYING) {
+			if(AudioPlayer.getInstance().getPlayState()==PlayState.PLAYING) {
 				AudioPlayer.getInstance().pause();
 			}
-			else if(AudioPlayer.getPlayer().getStatus()==BasicPlayer.PAUSED) {
+			else if(AudioPlayer.getInstance().getPlayState()==PlayState.PAUSED) {
 				AudioPlayer.getInstance().resume();
 			}
 		} catch (Exception e) {

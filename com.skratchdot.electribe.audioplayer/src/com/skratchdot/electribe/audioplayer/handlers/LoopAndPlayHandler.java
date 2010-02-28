@@ -29,30 +29,27 @@ public class LoopAndPlayHandler extends AbstractHandler {
 	}
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-		ISelection selection = window.getSelectionService().getSelection();
 
 		try {
+			IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+			ISelection selection = window.getSelectionService().getSelection();
+
 			// Now try to play the first selected item
 			if (selection instanceof IStructuredSelection) {
 				Object firstObject = ((IStructuredSelection) selection).getFirstElement();
 
 				if(firstObject!=null) {
-					AudioPlayer.getInstance().initAudio(firstObject);
+
+					// Are we looping or not?
+					if(event.getCommand().getId().equals(LOOP_COMMAND_ID)) {
+						AudioPlayer.getInstance().play(firstObject, true);
+					}
+					else if(event.getCommand().getId().equals(PLAY_COMMAND_ID)) {
+						AudioPlayer.getInstance().play(firstObject, false);
+					}
+				
 				}
-
 			}
-
-			// Are we looping or not?
-			if(event.getCommand().getId().equals(LOOP_COMMAND_ID)) {
-				AudioPlayer.getInstance().setLooping(true);
-			}
-			else if(event.getCommand().getId().equals(PLAY_COMMAND_ID)) {
-				AudioPlayer.getInstance().setLooping(false);
-			}
-
-			AudioPlayer.getInstance().seek(0);
-			AudioPlayer.getInstance().play();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
