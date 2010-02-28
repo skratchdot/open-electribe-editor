@@ -33,10 +33,12 @@ import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.part.ViewPart;
 
+import com.skratchdot.electribe.audioplayer.handlers.LoopAndPlayHandler;
+import com.skratchdot.electribe.audioplayer.util.AudioUtil;
 import com.skratchdot.electribe.fileexplorer.Activator;
 import com.skratchdot.electribe.fileexplorer.preferences.PreferenceConstants;
 
@@ -90,6 +92,9 @@ public class TableView extends ViewPart
 
 		// This view is a selection provider
 		getSite().setSelectionProvider(viewer);
+
+		// Add context menu
+		FileExplorerUtil.createContextMenuFor(getSite(), viewer, TableView.ID);
 
 		// listen for double click events
 		viewer.addDoubleClickListener((IDoubleClickListener) this);
@@ -168,12 +173,19 @@ public class TableView extends ViewPart
 				IWorkbenchPage page = getSite().getWorkbenchWindow().getActivePage();
 				if (page!=null) {
 					try {
+						// Try to open the file in a registered editor
 						IEditorDescriptor editorDescriptor = getSite().getWorkbenchWindow().getWorkbench().getEditorRegistry().getDefaultEditor(((File) firstObject).getName());
 						if(editorDescriptor!=null && editorDescriptor.isInternal()) {
 							IFileStore fileStore = EFS.getLocalFileSystem().getStore(new Path(((File) firstObject).getPath()));
 							IDE.openEditorOnFileStore(page, fileStore);
 						}
-					} catch (PartInitException e) {
+						// Try to play the file in AudioPlayer
+						else if(AudioUtil.isAudioFile((File) firstObject)) {
+							IHandlerService handlerService =
+								(IHandlerService) getSite().getService(IHandlerService.class);
+							handlerService.executeCommand(LoopAndPlayHandler.PLAY_OR_LOOP_COMMAND_ID, null);
+						}
+					} catch (Exception e) {
 						e.printStackTrace();
 					}
 				}

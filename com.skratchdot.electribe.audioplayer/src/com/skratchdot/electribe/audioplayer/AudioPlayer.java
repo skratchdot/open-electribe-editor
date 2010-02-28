@@ -24,6 +24,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IPath;
 
+import com.skratchdot.electribe.audioplayer.util.AudioUtil;
 import com.skratchdot.electribe.model.esx.Sample;
 import com.skratchdot.riff.wav.RIFFWave;
 
@@ -120,26 +121,32 @@ public class AudioPlayer implements Runnable  {
 			// Source Audio
 			if(obj instanceof File) {
 				File file = (File) obj;
-				sourceAudioInputStream = AudioSystem.getAudioInputStream(file);
-				sourceAudioFormat = sourceAudioInputStream.getFormat();
+				if(file.isFile() && AudioUtil.isAudioFile(file)) {
+					sourceAudioInputStream = AudioSystem.getAudioInputStream(file);
+					sourceAudioFormat = sourceAudioInputStream.getFormat();
+				}
 			}
 			else if(obj instanceof IAdaptable) {
 				Object resource = ((IAdaptable) obj).getAdapter(IResource.class);
 				if (resource != null && resource instanceof IFile) {
 					IPath path = ((IFile) resource).getRawLocation();
 					File file = new File(path.toOSString());
-					sourceAudioInputStream = AudioSystem.getAudioInputStream(file);
-					sourceAudioFormat = sourceAudioInputStream.getFormat();
+					if(file.isFile() && AudioUtil.isAudioFile(file)) {
+						sourceAudioInputStream = AudioSystem.getAudioInputStream(file);
+						sourceAudioFormat = sourceAudioInputStream.getFormat();
+					}
 				}
 			}
 			else if(obj instanceof Sample) {
 				Sample sample = (Sample) obj;
 				RIFFWave riffWave = sample.toRIFFWave();
-				sourceAudioInputStream = riffWave.toAudioInputStream();
-				sourceAudioFormat = riffWave.toAudioFormat();
-				targetFrameStart = sample.getStart();
-				targetFrameLoopStart = sample.getLoopStart();
-				targetFrameEnd = sample.getEnd();
+				if(riffWave!=null) {
+					sourceAudioInputStream = riffWave.toAudioInputStream();
+					sourceAudioFormat = riffWave.toAudioFormat();
+					targetFrameStart = sample.getStart();
+					targetFrameLoopStart = sample.getLoopStart();
+					targetFrameEnd = sample.getEnd();
+				}
 			}
 
 			// Target Audio

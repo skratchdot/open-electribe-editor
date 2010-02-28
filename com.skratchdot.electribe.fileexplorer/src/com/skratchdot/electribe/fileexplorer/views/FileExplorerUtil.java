@@ -16,7 +16,12 @@ import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.util.Date;
 
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.program.Program;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.ui.IWorkbenchPartSite;
 
 public class FileExplorerUtil {
 	private static final DateFormat dateFormat = DateFormat
@@ -64,6 +69,20 @@ public class FileExplorerUtil {
 
 	public static String getFileDate(File element) {
 		return dateFormat.format(new Date(element.lastModified()));
+	}
+
+	/**
+	 * @param viewer the viewer in which to create a context menu for
+	 * @param menuManagerId the id of the menu manager
+	 */
+	public static void createContextMenuFor(IWorkbenchPartSite site, StructuredViewer viewer, String menuId) {
+		MenuManager contextMenu = new MenuManager("#PopUp");
+		contextMenu.add(new Separator("additions"));
+		contextMenu.setRemoveAllWhenShown(true);
+
+		Menu menu = contextMenu.createContextMenu(viewer.getControl());
+		viewer.getControl().setMenu(menu);
+		site.registerContextMenu(menuId, contextMenu, site.getSelectionProvider());
 	}
 
 }

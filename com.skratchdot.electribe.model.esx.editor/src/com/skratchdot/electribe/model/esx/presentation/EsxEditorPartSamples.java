@@ -25,6 +25,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -34,7 +36,9 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.handlers.IHandlerService;
 
+import com.skratchdot.electribe.audioplayer.handlers.LoopAndPlayHandler;
 import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.Sample;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceNames;
@@ -149,11 +153,27 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 			EsxPreferenceStore.getSamplesUseScrollSpeed()
 		);
 
+		// Play/Loop Sample on DoubleClick
+		this.tableViewer.getTable().addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseDoubleClick(MouseEvent event) {
+				super.mouseDoubleClick(event);
+				IHandlerService handlerService =
+					(IHandlerService) getSite().getService(IHandlerService.class);
+				try {
+					handlerService.executeCommand(LoopAndPlayHandler.PLAY_OR_LOOP_COMMAND_ID, null);
+				} catch (Exception e) {
+					e.printStackTrace();
+					throw new RuntimeException(LoopAndPlayHandler.PLAY_OR_LOOP_COMMAND_ID + " was not found");
+				}
+			}
+		});
+		
 		// listen for preference change events
 		PlatformUI.getPreferenceStore().addPropertyChangeListener((IPropertyChangeListener) this);
 
 		// Context Menu
-	    createContextMenuFor(this.tableViewer);
+	    createContextMenuFor(this.tableViewer, EsxEditorPartSamples.ID+".SampleListContextMenu");
 
 	    // Selection Provider For EsxEditor
 	    getEditorSite().setSelectionProvider(this.tableViewer);

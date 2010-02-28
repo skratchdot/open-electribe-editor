@@ -178,16 +178,24 @@ public abstract class EsxEditorPart extends EditorPart
 	}
 
 	/**
-	 * @param viewer
+	 * @param viewer the viewer in which to create a context menu for
 	 */
 	protected void createContextMenuFor(StructuredViewer viewer) {
+		this.createContextMenuFor(viewer, null);
+	}
+
+	/**
+	 * @param viewer the viewer in which to create a context menu for
+	 * @param menuManagerId the id of the menu manager
+	 */
+	protected void createContextMenuFor(StructuredViewer viewer, String menuId) {
 		MenuManager contextMenu = new MenuManager("#PopUp");
 		contextMenu.add(new Separator("additions"));
 		contextMenu.setRemoveAllWhenShown(true);
 		contextMenu.addMenuListener(this);
 		Menu menu = contextMenu.createContextMenu(viewer.getControl());
 		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(contextMenu, new UnwrappingSelectionProvider(viewer));
+		getSite().registerContextMenu(menuId, contextMenu, new UnwrappingSelectionProvider(viewer));
 
 		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
 		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance() };
