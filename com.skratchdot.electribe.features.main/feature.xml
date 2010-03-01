@@ -3,7 +3,7 @@
       id="com.skratchdot.electribe.features.main"
       label="Open Electribe Editor"
       version="1.0.0.qualifier"
-      provider-name="SKRATCHDOT">
+      provider-name="SKRATCHDOT.COM">
 
    <description>
       All the major features of &quot;Open Electribe Editor&quot; are included in this package.

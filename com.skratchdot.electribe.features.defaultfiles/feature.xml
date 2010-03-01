@@ -3,7 +3,7 @@
       id="com.skratchdot.electribe.features.defaultfiles"
       label="Default Files Folder"
       version="1.0.0.qualifier"
-      provider-name="SKRATCHDOT">
+      provider-name="SKRATCHDOT.COM">
 
    <description>
       This feature ensures that the &quot;temp&quot; and &quot;defaults&quot; folders exists, along with

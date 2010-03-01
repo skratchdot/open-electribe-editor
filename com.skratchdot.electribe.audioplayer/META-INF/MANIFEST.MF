@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Audioplayer Plug-in
 Bundle-SymbolicName: com.skratchdot.electribe.audioplayer;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.skratchdot.electribe.audioplayer.Activator
-Bundle-Vendor: SKRATCHDOT
+Bundle-Vendor: SKRATCHDOT.COM
 Eclipse-BuddyPolicy: registered
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

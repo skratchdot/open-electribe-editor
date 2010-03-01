@@ -4,7 +4,7 @@ Bundle-Name: Open Electribe Editor Preferences
 Bundle-SymbolicName: com.skratchdot.electribe.model.esx.preferences; singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.skratchdot.electribe.model.esx.preferences.Activator
-Bundle-Vendor: SKRATCHDOT
+Bundle-Vendor: SKRATCHDOT.COM
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources

@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: File Explorer Plug-in
 Bundle-SymbolicName: com.skratchdot.electribe.fileexplorer;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.skratchdot.electribe.fileexplorer.Activator
-Bundle-Vendor: SKRATCHDOT
+Bundle-Vendor: SKRATCHDOT.COM
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.ui.views;bundle-version="3.4.0",
