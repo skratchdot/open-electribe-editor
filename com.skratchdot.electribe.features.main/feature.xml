@@ -180,14 +180,8 @@ v1.0
 
    <plugin
          id="org.eclipse.core.filesystem.win32.x86"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.core.filesystem.win32.x86"
+         os="win32"
+         ws="win32"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -210,14 +204,8 @@ v1.0
 
    <plugin
          id="org.eclipse.core.net.win32.x86"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.core.net.win32.x86"
+         os="win32"
+         ws="win32"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -241,14 +229,8 @@ v1.0
 
    <plugin
          id="org.eclipse.core.resources.win32.x86"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.core.resources.win32.x86"
+         os="win32"
+         ws="win32"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -603,14 +585,8 @@ v1.0
 
    <plugin
          id="org.eclipse.equinox.security.win32.x86"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.equinox.security.win32.x86"
+         os="win32"
+         ws="win32"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -690,14 +666,8 @@ v1.0
 
    <plugin
          id="org.eclipse.swt.win32.win32.x86"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.swt.win32.win32.x86"
+         os="win32"
+         ws="win32"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -748,14 +718,8 @@ v1.0
 
    <plugin
          id="org.eclipse.ui.win32"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ui.win32"
+         os="win32"
+         ws="win32"
          download-size="0"
          install-size="0"
          version="0.0.0"
