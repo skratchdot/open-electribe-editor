@@ -16,8 +16,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.skratchdot.electribe.audioplayer.util.AudioUtil;
-
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.ui.action.WorkbenchWindowActionDelegate;
@@ -47,7 +45,6 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 import org.eclipse.ui.IWorkbench;
@@ -57,7 +54,6 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
-import org.eclipse.ui.actions.ContributionItemFactory;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
 import org.eclipse.ui.application.IWorkbenchConfigurer;
@@ -65,6 +61,7 @@ import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
+import com.skratchdot.electribe.audioplayer.util.AudioUtil;
 import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
@@ -188,24 +185,7 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 			//layout.addView(IPageLayout.ID_OUTLINE, IPageLayout.RIGHT, 0.66f, IPageLayout.ID_EDITOR_AREA);
 			layout.addView(IPageLayout.ID_PROP_SHEET, IPageLayout.RIGHT, 0.75f, "com.skratchdot.electribe.fileexplorer.views.TableView");
 		}
-
-		/**
-		 * @see org.eclipse.ui.IPerspectiveFactory#createInitialLayout(org.eclipse.ui.IPageLayout)
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public void createInitialLayoutGen(IPageLayout layout) {
-			layout.setEditorAreaVisible(true);
-			layout.addPerspectiveShortcut(ID_PERSPECTIVE);
-
-			IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, (float)0.66, layout.getEditorArea());
-			right.addView(IPageLayout.ID_OUTLINE);
-
-			IFolderLayout bottonRight = layout.createFolder("bottonRight", IPageLayout.BOTTOM, (float)0.60, "right");
-			bottonRight.addView(IPageLayout.ID_PROP_SHEET);
-		}
-}
+	}
 	
 	/**
 	 * RCP's window advisor
@@ -247,20 +227,6 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		}
 
 		/**
-		 * @see org.eclipse.ui.application.WorkbenchWindowAdvisor#preWindowOpen()
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public void preWindowOpenGen() {
-			IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
-			configurer.setInitialSize(new Point(600, 450));
-			configurer.setShowCoolBar(false);
-			configurer.setShowStatusLine(true);
-			configurer.setTitle(getString("_UI_Application_title"));
-		}
-
-		/**
 		 * @see org.eclipse.ui.application.WorkbenchWindowAdvisor#createActionBarAdvisor(org.eclipse.ui.application.IActionBarConfigurer)
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -297,12 +263,12 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		 */
 		@Override
 		protected void fillMenuBar(IMenuManager menuBar) {
-			IWorkbenchWindow window = getActionBarConfigurer().getWindowConfigurer().getWindow();
-			menuBar.add(createFileMenu(window));
-			menuBar.add(createEditMenu(window));
-			menuBar.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
-			menuBar.add(createWindowMenu(window));
-			menuBar.add(createHelpMenu(window));					
+			//IWorkbenchWindow window = getActionBarConfigurer().getWindowConfigurer().getWindow();
+			//menuBar.add(createFileMenu(window));
+			//menuBar.add(createEditMenu(window));
+			//menuBar.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
+			//menuBar.add(createWindowMenu(window));
+			//menuBar.add(createHelpMenu(window));					
 		}
 		
 		/**
@@ -343,36 +309,6 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 			addToMenuAndRegister(menu, ActionFactory.SAVE_ALL.create(window));
 			menu.add(new Separator());
 
-			addToMenuAndRegister(menu, ActionFactory.QUIT.create(window));
-			menu.add(new GroupMarker(IWorkbenchActionConstants.FILE_END));
-			return menu;
-		}
-
-		/**
-		 * Creates the 'File' menu.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		protected IMenuManager createFileMenuGen(IWorkbenchWindow window) {
-			IMenuManager menu = new MenuManager(getString("_UI_Menu_File_label"),
-			IWorkbenchActionConstants.M_FILE);    
-			menu.add(new GroupMarker(IWorkbenchActionConstants.FILE_START));
-	
-			IMenuManager newMenu = new MenuManager(getString("_UI_Menu_New_label"), "new");
-			newMenu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
-	
-			menu.add(newMenu);
-			menu.add(new Separator());
-			menu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
-			menu.add(new Separator());
-			addToMenuAndRegister(menu, ActionFactory.CLOSE.create(window));
-			addToMenuAndRegister(menu, ActionFactory.CLOSE_ALL.create(window));
-			menu.add(new Separator());
-			addToMenuAndRegister(menu, ActionFactory.SAVE.create(window));
-			addToMenuAndRegister(menu, ActionFactory.SAVE_AS.create(window));
-			addToMenuAndRegister(menu, ActionFactory.SAVE_ALL.create(window));
-			menu.add(new Separator());
 			addToMenuAndRegister(menu, ActionFactory.QUIT.create(window));
 			menu.add(new GroupMarker(IWorkbenchActionConstants.FILE_END));
 			return menu;
@@ -436,23 +372,6 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		}
 
 		/**
-		 * Creates the 'Window' menu.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		protected IMenuManager createWindowMenuGen(IWorkbenchWindow window) {
-			IMenuManager menu = new MenuManager(getString("_UI_Menu_Window_label"),
-			IWorkbenchActionConstants.M_WINDOW);
-	
-			addToMenuAndRegister(menu, ActionFactory.OPEN_NEW_WINDOW.create(window));
-			menu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
-			menu.add(ContributionItemFactory.OPEN_WINDOWS.create(window));
-	
-			return menu;
-		}
-
-		/**
 		 * Creates the 'Help' menu.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -482,25 +401,6 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		}
 	}
 	
-	/**
-	 * About action for the RCP application.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static class AboutAction extends WorkbenchWindowActionDelegate {
-		/**
-		 * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public void run(IAction action) {
-			MessageDialog.openInformation(getWindow().getShell(), getString("_UI_About_title"),
-			getString("_UI_About_text"));
-		}
-	}
-
 	/**
 	 * Open action for the objects from the Esx model.
 	 * <!-- begin-user-doc -->

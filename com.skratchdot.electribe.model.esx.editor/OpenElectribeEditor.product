@@ -3,6 +3,7 @@
 
 <product name="Open Electribe Editor" uid="com.skratchdot.electribe.model.esx.editor.product" id="com.skratchdot.electribe.model.esx.editor.product" application="com.skratchdot.electribe.model.esx.editor.EsxEditorAdvisorApplication" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
+
    <configIni use="default">
    </configIni>
 
@@ -34,6 +35,7 @@
             winLargeLow="/com.skratchdot.electribe.model.esx.editor/icons/launcher/launcher_48_8bit.bmp"/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
