@@ -20,8 +20,11 @@
       startupMessageRect="7,322,461,20"
       startupForegroundColor="000000" />
    <launcher name="OpenElectribeEditor">
+      <linux icon="/com.skratchdot.electribe.model.esx.editor/icons/launcher/launcher.xpm"/>
+      <macosx icon="/com.skratchdot.electribe.model.esx.editor/icons/launcher/launcher.icns"/>
       <solaris/>
-      <win useIco="false">
+      <win useIco="true">
+         <ico path="/com.skratchdot.electribe.model.esx.editor/icons/launcher/launcher.ico"/>
          <bmp
             winSmallHigh="/com.skratchdot.electribe.model.esx.editor/icons/launcher/launcher_16_32bit.bmp"
             winSmallLow="/com.skratchdot.electribe.model.esx.editor/icons/launcher/launcher_16_8bit.bmp"
