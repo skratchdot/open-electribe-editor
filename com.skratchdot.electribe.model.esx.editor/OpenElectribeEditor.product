@@ -155,8 +155,9 @@ http://www.eclipse.org/legal/epl-v10.html
    </plugins>
 
    <features>
-      <feature id="com.skratchdot.electribe.features.main" version="1.0.0.qualifier"/>
       <feature id="com.skratchdot.electribe.features.defaultfiles" version="1.0.0.qualifier"/>
+      <feature id="com.skratchdot.electribe.features.main" version="1.0.0.qualifier"/>
+      <feature id="com.skratchdot.electribe.features.main.os" version="1.0.0.qualifier"/>
    </features>
 
 
