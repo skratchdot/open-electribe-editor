@@ -56,7 +56,7 @@ public class EsxResourceImpl extends ResourceImpl {
 		}
 
 		// Setup monitor
-		monitor.beginTask("Saving ESX file...", 3 +
+		monitor.beginTask("Loading ESX file...", 3 +
 			EsxUtil.NUM_PATTERNS +
 			EsxUtil.NUM_SONGS +
 			EsxUtil.NUM_SONGS + // Song Event Data
