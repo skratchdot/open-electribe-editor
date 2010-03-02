@@ -128,14 +128,52 @@
             commandId="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorOpenCommand"
             sequence="M1+O"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+      <key
+            commandId="com.skratchdot.electribe.model.esx.editor.commands.newEsxFile"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+N">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commandImages">
+      <image
+            commandId="com.skratchdot.electribe.model.esx.editor.commands.newEsxFile"
+            disabledIcon="icons/full/obj16/new_esx_file_disabled.gif"
+            icon="icons/full/obj16/new_esx_file.gif">
+      </image>
    </extension>
 
    <extension point="org.eclipse.ui.commands">
       <command
-            name="%_UI_Menu_Open_label"
-            description="%_UI_Menu_Open_description"
             categoryId="org.eclipse.ui.category.file"
-            id="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorOpenCommand"/>
+            description="Exports all audio files in .wav format"
+            id="com.skratchdot.electribe.model.esx.editor.commands.exportAllAudioFiles"
+            name="Export all audio files">
+      </command>
+      <command
+            categoryId="org.eclipse.ui.category.file"
+            description="Exports selected audio files in .wav format"
+            id="com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles"
+            name="Export selected audio files">
+      </command>
+      <command
+            description="Imports valid audio files into the active editor"
+            id="com.skratchdot.electribe.model.esx.editor.commands.importAudioFiles"
+            name="Import Audio Files">
+      </command>
+      <command
+            categoryId="org.eclipse.ui.category.file"
+            description="Creates a new .esx file based off of the default.esx file set in preferences"
+            id="com.skratchdot.electribe.model.esx.editor.commands.newEsxFile"
+            name="New .esx File">
+      </command>
+      <command
+            categoryId="org.eclipse.ui.category.file"
+            description="Opens an .esx file for editing"
+            id="com.skratchdot.electribe.model.esx.editor.commands.openEsxFile"
+            name="Open .esx File">
+      </command>
    </extension>
 
    <extension point="org.eclipse.ui.editors">
@@ -147,6 +185,29 @@
             class="com.skratchdot.electribe.model.esx.presentation.EsxEditor"
             contributorClass="com.skratchdot.electribe.model.esx.presentation.EsxActionBarContributor">
       </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="com.skratchdot.electribe.model.esx.editor.handlers.ExportHandler"
+            commandId="com.skratchdot.electribe.model.esx.editor.commands.exportAllAudioFiles">
+      </handler>
+      <handler
+            class="com.skratchdot.electribe.model.esx.editor.handlers.ExportHandler"
+            commandId="com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles">
+      </handler>
+      <handler
+            class="com.skratchdot.electribe.model.esx.editor.handlers.ImportHandler"
+            commandId="com.skratchdot.electribe.model.esx.editor.commands.importAudioFiles">
+      </handler>
+      <handler
+            class="com.skratchdot.electribe.model.esx.editor.handlers.NewHandler"
+            commandId="com.skratchdot.electribe.model.esx.editor.commands.newEsxFile">
+      </handler>
+      <handler
+            class="com.skratchdot.electribe.model.esx.editor.handlers.OpenHandler"
+            commandId="com.skratchdot.electribe.model.esx.editor.commands.openEsxFile">
+      </handler>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -161,12 +222,41 @@
             <separator
                   name="new.seperator">
             </separator>
+            <command
+                  commandId="com.skratchdot.electribe.model.esx.editor.commands.newEsxFile"
+                  id="newEsxFile"
+                  style="push">
+            </command>
             <separator
-                  name="import.seperator">
+                  name="open.separator">
             </separator>
+            <command
+                  commandId="com.skratchdot.electribe.model.esx.editor.commands.openEsxFile"
+                  id="openEsxFile"
+                  style="push">
+            </command>
+            <separator
+                  name="import.seperator"
+                  visible="true">
+            </separator>
+            <command
+                  commandId="com.skratchdot.electribe.model.esx.editor.commands.importAudioFiles"
+                  id="importAudioFiles"
+                  style="push">
+            </command>
             <separator
                   name="export.seperator">
             </separator>
+            <command
+                  commandId="com.skratchdot.electribe.model.esx.editor.commands.exportAllAudioFiles"
+                  id="exportAllAudioFiles"
+                  style="push">
+            </command>
+            <command
+                  commandId="com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles"
+                  id="exportSelectedAudioFiles"
+                  style="push">
+            </command>
             <separator
                   name="close"
                   visible="true">
