@@ -1,6 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <plugin>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.skratchdot.electribe.audioplayer.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="com.skratchdot.electribe.audioplayer.commands.loopCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+NUMPAD_0"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+      <key
+            commandId="com.skratchdot.electribe.audioplayer.commands.playCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+NUMPAD_1"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+      <key
+            commandId="com.skratchdot.electribe.audioplayer.commands.pauseCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+NUMPAD_2"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+      <key
+            commandId="com.skratchdot.electribe.audioplayer.commands.stopCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+NUMPAD_3"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commandImages">
+      <image
+            commandId="com.skratchdot.electribe.audioplayer.commands.loopCommand"
+            disabledIcon="icons/btn_loop_disabled.gif"
+            icon="icons/btn_loop.gif">
+      </image>
+      <image
+            commandId="com.skratchdot.electribe.audioplayer.commands.playCommand"
+            disabledIcon="icons/btn_play_disabled.gif"
+            icon="icons/btn_play.gif">
+      </image>
+      <image
+            commandId="com.skratchdot.electribe.audioplayer.commands.pauseCommand"
+            disabledIcon="icons/btn_pause_disabled.gif"
+            icon="icons/btn_pause.gif">
+      </image>
+      <image
+            commandId="com.skratchdot.electribe.audioplayer.commands.stopCommand"
+            disabledIcon="icons/btn_stop_disabled.gif"
+            icon="icons/btn_stop.gif">
+      </image>
+      <image
+            commandId="com.skratchdot.electribe.audioplayer.commands.playOrLoopCommand"
+            disabledIcon="icons/btn_loop_disabled.gif"
+            icon="icons/btn_loop.gif">
+      </image>
+   </extension>
 
    <extension
          point="org.eclipse.ui.commands">
@@ -56,33 +117,6 @@
             class="com.skratchdot.electribe.audioplayer.handlers.LoopAndPlayHandler"
             commandId="com.skratchdot.electribe.audioplayer.commands.playOrLoopCommand">
       </handler>
-   </extension>
-   <extension
-         point="org.eclipse.ui.bindings">
-      <key
-            commandId="com.skratchdot.electribe.audioplayer.commands.loopCommand"
-            contextId="org.eclipse.ui.contexts.window"
-            sequence="M1+NUMPAD_0"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
-      </key>
-      <key
-            commandId="com.skratchdot.electribe.audioplayer.commands.playCommand"
-            contextId="org.eclipse.ui.contexts.window"
-            sequence="M1+NUMPAD_1"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
-      </key>
-      <key
-            commandId="com.skratchdot.electribe.audioplayer.commands.pauseCommand"
-            contextId="org.eclipse.ui.contexts.window"
-            sequence="M1+NUMPAD_2"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
-      </key>
-      <key
-            commandId="com.skratchdot.electribe.audioplayer.commands.stopCommand"
-            contextId="org.eclipse.ui.contexts.window"
-            sequence="M1+NUMPAD_3"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
-      </key>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -184,46 +218,12 @@
       </menuContribution>
    </extension>
    <extension
-         point="org.eclipse.ui.commandImages">
-      <image
-            commandId="com.skratchdot.electribe.audioplayer.commands.loopCommand"
-            disabledIcon="icons/btn_loop_disabled.gif"
-            icon="icons/btn_loop.gif">
-      </image>
-      <image
-            commandId="com.skratchdot.electribe.audioplayer.commands.playCommand"
-            disabledIcon="icons/btn_play_disabled.gif"
-            icon="icons/btn_play.gif">
-      </image>
-      <image
-            commandId="com.skratchdot.electribe.audioplayer.commands.pauseCommand"
-            disabledIcon="icons/btn_pause_disabled.gif"
-            icon="icons/btn_pause.gif">
-      </image>
-      <image
-            commandId="com.skratchdot.electribe.audioplayer.commands.stopCommand"
-            disabledIcon="icons/btn_stop_disabled.gif"
-            icon="icons/btn_stop.gif">
-      </image>
-      <image
-            commandId="com.skratchdot.electribe.audioplayer.commands.playOrLoopCommand"
-            disabledIcon="icons/btn_loop_disabled.gif"
-            icon="icons/btn_loop.gif">
-      </image>
-   </extension>
-   <extension
          point="org.eclipse.ui.preferencePages">
       <page
             class="com.skratchdot.electribe.audioplayer.preferences.PreferencePageAudioPlayer"
             id="com.skratchdot.electribe.audioplayer.preferences.PreferencePageAudioPlayer"
             name="Audio Player Preferences">
       </page>
-   </extension>
-   <extension
-         point="org.eclipse.core.runtime.preferences">
-      <initializer
-            class="com.skratchdot.electribe.audioplayer.preferences.PreferenceInitializer">
-      </initializer>
    </extension>
 
 </plugin>
