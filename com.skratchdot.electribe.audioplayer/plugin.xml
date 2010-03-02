@@ -87,57 +87,61 @@
    <extension
          point="org.eclipse.ui.menus">
       <menuContribution
-            locationURI="menu:audioPlayer">
-         <command
-               commandId="com.skratchdot.electribe.audioplayer.commands.loopCommand"
-               id="com.skratchdot.electribe.audioplayer.menus.loopCommand"
-               mnemonic="L"
-               tooltip="LOOP">
-         </command>
-         <command
-               commandId="com.skratchdot.electribe.audioplayer.commands.playCommand"
-               id="com.skratchdot.electribe.audioplayer.menus.playCommand"
-               mnemonic="P"
-               tooltip="PLAY">
-         </command>
-         <command
-               commandId="com.skratchdot.electribe.audioplayer.commands.pauseCommand"
-               id="com.skratchdot.electribe.audioplayer.menus.pauseCommand"
-               mnemonic="A"
-               tooltip="PAUSE">
-         </command>
-         <command
-               commandId="com.skratchdot.electribe.audioplayer.commands.stopCommand"
-               id="com.skratchdot.electribe.audioplayer.menus.stopCommand"
-               mnemonic="S"
-               tooltip="STOP">
-         </command>
-      </menuContribution>
-      <menuContribution
-            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
-         <toolbar
-               id="com.skratchdot.electribe.audioplayer.toolbars.audioPlayerToolbar">
+            locationURI="menu:org.eclipse.ui.main.menu?after=edit">
+         <menu
+               id="audioPlayerMenu"
+               label="Audio Player">
             <command
                   commandId="com.skratchdot.electribe.audioplayer.commands.loopCommand"
-                  id="com.skratchdot.electribe.audioplayer.toolbars.loopCommand"
+                  id="loopCommand"
                   mnemonic="L"
                   tooltip="LOOP">
             </command>
             <command
                   commandId="com.skratchdot.electribe.audioplayer.commands.playCommand"
-                  id="com.skratchdot.electribe.audioplayer.toolbars.playCommand"
+                  id="playCommand"
                   mnemonic="P"
                   tooltip="PLAY">
             </command>
             <command
                   commandId="com.skratchdot.electribe.audioplayer.commands.pauseCommand"
-                  id="com.skratchdot.electribe.audioplayer.toolbars.pauseCommand"
+                  id="pauseCommand"
                   mnemonic="A"
                   tooltip="PAUSE">
             </command>
             <command
                   commandId="com.skratchdot.electribe.audioplayer.commands.stopCommand"
-                  id="com.skratchdot.electribe.audioplayer.toolbars.stopCommand"
+                  id="stopCommand"
+                  mnemonic="S"
+                  tooltip="STOP">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="audioPlayerToolbar">
+            <command
+                  commandId="com.skratchdot.electribe.audioplayer.commands.loopCommand"
+                  id="loopCommand"
+                  mnemonic="L"
+                  tooltip="LOOP">
+            </command>
+            <command
+                  commandId="com.skratchdot.electribe.audioplayer.commands.playCommand"
+                  id="playCommand"
+                  mnemonic="P"
+                  tooltip="PLAY">
+            </command>
+            <command
+                  commandId="com.skratchdot.electribe.audioplayer.commands.pauseCommand"
+                  id="pauseCommand"
+                  mnemonic="A"
+                  tooltip="PAUSE">
+            </command>
+            <command
+                  commandId="com.skratchdot.electribe.audioplayer.commands.stopCommand"
+                  id="stopCommand"
                   mnemonic="S"
                   tooltip="STOP">
             </command>
@@ -146,11 +150,12 @@
       <menuContribution
             locationURI="popup:com.skratchdot.electribe.model.esx.presentation.EsxEditorPartSamples.SampleListContextMenu?before=edit">
          <separator
-               name="com.skratchdot.electribe.audioplayer.samplelist.separator"
+               name="playOrLoopCommand"
                visible="true">
          </separator>
          <command
                commandId="com.skratchdot.electribe.audioplayer.commands.playOrLoopCommand"
+               id="playOrLoopCommand"
                tooltip="Play or Loop depending on preference setting.">
          </command>
       </menuContribution>
@@ -158,6 +163,7 @@
             locationURI="popup:com.skratchdot.electribe.fileexplorer.views.TableView?after=additions">
          <command
                commandId="com.skratchdot.electribe.audioplayer.commands.playOrLoopCommand"
+               id="playOrLoopCommand"
                tooltip="Play or Loop depending on preference setting.">
          </command>
       </menuContribution>
@@ -165,8 +171,16 @@
             locationURI="popup:com.skratchdot.electribe.fileexplorer.views.TreeView?after=additions">
          <command
                commandId="com.skratchdot.electribe.audioplayer.commands.playOrLoopCommand"
+               id="playOrLoopCommand"
                tooltip="Play or Loop depending on preference setting.">
          </command>
+      </menuContribution>
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=edit">
+         <menu
+               id="audioPlayer"
+               label="Audio Player">
+         </menu>
       </menuContribution>
    </extension>
    <extension
