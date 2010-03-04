@@ -209,13 +209,6 @@
                tooltip="Play or Loop depending on preference setting.">
          </command>
       </menuContribution>
-      <menuContribution
-            locationURI="menu:org.eclipse.ui.main.menu?after=edit">
-         <menu
-               id="audioPlayer"
-               label="Audio Player">
-         </menu>
-      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.preferencePages">
