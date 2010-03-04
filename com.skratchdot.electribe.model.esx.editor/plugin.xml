@@ -138,9 +138,29 @@
    <extension
          point="org.eclipse.ui.commandImages">
       <image
+            commandId="com.skratchdot.electribe.model.esx.editor.commands.exportAllAudioFiles"
+            disabledIcon="icons/full/obj16/export_audio_all_disabled.gif"
+            icon="icons/full/obj16/export_audio_all.gif">
+      </image>
+      <image
+            commandId="com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles"
+            disabledIcon="icons/full/obj16/export_audio_selected_disabled.gif"
+            icon="icons/full/obj16/export_audio_selected.gif">
+      </image>
+      <image
+            commandId="com.skratchdot.electribe.model.esx.editor.commands.importAudioFiles"
+            disabledIcon="icons/full/obj16/import_audio_all_disabled.gif"
+            icon="icons/full/obj16/import_audio_all.gif">
+      </image>
+      <image
             commandId="com.skratchdot.electribe.model.esx.editor.commands.newEsxFile"
             disabledIcon="icons/full/obj16/new_esx_file_disabled.gif"
             icon="icons/full/obj16/new_esx_file.gif">
+      </image>
+      <image
+            commandId="com.skratchdot.electribe.model.esx.editor.commands.openEsxFile"
+            disabledIcon="icons/full/obj16/open_esx_file_disabled.gif"
+            icon="icons/full/obj16/open_esx_file.gif">
       </image>
    </extension>
 
@@ -239,24 +259,34 @@
                   name="import.seperator"
                   visible="true">
             </separator>
-            <command
-                  commandId="com.skratchdot.electribe.model.esx.editor.commands.importAudioFiles"
-                  id="importAudioFiles"
-                  style="push">
-            </command>
+            <menu
+                  icon="icons/full/obj16/import_wiz.gif"
+                  id="import"
+                  label="Import">
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.importAudioFiles"
+                     id="importAudioFiles"
+                     style="push">
+               </command>
+            </menu>
             <separator
                   name="export.seperator">
             </separator>
-            <command
-                  commandId="com.skratchdot.electribe.model.esx.editor.commands.exportAllAudioFiles"
-                  id="exportAllAudioFiles"
-                  style="push">
-            </command>
-            <command
-                  commandId="com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles"
-                  id="exportSelectedAudioFiles"
-                  style="push">
-            </command>
+            <menu
+                  icon="icons/full/obj16/export_wiz.gif"
+                  id="export"
+                  label="Export">
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.exportAllAudioFiles"
+                     id="exportAllAudioFiles"
+                     style="push">
+               </command>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles"
+                     id="exportSelectedAudioFiles"
+                     style="push">
+               </command>
+            </menu>
             <separator
                   name="close"
                   visible="true">
@@ -302,7 +332,7 @@
             <command
                   commandId="org.eclipse.ui.file.exit"
                   id="quit"
-                  label="Quit"
+                  label="Exit"
                   style="push">
             </command>
             <separator
