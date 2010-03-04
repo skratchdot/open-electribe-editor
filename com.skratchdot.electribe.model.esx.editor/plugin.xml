@@ -36,10 +36,6 @@
                value="000000">
          </property>
          <property
-               name="aboutText"
-               value="%aboutText">
-         </property>
-         <property
                name="windowImages"
                value="icons/window/window_16.gif,icons/window/window_32.gif,icons/window/window_48.gif,icons/window/window_64.gif,icons/window/window_128.gif">
          </property>
@@ -55,41 +51,13 @@
                name="aboutImage"
                value="icons/alt_about.gif">
          </property>
+         <property
+               name="aboutText"
+               value="%aboutText">
+         </property>
       </product>
    </extension>
 
-   <extension point="org.eclipse.ui.actionSets">
-      <actionSet
-            label="%_UI_EsxEditorAdvisor_ActionSet_label"
-            visible="true"
-            id="EsxEditorAdvisorActionSet">
-         <action
-               class="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisor$NewAction"
-               id="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorNewAction"
-               label="%_UI_Menu_New_Esx_File_label"
-               menubarPath="file/new/additions">
-         </action>
-         <action
-               class="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisor$ImportAudioFileAction"
-               id="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorImportAudioFileAction"
-               label="%_UI_Menu_Import_Audio_File_label"
-               menubarPath="file/import/additions">
-         </action>
-         <action
-               class="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisor$ExportAudioFileAction"
-               id="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorExportAudioFileAction"
-               label="%_UI_Menu_Export_Audio_File_label"
-               menubarPath="file/export/additions">
-         </action>
-         <action
-               class="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisor$OpenAction"
-               definitionId="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorOpenCommand"
-               id="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorOpenAction"
-               label="%_UI_Menu_Open_label"
-               menubarPath="file/additions">
-         </action>
-      </actionSet>
-   </extension>
    <extension
          point="org.eclipse.ui.activities">
       <activity
@@ -124,14 +92,18 @@
    </extension>
 
    <extension point="org.eclipse.ui.bindings">
+      <scheme
+            id="esx.editor.scheme"
+            name="Esx Editor Scheme">
+      </scheme>
       <key
-            commandId="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorOpenCommand"
+            commandId="com.skratchdot.electribe.model.esx.editor.commands.openEsxFile"
             sequence="M1+O"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+            schemeId="esx.editor.scheme"/>
       <key
             commandId="com.skratchdot.electribe.model.esx.editor.commands.newEsxFile"
             contextId="org.eclipse.ui.contexts.window"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            schemeId="esx.editor.scheme"
             sequence="M1+N">
       </key>
    </extension>

@@ -100,6 +100,7 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
+import com.skratchdot.electribe.model.esx.editor.util.EsxEditorUtil;
 import com.skratchdot.electribe.model.esx.provider.EsxItemProviderAdapterFactory;
 
 
@@ -1202,7 +1203,7 @@ public class EsxEditor
 	@Override
 	public void doSaveAs() {
 		String[] filters = FILE_EXTENSION_FILTERS.toArray(new String[FILE_EXTENSION_FILTERS.size()]);
-		String[] files = EsxEditorAdvisor.openFilePathDialog(getSite().getShell(), SWT.SAVE, filters);
+		String[] files = EsxEditorUtil.openFilePathDialog(getSite().getShell(), SWT.SAVE, filters);
 		if (files.length > 0) {
 			URI uri = URI.createFileURI(files[0]);
 			doSaveAs(uri, new URIEditorInput(uri));

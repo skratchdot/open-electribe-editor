@@ -27,6 +27,8 @@ import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.FileTransfer;
 import org.eclipse.ui.PlatformUI;
 
+import com.skratchdot.electribe.model.esx.editor.util.EsxEditorUtil;
+
 /**
  * Customized {@link org.eclipse.swt.dnd.DropTargetAdapter} for the RCP application.
  * Will handle files that are dropped onto the esx editor area.
@@ -87,7 +89,7 @@ public class EsxEditorDropTargetAdapter extends DropTargetAdapter {
 	 * @param fileName
 	 */
 	private void handleEsxFile(String fileName) {
-		EsxEditorAdvisor.openEditor(
+		EsxEditorUtil.openEditor(
 			PlatformUI.getWorkbench(),
 			URI.createFileURI(fileName));
 	}
