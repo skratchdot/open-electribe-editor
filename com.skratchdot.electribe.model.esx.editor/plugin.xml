@@ -493,6 +493,51 @@
             </command>
          </menu>
       </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar">
+         <toolbar
+               id="file">
+            <command
+                  commandId="com.skratchdot.electribe.model.esx.editor.commands.newEsxFile"
+                  id="newEsxFile"
+                  style="push">
+            </command>
+            <command
+                  commandId="com.skratchdot.electribe.model.esx.editor.commands.openEsxFile"
+                  id="openEsxFile"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.eclipse.ui.file.save"
+                  id="save"
+                  style="push">
+            </command>
+         </toolbar>
+         <toolbar
+               id="import">
+            <command
+                  commandId="com.skratchdot.electribe.model.esx.editor.commands.importAudioFiles"
+                  id="importAudioFiles"
+                  style="push">
+            </command>
+         </toolbar>
+         <toolbar
+               id="export">
+            <command
+                  commandId="com.skratchdot.electribe.model.esx.editor.commands.exportAllAudioFiles"
+                  id="exportAllAudioFiles"
+                  style="push">
+            </command>
+            <command
+                  commandId="com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles"
+                  id="exportSelectedAudioFiles"
+                  style="push">
+            </command>
+         </toolbar>
+         <separator
+               name="additions">
+         </separator>
+      </menuContribution>
    </extension>
 
    <extension point="org.eclipse.ui.perspectives">
