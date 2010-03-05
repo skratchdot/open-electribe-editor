@@ -58,8 +58,8 @@
       </image>
       <image
             commandId="com.skratchdot.electribe.audioplayer.commands.playOrLoopCommand"
-            disabledIcon="icons/btn_loop_disabled.gif"
-            icon="icons/btn_loop.gif">
+            disabledIcon="icons/btn_play_or_loop_disabled.gif"
+            icon="icons/btn_play_or_loop.gif">
       </image>
    </extension>
 
