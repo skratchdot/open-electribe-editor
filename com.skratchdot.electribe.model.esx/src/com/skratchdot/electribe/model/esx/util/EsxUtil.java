@@ -24,6 +24,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+
 public class EsxUtil {
 	public static final int DEFAULT_SAMPLING_RATE = 44100;
 
@@ -181,6 +185,31 @@ public class EsxUtil {
 			if (inChannel != null) inChannel.close();
 			if (outChannel != null) outChannel.close();
 		}
+	}
+
+	/**
+	 * @param collection The collection of EObjects to search.
+	 * @param startingIndex The index to start searching from.
+	 * @param skipIndices Don't include these indices in the search
+	 * @param feature The feature to search/compare against.
+	 * @param value The value to look for.
+	 * @param allowLoop If a value isn't found between startingIndex and the end of the collection, then look for a value between 0 and startingIndex.
+	 * @return returns The first index of the collection whose feature matches the given value. If not found, returns -1.
+	 */
+	public static int findFirstIndex(EList<? extends EObject> collection, int startingIndex, ArrayList<Integer> skipIndices, EStructuralFeature feature, Object value, boolean allowLoop) {
+		int returnIndex = -1;
+
+		for (int i = 0; i < collection.size(); i++) {
+			if (collection.get(i).eGet(feature).equals(value) && !skipIndices.contains(i)) {
+				if (i >= startingIndex) {
+					return i;
+				} else if (returnIndex == -1 && allowLoop==true) {
+					returnIndex = i;
+				}
+			}
+		}
+
+		return returnIndex;
 	}
 
 	/**

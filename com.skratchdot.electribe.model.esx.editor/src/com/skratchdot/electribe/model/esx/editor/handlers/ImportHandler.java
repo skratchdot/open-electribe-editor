@@ -107,20 +107,41 @@ public class ImportHandler extends AbstractHandler {
 							// We can only import audio files
 							if(AudioUtil.isAudioFile(file)) {
 								int firstEmptySampleNumber = -1;
-								Sample sample;
+								Sample sample = null;
 
+								// Mono Samples
 								if(!AudioUtil.isStereo(file)) {
-									firstEmptySampleNumber = esxFile.findFirstEmptySample(true, true, 0, skipSampleNumbers);
-									sample = EsxFactory.eINSTANCE.createSampleMonoFromAudioFile(file);
-									sample.setSampleNumberOriginal(esxFile.getSamples().get(firstEmptySampleNumber).getSampleNumberOriginal());
+									firstEmptySampleNumber = EsxUtil.findFirstIndex(
+										esxFile.getSamples(),
+										0,
+										skipSampleNumbers,
+										EsxPackage.Literals.SAMPLE__EMPTY,
+										true,
+										true
+									);
+									if(isValidSampleIndex(firstEmptySampleNumber)) {
+										sample = EsxFactory.eINSTANCE.createSampleMonoFromAudioFile(file);
+										sample.setSampleNumberOriginal(esxFile.getSamples().get(firstEmptySampleNumber).getSampleNumberOriginal());
+									}
 								}
+								// Stereo Samples
 								else {
-									firstEmptySampleNumber = esxFile.findFirstEmptySample(true, true, EsxUtil.NUM_SAMPLES_MONO, skipSampleNumbers);
-									sample = EsxFactory.eINSTANCE.createSampleStereoFromAudioFile(file);
-									sample.setSampleNumberOriginal(esxFile.getSamples().get(firstEmptySampleNumber).getSampleNumberOriginal());
+									firstEmptySampleNumber = EsxUtil.findFirstIndex(
+										esxFile.getSamples(),
+										EsxUtil.NUM_SAMPLES_MONO,
+										skipSampleNumbers,
+										EsxPackage.Literals.SAMPLE__EMPTY,
+										true,
+										true
+									);
+									if(isValidSampleIndex(firstEmptySampleNumber)) {
+										sample = EsxFactory.eINSTANCE.createSampleStereoFromAudioFile(file);
+										sample.setSampleNumberOriginal(esxFile.getSamples().get(firstEmptySampleNumber).getSampleNumberOriginal());
+									}
 								}
 
-								if(firstEmptySampleNumber>=0 && firstEmptySampleNumber<EsxUtil.NUM_SAMPLES) {
+								// Add sample using emf command
+								if(isValidSampleIndex(firstEmptySampleNumber) && sample!=null) {
 									skipSampleNumbers.add(firstEmptySampleNumber);
 									cmd.append(new ReplaceCommand(
 										editingDomain,
@@ -144,6 +165,13 @@ public class ImportHandler extends AbstractHandler {
 				}
 			}
 		}
+	}
+	
+	private static boolean isValidSampleIndex(int index) {
+		if(index>=0 && index<EsxUtil.NUM_SAMPLES) {
+			return true;
+		}
+		return false;
 	}
 
 }
