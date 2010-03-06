@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -796,43 +795,6 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 */
 	public int getNumSongsNotEmpty() {
 		return EsxUtil.NUM_SONGS-this.getNumSongsEmpty();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public int findFirstEmptySample(boolean searchMono, boolean searchStereo, int startingSampleNumber, ArrayList<Integer> skipSampleNumbers) {
-		int returnValue = -1;
-
-		if(searchMono) {
-			for(int i=0; i<EsxUtil.NUM_SAMPLES_MONO; i++) {
-				if(this.getSamples().get(i).isEmpty() && !skipSampleNumbers.contains(i)) {
-					if(i>=startingSampleNumber) {
-						return i;
-					}
-					else if (returnValue==-1) {
-						returnValue = i;
-					}
-				}
-			}
-		}
-		
-		if(searchStereo) {
-			for(int i=EsxUtil.NUM_SAMPLES_MONO; i<EsxUtil.NUM_SAMPLES; i++) {
-				if(this.getSamples().get(i).isEmpty() && !skipSampleNumbers.contains(i)) {
-					if(i>=startingSampleNumber) {
-						return i;
-					}
-					else if (returnValue==-1) {
-						returnValue = i;
-					}
-				}
-			}
-		}
-		
-		return returnValue;
 	}
 
 	/**

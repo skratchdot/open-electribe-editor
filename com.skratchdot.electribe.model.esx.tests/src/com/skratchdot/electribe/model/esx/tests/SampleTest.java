@@ -36,6 +36,8 @@ import junit.framework.TestCase;
  * The following operations are tested:
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#export(java.io.File) <em>Export</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#toRIFFWave() <em>To RIFF Wave</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#toRIFFWaveFile(java.io.File) <em>To RIFF Wave File</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -166,6 +168,32 @@ public abstract class SampleTest extends TestCase {
 	 * @generated
 	 */
 	public void testExport__File() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#toRIFFWave() <em>To RIFF Wave</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.Sample#toRIFFWave()
+	 * @generated
+	 */
+	public void testToRIFFWave() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#toRIFFWaveFile(java.io.File) <em>To RIFF Wave File</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.Sample#toRIFFWaveFile(java.io.File)
+	 * @generated
+	 */
+	public void testToRIFFWaveFile__File() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

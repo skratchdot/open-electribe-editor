@@ -11,16 +11,6 @@
       <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
       <eParameters name="monitor" eType="#//IProgressMonitor"/>
     </eOperations>
-    <eOperations name="findFirstEmptySample" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
-      <eParameters name="searchMono" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-      <eParameters name="searchStereo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-      <eParameters name="startingSampleNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="skipSampleNumbers">
-        <eGenericType eClassifier="#//ArrayList">
-          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
-        </eGenericType>
-      </eParameters>
-    </eOperations>
     <eOperations name="setAllOffsets"/>
     <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray">

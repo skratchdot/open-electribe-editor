@@ -25,10 +25,10 @@ import junit.textui.TestRunner;
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.SampleMono#initHeader(byte[]) <em>Init Header</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.SampleMono#initHeader(byte[], int) <em>Init Header</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.SampleMono#initOffsetChannel1(byte[]) <em>Init Offset Channel1</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.SampleMono#initOffsetChannelBoth(byte[]) <em>Init Offset Channel Both</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.SampleMono#initSliceArray(byte[]) <em>Init Slice Array</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.SampleMono#toHeaderByteArray() <em>To Header Byte Array</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.SampleMono#toOffsetChannel1ByteArray() <em>To Offset Channel1 Byte Array</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.SampleMono#toOffsetChannelBothByteArray() <em>To Offset Channel Both Byte Array</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.SampleMono#toSliceByteArray() <em>To Slice Byte Array</em>}</li>
  * </ul>
  * </p>
@@ -115,13 +115,13 @@ public class SampleMonoTest extends SampleTest {
 	}
 
 	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.SampleMono#initOffsetChannel1(byte[]) <em>Init Offset Channel1</em>}' operation.
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.SampleMono#initOffsetChannelBoth(byte[]) <em>Init Offset Channel Both</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.SampleMono#initOffsetChannel1(byte[])
+	 * @see com.skratchdot.electribe.model.esx.SampleMono#initOffsetChannelBoth(byte[])
 	 * @generated
 	 */
-	public void testInitOffsetChannel1__byte() {
+	public void testInitOffsetChannelBoth__byte() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();
@@ -154,13 +154,13 @@ public class SampleMonoTest extends SampleTest {
 	}
 
 	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.SampleMono#toOffsetChannel1ByteArray() <em>To Offset Channel1 Byte Array</em>}' operation.
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.SampleMono#toOffsetChannelBothByteArray() <em>To Offset Channel Both Byte Array</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.SampleMono#toOffsetChannel1ByteArray()
+	 * @see com.skratchdot.electribe.model.esx.SampleMono#toOffsetChannelBothByteArray()
 	 * @generated
 	 */
-	public void testToOffsetChannel1ByteArray() {
+	public void testToOffsetChannelBothByteArray() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

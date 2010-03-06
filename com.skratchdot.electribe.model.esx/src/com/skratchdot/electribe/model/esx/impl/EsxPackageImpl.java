@@ -11,6 +11,9 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -18,7 +21,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -102,9 +104,6 @@ import com.skratchdot.electribe.model.esx.Swing;
 import com.skratchdot.electribe.model.esx.Tempo;
 import com.skratchdot.electribe.model.esx.TempoLock;
 import com.skratchdot.riff.wav.RIFFWave;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * <!-- begin-user-doc -->
@@ -3479,15 +3478,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		op = addEOperation(esxFileEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getIProgressMonitor(), "monitor", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(esxFileEClass, ecorePackage.getEInt(), "findFirstEmptySample", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "searchMono", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "searchStereo", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "startingSampleNumber", 0, 1, IS_UNIQUE, IS_ORDERED);
-		EGenericType g1 = createEGenericType(this.getArrayList());
-		EGenericType g2 = createEGenericType(ecorePackage.getEIntegerObject());
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "skipSampleNumbers", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(esxFileEClass, null, "setAllOffsets", 0, 1, IS_UNIQUE, IS_ORDERED);
 

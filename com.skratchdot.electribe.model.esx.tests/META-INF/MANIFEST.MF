@@ -11,5 +11,6 @@ Export-Package: com.skratchdot.electribe.model.esx.tests
 Require-Bundle: org.eclipse.core.runtime,
  com.skratchdot.electribe.model.esx;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
- org.junit;visibility:=reexport
+ org.junit;visibility:=reexport,
+ com.skratchdot.riff.wav;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy

@@ -11,8 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx;
 
-import java.util.ArrayList;
-
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -439,14 +437,6 @@ public interface EsxFile extends EObject {
 	 * @generated
 	 */
 	void init(byte[] b, IProgressMonitor monitor);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model skipSampleNumbersDataType="com.skratchdot.electribe.model.esx.ArrayList<org.eclipse.emf.ecore.EIntegerObject>"
-	 * @generated
-	 */
-	int findFirstEmptySample(boolean searchMono, boolean searchStereo, int startingSampleNumber, ArrayList<Integer> skipSampleNumbers);
 
 	/**
 	 * <!-- begin-user-doc -->
