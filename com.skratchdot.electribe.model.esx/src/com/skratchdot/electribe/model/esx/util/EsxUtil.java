@@ -130,36 +130,65 @@ public class EsxUtil {
 	public static final int SIZE_FILE_MIN = 0x00250010;
 	public static final int SIZE_FILE_MAX = SIZE_FILE_MIN + (MAX_NUM_SAMPLES*2);
 
-	public static int packInt(int packedInt, int inputValue, int numBits, int numShiftedLeft) {
-		//	The comments below assume we are passing in:
-		//		packedInt		= yyyy yyyy
-		//		inputValue		= 0000 0010  HEX: 0x02  DEC: 2
-		//		numBits			= 3
-		//		numShiftedLeft	= 4
-		//	We want to end up with: y010 yyyy
-
-		int bitsUnshifted = (int) (Math.pow(2, numBits) - 1);	// 0000 0111
-		int bitsShifted = bitsUnshifted << numShiftedLeft;		// 0111 0000
-		int shiftedInputValue = inputValue << numShiftedLeft;	// 0010 0000
-
-		packedInt = packedInt & (~bitsShifted);					// y000 yyyy
-		packedInt = packedInt | shiftedInputValue;				// y010 yyyy
-		return packedInt;
+	/**
+	 * @param byteArray
+	 * @return
+	 */
+	public static List<Byte> byteArrayToList(byte[] byteArray) {
+		List<Byte> list = new ArrayList<Byte>();
+		for(byte b : byteArray) {
+			list.add(b);
+		}
+		return list;
 	}
 
-	public static int unpackInt(int packedInt, int numBits, int numShiftedLeft) {
-		//	The comments below assume we are passing in:
-		//		packedInt		= y010 yyyy
-		//		numBits			= 3
-		//		numShiftedLeft	= 4
-		//	We want to end up with: 0000 0010
+	/**
+	 * This removes all "esxLoad_*.esx" and "esxSave_*.esx" files
+	 * from the given directory.
+	 * @param directory A valid directory.
+	 */
+	public static void clearTempDirectory(File directory) {
+		if(!directory.isDirectory()) return;
 
-		int bitsUnshifted = (int) (Math.pow(2, numBits) - 1);	// 0000 0111
-		int bitsShifted = bitsUnshifted << numShiftedLeft;		// 0111 0000
-		int outputValue = packedInt & bitsShifted;				// 0yyy 0000
-		return outputValue >> numShiftedLeft;					// 0000 0yyy
+		File[] tempFiles = directory.listFiles(new FilenameFilter() {
+			@Override
+			public boolean accept(File fDir, String strName) {
+				return (
+					(strName.startsWith("esxLoad_") || strName.startsWith("esxSave_"))
+					&& strName.endsWith(".esx")
+				);
+			}
+		});
+
+		for (int i=0; i<tempFiles.length; i++) {
+			tempFiles[i].delete();
+		}
 	}
 
+	/**
+	 * @param in Input (source) file.
+	 * @param out Output (destination) file
+	 * @throws IOException
+	 */
+	public static void copyFile(File in, File out) throws IOException {
+		FileChannel inChannel = new FileInputStream(in).getChannel();
+		FileChannel outChannel = new FileOutputStream(out).getChannel();
+		try {
+			inChannel.transferTo(0, inChannel.size(), outChannel);
+		} catch (IOException e) {
+			throw e;
+		} finally {
+			if (inChannel != null) inChannel.close();
+			if (outChannel != null) outChannel.close();
+		}
+	}
+
+	/**
+	 * @param input
+	 * @param length
+	 * @param fillByte
+	 * @return
+	 */
 	public static byte[] getByteArrayWithLength(String input, int length, byte fillByte) {
 		byte[] b = new byte[length];
 		int i=0;
@@ -172,22 +201,26 @@ public class EsxUtil {
 		return b;
 	}
 
-	public static List<Byte> byteArrayToList(byte[] byteArray) {
-		List<Byte> list = new ArrayList<Byte>();
-		for(byte b : byteArray) {
-			list.add(b);
-		}
-		return list;
-	}
-
-	public static byte[] listToByteArray(List<Byte> list){
-		byte[] byteArray = new byte[list.size()];
-		for(int i = 0; i<list.size(); i++) {
-			byteArray[i] = list.get(i);
-		}
-		return byteArray;
+	/**
+	 * Returns a file path in the format: "[directory]/[prefix]_[TIMESTAMP].esx"
+	 * @param directory A valid directory.
+	 * @param prefix 
+	 * @return returns a path name for a temporary .esx file
+	 */
+	public static String getTempEsxFilePath(File directory, String prefix) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+		String defaultTempFilePath = directory.getAbsolutePath() + 
+			File.separatorChar + prefix + "_" +
+			dateFormat.format(new Date()) +
+			".esx";
+		return defaultTempFilePath;
 	}
 	
+	/**
+	 * @param in
+	 * @return
+	 * @throws IOException
+	 */
 	public static byte[] inputStreamToByteArray(InputStream in) throws IOException {
 		int len = 0;
 		int available = in.available();
@@ -214,6 +247,11 @@ public class EsxUtil {
 		return out.toByteArray();
 	}
 	
+	/**
+	 * @param b
+	 * @return
+	 * @throws IOException
+	 */
 	public static boolean isValidEsxFile(byte[] b) throws IOException {
 		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
 
@@ -271,59 +309,58 @@ public class EsxUtil {
 	}
 
 	/**
-	 * Returns a file path in the format: "[directory]/[prefix]_[TIMESTAMP].esx"
-	 * @param directory A valid directory.
-	 * @param prefix 
-	 * @return returns a path name for a temporary .esx file
+	 * @param list
+	 * @return
 	 */
-	public static String getTempEsxFilePath(File directory, String prefix) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
-		String defaultTempFilePath = directory.getAbsolutePath() + 
-			File.separatorChar + prefix + "_" +
-			dateFormat.format(new Date()) +
-			".esx";
-		return defaultTempFilePath;
+	public static byte[] listToByteArray(List<Byte> list){
+		byte[] byteArray = new byte[list.size()];
+		for(int i = 0; i<list.size(); i++) {
+			byteArray[i] = list.get(i);
+		}
+		return byteArray;
 	}
 
 	/**
-	 * This removes all "esxLoad_*.esx" and "esxSave_*.esx" files
-	 * from the given directory.
-	 * @param directory A valid directory.
+	 * @param packedInt
+	 * @param inputValue
+	 * @param numBits
+	 * @param numShiftedLeft
+	 * @return
 	 */
-	public static void clearTempDirectory(File directory) {
-		if(!directory.isDirectory()) return;
+	public static int packInt(int packedInt, int inputValue, int numBits, int numShiftedLeft) {
+		//	The comments below assume we are passing in:
+		//		packedInt		= yyyy yyyy
+		//		inputValue		= 0000 0010  HEX: 0x02  DEC: 2
+		//		numBits			= 3
+		//		numShiftedLeft	= 4
+		//	We want to end up with: y010 yyyy
 
-		File[] tempFiles = directory.listFiles(new FilenameFilter() {
-			@Override
-			public boolean accept(File fDir, String strName) {
-				return (
-					(strName.startsWith("esxLoad_") || strName.startsWith("esxSave_"))
-					&& strName.endsWith(".esx")
-				);
-			}
-		});
+		int bitsUnshifted = (int) (Math.pow(2, numBits) - 1);	// 0000 0111
+		int bitsShifted = bitsUnshifted << numShiftedLeft;		// 0111 0000
+		int shiftedInputValue = inputValue << numShiftedLeft;	// 0010 0000
 
-		for (int i=0; i<tempFiles.length; i++) {
-			tempFiles[i].delete();
-		}
+		packedInt = packedInt & (~bitsShifted);					// y000 yyyy
+		packedInt = packedInt | shiftedInputValue;				// y010 yyyy
+		return packedInt;
 	}
 	
 	/**
-	 * @param in Input (source) file.
-	 * @param out Output (destination) file
-	 * @throws IOException
+	 * @param packedInt
+	 * @param numBits
+	 * @param numShiftedLeft
+	 * @return
 	 */
-	public static void copyFile(File in, File out) throws IOException {
-		FileChannel inChannel = new FileInputStream(in).getChannel();
-		FileChannel outChannel = new FileOutputStream(out).getChannel();
-		try {
-			inChannel.transferTo(0, inChannel.size(), outChannel);
-		} catch (IOException e) {
-			throw e;
-		} finally {
-			if (inChannel != null) inChannel.close();
-			if (outChannel != null) outChannel.close();
-		}
+	public static int unpackInt(int packedInt, int numBits, int numShiftedLeft) {
+		//	The comments below assume we are passing in:
+		//		packedInt		= y010 yyyy
+		//		numBits			= 3
+		//		numShiftedLeft	= 4
+		//	We want to end up with: 0000 0010
+
+		int bitsUnshifted = (int) (Math.pow(2, numBits) - 1);	// 0000 0111
+		int bitsShifted = bitsUnshifted << numShiftedLeft;		// 0111 0000
+		int outputValue = packedInt & bitsShifted;				// 0yyy 0000
+		return outputValue >> numShiftedLeft;					// 0000 0yyy
 	}
 
 }
