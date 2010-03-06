@@ -11,7 +11,9 @@
  */
 package com.skratchdot.electribe.model.esx;
 
+import java.util.Map;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
@@ -461,5 +463,13 @@ public interface EsxFile extends EObject {
 	 * @generated
 	 */
 	byte[] toByteArray(IProgressMonitor monitor);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validMemFreeInBytes(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 }

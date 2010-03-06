@@ -21,9 +21,11 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import com.skratchdot.electribe.model.esx.AmpEg;
@@ -103,6 +105,7 @@ import com.skratchdot.electribe.model.esx.StretchStep;
 import com.skratchdot.electribe.model.esx.Swing;
 import com.skratchdot.electribe.model.esx.Tempo;
 import com.skratchdot.electribe.model.esx.TempoLock;
+import com.skratchdot.electribe.model.esx.util.EsxValidator;
 import com.skratchdot.riff.wav.RIFFWave;
 
 /**
@@ -737,6 +740,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 
 		// Initialize created meta-data
 		theEsxPackage.initializePackageContents();
+
+		// Register package validator
+		EValidator.Registry.INSTANCE.put
+			(theEsxPackage, 
+			 new EValidator.Descriptor() {
+				 public EValidator getEValidator() {
+					 return EsxValidator.INSTANCE;
+				 }
+			 });
 
 		// Mark meta-data to indicate it can't be changed
 		theEsxPackage.freeze();
@@ -3485,6 +3497,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 
 		op = addEOperation(esxFileEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getIProgressMonitor(), "monitor", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(esxFileEClass, ecorePackage.getEBoolean(), "validMemFreeInBytes", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
+		EGenericType g2 = createEGenericType(this.getObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(this.getObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(globalParametersEClass, GlobalParameters.class, "GlobalParameters", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGlobalParameters_MemoryProtectEnabled(), this.getEnabledFlag(), "memoryProtectEnabled", null, 0, 1, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
