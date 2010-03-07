@@ -38,6 +38,7 @@ import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
 public class EsxEditorPartPatterns extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartPatterns"; //$NON-NLS-1$
 	public static final int PAGE_INDEX = 2;
+	public static final String ID_PATTERN_VIEWER = ID+".PatternViewer"; //$NON-NLS-1$
 
 	private TableViewer tableViewer;
 	private TableScrollSpeedListener tableViewerScrollSpeedListener;
@@ -180,7 +181,7 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 		PlatformUI.getPreferenceStore().addPropertyChangeListener((IPropertyChangeListener) this);
 
 		// Setup Context Menu
-	    createContextMenuFor(this.tableViewer);
+	    createContextMenuFor(this.tableViewer, EsxEditorPartPatterns.ID_PATTERN_VIEWER);
 
 	    // Selection Provider For EsxEditor
 	    getEditorSite().setSelectionProvider(this.tableViewer);

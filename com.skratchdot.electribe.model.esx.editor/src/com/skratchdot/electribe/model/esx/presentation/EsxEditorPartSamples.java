@@ -54,6 +54,7 @@ import com.skratchdot.electribe.model.esx.util.EsxUtil;
 public class EsxEditorPartSamples extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartSamples"; //$NON-NLS-1$
 	public static final int PAGE_INDEX = 3;
+	public static final String ID_SAMPLE_VIEWER = ID+".SampleViewer"; //$NON-NLS-1$
 
 	private Label labelMemFree;
 	private TableViewer tableViewer;
@@ -273,7 +274,10 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		PlatformUI.getPreferenceStore().addPropertyChangeListener((IPropertyChangeListener) this);
 
 		// Context Menu
-	    createContextMenuFor(this.tableViewer, EsxEditorPartSamples.ID+".SampleListContextMenu");
+		createContextMenuFor(this.tableViewer, EsxEditorPartSamples.ID_SAMPLE_VIEWER);
+		
+		// DnD
+		this.addEmfDragAndDropSupport(this.tableViewer);
 
 	    // Selection Provider For EsxEditor
 	    getEditorSite().setSelectionProvider(this.tableViewer);

@@ -556,6 +556,72 @@
                name="additions">
          </separator>
       </menuContribution>
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <separator
+               name="undoStart"
+               visible="true">
+         </separator>
+         <command
+               commandId="org.eclipse.ui.edit.undo"
+               style="push">
+         </command>
+         <command
+               commandId="org.eclipse.ui.edit.redo"
+               style="push">
+         </command>
+         <separator
+               name="undoEnd"
+               visible="true">
+         </separator>
+      </menuContribution>
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=undoEnd">
+         <separator
+               name="showViewStart">
+         </separator>
+         <command
+               commandId="com.skratchdot.electribe.model.esx.editor.commands.showPropertiesView"
+               id="showPropertiesView"
+               label="Show Properties View"
+               style="push">
+         </command>
+         <separator
+               name="showViewEnd"
+               visible="true">
+         </separator>
+      </menuContribution>
+      <menuContribution
+            locationURI="popup:com.skratchdot.electribe.model.esx.presentation.EsxEditorPartSamples.SampleViewer?after=undoEnd">
+         <separator
+               name="editStart"
+               visible="true">
+         </separator>
+         <command
+               commandId="org.eclipse.ui.edit.cut"
+               style="push">
+         </command>
+         <command
+               commandId="org.eclipse.ui.edit.copy"
+               style="push">
+         </command>
+         <command
+               commandId="org.eclipse.ui.edit.paste"
+               style="push">
+         </command>
+         <separator
+               name="deleteStart"
+               visible="true">
+         </separator>
+         <command
+               commandId="org.eclipse.ui.edit.delete"
+               style="push">
+         </command>
+         <separator
+               name="editEnd"
+               visible="true">
+         </separator>
+      </menuContribution>
    </extension>
 
    <extension point="org.eclipse.ui.perspectives">

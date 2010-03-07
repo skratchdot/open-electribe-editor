@@ -182,7 +182,7 @@
          </toolbar>
       </menuContribution>
       <menuContribution
-            locationURI="popup:com.skratchdot.electribe.model.esx.presentation.EsxEditorPartSamples.SampleListContextMenu?before=edit">
+            locationURI="popup:com.skratchdot.electribe.model.esx.presentation.EsxEditorPartSamples.SampleViewer?before=undoStart">
          <separator
                name="playOrLoopCommand"
                visible="true">
@@ -194,7 +194,7 @@
          </command>
       </menuContribution>
       <menuContribution
-            locationURI="popup:com.skratchdot.electribe.fileexplorer.views.TableView?after=additions">
+            locationURI="popup:com.skratchdot.electribe.fileexplorer.views.TableView?before=undoStart">
          <command
                commandId="com.skratchdot.electribe.audioplayer.commands.playOrLoopCommand"
                id="playOrLoopCommand"
@@ -202,7 +202,7 @@
          </command>
       </menuContribution>
       <menuContribution
-            locationURI="popup:com.skratchdot.electribe.fileexplorer.views.TreeView?after=additions">
+            locationURI="popup:com.skratchdot.electribe.fileexplorer.views.TreeView?before=undoStart">
          <command
                commandId="com.skratchdot.electribe.audioplayer.commands.playOrLoopCommand"
                id="playOrLoopCommand"

@@ -46,6 +46,7 @@ import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
 public class EsxEditorPartSongs extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartSongs"; //$NON-NLS-1$
 	public static final int PAGE_INDEX = 4;
+	public static final String ID_SONG_VIEWER = ID+".SongViewer"; //$NON-NLS-1$
 
 	private TableViewer tableViewer;
 	private TableScrollSpeedListener tableViewerScrollSpeedListener;
@@ -173,7 +174,7 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		PlatformUI.getPreferenceStore().addPropertyChangeListener((IPropertyChangeListener) this);
 
 		// Context Menu
-	    createContextMenuFor(this.tableViewer);
+	    createContextMenuFor(this.tableViewer, EsxEditorPartSongs.ID_SONG_VIEWER);
 
 	    // Selection Provider For EsxEditor
 	    getEditorSite().setSelectionProvider(this.tableViewer);

@@ -39,6 +39,7 @@ import com.skratchdot.electribe.model.esx.PatternNumber;
 import com.skratchdot.electribe.model.esx.PatternSetParameter;
 public class EsxCompositeGlobalPatternSets extends EsxComposite {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositeGlobalParametersPatternSets"; //$NON-NLS-1$
+	public static final String ID_PATTERN_SET_VIEWER = ID+".PatternSetViewer"; //$NON-NLS-1$
 
 	private List<PatternSetParameter> patternSetParameters;
 	private List<PatternSetParameter> selectedItems;
@@ -126,7 +127,11 @@ public class EsxCompositeGlobalPatternSets extends EsxComposite {
 		});
 		
 		// Context Menu
-	    this.parentPart.createContextMenuFor(this.tableViewer);
+	    this.parentPart.createContextMenuFor(this.tableViewer, EsxCompositeGlobalPatternSets.ID_PATTERN_SET_VIEWER);
+	    
+	    // DnD
+	    this.parentPart.addEmfDragAndDropSupport(this.tableViewer);
+
 	}
 
 	/* (non-Javadoc)
