@@ -29,8 +29,6 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.Sample;
-import com.skratchdot.electribe.model.esx.SampleMono;
-import com.skratchdot.electribe.model.esx.SampleStereo;
 import com.skratchdot.electribe.model.esx.editor.util.EsxEditorUtil;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceNames;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
@@ -150,12 +148,7 @@ public class ExportHandler extends AbstractHandler {
 							
 							if(writeCurrentFile==true) {
 								try {
-									if(currentSample.isStereo()==false) {
-										((SampleMono) currentSample).export(file);
-									}
-									else {
-										((SampleStereo) currentSample).export(file);									
-									}
+									currentSample.export(file);
 								} catch (Exception e) {
 									e.printStackTrace();
 								}

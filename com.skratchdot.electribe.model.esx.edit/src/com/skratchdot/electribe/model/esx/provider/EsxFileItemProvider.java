@@ -43,8 +43,6 @@ import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.Sample;
-import com.skratchdot.electribe.model.esx.SampleMono;
-import com.skratchdot.electribe.model.esx.SampleStereo;
 
 /**
  * This is the item provider adapter for a {@link com.skratchdot.electribe.model.esx.EsxFile} object.
@@ -80,7 +78,9 @@ public class EsxFileItemProvider
 			addOriginalNonAudioDataPropertyDescriptor(object);
 			addMaxSampleOffsetPropertyDescriptor(object);
 			addMemUsedInBytesPropertyDescriptor(object);
+			addMemUsedInSecondsPropertyDescriptor(object);
 			addMemFreeInBytesPropertyDescriptor(object);
+			addMemFreeInSecondsPropertyDescriptor(object);
 			addNumPatternsEmptyPropertyDescriptor(object);
 			addNumPatternsNotEmptyPropertyDescriptor(object);
 			addNumSamplesEmptyPropertyDescriptor(object);
@@ -162,6 +162,28 @@ public class EsxFileItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Mem Used In Seconds feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMemUsedInSecondsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_EsxFile_memUsedInSeconds_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_memUsedInSeconds_feature", "_UI_EsxFile_type"),
+				 EsxPackage.Literals.ESX_FILE__MEM_USED_IN_SECONDS,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Mem Free In Bytes feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -179,6 +201,28 @@ public class EsxFileItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Mem Free In Seconds feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMemFreeInSecondsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_EsxFile_memFreeInSeconds_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_memFreeInSeconds_feature", "_UI_EsxFile_type"),
+				 EsxPackage.Literals.ESX_FILE__MEM_FREE_IN_SECONDS,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -479,7 +523,9 @@ public class EsxFileItemProvider
 			case EsxPackage.ESX_FILE__ORIGINAL_NON_AUDIO_DATA:
 			case EsxPackage.ESX_FILE__MAX_SAMPLE_OFFSET:
 			case EsxPackage.ESX_FILE__MEM_USED_IN_BYTES:
+			case EsxPackage.ESX_FILE__MEM_USED_IN_SECONDS:
 			case EsxPackage.ESX_FILE__MEM_FREE_IN_BYTES:
+			case EsxPackage.ESX_FILE__MEM_FREE_IN_SECONDS:
 			case EsxPackage.ESX_FILE__NUM_PATTERNS_EMPTY:
 			case EsxPackage.ESX_FILE__NUM_PATTERNS_NOT_EMPTY:
 			case EsxPackage.ESX_FILE__NUM_SAMPLES_EMPTY:
@@ -574,13 +620,9 @@ public class EsxFileItemProvider
 				blankSample = null;
 
 				// Create the blankSample and make sure it has the correct Original Number
-				if(removedSamples[i] instanceof SampleMono) {
-					blankSample = EsxFactory.eINSTANCE.createSampleMono();
-					blankSample.setSampleNumberOriginal(((SampleMono) removedSamples[i]).getSampleNumberOriginal());
-				}
-				else if(removedSamples[i] instanceof SampleStereo) {
-					blankSample = EsxFactory.eINSTANCE.createSampleStereo();
-					blankSample.setSampleNumberOriginal(((SampleStereo) removedSamples[i]).getSampleNumberOriginal());
+				if(removedSamples[i] instanceof Sample) {
+					blankSample = EsxFactory.eINSTANCE.createSample();
+					blankSample.setSampleNumberOriginal(((Sample) removedSamples[i]).getSampleNumberOriginal());
 				}
 
 				// We can create a replace command

@@ -51,8 +51,9 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 	private int rowLabelWidth = 180;
 	private int rowLabelHeight = 15;
 	private int rowSpacerHeight = 5; // will be added above and below
-	private Text textMemFreeInBytes;
+	private Text textMemFree;
 	private Text textMemUsedInBytes;
+	private Text textMemUsedInSeconds;
 	private Text textNumSamplesNotEmpty;
 	private Text textNumSamplesMonoNotEmpty;
 	private Text textNumSamplesStereoNotEmpty;
@@ -212,8 +213,11 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		// Memory Used In Bytes:
 		textMemUsedInBytes = this.createTextRow("Memory Used (In Bytes):");
 
+		// Memory Used In Seconds:
+		textMemUsedInSeconds = this.createTextRow("Memory Used (In Seconds):");
+
 		// Memory Free In Bytes:
-		textMemFreeInBytes = this.createTextRow("Memory Free (In Bytes):");
+		textMemFree = this.createTextRow("Memory Free:");
 	}
 	
 	/**
@@ -286,8 +290,9 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 	public void refresh() {
 		if(this.parentEditor.getActivePage()!=EsxEditorPartInfo.PAGE_INDEX) return;
 
-		textMemFreeInBytes.setText(Integer.toString(esxFile.getMemFreeInBytes()));
-		textMemUsedInBytes.setText("Using " + esxFile.getMemUsedInBytes() + " of " + EsxUtil.MAX_NUM_SAMPLES * 2);
+		textMemFree.setText(""+esxFile.getMemFreeInBytes()+" bytes ("+esxFile.getMemFreeInSeconds()+" seconds)");
+		textMemUsedInBytes.setText("Using " + esxFile.getMemUsedInBytes() + " of " + EsxUtil.MAX_SAMPLE_MEM_IN_BYTES);
+		textMemUsedInSeconds.setText("Using " + esxFile.getMemUsedInSeconds() + " of " + EsxUtil.MAX_SAMPLE_MEM_IN_SECONDS);
 		textNumSamplesNotEmpty.setText("Using " + esxFile.getNumSamplesNotEmpty() + " of " + EsxUtil.NUM_SAMPLES);
 		textNumSamplesMonoNotEmpty.setText("Using " + esxFile.getNumSamplesMonoNotEmpty() + " of " + EsxUtil.NUM_SAMPLES_MONO);
 		textNumSamplesStereoNotEmpty.setText("Using " + esxFile.getNumSamplesStereoNotEmpty() + " of " + EsxUtil.NUM_SAMPLES_STEREO);

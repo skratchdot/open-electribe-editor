@@ -51,8 +51,7 @@ public class EsxTests extends TestSuite {
 		suite.addTestSuite(PartStretchSliceTest.class);
 		suite.addTestSuite(PatternTest.class);
 		suite.addTestSuite(PatternSetParameterTest.class);
-		suite.addTestSuite(SampleMonoTest.class);
-		suite.addTestSuite(SampleStereoTest.class);
+		suite.addTestSuite(SampleTest.class);
 		suite.addTestSuite(SampleTuneTest.class);
 		suite.addTestSuite(SongTest.class);
 		suite.addTestSuite(SongEventControlTest.class);

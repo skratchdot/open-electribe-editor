@@ -83,9 +83,7 @@ import com.skratchdot.electribe.model.esx.Reverse;
 import com.skratchdot.electribe.model.esx.Roll;
 import com.skratchdot.electribe.model.esx.RollType;
 import com.skratchdot.electribe.model.esx.Sample;
-import com.skratchdot.electribe.model.esx.SampleMono;
 import com.skratchdot.electribe.model.esx.SampleNumber;
-import com.skratchdot.electribe.model.esx.SampleStereo;
 import com.skratchdot.electribe.model.esx.SampleTune;
 import com.skratchdot.electribe.model.esx.SequenceData;
 import com.skratchdot.electribe.model.esx.SequenceDataGate;
@@ -289,20 +287,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	private EClass sampleEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass sampleMonoEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass sampleStereoEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -854,7 +838,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEsxFile_MemFreeInBytes() {
+	public EAttribute getEsxFile_MemUsedInSeconds() {
 		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -863,7 +847,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEsxFile_NumPatternsEmpty() {
+	public EAttribute getEsxFile_MemFreeInBytes() {
 		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -872,7 +856,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEsxFile_NumPatternsNotEmpty() {
+	public EAttribute getEsxFile_MemFreeInSeconds() {
 		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -881,7 +865,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEsxFile_NumSamplesEmpty() {
+	public EAttribute getEsxFile_NumPatternsEmpty() {
 		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -890,7 +874,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEsxFile_NumSamplesNotEmpty() {
+	public EAttribute getEsxFile_NumPatternsNotEmpty() {
 		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(13);
 	}
 
@@ -899,7 +883,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEsxFile_NumSamplesMonoEmpty() {
+	public EAttribute getEsxFile_NumSamplesEmpty() {
 		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(14);
 	}
 
@@ -908,7 +892,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEsxFile_NumSamplesMonoNotEmpty() {
+	public EAttribute getEsxFile_NumSamplesNotEmpty() {
 		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(15);
 	}
 
@@ -917,7 +901,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEsxFile_NumSamplesStereoEmpty() {
+	public EAttribute getEsxFile_NumSamplesMonoEmpty() {
 		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(16);
 	}
 
@@ -926,7 +910,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEsxFile_NumSamplesStereoNotEmpty() {
+	public EAttribute getEsxFile_NumSamplesMonoNotEmpty() {
 		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(17);
 	}
 
@@ -935,7 +919,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEsxFile_NumSongsEmpty() {
+	public EAttribute getEsxFile_NumSamplesStereoEmpty() {
 		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(18);
 	}
 
@@ -944,8 +928,26 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEsxFile_NumSongsNotEmpty() {
+	public EAttribute getEsxFile_NumSamplesStereoNotEmpty() {
 		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(19);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEsxFile_NumSongsEmpty() {
+		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(20);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEsxFile_NumSongsNotEmpty() {
+		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(21);
 	}
 
 	/**
@@ -1988,17 +1990,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_Stereo() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(24);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getSample_MemUsedInBytes() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(25);
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(26);
 	}
 
 	/**
@@ -2007,7 +2000,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_Empty() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(26);
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(27);
 	}
 
 	/**
@@ -2205,7 +2198,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_SampleNumberOriginal() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(27);
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(28);
 	}
 
 	/**
@@ -2214,7 +2207,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_SampleNumberCurrent() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(28);
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(29);
 	}
 
 	/**
@@ -2240,8 +2233,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSampleMono() {
-		return sampleMonoEClass;
+	public EAttribute getSample_StereoOriginal() {
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(24);
 	}
 
 	/**
@@ -2249,8 +2242,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSampleStereo() {
-		return sampleStereoEClass;
+	public EAttribute getSample_StereoCurrent() {
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(25);
 	}
 
 	/**
@@ -3110,7 +3103,9 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEReference(esxFileEClass, ESX_FILE__EMPTY_SONG);
 		createEAttribute(esxFileEClass, ESX_FILE__MAX_SAMPLE_OFFSET);
 		createEAttribute(esxFileEClass, ESX_FILE__MEM_USED_IN_BYTES);
+		createEAttribute(esxFileEClass, ESX_FILE__MEM_USED_IN_SECONDS);
 		createEAttribute(esxFileEClass, ESX_FILE__MEM_FREE_IN_BYTES);
+		createEAttribute(esxFileEClass, ESX_FILE__MEM_FREE_IN_SECONDS);
 		createEAttribute(esxFileEClass, ESX_FILE__NUM_PATTERNS_EMPTY);
 		createEAttribute(esxFileEClass, ESX_FILE__NUM_PATTERNS_NOT_EMPTY);
 		createEAttribute(esxFileEClass, ESX_FILE__NUM_SAMPLES_EMPTY);
@@ -3274,15 +3269,12 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(sampleEClass, SAMPLE__SLICE_ARRAY);
 		createEAttribute(sampleEClass, SAMPLE__LOOP);
 		createEAttribute(sampleEClass, SAMPLE__SLICE);
-		createEAttribute(sampleEClass, SAMPLE__STEREO);
+		createEAttribute(sampleEClass, SAMPLE__STEREO_ORIGINAL);
+		createEAttribute(sampleEClass, SAMPLE__STEREO_CURRENT);
 		createEAttribute(sampleEClass, SAMPLE__MEM_USED_IN_BYTES);
 		createEAttribute(sampleEClass, SAMPLE__EMPTY);
 		createEAttribute(sampleEClass, SAMPLE__SAMPLE_NUMBER_ORIGINAL);
 		createEAttribute(sampleEClass, SAMPLE__SAMPLE_NUMBER_CURRENT);
-
-		sampleMonoEClass = createEClass(SAMPLE_MONO);
-
-		sampleStereoEClass = createEClass(SAMPLE_STEREO);
 
 		sampleTuneEClass = createEClass(SAMPLE_TUNE);
 		createEAttribute(sampleTuneEClass, SAMPLE_TUNE__VALUE);
@@ -3451,8 +3443,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		partStretchSliceEClass.getESuperTypes().add(this.getPartWithPitch());
 		partStretchSliceEClass.getESuperTypes().add(this.getPartWithSample());
 		partStretchSliceEClass.getESuperTypes().add(this.getPartWithSequenceData());
-		sampleMonoEClass.getESuperTypes().add(this.getSample());
-		sampleStereoEClass.getESuperTypes().add(this.getSample());
 		songEventControlEClass.getESuperTypes().add(this.getSongEvent());
 		songEventDrumNoteEClass.getESuperTypes().add(this.getSongEvent());
 		songEventDrumNoteEClass.getESuperTypes().add(this.getSongEventWithPart());
@@ -3472,7 +3462,9 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEReference(getEsxFile_EmptySong(), this.getSong(), null, "emptySong", null, 1, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEsxFile_MaxSampleOffset(), ecorePackage.getEInt(), "maxSampleOffset", "0", 0, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEsxFile_MemUsedInBytes(), ecorePackage.getEInt(), "memUsedInBytes", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_MemUsedInSeconds(), ecorePackage.getEFloat(), "memUsedInSeconds", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEsxFile_MemFreeInBytes(), ecorePackage.getEInt(), "memFreeInBytes", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_MemFreeInSeconds(), ecorePackage.getEFloat(), "memFreeInSeconds", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEsxFile_NumPatternsEmpty(), ecorePackage.getEInt(), "numPatternsEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEsxFile_NumPatternsNotEmpty(), ecorePackage.getEInt(), "numPatternsNotEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEsxFile_NumSamplesEmpty(), ecorePackage.getEInt(), "numSamplesEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -3683,7 +3675,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getPatternSetParameter_PositionCurrent(), ecorePackage.getEInt(), "positionCurrent", "-1", 0, 1, PatternSetParameter.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPatternSetParameter_PositionOriginal(), ecorePackage.getEInt(), "positionOriginal", "-1", 0, 1, PatternSetParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(sampleEClass, Sample.class, "Sample", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(sampleEClass, Sample.class, "Sample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSample_Name(), ecorePackage.getEString(), "name", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_OffsetChannel1Start(), ecorePackage.getEInt(), "offsetChannel1Start", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_OffsetChannel1End(), ecorePackage.getEInt(), "offsetChannel1End", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3708,7 +3700,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getSample_SliceArray(), ecorePackage.getEByteArray(), "sliceArray", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_Loop(), ecorePackage.getEBoolean(), "loop", null, 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_Slice(), ecorePackage.getEBoolean(), "slice", null, 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_Stereo(), ecorePackage.getEBoolean(), "stereo", "true", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_StereoOriginal(), ecorePackage.getEBoolean(), "stereoOriginal", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_StereoCurrent(), ecorePackage.getEBoolean(), "stereoCurrent", "true", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_MemUsedInBytes(), ecorePackage.getEInt(), "memUsedInBytes", "0", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_Empty(), ecorePackage.getEBoolean(), "empty", "true", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_SampleNumberOriginal(), this.getSampleNumber(), "sampleNumberOriginal", "-1", 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3718,53 +3711,53 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEParameter(op, this.getFile(), "file", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getIOException());
 
+		op = addEOperation(sampleEClass, null, "initHeaderMono", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(sampleEClass, null, "initHeaderMono", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "sampleNumber", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(sampleEClass, null, "initHeaderStereo", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(sampleEClass, null, "initHeaderStereo", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "sampleNumber", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(sampleEClass, null, "initOffsetChannel1", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(sampleEClass, null, "initOffsetChannel2", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(sampleEClass, null, "initOffsetChannelBoth", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(sampleEClass, null, "initSliceArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(sampleEClass, ecorePackage.getEByteArray(), "toHeaderMonoByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(sampleEClass, ecorePackage.getEByteArray(), "toHeaderStereoByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(sampleEClass, ecorePackage.getEByteArray(), "toOffsetChannel1ByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(sampleEClass, ecorePackage.getEByteArray(), "toOffsetChannel2ByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(sampleEClass, ecorePackage.getEByteArray(), "toOffsetChannelBothByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(sampleEClass, ecorePackage.getEByteArray(), "toSliceByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(sampleEClass, this.getRIFFWave(), "toRIFFWave", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(sampleEClass, null, "toRIFFWaveFile", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getFile(), "file", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getIOException());
 
-		initEClass(sampleMonoEClass, SampleMono.class, "SampleMono", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		addEOperation(sampleEClass, this.getRIFFWave(), "toRIFFWaveMono", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(sampleMonoEClass, null, "initHeader", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(sampleMonoEClass, null, "initHeader", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "sampleNumber", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(sampleMonoEClass, null, "initOffsetChannelBoth", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(sampleMonoEClass, null, "initSliceArray", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(sampleMonoEClass, ecorePackage.getEByteArray(), "toHeaderByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(sampleMonoEClass, ecorePackage.getEByteArray(), "toOffsetChannelBothByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(sampleMonoEClass, ecorePackage.getEByteArray(), "toSliceByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(sampleStereoEClass, SampleStereo.class, "SampleStereo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		op = addEOperation(sampleStereoEClass, null, "initHeader", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(sampleStereoEClass, null, "initHeader", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "sampleNumber", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(sampleStereoEClass, null, "initOffsetChannel1", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(sampleStereoEClass, null, "initOffsetChannel2", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(sampleStereoEClass, ecorePackage.getEByteArray(), "toHeaderByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(sampleStereoEClass, ecorePackage.getEByteArray(), "toOffsetChannel1ByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(sampleStereoEClass, ecorePackage.getEByteArray(), "toOffsetChannel2ByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(sampleEClass, this.getRIFFWave(), "toRIFFWaveStereo", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(sampleTuneEClass, SampleTune.class, "SampleTune", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSampleTune_Value(), ecorePackage.getEFloat(), "value", null, 0, 1, SampleTune.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

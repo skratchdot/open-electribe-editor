@@ -109,35 +109,17 @@ public class ImportHandler extends AbstractHandler {
 								int firstEmptySampleNumber = -1;
 								Sample sample = null;
 
-								// Mono Samples
-								if(!AudioUtil.isStereo(file)) {
-									firstEmptySampleNumber = EsxUtil.findFirstIndex(
-										esxFile.getSamples(),
-										0,
-										skipSampleNumbers,
-										EsxPackage.Literals.SAMPLE__EMPTY,
-										true,
-										true
-									);
-									if(isValidSampleIndex(firstEmptySampleNumber)) {
-										sample = EsxFactory.eINSTANCE.createSampleMonoFromAudioFile(file);
-										sample.setSampleNumberOriginal(esxFile.getSamples().get(firstEmptySampleNumber).getSampleNumberOriginal());
-									}
-								}
-								// Stereo Samples
-								else {
-									firstEmptySampleNumber = EsxUtil.findFirstIndex(
-										esxFile.getSamples(),
-										EsxUtil.NUM_SAMPLES_MONO,
-										skipSampleNumbers,
-										EsxPackage.Literals.SAMPLE__EMPTY,
-										true,
-										true
-									);
-									if(isValidSampleIndex(firstEmptySampleNumber)) {
-										sample = EsxFactory.eINSTANCE.createSampleStereoFromAudioFile(file);
-										sample.setSampleNumberOriginal(esxFile.getSamples().get(firstEmptySampleNumber).getSampleNumberOriginal());
-									}
+								firstEmptySampleNumber = EsxUtil.findFirstIndex(
+									esxFile.getSamples(),
+									AudioUtil.isStereo(file)?EsxUtil.NUM_SAMPLES_MONO:0,
+									skipSampleNumbers,
+									EsxPackage.Literals.SAMPLE__EMPTY,
+									true,
+									true
+								);
+								if(isValidSampleIndex(firstEmptySampleNumber)) {
+									sample = EsxFactory.eINSTANCE.createSampleFromFile(file);
+									sample.setSampleNumberOriginal(esxFile.getSamples().get(firstEmptySampleNumber).getSampleNumberOriginal());
 								}
 
 								// Add sample using emf command

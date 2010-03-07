@@ -37,8 +37,6 @@ import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.GlobalParameters;
 import com.skratchdot.electribe.model.esx.Pattern;
 import com.skratchdot.electribe.model.esx.Sample;
-import com.skratchdot.electribe.model.esx.SampleMono;
-import com.skratchdot.electribe.model.esx.SampleStereo;
 import com.skratchdot.electribe.model.esx.Song;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 import com.skratchdot.electribe.model.esx.util.EsxValidator;
@@ -60,7 +58,9 @@ import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getEmptySong <em>Empty Song</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getMaxSampleOffset <em>Max Sample Offset</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getMemUsedInBytes <em>Mem Used In Bytes</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getMemUsedInSeconds <em>Mem Used In Seconds</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getMemFreeInBytes <em>Mem Free In Bytes</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getMemFreeInSeconds <em>Mem Free In Seconds</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumPatternsEmpty <em>Num Patterns Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumPatternsNotEmpty <em>Num Patterns Not Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSamplesEmpty <em>Num Samples Empty</em>}</li>
@@ -188,6 +188,16 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	protected static final int MEM_USED_IN_BYTES_EDEFAULT = 0;
 
 	/**
+	 * The default value of the '{@link #getMemUsedInSeconds() <em>Mem Used In Seconds</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMemUsedInSeconds()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final float MEM_USED_IN_SECONDS_EDEFAULT = 0.0F;
+
+	/**
 	 * The default value of the '{@link #getMemFreeInBytes() <em>Mem Free In Bytes</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -196,6 +206,16 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * @ordered
 	 */
 	protected static final int MEM_FREE_IN_BYTES_EDEFAULT = 0;
+
+	/**
+	 * The default value of the '{@link #getMemFreeInSeconds() <em>Mem Free In Seconds</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMemFreeInSeconds()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final float MEM_FREE_IN_SECONDS_EDEFAULT = 0.0F;
 
 	/**
 	 * The default value of the '{@link #getNumPatternsEmpty() <em>Num Patterns Empty</em>}' attribute.
@@ -371,8 +391,8 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		in.position(EsxUtil.ADDR_SAMPLE_HEADER_MONO);
 		for(int i=0; i<EsxUtil.NUM_SAMPLES_MONO; i++) {
 			monitor.subTask("Loading sample header " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES);
-			SampleMono mono = EsxFactory.eINSTANCE.createSampleMono();
-			mono.initHeader(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_SAMPLE_HEADER_MONO), i);
+			Sample mono = EsxFactory.eINSTANCE.createSample();
+			mono.initHeaderMono(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_SAMPLE_HEADER_MONO), i);
 			this.getSamples().add(i, mono);
 			monitor.worked(1);
 		}
@@ -381,8 +401,8 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		in.position(EsxUtil.ADDR_SAMPLE_HEADER_STEREO);
 		for(int i=EsxUtil.NUM_SAMPLES_MONO; i<EsxUtil.NUM_SAMPLES; i++) {
 			monitor.subTask("Loading sample header " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES);
-			SampleStereo stereo = EsxFactory.eINSTANCE.createSampleStereo();
-			stereo.initHeader(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_SAMPLE_HEADER_STEREO), i);
+			Sample stereo = EsxFactory.eINSTANCE.createSample();
+			stereo.initHeaderStereo(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_SAMPLE_HEADER_STEREO), i);
 			this.getSamples().add(i, stereo);
 			monitor.worked(1);
 		}
@@ -391,7 +411,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		in.position(EsxUtil.ADDR_SLICE_DATA);
 		for(int i=0; i<EsxUtil.NUM_SAMPLES_MONO && i<EsxUtil.NUM_SLICE_DATA; i++) {
 			monitor.subTask("Loading slice data " + (i + 1) + " of " + EsxUtil.NUM_SLICE_DATA);
-			SampleMono mono = (SampleMono) this.getSamples().get(i);
+			Sample mono = this.getSamples().get(i);
 			mono.initSliceArray(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_SLICE_DATA));
 			monitor.worked(i);
 		}
@@ -400,7 +420,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		for (int i = 0; i < EsxUtil.NUM_SAMPLES; i++) {
 			monitor.subTask("Loading sample data " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES);
 			if(i < EsxUtil.NUM_SAMPLES_MONO) {
-				SampleMono mono = (SampleMono) this.getSamples().get(i);
+				Sample mono = this.getSamples().get(i);
 				int offset1Size = mono.getOffsetChannel1End() - mono.getOffsetChannel1Start();
 				if (offset1Size > 0
 						&& mono.getOffsetChannel1Start() != 0xFFFFFFFF
@@ -411,7 +431,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 				}
 			}
 			else {
-				SampleStereo stereo = (SampleStereo) this.getSamples().get(i);
+				Sample stereo = this.getSamples().get(i);
 
 				int offset1Size = stereo.getOffsetChannel1End() - stereo.getOffsetChannel1Start();
 				int offset2Size = stereo.getOffsetChannel2End() - stereo.getOffsetChannel2Start();
@@ -680,8 +700,28 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	public float getMemUsedInSeconds() {
+		int memUsedInBytes = this.getMemUsedInBytes();
+		return ((float)memUsedInBytes)/(2*44100);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	public int getMemFreeInBytes() {
-		return (EsxUtil.MAX_NUM_SAMPLES * 2) - this.getMemUsedInBytes();
+		return (EsxUtil.MAX_SAMPLE_MEM_IN_BYTES) - this.getMemUsedInBytes();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public float getMemFreeInSeconds() {
+		int memFreeInBytes = this.getMemFreeInBytes();
+		return ((float)memFreeInBytes)/(2*44100);
 	}
 
 	/**
@@ -827,7 +867,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 				this.setMaxSampleOffset(this.getMaxSampleOffset() + (currentSample.getNumberOfSampleFrames()%2==0?4:2));
 
 				// NEED TO HANDLE CHANNEL 2
-				if(currentSample.isStereo()) {
+				if(currentSample.isStereoCurrent()) {
 					// offsetChannel2Start
 					currentSample.setOffsetChannel2Start(this.getMaxSampleOffset());
 					// update offset
@@ -906,11 +946,11 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		// Write Mono Sample Data
 		for (int i = 0; i < EsxUtil.NUM_SAMPLES_MONO; i++) {
 			monitor.subTask("Saving mono sample " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES_MONO);
-			SampleMono mono = (SampleMono) this.getSamples().get(i);
+			Sample mono = this.getSamples().get(i);
 
 			// Write Sample Header Info
 			buf.position(EsxUtil.ADDR_SAMPLE_HEADER_MONO + (i * EsxUtil.CHUNKSIZE_SAMPLE_HEADER_MONO));
-			buf.putBytes(mono.toHeaderByteArray());
+			buf.putBytes(mono.toHeaderMonoByteArray());
 	
 			// Write Slice Info
 			buf.position(EsxUtil.ADDR_SLICE_DATA + (i * EsxUtil.CHUNKSIZE_SLICE_DATA));
@@ -928,11 +968,11 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		// Write Stereo Sample Data
 		for (int i = 0; i < EsxUtil.NUM_SAMPLES_STEREO; i++) {
 			monitor.subTask("Saving stereo sample " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES_STEREO);
-			SampleStereo stereo = (SampleStereo) this.getSamples().get(i + EsxUtil.NUM_SAMPLES_MONO);
+			Sample stereo = this.getSamples().get(i + EsxUtil.NUM_SAMPLES_MONO);
 
 			// Write Sample Header Info
 			buf.position(EsxUtil.ADDR_SAMPLE_HEADER_STEREO + (i * EsxUtil.CHUNKSIZE_SAMPLE_HEADER_STEREO));
-			buf.putBytes(stereo.toHeaderByteArray());
+			buf.putBytes(stereo.toHeaderStereoByteArray());
 
 			// Write Sample Data
 			if(!stereo.isEmpty() && stereo.getNumberOfSampleFrames()>0) {
@@ -1043,8 +1083,12 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 				return getMaxSampleOffset();
 			case EsxPackage.ESX_FILE__MEM_USED_IN_BYTES:
 				return getMemUsedInBytes();
+			case EsxPackage.ESX_FILE__MEM_USED_IN_SECONDS:
+				return getMemUsedInSeconds();
 			case EsxPackage.ESX_FILE__MEM_FREE_IN_BYTES:
 				return getMemFreeInBytes();
+			case EsxPackage.ESX_FILE__MEM_FREE_IN_SECONDS:
+				return getMemFreeInSeconds();
 			case EsxPackage.ESX_FILE__NUM_PATTERNS_EMPTY:
 				return getNumPatternsEmpty();
 			case EsxPackage.ESX_FILE__NUM_PATTERNS_NOT_EMPTY:
@@ -1171,8 +1215,12 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 				return maxSampleOffset != MAX_SAMPLE_OFFSET_EDEFAULT;
 			case EsxPackage.ESX_FILE__MEM_USED_IN_BYTES:
 				return getMemUsedInBytes() != MEM_USED_IN_BYTES_EDEFAULT;
+			case EsxPackage.ESX_FILE__MEM_USED_IN_SECONDS:
+				return getMemUsedInSeconds() != MEM_USED_IN_SECONDS_EDEFAULT;
 			case EsxPackage.ESX_FILE__MEM_FREE_IN_BYTES:
 				return getMemFreeInBytes() != MEM_FREE_IN_BYTES_EDEFAULT;
+			case EsxPackage.ESX_FILE__MEM_FREE_IN_SECONDS:
+				return getMemFreeInSeconds() != MEM_FREE_IN_SECONDS_EDEFAULT;
 			case EsxPackage.ESX_FILE__NUM_PATTERNS_EMPTY:
 				return getNumPatternsEmpty() != NUM_PATTERNS_EMPTY_EDEFAULT;
 			case EsxPackage.ESX_FILE__NUM_PATTERNS_NOT_EMPTY:

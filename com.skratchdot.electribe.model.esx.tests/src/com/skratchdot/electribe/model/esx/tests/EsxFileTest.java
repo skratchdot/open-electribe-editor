@@ -26,7 +26,9 @@ import junit.textui.TestRunner;
  * The following features are tested:
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMemUsedInBytes() <em>Mem Used In Bytes</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMemUsedInSeconds() <em>Mem Used In Seconds</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMemFreeInBytes() <em>Mem Free In Bytes</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMemFreeInSeconds() <em>Mem Free In Seconds</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsEmpty() <em>Num Patterns Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsNotEmpty() <em>Num Patterns Not Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesEmpty() <em>Num Samples Empty</em>}</li>
@@ -47,6 +49,7 @@ import junit.textui.TestRunner;
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#setAllOffsets() <em>Set All Offsets</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#toByteArray() <em>To Byte Array</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#toByteArray(org.eclipse.core.runtime.IProgressMonitor) <em>To Byte Array</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#validMemFreeInBytes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Valid Mem Free In Bytes</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -136,6 +139,19 @@ public class EsxFileTest extends TestCase {
 	}
 
 	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getMemUsedInSeconds() <em>Mem Used In Seconds</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getMemUsedInSeconds()
+	 * @generated
+	 */
+	public void testGetMemUsedInSeconds() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
 	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getMemFreeInBytes() <em>Mem Free In Bytes</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -143,6 +159,19 @@ public class EsxFileTest extends TestCase {
 	 * @generated
 	 */
 	public void testGetMemFreeInBytes() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getMemFreeInSeconds() <em>Mem Free In Seconds</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getMemFreeInSeconds()
+	 * @generated
+	 */
+	public void testGetMemFreeInSeconds() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();
@@ -338,6 +367,19 @@ public class EsxFileTest extends TestCase {
 	 * @generated
 	 */
 	public void testToByteArray__IProgressMonitor() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#validMemFreeInBytes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Valid Mem Free In Bytes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#validMemFreeInBytes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidMemFreeInBytes__DiagnosticChain_Map() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

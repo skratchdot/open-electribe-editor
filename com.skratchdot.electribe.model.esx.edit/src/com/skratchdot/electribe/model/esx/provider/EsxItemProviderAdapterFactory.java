@@ -151,6 +151,29 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link com.skratchdot.electribe.model.esx.Sample} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SampleItemProvider sampleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.skratchdot.electribe.model.esx.Sample}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSampleAdapter() {
+		if (sampleItemProvider == null) {
+			sampleItemProvider = new SampleItemProvider(this);
+		}
+
+		return sampleItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link com.skratchdot.electribe.model.esx.MidiChannelType} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -473,52 +496,6 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link com.skratchdot.electribe.model.esx.SampleMono} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SampleMonoItemProvider sampleMonoItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link com.skratchdot.electribe.model.esx.SampleMono}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSampleMonoAdapter() {
-		if (sampleMonoItemProvider == null) {
-			sampleMonoItemProvider = new SampleMonoItemProvider(this);
-		}
-
-		return sampleMonoItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link com.skratchdot.electribe.model.esx.SampleStereo} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SampleStereoItemProvider sampleStereoItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link com.skratchdot.electribe.model.esx.SampleStereo}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSampleStereoAdapter() {
-		if (sampleStereoItemProvider == null) {
-			sampleStereoItemProvider = new SampleStereoItemProvider(this);
-		}
-
-		return sampleStereoItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link com.skratchdot.electribe.model.esx.SampleTune} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -838,8 +815,7 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 		if (partStretchSliceItemProvider != null) partStretchSliceItemProvider.dispose();
 		if (patternItemProvider != null) patternItemProvider.dispose();
 		if (patternSetParameterItemProvider != null) patternSetParameterItemProvider.dispose();
-		if (sampleMonoItemProvider != null) sampleMonoItemProvider.dispose();
-		if (sampleStereoItemProvider != null) sampleStereoItemProvider.dispose();
+		if (sampleItemProvider != null) sampleItemProvider.dispose();
 		if (sampleTuneItemProvider != null) sampleTuneItemProvider.dispose();
 		if (sequenceDataItemProvider != null) sequenceDataItemProvider.dispose();
 		if (sequenceDataGateItemProvider != null) sequenceDataGateItemProvider.dispose();

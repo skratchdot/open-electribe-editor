@@ -71,9 +71,8 @@ import com.skratchdot.electribe.model.esx.PlayLevel;
 import com.skratchdot.electribe.model.esx.Reverse;
 import com.skratchdot.electribe.model.esx.Roll;
 import com.skratchdot.electribe.model.esx.RollType;
-import com.skratchdot.electribe.model.esx.SampleMono;
+import com.skratchdot.electribe.model.esx.Sample;
 import com.skratchdot.electribe.model.esx.SampleNumber;
-import com.skratchdot.electribe.model.esx.SampleStereo;
 import com.skratchdot.electribe.model.esx.SampleTune;
 import com.skratchdot.electribe.model.esx.SequenceData;
 import com.skratchdot.electribe.model.esx.SequenceDataGate;
@@ -154,8 +153,7 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 			case EsxPackage.PART_STRETCH_SLICE: return createPartStretchSlice();
 			case EsxPackage.PATTERN: return createPattern();
 			case EsxPackage.PATTERN_SET_PARAMETER: return createPatternSetParameter();
-			case EsxPackage.SAMPLE_MONO: return createSampleMono();
-			case EsxPackage.SAMPLE_STEREO: return createSampleStereo();
+			case EsxPackage.SAMPLE: return createSample();
 			case EsxPackage.SAMPLE_TUNE: return createSampleTune();
 			case EsxPackage.SEQUENCE_DATA: return createSequenceData();
 			case EsxPackage.SEQUENCE_DATA_GATE: return createSequenceDataGate();
@@ -410,6 +408,24 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Sample createSample() {
+		SampleImpl sample = new SampleImpl();
+		return sample;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.skratchdot.electribe.model.esx.EsxFactory#createSampleFromFile(java.io.File)
+	 */
+	public Sample createSampleFromFile(File file) throws EsxException {
+		SampleImpl sample = new SampleImpl(file);
+		return sample;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public MidiChannelType createMidiChannelType() {
 		MidiChannelTypeImpl midiChannelType = new MidiChannelTypeImpl();
 		return midiChannelType;
@@ -550,43 +566,9 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SampleMono createSampleMono() {
-		SampleMonoImpl sampleMono = new SampleMonoImpl();
-		return sampleMono;
-	}
-
-	@Override
-	public SampleMono createSampleMonoFromAudioFile(File file)
-			throws EsxException, IOException {
-		SampleMonoImpl sampleMono = new SampleMonoImpl(file);
-		return sampleMono;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SampleStereo createSampleStereo() {
-		SampleStereoImpl sampleStereo = new SampleStereoImpl();
-		return sampleStereo;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public SampleTune createSampleTune() {
 		SampleTuneImpl sampleTune = new SampleTuneImpl();
 		return sampleTune;
-	}
-
-	@Override
-	public SampleStereo createSampleStereoFromAudioFile(File file)
-			throws EsxException, IOException {
-		SampleStereoImpl sampleStereo = new SampleStereoImpl(file);
-		return sampleStereo;
 	}
 
 	/**

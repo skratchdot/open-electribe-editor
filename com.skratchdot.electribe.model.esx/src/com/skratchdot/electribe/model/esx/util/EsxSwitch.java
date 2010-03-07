@@ -246,20 +246,6 @@ public class EsxSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EsxPackage.SAMPLE_MONO: {
-				SampleMono sampleMono = (SampleMono)theEObject;
-				T result = caseSampleMono(sampleMono);
-				if (result == null) result = caseSample(sampleMono);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EsxPackage.SAMPLE_STEREO: {
-				SampleStereo sampleStereo = (SampleStereo)theEObject;
-				T result = caseSampleStereo(sampleStereo);
-				if (result == null) result = caseSample(sampleStereo);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case EsxPackage.SAMPLE_TUNE: {
 				SampleTune sampleTune = (SampleTune)theEObject;
 				T result = caseSampleTune(sampleTune);
@@ -727,36 +713,6 @@ public class EsxSwitch<T> {
 	 * @generated
 	 */
 	public T caseSample(Sample object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Sample Mono</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Sample Mono</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSampleMono(SampleMono object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Sample Stereo</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Sample Stereo</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSampleStereo(SampleStereo object) {
 		return null;
 	}
 

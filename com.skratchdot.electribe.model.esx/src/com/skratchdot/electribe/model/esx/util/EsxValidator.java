@@ -11,8 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.util;
 
-import com.skratchdot.electribe.model.esx.*;
-import com.skratchdot.riff.wav.RIFFWave;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -43,8 +41,10 @@ import com.skratchdot.electribe.model.esx.GlobalParameters;
 import com.skratchdot.electribe.model.esx.LastStep;
 import com.skratchdot.electribe.model.esx.MidiChannel;
 import com.skratchdot.electribe.model.esx.MidiChannelType;
+import com.skratchdot.electribe.model.esx.MidiChannelTypeName;
 import com.skratchdot.electribe.model.esx.MidiClock;
 import com.skratchdot.electribe.model.esx.MidiControlChangeAssignment;
+import com.skratchdot.electribe.model.esx.MidiControlChangeAssignmentName;
 import com.skratchdot.electribe.model.esx.ModDest;
 import com.skratchdot.electribe.model.esx.ModType;
 import com.skratchdot.electribe.model.esx.MotionSequenceStatus;
@@ -59,6 +59,7 @@ import com.skratchdot.electribe.model.esx.PartAudioIn;
 import com.skratchdot.electribe.model.esx.PartDrum;
 import com.skratchdot.electribe.model.esx.PartKeyboard;
 import com.skratchdot.electribe.model.esx.PartNoteNumber;
+import com.skratchdot.electribe.model.esx.PartNoteNumberName;
 import com.skratchdot.electribe.model.esx.PartStretchSlice;
 import com.skratchdot.electribe.model.esx.PartWithCommon;
 import com.skratchdot.electribe.model.esx.PartWithPitch;
@@ -76,9 +77,7 @@ import com.skratchdot.electribe.model.esx.Reverse;
 import com.skratchdot.electribe.model.esx.Roll;
 import com.skratchdot.electribe.model.esx.RollType;
 import com.skratchdot.electribe.model.esx.Sample;
-import com.skratchdot.electribe.model.esx.SampleMono;
 import com.skratchdot.electribe.model.esx.SampleNumber;
-import com.skratchdot.electribe.model.esx.SampleStereo;
 import com.skratchdot.electribe.model.esx.SampleTune;
 import com.skratchdot.electribe.model.esx.SequenceData;
 import com.skratchdot.electribe.model.esx.SequenceDataGate;
@@ -98,6 +97,7 @@ import com.skratchdot.electribe.model.esx.StretchStep;
 import com.skratchdot.electribe.model.esx.Swing;
 import com.skratchdot.electribe.model.esx.Tempo;
 import com.skratchdot.electribe.model.esx.TempoLock;
+import com.skratchdot.riff.wav.RIFFWave;
 
 /**
  * <!-- begin-user-doc -->
@@ -223,10 +223,6 @@ public class EsxValidator extends EObjectValidator {
 				return validatePatternSetParameter((PatternSetParameter)value, diagnostics, context);
 			case EsxPackage.SAMPLE:
 				return validateSample((Sample)value, diagnostics, context);
-			case EsxPackage.SAMPLE_MONO:
-				return validateSampleMono((SampleMono)value, diagnostics, context);
-			case EsxPackage.SAMPLE_STEREO:
-				return validateSampleStereo((SampleStereo)value, diagnostics, context);
 			case EsxPackage.SAMPLE_TUNE:
 				return validateSampleTune((SampleTune)value, diagnostics, context);
 			case EsxPackage.SEQUENCE_DATA:
@@ -589,24 +585,6 @@ public class EsxValidator extends EObjectValidator {
 	 */
 	public boolean validateSample(Sample sample, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(sample, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateSampleMono(SampleMono sampleMono, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(sampleMono, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateSampleStereo(SampleStereo sampleStereo, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(sampleStereo, diagnostics, context);
 	}
 
 	/**

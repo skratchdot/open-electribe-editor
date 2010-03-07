@@ -84,7 +84,8 @@ public class SampleItemProvider
 			addStretchStepPropertyDescriptor(object);
 			addLoopPropertyDescriptor(object);
 			addSlicePropertyDescriptor(object);
-			addStereoPropertyDescriptor(object);
+			addStereoOriginalPropertyDescriptor(object);
+			addStereoCurrentPropertyDescriptor(object);
 			addMemUsedInBytesPropertyDescriptor(object);
 			addEmptyPropertyDescriptor(object);
 			addSampleNumberOriginalPropertyDescriptor(object);
@@ -111,28 +112,6 @@ public class SampleItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Stereo feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addStereoPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Sample_stereo_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_stereo_feature", "_UI_Sample_type"),
-				 EsxPackage.Literals.SAMPLE__STEREO,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -476,6 +455,50 @@ public class SampleItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Stereo Original feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addStereoOriginalPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sample_stereoOriginal_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_stereoOriginal_feature", "_UI_Sample_type"),
+				 EsxPackage.Literals.SAMPLE__STEREO_ORIGINAL,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Stereo Current feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addStereoCurrentPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sample_stereoCurrent_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_stereoCurrent_feature", "_UI_Sample_type"),
+				 EsxPackage.Literals.SAMPLE__STEREO_CURRENT,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Sample.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -536,6 +559,8 @@ public class SampleItemProvider
 			case 12: return Integer.toString(((Sample) object).getEnd());
 			// NumSampleFrames
 			case 13: return Integer.toString(((Sample) object).getNumberOfSampleFrames());
+			// StereoOriginal
+			case 14: return ((Sample) object).isStereoOriginal()?getString("_UI_Display_Yes"):getString("_UI_Display_No");
 			default: return getText(object);
 		}
 	}
@@ -575,7 +600,8 @@ public class SampleItemProvider
 			case EsxPackage.SAMPLE__SLICE_ARRAY:
 			case EsxPackage.SAMPLE__LOOP:
 			case EsxPackage.SAMPLE__SLICE:
-			case EsxPackage.SAMPLE__STEREO:
+			case EsxPackage.SAMPLE__STEREO_ORIGINAL:
+			case EsxPackage.SAMPLE__STEREO_CURRENT:
 			case EsxPackage.SAMPLE__MEM_USED_IN_BYTES:
 			case EsxPackage.SAMPLE__EMPTY:
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_ORIGINAL:

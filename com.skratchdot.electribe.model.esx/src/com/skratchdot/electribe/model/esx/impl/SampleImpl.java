@@ -41,7 +41,11 @@ import com.skratchdot.electribe.model.esx.SampleTune;
 import com.skratchdot.electribe.model.esx.StretchStep;
 import com.skratchdot.electribe.model.esx.util.EsxException;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
+import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
+import com.skratchdot.riff.wav.ChunkData;
+import com.skratchdot.riff.wav.ChunkFormat;
 import com.skratchdot.riff.wav.ChunkSampler;
+import com.skratchdot.riff.wav.CompressionCode;
 import com.skratchdot.riff.wav.RIFFWave;
 import com.skratchdot.riff.wav.SampleLoop;
 import com.skratchdot.riff.wav.WavFactory;
@@ -78,7 +82,8 @@ import com.skratchdot.riff.wav.WavPackage;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSliceArray <em>Slice Array</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isLoop <em>Loop</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isSlice <em>Slice</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isStereo <em>Stereo</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isStereoOriginal <em>Stereo Original</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isStereoCurrent <em>Stereo Current</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getMemUsedInBytes <em>Mem Used In Bytes</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isEmpty <em>Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleNumberOriginal <em>Sample Number Original</em>}</li>
@@ -88,7 +93,7 @@ import com.skratchdot.riff.wav.WavPackage;
  *
  * @generated
  */
-public abstract class SampleImpl extends EObjectImpl implements Sample {
+public class SampleImpl extends EObjectImpl implements Sample {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -520,14 +525,34 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	protected static final boolean SLICE_EDEFAULT = false;
 
 	/**
-	 * The default value of the '{@link #isStereo() <em>Stereo</em>}' attribute.
+	 * The default value of the '{@link #isStereoOriginal() <em>Stereo Original</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isStereo()
+	 * @see #isStereoOriginal()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean STEREO_EDEFAULT = true;
+	protected static final boolean STEREO_ORIGINAL_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isStereoOriginal() <em>Stereo Original</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isStereoOriginal()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean stereoOriginal = STEREO_ORIGINAL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isStereoCurrent() <em>Stereo Current</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isStereoCurrent()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean STEREO_CURRENT_EDEFAULT = true;
 
 	/**
 	 * The default value of the '{@link #getMemUsedInBytes() <em>Mem Used In Bytes</em>}' attribute.
@@ -669,7 +694,7 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 				}
 
 				// Throw Exception if sample is too big
-				if(nTotalBytesRead>EsxUtil.MAX_NUM_SAMPLES*2) {
+				if(nTotalBytesRead>EsxUtil.MAX_SAMPLE_MEM_IN_BYTES) {
 					throw new EsxException("Sample is too big: " + file.getAbsolutePath());
 				}
 			}
@@ -682,6 +707,7 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 			this.setSampleRate((int) audioFormatEncoded.getSampleRate());
 			this.setAudioDataChannel1(EsxUtil.listToByteArray(audioDataListChannel1));
 			this.setAudioDataChannel2(EsxUtil.listToByteArray(audioDataListChannel2));
+			this.setStereoOriginal(isAudioDataStereo);
 
 			// Set calculated Sample Tune (from Sample Rate)
 			SampleTune newSampleTune = EsxFactory.eINSTANCE.createSampleTune();
@@ -1270,9 +1296,30 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isStereoOriginal() {
+		return stereoOriginal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStereoOriginal(boolean newStereoOriginal) {
+		boolean oldStereoOriginal = stereoOriginal;
+		stereoOriginal = newStereoOriginal;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__STEREO_ORIGINAL, oldStereoOriginal, stereoOriginal));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public boolean isStereo() {
+	public boolean isStereoCurrent() {
 		return this.getSampleNumberCurrent().getValue() >= EsxUtil.NUM_SAMPLES_MONO;
 	}
 
@@ -1283,7 +1330,7 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	 */
 	public int getMemUsedInBytes() {
 		if(!this.isEmpty()) {
-			if(this.isStereo()) {
+			if(this.isStereoCurrent()) {
 				return this.numberOfSampleFrames * 4;
 			}
 			else {
@@ -1360,9 +1407,367 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	public void initHeaderMono(byte[] b) {
+		this.initHeaderMono(b, -1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void initHeaderMono(byte[] b, int sampleNumber) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+		
+		// Set the original .esx file sample number
+		this.setSampleNumberOriginal(SampleNumber.get(sampleNumber));
+
+		// Set the original stereo value
+		this.setStereoOriginal(false);
+
+		// bytes 0~7
+		byte[] newSampleName = new byte[8];
+		in.getBytes(newSampleName, 0, 8);
+		this.setName(new String(newSampleName));
+		// bytes 8~11
+		this.setOffsetChannel1Start(in.getInt());
+		// bytes 12~15
+		this.setOffsetChannel1End(in.getInt());
+		// bytes 16~19
+		this.setStart(in.getInt());
+		// bytes 20~23
+		this.setEnd(in.getInt());
+		// bytes 24~27
+		this.setLoopStart(in.getInt());
+		// bytes 28~31
+		this.setSampleRate(in.getInt());
+		// bytes 32~33
+		SampleTune newSampleTune = EsxFactory.eINSTANCE.createSampleTune();
+		newSampleTune.setCurrentValueFromShort(in.getShort());
+		this.setSampleTune(newSampleTune);
+		// byte 34
+		this.setPlayLevel(PlayLevel.get(in.getByte()));
+		// byte 35
+		this.setUnknownByte1(in.getByte());
+		// byte 36
+		this.setStretchStep(StretchStep.get(in.getByte()));
+		// byte 37
+		this.setUnknownByte2(in.getByte());
+		// byte 38
+		this.setUnknownByte3(in.getByte());
+		// byte 39
+		this.setUnknownByte4(in.getByte());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void initHeaderStereo(byte[] b) {
+		this.initHeaderStereo(b, -1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void initHeaderStereo(byte[] b, int sampleNumber) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+
+		// Set the original .esx file sample number
+		this.setSampleNumberOriginal(SampleNumber.get(sampleNumber));
+
+		// Set the original stereo value
+		this.setStereoOriginal(true);
+
+		// bytes 0~7
+		byte[] newSampleName = new byte[8];
+		in.getBytes(newSampleName, 0, 8);
+		this.setName(new String(newSampleName));
+		// bytes 8~11
+		this.setOffsetChannel1Start(in.getInt());
+		// bytes 12~15
+		this.setOffsetChannel1End(in.getInt());
+		// bytes 16~19
+		this.setOffsetChannel2Start(in.getInt());
+		// bytes 20~23
+		this.setOffsetChannel2End(in.getInt());
+		// bytes 24~27
+		this.setStart(in.getInt());
+		// bytes 28~31
+		this.setEnd(in.getInt());
+		// bytes 32~35
+		this.setSampleRate(in.getInt());
+		// bytes 36~37
+		SampleTune newSampleTune = EsxFactory.eINSTANCE.createSampleTune();
+		newSampleTune.setCurrentValueFromShort(in.getShort());
+		this.setSampleTune(newSampleTune);
+		// byte 38
+		this.setPlayLevel(PlayLevel.get(in.getByte()));
+		// byte 39
+		this.setUnknownByte1(in.getByte());
+		// byte 40
+		this.setStretchStep(StretchStep.get(in.getByte()));
+		// byte 41
+		this.setUnknownByte2(in.getByte());
+		// byte 42
+		this.setUnknownByte3(in.getByte());
+		// byte 43
+		this.setUnknownByte4(in.getByte());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void initOffsetChannel1(byte[] b) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+
+		// Get number of sample frames
+		int newNumberOfSampleFrames = ((in.limit() - 16) / 2);
+		if(newNumberOfSampleFrames>0) {
+			// Store number of sample frames
+			this.setNumberOfSampleFrames(newNumberOfSampleFrames);
+			// Ignore first 16 bytes
+			in.getLong();
+			in.getLong();
+			// Declare temp byte[]
+			byte[] newAudioDataChannel = new byte[newNumberOfSampleFrames * 2];
+			in.getBytes(newAudioDataChannel);
+			// Store audio data
+			this.setAudioDataChannel1(newAudioDataChannel);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void initOffsetChannel2(byte[] b) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+
+		// Get number of sample frames
+		int newNumberOfSampleFrames = ((in.limit() - 16) / 2);
+		if(newNumberOfSampleFrames>0) {
+			// Store number of sample frames
+			this.setNumberOfSampleFrames(newNumberOfSampleFrames);
+			// Ignore first 16 bytes
+			in.getLong();
+			in.getLong();
+			// Declare temp byte[]
+			byte[] newAudioDataChannel = new byte[newNumberOfSampleFrames * 2];
+			in.getBytes(newAudioDataChannel);
+			// Store audio data
+			this.setAudioDataChannel2(newAudioDataChannel);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void initOffsetChannelBoth(byte[] b) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+
+		// Get number of sample frames
+		int newNumberOfSampleFrames = ((in.limit() - 16) / 2);
+		if(newNumberOfSampleFrames>0) {
+			// Store number of sample frames
+			this.setNumberOfSampleFrames(newNumberOfSampleFrames);			
+			// Ignore first 16 bytes
+			in.getLong();
+			in.getLong();
+			// Declare temp byte[]
+			byte[] newAudioDataChannel = new byte[newNumberOfSampleFrames * 2];
+			in.getBytes(newAudioDataChannel);
+			// Store audio data
+			this.setAudioDataChannel1(newAudioDataChannel);
+			this.setAudioDataChannel2(newAudioDataChannel);
+			// Ignore last 2 bytes
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void initSliceArray(byte[] b) {
+		if(b!=null && b.length>0) {
+			this.setSliceArray(b);
+		}
+		else {
+			this.setSliceArray(EsxUtil.getByteArrayWithLength("", EsxUtil.CHUNKSIZE_SLICE_DATA, (byte) 0x00));
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toHeaderMonoByteArray() {
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_SAMPLE_HEADER_MONO);
+		// bytes 0~7
+		buf.putBytes(EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00), 0, 8);
+		// bytes 8~11
+		buf.putInt(this.getOffsetChannel1Start());
+		// bytes 12~15
+		buf.putInt(this.getOffsetChannel1End());
+		// bytes 16~19
+		buf.putInt(this.getStart());
+		// bytes 20~23
+		buf.putInt(this.getEnd());
+		// bytes 24~27
+		buf.putInt(this.getLoopStart());
+		// bytes 28~31
+		buf.putInt(this.getSampleRate());
+		// bytes 32~33
+		buf.putShort(this.getSampleTune().getShortFromCurrentValue());
+		// byte 34
+		buf.putUnsignedByte(this.getPlayLevel().getValue());
+		// byte 35
+		buf.putByte(this.getUnknownByte1());
+		// byte 36
+		buf.putUnsignedByte(this.getStretchStep().getValue());
+		// byte 37
+		buf.putByte(this.getUnknownByte2());
+		// byte 38
+		buf.putByte(this.getUnknownByte3());
+		// byte 39
+		buf.putByte(this.getUnknownByte4());
+		return buf.array();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toHeaderStereoByteArray() {
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_SAMPLE_HEADER_STEREO);
+		// bytes 0~7
+		buf.putBytes(EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00), 0, 8);
+		// bytes 8~11
+		buf.putInt(this.getOffsetChannel1Start());
+		// bytes 12~15
+		buf.putInt(this.getOffsetChannel1End());
+		// bytes 16~19
+		buf.putInt(this.getOffsetChannel2Start());
+		// bytes 20~23
+		buf.putInt(this.getOffsetChannel2End());
+		// bytes 24~27
+		buf.putInt(this.getStart());
+		// bytes 28~31
+		buf.putInt(this.getEnd());
+		// bytes 32~35
+		buf.putInt(this.getSampleRate());
+		// bytes 36~37
+		buf.putShort(this.getSampleTune().getShortFromCurrentValue());
+		// byte 38
+		buf.putUnsignedByte(this.getPlayLevel().getValue());
+		// byte 39
+		buf.putByte(this.getUnknownByte1());
+		// byte 40
+		buf.putUnsignedByte(this.getStretchStep().getValue());
+		// byte 41
+		buf.putByte(this.getUnknownByte2());
+		// byte 42
+		buf.putByte(this.getUnknownByte3());
+		// byte 43
+		buf.putByte(this.getUnknownByte4());
+		return buf.array();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toOffsetChannel1ByteArray() {
+		byte[] audioData = this.getAudioDataChannel1();
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(audioData.length+16);
+		buf.putInt(0x80007FFF);
+		buf.putInt(this.getOffsetChannel1Start());
+		buf.putInt(this.getOffsetChannel1End());
+		buf.putUnsignedByte(this.getSampleNumberCurrent().getValue());
+		buf.putUnsignedByte(0); // denotes mono / channel 1
+		buf.putShort((short) 0xffff);
+		buf.putBytes(audioData);
+		return buf.array();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toOffsetChannel2ByteArray() {
+		byte[] audioData = this.getAudioDataChannel2();
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(audioData.length+16);
+		buf.putInt(0x80007FFF);
+		buf.putInt(this.getOffsetChannel2Start());
+		buf.putInt(this.getOffsetChannel2End());
+		buf.putUnsignedByte(this.getSampleNumberCurrent().getValue());
+		buf.putUnsignedByte(0); // denotes mono / channel 1
+		buf.putShort((short) 0xffff);
+		buf.putBytes(audioData);
+		return buf.array();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toOffsetChannelBothByteArray() {
+		byte[] audioData = this.getAudioDataChannelBoth();
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(audioData.length+18);
+		buf.putInt(0x80007FFF);
+		buf.putInt(this.getOffsetChannel1Start());
+		buf.putInt(this.getOffsetChannel1End());
+		buf.putUnsignedByte(this.getSampleNumberCurrent().getValue());
+		buf.putUnsignedByte(0); // denotes mono / channel 1
+		buf.putShort((short) 0xffff);
+		buf.putBytes(audioData);
+		buf.putBytes(this.getAudioDataLoopStart());
+		return buf.array();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toSliceByteArray() {
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_SLICE_DATA);
+		// Write slice info
+		if(this.getSliceArray()!=null) {
+			buf.putBytes(this.getSliceArray());
+		}
+		else {
+			buf.putBytes(EsxUtil.getByteArrayWithLength("", EsxUtil.CHUNKSIZE_SLICE_DATA, (byte) 0x00));
+		}
+		return buf.array();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	public RIFFWave toRIFFWave() {
-		// To be implemented by subclass
-		throw new UnsupportedOperationException();
+		if(this.isStereoCurrent()) {
+			return this.toRIFFWaveStereo();
+		}
+		else {
+			return this.toRIFFWaveMono();
+		}
 	}
 
 	/**
@@ -1380,6 +1785,128 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 			e.printStackTrace();
 			throw new IOException(e);
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public RIFFWave toRIFFWaveMono() {
+		if(this.isEmpty()) return null; // Do nothing if this is an empty sample
+
+		RIFFWave riffWave = WavFactory.eINSTANCE.createRIFFWave();
+
+		// format chunk
+		ChunkFormat chunkFormat = WavFactory.eINSTANCE.createChunkFormat();
+		chunkFormat.setCompressionCode(CompressionCode.COMPRESSION_CODE_1);
+		chunkFormat.setCompressionCodeValue(CompressionCode.COMPRESSION_CODE_1_VALUE);
+		chunkFormat.setNumberOfChannels(1);
+		chunkFormat.setSampleRate((long)this.getSampleRate());
+		chunkFormat.setAverageBytesPerSecond(chunkFormat.getSampleRate()*chunkFormat.getNumberOfChannels()*2);
+		chunkFormat.setBlockAlign(chunkFormat.getNumberOfChannels()*2);
+		chunkFormat.setSignificantBitsPerSample(16);
+		riffWave.getChunks().add(chunkFormat);
+
+		// data chunk
+		ChunkData chunkData = WavFactory.eINSTANCE.createChunkData();
+		byte[] sampleData = new byte[this.getAudioDataChannel1().length];
+		try {
+			for (int i = 0; i<sampleData.length; i = i + 2) {
+				sampleData[i] = this.getAudioDataChannel1()[i + 1];
+				sampleData[i + 1] = this.getAudioDataChannel1()[i];
+			}
+		} catch(Exception e) {}
+		chunkData.setSampleDataOriginal(sampleData);
+		riffWave.getChunks().add(chunkData);
+
+		// sampler chunk
+		if(this.isLoop()) {
+			ChunkSampler chunkSampler = WavFactory.eINSTANCE.createChunkSampler();
+			chunkSampler.setManufacturer((long)0x42);
+			chunkSampler.setProduct((long)0x71);
+			chunkSampler.setSamplePeriod((long)1000000000/this.getSampleRate());
+			chunkSampler.setMidiUnityNote((long)0x3C);
+			chunkSampler.setMidiPitchFraction((long)0);
+			chunkSampler.setSmpteFormat((long)0);
+			chunkSampler.setSmpteOffset((long)0);
+
+			SampleLoop sampleLoop = WavFactory.eINSTANCE.createSampleLoop();
+			sampleLoop.setCuePointID((long)0);
+			sampleLoop.setType((long)0);
+			sampleLoop.setStart((long)this.getLoopStart());
+			sampleLoop.setEnd((long)this.getEnd());
+			sampleLoop.setFraction((long)0);
+			sampleLoop.setPlayCount((long)0);
+			chunkSampler.getSampleLoops().add(sampleLoop);
+
+			riffWave.getChunks().add(chunkSampler);
+		}
+
+		return riffWave;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public RIFFWave toRIFFWaveStereo() {
+		if(this.isEmpty()) return null; // Do nothing if this is an empty sample
+
+		RIFFWave riffWave = WavFactory.eINSTANCE.createRIFFWave();
+
+		// format chunk
+		ChunkFormat chunkFormat = WavFactory.eINSTANCE.createChunkFormat();
+		chunkFormat.setCompressionCode(CompressionCode.COMPRESSION_CODE_1);
+		chunkFormat.setCompressionCodeValue(CompressionCode.COMPRESSION_CODE_1_VALUE);
+		chunkFormat.setNumberOfChannels(2);
+		chunkFormat.setSampleRate((long)this.getSampleRate());
+		chunkFormat.setAverageBytesPerSecond(chunkFormat.getSampleRate()*chunkFormat.getNumberOfChannels()*2);
+		chunkFormat.setBlockAlign(chunkFormat.getNumberOfChannels()*2);
+		chunkFormat.setSignificantBitsPerSample(16);
+		riffWave.getChunks().add(chunkFormat);
+
+		// data chunk
+		ChunkData chunkData = WavFactory.eINSTANCE.createChunkData();
+		byte[] left = this.getAudioDataChannel1();
+		byte[] right = this.getAudioDataChannel2();
+		byte[] both = new byte[left.length + right.length];
+		try {
+			for (int i = 0, j = 0; i<both.length && j<left.length; i = i + 4, j = j+2) {
+				both[i] = left[j + 1];
+				both[i + 1] = left[j];
+				both[i + 2] = right[j + 1];
+				both[i + 3] = right[j];
+			}
+		} catch(Exception e) {}
+		chunkData.setSampleDataOriginal(both);
+		riffWave.getChunks().add(chunkData);
+
+		// sampler chunk
+		if(this.isLoop()) {
+			ChunkSampler chunkSampler = WavFactory.eINSTANCE.createChunkSampler();
+			chunkSampler.setManufacturer((long)0x42);
+			chunkSampler.setProduct((long)0x71);
+			chunkSampler.setSamplePeriod((long)1000000000/this.getSampleRate());
+			chunkSampler.setMidiUnityNote((long)0x3C);
+			chunkSampler.setMidiPitchFraction((long)0);
+			chunkSampler.setSmpteFormat((long)0);
+			chunkSampler.setSmpteOffset((long)0);
+
+			SampleLoop sampleLoop = WavFactory.eINSTANCE.createSampleLoop();
+			sampleLoop.setCuePointID((long)0);
+			sampleLoop.setType((long)0);
+			sampleLoop.setStart((long)this.getLoopStart());
+			sampleLoop.setEnd((long)this.getEnd());
+			sampleLoop.setFraction((long)0);
+			sampleLoop.setPlayCount((long)0);
+			chunkSampler.getSampleLoops().add(sampleLoop);
+
+			riffWave.getChunks().add(chunkSampler);
+		}
+
+		return riffWave;
 	}
 
 	/**
@@ -1438,8 +1965,10 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 				return isLoop();
 			case EsxPackage.SAMPLE__SLICE:
 				return isSlice();
-			case EsxPackage.SAMPLE__STEREO:
-				return isStereo();
+			case EsxPackage.SAMPLE__STEREO_ORIGINAL:
+				return isStereoOriginal();
+			case EsxPackage.SAMPLE__STEREO_CURRENT:
+				return isStereoCurrent();
 			case EsxPackage.SAMPLE__MEM_USED_IN_BYTES:
 				return getMemUsedInBytes();
 			case EsxPackage.SAMPLE__EMPTY:
@@ -1520,6 +2049,9 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 			case EsxPackage.SAMPLE__SLICE_ARRAY:
 				setSliceArray((byte[])newValue);
 				return;
+			case EsxPackage.SAMPLE__STEREO_ORIGINAL:
+				setStereoOriginal((Boolean)newValue);
+				return;
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_ORIGINAL:
 				setSampleNumberOriginal((SampleNumber)newValue);
 				return;
@@ -1595,6 +2127,9 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 			case EsxPackage.SAMPLE__SLICE_ARRAY:
 				setSliceArray(SLICE_ARRAY_EDEFAULT);
 				return;
+			case EsxPackage.SAMPLE__STEREO_ORIGINAL:
+				setStereoOriginal(STEREO_ORIGINAL_EDEFAULT);
+				return;
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_ORIGINAL:
 				setSampleNumberOriginal(SAMPLE_NUMBER_ORIGINAL_EDEFAULT);
 				return;
@@ -1658,8 +2193,10 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 				return isLoop() != LOOP_EDEFAULT;
 			case EsxPackage.SAMPLE__SLICE:
 				return isSlice() != SLICE_EDEFAULT;
-			case EsxPackage.SAMPLE__STEREO:
-				return isStereo() != STEREO_EDEFAULT;
+			case EsxPackage.SAMPLE__STEREO_ORIGINAL:
+				return stereoOriginal != STEREO_ORIGINAL_EDEFAULT;
+			case EsxPackage.SAMPLE__STEREO_CURRENT:
+				return isStereoCurrent() != STEREO_CURRENT_EDEFAULT;
 			case EsxPackage.SAMPLE__MEM_USED_IN_BYTES:
 				return getMemUsedInBytes() != MEM_USED_IN_BYTES_EDEFAULT;
 			case EsxPackage.SAMPLE__EMPTY:
@@ -1720,6 +2257,8 @@ public abstract class SampleImpl extends EObjectImpl implements Sample {
 		result.append(audioDataChannel2);
 		result.append(", sliceArray: ");
 		result.append(sliceArray);
+		result.append(", stereoOriginal: ");
+		result.append(stereoOriginal);
 		result.append(", sampleNumberOriginal: ");
 		result.append(sampleNumberOriginal);
 		result.append(')');

@@ -43,7 +43,13 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="memUsedInBytes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
         derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memUsedInSeconds" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
+        derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="memFreeInBytes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
+        derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memFreeInSeconds" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
         derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numPatternsEmpty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
@@ -273,14 +279,48 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="positionOriginal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="-1"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Sample" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Sample">
     <eOperations name="export" eExceptions="#//IOException">
       <eParameters name="file" eType="#//File"/>
     </eOperations>
+    <eOperations name="initHeaderMono">
+      <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    </eOperations>
+    <eOperations name="initHeaderMono">
+      <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+      <eParameters name="sampleNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="initHeaderStereo">
+      <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    </eOperations>
+    <eOperations name="initHeaderStereo">
+      <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+      <eParameters name="sampleNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="initOffsetChannel1">
+      <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    </eOperations>
+    <eOperations name="initOffsetChannel2">
+      <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    </eOperations>
+    <eOperations name="initOffsetChannelBoth">
+      <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    </eOperations>
+    <eOperations name="initSliceArray">
+      <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    </eOperations>
+    <eOperations name="toHeaderMonoByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    <eOperations name="toHeaderStereoByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    <eOperations name="toOffsetChannel1ByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    <eOperations name="toOffsetChannel2ByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    <eOperations name="toOffsetChannelBothByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    <eOperations name="toSliceByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eOperations name="toRIFFWave" eType="#//RIFFWave"/>
     <eOperations name="toRIFFWaveFile" eExceptions="#//IOException">
       <eParameters name="file" eType="#//File"/>
     </eOperations>
+    <eOperations name="toRIFFWaveMono" eType="#//RIFFWave"/>
+    <eOperations name="toRIFFWaveStereo" eType="#//RIFFWave"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="offsetChannel1Start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="offsetChannel1End" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -312,7 +352,8 @@
         changeable="false" volatile="true" transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="slice" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         changeable="false" volatile="true" transient="true" derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stereo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stereoOriginal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stereoCurrent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="true"
         derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="memUsedInBytes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
@@ -326,42 +367,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleNumberCurrent" eType="#//SampleNumber"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="-1"
         derived="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SampleMono" eSuperTypes="#//Sample">
-    <eOperations name="initHeader">
-      <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
-    </eOperations>
-    <eOperations name="initHeader">
-      <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
-      <eParameters name="sampleNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </eOperations>
-    <eOperations name="initOffsetChannelBoth">
-      <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
-    </eOperations>
-    <eOperations name="initSliceArray">
-      <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
-    </eOperations>
-    <eOperations name="toHeaderByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
-    <eOperations name="toOffsetChannelBothByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
-    <eOperations name="toSliceByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SampleStereo" eSuperTypes="#//Sample">
-    <eOperations name="initHeader">
-      <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
-    </eOperations>
-    <eOperations name="initHeader">
-      <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
-      <eParameters name="sampleNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </eOperations>
-    <eOperations name="initOffsetChannel1">
-      <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
-    </eOperations>
-    <eOperations name="initOffsetChannel2">
-      <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
-    </eOperations>
-    <eOperations name="toHeaderByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
-    <eOperations name="toOffsetChannel1ByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
-    <eOperations name="toOffsetChannel2ByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SampleTune">
     <eOperations name="calculateSampleTuneFromSampleRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat">

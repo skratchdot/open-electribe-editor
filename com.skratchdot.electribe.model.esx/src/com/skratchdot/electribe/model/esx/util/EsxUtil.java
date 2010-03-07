@@ -129,10 +129,13 @@ public class EsxUtil {
 	public static final int NUM_SEQUENCE_DATA_NOTE = 128;
 	public static final int NUM_SLICE_DATA = 256;
 
-	public static final int MAX_NUM_SAMPLES = 12582911;
+	//public static final int MAX_NUM_SAMPLES = 12582911;
+	public static final int MAX_SAMPLE_MEM_IN_FRAMES = 0xC00000;
+	public static final int MAX_SAMPLE_MEM_IN_BYTES = MAX_SAMPLE_MEM_IN_FRAMES*2;
+	public static final float MAX_SAMPLE_MEM_IN_SECONDS = (float)MAX_SAMPLE_MEM_IN_FRAMES/44100;
 	public static final int MAX_NUM_SONG_EVENTS = 20000;
 	public static final int SIZE_FILE_MIN = 0x00250010;
-	public static final int SIZE_FILE_MAX = SIZE_FILE_MIN + (MAX_NUM_SAMPLES*2);
+	public static final int SIZE_FILE_MAX = SIZE_FILE_MIN + MAX_SAMPLE_MEM_IN_BYTES;
 
 	/**
 	 * @param byteArray

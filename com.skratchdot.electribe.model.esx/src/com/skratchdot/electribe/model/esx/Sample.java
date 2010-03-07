@@ -50,7 +50,8 @@ import com.skratchdot.riff.wav.RIFFWave;
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSliceArray <em>Slice Array</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isLoop <em>Loop</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isSlice <em>Slice</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isStereo <em>Stereo</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isStereoOriginal <em>Stereo Original</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isStereoCurrent <em>Stereo Current</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getMemUsedInBytes <em>Mem Used In Bytes</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isEmpty <em>Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleNumberOriginal <em>Sample Number Original</em>}</li>
@@ -59,7 +60,7 @@ import com.skratchdot.riff.wav.RIFFWave;
  * </p>
  *
  * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface Sample extends EObject {
@@ -88,22 +89,6 @@ public interface Sample extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Stereo</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Stereo</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Stereo</em>' attribute.
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_Stereo()
-	 * @model default="true" transient="true" changeable="false" volatile="true" derived="true"
-	 * @generated
-	 */
-	boolean isStereo();
 
 	/**
 	 * Returns the value of the '<em><b>Mem Used In Bytes</b></em>' attribute.
@@ -728,6 +713,118 @@ public interface Sample extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void initHeaderMono(byte[] b);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void initHeaderMono(byte[] b, int sampleNumber);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void initHeaderStereo(byte[] b);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void initHeaderStereo(byte[] b, int sampleNumber);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void initOffsetChannel1(byte[] b);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void initOffsetChannel2(byte[] b);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void initOffsetChannelBoth(byte[] b);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void initSliceArray(byte[] b);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toHeaderMonoByteArray();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toHeaderStereoByteArray();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toOffsetChannel1ByteArray();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toOffsetChannel2ByteArray();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toOffsetChannelBothByteArray();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	byte[] toSliceByteArray();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model dataType="com.skratchdot.electribe.model.esx.RIFFWave"
 	 * @generated
 	 */
@@ -740,6 +837,22 @@ public interface Sample extends EObject {
 	 * @generated
 	 */
 	void toRIFFWaveFile(File file) throws IOException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="com.skratchdot.electribe.model.esx.RIFFWave"
+	 * @generated
+	 */
+	RIFFWave toRIFFWaveMono();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="com.skratchdot.electribe.model.esx.RIFFWave"
+	 * @generated
+	 */
+	RIFFWave toRIFFWaveStereo();
 
 	/**
 	 * Returns the value of the '<em><b>Loop</b></em>' attribute.
@@ -770,5 +883,47 @@ public interface Sample extends EObject {
 	 * @generated
 	 */
 	boolean isSlice();
+
+	/**
+	 * Returns the value of the '<em><b>Stereo Original</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Stereo Original</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Stereo Original</em>' attribute.
+	 * @see #setStereoOriginal(boolean)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_StereoOriginal()
+	 * @model
+	 * @generated
+	 */
+	boolean isStereoOriginal();
+
+	/**
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Sample#isStereoOriginal <em>Stereo Original</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Stereo Original</em>' attribute.
+	 * @see #isStereoOriginal()
+	 * @generated
+	 */
+	void setStereoOriginal(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Stereo Current</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Stereo Current</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Stereo Current</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_StereoCurrent()
+	 * @model default="true" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	boolean isStereoCurrent();
 
 } // Sample

@@ -34,7 +34,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getEmptySong <em>Empty Song</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMaxSampleOffset <em>Max Sample Offset</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMemUsedInBytes <em>Mem Used In Bytes</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMemUsedInSeconds <em>Mem Used In Seconds</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMemFreeInBytes <em>Mem Free In Bytes</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getMemFreeInSeconds <em>Mem Free In Seconds</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsEmpty <em>Num Patterns Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumPatternsNotEmpty <em>Num Patterns Not Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesEmpty <em>Num Samples Empty</em>}</li>
@@ -249,6 +251,22 @@ public interface EsxFile extends EObject {
 	int getMemUsedInBytes();
 
 	/**
+	 * Returns the value of the '<em><b>Mem Used In Seconds</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Mem Used In Seconds</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Mem Used In Seconds</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_MemUsedInSeconds()
+	 * @model default="0" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	float getMemUsedInSeconds();
+
+	/**
 	 * Returns the value of the '<em><b>Mem Free In Bytes</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
@@ -263,6 +281,22 @@ public interface EsxFile extends EObject {
 	 * @generated
 	 */
 	int getMemFreeInBytes();
+
+	/**
+	 * Returns the value of the '<em><b>Mem Free In Seconds</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Mem Free In Seconds</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Mem Free In Seconds</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_MemFreeInSeconds()
+	 * @model default="0" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	float getMemFreeInSeconds();
 
 	/**
 	 * Returns the value of the '<em><b>Num Patterns Empty</b></em>' attribute.

@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx;
 
-import com.skratchdot.riff.wav.RIFFWave;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,6 +20,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EFactory;
 
 import com.skratchdot.electribe.model.esx.util.EsxException;
+import com.skratchdot.riff.wav.RIFFWave;
 
 /**
  * <!-- begin-user-doc -->
@@ -65,6 +65,22 @@ public interface EsxFactory extends EFactory {
 	 * @generated
 	 */
 	PatternSetParameter createPatternSetParameter();
+
+	/**
+	 * Returns a new object of class '<em>Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sample</em>'.
+	 * @generated
+	 */
+	Sample createSample();
+
+	/**
+	 * @param file a valid audio file
+	 * @return a new object of class '<em>Sample</em>'.
+	 * @throws EsxException
+	 */
+	Sample createSampleFromFile(File file) throws EsxException;
 
 	/**
 	 * Returns a new object of class '<em>Midi Channel Type</em>'.
@@ -193,26 +209,6 @@ public interface EsxFactory extends EFactory {
 	Pattern createPattern();
 
 	/**
-	 * Returns a new object of class '<em>Sample Mono</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Sample Mono</em>'.
-	 * @generated
-	 */
-	SampleMono createSampleMono();
-
-	SampleMono createSampleMonoFromAudioFile(File file) throws EsxException, IOException;
-
-	/**
-	 * Returns a new object of class '<em>Sample Stereo</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Sample Stereo</em>'.
-	 * @generated
-	 */
-	SampleStereo createSampleStereo();
-
-	/**
 	 * Returns a new object of class '<em>Sample Tune</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -220,8 +216,6 @@ public interface EsxFactory extends EFactory {
 	 * @generated
 	 */
 	SampleTune createSampleTune();
-
-	SampleStereo createSampleStereoFromAudioFile(File file) throws EsxException, IOException;
 
 	/**
 	 * Returns a new object of class '<em>Song</em>'.
