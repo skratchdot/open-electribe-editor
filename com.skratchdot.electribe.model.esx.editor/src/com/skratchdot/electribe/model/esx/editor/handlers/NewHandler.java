@@ -26,7 +26,6 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import com.skratchdot.electribe.model.esx.editor.util.EsxEditorUtil;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceNames;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
-import com.skratchdot.electribe.model.esx.util.EsxUtil;
 
 public class NewHandler extends AbstractHandler {
 	public static final String NEW_ESX_FILE_ID = "com.skratchdot.electribe.model.esx.editor.commands.newEsxFile";
@@ -58,7 +57,7 @@ public class NewHandler extends AbstractHandler {
 				File newEsxFile = new File(files[0]);
 
 				if(defaultEsxFile.isFile()) {
-					EsxUtil.copyFile(defaultEsxFile, newEsxFile);
+					EsxEditorUtil.copyFile(defaultEsxFile, newEsxFile);
 					EsxEditorUtil.openEditor(window.getWorkbench(), URI.createFileURI(newEsxFile.getAbsolutePath()));
 				} else {
 					// Display missing default .esx message

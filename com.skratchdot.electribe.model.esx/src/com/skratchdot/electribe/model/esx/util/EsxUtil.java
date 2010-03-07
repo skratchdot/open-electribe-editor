@@ -12,16 +12,9 @@
 package com.skratchdot.electribe.model.esx.util;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.channels.FileChannel;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -150,47 +143,6 @@ public class EsxUtil {
 	}
 
 	/**
-	 * This removes all "esxLoad_*.esx" and "esxSave_*.esx" files
-	 * from the given directory.
-	 * @param directory A valid directory.
-	 */
-	public static void clearTempDirectory(File directory) {
-		if(!directory.isDirectory()) return;
-
-		File[] tempFiles = directory.listFiles(new FilenameFilter() {
-			@Override
-			public boolean accept(File fDir, String strName) {
-				return (
-					(strName.startsWith("esxLoad_") || strName.startsWith("esxSave_"))
-					&& strName.endsWith(".esx")
-				);
-			}
-		});
-
-		for (int i=0; i<tempFiles.length; i++) {
-			tempFiles[i].delete();
-		}
-	}
-
-	/**
-	 * @param in Input (source) file.
-	 * @param out Output (destination) file
-	 * @throws IOException
-	 */
-	public static void copyFile(File in, File out) throws IOException {
-		FileChannel inChannel = new FileInputStream(in).getChannel();
-		FileChannel outChannel = new FileOutputStream(out).getChannel();
-		try {
-			inChannel.transferTo(0, inChannel.size(), outChannel);
-		} catch (IOException e) {
-			throw e;
-		} finally {
-			if (inChannel != null) inChannel.close();
-			if (outChannel != null) outChannel.close();
-		}
-	}
-
-	/**
 	 * @param collection The collection of EObjects to search.
 	 * @param startingIndex The index to start searching from.
 	 * @param skipIndices Don't include these indices in the search
@@ -231,21 +183,6 @@ public class EsxUtil {
 			b[i] = fillByte;
 		}
 		return b;
-	}
-
-	/**
-	 * Returns a file path in the format: "[directory]/[prefix]_[TIMESTAMP].esx"
-	 * @param directory A valid directory.
-	 * @param prefix 
-	 * @return returns a path name for a temporary .esx file
-	 */
-	public static String getTempEsxFilePath(File directory, String prefix) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
-		String defaultTempFilePath = directory.getAbsolutePath() + 
-			File.separatorChar + prefix + "_" +
-			dateFormat.format(new Date()) +
-			".esx";
-		return defaultTempFilePath;
 	}
 	
 	/**

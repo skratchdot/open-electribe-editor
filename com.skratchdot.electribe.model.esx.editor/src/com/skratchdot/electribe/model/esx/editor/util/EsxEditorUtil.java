@@ -12,7 +12,15 @@
 package com.skratchdot.electribe.model.esx.editor.util;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
@@ -27,10 +35,52 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 
+import com.skratchdot.electribe.model.esx.presentation.EsxEditor;
 import com.skratchdot.electribe.model.esx.presentation.EsxEditorPlugin;
 
 
 public class EsxEditorUtil {
+
+	/**
+	 * This removes all "temp*.esx" and "untitled*.esx" files
+	 * from the given directory.
+	 * @param directory A valid directory.
+	 */
+	public static void clearTempDirectory(File directory) {
+		if(!directory.isDirectory()) return;
+
+		File[] tempFiles = directory.listFiles(new FilenameFilter() {
+			@Override
+			public boolean accept(File fDir, String strName) {
+				return (
+					(strName.startsWith("temp") || strName.startsWith("untitled"))
+					&& strName.endsWith(".esx")
+				);
+			}
+		});
+
+		for (int i=0; i<tempFiles.length; i++) {
+			tempFiles[i].delete();
+		}
+	}
+
+	/**
+	 * @param in Input (source) file.
+	 * @param out Output (destination) file
+	 * @throws IOException
+	 */
+	public static void copyFile(File in, File out) throws IOException {
+		FileChannel inChannel = new FileInputStream(in).getChannel();
+		FileChannel outChannel = new FileOutputStream(out).getChannel();
+		try {
+			inChannel.transferTo(0, inChannel.size(), outChannel);
+		} catch (IOException e) {
+			throw e;
+		} finally {
+			if (inChannel != null) inChannel.close();
+			if (outChannel != null) outChannel.close();
+		}
+	}
 
 	/**
 	 * This looks up a string in the plugin's plugin.properties file.
@@ -44,6 +94,53 @@ public class EsxEditorUtil {
 	 */
 	public  static String getString(String key, Object s1) {
 		return EsxEditorPlugin.INSTANCE.getString(key, new Object [] { s1 });
+	}
+
+	/**
+	 * Returns a file path in the format: "[directory]/[prefix]_[TIMESTAMP].esx"
+	 * @param directory A valid directory.
+	 * @param prefix 
+	 * @return returns a path name for a temporary .esx file
+	 */
+	public static String getTempEsxFilePath(File directory, String prefix) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+		String defaultTempFilePath = directory.getAbsolutePath() + 
+			File.separatorChar + prefix + "_" +
+			dateFormat.format(new Date()) +
+			".esx";
+		return defaultTempFilePath;
+	}
+
+	/**
+	 * @param workbench
+	 * @param uri
+	 * @return
+	 */
+	public static boolean openEditor(IWorkbench workbench, URI uri) {
+		IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
+		IWorkbenchPage page = workbenchWindow.getActivePage();
+		
+		IEditorDescriptor editorDescriptor = EditUIUtil.getDefaultEditor(uri, null);
+		if (editorDescriptor == null) {
+			MessageDialog.openError(
+				workbenchWindow.getShell(),
+				getString("_UI_Error_title"),
+				getString("_WARN_No_Editor", uri.lastSegment()));
+			return false;
+		}
+		else {
+			try {
+				page.openEditor(new URIEditorInput(uri), editorDescriptor.getId());
+			}
+			catch (PartInitException exception) {
+				MessageDialog.openError(
+					workbenchWindow.getShell(),
+					getString("_UI_OpenEditorError_label"),
+					exception.getMessage());
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -68,7 +165,8 @@ public class EsxEditorUtil {
 	public static String[] openFilePathDialog(Shell shell, int style, String[] fileExtensionFilters, boolean includeGroupFilter, boolean includeAllFilter, boolean addExtension) {
 		FileDialog fileDialog = new FileDialog(shell, style);
 		if (fileExtensionFilters == null) {
-			fileExtensionFilters = new String[]{"*.*"};
+			List<String> fileExtentionFilters = EsxEditor.FILE_EXTENSION_FILTERS;
+			fileExtensionFilters = fileExtentionFilters.toArray(new String[fileExtentionFilters.size()]);
 		}
 
 		// If requested, augment the file extension filters by adding a group of all the other filters (*.ext1;*.ext2;...)
@@ -138,38 +236,6 @@ public class EsxEditorUtil {
 			result[i] = filename;
 		}
 		return result;
-	}
-
-	/**
-	 * @param workbench
-	 * @param uri
-	 * @return
-	 */
-	public static boolean openEditor(IWorkbench workbench, URI uri) {
-		IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
-		IWorkbenchPage page = workbenchWindow.getActivePage();
-		
-		IEditorDescriptor editorDescriptor = EditUIUtil.getDefaultEditor(uri, null);
-		if (editorDescriptor == null) {
-			MessageDialog.openError(
-				workbenchWindow.getShell(),
-				getString("_UI_Error_title"),
-				getString("_WARN_No_Editor", uri.lastSegment()));
-			return false;
-		}
-		else {
-			try {
-				page.openEditor(new URIEditorInput(uri), editorDescriptor.getId());
-			}
-			catch (PartInitException exception) {
-				MessageDialog.openError(
-					workbenchWindow.getShell(),
-					getString("_UI_OpenEditorError_label"),
-					exception.getMessage());
-				return false;
-			}
-		}
-		return true;
 	}
 	
 }

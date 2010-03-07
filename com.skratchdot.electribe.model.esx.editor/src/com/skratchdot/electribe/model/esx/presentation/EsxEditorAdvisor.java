@@ -34,7 +34,6 @@ import com.skratchdot.electribe.model.esx.editor.util.EsxEditorUtil;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceInitializer;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceNames;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
-import com.skratchdot.electribe.model.esx.util.EsxUtil;
 
 
 /**
@@ -254,7 +253,7 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		String tempDirectoryString = EsxPreferenceStore.getString(
 				EsxPreferenceNames.FILES_TEMP_DIRECTORY);
 		File tempDirectory = new File(tempDirectoryString);
-		EsxUtil.clearTempDirectory(tempDirectory);
+		EsxEditorUtil.clearTempDirectory(tempDirectory);
 	}
 
 }
