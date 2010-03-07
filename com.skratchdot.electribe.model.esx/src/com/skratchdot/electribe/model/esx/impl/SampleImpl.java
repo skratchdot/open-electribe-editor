@@ -722,18 +722,22 @@ public class SampleImpl extends EObjectImpl implements Sample {
 
 			// Attempt to set loopStart and End from .wav smpl chunk
 			if(file.getAbsolutePath().toLowerCase().endsWith(".wav")) {
-				RIFFWave riffWave = WavFactory.eINSTANCE.createRIFFWave(file);
-				ChunkSampler chunkSampler = (ChunkSampler) riffWave.getFirstChunkByEClass(WavPackage.Literals.CHUNK_SAMPLER);
-				if(chunkSampler!=null && chunkSampler.getSampleLoops().size()>0) {
-					SampleLoop sampleLoop = chunkSampler.getSampleLoops().get(0);
-					Long tempLoopStart = sampleLoop.getStart();
-					Long tempLoopEnd = sampleLoop.getEnd();
-					if(tempLoopStart<this.getEnd() && tempLoopStart>=0) {
-						this.setLoopStart(tempLoopStart.intValue());
+				try {
+					RIFFWave riffWave = WavFactory.eINSTANCE.createRIFFWave(file);
+					ChunkSampler chunkSampler = (ChunkSampler) riffWave.getFirstChunkByEClass(WavPackage.Literals.CHUNK_SAMPLER);
+					if(chunkSampler!=null && chunkSampler.getSampleLoops().size()>0) {
+						SampleLoop sampleLoop = chunkSampler.getSampleLoops().get(0);
+						Long tempLoopStart = sampleLoop.getStart();
+						Long tempLoopEnd = sampleLoop.getEnd();
+						if(tempLoopStart<this.getEnd() && tempLoopStart>=0) {
+							this.setLoopStart(tempLoopStart.intValue());
+						}
+						if(tempLoopEnd<this.getEnd() && tempLoopEnd>this.getLoopStart()) {
+							this.setEnd(tempLoopEnd.intValue());
+						}
 					}
-					if(tempLoopEnd<this.getEnd() && tempLoopEnd>this.getLoopStart()) {
-						this.setEnd(tempLoopEnd.intValue());
-					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 			
