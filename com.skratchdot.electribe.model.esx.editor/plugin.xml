@@ -224,6 +224,11 @@
             disabledIcon="icons/full/obj16/open_esx_file_disabled.gif"
             icon="icons/full/obj16/open_esx_file.gif">
       </image>
+      <image
+            commandId="com.skratchdot.electribe.model.esx.editor.commands.showPropertiesView"
+            disabledIcon="icons/full/obj16/properties_disabled.gif"
+            icon="icons/full/obj16/properties.gif">
+      </image>
    </extension>
 
    <extension point="org.eclipse.ui.commands">
@@ -255,6 +260,11 @@
             description="Opens an .esx file for editing"
             id="com.skratchdot.electribe.model.esx.editor.commands.openEsxFile"
             name="Open .esx File">
+      </command>
+      <command
+            description="Show Properties View"
+            id="com.skratchdot.electribe.model.esx.editor.commands.showPropertiesView"
+            name="Properties">
       </command>
    </extension>
 
@@ -289,6 +299,10 @@
       <handler
             class="com.skratchdot.electribe.model.esx.editor.handlers.OpenHandler"
             commandId="com.skratchdot.electribe.model.esx.editor.commands.openEsxFile">
+      </handler>
+      <handler
+            class="com.skratchdot.electribe.model.esx.editor.handlers.ShowPropertiesViewHandler"
+            commandId="com.skratchdot.electribe.model.esx.editor.commands.showPropertiesView">
       </handler>
    </extension>
    <extension
@@ -480,6 +494,10 @@
                   commandId="org.eclipse.ui.views.showView"
                   id="showView"
                   label="Show View">
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.showPropertiesView"
+                     style="push">
+               </command>
             </menu>
          </menu>
          <menu
