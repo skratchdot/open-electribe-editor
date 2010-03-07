@@ -22,15 +22,20 @@ import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.ISelectionListener;
@@ -40,14 +45,17 @@ import org.eclipse.ui.handlers.IHandlerService;
 
 import com.skratchdot.electribe.audioplayer.handlers.LoopAndPlayHandler;
 import com.skratchdot.electribe.model.esx.EsxFile;
+import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.Sample;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceNames;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
+import com.skratchdot.electribe.model.esx.util.EsxUtil;
 
 public class EsxEditorPartSamples extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartSamples"; //$NON-NLS-1$
 	public static final int PAGE_INDEX = 3;
 
+	private Label labelMemFree;
 	private TableViewer tableViewer;
 	private TableScrollSpeedListener tableViewerScrollSpeedListener;
 
@@ -72,6 +80,9 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		Group groupSamples = new Group(sashForm, SWT.NONE);
 		groupSamples.setLayout(new GridLayout(1, true));
 		groupSamples.setText("Samples");
+		
+		// Create top row
+		this.initTopRow(groupSamples);
 
 		// Create this.tableViewer
 		this.tableViewer = new TableViewer(groupSamples, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
@@ -83,6 +94,95 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		sashForm.setWeights(new int[] {3, 1});
 	}
 	
+	private void initTopRow(Composite parent) {
+		Label labelScrollTo;
+		Link link;
+
+		// Create the top row
+		Composite compositeInfoRow = new Composite(parent, SWT.NONE);
+		compositeInfoRow.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+		GridLayout gridLayout = new GridLayout(6, false);
+		gridLayout.marginWidth = 0;
+		gridLayout.verticalSpacing = 0;
+		gridLayout.marginHeight = 0;
+		compositeInfoRow.setLayout(gridLayout);
+
+		// Label: ScrollTo
+		labelScrollTo = new Label(compositeInfoRow, SWT.NONE);
+		labelScrollTo.setText("ScrollTo:");
+
+		// Mono
+		link = new Link(compositeInfoRow, SWT.NONE);
+		link.setText("<a>Mono</a>");
+		link.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				tableViewer.setSelection(new StructuredSelection(
+						tableViewer.getElementAt(0)), true);
+			}
+		});
+
+		// Stereo
+		link = new Link(compositeInfoRow, SWT.NONE);
+		link.setText("<a>Stereo</a>");
+		link.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				tableViewer.setSelection(new StructuredSelection(
+						tableViewer.getElementAt(EsxUtil.NUM_SAMPLES_MONO)), true);
+			}
+		});
+
+		// Next Sample
+		link = new Link(compositeInfoRow, SWT.NONE);
+		link.setText("<a>Next Sample</a>");
+		link.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				int currentIndex = tableViewer.getTable().getSelectionIndex();
+				ArrayList<Integer> skipIndices = new ArrayList<Integer>(1);
+				skipIndices.add(currentIndex);
+				int nextIndex = EsxUtil.findFirstIndex(
+					((EsxFile)tableViewer.getInput()).getSamples(),
+					currentIndex>=0?currentIndex:0,
+					skipIndices,
+					EsxPackage.Literals.SAMPLE__EMPTY,
+					false,
+					true
+				);
+				tableViewer.setSelection(new StructuredSelection(
+						tableViewer.getElementAt(nextIndex)), true);
+			}
+		});
+
+		// Next Empty
+		link = new Link(compositeInfoRow, SWT.NONE);
+		link.setText("<a>Next Empty</a>");
+		link.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				int currentIndex = tableViewer.getTable().getSelectionIndex();
+				ArrayList<Integer> skipIndices = new ArrayList<Integer>(1);
+				skipIndices.add(currentIndex);
+				int nextIndex = EsxUtil.findFirstIndex(
+					((EsxFile)tableViewer.getInput()).getSamples(),
+					currentIndex>=0?currentIndex:0,
+					skipIndices,
+					EsxPackage.Literals.SAMPLE__EMPTY,
+					true,
+					true
+				);
+				tableViewer.setSelection(new StructuredSelection(
+						tableViewer.getElementAt(nextIndex)), true);
+			}
+		});
+
+		// Memory Free
+		labelMemFree = new Label(compositeInfoRow, SWT.NONE);
+		labelMemFree.setAlignment(SWT.RIGHT);
+		labelMemFree.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+	}
+
 	/**
 	 * 
 	 */
@@ -274,8 +374,20 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 	public void refresh() {
 		if(this.parentEditor.getActivePage()!=EsxEditorPartSamples.PAGE_INDEX) return;
 
+		this.refreshLabels();
 		this.tableViewer.refresh();
 		this.editorSample.refresh();
+	}
+	
+	private void refreshLabels() {
+		if(this.tableViewer.getInput() instanceof EsxFile) {
+			EsxFile esxFile = (EsxFile) this.tableViewer.getInput();
+			this.labelMemFree.setText(
+				"Memory Free: "+
+				esxFile.getMemFreeInBytes() + " bytes (" +
+				esxFile.getMemFreeInSeconds() + " seconds)"
+			);
+		}
 	}
 	
 }
