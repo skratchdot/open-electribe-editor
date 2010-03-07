@@ -530,6 +530,11 @@
                   id="save"
                   style="push">
             </command>
+            <command
+                  commandId="org.eclipse.ui.file.saveAs"
+                  id="saveAs"
+                  style="push">
+            </command>
          </toolbar>
          <toolbar
                id="import">
@@ -621,6 +626,28 @@
                name="editEnd"
                visible="true">
          </separator>
+         <menu
+               icon="icons/full/obj16/import_wiz.gif"
+               id="import"
+               label="Import">
+            <command
+                  commandId="com.skratchdot.electribe.model.esx.editor.commands.importAudioFiles"
+                  style="push">
+            </command>
+         </menu>
+         <menu
+               icon="icons/full/obj16/export_wiz.gif"
+               id="export"
+               label="Export">
+            <command
+                  commandId="com.skratchdot.electribe.model.esx.editor.commands.exportAllAudioFiles"
+                  style="push">
+            </command>
+            <command
+                  commandId="com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles"
+                  style="push">
+            </command>
+         </menu>
       </menuContribution>
    </extension>
 
