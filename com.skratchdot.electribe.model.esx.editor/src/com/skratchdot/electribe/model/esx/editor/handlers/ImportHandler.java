@@ -24,7 +24,6 @@ import org.eclipse.emf.edit.command.ReplaceCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
@@ -62,7 +61,7 @@ public class ImportHandler extends AbstractHandler {
 		List<String> fileExtentionFilters = EsxEditor.AUDIO_FILE_EXTENSION_FILTERS;
 		String[] filters = fileExtentionFilters.toArray(new String[fileExtentionFilters.size()]);
 		String[] files = EsxEditorUtil.openFilePathDialog(window.getShell(), SWT.OPEN | SWT.MULTI, filters);
-		importAudioFiles(window.getWorkbench(), files);
+		importAudioFiles(window, files);
 
 		return null;
 	}
@@ -74,8 +73,7 @@ public class ImportHandler extends AbstractHandler {
 	 * @param workbench
 	 * @param files
 	 */
-	public static void importAudioFiles(IWorkbench workbench, String[] files) {
-		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+	public static void importAudioFiles(IWorkbenchWindow window, String[] files) {
 		IWorkbenchPage page = window.getActivePage();
 		IEditorPart editor = page.getActiveEditor();
 		
