@@ -15,10 +15,7 @@ import java.io.File;
 import java.util.Arrays;
 
 import org.eclipse.emf.common.ui.URIEditorInput;
-import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
@@ -174,28 +171,5 @@ public class EsxEditorUtil {
 		}
 		return true;
 	}
-
-	/**
-	 * @param eObject The EObject to validate
-	 * @return Returns true if the eObject is valid, returns false otherwise
-	 */
-	public static boolean validateObject(EObject eObject) {
-		Diagnostic diagnostic = Diagnostician.INSTANCE.validate(eObject);
-		if (diagnostic.getSeverity() == Diagnostic.ERROR
-				|| diagnostic.getSeverity() == Diagnostic.WARNING) {
-			System.err.println(diagnostic.getMessage());
-			for (Object element : diagnostic.getChildren()) {
-				Diagnostic childDiagnostic = (Diagnostic) element;
-				switch (childDiagnostic.getSeverity()) {
-				case Diagnostic.ERROR:
-				case Diagnostic.WARNING:
-					System.err.println("\t" + childDiagnostic.getMessage());
-				}
-			}
-			return false;
-		}
-		return true;
-	}
-
 	
 }

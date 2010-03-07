@@ -40,6 +40,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
@@ -930,11 +931,10 @@ public class EsxEditor
 	 * this shows the tabs at the bottom.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void showTabs() {
 		if (getPageCount() > 1) {
-			setPageText(0, getString("_UI_SelectionPage_label"));
 			if (getContainer() instanceof CTabFolder) {
 				((CTabFolder)getContainer()).setTabHeight(SWT.DEFAULT);
 				Point point = getContainer().getSize();
@@ -1120,21 +1120,31 @@ public class EsxEditor
 					// Save the resources to the file system.
 					//
 					boolean first = true;
+					resourceToDiagnosticMap.clear();
 					for (Resource resource : editingDomain.getResourceSet().getResources()) {
 						if ((first || !resource.getContents().isEmpty() || isPersisted(resource)) && !editingDomain.isReadOnly(resource)) {
-							try {
-								// Pass IProgressMonitor to EsxResourceImpl#doSave()
-								saveOptions.put("IProgressMonitor", monitor);
-								
-								long timeStamp = resource.getTimeStamp();
-								resource.save(saveOptions);
-								if (resource.getTimeStamp() != timeStamp) {
-									savedResources.add(resource);
+								// Only attempt save if resource is valid
+								Diagnostic diagnostic = Diagnostician.INSTANCE.validate(resource.getContents().get(0));
+								if (diagnostic.getSeverity() == Diagnostic.ERROR
+										|| diagnostic.getSeverity() == Diagnostic.WARNING) {
+									resourceToDiagnosticMap.put(resource, diagnostic);
 								}
-							}
-							catch (Exception exception) {
-								resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
-							}
+								else {
+									try {
+										// Pass IProgressMonitor to EsxResourceImpl#doSave()
+										saveOptions.put("IProgressMonitor", monitor);
+
+										// Save resource
+										long timeStamp = resource.getTimeStamp();
+										resource.save(saveOptions);
+										if (resource.getTimeStamp() != timeStamp) {
+											savedResources.add(resource);
+										}
+									}
+									catch (Exception exception) {
+										resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
+									}
+								}
 							first = false;
 						}
 					}
@@ -1149,8 +1159,10 @@ public class EsxEditor
 
 			// Refresh the necessary state.
 			//
-			((BasicCommandStack)editingDomain.getCommandStack()).saveIsDone();
-			firePropertyChange(IEditorPart.PROP_DIRTY);
+			if(resourceToDiagnosticMap.isEmpty()) {
+				((BasicCommandStack)editingDomain.getCommandStack()).saveIsDone();
+				firePropertyChange(IEditorPart.PROP_DIRTY);
+			}
 		}
 		catch (Exception exception) {
 			// Something went wrong that shouldn't.
