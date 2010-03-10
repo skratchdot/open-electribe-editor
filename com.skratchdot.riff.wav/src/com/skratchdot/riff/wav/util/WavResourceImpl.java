@@ -56,7 +56,7 @@ public class WavResourceImpl extends ResourceImpl {
 			this.getContents().add(riffWave);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new IOException(e);
+			throw new IOException(e.getMessage());
 		}
 	}
 
@@ -68,7 +68,7 @@ public class WavResourceImpl extends ResourceImpl {
 			outputStream.write(riffWave.toByteArray());
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new IOException(e);
+			throw new IOException(e.getMessage());
 		}
 	}
 
