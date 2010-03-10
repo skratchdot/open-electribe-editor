@@ -28,7 +28,7 @@ v1.0
          version="0.0.0"
          os="linux,macosx,win32"
          ws="carbon,cocoa,gtk,win32"
-         arch="ppc,x86"/>
+         arch="ppc,x86,x86_64"/>
 
    <plugin
          id="com.ibm.icu"

@@ -25,7 +25,7 @@
             name="Open Electribe Editor">
          <property
                name="appName"
-               value="%pluginName">
+               value="Open Electribe Editor">
          </property>
          <property
                name="preferenceCustomization"
