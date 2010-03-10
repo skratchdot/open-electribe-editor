@@ -129,7 +129,6 @@ public class EsxCompositeSongPatterns extends EsxComposite {
 		));
 
 		this.tableViewer.addSelectionChangedListener(new ISelectionChangedListener() {
-			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
 		        IStructuredSelection selection = (IStructuredSelection) event.getSelection();
 

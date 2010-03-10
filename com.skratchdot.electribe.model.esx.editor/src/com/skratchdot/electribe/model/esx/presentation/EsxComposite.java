@@ -80,7 +80,6 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	/* (non-Javadoc)
 	 * @see org.eclipse.emf.edit.domain.IEditingDomainProvider#getEditingDomain()
 	 */
-	@Override
 	public EditingDomain getEditingDomain() {
 		return parentPart.getEditingDomain();
 	}

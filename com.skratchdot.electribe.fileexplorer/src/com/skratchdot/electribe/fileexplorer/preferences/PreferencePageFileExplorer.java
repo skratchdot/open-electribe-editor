@@ -26,7 +26,6 @@ import com.skratchdot.electribe.fileexplorer.Activator;
 public class PreferencePageFileExplorer extends PreferencePage implements IWorkbenchPreferencePage {
 	public static final String ID = "com.skratchdot.electribe.fileexplorer.preferences.PreferencePageFileExplorer";
 
-	@Override
 	public void init(IWorkbench workbench) {
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
 		setDescription(

@@ -20,7 +20,6 @@ import org.eclipse.ui.PlatformUI;
 
 public class ShowPropertiesViewHandler extends AbstractHandler {
 
-	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		try {
 			PlatformUI.getWorkbench().getActiveWorkbenchWindow()

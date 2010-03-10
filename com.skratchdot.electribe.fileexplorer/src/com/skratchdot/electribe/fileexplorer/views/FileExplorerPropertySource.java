@@ -80,12 +80,10 @@ public class FileExplorerPropertySource implements IPropertySource {
 	
 	}
 
-	@Override
 	public Object getEditableValue() {
 		return null;
 	}
 
-	@Override
 	public IPropertyDescriptor[] getPropertyDescriptors() {
 		List<PropertyDescriptor> descriptors = new ArrayList<PropertyDescriptor>();
 
@@ -102,24 +100,20 @@ public class FileExplorerPropertySource implements IPropertySource {
 		return (IPropertyDescriptor[]) descriptors.toArray(new IPropertyDescriptor[0]);
 	}
 
-	@Override
 	public Object getPropertyValue(Object id) {
 		return properties.get(id);
 	}
 
-	@Override
 	public boolean isPropertySet(Object id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public void resetPropertyValue(Object id) {
 		// TODO Auto-generated method stub
 	
 	}
 
-	@Override
 	public void setPropertyValue(Object id, Object value) {
 		// TODO Auto-generated method stub
 	

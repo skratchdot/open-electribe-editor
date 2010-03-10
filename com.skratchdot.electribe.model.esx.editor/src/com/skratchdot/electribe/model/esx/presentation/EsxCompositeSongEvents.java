@@ -103,7 +103,6 @@ public class EsxCompositeSongEvents extends EsxComposite {
 		this.tableViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(getAdapterFactory(), this.tableViewer));
 
 		this.tableViewer.addSelectionChangedListener(new ISelectionChangedListener() {
-			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
 		        IStructuredSelection selection = (IStructuredSelection) event.getSelection();
 

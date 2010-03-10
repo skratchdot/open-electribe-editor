@@ -91,12 +91,10 @@ public class TreeView extends ViewPart
 		viewer.getControl().setFocus();
 	}
 
-	@Override
 	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
 		// TODO Auto-generated method stub
 	}
 
-	@Override
 	public void propertyChange(PropertyChangeEvent event) {
 		// If PREFNAME_TREEVIEW_ONLYSHOWINGDIRECTORIES has changed
 		if(event.getProperty().equals(PreferenceConstants.PREFNAME_TREEVIEW_ONLYSHOWINGDIRECTORIES)) {
@@ -112,7 +110,6 @@ public class TreeView extends ViewPart
 		}
 	}
 
-	@Override
 	public void doubleClick(DoubleClickEvent event) {
 		ISelection selection = event.getSelection();
 		Object firstObject = ((IStructuredSelection) selection).getFirstElement();

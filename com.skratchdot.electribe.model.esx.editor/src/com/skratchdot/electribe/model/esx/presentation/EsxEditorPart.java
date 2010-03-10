@@ -94,7 +94,6 @@ public abstract class EsxEditorPart extends EditorPart
 	/* (non-Javadoc)
 	 * @see org.eclipse.ui.ISelectionListener#selectionChanged(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
 	 */
-	@Override
 	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
 		// nothing to do here - this is handled by the editor part subclasses
 	}
@@ -102,7 +101,6 @@ public abstract class EsxEditorPart extends EditorPart
 	/* (non-Javadoc)
 	 * @see org.eclipse.jface.util.IPropertyChangeListener#propertyChange(org.eclipse.jface.util.PropertyChangeEvent)
 	 */
-	@Override
 	public void propertyChange(PropertyChangeEvent event) {
 		// nothing to do here - this is handled by the editor part subclasses
 	}
@@ -149,7 +147,6 @@ public abstract class EsxEditorPart extends EditorPart
 	/* (non-Javadoc)
 	 * @see org.eclipse.jface.action.IMenuListener#menuAboutToShow(org.eclipse.jface.action.IMenuManager)
 	 */
-	@Override
 	public void menuAboutToShow(IMenuManager manager) {
 		// pass the request to show the context menu on to the parent editor
 		((IMenuListener)parentEditor.getEditorSite().getActionBarContributor()).menuAboutToShow(manager);
@@ -158,7 +155,6 @@ public abstract class EsxEditorPart extends EditorPart
 	/* (non-Javadoc)
 	 * @see org.eclipse.emf.edit.domain.IEditingDomainProvider#getEditingDomain()
 	 */
-	@Override
 	public EditingDomain getEditingDomain() {
 		return parentEditor.getEditingDomain();
 	}

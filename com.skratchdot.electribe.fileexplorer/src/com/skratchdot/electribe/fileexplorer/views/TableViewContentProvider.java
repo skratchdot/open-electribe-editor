@@ -32,7 +32,6 @@ public class TableViewContentProvider implements IStructuredContentProvider {
 		this.filter = filter;
 	}
 
-	@Override
 	public Object[] getElements(Object inputElement) {
 		// We only need to return the root files
 		if(inputElement==null || inputElement instanceof RootDirectory) {
@@ -74,12 +73,10 @@ public class TableViewContentProvider implements IStructuredContentProvider {
 		}
 	}
 
-	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
 	}
 
-	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		// TODO Auto-generated method stub
 	}

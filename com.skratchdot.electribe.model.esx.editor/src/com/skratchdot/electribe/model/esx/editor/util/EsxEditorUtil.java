@@ -50,7 +50,6 @@ public class EsxEditorUtil {
 		if(!directory.isDirectory()) return;
 
 		File[] tempFiles = directory.listFiles(new FilenameFilter() {
-			@Override
 			public boolean accept(File fDir, String strName) {
 				return (
 					(strName.startsWith("temp") || strName.startsWith("untitled"))

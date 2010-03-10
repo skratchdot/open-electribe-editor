@@ -360,7 +360,6 @@ public class AudioPlayer implements Runnable  {
 		}
 	}
 
-	@Override
 	public void run() {
 		try {
 			byte[] buffer = new byte[PLAY_BUFFER_SIZE];

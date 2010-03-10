@@ -22,7 +22,6 @@ public class FileExplorerAdapterFactory implements IAdapterFactory {
 	private static final Class[] TYPES = { File.class };
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public Object getAdapter(Object adaptableObject, Class adapterType) {
 		if ((adaptableObject instanceof File) && (adapterType == IPropertySource.class)) {
 			return new FileExplorerPropertySource((File) adaptableObject);
@@ -31,7 +30,6 @@ public class FileExplorerAdapterFactory implements IAdapterFactory {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public Class[] getAdapterList() {
 		return TYPES;
 	}

@@ -32,19 +32,16 @@ public class TreeViewContentProvider implements ITreeContentProvider {
 		this.filter = filter;
 	}
 
-	@Override
 	public Object[] getChildren(Object parentElement) {
 		// Return the files and subdirectories in this directory
 		return ((File) parentElement).listFiles(filter);
 	}
 
-	@Override
 	public Object getParent(Object element) {
 		// Return this file's parent file
 		return ((File) element).getParentFile();
 	}
 
-	@Override
 	public boolean hasChildren(Object element) {
 		// Get the children
 		Object[] obj = getChildren(element);
@@ -53,7 +50,6 @@ public class TreeViewContentProvider implements ITreeContentProvider {
 		return obj == null ? false : obj.length > 0;
 	}
 
-	@Override
 	public Object[] getElements(Object inputElement) {
 		// These are the root elements of the tree
 		// We don't care what element is, because we just want all
@@ -61,13 +57,11 @@ public class TreeViewContentProvider implements ITreeContentProvider {
 		return File.listRoots();
 	}
 
-	@Override
 	public void dispose() {
 		// Nothing to dispose
 
 	}
 
-	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		// Nothing to change
 	}

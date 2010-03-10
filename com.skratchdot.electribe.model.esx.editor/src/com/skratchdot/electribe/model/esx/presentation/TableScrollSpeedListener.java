@@ -67,7 +67,6 @@ public class TableScrollSpeedListener implements Listener {
 	/* (non-Javadoc)
 	 * @see org.eclipse.swt.widgets.Listener#handleEvent(org.eclipse.swt.widgets.Event)
 	 */
-	@Override
 	public void handleEvent(Event event) {
 		switch (event.type) {
 		case SWT.MouseDown:

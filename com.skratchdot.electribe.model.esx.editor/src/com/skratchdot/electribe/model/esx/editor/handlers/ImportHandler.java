@@ -40,7 +40,6 @@ import com.skratchdot.electribe.model.esx.util.EsxUtil;
 public class ImportHandler extends AbstractHandler {
 	public static final String IMPORT_AUDIO_FILES_ID = "com.skratchdot.electribe.model.esx.editor.commands.importAudioFiles";
 
-	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// IMPORT_AUDIO_FILES_ID
 		if(event.getCommand().getId().equals(IMPORT_AUDIO_FILES_ID)) {

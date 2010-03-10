@@ -19,7 +19,6 @@ import com.skratchdot.electribe.fileexplorer.Activator;
 public class PreferencePageTreeView extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 	public static final String ID = "com.skratchdot.electribe.fileexplorer.preferences.PreferencePageTreeView";
 
-	@Override
 	public void init(IWorkbench workbench) {
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
 		setDescription(

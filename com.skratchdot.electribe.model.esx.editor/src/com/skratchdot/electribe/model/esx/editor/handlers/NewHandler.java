@@ -30,7 +30,6 @@ import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
 public class NewHandler extends AbstractHandler {
 	public static final String NEW_ESX_FILE_ID = "com.skratchdot.electribe.model.esx.editor.commands.newEsxFile";
 
-	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// NEW_ESX_FILE_ID
 		if(event.getCommand().getId().equals(NEW_ESX_FILE_ID)) {

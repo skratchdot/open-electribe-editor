@@ -27,7 +27,6 @@ import com.skratchdot.electribe.model.esx.presentation.EsxEditor;
 public class OpenHandler extends AbstractHandler {
 	public static final String OPEN_ESX_FILE_ID = "com.skratchdot.electribe.model.esx.editor.commands.openEsxFile";
 
-	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// OPEN_ESX_FILE_ID
 		if(event.getCommand().getId().equals(OPEN_ESX_FILE_ID)) {

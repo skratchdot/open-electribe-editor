@@ -92,7 +92,6 @@ public class FileExplorerFilter implements FileFilter {
 		return elements;
 	}
 
-	@Override
 	public boolean accept(File element) {
 		// Always return true for directories
 		if(element.isDirectory()) {

@@ -128,7 +128,6 @@ public class TableView extends ViewPart
 		viewer.getControl().setFocus();
 	}
 
-	@Override
 	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
 		if (part instanceof TreeView && selection instanceof IStructuredSelection) {
 			Object firstObject = ((IStructuredSelection) selection).getFirstElement();
@@ -139,7 +138,6 @@ public class TableView extends ViewPart
 		}
 	}
 
-	@Override
 	public void propertyChange(PropertyChangeEvent event) {
 		// If PREFNAME_TABLEVIEW_ONLYSHOWINGDIRECTORIES has changed
 		if(event.getProperty().equals(PreferenceConstants.PREFNAME_TABLEVIEW_ONLYSHOWINGDIRECTORIES)) {
@@ -155,7 +153,6 @@ public class TableView extends ViewPart
 		}
 	}
 
-	@Override
 	public void doubleClick(DoubleClickEvent event) {
 		ISelection selection = event.getSelection();
 		Object firstObject = ((IStructuredSelection) selection).getFirstElement();

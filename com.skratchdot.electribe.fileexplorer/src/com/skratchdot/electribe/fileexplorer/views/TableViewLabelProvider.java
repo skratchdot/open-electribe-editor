@@ -21,7 +21,6 @@ import org.eclipse.ui.PlatformUI;
 
 public class TableViewLabelProvider implements ITableLabelProvider {
 
-	@Override
 	public Image getColumnImage(Object element, int columnIndex) {
 		// The only column to have an image is the first column (the name column)
 		if (columnIndex != 0 || element==null) {
@@ -54,7 +53,6 @@ public class TableViewLabelProvider implements ITableLabelProvider {
 
 	}
 
-	@Override
 	public String getColumnText(Object element, int columnIndex) {
 		// Our "parent directory"
 		if(element instanceof ParentDirectory) {
@@ -85,25 +83,21 @@ public class TableViewLabelProvider implements ITableLabelProvider {
 		return "";
 	}
 
-	@Override
 	public void addListener(ILabelProviderListener listener) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	public boolean isLabelProperty(Object element, String property) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public void removeListener(ILabelProviderListener listener) {
 		// TODO Auto-generated method stub
 

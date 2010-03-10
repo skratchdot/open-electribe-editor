@@ -38,7 +38,6 @@ public class ExportHandler extends AbstractHandler {
 	public static final String EXPORT_ALL_AUDIO_FILES_ID = "com.skratchdot.electribe.model.esx.editor.commands.exportAllAudioFiles";
 	public static final String EXPORT_ALL_SELECTED_FILES_ID = "com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles";
 
-	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// EXPORT_ALL_AUDIO_FILES_ID
 		if(event.getCommand().getId().equals(EXPORT_ALL_AUDIO_FILES_ID)) {
