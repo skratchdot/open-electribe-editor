@@ -22,10 +22,10 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="com.skratchdot.electribe.model.esx.editor.EsxEditorAdvisorApplication"
-            name="Open Electribe Editor">
+            name="%pluginName">
          <property
                name="appName"
-               value="Open Electribe Editor">
+               value="%pluginName">
          </property>
          <property
                name="preferenceCustomization"
