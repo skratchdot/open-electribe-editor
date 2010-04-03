@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.ui,
  com.skratchdot.electribe.model.esx;bundle-version="1.0.0",
  com.skratchdot.electribe.model.esx.preferences;bundle-version="1.0.0",
  com.skratchdot.riff.wav;bundle-version="1.0.0"
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.resources
 Bundle-ClassPath: lib/jl1.0.1.jar,
