@@ -239,11 +239,6 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 			}
 			
 		});
-		
-		// Drag & Drop
-		//int ops = DND.DROP_MOVE;
-		//Transfer[] transfers = new Transfer[] { FileTransfer.getInstance() };
-		//this.tableViewer.addDropSupport(ops, transfers, new EsxEditorPartSamplesDropTargetAdapter());
 
 		// Label Provider		
 		this.tableViewer.setLabelProvider(new TableViewerColorProvider(
