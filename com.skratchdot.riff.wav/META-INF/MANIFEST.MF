@@ -6,7 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: com.skratchdot.riff.wav,
  com.skratchdot.riff.wav.impl,
  com.skratchdot.riff.wav.util
