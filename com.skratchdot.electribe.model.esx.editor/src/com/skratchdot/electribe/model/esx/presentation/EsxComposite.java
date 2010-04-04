@@ -218,7 +218,7 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 		label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 		label.setText(title + ":");
 
-		Text text = new Text(parent, SWT.BORDER);
+		Text text = new Text(parent, SWT.BORDER | SWT.READ_ONLY);
 		text.setEditable(false);
 		text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		return text;
