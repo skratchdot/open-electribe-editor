@@ -255,7 +255,7 @@ public class SongItemProvider
 				 getString("_UI_Song_numberOfSongEventsOriginal_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Song_numberOfSongEventsOriginal_feature", "_UI_Song_type"),
 				 EsxPackage.Literals.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL,
-				 true,
+				 false,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,

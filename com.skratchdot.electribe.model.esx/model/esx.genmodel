@@ -1629,7 +1629,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esx.ecore#//EsxFile/emptySong"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/maxSampleOffset"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/memUsedInBytes"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/memUsedInSeconds"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/memFreeInBytes"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/memFreeInSeconds"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/numPatternsEmpty"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/numPatternsNotEmpty"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/numSamplesEmpty"/>
@@ -1901,6 +1903,8 @@
       <genOperations ecoreOperation="esx.ecore#//Sample/toRIFFWaveFile">
         <genParameters ecoreParameter="esx.ecore#//Sample/toRIFFWaveFile/file"/>
       </genOperations>
+      <genOperations ecoreOperation="esx.ecore#//Sample/toRIFFWaveMono"/>
+      <genOperations ecoreOperation="esx.ecore#//Sample/toRIFFWaveStereo"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//SampleTune">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SampleTune/value"/>
@@ -1929,7 +1933,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/muteHold"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/nextSongNumber"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/numberOfSongEventsCurrent"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/numberOfSongEventsOriginal"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/numberOfSongEventsOriginal"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esx.ecore#//Song/songPatterns"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esx.ecore#//Song/songEvents"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Song/empty"/>
