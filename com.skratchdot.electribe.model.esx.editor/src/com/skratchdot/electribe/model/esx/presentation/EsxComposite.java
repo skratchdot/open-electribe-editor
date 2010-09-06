@@ -110,6 +110,24 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * @return
 	 */
 	protected String getMultiString(List<? extends EObject> list, EStructuralFeature feature, String multiText) {
+		return getMultiString(list, feature, multiText, null);
+	}
+
+
+	/**
+	 * This takes a list of EObjects and compares the given feature's toString() values.
+	 * If the list is empty, an empty string is returned.  If the list only contains one 
+	 * item, or if all the feature's toString() values match, then the toString() value is
+	 * returned.  If there are differing values for toString(), then the param "multiText"
+	 * is returned. If feature is a complex object, then featureLabel can be used to return
+	 * a more appropriate label.
+	 * @param list A list of EObjects
+	 * @param feature The feature to compare
+	 * @param multiText The String to return if the given features toString() values don't match
+	 * @param featureLabel Can be null, or a "sub-feature" of feature.
+	 * @return
+	 */
+	protected String getMultiString(List<? extends EObject> list, EStructuralFeature feature, String multiText, EStructuralFeature featureLabel) {
 		// Return immediately because an invalid list was passed in
 		if(list==null || list.size()<1) {
 			return "";
@@ -117,14 +135,14 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 
 		// Store the firstString (which we will compare all other strings to
 		Object firstObject = list.get(0).eGet(feature);
-		String firstString = (firstObject==null?"":firstObject.toString());
+		String firstString = getFeatureString(firstObject, featureLabel);
 
 		// Compare firstString to all other strings
 		Object currentObject = null;
 		String currentString = "";
 		for(int i=1; i<list.size(); i++) {
 			currentObject = list.get(i).eGet(feature);
-			currentString = (currentObject==null?"":currentObject.toString());
+			currentString = getFeatureString(currentObject, featureLabel);
 			if(!firstString.equals(currentString)) {
 				return multiText;
 			}
@@ -134,6 +152,22 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 		return firstString;
 	}
 
+	/**
+	 * @param obj
+	 * @param featureLabel
+	 * @return
+	 */
+	private String getFeatureString(Object obj, EStructuralFeature featureLabel) {
+		String featureString = (obj==null?"":obj.toString());
+		if(featureLabel!=null && obj instanceof EObject) {
+			Object firstObjectLabel = ((EObject) obj).eGet(featureLabel);
+			if(obj!=null) {
+				featureString = firstObjectLabel.toString();
+			}
+		}
+		return featureString;
+	}
+	
 	/**
 	 * This function is intended to be called from within a loop, passing
 	 * a different currentIndex each time.  It will return the given string

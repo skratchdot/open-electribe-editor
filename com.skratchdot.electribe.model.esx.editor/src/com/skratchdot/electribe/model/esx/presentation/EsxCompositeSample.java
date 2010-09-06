@@ -256,7 +256,7 @@ public class EsxCompositeSample extends EsxComposite {
 		this.textName.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__NAME, multipleValueString)));
 
 		this.textSampleRate.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__SAMPLE_RATE, multipleValueString)));
-		this.textSampleTune.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__SAMPLE_TUNE, multipleValueString)));
+		this.textSampleTune.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__SAMPLE_TUNE, multipleValueString, EsxPackage.Literals.SAMPLE_TUNE__VALUE)));
 		this.textIsSlice.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__SLICE, multipleValueString)));
 		this.textIsLoop.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__LOOP, multipleValueString)));
 
