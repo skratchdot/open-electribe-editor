@@ -536,6 +536,8 @@ public class EsxFileItemProvider
 			case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_NOT_EMPTY:
 			case EsxPackage.ESX_FILE__NUM_SONGS_EMPTY:
 			case EsxPackage.ESX_FILE__NUM_SONGS_NOT_EMPTY:
+			case EsxPackage.ESX_FILE__POINTERS_TO_SAMPLES_USE_CURRENT:
+			case EsxPackage.ESX_FILE__POINTERS_TO_PATTERNS_USE_CURRENT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsxPackage.ESX_FILE__GLOBAL_PARAMETERS:

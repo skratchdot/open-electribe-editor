@@ -47,6 +47,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoNotEmpty <em>Num Samples Stereo Not Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsEmpty <em>Num Songs Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsNotEmpty <em>Num Songs Not Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#isPointersToSamplesUseCurrent <em>Pointers To Samples Use Current</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#isPointersToPatternsUseCurrent <em>Pointers To Patterns Use Current</em>}</li>
  * </ul>
  * </p>
  *
@@ -457,6 +459,60 @@ public interface EsxFile extends EObject {
 	 * @generated
 	 */
 	int getNumSongsNotEmpty();
+
+	/**
+	 * Returns the value of the '<em><b>Pointers To Samples Use Current</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Pointers To Samples Use Current</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Pointers To Samples Use Current</em>' attribute.
+	 * @see #setPointersToSamplesUseCurrent(boolean)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_PointersToSamplesUseCurrent()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isPointersToSamplesUseCurrent();
+
+	/**
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.EsxFile#isPointersToSamplesUseCurrent <em>Pointers To Samples Use Current</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Pointers To Samples Use Current</em>' attribute.
+	 * @see #isPointersToSamplesUseCurrent()
+	 * @generated
+	 */
+	void setPointersToSamplesUseCurrent(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Pointers To Patterns Use Current</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Pointers To Patterns Use Current</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Pointers To Patterns Use Current</em>' attribute.
+	 * @see #setPointersToPatternsUseCurrent(boolean)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_PointersToPatternsUseCurrent()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isPointersToPatternsUseCurrent();
+
+	/**
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.EsxFile#isPointersToPatternsUseCurrent <em>Pointers To Patterns Use Current</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Pointers To Patterns Use Current</em>' attribute.
+	 * @see #isPointersToPatternsUseCurrent()
+	 * @generated
+	 */
+	void setPointersToPatternsUseCurrent(boolean value);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -275,13 +275,31 @@ public interface EsxPackage extends EPackage {
 	int ESX_FILE__NUM_SONGS_NOT_EMPTY = 21;
 
 	/**
+	 * The feature id for the '<em><b>Pointers To Samples Use Current</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESX_FILE__POINTERS_TO_SAMPLES_USE_CURRENT = 22;
+
+	/**
+	 * The feature id for the '<em><b>Pointers To Patterns Use Current</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESX_FILE__POINTERS_TO_PATTERNS_USE_CURRENT = 23;
+
+	/**
 	 * The number of structural features of the '<em>File</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE_FEATURE_COUNT = 22;
+	int ESX_FILE_FEATURE_COUNT = 24;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.GlobalParametersImpl <em>Global Parameters</em>}' class.
@@ -4133,6 +4151,28 @@ public interface EsxPackage extends EPackage {
 	EAttribute getEsxFile_NumSongsNotEmpty();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#isPointersToSamplesUseCurrent <em>Pointers To Samples Use Current</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Pointers To Samples Use Current</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#isPointersToSamplesUseCurrent()
+	 * @see #getEsxFile()
+	 * @generated
+	 */
+	EAttribute getEsxFile_PointersToSamplesUseCurrent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#isPointersToPatternsUseCurrent <em>Pointers To Patterns Use Current</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Pointers To Patterns Use Current</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#isPointersToPatternsUseCurrent()
+	 * @see #getEsxFile()
+	 * @generated
+	 */
+	EAttribute getEsxFile_PointersToPatternsUseCurrent();
+
+	/**
 	 * Returns the meta object for class '{@link com.skratchdot.electribe.model.esx.GlobalParameters <em>Global Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6852,6 +6892,22 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ESX_FILE__NUM_SONGS_NOT_EMPTY = eINSTANCE.getEsxFile_NumSongsNotEmpty();
+
+		/**
+		 * The meta object literal for the '<em><b>Pointers To Samples Use Current</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ESX_FILE__POINTERS_TO_SAMPLES_USE_CURRENT = eINSTANCE.getEsxFile_PointersToSamplesUseCurrent();
+
+		/**
+		 * The meta object literal for the '<em><b>Pointers To Patterns Use Current</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ESX_FILE__POINTERS_TO_PATTERNS_USE_CURRENT = eINSTANCE.getEsxFile_PointersToPatternsUseCurrent();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.GlobalParametersImpl <em>Global Parameters</em>}' class.

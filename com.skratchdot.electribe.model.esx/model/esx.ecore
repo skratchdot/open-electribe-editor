@@ -82,6 +82,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numSongsNotEmpty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
         derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pointersToSamplesUseCurrent"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pointersToPatternsUseCurrent"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GlobalParameters">
     <eOperations name="init">

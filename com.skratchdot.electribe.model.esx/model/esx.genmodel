@@ -1642,6 +1642,8 @@
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/numSamplesStereoNotEmpty"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/numSongsEmpty"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/numSongsNotEmpty"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/pointersToSamplesUseCurrent"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/pointersToPatternsUseCurrent"/>
       <genOperations ecoreOperation="esx.ecore#//EsxFile/init">
         <genParameters ecoreParameter="esx.ecore#//EsxFile/init/b"/>
       </genOperations>

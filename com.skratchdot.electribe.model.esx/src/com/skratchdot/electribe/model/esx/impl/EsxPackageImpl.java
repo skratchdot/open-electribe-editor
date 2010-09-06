@@ -955,6 +955,24 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getEsxFile_PointersToSamplesUseCurrent() {
+		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(22);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEsxFile_PointersToPatternsUseCurrent() {
+		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(23);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getGlobalParameters() {
 		return globalParametersEClass;
 	}
@@ -3116,6 +3134,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(esxFileEClass, ESX_FILE__NUM_SAMPLES_STEREO_NOT_EMPTY);
 		createEAttribute(esxFileEClass, ESX_FILE__NUM_SONGS_EMPTY);
 		createEAttribute(esxFileEClass, ESX_FILE__NUM_SONGS_NOT_EMPTY);
+		createEAttribute(esxFileEClass, ESX_FILE__POINTERS_TO_SAMPLES_USE_CURRENT);
+		createEAttribute(esxFileEClass, ESX_FILE__POINTERS_TO_PATTERNS_USE_CURRENT);
 
 		globalParametersEClass = createEClass(GLOBAL_PARAMETERS);
 		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED);
@@ -3475,6 +3495,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getEsxFile_NumSamplesStereoNotEmpty(), ecorePackage.getEInt(), "numSamplesStereoNotEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEsxFile_NumSongsEmpty(), ecorePackage.getEInt(), "numSongsEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEsxFile_NumSongsNotEmpty(), ecorePackage.getEInt(), "numSongsNotEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_PointersToSamplesUseCurrent(), ecorePackage.getEBoolean(), "pointersToSamplesUseCurrent", "true", 0, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_PointersToPatternsUseCurrent(), ecorePackage.getEBoolean(), "pointersToPatternsUseCurrent", "true", 0, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = addEOperation(esxFileEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
