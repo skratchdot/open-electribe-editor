@@ -29,12 +29,15 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
+import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.MuteHold;
 import com.skratchdot.electribe.model.esx.NextSongNumber;
 import com.skratchdot.electribe.model.esx.Song;
 import com.skratchdot.electribe.model.esx.SongLength;
+import com.skratchdot.electribe.model.esx.Tempo;
 import com.skratchdot.electribe.model.esx.TempoLock;
+import com.skratchdot.electribe.model.esx.editor.util.EsxObjectAdapter;
 
 public class EsxCompositeSong extends EsxComposite {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositeSong"; //$NON-NLS-1$
@@ -146,7 +149,14 @@ public class EsxCompositeSong extends EsxComposite {
 		inputTempo = this.createGridData2ColumnTextInput(groupGeneralInfo, "Tempo", new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(songs, EsxPackage.Literals.SONG__TEMPO, Integer.parseInt(inputTempo.getText()), false, -1);
+				setFeatureForSelectedItems(songs, EsxPackage.Literals.SONG__TEMPO, new EsxObjectAdapter() {
+					@Override
+					public Object getObject() {
+						Tempo newTempo = EsxFactory.eINSTANCE.createTempo();
+						newTempo.setValue(Float.parseFloat(inputTempo.getText()));
+						return newTempo;
+					}
+				});
 			}
 		});
 		textTempoLock = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Tempo Lock");
@@ -217,7 +227,7 @@ public class EsxCompositeSong extends EsxComposite {
 
 		this.textName.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__NAME, multipleValueString)));
 
-		this.textTempo.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__TEMPO, multipleValueString)));
+		this.textTempo.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__TEMPO, multipleValueString, EsxPackage.Literals.TEMPO__VALUE)));
 		this.textTempoLock.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__TEMPO_LOCK, multipleValueString)));
 		this.textSongLength.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__SONG_LENGTH, multipleValueString)));
 		this.textMuteHold.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__MUTE_HOLD, multipleValueString)));
@@ -233,7 +243,7 @@ public class EsxCompositeSong extends EsxComposite {
 
 		this.inputName.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__NAME, multipleValueString)));
 
-		this.inputTempo.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__TEMPO, multipleValueString)));
+		this.inputTempo.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__TEMPO, multipleValueString, EsxPackage.Literals.TEMPO__VALUE)));
 		this.comboTempoLock.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__TEMPO_LOCK, multipleValueString)));
 		this.comboSongLength.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__SONG_LENGTH, multipleValueString)));
 		this.comboMuteHold.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__MUTE_HOLD, multipleValueString)));

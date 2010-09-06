@@ -32,6 +32,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import com.skratchdot.electribe.model.esx.editor.util.EsxObjectAdapter;
+
 public abstract class EsxComposite extends Composite implements IEditingDomainProvider {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxComposite"; //$NON-NLS-1$
 
@@ -233,6 +235,28 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 		}
 	}
 
+	/**
+	 * @param list A list of EObjects
+	 * @param feature The feature we will be setting
+	 * @param value The value we will be setting
+	 */
+	protected void setFeatureForSelectedItems(List<? extends EObject> list, EStructuralFeature feature, EsxObjectAdapter value) {
+		CompoundCommand cmd = new CompoundCommand();
+
+		for(int i=0; i<list.size(); i++) {
+			cmd.append(SetCommand.create(
+				this.getEditingDomain(),
+				list.get(i),
+				feature,
+				value.getObject()
+			));
+		}
+		
+		if(cmd.canExecute()) {
+			this.getCommandStack().execute(cmd);
+		}
+	}
+	
 	/**
 	 * @param parent
 	 */
