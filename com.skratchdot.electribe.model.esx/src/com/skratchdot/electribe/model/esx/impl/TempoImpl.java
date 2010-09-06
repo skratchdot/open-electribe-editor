@@ -11,6 +11,8 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
+import java.text.DecimalFormat;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -108,6 +110,27 @@ public class TempoImpl extends EObjectImpl implements Tempo {
 		packedShort = EsxUtil.packInt(packedShort, tempoWhole, 9, 7);
 		packedShort = EsxUtil.packInt(packedShort, tempoDecimal, 4, 0);
 		return (short) packedShort;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public float getValidValue(float value) {
+		String tempoAsString = new DecimalFormat("0.#").format(value);
+		Float tempoAsFloat = new Float(tempoAsString);
+
+		if(tempoAsFloat < 20) {
+			value = new Float(20);
+		}
+		else if(tempoAsFloat > 300) {
+			value = new Float(300);
+		}
+		else {
+			value = tempoAsFloat;
+		}
+		return value;
 	}
 
 	/**

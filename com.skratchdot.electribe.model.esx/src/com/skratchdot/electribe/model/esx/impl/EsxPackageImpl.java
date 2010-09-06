@@ -3897,6 +3897,9 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 
 		addEOperation(tempoEClass, ecorePackage.getEShort(), "getShortFromCurrentValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(tempoEClass, ecorePackage.getEFloat(), "getValidValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEFloat(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(tempoEClass, null, "setCurrentValueFromShort", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEShort(), "packedShort", 1, 1, IS_UNIQUE, IS_ORDERED);
 

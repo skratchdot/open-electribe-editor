@@ -494,6 +494,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Tempo">
     <eOperations name="getShortFromCurrentValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    <eOperations name="getValidValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat">
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    </eOperations>
     <eOperations name="setCurrentValueFromShort">
       <eParameters name="packedShort" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     </eOperations>

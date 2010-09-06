@@ -153,7 +153,7 @@ public class EsxCompositeSong extends EsxComposite {
 					@Override
 					public Object getObject() {
 						Tempo newTempo = EsxFactory.eINSTANCE.createTempo();
-						newTempo.setValue(Float.parseFloat(inputTempo.getText()));
+						newTempo.setValue(newTempo.getValidValue(Float.parseFloat(inputTempo.getText())));
 						return newTempo;
 					}
 				});

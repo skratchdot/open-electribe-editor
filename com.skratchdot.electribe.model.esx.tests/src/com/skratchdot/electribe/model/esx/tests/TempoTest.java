@@ -26,6 +26,7 @@ import junit.textui.TestRunner;
  * The following operations are tested:
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.Tempo#getShortFromCurrentValue() <em>Get Short From Current Value</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Tempo#getValidValue(float) <em>Get Valid Value</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Tempo#setCurrentValueFromShort(short) <em>Set Current Value From Short</em>}</li>
  * </ul>
  * </p>
@@ -110,6 +111,19 @@ public class TempoTest extends TestCase {
 	 * @generated
 	 */
 	public void testGetShortFromCurrentValue() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Tempo#getValidValue(float) <em>Get Valid Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.Tempo#getValidValue(float)
+	 * @generated
+	 */
+	public void testGetValidValue__float() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

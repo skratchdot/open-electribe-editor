@@ -67,6 +67,14 @@ public interface Tempo extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	float getValidValue(float value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model packedShortRequired="true"
 	 * @generated
 	 */

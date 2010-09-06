@@ -12,7 +12,6 @@
 package com.skratchdot.electribe.model.esx.provider;
 
 
-import java.text.DecimalFormat;
 import java.util.Collection;
 import java.util.List;
 
@@ -169,18 +168,7 @@ public class TempoItemProvider
 
 		// We only allow the tempo to be between 20-300 with one decimal place precision
 		if(feature == EsxPackage.Literals.TEMPO__VALUE) {
-			String tempoAsString = new DecimalFormat("0.#").format((Double) value);
-			Float tempoAsFloat = new Float(tempoAsString);
-
-			if(tempoAsFloat < 20) {
-				value = new Float(20);
-			}
-			else if(tempoAsFloat > 300) {
-				value = new Float(300);
-			}
-			else {
-				value = tempoAsFloat;
-			}		
+			value = ((Tempo) owner).getValidValue((Float) value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}
