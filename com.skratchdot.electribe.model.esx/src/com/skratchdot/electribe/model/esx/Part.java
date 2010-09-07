@@ -83,4 +83,12 @@ public interface Part extends EObject {
 	 */
 	void setMotionSequenceStatus(byte value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model sampleNumberRequired="true"
+	 * @generated
+	 */
+	String getSampleLabel(short sampleNumber);
+
 } // Part

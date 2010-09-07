@@ -71,8 +71,8 @@ import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSamplesStereoNotEmpty <em>Num Samples Stereo Not Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSongsEmpty <em>Num Songs Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#getNumSongsNotEmpty <em>Num Songs Not Empty</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#isPointersToSamplesUseCurrent <em>Pointers To Samples Use Current</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#isPointersToPatternsUseCurrent <em>Pointers To Patterns Use Current</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#isSyncPatternsOnMoveEnabled <em>Sync Patterns On Move Enabled</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl#isSyncSamplesOnMoveEnabled <em>Sync Samples On Move Enabled</em>}</li>
  * </ul>
  * </p>
  *
@@ -320,44 +320,44 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	protected static final int NUM_SONGS_NOT_EMPTY_EDEFAULT = 0;
 
 	/**
-	 * The default value of the '{@link #isPointersToSamplesUseCurrent() <em>Pointers To Samples Use Current</em>}' attribute.
+	 * The default value of the '{@link #isSyncPatternsOnMoveEnabled() <em>Sync Patterns On Move Enabled</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isPointersToSamplesUseCurrent()
+	 * @see #isSyncPatternsOnMoveEnabled()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean POINTERS_TO_SAMPLES_USE_CURRENT_EDEFAULT = true;
+	protected static final boolean SYNC_PATTERNS_ON_MOVE_ENABLED_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isPointersToSamplesUseCurrent() <em>Pointers To Samples Use Current</em>}' attribute.
+	 * The cached value of the '{@link #isSyncPatternsOnMoveEnabled() <em>Sync Patterns On Move Enabled</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isPointersToSamplesUseCurrent()
+	 * @see #isSyncPatternsOnMoveEnabled()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean pointersToSamplesUseCurrent = POINTERS_TO_SAMPLES_USE_CURRENT_EDEFAULT;
+	protected boolean syncPatternsOnMoveEnabled = SYNC_PATTERNS_ON_MOVE_ENABLED_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isPointersToPatternsUseCurrent() <em>Pointers To Patterns Use Current</em>}' attribute.
+	 * The default value of the '{@link #isSyncSamplesOnMoveEnabled() <em>Sync Samples On Move Enabled</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isPointersToPatternsUseCurrent()
+	 * @see #isSyncSamplesOnMoveEnabled()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean POINTERS_TO_PATTERNS_USE_CURRENT_EDEFAULT = true;
+	protected static final boolean SYNC_SAMPLES_ON_MOVE_ENABLED_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isPointersToPatternsUseCurrent() <em>Pointers To Patterns Use Current</em>}' attribute.
+	 * The cached value of the '{@link #isSyncSamplesOnMoveEnabled() <em>Sync Samples On Move Enabled</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isPointersToPatternsUseCurrent()
+	 * @see #isSyncSamplesOnMoveEnabled()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean pointersToPatternsUseCurrent = POINTERS_TO_PATTERNS_USE_CURRENT_EDEFAULT;
+	protected boolean syncSamplesOnMoveEnabled = SYNC_SAMPLES_ON_MOVE_ENABLED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -891,8 +891,8 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isPointersToSamplesUseCurrent() {
-		return pointersToSamplesUseCurrent;
+	public boolean isSyncPatternsOnMoveEnabled() {
+		return syncPatternsOnMoveEnabled;
 	}
 
 	/**
@@ -900,11 +900,11 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPointersToSamplesUseCurrent(boolean newPointersToSamplesUseCurrent) {
-		boolean oldPointersToSamplesUseCurrent = pointersToSamplesUseCurrent;
-		pointersToSamplesUseCurrent = newPointersToSamplesUseCurrent;
+	public void setSyncPatternsOnMoveEnabled(boolean newSyncPatternsOnMoveEnabled) {
+		boolean oldSyncPatternsOnMoveEnabled = syncPatternsOnMoveEnabled;
+		syncPatternsOnMoveEnabled = newSyncPatternsOnMoveEnabled;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__POINTERS_TO_SAMPLES_USE_CURRENT, oldPointersToSamplesUseCurrent, pointersToSamplesUseCurrent));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED, oldSyncPatternsOnMoveEnabled, syncPatternsOnMoveEnabled));
 	}
 
 	/**
@@ -912,8 +912,8 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isPointersToPatternsUseCurrent() {
-		return pointersToPatternsUseCurrent;
+	public boolean isSyncSamplesOnMoveEnabled() {
+		return syncSamplesOnMoveEnabled;
 	}
 
 	/**
@@ -921,11 +921,11 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPointersToPatternsUseCurrent(boolean newPointersToPatternsUseCurrent) {
-		boolean oldPointersToPatternsUseCurrent = pointersToPatternsUseCurrent;
-		pointersToPatternsUseCurrent = newPointersToPatternsUseCurrent;
+	public void setSyncSamplesOnMoveEnabled(boolean newSyncSamplesOnMoveEnabled) {
+		boolean oldSyncSamplesOnMoveEnabled = syncSamplesOnMoveEnabled;
+		syncSamplesOnMoveEnabled = newSyncSamplesOnMoveEnabled;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__POINTERS_TO_PATTERNS_USE_CURRENT, oldPointersToPatternsUseCurrent, pointersToPatternsUseCurrent));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED, oldSyncSamplesOnMoveEnabled, syncSamplesOnMoveEnabled));
 	}
 
 	/**
@@ -1193,10 +1193,10 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 				return getNumSongsEmpty();
 			case EsxPackage.ESX_FILE__NUM_SONGS_NOT_EMPTY:
 				return getNumSongsNotEmpty();
-			case EsxPackage.ESX_FILE__POINTERS_TO_SAMPLES_USE_CURRENT:
-				return isPointersToSamplesUseCurrent();
-			case EsxPackage.ESX_FILE__POINTERS_TO_PATTERNS_USE_CURRENT:
-				return isPointersToPatternsUseCurrent();
+			case EsxPackage.ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED:
+				return isSyncPatternsOnMoveEnabled();
+			case EsxPackage.ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED:
+				return isSyncSamplesOnMoveEnabled();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1237,11 +1237,11 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 			case EsxPackage.ESX_FILE__MAX_SAMPLE_OFFSET:
 				setMaxSampleOffset((Integer)newValue);
 				return;
-			case EsxPackage.ESX_FILE__POINTERS_TO_SAMPLES_USE_CURRENT:
-				setPointersToSamplesUseCurrent((Boolean)newValue);
+			case EsxPackage.ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED:
+				setSyncPatternsOnMoveEnabled((Boolean)newValue);
 				return;
-			case EsxPackage.ESX_FILE__POINTERS_TO_PATTERNS_USE_CURRENT:
-				setPointersToPatternsUseCurrent((Boolean)newValue);
+			case EsxPackage.ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED:
+				setSyncSamplesOnMoveEnabled((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1279,11 +1279,11 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 			case EsxPackage.ESX_FILE__MAX_SAMPLE_OFFSET:
 				setMaxSampleOffset(MAX_SAMPLE_OFFSET_EDEFAULT);
 				return;
-			case EsxPackage.ESX_FILE__POINTERS_TO_SAMPLES_USE_CURRENT:
-				setPointersToSamplesUseCurrent(POINTERS_TO_SAMPLES_USE_CURRENT_EDEFAULT);
+			case EsxPackage.ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED:
+				setSyncPatternsOnMoveEnabled(SYNC_PATTERNS_ON_MOVE_ENABLED_EDEFAULT);
 				return;
-			case EsxPackage.ESX_FILE__POINTERS_TO_PATTERNS_USE_CURRENT:
-				setPointersToPatternsUseCurrent(POINTERS_TO_PATTERNS_USE_CURRENT_EDEFAULT);
+			case EsxPackage.ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED:
+				setSyncSamplesOnMoveEnabled(SYNC_SAMPLES_ON_MOVE_ENABLED_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -1341,10 +1341,10 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 				return getNumSongsEmpty() != NUM_SONGS_EMPTY_EDEFAULT;
 			case EsxPackage.ESX_FILE__NUM_SONGS_NOT_EMPTY:
 				return getNumSongsNotEmpty() != NUM_SONGS_NOT_EMPTY_EDEFAULT;
-			case EsxPackage.ESX_FILE__POINTERS_TO_SAMPLES_USE_CURRENT:
-				return pointersToSamplesUseCurrent != POINTERS_TO_SAMPLES_USE_CURRENT_EDEFAULT;
-			case EsxPackage.ESX_FILE__POINTERS_TO_PATTERNS_USE_CURRENT:
-				return pointersToPatternsUseCurrent != POINTERS_TO_PATTERNS_USE_CURRENT_EDEFAULT;
+			case EsxPackage.ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED:
+				return syncPatternsOnMoveEnabled != SYNC_PATTERNS_ON_MOVE_ENABLED_EDEFAULT;
+			case EsxPackage.ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED:
+				return syncSamplesOnMoveEnabled != SYNC_SAMPLES_ON_MOVE_ENABLED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1363,10 +1363,10 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		result.append(originalNonAudioData);
 		result.append(", maxSampleOffset: ");
 		result.append(maxSampleOffset);
-		result.append(", pointersToSamplesUseCurrent: ");
-		result.append(pointersToSamplesUseCurrent);
-		result.append(", pointersToPatternsUseCurrent: ");
-		result.append(pointersToPatternsUseCurrent);
+		result.append(", syncPatternsOnMoveEnabled: ");
+		result.append(syncPatternsOnMoveEnabled);
+		result.append(", syncSamplesOnMoveEnabled: ");
+		result.append(syncSamplesOnMoveEnabled);
 		result.append(')');
 		return result.toString();
 	}

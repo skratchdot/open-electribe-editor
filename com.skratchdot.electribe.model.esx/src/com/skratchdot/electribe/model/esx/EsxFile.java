@@ -47,8 +47,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSamplesStereoNotEmpty <em>Num Samples Stereo Not Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsEmpty <em>Num Songs Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getNumSongsNotEmpty <em>Num Songs Not Empty</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#isPointersToSamplesUseCurrent <em>Pointers To Samples Use Current</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#isPointersToPatternsUseCurrent <em>Pointers To Patterns Use Current</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#isSyncPatternsOnMoveEnabled <em>Sync Patterns On Move Enabled</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#isSyncSamplesOnMoveEnabled <em>Sync Samples On Move Enabled</em>}</li>
  * </ul>
  * </p>
  *
@@ -461,58 +461,58 @@ public interface EsxFile extends EObject {
 	int getNumSongsNotEmpty();
 
 	/**
-	 * Returns the value of the '<em><b>Pointers To Samples Use Current</b></em>' attribute.
+	 * Returns the value of the '<em><b>Sync Patterns On Move Enabled</b></em>' attribute.
 	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Pointers To Samples Use Current</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Sync Patterns On Move Enabled</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Pointers To Samples Use Current</em>' attribute.
-	 * @see #setPointersToSamplesUseCurrent(boolean)
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_PointersToSamplesUseCurrent()
+	 * @return the value of the '<em>Sync Patterns On Move Enabled</em>' attribute.
+	 * @see #setSyncPatternsOnMoveEnabled(boolean)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_SyncPatternsOnMoveEnabled()
 	 * @model default="true"
 	 * @generated
 	 */
-	boolean isPointersToSamplesUseCurrent();
+	boolean isSyncPatternsOnMoveEnabled();
 
 	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.EsxFile#isPointersToSamplesUseCurrent <em>Pointers To Samples Use Current</em>}' attribute.
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.EsxFile#isSyncPatternsOnMoveEnabled <em>Sync Patterns On Move Enabled</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Pointers To Samples Use Current</em>' attribute.
-	 * @see #isPointersToSamplesUseCurrent()
+	 * @param value the new value of the '<em>Sync Patterns On Move Enabled</em>' attribute.
+	 * @see #isSyncPatternsOnMoveEnabled()
 	 * @generated
 	 */
-	void setPointersToSamplesUseCurrent(boolean value);
+	void setSyncPatternsOnMoveEnabled(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Pointers To Patterns Use Current</b></em>' attribute.
+	 * Returns the value of the '<em><b>Sync Samples On Move Enabled</b></em>' attribute.
 	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Pointers To Patterns Use Current</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Sync Samples On Move Enabled</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Pointers To Patterns Use Current</em>' attribute.
-	 * @see #setPointersToPatternsUseCurrent(boolean)
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_PointersToPatternsUseCurrent()
+	 * @return the value of the '<em>Sync Samples On Move Enabled</em>' attribute.
+	 * @see #setSyncSamplesOnMoveEnabled(boolean)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getEsxFile_SyncSamplesOnMoveEnabled()
 	 * @model default="true"
 	 * @generated
 	 */
-	boolean isPointersToPatternsUseCurrent();
+	boolean isSyncSamplesOnMoveEnabled();
 
 	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.EsxFile#isPointersToPatternsUseCurrent <em>Pointers To Patterns Use Current</em>}' attribute.
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.EsxFile#isSyncSamplesOnMoveEnabled <em>Sync Samples On Move Enabled</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Pointers To Patterns Use Current</em>' attribute.
-	 * @see #isPointersToPatternsUseCurrent()
+	 * @param value the new value of the '<em>Sync Samples On Move Enabled</em>' attribute.
+	 * @see #isSyncSamplesOnMoveEnabled()
 	 * @generated
 	 */
-	void setPointersToPatternsUseCurrent(boolean value);
+	void setSyncSamplesOnMoveEnabled(boolean value);
 
 	/**
 	 * <!-- begin-user-doc -->

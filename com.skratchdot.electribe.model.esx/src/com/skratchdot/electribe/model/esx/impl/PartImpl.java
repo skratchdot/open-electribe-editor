@@ -15,9 +15,13 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.resource.Resource;
 
+import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.Part;
+import com.skratchdot.electribe.model.esx.SampleNumber;
+import com.skratchdot.electribe.model.esx.util.EsxUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -133,6 +137,26 @@ public abstract class PartImpl extends EObjectImpl implements Part {
 		motionSequenceStatus = newMotionSequenceStatus;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART__MOTION_SEQUENCE_STATUS, oldMotionSequenceStatus, motionSequenceStatus));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSampleLabel(short sampleNumber) {
+		if(this.eResource()!=null) {
+			Resource resource = (Resource) this.eResource();
+			Object rootObject = resource.getContents().get(0);
+			if(rootObject instanceof EsxFile && sampleNumber>=0 && sampleNumber<EsxUtil.NUM_SAMPLES) {
+				return "" +
+					SampleNumber.get(sampleNumber).getLiteral() + 
+					" - " +
+					((EsxFile) rootObject).getSamples().get(sampleNumber).getName() +
+					"";
+			}
+		}
+		return SampleNumber.get(-1).getName();
 	}
 
 	/**

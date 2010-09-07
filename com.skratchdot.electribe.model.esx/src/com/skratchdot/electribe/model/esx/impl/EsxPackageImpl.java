@@ -955,7 +955,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEsxFile_PointersToSamplesUseCurrent() {
+	public EAttribute getEsxFile_SyncPatternsOnMoveEnabled() {
 		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(22);
 	}
 
@@ -964,7 +964,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEsxFile_PointersToPatternsUseCurrent() {
+	public EAttribute getEsxFile_SyncSamplesOnMoveEnabled() {
 		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(23);
 	}
 
@@ -1585,7 +1585,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPartWithSample_SampleNumber() {
+	public EAttribute getPartWithSample_SampleLabel() {
 		return (EAttribute)partWithSampleEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1594,7 +1594,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPartWithSample_StartPoint() {
+	public EAttribute getPartWithSample_SampleNumber() {
 		return (EAttribute)partWithSampleEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -1603,8 +1603,17 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPartWithSample_ReservedBitsAfterReverse() {
+	public EAttribute getPartWithSample_StartPoint() {
 		return (EAttribute)partWithSampleEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPartWithSample_ReservedBitsAfterReverse() {
+		return (EAttribute)partWithSampleEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -3134,8 +3143,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(esxFileEClass, ESX_FILE__NUM_SAMPLES_STEREO_NOT_EMPTY);
 		createEAttribute(esxFileEClass, ESX_FILE__NUM_SONGS_EMPTY);
 		createEAttribute(esxFileEClass, ESX_FILE__NUM_SONGS_NOT_EMPTY);
-		createEAttribute(esxFileEClass, ESX_FILE__POINTERS_TO_SAMPLES_USE_CURRENT);
-		createEAttribute(esxFileEClass, ESX_FILE__POINTERS_TO_PATTERNS_USE_CURRENT);
+		createEAttribute(esxFileEClass, ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED);
+		createEAttribute(esxFileEClass, ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED);
 
 		globalParametersEClass = createEClass(GLOBAL_PARAMETERS);
 		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED);
@@ -3217,6 +3226,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 
 		partWithSampleEClass = createEClass(PART_WITH_SAMPLE);
 		createEAttribute(partWithSampleEClass, PART_WITH_SAMPLE__REVERSE);
+		createEAttribute(partWithSampleEClass, PART_WITH_SAMPLE__SAMPLE_LABEL);
 		createEAttribute(partWithSampleEClass, PART_WITH_SAMPLE__SAMPLE_NUMBER);
 		createEAttribute(partWithSampleEClass, PART_WITH_SAMPLE__START_POINT);
 		createEAttribute(partWithSampleEClass, PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE);
@@ -3495,8 +3505,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getEsxFile_NumSamplesStereoNotEmpty(), ecorePackage.getEInt(), "numSamplesStereoNotEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEsxFile_NumSongsEmpty(), ecorePackage.getEInt(), "numSongsEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEsxFile_NumSongsNotEmpty(), ecorePackage.getEInt(), "numSongsNotEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_PointersToSamplesUseCurrent(), ecorePackage.getEBoolean(), "pointersToSamplesUseCurrent", "true", 0, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_PointersToPatternsUseCurrent(), ecorePackage.getEBoolean(), "pointersToPatternsUseCurrent", "true", 0, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_SyncPatternsOnMoveEnabled(), ecorePackage.getEBoolean(), "syncPatternsOnMoveEnabled", "true", 0, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_SyncSamplesOnMoveEnabled(), ecorePackage.getEBoolean(), "syncSamplesOnMoveEnabled", "true", 0, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = addEOperation(esxFileEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -3576,6 +3586,9 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getPart_Level(), ecorePackage.getEByte(), "level", null, 0, 1, Part.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPart_MotionSequenceStatus(), ecorePackage.getEByte(), "motionSequenceStatus", null, 0, 1, Part.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		op = addEOperation(partEClass, ecorePackage.getEString(), "getSampleLabel", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEShort(), "sampleNumber", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(partAccentEClass, PartAccent.class, "PartAccent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(partAccentEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -3641,6 +3654,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 
 		initEClass(partWithSampleEClass, PartWithSample.class, "PartWithSample", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPartWithSample_Reverse(), this.getReverse(), "reverse", null, 0, 1, PartWithSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartWithSample_SampleLabel(), ecorePackage.getEString(), "sampleLabel", null, 0, 1, PartWithSample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPartWithSample_SampleNumber(), ecorePackage.getEShort(), "sampleNumber", null, 0, 1, PartWithSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPartWithSample_StartPoint(), ecorePackage.getEByte(), "startPoint", null, 0, 1, PartWithSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPartWithSample_ReservedBitsAfterReverse(), ecorePackage.getEByte(), "reservedBitsAfterReverse", null, 0, 1, PartWithSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

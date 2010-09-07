@@ -137,6 +137,20 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 		this.addColumnToTableViewer(this.tableViewer, "Fx1 Type", 100);
 		this.addColumnToTableViewer(this.tableViewer, "Fx2 Type", 100);
 		this.addColumnToTableViewer(this.tableViewer, "Fx3 Type", 100);
+		this.addColumnToTableViewer(this.tableViewer, "Part 1", 100);
+		this.addColumnToTableViewer(this.tableViewer, "Part 2", 100);
+		this.addColumnToTableViewer(this.tableViewer, "Part 3", 100);
+		this.addColumnToTableViewer(this.tableViewer, "Part 4", 100);
+		this.addColumnToTableViewer(this.tableViewer, "Part 5", 100);
+		this.addColumnToTableViewer(this.tableViewer, "Part 6a", 100);
+		this.addColumnToTableViewer(this.tableViewer, "Part 6b", 100);
+		this.addColumnToTableViewer(this.tableViewer, "Part 7a", 100);
+		this.addColumnToTableViewer(this.tableViewer, "Part 7b", 100);
+		this.addColumnToTableViewer(this.tableViewer, "Key 1", 100);
+		this.addColumnToTableViewer(this.tableViewer, "Key 2", 100);
+		this.addColumnToTableViewer(this.tableViewer, "Stretch 1", 100);
+		this.addColumnToTableViewer(this.tableViewer, "Stretch 2", 100);
+		this.addColumnToTableViewer(this.tableViewer, "Slice", 100);
 
 		// Allow all the columns to be moved
 		TableColumn[] columns = table.getColumns();

@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.PartWithSample#getReverse <em>Reverse</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.PartWithSample#getSampleLabel <em>Sample Label</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.PartWithSample#getSampleNumber <em>Sample Number</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.PartWithSample#getStartPoint <em>Start Point</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.PartWithSample#getReservedBitsAfterReverse <em>Reserved Bits After Reverse</em>}</li>
@@ -61,6 +62,21 @@ public interface PartWithSample extends EObject {
 	 * @generated
 	 */
 	void setReverse(Reverse value);
+
+	/**
+	 * Returns the value of the '<em><b>Sample Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sample Label</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sample Label</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getPartWithSample_SampleLabel()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	String getSampleLabel();
 
 	/**
 	 * Returns the value of the '<em><b>Sample Number</b></em>' attribute.

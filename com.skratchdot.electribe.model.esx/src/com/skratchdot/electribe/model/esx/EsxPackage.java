@@ -275,22 +275,22 @@ public interface EsxPackage extends EPackage {
 	int ESX_FILE__NUM_SONGS_NOT_EMPTY = 21;
 
 	/**
-	 * The feature id for the '<em><b>Pointers To Samples Use Current</b></em>' attribute.
+	 * The feature id for the '<em><b>Sync Patterns On Move Enabled</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__POINTERS_TO_SAMPLES_USE_CURRENT = 22;
+	int ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED = 22;
 
 	/**
-	 * The feature id for the '<em><b>Pointers To Patterns Use Current</b></em>' attribute.
+	 * The feature id for the '<em><b>Sync Samples On Move Enabled</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ESX_FILE__POINTERS_TO_PATTERNS_USE_CURRENT = 23;
+	int ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED = 23;
 
 	/**
 	 * The number of structural features of the '<em>File</em>' class.
@@ -1222,13 +1222,22 @@ public interface EsxPackage extends EPackage {
 	int PART_DRUM__REVERSE = PART_FEATURE_COUNT + 17;
 
 	/**
+	 * The feature id for the '<em><b>Sample Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PART_DRUM__SAMPLE_LABEL = PART_FEATURE_COUNT + 18;
+
+	/**
 	 * The feature id for the '<em><b>Sample Number</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PART_DRUM__SAMPLE_NUMBER = PART_FEATURE_COUNT + 18;
+	int PART_DRUM__SAMPLE_NUMBER = PART_FEATURE_COUNT + 19;
 
 	/**
 	 * The feature id for the '<em><b>Start Point</b></em>' attribute.
@@ -1237,7 +1246,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_DRUM__START_POINT = PART_FEATURE_COUNT + 19;
+	int PART_DRUM__START_POINT = PART_FEATURE_COUNT + 20;
 
 	/**
 	 * The feature id for the '<em><b>Reserved Bits After Reverse</b></em>' attribute.
@@ -1246,7 +1255,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_DRUM__RESERVED_BITS_AFTER_REVERSE = PART_FEATURE_COUNT + 20;
+	int PART_DRUM__RESERVED_BITS_AFTER_REVERSE = PART_FEATURE_COUNT + 21;
 
 	/**
 	 * The feature id for the '<em><b>Sequence Data</b></em>' containment reference.
@@ -1255,7 +1264,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_DRUM__SEQUENCE_DATA = PART_FEATURE_COUNT + 21;
+	int PART_DRUM__SEQUENCE_DATA = PART_FEATURE_COUNT + 22;
 
 	/**
 	 * The feature id for the '<em><b>Reserved Byte</b></em>' attribute.
@@ -1264,7 +1273,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_DRUM__RESERVED_BYTE = PART_FEATURE_COUNT + 22;
+	int PART_DRUM__RESERVED_BYTE = PART_FEATURE_COUNT + 23;
 
 	/**
 	 * The feature id for the '<em><b>Slice Number</b></em>' attribute.
@@ -1273,7 +1282,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_DRUM__SLICE_NUMBER = PART_FEATURE_COUNT + 23;
+	int PART_DRUM__SLICE_NUMBER = PART_FEATURE_COUNT + 24;
 
 	/**
 	 * The number of structural features of the '<em>Part Drum</em>' class.
@@ -1282,7 +1291,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_DRUM_FEATURE_COUNT = PART_FEATURE_COUNT + 24;
+	int PART_DRUM_FEATURE_COUNT = PART_FEATURE_COUNT + 25;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.PartKeyboardImpl <em>Part Keyboard</em>}' class.
@@ -1466,13 +1475,22 @@ public interface EsxPackage extends EPackage {
 	int PART_KEYBOARD__REVERSE = PART_FEATURE_COUNT + 16;
 
 	/**
+	 * The feature id for the '<em><b>Sample Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PART_KEYBOARD__SAMPLE_LABEL = PART_FEATURE_COUNT + 17;
+
+	/**
 	 * The feature id for the '<em><b>Sample Number</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PART_KEYBOARD__SAMPLE_NUMBER = PART_FEATURE_COUNT + 17;
+	int PART_KEYBOARD__SAMPLE_NUMBER = PART_FEATURE_COUNT + 18;
 
 	/**
 	 * The feature id for the '<em><b>Start Point</b></em>' attribute.
@@ -1481,7 +1499,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_KEYBOARD__START_POINT = PART_FEATURE_COUNT + 18;
+	int PART_KEYBOARD__START_POINT = PART_FEATURE_COUNT + 19;
 
 	/**
 	 * The feature id for the '<em><b>Reserved Bits After Reverse</b></em>' attribute.
@@ -1490,7 +1508,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE = PART_FEATURE_COUNT + 19;
+	int PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE = PART_FEATURE_COUNT + 20;
 
 	/**
 	 * The feature id for the '<em><b>Sequence Data Gate</b></em>' containment reference.
@@ -1499,7 +1517,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_KEYBOARD__SEQUENCE_DATA_GATE = PART_FEATURE_COUNT + 20;
+	int PART_KEYBOARD__SEQUENCE_DATA_GATE = PART_FEATURE_COUNT + 21;
 
 	/**
 	 * The feature id for the '<em><b>Reserved Byte</b></em>' attribute.
@@ -1508,7 +1526,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_KEYBOARD__RESERVED_BYTE = PART_FEATURE_COUNT + 21;
+	int PART_KEYBOARD__RESERVED_BYTE = PART_FEATURE_COUNT + 22;
 
 	/**
 	 * The feature id for the '<em><b>Slice Number</b></em>' attribute.
@@ -1517,7 +1535,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_KEYBOARD__SLICE_NUMBER = PART_FEATURE_COUNT + 22;
+	int PART_KEYBOARD__SLICE_NUMBER = PART_FEATURE_COUNT + 23;
 
 	/**
 	 * The feature id for the '<em><b>Glide</b></em>' attribute.
@@ -1526,7 +1544,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_KEYBOARD__GLIDE = PART_FEATURE_COUNT + 23;
+	int PART_KEYBOARD__GLIDE = PART_FEATURE_COUNT + 24;
 
 	/**
 	 * The feature id for the '<em><b>Sequence Data Note</b></em>' containment reference.
@@ -1535,7 +1553,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_KEYBOARD__SEQUENCE_DATA_NOTE = PART_FEATURE_COUNT + 24;
+	int PART_KEYBOARD__SEQUENCE_DATA_NOTE = PART_FEATURE_COUNT + 25;
 
 	/**
 	 * The number of structural features of the '<em>Part Keyboard</em>' class.
@@ -1544,7 +1562,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_KEYBOARD_FEATURE_COUNT = PART_FEATURE_COUNT + 25;
+	int PART_KEYBOARD_FEATURE_COUNT = PART_FEATURE_COUNT + 26;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1764,13 +1782,22 @@ public interface EsxPackage extends EPackage {
 	int PART_STRETCH_SLICE__REVERSE = PART_FEATURE_COUNT + 17;
 
 	/**
+	 * The feature id for the '<em><b>Sample Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PART_STRETCH_SLICE__SAMPLE_LABEL = PART_FEATURE_COUNT + 18;
+
+	/**
 	 * The feature id for the '<em><b>Sample Number</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PART_STRETCH_SLICE__SAMPLE_NUMBER = PART_FEATURE_COUNT + 18;
+	int PART_STRETCH_SLICE__SAMPLE_NUMBER = PART_FEATURE_COUNT + 19;
 
 	/**
 	 * The feature id for the '<em><b>Start Point</b></em>' attribute.
@@ -1779,7 +1806,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_STRETCH_SLICE__START_POINT = PART_FEATURE_COUNT + 19;
+	int PART_STRETCH_SLICE__START_POINT = PART_FEATURE_COUNT + 20;
 
 	/**
 	 * The feature id for the '<em><b>Reserved Bits After Reverse</b></em>' attribute.
@@ -1788,7 +1815,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_STRETCH_SLICE__RESERVED_BITS_AFTER_REVERSE = PART_FEATURE_COUNT + 20;
+	int PART_STRETCH_SLICE__RESERVED_BITS_AFTER_REVERSE = PART_FEATURE_COUNT + 21;
 
 	/**
 	 * The feature id for the '<em><b>Sequence Data</b></em>' containment reference.
@@ -1797,7 +1824,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_STRETCH_SLICE__SEQUENCE_DATA = PART_FEATURE_COUNT + 21;
+	int PART_STRETCH_SLICE__SEQUENCE_DATA = PART_FEATURE_COUNT + 22;
 
 	/**
 	 * The number of structural features of the '<em>Part Stretch Slice</em>' class.
@@ -1806,7 +1833,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_STRETCH_SLICE_FEATURE_COUNT = PART_FEATURE_COUNT + 22;
+	int PART_STRETCH_SLICE_FEATURE_COUNT = PART_FEATURE_COUNT + 23;
 
 	/**
 	 * The feature id for the '<em><b>Amp Eg</b></em>' attribute.
@@ -1989,13 +2016,22 @@ public interface EsxPackage extends EPackage {
 	int PART_WITH_SAMPLE__REVERSE = 0;
 
 	/**
+	 * The feature id for the '<em><b>Sample Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PART_WITH_SAMPLE__SAMPLE_LABEL = 1;
+
+	/**
 	 * The feature id for the '<em><b>Sample Number</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PART_WITH_SAMPLE__SAMPLE_NUMBER = 1;
+	int PART_WITH_SAMPLE__SAMPLE_NUMBER = 2;
 
 	/**
 	 * The feature id for the '<em><b>Start Point</b></em>' attribute.
@@ -2004,7 +2040,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_WITH_SAMPLE__START_POINT = 2;
+	int PART_WITH_SAMPLE__START_POINT = 3;
 
 	/**
 	 * The feature id for the '<em><b>Reserved Bits After Reverse</b></em>' attribute.
@@ -2013,7 +2049,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE = 3;
+	int PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE = 4;
 
 	/**
 	 * The number of structural features of the '<em>Part With Sample</em>' class.
@@ -2022,7 +2058,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_WITH_SAMPLE_FEATURE_COUNT = 4;
+	int PART_WITH_SAMPLE_FEATURE_COUNT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Sequence Data</b></em>' containment reference.
@@ -4151,26 +4187,26 @@ public interface EsxPackage extends EPackage {
 	EAttribute getEsxFile_NumSongsNotEmpty();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#isPointersToSamplesUseCurrent <em>Pointers To Samples Use Current</em>}'.
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#isSyncPatternsOnMoveEnabled <em>Sync Patterns On Move Enabled</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Pointers To Samples Use Current</em>'.
-	 * @see com.skratchdot.electribe.model.esx.EsxFile#isPointersToSamplesUseCurrent()
+	 * @return the meta object for the attribute '<em>Sync Patterns On Move Enabled</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#isSyncPatternsOnMoveEnabled()
 	 * @see #getEsxFile()
 	 * @generated
 	 */
-	EAttribute getEsxFile_PointersToSamplesUseCurrent();
+	EAttribute getEsxFile_SyncPatternsOnMoveEnabled();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#isPointersToPatternsUseCurrent <em>Pointers To Patterns Use Current</em>}'.
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.EsxFile#isSyncSamplesOnMoveEnabled <em>Sync Samples On Move Enabled</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Pointers To Patterns Use Current</em>'.
-	 * @see com.skratchdot.electribe.model.esx.EsxFile#isPointersToPatternsUseCurrent()
+	 * @return the meta object for the attribute '<em>Sync Samples On Move Enabled</em>'.
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#isSyncSamplesOnMoveEnabled()
 	 * @see #getEsxFile()
 	 * @generated
 	 */
-	EAttribute getEsxFile_PointersToPatternsUseCurrent();
+	EAttribute getEsxFile_SyncSamplesOnMoveEnabled();
 
 	/**
 	 * Returns the meta object for class '{@link com.skratchdot.electribe.model.esx.GlobalParameters <em>Global Parameters</em>}'.
@@ -4905,6 +4941,17 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPartWithSample_Reverse();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.PartWithSample#getSampleLabel <em>Sample Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sample Label</em>'.
+	 * @see com.skratchdot.electribe.model.esx.PartWithSample#getSampleLabel()
+	 * @see #getPartWithSample()
+	 * @generated
+	 */
+	EAttribute getPartWithSample_SampleLabel();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.PartWithSample#getSampleNumber <em>Sample Number</em>}'.
@@ -6894,20 +6941,20 @@ public interface EsxPackage extends EPackage {
 		EAttribute ESX_FILE__NUM_SONGS_NOT_EMPTY = eINSTANCE.getEsxFile_NumSongsNotEmpty();
 
 		/**
-		 * The meta object literal for the '<em><b>Pointers To Samples Use Current</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Sync Patterns On Move Enabled</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__POINTERS_TO_SAMPLES_USE_CURRENT = eINSTANCE.getEsxFile_PointersToSamplesUseCurrent();
+		EAttribute ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED = eINSTANCE.getEsxFile_SyncPatternsOnMoveEnabled();
 
 		/**
-		 * The meta object literal for the '<em><b>Pointers To Patterns Use Current</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Sync Samples On Move Enabled</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__POINTERS_TO_PATTERNS_USE_CURRENT = eINSTANCE.getEsxFile_PointersToPatternsUseCurrent();
+		EAttribute ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED = eINSTANCE.getEsxFile_SyncSamplesOnMoveEnabled();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.GlobalParametersImpl <em>Global Parameters</em>}' class.
@@ -7480,6 +7527,14 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PART_WITH_SAMPLE__REVERSE = eINSTANCE.getPartWithSample_Reverse();
+
+		/**
+		 * The meta object literal for the '<em><b>Sample Label</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PART_WITH_SAMPLE__SAMPLE_LABEL = eINSTANCE.getPartWithSample_SampleLabel();
 
 		/**
 		 * The meta object literal for the '<em><b>Sample Number</b></em>' attribute feature.

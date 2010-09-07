@@ -91,6 +91,8 @@ public class EsxFileItemProvider
 			addNumSamplesStereoNotEmptyPropertyDescriptor(object);
 			addNumSongsEmptyPropertyDescriptor(object);
 			addNumSongsNotEmptyPropertyDescriptor(object);
+			addSyncPatternsOnMoveEnabledPropertyDescriptor(object);
+			addSyncSamplesOnMoveEnabledPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -448,6 +450,50 @@ public class EsxFileItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Sync Patterns On Move Enabled feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSyncPatternsOnMoveEnabledPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_EsxFile_syncPatternsOnMoveEnabled_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_syncPatternsOnMoveEnabled_feature", "_UI_EsxFile_type"),
+				 EsxPackage.Literals.ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Sync Samples On Move Enabled feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSyncSamplesOnMoveEnabledPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_EsxFile_syncSamplesOnMoveEnabled_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EsxFile_syncSamplesOnMoveEnabled_feature", "_UI_EsxFile_type"),
+				 EsxPackage.Literals.ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -536,8 +582,8 @@ public class EsxFileItemProvider
 			case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_NOT_EMPTY:
 			case EsxPackage.ESX_FILE__NUM_SONGS_EMPTY:
 			case EsxPackage.ESX_FILE__NUM_SONGS_NOT_EMPTY:
-			case EsxPackage.ESX_FILE__POINTERS_TO_SAMPLES_USE_CURRENT:
-			case EsxPackage.ESX_FILE__POINTERS_TO_PATTERNS_USE_CURRENT:
+			case EsxPackage.ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED:
+			case EsxPackage.ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsxPackage.ESX_FILE__GLOBAL_PARAMETERS:

@@ -85,6 +85,7 @@ public class PartStretchSliceItemProvider
 			addRollPropertyDescriptor(object);
 			addPitchPropertyDescriptor(object);
 			addReversePropertyDescriptor(object);
+			addSampleLabelPropertyDescriptor(object);
 			addSampleNumberPropertyDescriptor(object);
 			addStartPointPropertyDescriptor(object);
 			addReservedBitsAfterReversePropertyDescriptor(object);
@@ -489,6 +490,28 @@ public class PartStretchSliceItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Sample Label feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSampleLabelPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PartWithSample_sampleLabel_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithSample_sampleLabel_feature", "_UI_PartWithSample_type"),
+				 EsxPackage.Literals.PART_WITH_SAMPLE__SAMPLE_LABEL,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Sample Number feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -637,6 +660,7 @@ public class PartStretchSliceItemProvider
 			case EsxPackage.PART_STRETCH_SLICE__ROLL:
 			case EsxPackage.PART_STRETCH_SLICE__PITCH:
 			case EsxPackage.PART_STRETCH_SLICE__REVERSE:
+			case EsxPackage.PART_STRETCH_SLICE__SAMPLE_LABEL:
 			case EsxPackage.PART_STRETCH_SLICE__SAMPLE_NUMBER:
 			case EsxPackage.PART_STRETCH_SLICE__START_POINT:
 			case EsxPackage.PART_STRETCH_SLICE__RESERVED_BITS_AFTER_REVERSE:

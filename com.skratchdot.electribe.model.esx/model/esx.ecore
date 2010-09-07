@@ -82,9 +82,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numSongsNotEmpty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="0"
         derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pointersToSamplesUseCurrent"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="syncPatternsOnMoveEnabled"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pointersToPatternsUseCurrent"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="syncSamplesOnMoveEnabled"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GlobalParameters">
@@ -141,6 +141,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Part" abstract="true">
+    <eOperations name="getSampleLabel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eParameters name="sampleNumber" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="motionSequenceStatus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
   </eClassifiers>
@@ -206,6 +209,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PartWithSample" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="reverse" eType="#//Reverse"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleLabel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false" volatile="true" transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="startPoint" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservedBitsAfterReverse"

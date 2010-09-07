@@ -19,6 +19,12 @@ import junit.framework.TestCase;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Part</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following operations are tested:
+ * <ul>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Part#getSampleLabel(short) <em>Get Sample Label</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public abstract class PartTest extends TestCase {
@@ -59,6 +65,19 @@ public abstract class PartTest extends TestCase {
 	 */
 	protected Part getFixture() {
 		return fixture;
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Part#getSampleLabel(short) <em>Get Sample Label</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.Part#getSampleLabel(short)
+	 * @generated
+	 */
+	public void testGetSampleLabel__short() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 } //PartTest

@@ -11,16 +11,14 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
-import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.PartWithSample;
-
-import com.skratchdot.electribe.model.esx.Reverse;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.PartWithSample;
+import com.skratchdot.electribe.model.esx.Reverse;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,6 +28,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartWithSampleImpl#getReverse <em>Reverse</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartWithSampleImpl#getSampleLabel <em>Sample Label</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartWithSampleImpl#getSampleNumber <em>Sample Number</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartWithSampleImpl#getStartPoint <em>Start Point</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartWithSampleImpl#getReservedBitsAfterReverse <em>Reserved Bits After Reverse</em>}</li>
@@ -58,6 +57,16 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 	 * @ordered
 	 */
 	protected Reverse reverse = REVERSE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSampleLabel() <em>Sample Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSampleLabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SAMPLE_LABEL_EDEFAULT = null;
 
 	/**
 	 * The default value of the '{@link #getSampleNumber() <em>Sample Number</em>}' attribute.
@@ -164,6 +173,17 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getSampleLabel() {
+		// TODO: implement this method to return the 'Sample Label' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public short getSampleNumber() {
 		return sampleNumber;
 	}
@@ -232,6 +252,8 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 		switch (featureID) {
 			case EsxPackage.PART_WITH_SAMPLE__REVERSE:
 				return getReverse();
+			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL:
+				return getSampleLabel();
 			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_NUMBER:
 				return getSampleNumber();
 			case EsxPackage.PART_WITH_SAMPLE__START_POINT:
@@ -300,6 +322,8 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 		switch (featureID) {
 			case EsxPackage.PART_WITH_SAMPLE__REVERSE:
 				return reverse != REVERSE_EDEFAULT;
+			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL:
+				return SAMPLE_LABEL_EDEFAULT == null ? getSampleLabel() != null : !SAMPLE_LABEL_EDEFAULT.equals(getSampleLabel());
 			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_NUMBER:
 				return sampleNumber != SAMPLE_NUMBER_EDEFAULT;
 			case EsxPackage.PART_WITH_SAMPLE__START_POINT:

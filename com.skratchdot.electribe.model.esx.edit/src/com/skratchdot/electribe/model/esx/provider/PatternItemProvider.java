@@ -473,6 +473,34 @@ public class PatternItemProvider
 			case 13: return ((Pattern) object).getFxParameters().get(1).getEffectType().getLiteral();
 			// Fx3 Type
 			case 14: return ((Pattern) object).getFxParameters().get(2).getEffectType().getLiteral();
+			// Part 1
+			case 15: return ((Pattern) object).getDrumParts().get(0).getSampleLabel();
+			// Part 2
+			case 16: return ((Pattern) object).getDrumParts().get(1).getSampleLabel();
+			// Part 3
+			case 17: return ((Pattern) object).getDrumParts().get(2).getSampleLabel();
+			// Part 4
+			case 18: return ((Pattern) object).getDrumParts().get(3).getSampleLabel();
+			// Part 5
+			case 19: return ((Pattern) object).getDrumParts().get(4).getSampleLabel();
+			// Part 6a
+			case 20: return ((Pattern) object).getDrumParts().get(5).getSampleLabel();
+			// Part 6b
+			case 21: return ((Pattern) object).getDrumParts().get(6).getSampleLabel();
+			// Part 7a
+			case 22: return ((Pattern) object).getDrumParts().get(7).getSampleLabel();
+			// Part 7b
+			case 23: return ((Pattern) object).getDrumParts().get(8).getSampleLabel();
+			// Key 1
+			case 24: return ((Pattern) object).getKeyboardParts().get(0).getSampleLabel();
+			// Key 2
+			case 25: return ((Pattern) object).getKeyboardParts().get(1).getSampleLabel();
+			// Stretch 1
+			case 26: return ((Pattern) object).getStretchSliceParts().get(0).getSampleLabel();
+			// Stretch 2
+			case 27: return ((Pattern) object).getStretchSliceParts().get(1).getSampleLabel();
+			// Slice
+			case 28: return ((Pattern) object).getStretchSliceParts().get(2).getSampleLabel();
 			default: return getText(object);
 		}
 	}

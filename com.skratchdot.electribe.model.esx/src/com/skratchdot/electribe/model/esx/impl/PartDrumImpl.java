@@ -63,6 +63,7 @@ import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartDrumImpl#getRoll <em>Roll</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartDrumImpl#getPitch <em>Pitch</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartDrumImpl#getReverse <em>Reverse</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartDrumImpl#getSampleLabel <em>Sample Label</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartDrumImpl#getSampleNumber <em>Sample Number</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartDrumImpl#getStartPoint <em>Start Point</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartDrumImpl#getReservedBitsAfterReverse <em>Reserved Bits After Reverse</em>}</li>
@@ -399,6 +400,15 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 	 * @ordered
 	 */
 	protected Reverse reverse = REVERSE_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getSampleLabel() <em>Sample Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSampleLabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SAMPLE_LABEL_EDEFAULT = null;
 	/**
 	 * The default value of the '{@link #getSampleNumber() <em>Sample Number</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -963,6 +973,26 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getSampleLabelGen() {
+		// TODO: implement this method to return the 'Sample Label' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String getSampleLabel() {
+		return this.getSampleLabel(this.getSampleNumber());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public short getSampleNumber() {
 		return sampleNumber;
 	}
@@ -1222,6 +1252,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 				return getPitch();
 			case EsxPackage.PART_DRUM__REVERSE:
 				return getReverse();
+			case EsxPackage.PART_DRUM__SAMPLE_LABEL:
+				return getSampleLabel();
 			case EsxPackage.PART_DRUM__SAMPLE_NUMBER:
 				return getSampleNumber();
 			case EsxPackage.PART_DRUM__START_POINT:
@@ -1450,6 +1482,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 				return pitch != PITCH_EDEFAULT;
 			case EsxPackage.PART_DRUM__REVERSE:
 				return reverse != REVERSE_EDEFAULT;
+			case EsxPackage.PART_DRUM__SAMPLE_LABEL:
+				return SAMPLE_LABEL_EDEFAULT == null ? getSampleLabel() != null : !SAMPLE_LABEL_EDEFAULT.equals(getSampleLabel());
 			case EsxPackage.PART_DRUM__SAMPLE_NUMBER:
 				return sampleNumber != SAMPLE_NUMBER_EDEFAULT;
 			case EsxPackage.PART_DRUM__START_POINT:
@@ -1503,6 +1537,7 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		if (baseClass == PartWithSample.class) {
 			switch (derivedFeatureID) {
 				case EsxPackage.PART_DRUM__REVERSE: return EsxPackage.PART_WITH_SAMPLE__REVERSE;
+				case EsxPackage.PART_DRUM__SAMPLE_LABEL: return EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL;
 				case EsxPackage.PART_DRUM__SAMPLE_NUMBER: return EsxPackage.PART_WITH_SAMPLE__SAMPLE_NUMBER;
 				case EsxPackage.PART_DRUM__START_POINT: return EsxPackage.PART_WITH_SAMPLE__START_POINT;
 				case EsxPackage.PART_DRUM__RESERVED_BITS_AFTER_REVERSE: return EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE;
@@ -1562,6 +1597,7 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		if (baseClass == PartWithSample.class) {
 			switch (baseFeatureID) {
 				case EsxPackage.PART_WITH_SAMPLE__REVERSE: return EsxPackage.PART_DRUM__REVERSE;
+				case EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL: return EsxPackage.PART_DRUM__SAMPLE_LABEL;
 				case EsxPackage.PART_WITH_SAMPLE__SAMPLE_NUMBER: return EsxPackage.PART_DRUM__SAMPLE_NUMBER;
 				case EsxPackage.PART_WITH_SAMPLE__START_POINT: return EsxPackage.PART_DRUM__START_POINT;
 				case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE: return EsxPackage.PART_DRUM__RESERVED_BITS_AFTER_REVERSE;

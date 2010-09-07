@@ -21,6 +21,12 @@ import junit.textui.TestRunner;
  * A test case for the model object '<em><b>Part Drum</b></em>'.
  * <!-- end-user-doc -->
  * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link com.skratchdot.electribe.model.esx.PartWithSample#getSampleLabel() <em>Sample Label</em>}</li>
+ * </ul>
+ * </p>
+ * <p>
  * The following operations are tested:
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.PartDrum#init(byte[]) <em>Init</em>}</li>
@@ -81,6 +87,19 @@ public class PartDrumTest extends PartTest {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.PartWithSample#getSampleLabel() <em>Sample Label</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.PartWithSample#getSampleLabel()
+	 * @generated
+	 */
+	public void testGetSampleLabel() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 	/**
