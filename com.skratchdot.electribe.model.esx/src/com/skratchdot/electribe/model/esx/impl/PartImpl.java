@@ -142,7 +142,7 @@ public abstract class PartImpl extends EObjectImpl implements Part {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getSampleLabel(short sampleNumber) {
 		if(this.eResource()!=null) {
