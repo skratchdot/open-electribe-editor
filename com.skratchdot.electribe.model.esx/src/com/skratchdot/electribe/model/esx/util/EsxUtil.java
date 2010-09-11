@@ -332,4 +332,28 @@ public class EsxUtil {
 		return outputValue >> numShiftedLeft;					// 0000 0yyy
 	}
 
+	/**
+	 * @param sampleNumber
+	 * @return Returns true if sampleNumber is valid, returns false otherwise
+	 */
+	public static boolean isValidSampleNumber(int sampleNumber) {
+		return (sampleNumber>=0 && sampleNumber<NUM_SAMPLES);
+	}
+
+	/**
+	 * @param patternNumber
+	 * @return Returns true if patternNumber is valid, returns false otherwise
+	 */
+	public static boolean isValidPatternNumber(int patternNumber) {
+		return (patternNumber>=0 && patternNumber<NUM_PATTERNS);
+	}
+
+	/**
+	 * @param songNumber
+	 * @return Returns true if songNumber is valid, returns false otherwise
+	 */
+	public static boolean isValidSongNumber(int songNumber) {
+		return (songNumber>=0 && songNumber<NUM_SONGS);
+	}
+
 }

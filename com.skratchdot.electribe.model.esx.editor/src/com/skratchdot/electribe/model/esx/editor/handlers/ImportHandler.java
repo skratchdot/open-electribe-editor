@@ -114,13 +114,13 @@ public class ImportHandler extends AbstractHandler {
 									true,
 									true
 								);
-								if(isValidSampleIndex(firstEmptySampleNumber)) {
+								if(EsxUtil.isValidSampleNumber(firstEmptySampleNumber)) {
 									sample = EsxFactory.eINSTANCE.createSampleFromFile(file);
 									sample.setSampleNumberOriginal(esxFile.getSamples().get(firstEmptySampleNumber).getSampleNumberOriginal());
 								}
 
 								// Add sample using emf command
-								if(isValidSampleIndex(firstEmptySampleNumber) && sample!=null) {
+								if(EsxUtil.isValidSampleNumber(firstEmptySampleNumber) && sample!=null) {
 									skipSampleNumbers.add(firstEmptySampleNumber);
 									cmd.append(new ReplaceCommand(
 										editingDomain,
@@ -144,13 +144,6 @@ public class ImportHandler extends AbstractHandler {
 				}
 			}
 		}
-	}
-	
-	private static boolean isValidSampleIndex(int index) {
-		if(index>=0 && index<EsxUtil.NUM_SAMPLES) {
-			return true;
-		}
-		return false;
 	}
 
 }

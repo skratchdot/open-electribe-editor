@@ -148,7 +148,7 @@ public abstract class PartImpl extends EObjectImpl implements Part {
 		if(this.eResource()!=null) {
 			Resource resource = (Resource) this.eResource();
 			Object rootObject = resource.getContents().get(0);
-			if(rootObject instanceof EsxFile && sampleNumber>=0 && sampleNumber<EsxUtil.NUM_SAMPLES) {
+			if(rootObject instanceof EsxFile && EsxUtil.isValidSampleNumber(sampleNumber)) {
 				return "" +
 					SampleNumber.get(sampleNumber).getLiteral() + 
 					" - " +
