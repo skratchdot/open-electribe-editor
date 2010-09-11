@@ -50,7 +50,7 @@ public class EsxCompositeSong extends EsxComposite {
 	private Composite compositeRow2;
 	private Composite compositeRow3;
 
-	private Group groupSelectedSamples;
+	private Group groupSelectedSongs;
 	private Text textSelectedTotal;
 	private Text textSelectedNotEmpty;
 	private Text textSelectedEmpty;
@@ -108,13 +108,13 @@ public class EsxCompositeSong extends EsxComposite {
 		compositeRow1 = new Composite(compositeMain, SWT.NONE);
 		compositeRow1.setLayout(new FillLayout(SWT.HORIZONTAL));
 
-		groupSelectedSamples = new Group(compositeRow1, SWT.NONE);
-		groupSelectedSamples.setText("Selected Samples");
-		groupSelectedSamples.setLayout(new GridLayout(2, false));
+		groupSelectedSongs = new Group(compositeRow1, SWT.NONE);
+		groupSelectedSongs.setText("Selected Songs");
+		groupSelectedSongs.setLayout(new GridLayout(2, false));
 
-		textSelectedTotal = this.createGridData2ColumnTextLabel(groupSelectedSamples, "Total # Selected");
-		textSelectedNotEmpty = this.createGridData2ColumnTextLabel(groupSelectedSamples, "# of Selected (Not Empty)");
-		textSelectedEmpty = this.createGridData2ColumnTextLabel(groupSelectedSamples, "# of Selected (Empty)");
+		textSelectedTotal = this.createGridData2ColumnTextLabel(groupSelectedSongs, "Total # Selected");
+		textSelectedNotEmpty = this.createGridData2ColumnTextLabel(groupSelectedSongs, "# of Selected (Not Empty)");
+		textSelectedEmpty = this.createGridData2ColumnTextLabel(groupSelectedSongs, "# of Selected (Empty)");
 
 		/* ======================== */
 		/* ROW 2					*/
@@ -123,7 +123,7 @@ public class EsxCompositeSong extends EsxComposite {
 		compositeRow2.setLayout(new FillLayout(SWT.HORIZONTAL));
 
 		groupSongName = new Group(compositeRow2, SWT.NONE);
-		groupSongName.setText("Sample Name");
+		groupSongName.setText("Song Name");
 		groupSongName.setLayout(new GridLayout(4, false));
 
 		textName = this.createGridData2ColumnTextLabel(groupSongName, "Name");
@@ -133,7 +133,7 @@ public class EsxCompositeSong extends EsxComposite {
 				setFeatureForSelectedItems(songs, EsxPackage.Literals.SONG__NAME, inputName.getText(), appendName.getSelection(), 8);
 			}
 		});
-		appendName = this.createGridData4ColumnCheckButton(groupSongName, "Append # when multiple samples are selected", true);
+		appendName = this.createGridData4ColumnCheckButton(groupSongName, "Append # when multiple songs are selected", true);
 
 		/* ======================== */
 		/* ROW 3					*/
