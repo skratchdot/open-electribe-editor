@@ -11,12 +11,14 @@
  */
 package com.skratchdot.electribe.model.esx.presentation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -115,6 +117,22 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 		return getMultiString(list, feature, multiText, null);
 	}
 
+	/**
+	 * @param list A list of EObjects
+	 * @param featureOne The main feature. Should be an Elist.
+	 * @param featureOneIndex The index of featureOne.
+	 * @param featureTwo Look in featureOne.get(featureOneIndex) for featureTwo.
+	 * @param multiText The String to return if the given features toString() values don't match
+	 * @return
+	 */
+	protected String getMultiString(List<? extends EObject> list, EStructuralFeature featureOne, int featureOneIndex, EStructuralFeature featureTwo, String multiText) {
+		return getMultiString(
+				getListOfEObjectsWithIndex(list, featureOne, featureOneIndex),
+				featureTwo,
+				multiText
+			);
+	}
+
 
 	/**
 	 * This takes a list of EObjects and compares the given feature's toString() values.
@@ -151,7 +169,7 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 		}
 		
 		// If we made it this far, all strings are the same
-		return firstString;
+		return StringUtils.trim(firstString);
 	}
 
 	/**
@@ -229,7 +247,6 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 				(appendNumber==false?value:getMultiNumberString(value.toString(), i, list.size(), maxAppendStringLength))
 			));
 		}
-		
 		if(cmd.canExecute()) {
 			this.getCommandStack().execute(cmd);
 		}
@@ -238,9 +255,9 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	/**
 	 * @param list A list of EObjects
 	 * @param feature The feature we will be setting
-	 * @param value The value we will be setting
+	 * @param esxObjectAdapter The value we will be setting
 	 */
-	protected void setFeatureForSelectedItems(List<? extends EObject> list, EStructuralFeature feature, EsxObjectAdapter value) {
+	protected void setFeatureForSelectedItems(List<? extends EObject> list, EStructuralFeature feature, EsxObjectAdapter esxObjectAdapter) {
 		CompoundCommand cmd = new CompoundCommand();
 
 		for(int i=0; i<list.size(); i++) {
@@ -248,13 +265,24 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 				this.getEditingDomain(),
 				list.get(i),
 				feature,
-				value.getObject()
+				esxObjectAdapter.getObject()
 			));
 		}
 		
 		if(cmd.canExecute()) {
 			this.getCommandStack().execute(cmd);
 		}
+	}
+	
+	protected List<? extends EObject> getListOfEObjectsWithIndex(List<? extends EObject> list, EStructuralFeature feature, int index) {
+		List<EObject> returnList = new ArrayList<EObject>();
+		for (EObject eObj : list) {
+			Object obj = eObj.eGet(feature);
+			if(obj instanceof EList<?>) {
+				returnList.add((EObject) ((EList<?>)obj).get(index));
+			}
+		}
+		return returnList;
 	}
 	
 	/**
@@ -330,10 +358,27 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 		return check;
 	}
 
+	/**
+	 * @param enumArray
+	 * @return
+	 */
 	protected String[] getLiteralStrings(Enumerator[] enumArray) {
 		String[] literals = new String[enumArray.length];
 		for(int i=0; i<enumArray.length; i++) {
 			literals[i] = enumArray[i].getLiteral();
+		}
+		return literals;
+	}
+
+	/**
+	 * @param startValue The first value in our string array.
+	 * @param length Must be a postive value or else an error is thrown
+	 * @return Returns a string array of values, starting at startValue, and ending in startValue+length
+	 */
+	protected String[] getLiteralStrings(int startValue, int length) {
+		String[] literals = new String[length];
+		for(int i=0; i<literals.length; i++) {
+			literals[i] = Integer.toString(startValue + i);
 		}
 		return literals;
 	}

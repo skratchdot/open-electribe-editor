@@ -85,12 +85,12 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		this.tableViewer = new TableViewer(groupSongs, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
 		this.initTableViewer();
 
-		// Create groupSelectedSong
-		Group groupSelectedSong = new Group(sashForm, SWT.NONE);
-		groupSelectedSong.setLayout(new FillLayout(SWT.HORIZONTAL));
-		groupSelectedSong.setText("Selected Song");
+		// Create groupSelectedSongs
+		Group groupSelectedSongs = new Group(sashForm, SWT.NONE);
+		groupSelectedSongs.setLayout(new FillLayout(SWT.HORIZONTAL));
+		groupSelectedSongs.setText("Selected Songs");
 		
-		tabFolder = new TabFolder(groupSelectedSong, SWT.NONE);
+		tabFolder = new TabFolder(groupSelectedSongs, SWT.NONE);
 		
 		tabSong = new TabItem(tabFolder, SWT.NONE);
 		editorSong = new EsxCompositeSong(this, tabFolder, SWT.NONE);

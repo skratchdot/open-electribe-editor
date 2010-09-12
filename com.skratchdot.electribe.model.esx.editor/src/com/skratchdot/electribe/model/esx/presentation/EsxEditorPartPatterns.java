@@ -11,12 +11,17 @@
  */
 package com.skratchdot.electribe.model.esx.presentation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
@@ -29,9 +34,12 @@ import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
 import com.skratchdot.electribe.model.esx.EsxFile;
+import com.skratchdot.electribe.model.esx.Pattern;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceNames;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
 
@@ -43,6 +51,17 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 	private TableViewer tableViewer;
 	private TableScrollSpeedListener tableViewerScrollSpeedListener;
 
+	private EsxCompositePattern editorPattern;
+	private EsxCompositePatternFx editorPatternFx;
+	private EsxCompositePatternParts editorPatternParts;
+	private EsxCompositePatternMotionSequences editorPatternMotionSequences;
+
+	private TabFolder tabFolder;
+	private TabItem tabPattern;
+	private TabItem tabPatternFx;
+	private TabItem tabPatternParts;
+	private TabItem tabPatternMotionSequences;
+	
 	/**
 	 * @param parent
 	 */
@@ -57,9 +76,8 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 	public void createPartControl(Composite parent) {
 		// Create sashForm
 		SashForm sashForm = new SashForm(parent, SWT.NONE);
-		sashForm.setOrientation(SWT.VERTICAL);
 
-		// Create groupSamples
+		// Create groupPatterns
 		Group groupPatterns = new Group(sashForm, SWT.NONE);
 		groupPatterns.setLayout(new GridLayout(1, true));
 		groupPatterns.setText("Patterns");
@@ -68,47 +86,34 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 		this.tableViewer = new TableViewer(groupPatterns, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
 		this.initTableViewer();
 
-		// Create groupSelectedSample
-		Group groupSelectedPattern = new Group(sashForm, SWT.NONE);
-		groupSelectedPattern.setLayout(new FillLayout(SWT.HORIZONTAL));
-		groupSelectedPattern.setText("Selected Pattern");
-		
-		TabFolder tabFolder = new TabFolder(groupSelectedPattern, SWT.NONE);
+		// Create groupSelectedPatterns
+		Group groupSelectedPatterns = new Group(sashForm, SWT.NONE);
+		groupSelectedPatterns.setLayout(new FillLayout(SWT.HORIZONTAL));
+		groupSelectedPatterns.setText("Selected Patterns");
 
-		TabItem tabParts = new TabItem(tabFolder, SWT.NONE);
-		tabParts.setText("Parts");
-		TabItem tabDrum1 = new TabItem(tabFolder, SWT.NONE);
-		tabDrum1.setText("Drum 1");
-		TabItem tabDrum2 = new TabItem(tabFolder, SWT.NONE);
-		tabDrum2.setText("Drum 2");
-		TabItem tabDrum3 = new TabItem(tabFolder, SWT.NONE);
-		tabDrum3.setText("Drum 3");
-		TabItem tabDrum4 = new TabItem(tabFolder, SWT.NONE);
-		tabDrum4.setText("Drum 4");
-		TabItem tabDrum5 = new TabItem(tabFolder, SWT.NONE);
-		tabDrum5.setText("Drum 5");
-		TabItem tabDrum6a = new TabItem(tabFolder, SWT.NONE);
-		tabDrum6a.setText("Drum 6a");
-		TabItem tabDrum6b = new TabItem(tabFolder, SWT.NONE);
-		tabDrum6b.setText("Drum 6b");
-		TabItem tabDrum7a = new TabItem(tabFolder, SWT.NONE);
-		tabDrum7a.setText("Drum 7a");
-		TabItem tabDrum7b = new TabItem(tabFolder, SWT.NONE);
-		tabDrum7b.setText("Drum 7b");
-		TabItem tabKeyboard1 = new TabItem(tabFolder, SWT.NONE);
-		tabKeyboard1.setText("Keyboard 1");
-		TabItem tabKeyboard2 = new TabItem(tabFolder, SWT.NONE);
-		tabKeyboard2.setText("Keyboard 2");
-		TabItem tabStretch1 = new TabItem(tabFolder, SWT.NONE);
-		tabStretch1.setText("Stretch 1");
-		TabItem tabStretch2 = new TabItem(tabFolder, SWT.NONE);
-		tabStretch2.setText("Stretch 2");
-		TabItem tabSlice = new TabItem(tabFolder, SWT.NONE);
-		tabSlice.setText("Slice");
-		TabItem tabAudioIn = new TabItem(tabFolder, SWT.NONE);
-		tabAudioIn.setText("AudioIn");
-		TabItem tabAccent = new TabItem(tabFolder, SWT.NONE);
-		tabAccent.setText("Accent");
+		tabFolder = new TabFolder(groupSelectedPatterns, SWT.NONE);
+
+		tabPattern = new TabItem(tabFolder, SWT.NONE);
+		editorPattern = new EsxCompositePattern(this, tabFolder, SWT.NONE);
+		tabPattern.setText("Pattern Editor");
+		tabPattern.setControl(editorPattern);
+
+		tabPatternFx = new TabItem(tabFolder, SWT.NONE);
+		editorPatternFx = new EsxCompositePatternFx(this, tabFolder, SWT.NONE);
+		tabPatternFx.setText("FX");
+		tabPatternFx.setControl(editorPatternFx);
+
+		tabPatternParts = new TabItem(tabFolder, SWT.NONE);
+		editorPatternParts = new EsxCompositePatternParts(this, tabFolder, SWT.NONE);
+		tabPatternParts.setText("Parts");
+		tabPatternParts.setControl(editorPatternParts);
+
+		tabPatternMotionSequences = new TabItem(tabFolder, SWT.NONE);
+		editorPatternMotionSequences = new EsxCompositePatternMotionSequences(this, tabFolder, SWT.NONE);
+		tabPatternMotionSequences.setText("Motion Sequences");
+		tabPatternMotionSequences.setControl(editorPatternMotionSequences);
+
+		sashForm.setWeights(new int[] {1, 1});
 	}
 
 	/**
@@ -199,6 +204,30 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 
 	    // Selection Provider For EsxEditor
 	    getEditorSite().setSelectionProvider(this.tableViewer);
+
+		// listen for selection events
+	    getSite().getPage().addSelectionListener((ISelectionListener) this);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.skratchdot.electribe.model.esx.presentation.EsxEditorPart#selectionChanged(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
+	 */
+	@Override
+	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
+		if (parentEditor.getActivePage()==EsxEditorPartPatterns.PAGE_INDEX &&
+				selection instanceof IStructuredSelection) {
+			Object[] objects = ((IStructuredSelection) selection).toArray();
+			List<Pattern> selectedPatterns = new ArrayList<Pattern>();
+			for (Object obj : objects) {
+				if(obj instanceof Pattern) {
+					selectedPatterns.add((Pattern) obj);
+				}
+			}
+			this.editorPattern.setInput(selectedPatterns);
+			this.editorPatternFx.setInput(selectedPatterns);
+			this.editorPatternParts.setInput(selectedPatterns);
+			this.editorPatternMotionSequences.setInput(selectedPatterns);		
+		}
 	}
 
 	/* (non-Javadoc)
@@ -275,6 +304,10 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 		if(this.parentEditor.getActivePage()!=EsxEditorPartPatterns.PAGE_INDEX) return;
 
 		this.tableViewer.refresh();
+		this.editorPattern.refresh();
+		this.editorPatternFx.refresh();
+		this.editorPatternParts.refresh();
+		this.editorPatternMotionSequences.refresh();
 	}
 
 }

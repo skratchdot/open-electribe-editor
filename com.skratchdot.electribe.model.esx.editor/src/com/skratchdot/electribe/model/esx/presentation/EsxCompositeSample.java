@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -253,21 +252,21 @@ public class EsxCompositeSample extends EsxComposite {
 		this.textSelectedNotEmpty.setText(Integer.toString(this.getCountInListWithValue(this.samples, EsxPackage.Literals.SAMPLE__EMPTY, false)));
 		this.textSelectedEmpty.setText(Integer.toString(this.getCountInListWithValue(this.samples, EsxPackage.Literals.SAMPLE__EMPTY, true)));
 
-		this.textName.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__NAME, multipleValueString)));
+		this.textName.setText(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__NAME, multipleValueString));
 
-		this.textSampleRate.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__SAMPLE_RATE, multipleValueString)));
-		this.textSampleTune.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__SAMPLE_TUNE, multipleValueString, EsxPackage.Literals.SAMPLE_TUNE__VALUE)));
-		this.textIsSlice.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__SLICE, multipleValueString)));
-		this.textIsLoop.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__LOOP, multipleValueString)));
+		this.textSampleRate.setText(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__SAMPLE_RATE, multipleValueString));
+		this.textSampleTune.setText(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__SAMPLE_TUNE, multipleValueString, EsxPackage.Literals.SAMPLE_TUNE__VALUE));
+		this.textIsSlice.setText(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__SLICE, multipleValueString));
+		this.textIsLoop.setText(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__LOOP, multipleValueString));
 
-		this.textMemUsedInBytes.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__MEM_USED_IN_BYTES, multipleValueString)));
-		this.textNumberOfSampleFrames.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__NUMBER_OF_SAMPLE_FRAMES, multipleValueString)));
-		this.textStart.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__START, multipleValueString)));
-		this.textEnd.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__END, multipleValueString)));
-		this.textLoopStart.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__LOOP_START, multipleValueString)));
+		this.textMemUsedInBytes.setText(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__MEM_USED_IN_BYTES, multipleValueString));
+		this.textNumberOfSampleFrames.setText(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__NUMBER_OF_SAMPLE_FRAMES, multipleValueString));
+		this.textStart.setText(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__START, multipleValueString));
+		this.textEnd.setText(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__END, multipleValueString));
+		this.textLoopStart.setText(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__LOOP_START, multipleValueString));
 
-		this.textStretchStep.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__STRETCH_STEP, multipleValueString)));
-		this.textPlayLevel.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__PLAY_LEVEL, multipleValueString)));
+		this.textStretchStep.setText(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__STRETCH_STEP, multipleValueString));
+		this.textPlayLevel.setText(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__PLAY_LEVEL, multipleValueString));
 	}
 
 	/* (non-Javadoc)
@@ -277,14 +276,14 @@ public class EsxCompositeSample extends EsxComposite {
 	public void refreshInputs() {
 		String multipleValueString = "";
 
-		this.inputName.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__NAME, multipleValueString)));
+		this.inputName.setText(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__NAME, multipleValueString));
 
-		this.inputStart.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__START, multipleValueString)));
-		this.inputEnd.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__END, multipleValueString)));
-		this.inputLoopStart.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__LOOP_START, multipleValueString)));
+		this.inputStart.setText(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__START, multipleValueString));
+		this.inputEnd.setText(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__END, multipleValueString));
+		this.inputLoopStart.setText(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__LOOP_START, multipleValueString));
 
-		this.comboStretchStep.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__STRETCH_STEP, multipleValueString)));
-		this.comboPlayLevel.setText(StringUtils.trim(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__PLAY_LEVEL, multipleValueString)));
+		this.comboStretchStep.setText(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__STRETCH_STEP, multipleValueString));
+		this.comboPlayLevel.setText(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__PLAY_LEVEL, multipleValueString));
 	}
 
 }

@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
@@ -151,7 +150,7 @@ public class EsxCompositeGlobalMidiCC extends EsxComposite {
 	@Override
 	public void refresh() {
 		String multipleValueString = "<Multiple Values>";
-		this.textMidiControlChangeAssignment.setText(StringUtils.trim(getMultiString(this.selectedItems, EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE, multipleValueString)));
+		this.textMidiControlChangeAssignment.setText(getMultiString(this.selectedItems, EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE, multipleValueString));
 	}
 
 	/* (non-Javadoc)
@@ -160,7 +159,7 @@ public class EsxCompositeGlobalMidiCC extends EsxComposite {
 	@Override
 	public void refreshInputs() {
 		String multipleValueString = "";
-		this.inputMidiControlChangeAssignment.setText(StringUtils.trim(getMultiString(this.selectedItems, EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE, multipleValueString)));
+		this.inputMidiControlChangeAssignment.setText(getMultiString(this.selectedItems, EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE, multipleValueString));
 	}
 
 }

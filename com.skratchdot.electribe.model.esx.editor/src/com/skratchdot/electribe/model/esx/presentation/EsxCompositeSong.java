@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -225,13 +224,13 @@ public class EsxCompositeSong extends EsxComposite {
 		this.textSelectedNotEmpty.setText(Integer.toString(this.getCountInListWithValue(this.songs, EsxPackage.Literals.SONG__EMPTY, false)));
 		this.textSelectedEmpty.setText(Integer.toString(this.getCountInListWithValue(this.songs, EsxPackage.Literals.SONG__EMPTY, true)));
 
-		this.textName.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__NAME, multipleValueString)));
+		this.textName.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__NAME, multipleValueString));
 
-		this.textTempo.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__TEMPO, multipleValueString, EsxPackage.Literals.TEMPO__VALUE)));
-		this.textTempoLock.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__TEMPO_LOCK, multipleValueString)));
-		this.textSongLength.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__SONG_LENGTH, multipleValueString)));
-		this.textMuteHold.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__MUTE_HOLD, multipleValueString)));
-		this.textNextSongNumber.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__NEXT_SONG_NUMBER, multipleValueString)));
+		this.textTempo.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__TEMPO, multipleValueString, EsxPackage.Literals.TEMPO__VALUE));
+		this.textTempoLock.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__TEMPO_LOCK, multipleValueString));
+		this.textSongLength.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__SONG_LENGTH, multipleValueString));
+		this.textMuteHold.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__MUTE_HOLD, multipleValueString));
+		this.textNextSongNumber.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__NEXT_SONG_NUMBER, multipleValueString));
 	}
 
 	/* (non-Javadoc)
@@ -241,13 +240,13 @@ public class EsxCompositeSong extends EsxComposite {
 	public void refreshInputs() {
 		String multipleValueString = "";
 
-		this.inputName.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__NAME, multipleValueString)));
+		this.inputName.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__NAME, multipleValueString));
 
-		this.inputTempo.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__TEMPO, multipleValueString, EsxPackage.Literals.TEMPO__VALUE)));
-		this.comboTempoLock.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__TEMPO_LOCK, multipleValueString)));
-		this.comboSongLength.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__SONG_LENGTH, multipleValueString)));
-		this.comboMuteHold.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__MUTE_HOLD, multipleValueString)));
-		this.comboNextSongNumber.setText(StringUtils.trim(getMultiString(this.songs, EsxPackage.Literals.SONG__NEXT_SONG_NUMBER, multipleValueString)));
+		this.inputTempo.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__TEMPO, multipleValueString, EsxPackage.Literals.TEMPO__VALUE));
+		this.comboTempoLock.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__TEMPO_LOCK, multipleValueString));
+		this.comboSongLength.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__SONG_LENGTH, multipleValueString));
+		this.comboMuteHold.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__MUTE_HOLD, multipleValueString));
+		this.comboNextSongNumber.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__NEXT_SONG_NUMBER, multipleValueString));
 	}
 
 }

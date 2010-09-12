@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
@@ -161,7 +160,7 @@ public class EsxCompositeGlobalPatternSets extends EsxComposite {
 	@Override
 	public void refresh() {
 		String multipleValueString = "<Multiple Values>";
-		this.textPatternSetParameter.setText(StringUtils.trim(getMultiString(this.selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_NUMBER, multipleValueString)));
+		this.textPatternSetParameter.setText(getMultiString(this.selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_NUMBER, multipleValueString));
 	}
 
 	/* (non-Javadoc)
@@ -170,7 +169,7 @@ public class EsxCompositeGlobalPatternSets extends EsxComposite {
 	@Override
 	public void refreshInputs() {
 		String multipleValueString = "";
-		this.comboPatternSetParameter.setText(StringUtils.trim(getMultiString(this.selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_NUMBER, multipleValueString)));
+		this.comboPatternSetParameter.setText(getMultiString(this.selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_NUMBER, multipleValueString));
 	}
 
 }

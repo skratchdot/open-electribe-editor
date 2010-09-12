@@ -38,7 +38,7 @@ import com.skratchdot.electribe.model.esx.Song;
 import com.skratchdot.electribe.model.esx.SongPattern;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
 
-public class EsxCompositeSongPatterns extends EsxComposite {
+public class EsxCompositePatternMotionSequences extends EsxComposite {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositeSongPatterns"; //$NON-NLS-1$
 
 	private Song selectedSong;
@@ -54,7 +54,7 @@ public class EsxCompositeSongPatterns extends EsxComposite {
 	 * @param parent
 	 * @param style
 	 */
-	public EsxCompositeSongPatterns(Composite parent, int style) {
+	public EsxCompositePatternMotionSequences(Composite parent, int style) {
 		super(parent, style);
 	}
 
@@ -63,7 +63,7 @@ public class EsxCompositeSongPatterns extends EsxComposite {
 	 * @param parentComposite
 	 * @param style
 	 */
-	public EsxCompositeSongPatterns(EsxEditorPart parentPart, Composite parentComposite, int style) {
+	public EsxCompositePatternMotionSequences(EsxEditorPart parentPart, Composite parentComposite, int style) {
 		super(parentPart, parentComposite, style);
 		this.parentPart = parentPart;
 
