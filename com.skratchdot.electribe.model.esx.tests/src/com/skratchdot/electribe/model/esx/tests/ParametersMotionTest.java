@@ -23,6 +23,14 @@ import junit.textui.TestRunner;
  * A test case for the model object '<em><b>Parameters Motion</b></em>'.
  * <!-- end-user-doc -->
  * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link com.skratchdot.electribe.model.esx.ParametersMotion#getCurrentPosition() <em>Current Position</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.ParametersMotion#isEmpty() <em>Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.ParametersMotion#getOperationType() <em>Operation Type</em>}</li>
+ * </ul>
+ * </p>
+ * <p>
  * The following operations are tested:
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.ParametersMotion#init(byte[]) <em>Init</em>}</li>
@@ -100,6 +108,45 @@ public class ParametersMotionTest extends TestCase {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.ParametersMotion#getCurrentPosition() <em>Current Position</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.ParametersMotion#getCurrentPosition()
+	 * @generated
+	 */
+	public void testGetCurrentPosition() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.ParametersMotion#isEmpty() <em>Empty</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.ParametersMotion#isEmpty()
+	 * @generated
+	 */
+	public void testIsEmpty() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.ParametersMotion#getOperationType() <em>Operation Type</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.ParametersMotion#getOperationType()
+	 * @generated
+	 */
+	public void testGetOperationType() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 	/**

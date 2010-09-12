@@ -243,6 +243,29 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link com.skratchdot.electribe.model.esx.Operation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OperationItemProvider operationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.skratchdot.electribe.model.esx.Operation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOperationAdapter() {
+		if (operationItemProvider == null) {
+			operationItemProvider = new OperationItemProvider(this);
+		}
+
+		return operationItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link com.skratchdot.electribe.model.esx.ParametersFx} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -805,6 +828,7 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 		if (globalParametersItemProvider != null) globalParametersItemProvider.dispose();
 		if (midiChannelTypeItemProvider != null) midiChannelTypeItemProvider.dispose();
 		if (midiControlChangeAssignmentItemProvider != null) midiControlChangeAssignmentItemProvider.dispose();
+		if (operationItemProvider != null) operationItemProvider.dispose();
 		if (parametersFxItemProvider != null) parametersFxItemProvider.dispose();
 		if (parametersMotionItemProvider != null) parametersMotionItemProvider.dispose();
 		if (partAccentItemProvider != null) partAccentItemProvider.dispose();
