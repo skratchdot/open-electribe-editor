@@ -11,6 +11,7 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
+import com.skratchdot.electribe.model.esx.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -143,6 +144,7 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 			case EsxPackage.GLOBAL_PARAMETERS: return createGlobalParameters();
 			case EsxPackage.MIDI_CHANNEL_TYPE: return createMidiChannelType();
 			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT: return createMidiControlChangeAssignment();
+			case EsxPackage.OPERATION: return createOperation();
 			case EsxPackage.PARAMETERS_FX: return createParametersFx();
 			case EsxPackage.PARAMETERS_MOTION: return createParametersMotion();
 			case EsxPackage.PART_ACCENT: return createPartAccent();
@@ -225,6 +227,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return createNextSongNumberFromString(eDataType, initialValue);
 			case EsxPackage.NOTE_NUMBER:
 				return createNoteNumberFromString(eDataType, initialValue);
+			case EsxPackage.OPERATION_TYPE:
+				return createOperationTypeFromString(eDataType, initialValue);
 			case EsxPackage.PART_NOTE_NUMBER_NAME:
 				return createPartNoteNumberNameFromString(eDataType, initialValue);
 			case EsxPackage.PATTERN_LENGTH:
@@ -326,6 +330,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return convertNextSongNumberToString(eDataType, instanceValue);
 			case EsxPackage.NOTE_NUMBER:
 				return convertNoteNumberToString(eDataType, instanceValue);
+			case EsxPackage.OPERATION_TYPE:
+				return convertOperationTypeToString(eDataType, instanceValue);
 			case EsxPackage.PART_NOTE_NUMBER_NAME:
 				return convertPartNoteNumberNameToString(eDataType, instanceValue);
 			case EsxPackage.PATTERN_LENGTH:
@@ -449,6 +455,16 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	public MidiControlChangeAssignment createMidiControlChangeAssignment() {
 		MidiControlChangeAssignmentImpl midiControlChangeAssignment = new MidiControlChangeAssignmentImpl();
 		return midiControlChangeAssignment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Operation createOperation() {
+		OperationImpl operation = new OperationImpl();
+		return operation;
 	}
 
 	/**
@@ -1638,6 +1654,44 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public String convertNoteNumberToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OperationType createOperationType(String literal) {
+		OperationType result = OperationType.get(literal);
+		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.OPERATION_TYPE.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OperationType createOperationTypeFromString(EDataType eDataType, String initialValue) {
+		return createOperationType(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertOperationType(OperationType instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertOperationTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

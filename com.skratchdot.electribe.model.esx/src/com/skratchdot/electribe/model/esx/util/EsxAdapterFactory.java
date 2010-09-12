@@ -93,6 +93,10 @@ public class EsxAdapterFactory extends AdapterFactoryImpl {
 				return createMidiControlChangeAssignmentAdapter();
 			}
 			@Override
+			public Adapter caseOperation(Operation object) {
+				return createOperationAdapter();
+			}
+			@Override
 			public Adapter caseParametersFx(ParametersFx object) {
 				return createParametersFxAdapter();
 			}
@@ -321,6 +325,20 @@ public class EsxAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMidiControlChangeAssignmentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.skratchdot.electribe.model.esx.Operation <em>Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.skratchdot.electribe.model.esx.Operation
+	 * @generated
+	 */
+	public Adapter createOperationAdapter() {
 		return null;
 	}
 

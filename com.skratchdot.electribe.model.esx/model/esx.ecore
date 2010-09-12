@@ -122,6 +122,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//MidiControlChangeAssignmentName"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Operation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"
+        defaultValueLiteral="0"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParametersFx">
     <eOperations name="init">
       <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
@@ -137,8 +141,18 @@
       <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     </eOperations>
     <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentPosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="-1"
+        derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="empty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="true"
+        derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operation" lowerBound="128"
+        upperBound="128" eType="#//Operation" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationType" eType="#//OperationType"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="-1"
+        derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Part" abstract="true">
     <eOperations name="getSampleLabel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
@@ -904,6 +918,321 @@
     <eLiterals name="F9" value="125" literal="F 9"/>
     <eLiterals name="FS9" value="126" literal="F# 9"/>
     <eLiterals name="G9" value="127" literal="G 9"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OperationType">
+    <eLiterals name="OP_UNKNOWN" literal="Unknown"/>
+    <eLiterals name="OP_004" value="4" literal="Drum1 Pitch"/>
+    <eLiterals name="OP_005" value="5" literal="Drum1 Filter Type"/>
+    <eLiterals name="OP_006" value="6" literal="Drum1 Filter Cutoff"/>
+    <eLiterals name="OP_007" value="7" literal="Drum1 Filter Resonance"/>
+    <eLiterals name="OP_008" value="8" literal="Drum1 Filter EG Int"/>
+    <eLiterals name="OP_009" value="9" literal="Drum1 Start Point"/>
+    <eLiterals name="OP_00A" value="10" literal="Drum1 Level"/>
+    <eLiterals name="OP_00B" value="11" literal="Drum1 Pan"/>
+    <eLiterals name="OP_00C" value="12" literal="Drum1 EG Time"/>
+    <eLiterals name="OP_00D" value="13" literal="Drum1 Amp EG"/>
+    <eLiterals name="OP_00E" value="14" literal="Drum1 Roll"/>
+    <eLiterals name="OP_00F" value="15" literal="Drum1 Reverse"/>
+    <eLiterals name="OP_010" value="16" literal="Drum1 Effect Send"/>
+    <eLiterals name="OP_011" value="17" literal="Drum1 Effect Select"/>
+    <eLiterals name="OP_012" value="18" literal="Drum1 Modulation Type"/>
+    <eLiterals name="OP_013" value="19" literal="Drum1 Modulation Depth"/>
+    <eLiterals name="OP_014" value="20" literal="Drum1 Modulation Speed"/>
+    <eLiterals name="OP_015" value="21" literal="Drum1 Modulation Destination"/>
+    <eLiterals name="OP_016" value="22" literal="Drum1 Modulation BPM Sync"/>
+    <eLiterals name="OP_017" value="23" literal="Drum1 Motion Seq Type"/>
+    <eLiterals name="OP_024" value="36" literal="Drum2 Pitch"/>
+    <eLiterals name="OP_025" value="37" literal="Drum2 Filter Type"/>
+    <eLiterals name="OP_026" value="38" literal="Drum2 Filter Cutoff"/>
+    <eLiterals name="OP_027" value="39" literal="Drum2 Filter Resonance"/>
+    <eLiterals name="OP_028" value="40" literal="Drum2 Filter EG Int"/>
+    <eLiterals name="OP_029" value="41" literal="Drum2 Start Point"/>
+    <eLiterals name="OP_02A" value="42" literal="Drum2 Level"/>
+    <eLiterals name="OP_02B" value="43" literal="Drum2 Pan"/>
+    <eLiterals name="OP_02C" value="44" literal="Drum2 EG Time"/>
+    <eLiterals name="OP_02D" value="45" literal="Drum2 Amp EG"/>
+    <eLiterals name="OP_02E" value="46" literal="Drum2 Roll"/>
+    <eLiterals name="OP_02F" value="47" literal="Drum2 Reverse"/>
+    <eLiterals name="OP_030" value="48" literal="Drum2 Effect Send"/>
+    <eLiterals name="OP_031" value="49" literal="Drum2 Effect Select"/>
+    <eLiterals name="OP_032" value="50" literal="Drum2 Modulation Type"/>
+    <eLiterals name="OP_033" value="51" literal="Drum2 Modulation Depth"/>
+    <eLiterals name="OP_034" value="52" literal="Drum2 Modulation Speed"/>
+    <eLiterals name="OP_035" value="53" literal="Drum2 Modulation Destination"/>
+    <eLiterals name="OP_036" value="54" literal="Drum2 Modulation BPM Sync"/>
+    <eLiterals name="OP_037" value="55" literal="Drum2 Motion Seq Type"/>
+    <eLiterals name="OP_044" value="68" literal="Drum3 Pitch"/>
+    <eLiterals name="OP_045" value="69" literal="Drum3 Filter Type"/>
+    <eLiterals name="OP_046" value="70" literal="Drum3 Filter Cutoff"/>
+    <eLiterals name="OP_047" value="71" literal="Drum3 Filter Resonance"/>
+    <eLiterals name="OP_048" value="72" literal="Drum3 Filter EG Int"/>
+    <eLiterals name="OP_049" value="73" literal="Drum3 Start Point"/>
+    <eLiterals name="OP_04A" value="74" literal="Drum3 Level"/>
+    <eLiterals name="OP_04B" value="75" literal="Drum3 Pan"/>
+    <eLiterals name="OP_04C" value="76" literal="Drum3 EG Time"/>
+    <eLiterals name="OP_04D" value="77" literal="Drum3 Amp EG"/>
+    <eLiterals name="OP_04E" value="78" literal="Drum3 Roll"/>
+    <eLiterals name="OP_04F" value="79" literal="Drum3 Reverse"/>
+    <eLiterals name="OP_050" value="80" literal="Drum3 Effect Send"/>
+    <eLiterals name="OP_051" value="81" literal="Drum3 Effect Select"/>
+    <eLiterals name="OP_052" value="82" literal="Drum3 Modulation Type"/>
+    <eLiterals name="OP_053" value="83" literal="Drum3 Modulation Depth"/>
+    <eLiterals name="OP_054" value="84" literal="Drum3 Modulation Speed"/>
+    <eLiterals name="OP_055" value="85" literal="Drum3 Modulation Destination"/>
+    <eLiterals name="OP_056" value="86" literal="Drum3 Modulation BPM Sync"/>
+    <eLiterals name="OP_057" value="87" literal="Drum3 Motion Seq Type"/>
+    <eLiterals name="OP_064" value="100" literal="Drum4 Pitch"/>
+    <eLiterals name="OP_065" value="101" literal="Drum4 Filter Type"/>
+    <eLiterals name="OP_066" value="102" literal="Drum4 Filter Cutoff"/>
+    <eLiterals name="OP_067" value="103" literal="Drum4 Filter Resonance"/>
+    <eLiterals name="OP_068" value="104" literal="Drum4 Filter EG Int"/>
+    <eLiterals name="OP_069" value="105" literal="Drum4 Start Point"/>
+    <eLiterals name="OP_06A" value="106" literal="Drum4 Level"/>
+    <eLiterals name="OP_06B" value="107" literal="Drum4 Pan"/>
+    <eLiterals name="OP_06C" value="108" literal="Drum4 EG Time"/>
+    <eLiterals name="OP_06D" value="109" literal="Drum4 Amp EG"/>
+    <eLiterals name="OP_06E" value="110" literal="Drum4 Roll"/>
+    <eLiterals name="OP_06F" value="111" literal="Drum4 Reverse"/>
+    <eLiterals name="OP_070" value="112" literal="Drum4 Effect Send"/>
+    <eLiterals name="OP_071" value="113" literal="Drum4 Effect Select"/>
+    <eLiterals name="OP_072" value="114" literal="Drum4 Modulation Type"/>
+    <eLiterals name="OP_073" value="115" literal="Drum4 Modulation Depth"/>
+    <eLiterals name="OP_074" value="116" literal="Drum4 Modulation Speed"/>
+    <eLiterals name="OP_075" value="117" literal="Drum4 Modulation Destination"/>
+    <eLiterals name="OP_076" value="118" literal="Drum4 Modulation BPM Sync"/>
+    <eLiterals name="OP_077" value="119" literal="Drum4 Motion Seq Type"/>
+    <eLiterals name="OP_084" value="132" literal="Drum5 Pitch"/>
+    <eLiterals name="OP_085" value="133" literal="Drum5 Filter Type"/>
+    <eLiterals name="OP_086" value="134" literal="Drum5 Filter Cutoff"/>
+    <eLiterals name="OP_087" value="135" literal="Drum5 Filter Resonance"/>
+    <eLiterals name="OP_088" value="136" literal="Drum5 Filter EG Int"/>
+    <eLiterals name="OP_089" value="137" literal="Drum5 Start Point"/>
+    <eLiterals name="OP_08A" value="138" literal="Drum5 Level"/>
+    <eLiterals name="OP_08B" value="139" literal="Drum5 Pan"/>
+    <eLiterals name="OP_08C" value="140" literal="Drum5 EG Time"/>
+    <eLiterals name="OP_08D" value="141" literal="Drum5 Amp EG"/>
+    <eLiterals name="OP_08E" value="142" literal="Drum5 Roll"/>
+    <eLiterals name="OP_08F" value="143" literal="Drum5 Reverse"/>
+    <eLiterals name="OP_090" value="144" literal="Drum5 Effect Send"/>
+    <eLiterals name="OP_091" value="145" literal="Drum5 Effect Select"/>
+    <eLiterals name="OP_092" value="146" literal="Drum5 Modulation Type"/>
+    <eLiterals name="OP_093" value="147" literal="Drum5 Modulation Depth"/>
+    <eLiterals name="OP_094" value="148" literal="Drum5 Modulation Speed"/>
+    <eLiterals name="OP_095" value="149" literal="Drum5 Modulation Destination"/>
+    <eLiterals name="OP_096" value="150" literal="Drum5 Modulation BPM Sync"/>
+    <eLiterals name="OP_097" value="151" literal="Drum5 Motion Seq Type"/>
+    <eLiterals name="OP_0A4" value="164" literal="Drum6A Pitch"/>
+    <eLiterals name="OP_0A5" value="165" literal="Drum6A Filter Type"/>
+    <eLiterals name="OP_0A6" value="166" literal="Drum6A Filter Cutoff"/>
+    <eLiterals name="OP_0A7" value="167" literal="Drum6A Filter Resonance"/>
+    <eLiterals name="OP_0A8" value="168" literal="Drum6A Filter EG Int"/>
+    <eLiterals name="OP_0A9" value="169" literal="Drum6A Start Point"/>
+    <eLiterals name="OP_0AA" value="170" literal="Drum6A Level"/>
+    <eLiterals name="OP_0AB" value="171" literal="Drum6A Pan"/>
+    <eLiterals name="OP_0AC" value="172" literal="Drum6A EG Time"/>
+    <eLiterals name="OP_0AD" value="173" literal="Drum6A Amp EG"/>
+    <eLiterals name="OP_0AE" value="174" literal="Drum6A Roll"/>
+    <eLiterals name="OP_0AF" value="175" literal="Drum6A Reverse"/>
+    <eLiterals name="OP_0B0" value="176" literal="Drum6A Effect Send"/>
+    <eLiterals name="OP_0B1" value="177" literal="Drum6A Effect Select"/>
+    <eLiterals name="OP_0B2" value="178" literal="Drum6A Modulation Type"/>
+    <eLiterals name="OP_0B3" value="179" literal="Drum6A Modulation Depth"/>
+    <eLiterals name="OP_0B4" value="180" literal="Drum6A Modulation Speed"/>
+    <eLiterals name="OP_0B5" value="181" literal="Drum6A Modulation Destination"/>
+    <eLiterals name="OP_0B6" value="182" literal="Drum6A Modulation BPM Sync"/>
+    <eLiterals name="OP_0B7" value="183" literal="Drum6A Motion Seq Type"/>
+    <eLiterals name="OP_0C4" value="196" literal="Drum6B Pitch"/>
+    <eLiterals name="OP_0C5" value="197" literal="Drum6B Filter Type"/>
+    <eLiterals name="OP_0C6" value="198" literal="Drum6B Filter Cutoff"/>
+    <eLiterals name="OP_0C7" value="199" literal="Drum6B Filter Resonance"/>
+    <eLiterals name="OP_0C8" value="200" literal="Drum6B Filter EG Int"/>
+    <eLiterals name="OP_0C9" value="201" literal="Drum6B Start Point"/>
+    <eLiterals name="OP_0CA" value="202" literal="Drum6B Level"/>
+    <eLiterals name="OP_0CB" value="203" literal="Drum6B Pan"/>
+    <eLiterals name="OP_0CC" value="204" literal="Drum6B EG Time"/>
+    <eLiterals name="OP_0CD" value="205" literal="Drum6B Amp EG"/>
+    <eLiterals name="OP_0CE" value="206" literal="Drum6B Roll"/>
+    <eLiterals name="OP_0CF" value="207" literal="Drum6B Reverse"/>
+    <eLiterals name="OP_0D0" value="208" literal="Drum6B Effect Send"/>
+    <eLiterals name="OP_0D1" value="209" literal="Drum6B Effect Select"/>
+    <eLiterals name="OP_0D2" value="210" literal="Drum6B Modulation Type"/>
+    <eLiterals name="OP_0D3" value="211" literal="Drum6B Modulation Depth"/>
+    <eLiterals name="OP_0D4" value="212" literal="Drum6B Modulation Speed"/>
+    <eLiterals name="OP_0D5" value="213" literal="Drum6B Modulation Destination"/>
+    <eLiterals name="OP_0D6" value="214" literal="Drum6B Modulation BPM Sync"/>
+    <eLiterals name="OP_0D7" value="215" literal="Drum6B Motion Seq Type"/>
+    <eLiterals name="OP_0E4" value="228" literal="Drum7A Pitch"/>
+    <eLiterals name="OP_0E5" value="229" literal="Drum7A Filter Type"/>
+    <eLiterals name="OP_0E6" value="230" literal="Drum7A Filter Cutoff"/>
+    <eLiterals name="OP_0E7" value="231" literal="Drum7A Filter Resonance"/>
+    <eLiterals name="OP_0E8" value="232" literal="Drum7A Filter EG Int"/>
+    <eLiterals name="OP_0E9" value="233" literal="Drum7A Start Point"/>
+    <eLiterals name="OP_0EA" value="234" literal="Drum7A Level"/>
+    <eLiterals name="OP_0EB" value="235" literal="Drum7A Pan"/>
+    <eLiterals name="OP_0EC" value="236" literal="Drum7A EG Time"/>
+    <eLiterals name="OP_0ED" value="237" literal="Drum7A Amp EG"/>
+    <eLiterals name="OP_0EE" value="238" literal="Drum7A Roll"/>
+    <eLiterals name="OP_0EF" value="239" literal="Drum7A Reverse"/>
+    <eLiterals name="OP_0F0" value="240" literal="Drum7A Effect Send"/>
+    <eLiterals name="OP_0F1" value="241" literal="Drum7A Effect Select"/>
+    <eLiterals name="OP_0F2" value="242" literal="Drum7A Modulation Type"/>
+    <eLiterals name="OP_0F3" value="243" literal="Drum7A Modulation Depth"/>
+    <eLiterals name="OP_0F4" value="244" literal="Drum7A Modulation Speed"/>
+    <eLiterals name="OP_0F5" value="245" literal="Drum7A Modulation Destination"/>
+    <eLiterals name="OP_0F6" value="246" literal="Drum7A Modulation BPM Sync"/>
+    <eLiterals name="OP_0F7" value="247" literal="Drum7A Motion Seq Type"/>
+    <eLiterals name="OP_104" value="260" literal="Drum7B Pitch"/>
+    <eLiterals name="OP_105" value="261" literal="Drum7B Filter Type"/>
+    <eLiterals name="OP_106" value="262" literal="Drum7B Filter Cutoff"/>
+    <eLiterals name="OP_107" value="263" literal="Drum7B Filter Resonance"/>
+    <eLiterals name="OP_108" value="264" literal="Drum7B Filter EG Int"/>
+    <eLiterals name="OP_109" value="265" literal="Drum7B Start Point"/>
+    <eLiterals name="OP_10A" value="266" literal="Drum7B Level"/>
+    <eLiterals name="OP_10B" value="267" literal="Drum7B Pan"/>
+    <eLiterals name="OP_10C" value="268" literal="Drum7B EG Time"/>
+    <eLiterals name="OP_10D" value="269" literal="Drum7B Amp EG"/>
+    <eLiterals name="OP_10E" value="270" literal="Drum7B Roll"/>
+    <eLiterals name="OP_10F" value="271" literal="Drum7B Reverse"/>
+    <eLiterals name="OP_110" value="272" literal="Drum7B Effect Send"/>
+    <eLiterals name="OP_111" value="273" literal="Drum7B Effect Select"/>
+    <eLiterals name="OP_112" value="274" literal="Drum7B Modulation Type"/>
+    <eLiterals name="OP_113" value="275" literal="Drum7B Modulation Depth"/>
+    <eLiterals name="OP_114" value="276" literal="Drum7B Modulation Speed"/>
+    <eLiterals name="OP_115" value="277" literal="Drum7B Modulation Destination"/>
+    <eLiterals name="OP_116" value="278" literal="Drum7B Modulation BPM Sync"/>
+    <eLiterals name="OP_117" value="279" literal="Drum7B Motion Seq Type"/>
+    <eLiterals name="OP_123" value="291" literal="Keyboard1 Glide"/>
+    <eLiterals name="OP_125" value="293" literal="Keyboard1 Filter Type"/>
+    <eLiterals name="OP_126" value="294" literal="Keyboard1 Filter Cutoff"/>
+    <eLiterals name="OP_127" value="295" literal="Keyboard1 Filter Resonance"/>
+    <eLiterals name="OP_128" value="296" literal="Keyboard1 Filter EG Int"/>
+    <eLiterals name="OP_129" value="297" literal="Keyboard1 Start Point"/>
+    <eLiterals name="OP_12A" value="298" literal="Keyboard1 Level"/>
+    <eLiterals name="OP_12B" value="299" literal="Keyboard1 Pan"/>
+    <eLiterals name="OP_12C" value="300" literal="Keyboard1 EG Time"/>
+    <eLiterals name="OP_12D" value="301" literal="Keyboard1 Amp EG"/>
+    <eLiterals name="OP_12E" value="302" literal="Keyboard1 Roll"/>
+    <eLiterals name="OP_12F" value="303" literal="Keyboard1 Reverse"/>
+    <eLiterals name="OP_130" value="304" literal="Keyboard1 Effect Send"/>
+    <eLiterals name="OP_131" value="305" literal="Keyboard1 Effect Select"/>
+    <eLiterals name="OP_132" value="306" literal="Keyboard1 Modulation Type"/>
+    <eLiterals name="OP_133" value="307" literal="Keyboard1 Modulation Depth"/>
+    <eLiterals name="OP_134" value="308" literal="Keyboard1 Modulation Speed"/>
+    <eLiterals name="OP_135" value="309" literal="Keyboard1 Modulation Destination"/>
+    <eLiterals name="OP_136" value="310" literal="Keyboard1 Modulation BPM Sync"/>
+    <eLiterals name="OP_137" value="311" literal="Keyboard1 Motion Seq Type"/>
+    <eLiterals name="OP_143" value="323" literal="Keyboard2 Glide"/>
+    <eLiterals name="OP_145" value="325" literal="Keyboard2 Filter Type"/>
+    <eLiterals name="OP_146" value="326" literal="Keyboard2 Filter Cutoff"/>
+    <eLiterals name="OP_147" value="327" literal="Keyboard2 Filter Resonance"/>
+    <eLiterals name="OP_148" value="328" literal="Keyboard2 Filter EG Int"/>
+    <eLiterals name="OP_149" value="329" literal="Keyboard2 Start Point"/>
+    <eLiterals name="OP_14A" value="330" literal="Keyboard2 Level"/>
+    <eLiterals name="OP_14B" value="331" literal="Keyboard2 Pan"/>
+    <eLiterals name="OP_14C" value="332" literal="Keyboard2 EG Time"/>
+    <eLiterals name="OP_14D" value="333" literal="Keyboard2 Amp EG"/>
+    <eLiterals name="OP_14E" value="334" literal="Keyboard2 Roll"/>
+    <eLiterals name="OP_14F" value="335" literal="Keyboard2 Reverse"/>
+    <eLiterals name="OP_150" value="336" literal="Keyboard2 Effect Send"/>
+    <eLiterals name="OP_151" value="337" literal="Keyboard2 Effect Select"/>
+    <eLiterals name="OP_152" value="338" literal="Keyboard2 Modulation Type"/>
+    <eLiterals name="OP_153" value="339" literal="Keyboard2 Modulation Depth"/>
+    <eLiterals name="OP_154" value="340" literal="Keyboard2 Modulation Speed"/>
+    <eLiterals name="OP_155" value="341" literal="Keyboard2 Modulation Destination"/>
+    <eLiterals name="OP_156" value="342" literal="Keyboard2 Modulation BPM Sync"/>
+    <eLiterals name="OP_157" value="343" literal="Keyboard2 Motion Seq Type"/>
+    <eLiterals name="OP_164" value="356" literal="Stretch1 Pitch"/>
+    <eLiterals name="OP_165" value="357" literal="Stretch1 Filter Type"/>
+    <eLiterals name="OP_166" value="358" literal="Stretch1 Filter Cutoff"/>
+    <eLiterals name="OP_167" value="359" literal="Stretch1 Filter Resonance"/>
+    <eLiterals name="OP_168" value="360" literal="Stretch1 Filter EG Int"/>
+    <eLiterals name="OP_169" value="361" literal="Stretch1 Start Point"/>
+    <eLiterals name="OP_16A" value="362" literal="Stretch1 Level"/>
+    <eLiterals name="OP_16B" value="363" literal="Stretch1 Pan"/>
+    <eLiterals name="OP_16C" value="364" literal="Stretch1 EG Time"/>
+    <eLiterals name="OP_16D" value="365" literal="Stretch1 Amp EG"/>
+    <eLiterals name="OP_16E" value="366" literal="Stretch1 Roll"/>
+    <eLiterals name="OP_16F" value="367" literal="Stretch1 Reverse"/>
+    <eLiterals name="OP_170" value="368" literal="Stretch1 Effect Send"/>
+    <eLiterals name="OP_171" value="369" literal="Stretch1 Effect Select"/>
+    <eLiterals name="OP_172" value="370" literal="Stretch1 Modulation Type"/>
+    <eLiterals name="OP_173" value="371" literal="Stretch1 Modulation Depth"/>
+    <eLiterals name="OP_174" value="372" literal="Stretch1 Modulation Speed"/>
+    <eLiterals name="OP_175" value="373" literal="Stretch1 Modulation Destination"/>
+    <eLiterals name="OP_176" value="374" literal="Stretch1 Modulation BPM Sync"/>
+    <eLiterals name="OP_177" value="375" literal="Stretch1 Motion Seq Type"/>
+    <eLiterals name="OP_184" value="388" literal="Stretch2 Pitch"/>
+    <eLiterals name="OP_185" value="389" literal="Stretch2 Filter Type"/>
+    <eLiterals name="OP_186" value="390" literal="Stretch2 Filter Cutoff"/>
+    <eLiterals name="OP_187" value="391" literal="Stretch2 Filter Resonance"/>
+    <eLiterals name="OP_188" value="392" literal="Stretch2 Filter EG Int"/>
+    <eLiterals name="OP_189" value="393" literal="Stretch2 Start Point"/>
+    <eLiterals name="OP_18A" value="394" literal="Stretch2 Level"/>
+    <eLiterals name="OP_18B" value="395" literal="Stretch2 Pan"/>
+    <eLiterals name="OP_18C" value="396" literal="Stretch2 EG Time"/>
+    <eLiterals name="OP_18D" value="397" literal="Stretch2 Amp EG"/>
+    <eLiterals name="OP_18E" value="398" literal="Stretch2 Roll"/>
+    <eLiterals name="OP_18F" value="399" literal="Stretch2 Reverse"/>
+    <eLiterals name="OP_190" value="400" literal="Stretch2 Effect Send"/>
+    <eLiterals name="OP_191" value="401" literal="Stretch2 Effect Select"/>
+    <eLiterals name="OP_192" value="402" literal="Stretch2 Modulation Type"/>
+    <eLiterals name="OP_193" value="403" literal="Stretch2 Modulation Depth"/>
+    <eLiterals name="OP_194" value="404" literal="Stretch2 Modulation Speed"/>
+    <eLiterals name="OP_195" value="405" literal="Stretch2 Modulation Destination"/>
+    <eLiterals name="OP_196" value="406" literal="Stretch2 Modulation BPM Sync"/>
+    <eLiterals name="OP_197" value="407" literal="Stretch2 Motion Seq Type"/>
+    <eLiterals name="OP_1A4" value="420" literal="Slice Pitch"/>
+    <eLiterals name="OP_1A5" value="421" literal="Slice Filter Type"/>
+    <eLiterals name="OP_1A6" value="422" literal="Slice Filter Cutoff"/>
+    <eLiterals name="OP_1A7" value="423" literal="Slice Filter Resonance"/>
+    <eLiterals name="OP_1A8" value="424" literal="Slice Filter EG Int"/>
+    <eLiterals name="OP_1A9" value="425" literal="Slice Start Point"/>
+    <eLiterals name="OP_1AA" value="426" literal="Slice Level"/>
+    <eLiterals name="OP_1AB" value="427" literal="Slice Pan"/>
+    <eLiterals name="OP_1AC" value="428" literal="Slice EG Time"/>
+    <eLiterals name="OP_1AD" value="429" literal="Slice Amp EG"/>
+    <eLiterals name="OP_1AE" value="430" literal="Slice Roll"/>
+    <eLiterals name="OP_1AF" value="431" literal="Slice Reverse"/>
+    <eLiterals name="OP_1B0" value="432" literal="Slice Effect Send"/>
+    <eLiterals name="OP_1B1" value="433" literal="Slice Effect Select"/>
+    <eLiterals name="OP_1B2" value="434" literal="Slice Modulation Type"/>
+    <eLiterals name="OP_1B3" value="435" literal="Slice Modulation Depth"/>
+    <eLiterals name="OP_1B4" value="436" literal="Slice Modulation Speed"/>
+    <eLiterals name="OP_1B5" value="437" literal="Slice Modulation Destination"/>
+    <eLiterals name="OP_1B6" value="438" literal="Slice Modulation BPM Sync"/>
+    <eLiterals name="OP_1B7" value="439" literal="Slice Motion Seq Type"/>
+    <eLiterals name="OP_1C5" value="453" literal="AudioIn Filter Type"/>
+    <eLiterals name="OP_1C6" value="454" literal="AudioIn Filter Cutoff"/>
+    <eLiterals name="OP_1C7" value="455" literal="AudioIn Filter Resonance"/>
+    <eLiterals name="OP_1C8" value="456" literal="AudioIn Filter EG Int"/>
+    <eLiterals name="OP_1CA" value="458" literal="AudioIn Level"/>
+    <eLiterals name="OP_1CB" value="459" literal="AudioIn Pan"/>
+    <eLiterals name="OP_1CC" value="460" literal="AudioIn EG Time"/>
+    <eLiterals name="OP_1CD" value="461" literal="AudioIn Amp EG"/>
+    <eLiterals name="OP_1CE" value="462" literal="AudioIn Roll"/>
+    <eLiterals name="OP_1D0" value="464" literal="AudioIn Effect Send"/>
+    <eLiterals name="OP_1D1" value="465" literal="AudioIn Effect Select"/>
+    <eLiterals name="OP_1D2" value="466" literal="AudioIn Modulation Type"/>
+    <eLiterals name="OP_1D3" value="467" literal="AudioIn Modulation Depth"/>
+    <eLiterals name="OP_1D4" value="468" literal="AudioIn Modulation Speed"/>
+    <eLiterals name="OP_1D5" value="469" literal="AudioIn Modulation Destination"/>
+    <eLiterals name="OP_1D6" value="470" literal="AudioIn Modulation BPM Sync"/>
+    <eLiterals name="OP_1D7" value="471" literal="AudioIn Motion Seq Type"/>
+    <eLiterals name="OP_1E0" value="480" literal="Accent Level"/>
+    <eLiterals name="OP_1E1" value="481" literal="Accent Motion Seq SW"/>
+    <eLiterals name="OP_1E4" value="484" literal="FX1 Type"/>
+    <eLiterals name="OP_1E5" value="485" literal="FX1 Edit1"/>
+    <eLiterals name="OP_1E6" value="486" literal="FX1 Edit2"/>
+    <eLiterals name="OP_1E7" value="487" literal="FX1 Motion Seq SW"/>
+    <eLiterals name="OP_1E8" value="488" literal="FX2 Type"/>
+    <eLiterals name="OP_1E9" value="489" literal="FX2 Edit1"/>
+    <eLiterals name="OP_1EA" value="490" literal="FX2 Edit2"/>
+    <eLiterals name="OP_1EB" value="491" literal="FX2 Motion Seq SW"/>
+    <eLiterals name="OP_1EC" value="492" literal="FX3 Type"/>
+    <eLiterals name="OP_1ED" value="493" literal="FX3 Edit1"/>
+    <eLiterals name="OP_1EE" value="494" literal="FX3 Edit2"/>
+    <eLiterals name="OP_1EF" value="495" literal="FX3 Motion Seq SW"/>
+    <eLiterals name="OP_1F5" value="501" literal="FX Chain"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="PartNoteNumberName">
     <eLiterals name="NAME_00" literal="Drum1"/>

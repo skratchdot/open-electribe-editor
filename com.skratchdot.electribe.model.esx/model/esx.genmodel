@@ -409,6 +409,321 @@
       <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NoteNumber/FS9"/>
       <genEnumLiterals ecoreEnumLiteral="esx.ecore#//NoteNumber/G9"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esx.ecore#//OperationType">
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_UNKNOWN"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_004"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_005"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_006"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_007"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_008"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_009"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_00A"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_00B"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_00C"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_00D"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_00E"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_00F"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_010"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_011"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_012"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_013"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_014"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_015"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_016"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_017"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_024"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_025"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_026"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_027"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_028"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_029"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_02A"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_02B"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_02C"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_02D"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_02E"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_02F"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_030"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_031"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_032"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_033"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_034"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_035"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_036"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_037"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_044"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_045"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_046"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_047"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_048"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_049"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_04A"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_04B"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_04C"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_04D"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_04E"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_04F"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_050"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_051"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_052"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_053"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_054"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_055"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_056"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_057"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_064"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_065"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_066"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_067"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_068"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_069"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_06A"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_06B"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_06C"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_06D"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_06E"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_06F"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_070"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_071"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_072"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_073"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_074"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_075"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_076"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_077"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_084"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_085"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_086"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_087"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_088"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_089"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_08A"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_08B"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_08C"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_08D"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_08E"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_08F"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_090"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_091"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_092"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_093"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_094"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_095"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_096"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_097"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0A4"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0A5"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0A6"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0A7"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0A8"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0A9"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0AA"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0AB"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0AC"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0AD"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0AE"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0AF"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0B0"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0B1"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0B2"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0B3"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0B4"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0B5"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0B6"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0B7"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0C4"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0C5"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0C6"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0C7"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0C8"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0C9"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0CA"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0CB"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0CC"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0CD"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0CE"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0CF"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0D0"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0D1"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0D2"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0D3"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0D4"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0D5"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0D6"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0D7"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0E4"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0E5"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0E6"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0E7"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0E8"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0E9"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0EA"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0EB"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0EC"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0ED"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0EE"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0EF"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0F0"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0F1"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0F2"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0F3"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0F4"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0F5"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0F6"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_0F7"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_104"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_105"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_106"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_107"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_108"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_109"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_10A"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_10B"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_10C"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_10D"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_10E"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_10F"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_110"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_111"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_112"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_113"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_114"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_115"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_116"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_117"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_123"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_125"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_126"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_127"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_128"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_129"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_12A"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_12B"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_12C"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_12D"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_12E"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_12F"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_130"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_131"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_132"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_133"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_134"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_135"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_136"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_137"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_143"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_145"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_146"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_147"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_148"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_149"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_14A"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_14B"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_14C"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_14D"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_14E"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_14F"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_150"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_151"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_152"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_153"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_154"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_155"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_156"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_157"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_164"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_165"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_166"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_167"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_168"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_169"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_16A"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_16B"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_16C"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_16D"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_16E"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_16F"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_170"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_171"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_172"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_173"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_174"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_175"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_176"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_177"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_184"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_185"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_186"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_187"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_188"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_189"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_18A"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_18B"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_18C"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_18D"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_18E"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_18F"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_190"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_191"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_192"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_193"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_194"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_195"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_196"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_197"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1A4"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1A5"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1A6"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1A7"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1A8"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1A9"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1AA"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1AB"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1AC"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1AD"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1AE"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1AF"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1B0"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1B1"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1B2"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1B3"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1B4"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1B5"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1B6"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1B7"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1C5"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1C6"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1C7"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1C8"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1CA"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1CB"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1CC"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1CD"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1CE"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1D0"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1D1"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1D2"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1D3"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1D4"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1D5"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1D6"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1D7"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1E0"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1E1"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1E4"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1E5"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1E6"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1E7"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1E8"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1E9"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1EA"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1EB"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1EC"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1ED"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1EE"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1EF"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//OperationType/OP_1F5"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esx.ecore#//PartNoteNumberName">
       <genEnumLiterals ecoreEnumLiteral="esx.ecore#//PartNoteNumberName/NAME_00"/>
       <genEnumLiterals ecoreEnumLiteral="esx.ecore#//PartNoteNumberName/NAME_01"/>
@@ -1642,8 +1957,8 @@
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/numSamplesStereoNotEmpty"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/numSongsEmpty"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/numSongsNotEmpty"/>
-      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/pointersToSamplesUseCurrent"/>
-      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/pointersToPatternsUseCurrent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/syncPatternsOnMoveEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//EsxFile/syncSamplesOnMoveEnabled"/>
       <genOperations ecoreOperation="esx.ecore#//EsxFile/init">
         <genParameters ecoreParameter="esx.ecore#//EsxFile/init/b"/>
       </genOperations>
@@ -1691,6 +2006,9 @@
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//MidiControlChangeAssignment/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//MidiControlChangeAssignment/value"/>
     </genClasses>
+    <genClasses ecoreClass="esx.ecore#//Operation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Operation/value"/>
+    </genClasses>
     <genClasses ecoreClass="esx.ecore#//ParametersFx">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//ParametersFx/effectType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//ParametersFx/edit1"/>
@@ -1702,8 +2020,11 @@
       <genOperations ecoreOperation="esx.ecore#//ParametersFx/toByteArray"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//ParametersMotion">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//ParametersMotion/operationNumber"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//ParametersMotion/operationValue"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//ParametersMotion/currentPosition"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//ParametersMotion/empty"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esx.ecore#//ParametersMotion/operation"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//ParametersMotion/operationNumber"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//ParametersMotion/operationType"/>
       <genOperations ecoreOperation="esx.ecore#//ParametersMotion/init">
         <genParameters ecoreParameter="esx.ecore#//ParametersMotion/init/b"/>
       </genOperations>
@@ -1712,6 +2033,9 @@
     <genClasses ecoreClass="esx.ecore#//Part">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Part/level"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Part/motionSequenceStatus"/>
+      <genOperations ecoreOperation="esx.ecore#//Part/getSampleLabel">
+        <genParameters ecoreParameter="esx.ecore#//Part/getSampleLabel/sampleNumber"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//PartAccent">
       <genOperations ecoreOperation="esx.ecore#//PartAccent/init">
@@ -1773,6 +2097,7 @@
     </genClasses>
     <genClasses image="false" ecoreClass="esx.ecore#//PartWithSample">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//PartWithSample/reverse"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//PartWithSample/sampleLabel"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//PartWithSample/sampleNumber"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//PartWithSample/startPoint"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//PartWithSample/reservedBitsAfterReverse"/>
@@ -2014,6 +2339,9 @@
     <genClasses ecoreClass="esx.ecore#//Tempo">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Tempo/value"/>
       <genOperations ecoreOperation="esx.ecore#//Tempo/getShortFromCurrentValue"/>
+      <genOperations ecoreOperation="esx.ecore#//Tempo/getValidValue">
+        <genParameters ecoreParameter="esx.ecore#//Tempo/getValidValue/value"/>
+      </genOperations>
       <genOperations ecoreOperation="esx.ecore#//Tempo/setCurrentValueFromShort">
         <genParameters ecoreParameter="esx.ecore#//Tempo/setCurrentValueFromShort/packedShort"/>
       </genOperations>

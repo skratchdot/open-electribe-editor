@@ -57,6 +57,8 @@ import com.skratchdot.electribe.model.esx.MotionSequenceStatus;
 import com.skratchdot.electribe.model.esx.MuteHold;
 import com.skratchdot.electribe.model.esx.NextSongNumber;
 import com.skratchdot.electribe.model.esx.NoteNumber;
+import com.skratchdot.electribe.model.esx.Operation;
+import com.skratchdot.electribe.model.esx.OperationType;
 import com.skratchdot.electribe.model.esx.ParametersFx;
 import com.skratchdot.electribe.model.esx.ParametersMotion;
 import com.skratchdot.electribe.model.esx.Part;
@@ -154,6 +156,13 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	private EClass midiControlChangeAssignmentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass operationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -539,6 +548,13 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	private EEnum noteNumberEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum operationTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1243,6 +1259,24 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getOperation() {
+		return operationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOperation_Value() {
+		return (EAttribute)operationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getParametersFx() {
 		return parametersFxEClass;
 	}
@@ -1297,7 +1331,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParametersMotion_OperationNumber() {
+	public EAttribute getParametersMotion_CurrentPosition() {
 		return (EAttribute)parametersMotionEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1306,8 +1340,35 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParametersMotion_OperationValue() {
+	public EAttribute getParametersMotion_Empty() {
 		return (EAttribute)parametersMotionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getParametersMotion_Operation() {
+		return (EReference)parametersMotionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getParametersMotion_OperationNumber() {
+		return (EAttribute)parametersMotionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getParametersMotion_OperationType() {
+		return (EAttribute)parametersMotionEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -2926,6 +2987,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getOperationType() {
+		return operationTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getPartNoteNumberName() {
 		return partNoteNumberNameEEnum;
 	}
@@ -3172,6 +3242,9 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(midiControlChangeAssignmentEClass, MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME);
 		createEAttribute(midiControlChangeAssignmentEClass, MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE);
 
+		operationEClass = createEClass(OPERATION);
+		createEAttribute(operationEClass, OPERATION__VALUE);
+
 		parametersFxEClass = createEClass(PARAMETERS_FX);
 		createEAttribute(parametersFxEClass, PARAMETERS_FX__EFFECT_TYPE);
 		createEAttribute(parametersFxEClass, PARAMETERS_FX__EDIT1);
@@ -3179,8 +3252,11 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(parametersFxEClass, PARAMETERS_FX__MOTION_SEQUENCE_STATUS);
 
 		parametersMotionEClass = createEClass(PARAMETERS_MOTION);
+		createEAttribute(parametersMotionEClass, PARAMETERS_MOTION__CURRENT_POSITION);
+		createEAttribute(parametersMotionEClass, PARAMETERS_MOTION__EMPTY);
+		createEReference(parametersMotionEClass, PARAMETERS_MOTION__OPERATION);
 		createEAttribute(parametersMotionEClass, PARAMETERS_MOTION__OPERATION_NUMBER);
-		createEAttribute(parametersMotionEClass, PARAMETERS_MOTION__OPERATION_VALUE);
+		createEAttribute(parametersMotionEClass, PARAMETERS_MOTION__OPERATION_TYPE);
 
 		partEClass = createEClass(PART);
 		createEAttribute(partEClass, PART__LEVEL);
@@ -3397,6 +3473,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		muteHoldEEnum = createEEnum(MUTE_HOLD);
 		nextSongNumberEEnum = createEEnum(NEXT_SONG_NUMBER);
 		noteNumberEEnum = createEEnum(NOTE_NUMBER);
+		operationTypeEEnum = createEEnum(OPERATION_TYPE);
 		partNoteNumberNameEEnum = createEEnum(PART_NOTE_NUMBER_NAME);
 		patternLengthEEnum = createEEnum(PATTERN_LENGTH);
 		patternNumberEEnum = createEEnum(PATTERN_NUMBER);
@@ -3562,6 +3639,9 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getMidiControlChangeAssignment_Name(), this.getMidiControlChangeAssignmentName(), "name", null, 0, 1, MidiControlChangeAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMidiControlChangeAssignment_Value(), ecorePackage.getEByte(), "value", null, 0, 1, MidiControlChangeAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOperation_Value(), ecorePackage.getEByte(), "value", "0", 1, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(parametersFxEClass, ParametersFx.class, "ParametersFx", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getParametersFx_EffectType(), this.getFxType(), "effectType", null, 0, 1, ParametersFx.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParametersFx_Edit1(), ecorePackage.getEByte(), "edit1", null, 0, 1, ParametersFx.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3574,8 +3654,11 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEOperation(parametersFxEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(parametersMotionEClass, ParametersMotion.class, "ParametersMotion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getParametersMotion_CurrentPosition(), ecorePackage.getEInt(), "currentPosition", "-1", 0, 1, ParametersMotion.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParametersMotion_Empty(), ecorePackage.getEBoolean(), "empty", "true", 0, 1, ParametersMotion.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getParametersMotion_Operation(), this.getOperation(), null, "operation", null, 128, 128, ParametersMotion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParametersMotion_OperationNumber(), ecorePackage.getEShort(), "operationNumber", null, 0, 1, ParametersMotion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParametersMotion_OperationValue(), ecorePackage.getEByteArray(), "operationValue", null, 0, 1, ParametersMotion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParametersMotion_OperationType(), this.getOperationType(), "operationType", "-1", 0, 1, ParametersMotion.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(parametersMotionEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -4315,6 +4398,321 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEEnumLiteral(noteNumberEEnum, NoteNumber.F9);
 		addEEnumLiteral(noteNumberEEnum, NoteNumber.FS9);
 		addEEnumLiteral(noteNumberEEnum, NoteNumber.G9);
+
+		initEEnum(operationTypeEEnum, OperationType.class, "OperationType");
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_UNKNOWN);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_004);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_005);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_006);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_007);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_008);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_009);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_00A);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_00B);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_00C);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_00D);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_00E);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_00F);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_010);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_011);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_012);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_013);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_014);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_015);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_016);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_017);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_024);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_025);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_026);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_027);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_028);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_029);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_02A);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_02B);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_02C);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_02D);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_02E);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_02F);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_030);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_031);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_032);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_033);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_034);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_035);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_036);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_037);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_044);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_045);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_046);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_047);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_048);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_049);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_04A);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_04B);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_04C);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_04D);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_04E);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_04F);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_050);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_051);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_052);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_053);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_054);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_055);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_056);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_057);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_064);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_065);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_066);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_067);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_068);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_069);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_06A);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_06B);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_06C);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_06D);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_06E);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_06F);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_070);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_071);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_072);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_073);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_074);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_075);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_076);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_077);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_084);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_085);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_086);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_087);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_088);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_089);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_08A);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_08B);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_08C);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_08D);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_08E);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_08F);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_090);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_091);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_092);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_093);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_094);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_095);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_096);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_097);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0A4);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0A5);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0A6);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0A7);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0A8);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0A9);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0AA);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0AB);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0AC);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0AD);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0AE);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0AF);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0B0);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0B1);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0B2);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0B3);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0B4);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0B5);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0B6);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0B7);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0C4);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0C5);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0C6);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0C7);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0C8);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0C9);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0CA);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0CB);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0CC);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0CD);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0CE);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0CF);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0D0);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0D1);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0D2);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0D3);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0D4);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0D5);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0D6);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0D7);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0E4);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0E5);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0E6);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0E7);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0E8);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0E9);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0EA);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0EB);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0EC);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0ED);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0EE);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0EF);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0F0);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0F1);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0F2);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0F3);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0F4);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0F5);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0F6);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_0F7);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_104);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_105);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_106);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_107);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_108);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_109);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_10A);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_10B);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_10C);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_10D);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_10E);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_10F);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_110);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_111);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_112);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_113);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_114);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_115);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_116);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_117);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_123);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_125);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_126);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_127);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_128);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_129);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_12A);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_12B);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_12C);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_12D);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_12E);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_12F);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_130);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_131);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_132);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_133);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_134);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_135);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_136);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_137);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_143);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_145);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_146);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_147);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_148);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_149);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_14A);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_14B);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_14C);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_14D);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_14E);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_14F);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_150);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_151);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_152);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_153);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_154);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_155);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_156);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_157);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_164);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_165);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_166);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_167);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_168);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_169);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_16A);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_16B);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_16C);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_16D);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_16E);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_16F);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_170);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_171);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_172);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_173);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_174);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_175);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_176);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_177);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_184);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_185);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_186);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_187);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_188);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_189);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_18A);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_18B);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_18C);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_18D);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_18E);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_18F);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_190);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_191);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_192);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_193);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_194);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_195);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_196);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_197);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1A4);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1A5);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1A6);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1A7);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1A8);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1A9);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1AA);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1AB);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1AC);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1AD);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1AE);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1AF);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1B0);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1B1);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1B2);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1B3);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1B4);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1B5);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1B6);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1B7);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1C5);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1C6);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1C7);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1C8);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1CA);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1CB);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1CC);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1CD);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1CE);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1D0);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1D1);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1D2);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1D3);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1D4);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1D5);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1D6);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1D7);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1E0);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1E1);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1E4);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1E5);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1E6);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1E7);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1E8);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1E9);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1EA);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1EB);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1EC);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1ED);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1EE);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1EF);
+		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1F5);
 
 		initEEnum(partNoteNumberNameEEnum, PartNoteNumberName.class, "PartNoteNumberName");
 		addEEnumLiteral(partNoteNumberNameEEnum, PartNoteNumberName.NAME_00);

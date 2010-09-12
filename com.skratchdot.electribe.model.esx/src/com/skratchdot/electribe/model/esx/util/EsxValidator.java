@@ -11,6 +11,7 @@
  */
 package com.skratchdot.electribe.model.esx.util;
 
+import com.skratchdot.electribe.model.esx.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -187,6 +188,8 @@ public class EsxValidator extends EObjectValidator {
 				return validateMidiChannelType((MidiChannelType)value, diagnostics, context);
 			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT:
 				return validateMidiControlChangeAssignment((MidiControlChangeAssignment)value, diagnostics, context);
+			case EsxPackage.OPERATION:
+				return validateOperation((Operation)value, diagnostics, context);
 			case EsxPackage.PARAMETERS_FX:
 				return validateParametersFx((ParametersFx)value, diagnostics, context);
 			case EsxPackage.PARAMETERS_MOTION:
@@ -297,6 +300,8 @@ public class EsxValidator extends EObjectValidator {
 				return validateNextSongNumber((NextSongNumber)value, diagnostics, context);
 			case EsxPackage.NOTE_NUMBER:
 				return validateNoteNumber((NoteNumber)value, diagnostics, context);
+			case EsxPackage.OPERATION_TYPE:
+				return validateOperationType((OperationType)value, diagnostics, context);
 			case EsxPackage.PART_NOTE_NUMBER_NAME:
 				return validatePartNoteNumberName((PartNoteNumberName)value, diagnostics, context);
 			case EsxPackage.PATTERN_LENGTH:
@@ -414,6 +419,15 @@ public class EsxValidator extends EObjectValidator {
 	 */
 	public boolean validateMidiControlChangeAssignment(MidiControlChangeAssignment midiControlChangeAssignment, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(midiControlChangeAssignment, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateOperation(Operation operation, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(operation, diagnostics, context);
 	}
 
 	/**
@@ -908,6 +922,15 @@ public class EsxValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateNoteNumber(NoteNumber noteNumber, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateOperationType(OperationType operationType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

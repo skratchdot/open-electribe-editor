@@ -110,6 +110,15 @@ public interface EsxFactory extends EFactory {
 	MidiControlChangeAssignment createMidiControlChangeAssignment();
 
 	/**
+	 * Returns a new object of class '<em>Operation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Operation</em>'.
+	 * @generated
+	 */
+	Operation createOperation();
+
+	/**
 	 * Returns a new object of class '<em>Parameters Fx</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -794,6 +803,26 @@ public interface EsxFactory extends EFactory {
 	 * @generated
 	 */
 	String convertNoteNumber(NoteNumber instanceValue);
+
+	/**
+	 * Returns an instance of data type '<em>Operation Type</em>' corresponding the given literal.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param literal a literal of the data type.
+	 * @return a new instance value of the data type.
+	 * @generated
+	 */
+	OperationType createOperationType(String literal);
+
+	/**
+	 * Returns a literal representation of an instance of data type '<em>Operation Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param instanceValue an instance value of the data type.
+	 * @return a literal representation of the instance value.
+	 * @generated
+	 */
+	String convertOperationType(OperationType instanceValue);
 
 	/**
 	 * Returns an instance of data type '<em>Part Note Number Name</em>' corresponding the given literal.

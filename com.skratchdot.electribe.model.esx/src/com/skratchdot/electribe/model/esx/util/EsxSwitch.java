@@ -116,6 +116,12 @@ public class EsxSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EsxPackage.OPERATION: {
+				Operation operation = (Operation)theEObject;
+				T result = caseOperation(operation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EsxPackage.PARAMETERS_FX: {
 				ParametersFx parametersFx = (ParametersFx)theEObject;
 				T result = caseParametersFx(parametersFx);
@@ -428,6 +434,21 @@ public class EsxSwitch<T> {
 	 * @generated
 	 */
 	public T caseMidiControlChangeAssignment(MidiControlChangeAssignment object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Operation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Operation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOperation(Operation object) {
 		return null;
 	}
 
