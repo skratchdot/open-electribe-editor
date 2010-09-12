@@ -11,15 +11,15 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
-import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.SongEvent;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.Song;
+import com.skratchdot.electribe.model.esx.SongEvent;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongEventImpl#getCurrentPosition <em>Current Position</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongEventImpl#getMeasure <em>Measure</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongEventImpl#getOperationNumber <em>Operation Number</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongEventImpl#getPositionNumber <em>Position Number</em>}</li>
@@ -38,6 +39,16 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * @generated
  */
 public abstract class SongEventImpl extends EObjectImpl implements SongEvent {
+	/**
+	 * The default value of the '{@link #getCurrentPosition() <em>Current Position</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCurrentPosition()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int CURRENT_POSITION_EDEFAULT = -1;
+
 	/**
 	 * The default value of the '{@link #getMeasure() <em>Measure</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -140,6 +151,19 @@ public abstract class SongEventImpl extends EObjectImpl implements SongEvent {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getCurrentPosition() {
+		EObject parent = this.eContainer();
+		if(parent instanceof Song) {
+			return ((Song) parent).getSongEvents().indexOf(this) + 1;
+		}
+		return 0;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public byte getMeasure() {
@@ -229,6 +253,8 @@ public abstract class SongEventImpl extends EObjectImpl implements SongEvent {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case EsxPackage.SONG_EVENT__CURRENT_POSITION:
+				return getCurrentPosition();
 			case EsxPackage.SONG_EVENT__MEASURE:
 				return getMeasure();
 			case EsxPackage.SONG_EVENT__OPERATION_NUMBER:
@@ -297,6 +323,8 @@ public abstract class SongEventImpl extends EObjectImpl implements SongEvent {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case EsxPackage.SONG_EVENT__CURRENT_POSITION:
+				return getCurrentPosition() != CURRENT_POSITION_EDEFAULT;
 			case EsxPackage.SONG_EVENT__MEASURE:
 				return measure != MEASURE_EDEFAULT;
 			case EsxPackage.SONG_EVENT__OPERATION_NUMBER:

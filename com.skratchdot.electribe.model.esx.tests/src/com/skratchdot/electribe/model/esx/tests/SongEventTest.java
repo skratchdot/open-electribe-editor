@@ -19,6 +19,12 @@ import junit.framework.TestCase;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Song Event</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link com.skratchdot.electribe.model.esx.SongEvent#getCurrentPosition() <em>Current Position</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public abstract class SongEventTest extends TestCase {
@@ -59,6 +65,19 @@ public abstract class SongEventTest extends TestCase {
 	 */
 	protected SongEvent getFixture() {
 		return fixture;
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.SongEvent#getCurrentPosition() <em>Current Position</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.SongEvent#getCurrentPosition()
+	 * @generated
+	 */
+	public void testGetCurrentPosition() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 } //SongEventTest

@@ -105,18 +105,6 @@ public class SongEventWithPartItemProvider
 		return getString("_UI_SongEventWithPart_type") + " " + songEventWithPart.getPart();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.skratchdot.electribe.model.esx.provider.SongEventItemProvider#getColumnText(java.lang.Object, int)
-	 */
-	@Override
-	public String getColumnText(Object object, int columnIndex) {
-		switch(columnIndex) {
-			// Part
-			case 7: return Byte.toString(((SongEventWithPart) object).getPart());
-			default: return super.getColumnText(object, columnIndex);
-		}
-	}
-
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.

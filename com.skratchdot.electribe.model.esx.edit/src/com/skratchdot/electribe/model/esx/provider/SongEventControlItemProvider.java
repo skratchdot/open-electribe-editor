@@ -31,6 +31,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.SongEvent;
 import com.skratchdot.electribe.model.esx.SongEventControl;
 
 /**
@@ -157,7 +158,7 @@ public class SongEventControlItemProvider
 	@Override
 	public String getText(Object object) {
 		SongEventControl songEventControl = (SongEventControl)object;
-		return getString("_UI_SongEventControl_type") + " " + songEventControl.getMeasure();
+		return getString("_UI_SongEventControl_type") + " " + songEventControl.getCurrentPosition();
 	}
 
 	/* (non-Javadoc)
@@ -166,6 +167,10 @@ public class SongEventControlItemProvider
 	@Override
 	public String getColumnText(Object object, int columnIndex) {
 		switch(columnIndex) {
+			// EventType
+			case 4: return "Control";
+			// Operation
+			case 5: return Short.toString(((SongEvent) object).getOperationNumber());			
 			// Control Value
 			case 6: return Byte.toString(((SongEventControl) object).getValue());
 			default: return super.getColumnText(object, columnIndex);

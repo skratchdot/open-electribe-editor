@@ -75,12 +75,12 @@ public class EsxCompositeSongEvents extends EsxComposite {
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 4, 1));
 
 		// Create our columns
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Position Current", 50);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Position Original", 50);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Event#", 50);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Position", null);
 		this.parentPart.addColumnToTableViewer(this.tableViewer, "Measure", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Operation Number", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Position Number", null);
 		this.parentPart.addColumnToTableViewer(this.tableViewer, "Step", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "EventType", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Operation", null);
 		this.parentPart.addColumnToTableViewer(this.tableViewer, "Control Value", null);
 		this.parentPart.addColumnToTableViewer(this.tableViewer, "Part", null);
 		this.parentPart.addColumnToTableViewer(this.tableViewer, "Note Length", null);

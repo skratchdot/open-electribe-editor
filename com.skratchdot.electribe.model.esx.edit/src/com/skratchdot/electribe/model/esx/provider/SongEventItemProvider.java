@@ -66,12 +66,35 @@ public class SongEventItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addCurrentPositionPropertyDescriptor(object);
 			addMeasurePropertyDescriptor(object);
 			addOperationNumberPropertyDescriptor(object);
 			addPositionNumberPropertyDescriptor(object);
 			addStepPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Current Position feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCurrentPositionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SongEvent_currentPosition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SongEvent_currentPosition_feature", "_UI_SongEvent_type"),
+				 EsxPackage.Literals.SONG_EVENT__CURRENT_POSITION,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -171,7 +194,7 @@ public class SongEventItemProvider
 	@Override
 	public String getText(Object object) {
 		SongEvent songEvent = (SongEvent)object;
-		return getString("_UI_SongEvent_type") + " " + songEvent.getMeasure();
+		return getString("_UI_SongEvent_type") + " " + songEvent.getCurrentPosition();
 	}
 
 	/* (non-Javadoc)
@@ -181,18 +204,14 @@ public class SongEventItemProvider
 	public String getColumnText(Object object, int columnIndex) {
 		switch(columnIndex) {
 			// Current Position
-			case 0: return "";
-			// Original Position
-			case 1: return "";
+			case 0: return Integer.toString(((SongEvent) object).getCurrentPosition());
+			// Position Number
+			case 1: return Byte.toString(((SongEvent) object).getPositionNumber());
 			// Measure
 			case 2: return Byte.toString(((SongEvent) object).getMeasure());
-			// Operation Number
-			case 3: return Short.toString(((SongEvent) object).getOperationNumber());
-			// Position Number
-			case 4: return Byte.toString(((SongEvent) object).getPositionNumber());
 			// Step
-			case 5: return Byte.toString(((SongEvent) object).getStep());
-			default: return "";
+			case 3: return Byte.toString(((SongEvent) object).getStep());
+			default: return "--";
 		}
 	}
 
@@ -208,6 +227,7 @@ public class SongEventItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SongEvent.class)) {
+			case EsxPackage.SONG_EVENT__CURRENT_POSITION:
 			case EsxPackage.SONG_EVENT__MEASURE:
 			case EsxPackage.SONG_EVENT__OPERATION_NUMBER:
 			case EsxPackage.SONG_EVENT__POSITION_NUMBER:

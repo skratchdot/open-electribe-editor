@@ -3006,13 +3006,22 @@ public interface EsxPackage extends EPackage {
 	int SONG_EVENT = 28;
 
 	/**
+	 * The feature id for the '<em><b>Current Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT__CURRENT_POSITION = 0;
+
+	/**
 	 * The feature id for the '<em><b>Measure</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_EVENT__MEASURE = 0;
+	int SONG_EVENT__MEASURE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Operation Number</b></em>' attribute.
@@ -3021,7 +3030,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_EVENT__OPERATION_NUMBER = 1;
+	int SONG_EVENT__OPERATION_NUMBER = 2;
 
 	/**
 	 * The feature id for the '<em><b>Position Number</b></em>' attribute.
@@ -3030,7 +3039,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_EVENT__POSITION_NUMBER = 2;
+	int SONG_EVENT__POSITION_NUMBER = 3;
 
 	/**
 	 * The feature id for the '<em><b>Step</b></em>' attribute.
@@ -3039,7 +3048,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_EVENT__STEP = 3;
+	int SONG_EVENT__STEP = 4;
 
 	/**
 	 * The number of structural features of the '<em>Song Event</em>' class.
@@ -3048,7 +3057,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_EVENT_FEATURE_COUNT = 4;
+	int SONG_EVENT_FEATURE_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.SongEventWithPartImpl <em>Song Event With Part</em>}' class.
@@ -3069,6 +3078,15 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	int SONG_EVENT_CONTROL = 29;
+
+	/**
+	 * The feature id for the '<em><b>Current Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT_CONTROL__CURRENT_POSITION = SONG_EVENT__CURRENT_POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Measure</b></em>' attribute.
@@ -3153,6 +3171,15 @@ public interface EsxPackage extends EPackage {
 	int SONG_EVENT_DRUM_NOTE = 30;
 
 	/**
+	 * The feature id for the '<em><b>Current Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT_DRUM_NOTE__CURRENT_POSITION = SONG_EVENT__CURRENT_POSITION;
+
+	/**
 	 * The feature id for the '<em><b>Measure</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3233,6 +3260,15 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	int SONG_EVENT_KEYBOARD_NOTE = 31;
+
+	/**
+	 * The feature id for the '<em><b>Current Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT_KEYBOARD_NOTE__CURRENT_POSITION = SONG_EVENT__CURRENT_POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Measure</b></em>' attribute.
@@ -3327,6 +3363,15 @@ public interface EsxPackage extends EPackage {
 	int SONG_EVENT_MUTE_STATUS = 32;
 
 	/**
+	 * The feature id for the '<em><b>Current Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT_MUTE_STATUS__CURRENT_POSITION = SONG_EVENT__CURRENT_POSITION;
+
+	/**
 	 * The feature id for the '<em><b>Measure</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3388,6 +3433,15 @@ public interface EsxPackage extends EPackage {
 	 * @ordered
 	 */
 	int SONG_EVENT_MUTE_STATUS_FEATURE_COUNT = SONG_EVENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Current Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT_TEMPO__CURRENT_POSITION = SONG_EVENT__CURRENT_POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Measure</b></em>' attribute.
@@ -6169,6 +6223,17 @@ public interface EsxPackage extends EPackage {
 	EClass getSongEvent();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongEvent#getCurrentPosition <em>Current Position</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Current Position</em>'.
+	 * @see com.skratchdot.electribe.model.esx.SongEvent#getCurrentPosition()
+	 * @see #getSongEvent()
+	 * @generated
+	 */
+	EAttribute getSongEvent_CurrentPosition();
+
+	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongEvent#getMeasure <em>Measure</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8544,6 +8609,14 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SONG_EVENT = eINSTANCE.getSongEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Current Position</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SONG_EVENT__CURRENT_POSITION = eINSTANCE.getSongEvent_CurrentPosition();
 
 		/**
 		 * The meta object literal for the '<em><b>Measure</b></em>' attribute feature.

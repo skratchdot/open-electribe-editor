@@ -449,6 +449,9 @@
         derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SongEvent" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentPosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="-1"
+        derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="measure" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="positionNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>

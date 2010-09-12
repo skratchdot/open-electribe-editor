@@ -31,7 +31,9 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.SongEvent;
 import com.skratchdot.electribe.model.esx.SongEventKeyboardNote;
+import com.skratchdot.electribe.model.esx.SongEventWithPart;
 
 /**
  * This is the item provider adapter for a {@link com.skratchdot.electribe.model.esx.SongEventKeyboardNote} object.
@@ -157,7 +159,7 @@ public class SongEventKeyboardNoteItemProvider
 	@Override
 	public String getText(Object object) {
 		SongEventKeyboardNote songEventKeyboardNote = (SongEventKeyboardNote)object;
-		return getString("_UI_SongEventKeyboardNote_type") + " " + songEventKeyboardNote.getMeasure();
+		return getString("_UI_SongEventKeyboardNote_type") + " " + songEventKeyboardNote.getCurrentPosition();
 	}
 
 	/* (non-Javadoc)
@@ -166,6 +168,12 @@ public class SongEventKeyboardNoteItemProvider
 	@Override
 	public String getColumnText(Object object, int columnIndex) {
 		switch(columnIndex) {
+			// EventType
+			case 4: return "Keyboard Note";
+			// Operation
+			case 5: return Short.toString(((SongEvent) object).getOperationNumber());			
+			// Part
+			case 7: return Byte.toString(((SongEventWithPart) object).getPart());
 			// Note Length
 			case 8: return Short.toString(((SongEventKeyboardNote) object).getLength());
 			// Note Number

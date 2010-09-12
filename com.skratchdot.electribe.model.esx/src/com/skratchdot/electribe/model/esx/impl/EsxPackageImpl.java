@@ -2564,7 +2564,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSongEvent_Measure() {
+	public EAttribute getSongEvent_CurrentPosition() {
 		return (EAttribute)songEventEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -2573,7 +2573,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSongEvent_OperationNumber() {
+	public EAttribute getSongEvent_Measure() {
 		return (EAttribute)songEventEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -2582,7 +2582,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSongEvent_PositionNumber() {
+	public EAttribute getSongEvent_OperationNumber() {
 		return (EAttribute)songEventEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -2591,8 +2591,17 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSongEvent_Step() {
+	public EAttribute getSongEvent_PositionNumber() {
 		return (EAttribute)songEventEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSongEvent_Step() {
+		return (EAttribute)songEventEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -3410,6 +3419,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(songEClass, SONG__SONG_NUMBER_CURRENT);
 
 		songEventEClass = createEClass(SONG_EVENT);
+		createEAttribute(songEventEClass, SONG_EVENT__CURRENT_POSITION);
 		createEAttribute(songEventEClass, SONG_EVENT__MEASURE);
 		createEAttribute(songEventEClass, SONG_EVENT__OPERATION_NUMBER);
 		createEAttribute(songEventEClass, SONG_EVENT__POSITION_NUMBER);
@@ -3928,6 +3938,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEOperation(songEClass, ecorePackage.getEByteArray(), "toSongEventsByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(songEventEClass, SongEvent.class, "SongEvent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSongEvent_CurrentPosition(), ecorePackage.getEInt(), "currentPosition", "-1", 0, 1, SongEvent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongEvent_Measure(), ecorePackage.getEByte(), "measure", null, 0, 1, SongEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongEvent_OperationNumber(), ecorePackage.getEShort(), "operationNumber", null, 0, 1, SongEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongEvent_PositionNumber(), ecorePackage.getEByte(), "positionNumber", null, 0, 1, SongEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
