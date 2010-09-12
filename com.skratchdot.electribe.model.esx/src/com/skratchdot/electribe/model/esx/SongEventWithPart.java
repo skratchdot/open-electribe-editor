@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface SongEventWithPart extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Part</b></em>' attribute.
+	 * The literals are from the enumeration {@link com.skratchdot.electribe.model.esx.SongEventPart}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Part</em>' attribute isn't clear,
@@ -39,21 +40,23 @@ public interface SongEventWithPart extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Part</em>' attribute.
-	 * @see #setPart(byte)
+	 * @see com.skratchdot.electribe.model.esx.SongEventPart
+	 * @see #setPart(SongEventPart)
 	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSongEventWithPart_Part()
 	 * @model
 	 * @generated
 	 */
-	byte getPart();
+	SongEventPart getPart();
 
 	/**
 	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.SongEventWithPart#getPart <em>Part</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Part</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.SongEventPart
 	 * @see #getPart()
 	 * @generated
 	 */
-	void setPart(byte value);
+	void setPart(SongEventPart value);
 
 } // SongEventWithPart

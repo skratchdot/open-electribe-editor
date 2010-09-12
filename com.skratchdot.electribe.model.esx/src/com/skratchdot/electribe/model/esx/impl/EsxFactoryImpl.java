@@ -247,6 +247,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return createRollTypeFromString(eDataType, initialValue);
 			case EsxPackage.SAMPLE_NUMBER:
 				return createSampleNumberFromString(eDataType, initialValue);
+			case EsxPackage.SONG_EVENT_PART:
+				return createSongEventPartFromString(eDataType, initialValue);
 			case EsxPackage.SONG_LENGTH:
 				return createSongLengthFromString(eDataType, initialValue);
 			case EsxPackage.SONG_NUMBER:
@@ -350,6 +352,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return convertRollTypeToString(eDataType, instanceValue);
 			case EsxPackage.SAMPLE_NUMBER:
 				return convertSampleNumberToString(eDataType, instanceValue);
+			case EsxPackage.SONG_EVENT_PART:
+				return convertSongEventPartToString(eDataType, instanceValue);
 			case EsxPackage.SONG_LENGTH:
 				return convertSongLengthToString(eDataType, instanceValue);
 			case EsxPackage.SONG_NUMBER:
@@ -1122,6 +1126,44 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public String convertSampleNumberToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SongEventPart createSongEventPart(String literal) {
+		SongEventPart result = SongEventPart.get(literal);
+		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.SONG_EVENT_PART.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SongEventPart createSongEventPartFromString(EDataType eDataType, String initialValue) {
+		return createSongEventPart(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSongEventPart(SongEventPart instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSongEventPartToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

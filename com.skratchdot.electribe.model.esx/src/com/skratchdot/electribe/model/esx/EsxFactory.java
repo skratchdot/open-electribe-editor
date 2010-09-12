@@ -525,6 +525,26 @@ public interface EsxFactory extends EFactory {
 	String convertSampleNumber(SampleNumber instanceValue);
 
 	/**
+	 * Returns an instance of data type '<em>Song Event Part</em>' corresponding the given literal.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param literal a literal of the data type.
+	 * @return a new instance value of the data type.
+	 * @generated
+	 */
+	SongEventPart createSongEventPart(String literal);
+
+	/**
+	 * Returns a literal representation of an instance of data type '<em>Song Event Part</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param instanceValue an instance value of the data type.
+	 * @return a literal representation of the instance value.
+	 * @generated
+	 */
+	String convertSongEventPart(SongEventPart instanceValue);
+
+	/**
 	 * Returns an instance of data type '<em>Song Number</em>' corresponding the given literal.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

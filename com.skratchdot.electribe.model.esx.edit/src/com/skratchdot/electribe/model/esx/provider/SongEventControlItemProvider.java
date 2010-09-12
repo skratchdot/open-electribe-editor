@@ -31,7 +31,6 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.SongEvent;
 import com.skratchdot.electribe.model.esx.SongEventControl;
 
 /**
@@ -65,11 +64,34 @@ public class SongEventControlItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addValuePropertyDescriptor(object);
+			addOperationTypePropertyDescriptor(object);
 			addReservedBytePropertyDescriptor(object);
 			addReservedShortPropertyDescriptor(object);
+			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Operation Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOperationTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SongEventControl_operationType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SongEventControl_operationType_feature", "_UI_SongEventControl_type"),
+				 EsxPackage.Literals.SONG_EVENT_CONTROL__OPERATION_TYPE,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -161,22 +183,6 @@ public class SongEventControlItemProvider
 		return getString("_UI_SongEventControl_type") + " " + songEventControl.getCurrentPosition();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.skratchdot.electribe.model.esx.provider.SongEventItemProvider#getColumnText(java.lang.Object, int)
-	 */
-	@Override
-	public String getColumnText(Object object, int columnIndex) {
-		switch(columnIndex) {
-			// EventType
-			case 4: return "Control";
-			// Operation
-			case 5: return Short.toString(((SongEvent) object).getOperationNumber());			
-			// Control Value
-			case 6: return Byte.toString(((SongEventControl) object).getValue());
-			default: return super.getColumnText(object, columnIndex);
-		}
-	}
-
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
@@ -189,9 +195,10 @@ public class SongEventControlItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SongEventControl.class)) {
-			case EsxPackage.SONG_EVENT_CONTROL__VALUE:
+			case EsxPackage.SONG_EVENT_CONTROL__OPERATION_TYPE:
 			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_BYTE:
 			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_SHORT:
+			case EsxPackage.SONG_EVENT_CONTROL__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -67,6 +67,8 @@ public class SongEventItemProvider
 			super.getPropertyDescriptors(object);
 
 			addCurrentPositionPropertyDescriptor(object);
+			addEventInfoPropertyDescriptor(object);
+			addEventTypePropertyDescriptor(object);
 			addMeasurePropertyDescriptor(object);
 			addOperationNumberPropertyDescriptor(object);
 			addPositionNumberPropertyDescriptor(object);
@@ -93,6 +95,50 @@ public class SongEventItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Event Info feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEventInfoPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SongEvent_eventInfo_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SongEvent_eventInfo_feature", "_UI_SongEvent_type"),
+				 EsxPackage.Literals.SONG_EVENT__EVENT_INFO,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Event Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEventTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SongEvent_eventType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SongEvent_eventType_feature", "_UI_SongEvent_type"),
+				 EsxPackage.Literals.SONG_EVENT__EVENT_TYPE,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -211,7 +257,11 @@ public class SongEventItemProvider
 			case 2: return Byte.toString(((SongEvent) object).getMeasure());
 			// Step
 			case 3: return Byte.toString(((SongEvent) object).getStep());
-			default: return "--";
+			// EventType
+			case 4: return ((SongEvent) object).getEventType();
+			// EventInfo
+			case 5: return ((SongEvent) object).getEventInfo();
+			default: return "";
 		}
 	}
 
@@ -228,6 +278,8 @@ public class SongEventItemProvider
 
 		switch (notification.getFeatureID(SongEvent.class)) {
 			case EsxPackage.SONG_EVENT__CURRENT_POSITION:
+			case EsxPackage.SONG_EVENT__EVENT_INFO:
+			case EsxPackage.SONG_EVENT__EVENT_TYPE:
 			case EsxPackage.SONG_EVENT__MEASURE:
 			case EsxPackage.SONG_EVENT__OPERATION_NUMBER:
 			case EsxPackage.SONG_EVENT__POSITION_NUMBER:

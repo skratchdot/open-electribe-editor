@@ -31,7 +31,6 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.SongEvent;
 import com.skratchdot.electribe.model.esx.SongEventTempo;
 
 /**
@@ -136,22 +135,6 @@ public class SongEventTempoItemProvider
 	public String getText(Object object) {
 		SongEventTempo songEventTempo = (SongEventTempo)object;
 		return getString("_UI_SongEventTempo_type") + " " + songEventTempo.getCurrentPosition();
-	}
-
-	/* (non-Javadoc)
-	 * @see com.skratchdot.electribe.model.esx.provider.SongEventItemProvider#getColumnText(java.lang.Object, int)
-	 */
-	@Override
-	public String getColumnText(Object object, int columnIndex) {
-		switch(columnIndex) {
-			// EventType
-			case 4: return "Tempo";
-			// Operation
-			case 5: return Short.toString(((SongEvent) object).getOperationNumber());			
-			// Tempo
-			case 11: return Short.toString(((SongEventTempo) object).getTempo());
-			default: return super.getColumnText(object, columnIndex);
-		}
 	}
 
 	/**

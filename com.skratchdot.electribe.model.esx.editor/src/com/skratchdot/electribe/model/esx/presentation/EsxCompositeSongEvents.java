@@ -80,13 +80,7 @@ public class EsxCompositeSongEvents extends EsxComposite {
 		this.parentPart.addColumnToTableViewer(this.tableViewer, "Measure", null);
 		this.parentPart.addColumnToTableViewer(this.tableViewer, "Step", null);
 		this.parentPart.addColumnToTableViewer(this.tableViewer, "EventType", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Operation", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Control Value", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Part", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Note Length", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Note Number", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Mute Status", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Tempo", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "EventInfo", null);
 		
 		// Setup this.tableViewer ContentProvider
 		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {

@@ -320,6 +320,8 @@ public class EsxValidator extends EObjectValidator {
 				return validateRollType((RollType)value, diagnostics, context);
 			case EsxPackage.SAMPLE_NUMBER:
 				return validateSampleNumber((SampleNumber)value, diagnostics, context);
+			case EsxPackage.SONG_EVENT_PART:
+				return validateSongEventPart((SongEventPart)value, diagnostics, context);
 			case EsxPackage.SONG_LENGTH:
 				return validateSongLength((SongLength)value, diagnostics, context);
 			case EsxPackage.SONG_NUMBER:
@@ -796,6 +798,15 @@ public class EsxValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSampleNumber(SampleNumber sampleNumber, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSongEventPart(SongEventPart songEventPart, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

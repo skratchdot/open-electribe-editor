@@ -23,6 +23,8 @@ import junit.framework.TestCase;
  * The following features are tested:
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.SongEvent#getCurrentPosition() <em>Current Position</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.SongEvent#getEventInfo() <em>Event Info</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.SongEvent#getEventType() <em>Event Type</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -75,6 +77,32 @@ public abstract class SongEventTest extends TestCase {
 	 * @generated
 	 */
 	public void testGetCurrentPosition() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.SongEvent#getEventInfo() <em>Event Info</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.SongEvent#getEventInfo()
+	 * @generated
+	 */
+	public void testGetEventInfo() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.SongEvent#getEventType() <em>Event Type</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.SongEvent#getEventType()
+	 * @generated
+	 */
+	public void testGetEventType() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

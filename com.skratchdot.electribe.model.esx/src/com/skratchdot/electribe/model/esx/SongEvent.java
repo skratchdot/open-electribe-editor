@@ -22,6 +22,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.SongEvent#getCurrentPosition <em>Current Position</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.SongEvent#getEventInfo <em>Event Info</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.SongEvent#getEventType <em>Event Type</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.SongEvent#getMeasure <em>Measure</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.SongEvent#getOperationNumber <em>Operation Number</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.SongEvent#getPositionNumber <em>Position Number</em>}</li>
@@ -49,6 +51,38 @@ public interface SongEvent extends EObject {
 	 * @generated
 	 */
 	int getCurrentPosition();
+
+	/**
+	 * Returns the value of the '<em><b>Event Info</b></em>' attribute.
+	 * The default value is <code>"-1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Event Info</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Event Info</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSongEvent_EventInfo()
+	 * @model default="-1" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	String getEventInfo();
+
+	/**
+	 * Returns the value of the '<em><b>Event Type</b></em>' attribute.
+	 * The default value is <code>"-1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Event Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Event Type</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSongEvent_EventType()
+	 * @model default="-1" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	String getEventType();
 
 	/**
 	 * Returns the value of the '<em><b>Measure</b></em>' attribute.

@@ -31,9 +31,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.SongEvent;
 import com.skratchdot.electribe.model.esx.SongEventDrumNote;
-import com.skratchdot.electribe.model.esx.SongEventWithPart;
 
 /**
  * This is the item provider adapter for a {@link com.skratchdot.electribe.model.esx.SongEventDrumNote} object.
@@ -90,7 +88,7 @@ public class SongEventDrumNoteItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -160,19 +158,6 @@ public class SongEventDrumNoteItemProvider
 	public String getText(Object object) {
 		SongEventDrumNote songEventDrumNote = (SongEventDrumNote)object;
 		return getString("_UI_SongEventDrumNote_type") + " " + songEventDrumNote.getCurrentPosition();
-	}
-
-	@Override
-	public String getColumnText(Object object, int columnIndex) {
-		switch(columnIndex) {
-			// EventType
-			case 4: return "Drum Note";
-			// Operation
-			case 5: return Short.toString(((SongEvent) object).getOperationNumber());			
-			// Part
-			case 7: return Byte.toString(((SongEventWithPart) object).getPart());
-			default: return super.getColumnText(object, columnIndex);
-		}
 	}
 
 	/**

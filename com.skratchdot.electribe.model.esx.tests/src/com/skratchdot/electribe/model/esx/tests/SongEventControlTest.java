@@ -21,6 +21,12 @@ import junit.textui.TestRunner;
  * A test case for the model object '<em><b>Song Event Control</b></em>'.
  * <!-- end-user-doc -->
  * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link com.skratchdot.electribe.model.esx.SongEventControl#getOperationType() <em>Operation Type</em>}</li>
+ * </ul>
+ * </p>
+ * <p>
  * The following operations are tested:
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.SongEventControl#init(byte[]) <em>Init</em>}</li>
@@ -81,6 +87,19 @@ public class SongEventControlTest extends SongEventTest {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.SongEventControl#getOperationType() <em>Operation Type</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.SongEventControl#getOperationType()
+	 * @generated
+	 */
+	public void testGetOperationType() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 	/**

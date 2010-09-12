@@ -115,6 +115,16 @@ public class SongEventTempoImpl extends SongEventImpl implements SongEventTempo 
 		return EsxPackage.Literals.SONG_EVENT_TEMPO;
 	}
 
+	@Override
+	public String getEventInfo() {
+		return "" + this.getTempo();
+	}
+
+	@Override
+	public String getEventType() {
+		return "Tempo";
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

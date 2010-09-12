@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.SongEventKeyboardNote;
+import com.skratchdot.electribe.model.esx.SongEventPart;
 import com.skratchdot.electribe.model.esx.SongEventWithPart;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
@@ -45,7 +46,7 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 	 * @generated
 	 * @ordered
 	 */
-	protected static final byte PART_EDEFAULT = 0x00;
+	protected static final SongEventPart PART_EDEFAULT = SongEventPart.NAME_00;
 
 	/**
 	 * The cached value of the '{@link #getPart() <em>Part</em>}' attribute.
@@ -55,7 +56,7 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 	 * @generated
 	 * @ordered
 	 */
-	protected byte part = PART_EDEFAULT;
+	protected SongEventPart part = PART_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getLength() <em>Length</em>}' attribute.
@@ -122,7 +123,7 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 		// bytes 2~3
 		this.setOperationNumber(in.getShort());
 		// byte 4
-		this.setPart(in.getByte());
+		this.setPart(SongEventPart.get(in.getByte()));
 		// byte 5
 		this.setNoteNumber(in.getByte());
 		// bytes 6~7
@@ -139,12 +140,27 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 		return EsxPackage.Literals.SONG_EVENT_KEYBOARD_NOTE;
 	}
 
+	@Override
+	public String getEventInfo() {
+		return this.getPart().getLiteral() + 
+			" [note=" + 
+			this.getNoteNumber() + 
+			",length=" +
+			this.getLength() +
+			"]";
+	}
+
+	@Override
+	public String getEventType() {
+		return "Keyboard Note";
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public byte getPart() {
+	public SongEventPart getPart() {
 		return part;
 	}
 
@@ -153,9 +169,9 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPart(byte newPart) {
-		byte oldPart = part;
-		part = newPart;
+	public void setPart(SongEventPart newPart) {
+		SongEventPart oldPart = part;
+		part = newPart == null ? PART_EDEFAULT : newPart;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT_KEYBOARD_NOTE__PART, oldPart, part));
 	}
@@ -219,7 +235,7 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 		// bytes 2~3
 		buf.putShort(this.getOperationNumber());
 		// byte 4
-		buf.putByte(this.getPart());
+		buf.putUnsignedByte(this.getPart().getValue());
 		// byte 5
 		buf.putByte(this.getNoteNumber());
 		// bytes 6~7
@@ -254,7 +270,7 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__PART:
-				setPart((Byte)newValue);
+				setPart((SongEventPart)newValue);
 				return;
 			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__LENGTH:
 				setLength((Short)newValue);

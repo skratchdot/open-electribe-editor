@@ -29,6 +29,8 @@ import com.skratchdot.electribe.model.esx.SongEvent;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongEventImpl#getCurrentPosition <em>Current Position</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongEventImpl#getEventInfo <em>Event Info</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongEventImpl#getEventType <em>Event Type</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongEventImpl#getMeasure <em>Measure</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongEventImpl#getOperationNumber <em>Operation Number</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongEventImpl#getPositionNumber <em>Position Number</em>}</li>
@@ -48,6 +50,26 @@ public abstract class SongEventImpl extends EObjectImpl implements SongEvent {
 	 * @ordered
 	 */
 	protected static final int CURRENT_POSITION_EDEFAULT = -1;
+
+	/**
+	 * The default value of the '{@link #getEventInfo() <em>Event Info</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEventInfo()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String EVENT_INFO_EDEFAULT = "-1";
+
+	/**
+	 * The default value of the '{@link #getEventType() <em>Event Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEventType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String EVENT_TYPE_EDEFAULT = "-1";
 
 	/**
 	 * The default value of the '{@link #getMeasure() <em>Measure</em>}' attribute.
@@ -164,6 +186,26 @@ public abstract class SongEventImpl extends EObjectImpl implements SongEvent {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String getEventInfo() {
+		// Implementation should be handled by subclasses
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String getEventType() {
+		// Implementation should be handled by subclasses
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public byte getMeasure() {
@@ -255,6 +297,10 @@ public abstract class SongEventImpl extends EObjectImpl implements SongEvent {
 		switch (featureID) {
 			case EsxPackage.SONG_EVENT__CURRENT_POSITION:
 				return getCurrentPosition();
+			case EsxPackage.SONG_EVENT__EVENT_INFO:
+				return getEventInfo();
+			case EsxPackage.SONG_EVENT__EVENT_TYPE:
+				return getEventType();
 			case EsxPackage.SONG_EVENT__MEASURE:
 				return getMeasure();
 			case EsxPackage.SONG_EVENT__OPERATION_NUMBER:
@@ -325,6 +371,10 @@ public abstract class SongEventImpl extends EObjectImpl implements SongEvent {
 		switch (featureID) {
 			case EsxPackage.SONG_EVENT__CURRENT_POSITION:
 				return getCurrentPosition() != CURRENT_POSITION_EDEFAULT;
+			case EsxPackage.SONG_EVENT__EVENT_INFO:
+				return EVENT_INFO_EDEFAULT == null ? getEventInfo() != null : !EVENT_INFO_EDEFAULT.equals(getEventInfo());
+			case EsxPackage.SONG_EVENT__EVENT_TYPE:
+				return EVENT_TYPE_EDEFAULT == null ? getEventType() != null : !EVENT_TYPE_EDEFAULT.equals(getEventType());
 			case EsxPackage.SONG_EVENT__MEASURE:
 				return measure != MEASURE_EDEFAULT;
 			case EsxPackage.SONG_EVENT__OPERATION_NUMBER:

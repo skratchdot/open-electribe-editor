@@ -12,6 +12,7 @@
 package com.skratchdot.electribe.model.esx.impl;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.SongEventPart;
 import com.skratchdot.electribe.model.esx.SongEventWithPart;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -43,7 +44,7 @@ public abstract class SongEventWithPartImpl extends EObjectImpl implements SongE
 	 * @generated
 	 * @ordered
 	 */
-	protected static final byte PART_EDEFAULT = 0x00;
+	protected static final SongEventPart PART_EDEFAULT = SongEventPart.NAME_00;
 
 	/**
 	 * The cached value of the '{@link #getPart() <em>Part</em>}' attribute.
@@ -53,7 +54,7 @@ public abstract class SongEventWithPartImpl extends EObjectImpl implements SongE
 	 * @generated
 	 * @ordered
 	 */
-	protected byte part = PART_EDEFAULT;
+	protected SongEventPart part = PART_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -79,7 +80,7 @@ public abstract class SongEventWithPartImpl extends EObjectImpl implements SongE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public byte getPart() {
+	public SongEventPart getPart() {
 		return part;
 	}
 
@@ -88,9 +89,9 @@ public abstract class SongEventWithPartImpl extends EObjectImpl implements SongE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPart(byte newPart) {
-		byte oldPart = part;
-		part = newPart;
+	public void setPart(SongEventPart newPart) {
+		SongEventPart oldPart = part;
+		part = newPart == null ? PART_EDEFAULT : newPart;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT_WITH_PART__PART, oldPart, part));
 	}
@@ -118,7 +119,7 @@ public abstract class SongEventWithPartImpl extends EObjectImpl implements SongE
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EsxPackage.SONG_EVENT_WITH_PART__PART:
-				setPart((Byte)newValue);
+				setPart((SongEventPart)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

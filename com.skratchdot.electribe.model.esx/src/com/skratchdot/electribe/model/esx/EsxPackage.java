@@ -3015,13 +3015,31 @@ public interface EsxPackage extends EPackage {
 	int SONG_EVENT__CURRENT_POSITION = 0;
 
 	/**
+	 * The feature id for the '<em><b>Event Info</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT__EVENT_INFO = 1;
+
+	/**
+	 * The feature id for the '<em><b>Event Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT__EVENT_TYPE = 2;
+
+	/**
 	 * The feature id for the '<em><b>Measure</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_EVENT__MEASURE = 1;
+	int SONG_EVENT__MEASURE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Operation Number</b></em>' attribute.
@@ -3030,7 +3048,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_EVENT__OPERATION_NUMBER = 2;
+	int SONG_EVENT__OPERATION_NUMBER = 4;
 
 	/**
 	 * The feature id for the '<em><b>Position Number</b></em>' attribute.
@@ -3039,7 +3057,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_EVENT__POSITION_NUMBER = 3;
+	int SONG_EVENT__POSITION_NUMBER = 5;
 
 	/**
 	 * The feature id for the '<em><b>Step</b></em>' attribute.
@@ -3048,7 +3066,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_EVENT__STEP = 4;
+	int SONG_EVENT__STEP = 6;
 
 	/**
 	 * The number of structural features of the '<em>Song Event</em>' class.
@@ -3057,7 +3075,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_EVENT_FEATURE_COUNT = 5;
+	int SONG_EVENT_FEATURE_COUNT = 7;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.SongEventWithPartImpl <em>Song Event With Part</em>}' class.
@@ -3087,6 +3105,24 @@ public interface EsxPackage extends EPackage {
 	 * @ordered
 	 */
 	int SONG_EVENT_CONTROL__CURRENT_POSITION = SONG_EVENT__CURRENT_POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Event Info</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT_CONTROL__EVENT_INFO = SONG_EVENT__EVENT_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Event Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT_CONTROL__EVENT_TYPE = SONG_EVENT__EVENT_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Measure</b></em>' attribute.
@@ -3125,13 +3161,13 @@ public interface EsxPackage extends EPackage {
 	int SONG_EVENT_CONTROL__STEP = SONG_EVENT__STEP;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Operation Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_EVENT_CONTROL__VALUE = SONG_EVENT_FEATURE_COUNT + 0;
+	int SONG_EVENT_CONTROL__OPERATION_TYPE = SONG_EVENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Reserved Byte</b></em>' attribute.
@@ -3152,13 +3188,22 @@ public interface EsxPackage extends EPackage {
 	int SONG_EVENT_CONTROL__RESERVED_SHORT = SONG_EVENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT_CONTROL__VALUE = SONG_EVENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Song Event Control</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_EVENT_CONTROL_FEATURE_COUNT = SONG_EVENT_FEATURE_COUNT + 3;
+	int SONG_EVENT_CONTROL_FEATURE_COUNT = SONG_EVENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.SongEventDrumNoteImpl <em>Song Event Drum Note</em>}' class.
@@ -3178,6 +3223,24 @@ public interface EsxPackage extends EPackage {
 	 * @ordered
 	 */
 	int SONG_EVENT_DRUM_NOTE__CURRENT_POSITION = SONG_EVENT__CURRENT_POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Event Info</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT_DRUM_NOTE__EVENT_INFO = SONG_EVENT__EVENT_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Event Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT_DRUM_NOTE__EVENT_TYPE = SONG_EVENT__EVENT_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Measure</b></em>' attribute.
@@ -3269,6 +3332,24 @@ public interface EsxPackage extends EPackage {
 	 * @ordered
 	 */
 	int SONG_EVENT_KEYBOARD_NOTE__CURRENT_POSITION = SONG_EVENT__CURRENT_POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Event Info</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT_KEYBOARD_NOTE__EVENT_INFO = SONG_EVENT__EVENT_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Event Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT_KEYBOARD_NOTE__EVENT_TYPE = SONG_EVENT__EVENT_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Measure</b></em>' attribute.
@@ -3372,6 +3453,24 @@ public interface EsxPackage extends EPackage {
 	int SONG_EVENT_MUTE_STATUS__CURRENT_POSITION = SONG_EVENT__CURRENT_POSITION;
 
 	/**
+	 * The feature id for the '<em><b>Event Info</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT_MUTE_STATUS__EVENT_INFO = SONG_EVENT__EVENT_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Event Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT_MUTE_STATUS__EVENT_TYPE = SONG_EVENT__EVENT_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Measure</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3442,6 +3541,24 @@ public interface EsxPackage extends EPackage {
 	 * @ordered
 	 */
 	int SONG_EVENT_TEMPO__CURRENT_POSITION = SONG_EVENT__CURRENT_POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Event Info</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT_TEMPO__EVENT_INFO = SONG_EVENT__EVENT_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Event Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT_TEMPO__EVENT_TYPE = SONG_EVENT__EVENT_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Measure</b></em>' attribute.
@@ -3708,6 +3825,16 @@ public interface EsxPackage extends EPackage {
 	int SAMPLE_NUMBER = 69;
 
 	/**
+	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.SongEventPart <em>Song Event Part</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.SongEventPart
+	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSongEventPart()
+	 * @generated
+	 */
+	int SONG_EVENT_PART = 70;
+
+	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.SongNumber <em>Song Number</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3715,7 +3842,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSongNumber()
 	 * @generated
 	 */
-	int SONG_NUMBER = 71;
+	int SONG_NUMBER = 72;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.SongLength <em>Song Length</em>}' enum.
@@ -3725,7 +3852,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSongLength()
 	 * @generated
 	 */
-	int SONG_LENGTH = 70;
+	int SONG_LENGTH = 71;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.TempoLock <em>Tempo Lock</em>}' enum.
@@ -3735,7 +3862,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getTempoLock()
 	 * @generated
 	 */
-	int TEMPO_LOCK = 74;
+	int TEMPO_LOCK = 75;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.MuteHold <em>Mute Hold</em>}' enum.
@@ -3765,7 +3892,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getStretchStep()
 	 * @generated
 	 */
-	int STRETCH_STEP = 72;
+	int STRETCH_STEP = 73;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.Swing <em>Swing</em>}' enum.
@@ -3775,7 +3902,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSwing()
 	 * @generated
 	 */
-	int SWING = 73;
+	int SWING = 74;
 
 
 	/**
@@ -3986,7 +4113,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getObject()
 	 * @generated
 	 */
-	int OBJECT = 80;
+	int OBJECT = 81;
 
 
 	/**
@@ -3997,7 +4124,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getRIFFWave()
 	 * @generated
 	 */
-	int RIFF_WAVE = 81;
+	int RIFF_WAVE = 82;
 
 	/**
 	 * The meta object id for the '<em>Array List</em>' data type.
@@ -4007,7 +4134,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getArrayList()
 	 * @generated
 	 */
-	int ARRAY_LIST = 75;
+	int ARRAY_LIST = 76;
 
 
 	/**
@@ -4018,7 +4145,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getFile()
 	 * @generated
 	 */
-	int FILE = 76;
+	int FILE = 77;
 
 
 	/**
@@ -4029,7 +4156,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getInputStream()
 	 * @generated
 	 */
-	int INPUT_STREAM = 77;
+	int INPUT_STREAM = 78;
 
 	/**
 	 * The meta object id for the '<em>IO Exception</em>' data type.
@@ -4039,7 +4166,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getIOException()
 	 * @generated
 	 */
-	int IO_EXCEPTION = 78;
+	int IO_EXCEPTION = 79;
 
 
 	/**
@@ -4050,7 +4177,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getIProgressMonitor()
 	 * @generated
 	 */
-	int IPROGRESS_MONITOR = 79;
+	int IPROGRESS_MONITOR = 80;
 
 
 	/**
@@ -6234,6 +6361,28 @@ public interface EsxPackage extends EPackage {
 	EAttribute getSongEvent_CurrentPosition();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongEvent#getEventInfo <em>Event Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Event Info</em>'.
+	 * @see com.skratchdot.electribe.model.esx.SongEvent#getEventInfo()
+	 * @see #getSongEvent()
+	 * @generated
+	 */
+	EAttribute getSongEvent_EventInfo();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongEvent#getEventType <em>Event Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Event Type</em>'.
+	 * @see com.skratchdot.electribe.model.esx.SongEvent#getEventType()
+	 * @see #getSongEvent()
+	 * @generated
+	 */
+	EAttribute getSongEvent_EventType();
+
+	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongEvent#getMeasure <em>Measure</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6307,6 +6456,17 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSongEventControl();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongEventControl#getOperationType <em>Operation Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Operation Type</em>'.
+	 * @see com.skratchdot.electribe.model.esx.SongEventControl#getOperationType()
+	 * @see #getSongEventControl()
+	 * @generated
+	 */
+	EAttribute getSongEventControl_OperationType();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongEventControl#getValue <em>Value</em>}'.
@@ -6578,6 +6738,16 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getSampleNumber();
+
+	/**
+	 * Returns the meta object for enum '{@link com.skratchdot.electribe.model.esx.SongEventPart <em>Song Event Part</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Song Event Part</em>'.
+	 * @see com.skratchdot.electribe.model.esx.SongEventPart
+	 * @generated
+	 */
+	EEnum getSongEventPart();
 
 	/**
 	 * Returns the meta object for enum '{@link com.skratchdot.electribe.model.esx.SongNumber <em>Song Number</em>}'.
@@ -8619,6 +8789,22 @@ public interface EsxPackage extends EPackage {
 		EAttribute SONG_EVENT__CURRENT_POSITION = eINSTANCE.getSongEvent_CurrentPosition();
 
 		/**
+		 * The meta object literal for the '<em><b>Event Info</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SONG_EVENT__EVENT_INFO = eINSTANCE.getSongEvent_EventInfo();
+
+		/**
+		 * The meta object literal for the '<em><b>Event Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SONG_EVENT__EVENT_TYPE = eINSTANCE.getSongEvent_EventType();
+
+		/**
 		 * The meta object literal for the '<em><b>Measure</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -8677,6 +8863,14 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SONG_EVENT_CONTROL = eINSTANCE.getSongEventControl();
+
+		/**
+		 * The meta object literal for the '<em><b>Operation Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SONG_EVENT_CONTROL__OPERATION_TYPE = eINSTANCE.getSongEventControl_OperationType();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -8915,6 +9109,16 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum SAMPLE_NUMBER = eINSTANCE.getSampleNumber();
+
+		/**
+		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.SongEventPart <em>Song Event Part</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.skratchdot.electribe.model.esx.SongEventPart
+		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSongEventPart()
+		 * @generated
+		 */
+		EEnum SONG_EVENT_PART = eINSTANCE.getSongEventPart();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.SongNumber <em>Song Number</em>}' enum.

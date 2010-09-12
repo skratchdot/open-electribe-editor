@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.OperationType;
 import com.skratchdot.electribe.model.esx.SongEventControl;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
@@ -27,9 +28,10 @@ import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongEventControlImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongEventControlImpl#getOperationType <em>Operation Type</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongEventControlImpl#getReservedByte <em>Reserved Byte</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongEventControlImpl#getReservedShort <em>Reserved Short</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongEventControlImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,24 +39,14 @@ import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
  */
 public class SongEventControlImpl extends SongEventImpl implements SongEventControl {
 	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The default value of the '{@link #getOperationType() <em>Operation Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getOperationType()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final byte VALUE_EDEFAULT = 0x00;
-
-	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected byte value = VALUE_EDEFAULT;
+	protected static final OperationType OPERATION_TYPE_EDEFAULT = OperationType.OP_UNKNOWN;
 
 	/**
 	 * The default value of the '{@link #getReservedByte() <em>Reserved Byte</em>}' attribute.
@@ -97,6 +89,26 @@ public class SongEventControlImpl extends SongEventImpl implements SongEventCont
 	protected short reservedShort = RESERVED_SHORT_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final byte VALUE_EDEFAULT = 0x00;
+
+	/**
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected byte value = VALUE_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -136,6 +148,26 @@ public class SongEventControlImpl extends SongEventImpl implements SongEventCont
 	@Override
 	protected EClass eStaticClass() {
 		return EsxPackage.Literals.SONG_EVENT_CONTROL;
+	}
+
+	@Override
+	public String getEventInfo() {
+		return "" + this.getOperationType().getLiteral() + " [value=" + this.getValue() + "]";
+	}
+
+	@Override
+	public String getEventType() {
+		return "Control";
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public OperationType getOperationType() {
+		OperationType operationType = OperationType.get(this.getOperationNumber());
+		return (operationType==null?OperationType.get(0):operationType);
 	}
 
 	/**
@@ -234,12 +266,14 @@ public class SongEventControlImpl extends SongEventImpl implements SongEventCont
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_CONTROL__VALUE:
-				return getValue();
+			case EsxPackage.SONG_EVENT_CONTROL__OPERATION_TYPE:
+				return getOperationType();
 			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_BYTE:
 				return getReservedByte();
 			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_SHORT:
 				return getReservedShort();
+			case EsxPackage.SONG_EVENT_CONTROL__VALUE:
+				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -252,14 +286,14 @@ public class SongEventControlImpl extends SongEventImpl implements SongEventCont
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_CONTROL__VALUE:
-				setValue((Byte)newValue);
-				return;
 			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_BYTE:
 				setReservedByte((Byte)newValue);
 				return;
 			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_SHORT:
 				setReservedShort((Short)newValue);
+				return;
+			case EsxPackage.SONG_EVENT_CONTROL__VALUE:
+				setValue((Byte)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -273,14 +307,14 @@ public class SongEventControlImpl extends SongEventImpl implements SongEventCont
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_CONTROL__VALUE:
-				setValue(VALUE_EDEFAULT);
-				return;
 			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_BYTE:
 				setReservedByte(RESERVED_BYTE_EDEFAULT);
 				return;
 			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_SHORT:
 				setReservedShort(RESERVED_SHORT_EDEFAULT);
+				return;
+			case EsxPackage.SONG_EVENT_CONTROL__VALUE:
+				setValue(VALUE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -294,12 +328,14 @@ public class SongEventControlImpl extends SongEventImpl implements SongEventCont
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_CONTROL__VALUE:
-				return value != VALUE_EDEFAULT;
+			case EsxPackage.SONG_EVENT_CONTROL__OPERATION_TYPE:
+				return getOperationType() != OPERATION_TYPE_EDEFAULT;
 			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_BYTE:
 				return reservedByte != RESERVED_BYTE_EDEFAULT;
 			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_SHORT:
 				return reservedShort != RESERVED_SHORT_EDEFAULT;
+			case EsxPackage.SONG_EVENT_CONTROL__VALUE:
+				return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -314,12 +350,12 @@ public class SongEventControlImpl extends SongEventImpl implements SongEventCont
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
-		result.append(value);
-		result.append(", reservedByte: ");
+		result.append(" (reservedByte: ");
 		result.append(reservedByte);
 		result.append(", reservedShort: ");
 		result.append(reservedShort);
+		result.append(", value: ");
+		result.append(value);
 		result.append(')');
 		return result.toString();
 	}

@@ -115,6 +115,16 @@ public class SongEventMuteStatusImpl extends SongEventImpl implements SongEventM
 		return EsxPackage.Literals.SONG_EVENT_MUTE_STATUS;
 	}
 
+	@Override
+	public String getEventInfo() {
+		return "" + this.getMuteStatus();
+	}
+
+	@Override
+	public String getEventType() {
+		return "Mute Status";
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

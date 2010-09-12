@@ -21,9 +21,10 @@ package com.skratchdot.electribe.model.esx;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.skratchdot.electribe.model.esx.SongEventControl#getValue <em>Value</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.SongEventControl#getOperationType <em>Operation Type</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.SongEventControl#getReservedByte <em>Reserved Byte</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.SongEventControl#getReservedShort <em>Reserved Short</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.SongEventControl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -32,6 +33,24 @@ package com.skratchdot.electribe.model.esx;
  * @generated
  */
 public interface SongEventControl extends SongEvent {
+	/**
+	 * Returns the value of the '<em><b>Operation Type</b></em>' attribute.
+	 * The default value is <code>"-1"</code>.
+	 * The literals are from the enumeration {@link com.skratchdot.electribe.model.esx.OperationType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Operation Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Operation Type</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.OperationType
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSongEventControl_OperationType()
+	 * @model default="-1" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	OperationType getOperationType();
+
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->

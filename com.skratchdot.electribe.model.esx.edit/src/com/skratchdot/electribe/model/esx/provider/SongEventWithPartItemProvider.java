@@ -33,6 +33,7 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.SongEventPart;
 import com.skratchdot.electribe.model.esx.SongEventWithPart;
 
 /**
@@ -88,7 +89,7 @@ public class SongEventWithPartItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -101,8 +102,11 @@ public class SongEventWithPartItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		SongEventWithPart songEventWithPart = (SongEventWithPart)object;
-		return getString("_UI_SongEventWithPart_type") + " " + songEventWithPart.getPart();
+		SongEventPart labelValue = ((SongEventWithPart)object).getPart();
+		String label = labelValue == null ? null : labelValue.toString();
+		return label == null || label.length() == 0 ?
+			getString("_UI_SongEventWithPart_type") :
+			getString("_UI_SongEventWithPart_type") + " " + label;
 	}
 
 	/**
