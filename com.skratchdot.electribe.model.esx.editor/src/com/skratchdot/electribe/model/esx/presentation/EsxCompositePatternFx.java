@@ -130,7 +130,7 @@ public class EsxCompositePatternFx extends EsxComposite {
 				setFeatureForSelectedItems(
 					getListOfEObjectsWithinEObject(patterns, EsxPackage.Literals.PATTERN__FX_PARAMETERS, fxIndex),
 					EsxPackage.Literals.PARAMETERS_FX__EFFECT_TYPE,
-					FxType.get(comboEffectType[fxIndex].getSelectionIndex()-1),
+					FxType.get(comboEffectType[fxIndex].getSelectionIndex()),
 					false,
 					-1
 				);
