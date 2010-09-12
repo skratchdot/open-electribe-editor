@@ -34,8 +34,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import com.skratchdot.electribe.model.esx.editor.util.EsxObjectAdapter;
-
 public abstract class EsxComposite extends Composite implements IEditingDomainProvider {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxComposite"; //$NON-NLS-1$
 
@@ -127,7 +125,7 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 */
 	protected String getMultiString(List<? extends EObject> list, EStructuralFeature featureOne, int featureOneIndex, EStructuralFeature featureTwo, String multiText) {
 		return getMultiString(
-				getListOfEObjectsWithIndex(list, featureOne, featureOneIndex),
+				getListOfEObjectsWithinEObject(list, featureOne, featureOneIndex),
 				featureTwo,
 				multiText
 			);
@@ -253,33 +251,31 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	}
 
 	/**
+	 * This is shorthand for calling {@link #getListOfEObjectsWithinEObject(List, EStructuralFeature, int)}
+	 * with a -1 for featureIndex.
 	 * @param list A list of EObjects
-	 * @param feature The feature we will be setting
-	 * @param esxObjectAdapter The value we will be setting
+	 * @param feature The feature to look for within each EObject
+	 * @return Returns a List of EObjects.
 	 */
-	protected void setFeatureForSelectedItems(List<? extends EObject> list, EStructuralFeature feature, EsxObjectAdapter esxObjectAdapter) {
-		CompoundCommand cmd = new CompoundCommand();
-
-		for(int i=0; i<list.size(); i++) {
-			cmd.append(SetCommand.create(
-				this.getEditingDomain(),
-				list.get(i),
-				feature,
-				esxObjectAdapter.getObject()
-			));
-		}
-		
-		if(cmd.canExecute()) {
-			this.getCommandStack().execute(cmd);
-		}
+	protected List<? extends EObject> getListOfEObjectsWithinEObject(List<? extends EObject> list, EStructuralFeature feature) {
+		return getListOfEObjectsWithinEObject(list, feature, -1);
 	}
-	
-	protected List<? extends EObject> getListOfEObjectsWithIndex(List<? extends EObject> list, EStructuralFeature feature, int index) {
+
+	/**
+	 * @param list A list of EObjects
+	 * @param feature The feature to look for within each EObject
+	 * @param featureIndex If this is specified, then the feature is an EList. This is the index of the feature.
+	 * @return Returns a List of EObjects.
+	 */
+	protected List<? extends EObject> getListOfEObjectsWithinEObject(List<? extends EObject> list, EStructuralFeature feature, int featureIndex) {
 		List<EObject> returnList = new ArrayList<EObject>();
 		for (EObject eObj : list) {
 			Object obj = eObj.eGet(feature);
-			if(obj instanceof EList<?>) {
-				returnList.add((EObject) ((EList<?>)obj).get(index));
+			if(obj instanceof EList<?> && featureIndex!=-1) {
+				returnList.add((EObject) ((EList<?>)obj).get(featureIndex));
+			}
+			else if(obj instanceof EObject && featureIndex==-1) {
+				returnList.add((EObject) obj);
 			}
 		}
 		return returnList;

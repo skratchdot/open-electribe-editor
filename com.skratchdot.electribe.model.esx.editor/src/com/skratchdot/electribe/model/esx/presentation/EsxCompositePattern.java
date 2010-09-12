@@ -30,7 +30,6 @@ import org.eclipse.swt.widgets.Text;
 
 import com.skratchdot.electribe.model.esx.ArpeggiatorScale;
 import com.skratchdot.electribe.model.esx.Beat;
-import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.FxChain;
 import com.skratchdot.electribe.model.esx.LastStep;
@@ -39,8 +38,6 @@ import com.skratchdot.electribe.model.esx.Pattern;
 import com.skratchdot.electribe.model.esx.PatternLength;
 import com.skratchdot.electribe.model.esx.RollType;
 import com.skratchdot.electribe.model.esx.Swing;
-import com.skratchdot.electribe.model.esx.Tempo;
-import com.skratchdot.electribe.model.esx.editor.util.EsxObjectAdapter;
 
 public class EsxCompositePattern extends EsxComposite {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositePattern"; //$NON-NLS-1$
@@ -160,16 +157,16 @@ public class EsxCompositePattern extends EsxComposite {
 		inputTempo = this.createGridData2ColumnTextInput(groupGeneralInfo, "Tempo", new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(patterns, EsxPackage.Literals.PATTERN__TEMPO, new EsxObjectAdapter() {
-					@Override
-					public Object getObject() {
-						Tempo newTempo = EsxFactory.eINSTANCE.createTempo();
-						newTempo.setValue(newTempo.getValidValue(Float.parseFloat(inputTempo.getText())));
-						return newTempo;
-					}
-				});
+				setFeatureForSelectedItems(
+						getListOfEObjectsWithinEObject(patterns, EsxPackage.Literals.PATTERN__TEMPO, -1),
+						EsxPackage.Literals.TEMPO__VALUE,
+						Float.parseFloat(inputTempo.getText()),
+						false,
+						-1
+					);
 			}
 		});
+
 		textSwing = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Swing");
 		comboSwing = this.createGridData2ColumnComboInput(groupGeneralInfo, "Swing", this.getLiteralStrings(Swing.values()) , new SelectionAdapter() {
 			@Override

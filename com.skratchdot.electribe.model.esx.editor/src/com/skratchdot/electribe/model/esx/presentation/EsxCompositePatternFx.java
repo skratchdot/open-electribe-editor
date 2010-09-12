@@ -128,7 +128,7 @@ public class EsxCompositePatternFx extends EsxComposite {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				setFeatureForSelectedItems(
-					getListOfEObjectsWithIndex(patterns, EsxPackage.Literals.PATTERN__FX_PARAMETERS, fxIndex),
+					getListOfEObjectsWithinEObject(patterns, EsxPackage.Literals.PATTERN__FX_PARAMETERS, fxIndex),
 					EsxPackage.Literals.PARAMETERS_FX__EFFECT_TYPE,
 					FxType.get(comboEffectType[fxIndex].getSelectionIndex()-1),
 					false,
@@ -142,7 +142,7 @@ public class EsxCompositePatternFx extends EsxComposite {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				setFeatureForSelectedItems(
-					getListOfEObjectsWithIndex(patterns, EsxPackage.Literals.PATTERN__FX_PARAMETERS, fxIndex),
+					getListOfEObjectsWithinEObject(patterns, EsxPackage.Literals.PATTERN__FX_PARAMETERS, fxIndex),
 					EsxPackage.Literals.PARAMETERS_FX__EDIT1,
 					Byte.parseByte(comboEdit1[fxIndex].getText()),
 					false,
@@ -156,7 +156,7 @@ public class EsxCompositePatternFx extends EsxComposite {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				setFeatureForSelectedItems(
-					getListOfEObjectsWithIndex(patterns, EsxPackage.Literals.PATTERN__FX_PARAMETERS, fxIndex),
+					getListOfEObjectsWithinEObject(patterns, EsxPackage.Literals.PATTERN__FX_PARAMETERS, fxIndex),
 					EsxPackage.Literals.PARAMETERS_FX__EDIT2,
 					Byte.parseByte(comboEdit2[fxIndex].getText()),
 					false,
@@ -170,7 +170,7 @@ public class EsxCompositePatternFx extends EsxComposite {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				setFeatureForSelectedItems(
-					getListOfEObjectsWithIndex(patterns, EsxPackage.Literals.PATTERN__FX_PARAMETERS, fxIndex),
+					getListOfEObjectsWithinEObject(patterns, EsxPackage.Literals.PATTERN__FX_PARAMETERS, fxIndex),
 					EsxPackage.Literals.PARAMETERS_FX__MOTION_SEQUENCE_STATUS,
 					Byte.parseByte(comboEdit2[fxIndex].getText()),
 					false,
