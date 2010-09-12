@@ -21,8 +21,8 @@ package com.skratchdot.electribe.model.esx;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.skratchdot.electribe.model.esx.SongEventTempo#getTempo <em>Tempo</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.SongEventTempo#getReservedShort <em>Reserved Short</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.SongEventTempo#getTempo <em>Tempo</em>}</li>
  * </ul>
  * </p>
  *
@@ -32,30 +32,30 @@ package com.skratchdot.electribe.model.esx;
  */
 public interface SongEventTempo extends SongEvent {
 	/**
-	 * Returns the value of the '<em><b>Tempo</b></em>' attribute.
+	 * Returns the value of the '<em><b>Tempo</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Tempo</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Tempo</em>' attribute.
-	 * @see #setTempo(short)
+	 * @return the value of the '<em>Tempo</em>' containment reference.
+	 * @see #setTempo(Tempo)
 	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSongEventTempo_Tempo()
-	 * @model
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	short getTempo();
+	Tempo getTempo();
 
 	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.SongEventTempo#getTempo <em>Tempo</em>}' attribute.
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.SongEventTempo#getTempo <em>Tempo</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Tempo</em>' attribute.
+	 * @param value the new value of the '<em>Tempo</em>' containment reference.
 	 * @see #getTempo()
 	 * @generated
 	 */
-	void setTempo(short value);
+	void setTempo(Tempo value);
 
 	/**
 	 * Returns the value of the '<em><b>Reserved Short</b></em>' attribute.

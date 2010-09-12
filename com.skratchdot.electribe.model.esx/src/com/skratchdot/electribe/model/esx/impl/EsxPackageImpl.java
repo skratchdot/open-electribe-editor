@@ -2761,8 +2761,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSongEventTempo_Tempo() {
-		return (EAttribute)songEventTempoEClass.getEStructuralFeatures().get(0);
+	public EReference getSongEventTempo_Tempo() {
+		return (EReference)songEventTempoEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2771,7 +2771,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEventTempo_ReservedShort() {
-		return (EAttribute)songEventTempoEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)songEventTempoEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3490,8 +3490,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(songEventMuteStatusEClass, SONG_EVENT_MUTE_STATUS__MUTE_STATUS);
 
 		songEventTempoEClass = createEClass(SONG_EVENT_TEMPO);
-		createEAttribute(songEventTempoEClass, SONG_EVENT_TEMPO__TEMPO);
 		createEAttribute(songEventTempoEClass, SONG_EVENT_TEMPO__RESERVED_SHORT);
+		createEReference(songEventTempoEClass, SONG_EVENT_TEMPO__TEMPO);
 
 		songEventWithPartEClass = createEClass(SONG_EVENT_WITH_PART);
 		createEAttribute(songEventWithPartEClass, SONG_EVENT_WITH_PART__PART);
@@ -4033,8 +4033,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEOperation(songEventMuteStatusEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(songEventTempoEClass, SongEventTempo.class, "SongEventTempo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSongEventTempo_Tempo(), ecorePackage.getEShort(), "tempo", null, 0, 1, SongEventTempo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongEventTempo_ReservedShort(), ecorePackage.getEShort(), "reservedShort", null, 0, 1, SongEventTempo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSongEventTempo_Tempo(), this.getTempo(), null, "tempo", null, 1, 1, SongEventTempo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(songEventTempoEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);

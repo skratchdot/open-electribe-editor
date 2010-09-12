@@ -64,8 +64,8 @@ public class SongEventTempoItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTempoPropertyDescriptor(object);
 			addReservedShortPropertyDescriptor(object);
+			addTempoPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -87,7 +87,7 @@ public class SongEventTempoItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
 				 null,
 				 null));
 	}
@@ -149,8 +149,8 @@ public class SongEventTempoItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SongEventTempo.class)) {
-			case EsxPackage.SONG_EVENT_TEMPO__TEMPO:
 			case EsxPackage.SONG_EVENT_TEMPO__RESERVED_SHORT:
+			case EsxPackage.SONG_EVENT_TEMPO__TEMPO:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

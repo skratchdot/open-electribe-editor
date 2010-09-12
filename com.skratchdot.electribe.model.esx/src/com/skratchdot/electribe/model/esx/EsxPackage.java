@@ -3597,22 +3597,22 @@ public interface EsxPackage extends EPackage {
 	int SONG_EVENT_TEMPO__STEP = SONG_EVENT__STEP;
 
 	/**
-	 * The feature id for the '<em><b>Tempo</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SONG_EVENT_TEMPO__TEMPO = SONG_EVENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Reserved Short</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_EVENT_TEMPO__RESERVED_SHORT = SONG_EVENT_FEATURE_COUNT + 1;
+	int SONG_EVENT_TEMPO__RESERVED_SHORT = SONG_EVENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Tempo</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONG_EVENT_TEMPO__TEMPO = SONG_EVENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Song Event Tempo</em>' class.
@@ -6576,15 +6576,15 @@ public interface EsxPackage extends EPackage {
 	EClass getSongEventTempo();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongEventTempo#getTempo <em>Tempo</em>}'.
+	 * Returns the meta object for the containment reference '{@link com.skratchdot.electribe.model.esx.SongEventTempo#getTempo <em>Tempo</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Tempo</em>'.
+	 * @return the meta object for the containment reference '<em>Tempo</em>'.
 	 * @see com.skratchdot.electribe.model.esx.SongEventTempo#getTempo()
 	 * @see #getSongEventTempo()
 	 * @generated
 	 */
-	EAttribute getSongEventTempo_Tempo();
+	EReference getSongEventTempo_Tempo();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongEventTempo#getReservedShort <em>Reserved Short</em>}'.
@@ -8959,12 +8959,12 @@ public interface EsxPackage extends EPackage {
 		EClass SONG_EVENT_TEMPO = eINSTANCE.getSongEventTempo();
 
 		/**
-		 * The meta object literal for the '<em><b>Tempo</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Tempo</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_EVENT_TEMPO__TEMPO = eINSTANCE.getSongEventTempo_Tempo();
+		EReference SONG_EVENT_TEMPO__TEMPO = eINSTANCE.getSongEventTempo_Tempo();
 
 		/**
 		 * The meta object literal for the '<em><b>Reserved Short</b></em>' attribute feature.
