@@ -152,12 +152,12 @@ public class SongEventControlImpl extends SongEventImpl implements SongEventCont
 
 	@Override
 	public String getEventInfo() {
-		return "" + this.getOperationType().getLiteral() + " [value=" + this.getValue() + "]";
+		return "" + this.getValue();
 	}
 
 	@Override
 	public String getEventType() {
-		return "Control";
+		return this.getOperationType().getLiteral();
 	}
 
 	/**
