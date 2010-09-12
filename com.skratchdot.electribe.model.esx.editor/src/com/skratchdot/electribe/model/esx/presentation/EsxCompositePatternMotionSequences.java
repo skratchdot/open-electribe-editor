@@ -39,7 +39,7 @@ import com.skratchdot.electribe.model.esx.SongPattern;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
 
 public class EsxCompositePatternMotionSequences extends EsxComposite {
-	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositeSongPatterns"; //$NON-NLS-1$
+	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositeSongPatternMotionSequences"; //$NON-NLS-1$
 
 	private Song selectedSong;
 	private List<SongPattern> selectedSongPatterns;

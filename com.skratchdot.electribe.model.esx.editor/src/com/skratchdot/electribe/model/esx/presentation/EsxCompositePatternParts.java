@@ -34,7 +34,7 @@ import com.skratchdot.electribe.model.esx.SongEvent;
 import com.skratchdot.electribe.model.esx.SongPattern;
 
 public class EsxCompositePatternParts extends EsxComposite {
-	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositeSongEvents"; //$NON-NLS-1$
+	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositePatternParts"; //$NON-NLS-1$
 
 	private Song selectedSong;
 	private List<SongEvent> selectedSongEvents;

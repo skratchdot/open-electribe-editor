@@ -34,7 +34,7 @@ import com.skratchdot.electribe.model.esx.Pattern;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 
 public class EsxCompositePatternFx extends EsxComposite {
-	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositePattern"; //$NON-NLS-1$
+	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositePatternFx"; //$NON-NLS-1$
 
 	private List<Pattern> patterns;
 
