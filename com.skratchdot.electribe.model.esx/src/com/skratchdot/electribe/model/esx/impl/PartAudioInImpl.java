@@ -33,6 +33,7 @@ import com.skratchdot.electribe.model.esx.PartWithSequenceDataGate;
 import com.skratchdot.electribe.model.esx.Roll;
 import com.skratchdot.electribe.model.esx.SequenceData;
 import com.skratchdot.electribe.model.esx.SequenceDataGate;
+import com.skratchdot.electribe.model.esx.SongEventPart;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
@@ -1347,6 +1348,11 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		result.append(reservedBitsByte7);
 		result.append(')');
 		return result.toString();
+	}
+
+	@Override
+	public String getLabel() {
+		return SongEventPart.get(15).getLiteral();
 	}
 
 } //PartAudioInImpl

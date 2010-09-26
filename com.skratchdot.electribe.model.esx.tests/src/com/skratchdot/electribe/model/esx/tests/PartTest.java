@@ -20,6 +20,12 @@ import junit.framework.TestCase;
  * A test case for the model object '<em><b>Part</b></em>'.
  * <!-- end-user-doc -->
  * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Part#getLabel() <em>Label</em>}</li>
+ * </ul>
+ * </p>
+ * <p>
  * The following operations are tested:
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.Part#getSampleLabel(short) <em>Get Sample Label</em>}</li>
@@ -65,6 +71,19 @@ public abstract class PartTest extends TestCase {
 	 */
 	protected Part getFixture() {
 		return fixture;
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Part#getLabel() <em>Label</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.Part#getLabel()
+	 * @generated
+	 */
+	public void testGetLabel() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 	/**

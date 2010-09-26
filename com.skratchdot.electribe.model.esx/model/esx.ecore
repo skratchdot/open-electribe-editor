@@ -164,6 +164,9 @@
     <eOperations name="getSampleLabel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eParameters name="sampleNumber" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="true"
+        derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="motionSequenceStatus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
   </eClassifiers>
@@ -394,11 +397,22 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="empty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="true"
         derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sampleInPatternInfoList"
+        upperBound="-1" eType="#//SampleInPatternInfo" changeable="false" volatile="true"
+        transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleInPatternInfoSummary"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" changeable="false"
+        volatile="true" transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleNumberOriginal" eType="#//SampleNumber"
         defaultValueLiteral="-1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleNumberCurrent" eType="#//SampleNumber"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="-1"
         derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SampleInPatternInfo">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patternNumber" eType="#//PatternNumber"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="partCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="partList" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SampleTune">
     <eOperations name="calculateSampleTuneFromSampleRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat">

@@ -14,6 +14,7 @@ package com.skratchdot.electribe.model.esx.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -32,9 +33,11 @@ import com.skratchdot.electribe.model.esx.PartWithPitch;
 import com.skratchdot.electribe.model.esx.PartWithSample;
 import com.skratchdot.electribe.model.esx.PartWithSequenceData;
 import com.skratchdot.electribe.model.esx.PartWithSlice;
+import com.skratchdot.electribe.model.esx.Pattern;
 import com.skratchdot.electribe.model.esx.Reverse;
 import com.skratchdot.electribe.model.esx.Roll;
 import com.skratchdot.electribe.model.esx.SequenceData;
+import com.skratchdot.electribe.model.esx.SongEventPart;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
@@ -1678,6 +1681,18 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		result.append(sliceNumber);
 		result.append(')');
 		return result.toString();
+	}
+
+	@Override
+	public String getLabel() {
+		int containerIndex = 0;
+
+		EObject parent = this.eContainer();
+		if(parent instanceof Pattern) {
+			containerIndex = ((Pattern) parent).getDrumParts().indexOf(this);
+		}
+
+		return SongEventPart.get(0+containerIndex).getLiteral();
 	}
 
 } //PartDrumImpl

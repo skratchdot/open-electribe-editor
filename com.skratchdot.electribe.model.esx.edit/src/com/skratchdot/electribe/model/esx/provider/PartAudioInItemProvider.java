@@ -512,8 +512,10 @@ public class PartAudioInItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		PartAudioIn partAudioIn = (PartAudioIn)object;
-		return getString("_UI_PartAudioIn_type") + " " + partAudioIn.getLevel();
+		String label = ((PartAudioIn)object).getLabel();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PartAudioIn_type") :
+			getString("_UI_PartAudioIn_type") + " " + label;
 	}
 
 	/**

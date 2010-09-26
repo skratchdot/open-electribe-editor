@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Part#getLabel <em>Label</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Part#getLevel <em>Level</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Part#getMotionSequenceStatus <em>Motion Sequence Status</em>}</li>
  * </ul>
@@ -31,6 +32,22 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Part extends EObject {
+	/**
+	 * Returns the value of the '<em><b>Label</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Label</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Label</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getPart_Label()
+	 * @model default="true" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	String getLabel();
+
 	/**
 	 * Returns the value of the '<em><b>Level</b></em>' attribute.
 	 * <!-- begin-user-doc -->

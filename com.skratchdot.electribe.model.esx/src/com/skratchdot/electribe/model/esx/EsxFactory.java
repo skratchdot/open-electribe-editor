@@ -76,6 +76,15 @@ public interface EsxFactory extends EFactory {
 	Sample createSample();
 
 	/**
+	 * Returns a new object of class '<em>Sample In Pattern Info</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sample In Pattern Info</em>'.
+	 * @generated
+	 */
+	SampleInPatternInfo createSampleInPatternInfo();
+
+	/**
 	 * @param file a valid audio file
 	 * @return a new object of class '<em>Sample</em>'.
 	 * @throws EsxException

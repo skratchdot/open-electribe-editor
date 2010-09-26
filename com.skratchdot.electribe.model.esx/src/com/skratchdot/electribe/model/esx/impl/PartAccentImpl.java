@@ -22,6 +22,7 @@ import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.PartAccent;
 import com.skratchdot.electribe.model.esx.PartWithSequenceData;
 import com.skratchdot.electribe.model.esx.SequenceData;
+import com.skratchdot.electribe.model.esx.SongEventPart;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
 
@@ -248,6 +249,11 @@ public class PartAccentImpl extends PartImpl implements PartAccent {
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	@Override
+	public String getLabel() {
+		return SongEventPart.get(9).getLiteral();
 	}
 
 } //PartAccentImpl

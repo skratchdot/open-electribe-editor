@@ -672,8 +672,10 @@ public class PartDrumItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		PartDrum partDrum = (PartDrum)object;
-		return getString("_UI_PartDrum_type") + " " + partDrum.getLevel();
+		String label = ((PartDrum)object).getLabel();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PartDrum_type") :
+			getString("_UI_PartDrum_type") + " " + label;
 	}
 
 	/**

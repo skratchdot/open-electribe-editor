@@ -169,6 +169,10 @@ public class EsxAdapterFactory extends AdapterFactoryImpl {
 				return createSampleAdapter();
 			}
 			@Override
+			public Adapter caseSampleInPatternInfo(SampleInPatternInfo object) {
+				return createSampleInPatternInfoAdapter();
+			}
+			@Override
 			public Adapter caseSampleTune(SampleTune object) {
 				return createSampleTuneAdapter();
 			}
@@ -605,6 +609,20 @@ public class EsxAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSampleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.skratchdot.electribe.model.esx.SampleInPatternInfo <em>Sample In Pattern Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.skratchdot.electribe.model.esx.SampleInPatternInfo
+	 * @generated
+	 */
+	public Adapter createSampleInPatternInfoAdapter() {
 		return null;
 	}
 

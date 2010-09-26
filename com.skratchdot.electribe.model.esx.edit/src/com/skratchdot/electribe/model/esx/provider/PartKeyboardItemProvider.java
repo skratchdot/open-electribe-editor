@@ -673,8 +673,10 @@ public class PartKeyboardItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		PartKeyboard partKeyboard = (PartKeyboard)object;
-		return getString("_UI_PartKeyboard_type") + " " + partKeyboard.getLevel();
+		String label = ((PartKeyboard)object).getLabel();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PartKeyboard_type") :
+			getString("_UI_PartKeyboard_type") + " " + label;
 	}
 
 	/**

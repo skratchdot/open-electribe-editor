@@ -174,6 +174,29 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link com.skratchdot.electribe.model.esx.SampleInPatternInfo} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SampleInPatternInfoItemProvider sampleInPatternInfoItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.skratchdot.electribe.model.esx.SampleInPatternInfo}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSampleInPatternInfoAdapter() {
+		if (sampleInPatternInfoItemProvider == null) {
+			sampleInPatternInfoItemProvider = new SampleInPatternInfoItemProvider(this);
+		}
+
+		return sampleInPatternInfoItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link com.skratchdot.electribe.model.esx.MidiChannelType} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -840,6 +863,7 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 		if (patternItemProvider != null) patternItemProvider.dispose();
 		if (patternSetParameterItemProvider != null) patternSetParameterItemProvider.dispose();
 		if (sampleItemProvider != null) sampleItemProvider.dispose();
+		if (sampleInPatternInfoItemProvider != null) sampleInPatternInfoItemProvider.dispose();
 		if (sampleTuneItemProvider != null) sampleTuneItemProvider.dispose();
 		if (sequenceDataItemProvider != null) sequenceDataItemProvider.dispose();
 		if (sequenceDataGateItemProvider != null) sequenceDataGateItemProvider.dispose();

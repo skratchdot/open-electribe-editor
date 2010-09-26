@@ -29,6 +29,7 @@ import com.skratchdot.electribe.model.esx.SampleNumber;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartImpl#getLevel <em>Level</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartImpl#getMotionSequenceStatus <em>Motion Sequence Status</em>}</li>
  * </ul>
@@ -37,6 +38,16 @@ import com.skratchdot.electribe.model.esx.SampleNumber;
  * @generated
  */
 public abstract class PartImpl extends EObjectImpl implements Part {
+	/**
+	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String LABEL_EDEFAULT = "true";
+
 	/**
 	 * The default value of the '{@link #getLevel() <em>Level</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -94,6 +105,16 @@ public abstract class PartImpl extends EObjectImpl implements Part {
 	@Override
 	protected EClass eStaticClass() {
 		return EsxPackage.Literals.PART;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String getLabel() {
+		// Implementation should be handled by subclasses
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -164,6 +185,8 @@ public abstract class PartImpl extends EObjectImpl implements Part {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case EsxPackage.PART__LABEL:
+				return getLabel();
 			case EsxPackage.PART__LEVEL:
 				return getLevel();
 			case EsxPackage.PART__MOTION_SEQUENCE_STATUS:
@@ -216,6 +239,8 @@ public abstract class PartImpl extends EObjectImpl implements Part {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case EsxPackage.PART__LABEL:
+				return LABEL_EDEFAULT == null ? getLabel() != null : !LABEL_EDEFAULT.equals(getLabel());
 			case EsxPackage.PART__LEVEL:
 				return level != LEVEL_EDEFAULT;
 			case EsxPackage.PART__MOTION_SEQUENCE_STATUS:

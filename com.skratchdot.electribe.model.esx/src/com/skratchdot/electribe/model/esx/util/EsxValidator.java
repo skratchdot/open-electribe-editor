@@ -226,6 +226,8 @@ public class EsxValidator extends EObjectValidator {
 				return validatePatternSetParameter((PatternSetParameter)value, diagnostics, context);
 			case EsxPackage.SAMPLE:
 				return validateSample((Sample)value, diagnostics, context);
+			case EsxPackage.SAMPLE_IN_PATTERN_INFO:
+				return validateSampleInPatternInfo((SampleInPatternInfo)value, diagnostics, context);
 			case EsxPackage.SAMPLE_TUNE:
 				return validateSampleTune((SampleTune)value, diagnostics, context);
 			case EsxPackage.SEQUENCE_DATA:
@@ -603,6 +605,15 @@ public class EsxValidator extends EObjectValidator {
 	 */
 	public boolean validateSample(Sample sample, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(sample, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSampleInPatternInfo(SampleInPatternInfo sampleInPatternInfo, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(sampleInPatternInfo, diagnostics, context);
 	}
 
 	/**

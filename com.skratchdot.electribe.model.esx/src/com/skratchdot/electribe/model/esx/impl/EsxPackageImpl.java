@@ -85,6 +85,7 @@ import com.skratchdot.electribe.model.esx.Reverse;
 import com.skratchdot.electribe.model.esx.Roll;
 import com.skratchdot.electribe.model.esx.RollType;
 import com.skratchdot.electribe.model.esx.Sample;
+import com.skratchdot.electribe.model.esx.SampleInPatternInfo;
 import com.skratchdot.electribe.model.esx.SampleNumber;
 import com.skratchdot.electribe.model.esx.SampleTune;
 import com.skratchdot.electribe.model.esx.SequenceData;
@@ -297,6 +298,13 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	private EClass sampleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass sampleInPatternInfoEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1454,7 +1462,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPart_Level() {
+	public EAttribute getPart_Label() {
 		return (EAttribute)partEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1463,8 +1471,17 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPart_MotionSequenceStatus() {
+	public EAttribute getPart_Level() {
 		return (EAttribute)partEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPart_MotionSequenceStatus() {
+		return (EAttribute)partEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2111,6 +2128,24 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSample_SampleInPatternInfoList() {
+		return (EReference)sampleEClass.getEStructuralFeatures().get(29);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSample_SampleInPatternInfoSummary() {
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(30);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getSample_OffsetChannel1Start() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(1);
 	}
@@ -2301,7 +2336,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_SampleNumberOriginal() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(29);
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(31);
 	}
 
 	/**
@@ -2310,7 +2345,43 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_SampleNumberCurrent() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(30);
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(32);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSampleInPatternInfo() {
+		return sampleInPatternInfoEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSampleInPatternInfo_PatternNumber() {
+		return (EAttribute)sampleInPatternInfoEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSampleInPatternInfo_PartCount() {
+		return (EAttribute)sampleInPatternInfoEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSampleInPatternInfo_PartList() {
+		return (EAttribute)sampleInPatternInfoEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -3337,6 +3408,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(parametersMotionEClass, PARAMETERS_MOTION__OPERATION_TYPE);
 
 		partEClass = createEClass(PART);
+		createEAttribute(partEClass, PART__LABEL);
 		createEAttribute(partEClass, PART__LEVEL);
 		createEAttribute(partEClass, PART__MOTION_SEQUENCE_STATUS);
 
@@ -3458,8 +3530,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(sampleEClass, SAMPLE__LABEL);
 		createEAttribute(sampleEClass, SAMPLE__MEM_USED_IN_BYTES);
 		createEAttribute(sampleEClass, SAMPLE__EMPTY);
+		createEReference(sampleEClass, SAMPLE__SAMPLE_IN_PATTERN_INFO_LIST);
+		createEAttribute(sampleEClass, SAMPLE__SAMPLE_IN_PATTERN_INFO_SUMMARY);
 		createEAttribute(sampleEClass, SAMPLE__SAMPLE_NUMBER_ORIGINAL);
 		createEAttribute(sampleEClass, SAMPLE__SAMPLE_NUMBER_CURRENT);
+
+		sampleInPatternInfoEClass = createEClass(SAMPLE_IN_PATTERN_INFO);
+		createEAttribute(sampleInPatternInfoEClass, SAMPLE_IN_PATTERN_INFO__PATTERN_NUMBER);
+		createEAttribute(sampleInPatternInfoEClass, SAMPLE_IN_PATTERN_INFO__PART_COUNT);
+		createEAttribute(sampleInPatternInfoEClass, SAMPLE_IN_PATTERN_INFO__PART_LIST);
 
 		sampleTuneEClass = createEClass(SAMPLE_TUNE);
 		createEAttribute(sampleTuneEClass, SAMPLE_TUNE__VALUE);
@@ -3759,6 +3838,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEOperation(parametersMotionEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(partEClass, Part.class, "Part", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPart_Label(), ecorePackage.getEString(), "label", "true", 0, 1, Part.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPart_Level(), ecorePackage.getEByte(), "level", null, 0, 1, Part.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPart_MotionSequenceStatus(), ecorePackage.getEByte(), "motionSequenceStatus", null, 0, 1, Part.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -3917,6 +3997,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getSample_Label(), ecorePackage.getEString(), "label", "true", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_MemUsedInBytes(), ecorePackage.getEInt(), "memUsedInBytes", "0", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_Empty(), ecorePackage.getEBoolean(), "empty", "true", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getSample_SampleInPatternInfoList(), this.getSampleInPatternInfo(), null, "sampleInPatternInfoList", null, 0, -1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_SampleInPatternInfoSummary(), ecorePackage.getEString(), "sampleInPatternInfoSummary", null, 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_SampleNumberOriginal(), this.getSampleNumber(), "sampleNumberOriginal", "-1", 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_SampleNumberCurrent(), this.getSampleNumber(), "sampleNumberCurrent", "-1", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
@@ -3971,6 +4053,11 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEOperation(sampleEClass, this.getRIFFWave(), "toRIFFWaveMono", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(sampleEClass, this.getRIFFWave(), "toRIFFWaveStereo", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(sampleInPatternInfoEClass, SampleInPatternInfo.class, "SampleInPatternInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSampleInPatternInfo_PatternNumber(), this.getPatternNumber(), "patternNumber", null, 0, 1, SampleInPatternInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSampleInPatternInfo_PartCount(), ecorePackage.getEInt(), "partCount", null, 0, 1, SampleInPatternInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSampleInPatternInfo_PartList(), ecorePackage.getEString(), "partList", null, 0, 1, SampleInPatternInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sampleTuneEClass, SampleTune.class, "SampleTune", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSampleTune_Value(), ecorePackage.getEFloat(), "value", null, 0, 1, SampleTune.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

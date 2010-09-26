@@ -5,7 +5,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *  
  * Contributors:
- *    JEFF |:at:| SKRATCHDOT |:dot:| COM
+ *     JEFF |:at:| SKRATCHDOT |:dot:| COM
  *
  * $Id$
  */
@@ -13,7 +13,8 @@ package com.skratchdot.electribe.model.esx.provider;
 
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.Part;
+import com.skratchdot.electribe.model.esx.PatternNumber;
+import com.skratchdot.electribe.model.esx.SampleInPatternInfo;
 
 import java.util.Collection;
 import java.util.List;
@@ -38,22 +39,29 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link com.skratchdot.electribe.model.esx.Part} object.
+ * This is the item provider adapter for a {@link com.skratchdot.electribe.model.esx.SampleInPatternInfo} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class PartItemProvider
+public class SampleInPatternInfoItemProvider
 	extends ItemProviderAdapter
 	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource,
+		ITableItemLabelProvider,
+		ITableItemColorProvider,
+		IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PartItemProvider(AdapterFactory adapterFactory) {
+	public SampleInPatternInfoItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -68,28 +76,28 @@ public class PartItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addLabelPropertyDescriptor(object);
-			addLevelPropertyDescriptor(object);
-			addMotionSequenceStatusPropertyDescriptor(object);
+			addPatternNumberPropertyDescriptor(object);
+			addPartCountPropertyDescriptor(object);
+			addPartListPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Label feature.
+	 * This adds a property descriptor for the Pattern Number feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addLabelPropertyDescriptor(Object object) {
+	protected void addPatternNumberPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Part_label_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Part_label_feature", "_UI_Part_type"),
-				 EsxPackage.Literals.PART__LABEL,
-				 false,
+				 getString("_UI_SampleInPatternInfo_patternNumber_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SampleInPatternInfo_patternNumber_feature", "_UI_SampleInPatternInfo_type"),
+				 EsxPackage.Literals.SAMPLE_IN_PATTERN_INFO__PATTERN_NUMBER,
+				 true,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -98,19 +106,19 @@ public class PartItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Level feature.
+	 * This adds a property descriptor for the Part Count feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addLevelPropertyDescriptor(Object object) {
+	protected void addPartCountPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Part_level_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Part_level_feature", "_UI_Part_type"),
-				 EsxPackage.Literals.PART__LEVEL,
+				 getString("_UI_SampleInPatternInfo_partCount_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SampleInPatternInfo_partCount_feature", "_UI_SampleInPatternInfo_type"),
+				 EsxPackage.Literals.SAMPLE_IN_PATTERN_INFO__PART_COUNT,
 				 true,
 				 false,
 				 false,
@@ -120,36 +128,36 @@ public class PartItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Motion Sequence Status feature.
+	 * This adds a property descriptor for the Part List feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addMotionSequenceStatusPropertyDescriptor(Object object) {
+	protected void addPartListPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Part_motionSequenceStatus_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Part_motionSequenceStatus_feature", "_UI_Part_type"),
-				 EsxPackage.Literals.PART__MOTION_SEQUENCE_STATUS,
+				 getString("_UI_SampleInPatternInfo_partList_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SampleInPatternInfo_partList_feature", "_UI_SampleInPatternInfo_type"),
+				 EsxPackage.Literals.SAMPLE_IN_PATTERN_INFO__PART_LIST,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This returns Part.gif.
+	 * This returns SampleInPatternInfo.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Part"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/SampleInPatternInfo"));
 	}
 
 	/**
@@ -160,10 +168,11 @@ public class PartItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Part)object).getLabel();
+		PatternNumber labelValue = ((SampleInPatternInfo)object).getPatternNumber();
+		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Part_type") :
-			getString("_UI_Part_type") + " " + label;
+			getString("_UI_SampleInPatternInfo_type") :
+			getString("_UI_SampleInPatternInfo_type") + " " + label;
 	}
 
 	/**
@@ -177,10 +186,10 @@ public class PartItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Part.class)) {
-			case EsxPackage.PART__LABEL:
-			case EsxPackage.PART__LEVEL:
-			case EsxPackage.PART__MOTION_SEQUENCE_STATUS:
+		switch (notification.getFeatureID(SampleInPatternInfo.class)) {
+			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_NUMBER:
+			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_COUNT:
+			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_LIST:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

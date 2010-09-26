@@ -252,6 +252,12 @@ public class EsxSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EsxPackage.SAMPLE_IN_PATTERN_INFO: {
+				SampleInPatternInfo sampleInPatternInfo = (SampleInPatternInfo)theEObject;
+				T result = caseSampleInPatternInfo(sampleInPatternInfo);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EsxPackage.SAMPLE_TUNE: {
 				SampleTune sampleTune = (SampleTune)theEObject;
 				T result = caseSampleTune(sampleTune);
@@ -734,6 +740,21 @@ public class EsxSwitch<T> {
 	 * @generated
 	 */
 	public T caseSample(Sample object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sample In Pattern Info</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sample In Pattern Info</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSampleInPatternInfo(SampleInPatternInfo object) {
 		return null;
 	}
 

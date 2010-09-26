@@ -32,6 +32,8 @@ import junit.textui.TestRunner;
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getLabel() <em>Label</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getMemUsedInBytes() <em>Mem Used In Bytes</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isEmpty() <em>Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleInPatternInfoList() <em>Sample In Pattern Info List</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleInPatternInfoSummary() <em>Sample In Pattern Info Summary</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleNumberCurrent() <em>Sample Number Current</em>}</li>
  * </ul>
  * </p>
@@ -179,6 +181,32 @@ public class SampleTest extends TestCase {
 	 * @generated
 	 */
 	public void testIsEmpty() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#getSampleInPatternInfoList() <em>Sample In Pattern Info List</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.Sample#getSampleInPatternInfoList()
+	 * @generated
+	 */
+	public void testGetSampleInPatternInfoList() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#getSampleInPatternInfoSummary() <em>Sample In Pattern Info Summary</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.Sample#getSampleInPatternInfoSummary()
+	 * @generated
+	 */
+	public void testGetSampleInPatternInfoSummary() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

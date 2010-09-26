@@ -14,6 +14,7 @@ package com.skratchdot.electribe.model.esx;
 import java.io.File;
 import java.io.IOException;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 import com.skratchdot.riff.wav.RIFFWave;
@@ -55,6 +56,8 @@ import com.skratchdot.riff.wav.RIFFWave;
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getLabel <em>Label</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getMemUsedInBytes <em>Mem Used In Bytes</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isEmpty <em>Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleInPatternInfoList <em>Sample In Pattern Info List</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleInPatternInfoSummary <em>Sample In Pattern Info Summary</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleNumberOriginal <em>Sample Number Original</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleNumberCurrent <em>Sample Number Current</em>}</li>
  * </ul>
@@ -122,6 +125,37 @@ public interface Sample extends EObject {
 	 * @generated
 	 */
 	boolean isEmpty();
+
+	/**
+	 * Returns the value of the '<em><b>Sample In Pattern Info List</b></em>' reference list.
+	 * The list contents are of type {@link com.skratchdot.electribe.model.esx.SampleInPatternInfo}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sample In Pattern Info List</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sample In Pattern Info List</em>' reference list.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_SampleInPatternInfoList()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	EList<SampleInPatternInfo> getSampleInPatternInfoList();
+
+	/**
+	 * Returns the value of the '<em><b>Sample In Pattern Info Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sample In Pattern Info Summary</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sample In Pattern Info Summary</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_SampleInPatternInfoSummary()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	String getSampleInPatternInfoSummary();
 
 	/**
 	 * Returns the value of the '<em><b>Offset Channel1 Start</b></em>' attribute.

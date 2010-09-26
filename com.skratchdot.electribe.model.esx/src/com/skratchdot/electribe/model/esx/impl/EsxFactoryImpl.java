@@ -156,6 +156,7 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 			case EsxPackage.PATTERN: return createPattern();
 			case EsxPackage.PATTERN_SET_PARAMETER: return createPatternSetParameter();
 			case EsxPackage.SAMPLE: return createSample();
+			case EsxPackage.SAMPLE_IN_PATTERN_INFO: return createSampleInPatternInfo();
 			case EsxPackage.SAMPLE_TUNE: return createSampleTune();
 			case EsxPackage.SEQUENCE_DATA: return createSequenceData();
 			case EsxPackage.SEQUENCE_DATA_GATE: return createSequenceDataGate();
@@ -425,6 +426,16 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	public Sample createSample() {
 		SampleImpl sample = new SampleImpl();
 		return sample;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SampleInPatternInfo createSampleInPatternInfo() {
+		SampleInPatternInfoImpl sampleInPatternInfo = new SampleInPatternInfoImpl();
+		return sampleInPatternInfo;
 	}
 
 	/* (non-Javadoc)

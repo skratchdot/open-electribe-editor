@@ -626,8 +626,10 @@ public class PartStretchSliceItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		PartStretchSlice partStretchSlice = (PartStretchSlice)object;
-		return getString("_UI_PartStretchSlice_type") + " " + partStretchSlice.getLevel();
+		String label = ((PartStretchSlice)object).getLabel();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PartStretchSlice_type") :
+			getString("_UI_PartStretchSlice_type") + " " + label;
 	}
 
 	/**

@@ -25,17 +25,24 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreEList;
 
 import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.PartDrum;
+import com.skratchdot.electribe.model.esx.PartKeyboard;
+import com.skratchdot.electribe.model.esx.PartStretchSlice;
+import com.skratchdot.electribe.model.esx.Pattern;
 import com.skratchdot.electribe.model.esx.PlayLevel;
 import com.skratchdot.electribe.model.esx.Sample;
+import com.skratchdot.electribe.model.esx.SampleInPatternInfo;
 import com.skratchdot.electribe.model.esx.SampleNumber;
 import com.skratchdot.electribe.model.esx.SampleTune;
 import com.skratchdot.electribe.model.esx.StretchStep;
@@ -87,6 +94,8 @@ import com.skratchdot.riff.wav.WavPackage;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getMemUsedInBytes <em>Mem Used In Bytes</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isEmpty <em>Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleInPatternInfoList <em>Sample In Pattern Info List</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleInPatternInfoSummary <em>Sample In Pattern Info Summary</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleNumberOriginal <em>Sample Number Original</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleNumberCurrent <em>Sample Number Current</em>}</li>
  * </ul>
@@ -584,6 +593,16 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	 * @ordered
 	 */
 	protected static final boolean EMPTY_EDEFAULT = true;
+
+	/**
+	 * The default value of the '{@link #getSampleInPatternInfoSummary() <em>Sample In Pattern Info Summary</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSampleInPatternInfoSummary()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SAMPLE_IN_PATTERN_INFO_SUMMARY_EDEFAULT = null;
 
 	/**
 	 * The default value of the '{@link #getSampleNumberOriginal() <em>Sample Number Original</em>}' attribute.
@@ -1387,6 +1406,111 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<SampleInPatternInfo> getSampleInPatternInfoList() {
+		ArrayList<SampleInPatternInfo> list = new ArrayList<SampleInPatternInfo>();
+
+		// Loop through all our patterns looking for parts that this sample is used in
+		if(this.eResource()!=null) {
+			Resource resource = (Resource) this.eResource();
+			Object rootObject = resource.getContents().get(0);
+			if(rootObject instanceof EsxFile) {
+				EsxFile esxFile = (EsxFile) rootObject;
+				// Declare our loop variables
+				Pattern currentPattern;
+				int currentPartCount;
+				short currentSamplePointer;
+				String currentPartList;
+				EList<PartDrum> currentDrumParts;
+				EList<PartKeyboard> currentKeyboardParts;
+				EList<PartStretchSlice> currentStretchSliceParts;
+
+				// Loop through all the patterns
+				for(int i=0; i<EsxUtil.NUM_PATTERNS; i++) {
+					currentPattern = esxFile.getPatterns().get(i);
+					currentPartCount = 0;
+					currentPartList = "";
+					currentDrumParts = currentPattern.getDrumParts();
+					currentKeyboardParts = currentPattern.getKeyboardParts();
+					currentStretchSliceParts = currentPattern.getStretchSliceParts();
+
+					// Loop through all the drum parts looking for our current sample
+					for(int j=0; j<currentDrumParts.size(); j++) {
+						currentSamplePointer = currentDrumParts.get(j).getSamplePointer();
+						if(this.equals(esxFile.getSampleFromPointer(currentSamplePointer))) {
+							currentPartCount++;
+							currentPartList += (currentPartList==""?"":",") + currentDrumParts.get(j).getLabel();
+						}
+					}
+					// Loop through all the keyboard parts looking for our current sample
+					for(int j=0; j<currentKeyboardParts.size(); j++) {
+						currentSamplePointer = currentKeyboardParts.get(j).getSamplePointer();
+						if(this.equals(esxFile.getSampleFromPointer(currentSamplePointer))) {
+							currentPartCount++;
+							currentPartList += (currentPartList==""?"":",") + currentKeyboardParts.get(j).getLabel();
+						}
+					}
+					// Loop through all the stretchslice parts looking for our current sample
+					for(int j=0; j<currentStretchSliceParts.size(); j++) {
+						currentSamplePointer = currentStretchSliceParts.get(j).getSamplePointer();
+						if(this.equals(esxFile.getSampleFromPointer(currentSamplePointer))) {
+							currentPartCount++;
+							currentPartList += (currentPartList==""?"":",") + currentStretchSliceParts.get(j).getLabel();
+						}
+					}
+
+					if(currentPartCount>0) {
+						SampleInPatternInfo info = EsxFactory.eINSTANCE.createSampleInPatternInfo();
+						info.setPatternNumber(currentPattern.getPatternNumberCurrent());
+						info.setPartCount(currentPartCount);
+						info.setPartList(currentPartList);
+						list.add(info);
+					}
+				}
+			}
+		}
+
+		// Return an unmodifiable list
+		return new EcoreEList.UnmodifiableEList<SampleInPatternInfo>(
+			this,
+			EsxPackage.eINSTANCE.getSample_SampleInPatternInfoList(),
+			list.size(),
+			list.toArray()
+		);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String getSampleInPatternInfoSummary() {
+		EList<SampleInPatternInfo> list = this.getSampleInPatternInfoList();
+		if(list.size()>0) {
+			String patternList = "";
+			int totalPartCount = 0;
+
+			for(int i=0; i<list.size(); i++) {
+				totalPartCount += list.get(i).getPartCount();
+				patternList += (i==0?"":",") + list.get(i).getPatternNumber().getName();
+			}
+
+			return "Used in " + 
+				totalPartCount +
+				" Part(s) in " +
+				list.size() +
+				" Pattern(s): " +
+				patternList;
+		}
+		else {
+			return "-- Not used in any patterns --";
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public SampleNumber getSampleNumberOriginal() {
@@ -2003,6 +2127,10 @@ public class SampleImpl extends EObjectImpl implements Sample {
 				return getMemUsedInBytes();
 			case EsxPackage.SAMPLE__EMPTY:
 				return isEmpty();
+			case EsxPackage.SAMPLE__SAMPLE_IN_PATTERN_INFO_LIST:
+				return getSampleInPatternInfoList();
+			case EsxPackage.SAMPLE__SAMPLE_IN_PATTERN_INFO_SUMMARY:
+				return getSampleInPatternInfoSummary();
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_ORIGINAL:
 				return getSampleNumberOriginal();
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_CURRENT:
@@ -2233,6 +2361,10 @@ public class SampleImpl extends EObjectImpl implements Sample {
 				return getMemUsedInBytes() != MEM_USED_IN_BYTES_EDEFAULT;
 			case EsxPackage.SAMPLE__EMPTY:
 				return isEmpty() != EMPTY_EDEFAULT;
+			case EsxPackage.SAMPLE__SAMPLE_IN_PATTERN_INFO_LIST:
+				return !getSampleInPatternInfoList().isEmpty();
+			case EsxPackage.SAMPLE__SAMPLE_IN_PATTERN_INFO_SUMMARY:
+				return SAMPLE_IN_PATTERN_INFO_SUMMARY_EDEFAULT == null ? getSampleInPatternInfoSummary() != null : !SAMPLE_IN_PATTERN_INFO_SUMMARY_EDEFAULT.equals(getSampleInPatternInfoSummary());
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_ORIGINAL:
 				return sampleNumberOriginal != SAMPLE_NUMBER_ORIGINAL_EDEFAULT;
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_CURRENT:

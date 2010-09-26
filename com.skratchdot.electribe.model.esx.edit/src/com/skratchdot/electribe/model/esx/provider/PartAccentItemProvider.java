@@ -118,8 +118,10 @@ public class PartAccentItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		PartAccent partAccent = (PartAccent)object;
-		return getString("_UI_PartAccent_type") + " " + partAccent.getLevel();
+		String label = ((PartAccent)object).getLabel();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PartAccent_type") :
+			getString("_UI_PartAccent_type") + " " + label;
 	}
 
 	/**
