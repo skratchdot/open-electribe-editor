@@ -94,8 +94,9 @@ import com.skratchdot.riff.wav.WavPackage;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getMemUsedInBytes <em>Mem Used In Bytes</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isEmpty <em>Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getPartCount <em>Part Count</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getPatternCount <em>Pattern Count</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleInPatternInfoList <em>Sample In Pattern Info List</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleInPatternInfoSummary <em>Sample In Pattern Info Summary</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleNumberOriginal <em>Sample Number Original</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleNumberCurrent <em>Sample Number Current</em>}</li>
  * </ul>
@@ -595,14 +596,24 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	protected static final boolean EMPTY_EDEFAULT = true;
 
 	/**
-	 * The default value of the '{@link #getSampleInPatternInfoSummary() <em>Sample In Pattern Info Summary</em>}' attribute.
+	 * The default value of the '{@link #getPartCount() <em>Part Count</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSampleInPatternInfoSummary()
+	 * @see #getPartCount()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SAMPLE_IN_PATTERN_INFO_SUMMARY_EDEFAULT = null;
+	protected static final int PART_COUNT_EDEFAULT = 0;
+
+	/**
+	 * The default value of the '{@link #getPatternCount() <em>Pattern Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPatternCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int PATTERN_COUNT_EDEFAULT = 0;
 
 	/**
 	 * The default value of the '{@link #getSampleNumberOriginal() <em>Sample Number Original</em>}' attribute.
@@ -1408,8 +1419,33 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	public int getPartCount() {
+		int partCount = 0;
+		EList<SampleInPatternInfo> list = this.getSampleInPatternInfoList();
+		if(list.size()>0) {
+			for(int i=0; i<list.size(); i++) {
+				partCount += list.get(i).getPartCount();
+			}
+		}
+		return partCount;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getPatternCount() {
+		return this.getSampleInPatternInfoList().size();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	public EList<SampleInPatternInfo> getSampleInPatternInfoList() {
-		ArrayList<SampleInPatternInfo> list = new ArrayList<SampleInPatternInfo>();
+		EList<SampleInPatternInfo> list = new EcoreEList.Dynamic<SampleInPatternInfo>(this, EsxPackage.eINSTANCE.getSample_SampleInPatternInfoList());
 
 		// Loop through all our patterns looking for parts that this sample is used in
 		if(this.eResource()!=null) {
@@ -1462,6 +1498,7 @@ public class SampleImpl extends EObjectImpl implements Sample {
 
 					if(currentPartCount>0) {
 						SampleInPatternInfo info = EsxFactory.eINSTANCE.createSampleInPatternInfo();
+						info.setIndex(list.size()+1);
 						info.setPatternNumber(currentPattern.getPatternNumberCurrent());
 						info.setPartCount(currentPartCount);
 						info.setPartList(currentPartList);
@@ -1472,40 +1509,7 @@ public class SampleImpl extends EObjectImpl implements Sample {
 		}
 
 		// Return an unmodifiable list
-		return new EcoreEList.UnmodifiableEList<SampleInPatternInfo>(
-			this,
-			EsxPackage.eINSTANCE.getSample_SampleInPatternInfoList(),
-			list.size(),
-			list.toArray()
-		);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public String getSampleInPatternInfoSummary() {
-		EList<SampleInPatternInfo> list = this.getSampleInPatternInfoList();
-		if(list.size()>0) {
-			String patternList = "";
-			int totalPartCount = 0;
-
-			for(int i=0; i<list.size(); i++) {
-				totalPartCount += list.get(i).getPartCount();
-				patternList += (i==0?"":",") + list.get(i).getPatternNumber().getName();
-			}
-
-			return "Used in " + 
-				totalPartCount +
-				" Part(s) in " +
-				list.size() +
-				" Pattern(s): " +
-				patternList;
-		}
-		else {
-			return "-- Not used in any patterns --";
-		}
+		return list;
 	}
 
 	/**
@@ -2127,10 +2131,12 @@ public class SampleImpl extends EObjectImpl implements Sample {
 				return getMemUsedInBytes();
 			case EsxPackage.SAMPLE__EMPTY:
 				return isEmpty();
+			case EsxPackage.SAMPLE__PART_COUNT:
+				return getPartCount();
+			case EsxPackage.SAMPLE__PATTERN_COUNT:
+				return getPatternCount();
 			case EsxPackage.SAMPLE__SAMPLE_IN_PATTERN_INFO_LIST:
 				return getSampleInPatternInfoList();
-			case EsxPackage.SAMPLE__SAMPLE_IN_PATTERN_INFO_SUMMARY:
-				return getSampleInPatternInfoSummary();
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_ORIGINAL:
 				return getSampleNumberOriginal();
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_CURRENT:
@@ -2361,10 +2367,12 @@ public class SampleImpl extends EObjectImpl implements Sample {
 				return getMemUsedInBytes() != MEM_USED_IN_BYTES_EDEFAULT;
 			case EsxPackage.SAMPLE__EMPTY:
 				return isEmpty() != EMPTY_EDEFAULT;
+			case EsxPackage.SAMPLE__PART_COUNT:
+				return getPartCount() != PART_COUNT_EDEFAULT;
+			case EsxPackage.SAMPLE__PATTERN_COUNT:
+				return getPatternCount() != PATTERN_COUNT_EDEFAULT;
 			case EsxPackage.SAMPLE__SAMPLE_IN_PATTERN_INFO_LIST:
 				return !getSampleInPatternInfoList().isEmpty();
-			case EsxPackage.SAMPLE__SAMPLE_IN_PATTERN_INFO_SUMMARY:
-				return SAMPLE_IN_PATTERN_INFO_SUMMARY_EDEFAULT == null ? getSampleInPatternInfoSummary() != null : !SAMPLE_IN_PATTERN_INFO_SUMMARY_EDEFAULT.equals(getSampleInPatternInfoSummary());
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_ORIGINAL:
 				return sampleNumberOriginal != SAMPLE_NUMBER_ORIGINAL_EDEFAULT;
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_CURRENT:

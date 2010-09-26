@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link com.skratchdot.electribe.model.esx.SampleInPatternInfo#getIndex <em>Index</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.SampleInPatternInfo#getPatternNumber <em>Pattern Number</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.SampleInPatternInfo#getPartCount <em>Part Count</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.SampleInPatternInfo#getPartList <em>Part List</em>}</li>
@@ -32,6 +33,33 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface SampleInPatternInfo extends EObject {
+	/**
+	 * Returns the value of the '<em><b>Index</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Index</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Index</em>' attribute.
+	 * @see #setIndex(int)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSampleInPatternInfo_Index()
+	 * @model default="0"
+	 * @generated
+	 */
+	int getIndex();
+
+	/**
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.SampleInPatternInfo#getIndex <em>Index</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Index</em>' attribute.
+	 * @see #getIndex()
+	 * @generated
+	 */
+	void setIndex(int value);
+
 	/**
 	 * Returns the value of the '<em><b>Pattern Number</b></em>' attribute.
 	 * The literals are from the enumeration {@link com.skratchdot.electribe.model.esx.PatternNumber}.

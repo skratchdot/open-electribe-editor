@@ -89,8 +89,9 @@ public class SampleItemProvider
 			addLabelPropertyDescriptor(object);
 			addMemUsedInBytesPropertyDescriptor(object);
 			addEmptyPropertyDescriptor(object);
+			addPartCountPropertyDescriptor(object);
+			addPatternCountPropertyDescriptor(object);
 			addSampleInPatternInfoListPropertyDescriptor(object);
-			addSampleInPatternInfoSummaryPropertyDescriptor(object);
 			addSampleNumberOriginalPropertyDescriptor(object);
 			addSampleNumberCurrentPropertyDescriptor(object);
 		}
@@ -164,6 +165,50 @@ public class SampleItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Part Count feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPartCountPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sample_partCount_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_partCount_feature", "_UI_Sample_type"),
+				 EsxPackage.Literals.SAMPLE__PART_COUNT,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Pattern Count feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPatternCountPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sample_patternCount_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_patternCount_feature", "_UI_Sample_type"),
+				 EsxPackage.Literals.SAMPLE__PATTERN_COUNT,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Sample In Pattern Info List feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -181,28 +226,6 @@ public class SampleItemProvider
 				 false,
 				 false,
 				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Sample In Pattern Info Summary feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSampleInPatternInfoSummaryPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Sample_sampleInPatternInfoSummary_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_sampleInPatternInfoSummary_feature", "_UI_Sample_type"),
-				 EsxPackage.Literals.SAMPLE__SAMPLE_IN_PATTERN_INFO_SUMMARY,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -674,7 +697,8 @@ public class SampleItemProvider
 			case EsxPackage.SAMPLE__LABEL:
 			case EsxPackage.SAMPLE__MEM_USED_IN_BYTES:
 			case EsxPackage.SAMPLE__EMPTY:
-			case EsxPackage.SAMPLE__SAMPLE_IN_PATTERN_INFO_SUMMARY:
+			case EsxPackage.SAMPLE__PART_COUNT:
+			case EsxPackage.SAMPLE__PATTERN_COUNT:
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_ORIGINAL:
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_CURRENT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

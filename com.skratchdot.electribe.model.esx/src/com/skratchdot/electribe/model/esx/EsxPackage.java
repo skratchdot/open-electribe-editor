@@ -2793,22 +2793,31 @@ public interface EsxPackage extends EPackage {
 	int SAMPLE__EMPTY = 28;
 
 	/**
+	 * The feature id for the '<em><b>Part Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE__PART_COUNT = 29;
+
+	/**
+	 * The feature id for the '<em><b>Pattern Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE__PATTERN_COUNT = 30;
+
+	/**
 	 * The feature id for the '<em><b>Sample In Pattern Info List</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__SAMPLE_IN_PATTERN_INFO_LIST = 29;
-
-	/**
-	 * The feature id for the '<em><b>Sample In Pattern Info Summary</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SAMPLE__SAMPLE_IN_PATTERN_INFO_SUMMARY = 30;
+	int SAMPLE__SAMPLE_IN_PATTERN_INFO_LIST = 31;
 
 	/**
 	 * The feature id for the '<em><b>Sample Number Original</b></em>' attribute.
@@ -2817,7 +2826,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__SAMPLE_NUMBER_ORIGINAL = 31;
+	int SAMPLE__SAMPLE_NUMBER_ORIGINAL = 32;
 
 	/**
 	 * The feature id for the '<em><b>Sample Number Current</b></em>' attribute.
@@ -2826,7 +2835,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__SAMPLE_NUMBER_CURRENT = 32;
+	int SAMPLE__SAMPLE_NUMBER_CURRENT = 33;
 
 	/**
 	 * The number of structural features of the '<em>Sample</em>' class.
@@ -2835,7 +2844,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE_FEATURE_COUNT = 33;
+	int SAMPLE_FEATURE_COUNT = 34;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.SampleInPatternInfoImpl <em>Sample In Pattern Info</em>}' class.
@@ -2848,13 +2857,22 @@ public interface EsxPackage extends EPackage {
 	int SAMPLE_IN_PATTERN_INFO = 23;
 
 	/**
+	 * The feature id for the '<em><b>Index</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE_IN_PATTERN_INFO__INDEX = 0;
+
+	/**
 	 * The feature id for the '<em><b>Pattern Number</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE_IN_PATTERN_INFO__PATTERN_NUMBER = 0;
+	int SAMPLE_IN_PATTERN_INFO__PATTERN_NUMBER = 1;
 
 	/**
 	 * The feature id for the '<em><b>Part Count</b></em>' attribute.
@@ -2863,7 +2881,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE_IN_PATTERN_INFO__PART_COUNT = 1;
+	int SAMPLE_IN_PATTERN_INFO__PART_COUNT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Part List</b></em>' attribute.
@@ -2872,7 +2890,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE_IN_PATTERN_INFO__PART_LIST = 2;
+	int SAMPLE_IN_PATTERN_INFO__PART_LIST = 3;
 
 	/**
 	 * The number of structural features of the '<em>Sample In Pattern Info</em>' class.
@@ -2881,7 +2899,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE_IN_PATTERN_INFO_FEATURE_COUNT = 3;
+	int SAMPLE_IN_PATTERN_INFO_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.SampleTuneImpl <em>Sample Tune</em>}' class.
@@ -5931,6 +5949,28 @@ public interface EsxPackage extends EPackage {
 	EAttribute getSample_Empty();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Sample#getPartCount <em>Part Count</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Part Count</em>'.
+	 * @see com.skratchdot.electribe.model.esx.Sample#getPartCount()
+	 * @see #getSample()
+	 * @generated
+	 */
+	EAttribute getSample_PartCount();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Sample#getPatternCount <em>Pattern Count</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Pattern Count</em>'.
+	 * @see com.skratchdot.electribe.model.esx.Sample#getPatternCount()
+	 * @see #getSample()
+	 * @generated
+	 */
+	EAttribute getSample_PatternCount();
+
+	/**
 	 * Returns the meta object for the reference list '{@link com.skratchdot.electribe.model.esx.Sample#getSampleInPatternInfoList <em>Sample In Pattern Info List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5940,17 +5980,6 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSample_SampleInPatternInfoList();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Sample#getSampleInPatternInfoSummary <em>Sample In Pattern Info Summary</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Sample In Pattern Info Summary</em>'.
-	 * @see com.skratchdot.electribe.model.esx.Sample#getSampleInPatternInfoSummary()
-	 * @see #getSample()
-	 * @generated
-	 */
-	EAttribute getSample_SampleInPatternInfoSummary();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Sample#getOffsetChannel1Start <em>Offset Channel1 Start</em>}'.
@@ -6214,6 +6243,17 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSampleInPatternInfo();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SampleInPatternInfo#getIndex <em>Index</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Index</em>'.
+	 * @see com.skratchdot.electribe.model.esx.SampleInPatternInfo#getIndex()
+	 * @see #getSampleInPatternInfo()
+	 * @generated
+	 */
+	EAttribute getSampleInPatternInfo_Index();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SampleInPatternInfo#getPatternNumber <em>Pattern Number</em>}'.
@@ -8598,20 +8638,28 @@ public interface EsxPackage extends EPackage {
 		EAttribute SAMPLE__EMPTY = eINSTANCE.getSample_Empty();
 
 		/**
+		 * The meta object literal for the '<em><b>Part Count</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SAMPLE__PART_COUNT = eINSTANCE.getSample_PartCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Pattern Count</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SAMPLE__PATTERN_COUNT = eINSTANCE.getSample_PatternCount();
+
+		/**
 		 * The meta object literal for the '<em><b>Sample In Pattern Info List</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference SAMPLE__SAMPLE_IN_PATTERN_INFO_LIST = eINSTANCE.getSample_SampleInPatternInfoList();
-
-		/**
-		 * The meta object literal for the '<em><b>Sample In Pattern Info Summary</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SAMPLE__SAMPLE_IN_PATTERN_INFO_SUMMARY = eINSTANCE.getSample_SampleInPatternInfoSummary();
 
 		/**
 		 * The meta object literal for the '<em><b>Offset Channel1 Start</b></em>' attribute feature.
@@ -8806,6 +8854,14 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SAMPLE_IN_PATTERN_INFO = eINSTANCE.getSampleInPatternInfo();
+
+		/**
+		 * The meta object literal for the '<em><b>Index</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SAMPLE_IN_PATTERN_INFO__INDEX = eINSTANCE.getSampleInPatternInfo_Index();
 
 		/**
 		 * The meta object literal for the '<em><b>Pattern Number</b></em>' attribute feature.

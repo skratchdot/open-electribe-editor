@@ -56,8 +56,9 @@ import com.skratchdot.riff.wav.RIFFWave;
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getLabel <em>Label</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getMemUsedInBytes <em>Mem Used In Bytes</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isEmpty <em>Empty</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getPartCount <em>Part Count</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getPatternCount <em>Pattern Count</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleInPatternInfoList <em>Sample In Pattern Info List</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleInPatternInfoSummary <em>Sample In Pattern Info Summary</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleNumberOriginal <em>Sample Number Original</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleNumberCurrent <em>Sample Number Current</em>}</li>
  * </ul>
@@ -127,6 +128,36 @@ public interface Sample extends EObject {
 	boolean isEmpty();
 
 	/**
+	 * Returns the value of the '<em><b>Part Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Part Count</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Part Count</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_PartCount()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	int getPartCount();
+
+	/**
+	 * Returns the value of the '<em><b>Pattern Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Pattern Count</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Pattern Count</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_PatternCount()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	int getPatternCount();
+
+	/**
 	 * Returns the value of the '<em><b>Sample In Pattern Info List</b></em>' reference list.
 	 * The list contents are of type {@link com.skratchdot.electribe.model.esx.SampleInPatternInfo}.
 	 * <!-- begin-user-doc -->
@@ -141,21 +172,6 @@ public interface Sample extends EObject {
 	 * @generated
 	 */
 	EList<SampleInPatternInfo> getSampleInPatternInfoList();
-
-	/**
-	 * Returns the value of the '<em><b>Sample In Pattern Info Summary</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Sample In Pattern Info Summary</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sample In Pattern Info Summary</em>' attribute.
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_SampleInPatternInfoSummary()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 * @generated
-	 */
-	String getSampleInPatternInfoSummary();
 
 	/**
 	 * Returns the value of the '<em><b>Offset Channel1 Start</b></em>' attribute.

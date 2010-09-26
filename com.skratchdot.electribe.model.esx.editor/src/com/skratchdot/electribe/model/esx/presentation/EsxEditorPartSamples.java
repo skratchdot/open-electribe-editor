@@ -36,12 +36,15 @@ import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
+import org.eclipse.swt.widgets.TabFolder;
+import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.ISelectionListener;
@@ -68,6 +71,11 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 	private TableScrollSpeedListener tableViewerScrollSpeedListener;
 
 	private EsxCompositeSample editorSample;
+	private EsxCompositeSampleInPatternInfo editorSampleInPatternInfo;
+
+	private TabFolder tabFolder;
+	private TabItem tabSample;
+	private TabItem tabSampleInPatternInfo;
 
 	/**
 	 * @param parent
@@ -96,10 +104,26 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		this.tableViewer = new TableViewer(groupSamples, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
 		this.initTableViewer();
 
-		// Create sampleEditor
-		this.editorSample = new EsxCompositeSample(this, sashForm, SWT.NONE);
+		// Create groupSelectedSamples
+		Group groupSelectedSamples = new Group(sashForm, SWT.NONE);
+		groupSelectedSamples.setLayout(new FillLayout(SWT.HORIZONTAL));
+		groupSelectedSamples.setText("Selected Samples");
 
-		sashForm.setWeights(new int[] {3, 1});
+		tabFolder = new TabFolder(groupSelectedSamples, SWT.NONE);
+
+		// Create editorSample
+		tabSample = new TabItem(tabFolder, SWT.NONE);
+		editorSample = new EsxCompositeSample(this, tabFolder, SWT.NONE);
+		tabSample.setText("Sample Editor");
+		tabSample.setControl(editorSample);
+
+		// Create editorSampleInPatternInfo
+		tabSampleInPatternInfo = new TabItem(tabFolder, SWT.NONE);
+		editorSampleInPatternInfo = new EsxCompositeSampleInPatternInfo(this, tabFolder, SWT.NONE);
+		tabSampleInPatternInfo.setText("Pattern/Part Usage");
+		tabSampleInPatternInfo.setControl(editorSampleInPatternInfo);
+
+		sashForm.setWeights(new int[] {4, 3});
 	}
 	
 	private void initTopRow(Composite parent) {
@@ -205,17 +229,17 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		this.addColumnToTableViewer(this.tableViewer, "Esx#", 45);
 		this.addColumnToTableViewer(this.tableViewer, "Orig#", 45);
 		this.addColumnToTableViewer(this.tableViewer, "Name", 100);
-		this.addColumnToTableViewer(this.tableViewer, "MemSize", 100);
-		this.addColumnToTableViewer(this.tableViewer, "SampleRate", 100);
-		this.addColumnToTableViewer(this.tableViewer, "SampleTune", 100);
-		this.addColumnToTableViewer(this.tableViewer, "StretchStep", 100);
-		this.addColumnToTableViewer(this.tableViewer, "IsLoop?", 100);
-		this.addColumnToTableViewer(this.tableViewer, "IsSlice?", 100);
-		this.addColumnToTableViewer(this.tableViewer, "PlayLevel", 100);
-		this.addColumnToTableViewer(this.tableViewer, "Start", 100);
-		this.addColumnToTableViewer(this.tableViewer, "LoopStart", 100);
-		this.addColumnToTableViewer(this.tableViewer, "End", 100);
-		this.addColumnToTableViewer(this.tableViewer, "NumSampleFrames", 100);
+		this.addColumnToTableViewer(this.tableViewer, "MemSize", null);
+		this.addColumnToTableViewer(this.tableViewer, "SampleRate", null);
+		this.addColumnToTableViewer(this.tableViewer, "SampleTune", null);
+		this.addColumnToTableViewer(this.tableViewer, "StretchStep", null);
+		this.addColumnToTableViewer(this.tableViewer, "IsLoop?", null);
+		this.addColumnToTableViewer(this.tableViewer, "IsSlice?", null);
+		this.addColumnToTableViewer(this.tableViewer, "PlayLevel", null);
+		this.addColumnToTableViewer(this.tableViewer, "Start", null);
+		this.addColumnToTableViewer(this.tableViewer, "LoopStart", null);
+		this.addColumnToTableViewer(this.tableViewer, "End", 55);
+		this.addColumnToTableViewer(this.tableViewer, "NumSampleFrames", null);
 
 		// Allow all the columns to be moved
 		TableColumn[] columns = table.getColumns();
@@ -304,6 +328,7 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 				}
 			}
 			this.editorSample.setInput(selectedSamples);
+			this.editorSampleInPatternInfo.setInput(selectedSamples);
 		}
 	}
 

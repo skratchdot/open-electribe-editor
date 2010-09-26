@@ -12,18 +12,12 @@
 package com.skratchdot.electribe.model.esx.provider;
 
 
-import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.PatternNumber;
-import com.skratchdot.electribe.model.esx.SampleInPatternInfo;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
@@ -37,6 +31,9 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.SampleInPatternInfo;
 
 /**
  * This is the item provider adapter for a {@link com.skratchdot.electribe.model.esx.SampleInPatternInfo} object.
@@ -76,11 +73,34 @@ public class SampleInPatternInfoItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addIndexPropertyDescriptor(object);
 			addPatternNumberPropertyDescriptor(object);
 			addPartCountPropertyDescriptor(object);
 			addPartListPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Index feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIndexPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SampleInPatternInfo_index_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SampleInPatternInfo_index_feature", "_UI_SampleInPatternInfo_type"),
+				 EsxPackage.Literals.SAMPLE_IN_PATTERN_INFO__INDEX,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -168,11 +188,23 @@ public class SampleInPatternInfoItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		PatternNumber labelValue = ((SampleInPatternInfo)object).getPatternNumber();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_SampleInPatternInfo_type") :
-			getString("_UI_SampleInPatternInfo_type") + " " + label;
+		SampleInPatternInfo sampleInPatternInfo = (SampleInPatternInfo)object;
+		return getString("_UI_SampleInPatternInfo_type") + " " + sampleInPatternInfo.getIndex();
+	}
+
+	@Override
+	public String getColumnText(Object object, int columnIndex) {
+		switch(columnIndex) {
+			// Index
+			case 0: return Integer.toString(((SampleInPatternInfo) object).getIndex());
+			// Pattern
+			case 1: return ((SampleInPatternInfo) object).getPatternNumber().getLiteral();
+			// PartCount
+			case 2: return Integer.toString(((SampleInPatternInfo) object).getPartCount());
+			// PartList
+			case 3: return ((SampleInPatternInfo) object).getPartList();
+			default: return super.getColumnText(object, columnIndex);
+		}
 	}
 
 	/**
@@ -187,6 +219,7 @@ public class SampleInPatternInfoItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SampleInPatternInfo.class)) {
+			case EsxPackage.SAMPLE_IN_PATTERN_INFO__INDEX:
 			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_NUMBER:
 			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_COUNT:
 			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_LIST:
