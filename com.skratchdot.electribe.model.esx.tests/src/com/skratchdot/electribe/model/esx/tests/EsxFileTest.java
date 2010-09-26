@@ -44,6 +44,8 @@ import junit.textui.TestRunner;
  * <p>
  * The following operations are tested:
  * <ul>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getPatternFromPointer(int) <em>Get Pattern From Pointer</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#getSampleFromPointer(int) <em>Get Sample From Pointer</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#init(byte[]) <em>Init</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#init(byte[], org.eclipse.core.runtime.IProgressMonitor) <em>Init</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.EsxFile#setAllOffsets() <em>Set All Offsets</em>}</li>
@@ -303,6 +305,32 @@ public class EsxFileTest extends TestCase {
 	 */
 	public void testGetNumSongsNotEmpty() {
 		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getPatternFromPointer(int) <em>Get Pattern From Pointer</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getPatternFromPointer(int)
+	 * @generated
+	 */
+	public void testGetPatternFromPointer__int() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.EsxFile#getSampleFromPointer(int) <em>Get Sample From Pointer</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.EsxFile#getSampleFromPointer(int)
+	 * @generated
+	 */
+	public void testGetSampleFromPointer__int() {
+		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();
 	}

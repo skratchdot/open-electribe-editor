@@ -688,6 +688,13 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EDataType indexOutOfBoundsExceptionEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType ioExceptionEDataType = null;
 
 	/**
@@ -3202,6 +3209,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getIndexOutOfBoundsException() {
+		return indexOutOfBoundsExceptionEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getIOException() {
 		return ioExceptionEDataType;
 	}
@@ -3551,6 +3567,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		arrayListEDataType = createEDataType(ARRAY_LIST);
 		fileEDataType = createEDataType(FILE);
 		inputStreamEDataType = createEDataType(INPUT_STREAM);
+		indexOutOfBoundsExceptionEDataType = createEDataType(INDEX_OUT_OF_BOUNDS_EXCEPTION);
 		ioExceptionEDataType = createEDataType(IO_EXCEPTION);
 		iProgressMonitorEDataType = createEDataType(IPROGRESS_MONITOR);
 		objectEDataType = createEDataType(OBJECT);
@@ -3643,7 +3660,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getEsxFile_SyncPatternsOnMoveEnabled(), ecorePackage.getEBoolean(), "syncPatternsOnMoveEnabled", "true", 0, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEsxFile_SyncSamplesOnMoveEnabled(), ecorePackage.getEBoolean(), "syncSamplesOnMoveEnabled", "true", 0, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		EOperation op = addEOperation(esxFileEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(esxFileEClass, this.getPattern(), "getPatternFromPointer", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "patternPointer", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, this.getIndexOutOfBoundsException());
+
+		op = addEOperation(esxFileEClass, this.getSample(), "getSampleFromPointer", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "samplePointer", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, this.getIndexOutOfBoundsException());
+
+		op = addEOperation(esxFileEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(esxFileEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -5999,6 +6024,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEDataType(arrayListEDataType, ArrayList.class, "ArrayList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(fileEDataType, File.class, "File", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(inputStreamEDataType, InputStream.class, "InputStream", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(indexOutOfBoundsExceptionEDataType, IndexOutOfBoundsException.class, "IndexOutOfBoundsException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(ioExceptionEDataType, IOException.class, "IOException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(iProgressMonitorEDataType, IProgressMonitor.class, "IProgressMonitor", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(objectEDataType, Object.class, "Object", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

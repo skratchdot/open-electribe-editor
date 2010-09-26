@@ -117,18 +117,18 @@ public class ImportHandler extends AbstractHandler {
 								if(EsxUtil.isValidSampleNumber(firstEmptySampleNumber)) {
 									sample = EsxFactory.eINSTANCE.createSampleFromFile(file);
 									sample.setSampleNumberOriginal(esxFile.getSamples().get(firstEmptySampleNumber).getSampleNumberOriginal());
-								}
-
-								// Add sample using emf command
-								if(EsxUtil.isValidSampleNumber(firstEmptySampleNumber) && sample!=null) {
-									skipSampleNumbers.add(firstEmptySampleNumber);
-									cmd.append(new ReplaceCommand(
-										editingDomain,
-										esxFile,
-										EsxPackage.eINSTANCE.getEsxFile_Samples(),
-										esxFile.getSamples().get(firstEmptySampleNumber),
-										sample
-									));
+									
+									// Add sample using emf command
+									if(sample!=null) {
+										skipSampleNumbers.add(firstEmptySampleNumber);
+										cmd.append(new ReplaceCommand(
+											editingDomain,
+											esxFile,
+											EsxPackage.eINSTANCE.getEsxFile_Samples(),
+											esxFile.getSamples().get(firstEmptySampleNumber),
+											sample
+										));
+									}
 								}
 							}
 						} catch (Exception e) {

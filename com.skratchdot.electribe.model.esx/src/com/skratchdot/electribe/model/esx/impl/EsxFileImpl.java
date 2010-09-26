@@ -933,6 +933,48 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	public Pattern getPatternFromPointer(int patternPointer) throws IndexOutOfBoundsException {
+		if(this.isSyncPatternsOnMoveEnabled()) {
+			Pattern pattern;
+			for(int i=0; i<EsxUtil.NUM_PATTERNS; i++) {
+				pattern = this.getPatterns().get(i);
+				if(pattern.getPatternNumberOriginal().getValue()==patternPointer) {
+					return pattern;
+				}
+			}
+		}
+		else {
+			return this.getPatterns().get(patternPointer);
+		}
+		throw new IndexOutOfBoundsException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Sample getSampleFromPointer(int samplePointer) throws IndexOutOfBoundsException {
+		if(this.isSyncSamplesOnMoveEnabled()) {
+			Sample sample;
+			for(int i=0; i<EsxUtil.NUM_SAMPLES; i++) {
+				sample = this.getSamples().get(i);
+				if(sample.getSampleNumberOriginal().getValue()==samplePointer) {
+					return sample;
+				}
+			}
+		}
+		else {
+			return this.getSamples().get(samplePointer);
+		}
+		throw new IndexOutOfBoundsException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	public void setAllOffsets() {
 		// Initialize max sample offset
 		this.setMaxSampleOffset(0);

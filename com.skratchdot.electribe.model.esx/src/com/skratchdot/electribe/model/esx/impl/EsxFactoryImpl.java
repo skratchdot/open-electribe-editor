@@ -265,6 +265,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return createFileFromString(eDataType, initialValue);
 			case EsxPackage.INPUT_STREAM:
 				return createInputStreamFromString(eDataType, initialValue);
+			case EsxPackage.INDEX_OUT_OF_BOUNDS_EXCEPTION:
+				return createIndexOutOfBoundsExceptionFromString(eDataType, initialValue);
 			case EsxPackage.IO_EXCEPTION:
 				return createIOExceptionFromString(eDataType, initialValue);
 			case EsxPackage.IPROGRESS_MONITOR:
@@ -370,6 +372,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return convertFileToString(eDataType, instanceValue);
 			case EsxPackage.INPUT_STREAM:
 				return convertInputStreamToString(eDataType, instanceValue);
+			case EsxPackage.INDEX_OUT_OF_BOUNDS_EXCEPTION:
+				return convertIndexOutOfBoundsExceptionToString(eDataType, instanceValue);
 			case EsxPackage.IO_EXCEPTION:
 				return convertIOExceptionToString(eDataType, instanceValue);
 			case EsxPackage.IPROGRESS_MONITOR:
@@ -2370,6 +2374,42 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public String convertInputStreamToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IndexOutOfBoundsException createIndexOutOfBoundsException(String literal) {
+		return (IndexOutOfBoundsException)super.createFromString(EsxPackage.Literals.INDEX_OUT_OF_BOUNDS_EXCEPTION, literal);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IndexOutOfBoundsException createIndexOutOfBoundsExceptionFromString(EDataType eDataType, String initialValue) {
+		return (IndexOutOfBoundsException)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertIndexOutOfBoundsException(IndexOutOfBoundsException instanceValue) {
+		return super.convertToString(EsxPackage.Literals.INDEX_OUT_OF_BOUNDS_EXCEPTION, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertIndexOutOfBoundsExceptionToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

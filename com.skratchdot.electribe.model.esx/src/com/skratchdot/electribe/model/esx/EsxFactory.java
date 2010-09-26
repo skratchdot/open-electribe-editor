@@ -1185,6 +1185,26 @@ public interface EsxFactory extends EFactory {
 	String convertInputStream(InputStream instanceValue);
 
 	/**
+	 * Returns an instance of data type '<em>Index Out Of Bounds Exception</em>' corresponding the given literal.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param literal a literal of the data type.
+	 * @return a new instance value of the data type.
+	 * @generated
+	 */
+	IndexOutOfBoundsException createIndexOutOfBoundsException(String literal);
+
+	/**
+	 * Returns a literal representation of an instance of data type '<em>Index Out Of Bounds Exception</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param instanceValue an instance value of the data type.
+	 * @return a literal representation of the instance value.
+	 * @generated
+	 */
+	String convertIndexOutOfBoundsException(IndexOutOfBoundsException instanceValue);
+
+	/**
 	 * Returns an instance of data type '<em>IO Exception</em>' corresponding the given literal.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

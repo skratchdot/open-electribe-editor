@@ -338,6 +338,8 @@ public class EsxValidator extends EObjectValidator {
 				return validateFile((File)value, diagnostics, context);
 			case EsxPackage.INPUT_STREAM:
 				return validateInputStream((InputStream)value, diagnostics, context);
+			case EsxPackage.INDEX_OUT_OF_BOUNDS_EXCEPTION:
+				return validateIndexOutOfBoundsException((IndexOutOfBoundsException)value, diagnostics, context);
 			case EsxPackage.IO_EXCEPTION:
 				return validateIOException((IOException)value, diagnostics, context);
 			case EsxPackage.IPROGRESS_MONITOR:
@@ -1095,6 +1097,15 @@ public class EsxValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateInputStream(InputStream inputStream, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateIndexOutOfBoundsException(IndexOutOfBoundsException indexOutOfBoundsException, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

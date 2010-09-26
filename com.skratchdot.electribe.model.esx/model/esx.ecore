@@ -4,6 +4,12 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="esx"
     nsURI="http:///com/skratchdot/electribe/model/esx.ecore" nsPrefix="com.skratchdot.electribe.model.esx">
   <eClassifiers xsi:type="ecore:EClass" name="EsxFile">
+    <eOperations name="getPatternFromPointer" eType="#//Pattern" eExceptions="#//IndexOutOfBoundsException">
+      <eParameters name="patternPointer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="getSampleFromPointer" eType="#//Sample" eExceptions="#//IndexOutOfBoundsException">
+      <eParameters name="samplePointer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
     <eOperations name="init">
       <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     </eOperations>
@@ -2471,6 +2477,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="File" instanceClassName="java.io.File"/>
   <eClassifiers xsi:type="ecore:EDataType" name="InputStream" instanceClassName="java.io.InputStream"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="IndexOutOfBoundsException" instanceClassName="java.lang.IndexOutOfBoundsException"/>
   <eClassifiers xsi:type="ecore:EDataType" name="IOException" instanceClassName="java.io.IOException"/>
   <eClassifiers xsi:type="ecore:EDataType" name="IProgressMonitor" instanceClassName="org.eclipse.core.runtime.IProgressMonitor"/>
   <eClassifiers xsi:type="ecore:EDataType" name="Object" instanceClassName="java.lang.Object"/>

@@ -17,7 +17,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
 import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
 import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
@@ -31,7 +30,6 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.dnd.DND;
-import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.FileTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.events.MouseAdapter;
@@ -55,7 +53,7 @@ import com.skratchdot.electribe.audioplayer.handlers.LoopAndPlayHandler;
 import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.Sample;
-import com.skratchdot.electribe.model.esx.editor.handlers.ImportHandler;
+import com.skratchdot.electribe.model.esx.editor.drop.SampleDropAdapter;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceNames;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
@@ -282,7 +280,7 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		
 		// DnD
 		//this.addEmfDragAndDropSupport(this.tableViewer);
-		this.addAudioFileDragAndDropSupport(this.tableViewer);
+		this.addSampleDragAndDropSupport(this.tableViewer);
 
 	    // Selection Provider For EsxEditor
 	    getEditorSite().setSelectionProvider(this.tableViewer);
@@ -402,26 +400,14 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 	/**
 	 * @param viewer
 	 */
-	private void addAudioFileDragAndDropSupport(StructuredViewer viewer) {
+	private void addSampleDragAndDropSupport(StructuredViewer viewer) {
 		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
 		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance() };
 		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(viewer));
 
 		transfers = new Transfer[] { LocalTransfer.getInstance(), FileTransfer.getInstance() };
-		viewer.addDropSupport(dndOperations, transfers, new EditingDomainViewerDropAdapter(getEditingDomain(), viewer) {
-
-			@Override
-			public void drop(DropTargetEvent event) {
-				if(FileTransfer.getInstance().isSupportedType(event.currentDataType)) {
-					String[] files = (String[]) event.data;
-					ImportHandler.importAudioFiles(getSite().getWorkbenchWindow(), files);
-				}
-				else if (LocalTransfer.getInstance().isSupportedType(event.currentDataType)) {
-					super.drop(event);
-				}
-			}
-			
-		});
+		viewer.addDropSupport(dndOperations, transfers, new SampleDropAdapter(getEditingDomain(), viewer));
+		//viewer.addDropSupport(dndOperations, transfers, new EditingDomainViewerDropAdapter(getEditingDomain(), viewer));
 	}
 	
 	

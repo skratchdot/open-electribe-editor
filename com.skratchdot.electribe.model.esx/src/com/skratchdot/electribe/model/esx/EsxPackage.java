@@ -4113,7 +4113,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getObject()
 	 * @generated
 	 */
-	int OBJECT = 81;
+	int OBJECT = 82;
 
 
 	/**
@@ -4124,7 +4124,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getRIFFWave()
 	 * @generated
 	 */
-	int RIFF_WAVE = 82;
+	int RIFF_WAVE = 83;
 
 	/**
 	 * The meta object id for the '<em>Array List</em>' data type.
@@ -4159,6 +4159,16 @@ public interface EsxPackage extends EPackage {
 	int INPUT_STREAM = 78;
 
 	/**
+	 * The meta object id for the '<em>Index Out Of Bounds Exception</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.IndexOutOfBoundsException
+	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getIndexOutOfBoundsException()
+	 * @generated
+	 */
+	int INDEX_OUT_OF_BOUNDS_EXCEPTION = 79;
+
+	/**
 	 * The meta object id for the '<em>IO Exception</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4166,7 +4176,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getIOException()
 	 * @generated
 	 */
-	int IO_EXCEPTION = 79;
+	int IO_EXCEPTION = 80;
 
 
 	/**
@@ -4177,7 +4187,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getIProgressMonitor()
 	 * @generated
 	 */
-	int IPROGRESS_MONITOR = 80;
+	int IPROGRESS_MONITOR = 81;
 
 
 	/**
@@ -7075,6 +7085,17 @@ public interface EsxPackage extends EPackage {
 	EDataType getInputStream();
 
 	/**
+	 * Returns the meta object for data type '{@link java.lang.IndexOutOfBoundsException <em>Index Out Of Bounds Exception</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Index Out Of Bounds Exception</em>'.
+	 * @see java.lang.IndexOutOfBoundsException
+	 * @model instanceClass="java.lang.IndexOutOfBoundsException"
+	 * @generated
+	 */
+	EDataType getIndexOutOfBoundsException();
+
+	/**
 	 * Returns the meta object for data type '{@link java.io.IOException <em>IO Exception</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9439,6 +9460,16 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType INPUT_STREAM = eINSTANCE.getInputStream();
+
+		/**
+		 * The meta object literal for the '<em>Index Out Of Bounds Exception</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.IndexOutOfBoundsException
+		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getIndexOutOfBoundsException()
+		 * @generated
+		 */
+		EDataType INDEX_OUT_OF_BOUNDS_EXCEPTION = eINSTANCE.getIndexOutOfBoundsException();
 
 		/**
 		 * The meta object literal for the '<em>IO Exception</em>' data type.
