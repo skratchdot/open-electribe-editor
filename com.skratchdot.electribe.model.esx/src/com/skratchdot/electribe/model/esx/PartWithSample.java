@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.PartWithSample#getReverse <em>Reverse</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.PartWithSample#getSampleLabel <em>Sample Label</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.PartWithSample#getSampleNumber <em>Sample Number</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.PartWithSample#getSamplePointer <em>Sample Pointer</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.PartWithSample#getStartPoint <em>Start Point</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.PartWithSample#getReservedBitsAfterReverse <em>Reserved Bits After Reverse</em>}</li>
  * </ul>
@@ -79,30 +79,30 @@ public interface PartWithSample extends EObject {
 	String getSampleLabel();
 
 	/**
-	 * Returns the value of the '<em><b>Sample Number</b></em>' attribute.
+	 * Returns the value of the '<em><b>Sample Pointer</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Sample Number</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Sample Pointer</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sample Number</em>' attribute.
-	 * @see #setSampleNumber(short)
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getPartWithSample_SampleNumber()
+	 * @return the value of the '<em>Sample Pointer</em>' attribute.
+	 * @see #setSamplePointer(short)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getPartWithSample_SamplePointer()
 	 * @model
 	 * @generated
 	 */
-	short getSampleNumber();
+	short getSamplePointer();
 
 	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.PartWithSample#getSampleNumber <em>Sample Number</em>}' attribute.
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.PartWithSample#getSamplePointer <em>Sample Pointer</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Sample Number</em>' attribute.
-	 * @see #getSampleNumber()
+	 * @param value the new value of the '<em>Sample Pointer</em>' attribute.
+	 * @see #getSamplePointer()
 	 * @generated
 	 */
-	void setSampleNumber(short value);
+	void setSamplePointer(short value);
 
 	/**
 	 * Returns the value of the '<em><b>Start Point</b></em>' attribute.

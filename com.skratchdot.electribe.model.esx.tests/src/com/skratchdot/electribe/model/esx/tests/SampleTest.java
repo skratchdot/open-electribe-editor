@@ -29,6 +29,7 @@ import junit.textui.TestRunner;
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isLoop() <em>Loop</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isSlice() <em>Slice</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isStereoCurrent() <em>Stereo Current</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getLabel() <em>Label</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getMemUsedInBytes() <em>Mem Used In Bytes</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isEmpty() <em>Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleNumberCurrent() <em>Sample Number Current</em>}</li>
@@ -477,6 +478,19 @@ public class SampleTest extends TestCase {
 	 * @generated
 	 */
 	public void testIsStereoCurrent() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#getLabel() <em>Label</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.Sample#getLabel()
+	 * @generated
+	 */
+	public void testGetLabel() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

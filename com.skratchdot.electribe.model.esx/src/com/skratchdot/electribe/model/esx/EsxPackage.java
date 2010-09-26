@@ -1286,13 +1286,13 @@ public interface EsxPackage extends EPackage {
 	int PART_DRUM__SAMPLE_LABEL = PART_FEATURE_COUNT + 18;
 
 	/**
-	 * The feature id for the '<em><b>Sample Number</b></em>' attribute.
+	 * The feature id for the '<em><b>Sample Pointer</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PART_DRUM__SAMPLE_NUMBER = PART_FEATURE_COUNT + 19;
+	int PART_DRUM__SAMPLE_POINTER = PART_FEATURE_COUNT + 19;
 
 	/**
 	 * The feature id for the '<em><b>Start Point</b></em>' attribute.
@@ -1539,13 +1539,13 @@ public interface EsxPackage extends EPackage {
 	int PART_KEYBOARD__SAMPLE_LABEL = PART_FEATURE_COUNT + 17;
 
 	/**
-	 * The feature id for the '<em><b>Sample Number</b></em>' attribute.
+	 * The feature id for the '<em><b>Sample Pointer</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PART_KEYBOARD__SAMPLE_NUMBER = PART_FEATURE_COUNT + 18;
+	int PART_KEYBOARD__SAMPLE_POINTER = PART_FEATURE_COUNT + 18;
 
 	/**
 	 * The feature id for the '<em><b>Start Point</b></em>' attribute.
@@ -1846,13 +1846,13 @@ public interface EsxPackage extends EPackage {
 	int PART_STRETCH_SLICE__SAMPLE_LABEL = PART_FEATURE_COUNT + 18;
 
 	/**
-	 * The feature id for the '<em><b>Sample Number</b></em>' attribute.
+	 * The feature id for the '<em><b>Sample Pointer</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PART_STRETCH_SLICE__SAMPLE_NUMBER = PART_FEATURE_COUNT + 19;
+	int PART_STRETCH_SLICE__SAMPLE_POINTER = PART_FEATURE_COUNT + 19;
 
 	/**
 	 * The feature id for the '<em><b>Start Point</b></em>' attribute.
@@ -2080,13 +2080,13 @@ public interface EsxPackage extends EPackage {
 	int PART_WITH_SAMPLE__SAMPLE_LABEL = 1;
 
 	/**
-	 * The feature id for the '<em><b>Sample Number</b></em>' attribute.
+	 * The feature id for the '<em><b>Sample Pointer</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PART_WITH_SAMPLE__SAMPLE_NUMBER = 2;
+	int PART_WITH_SAMPLE__SAMPLE_POINTER = 2;
 
 	/**
 	 * The feature id for the '<em><b>Start Point</b></em>' attribute.
@@ -2712,13 +2712,22 @@ public interface EsxPackage extends EPackage {
 	int SAMPLE__STEREO_CURRENT = 25;
 
 	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE__LABEL = 26;
+
+	/**
 	 * The feature id for the '<em><b>Mem Used In Bytes</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__MEM_USED_IN_BYTES = 26;
+	int SAMPLE__MEM_USED_IN_BYTES = 27;
 
 	/**
 	 * The feature id for the '<em><b>Empty</b></em>' attribute.
@@ -2727,7 +2736,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__EMPTY = 27;
+	int SAMPLE__EMPTY = 28;
 
 	/**
 	 * The feature id for the '<em><b>Sample Number Original</b></em>' attribute.
@@ -2736,7 +2745,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__SAMPLE_NUMBER_ORIGINAL = 28;
+	int SAMPLE__SAMPLE_NUMBER_ORIGINAL = 29;
 
 	/**
 	 * The feature id for the '<em><b>Sample Number Current</b></em>' attribute.
@@ -2745,7 +2754,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__SAMPLE_NUMBER_CURRENT = 29;
+	int SAMPLE__SAMPLE_NUMBER_CURRENT = 30;
 
 	/**
 	 * The number of structural features of the '<em>Sample</em>' class.
@@ -2754,7 +2763,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE_FEATURE_COUNT = 30;
+	int SAMPLE_FEATURE_COUNT = 31;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.SampleTuneImpl <em>Sample Tune</em>}' class.
@@ -5264,15 +5273,15 @@ public interface EsxPackage extends EPackage {
 	EAttribute getPartWithSample_SampleLabel();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.PartWithSample#getSampleNumber <em>Sample Number</em>}'.
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.PartWithSample#getSamplePointer <em>Sample Pointer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Sample Number</em>'.
-	 * @see com.skratchdot.electribe.model.esx.PartWithSample#getSampleNumber()
+	 * @return the meta object for the attribute '<em>Sample Pointer</em>'.
+	 * @see com.skratchdot.electribe.model.esx.PartWithSample#getSamplePointer()
 	 * @see #getPartWithSample()
 	 * @generated
 	 */
-	EAttribute getPartWithSample_SampleNumber();
+	EAttribute getPartWithSample_SamplePointer();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.PartWithSample#getStartPoint <em>Start Point</em>}'.
@@ -6088,6 +6097,17 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSample_StereoCurrent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Sample#getLabel <em>Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Label</em>'.
+	 * @see com.skratchdot.electribe.model.esx.Sample#getLabel()
+	 * @see #getSample()
+	 * @generated
+	 */
+	EAttribute getSample_Label();
 
 	/**
 	 * Returns the meta object for class '{@link com.skratchdot.electribe.model.esx.SampleTune <em>Sample Tune</em>}'.
@@ -7964,12 +7984,12 @@ public interface EsxPackage extends EPackage {
 		EAttribute PART_WITH_SAMPLE__SAMPLE_LABEL = eINSTANCE.getPartWithSample_SampleLabel();
 
 		/**
-		 * The meta object literal for the '<em><b>Sample Number</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Sample Pointer</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_SAMPLE__SAMPLE_NUMBER = eINSTANCE.getPartWithSample_SampleNumber();
+		EAttribute PART_WITH_SAMPLE__SAMPLE_POINTER = eINSTANCE.getPartWithSample_SamplePointer();
 
 		/**
 		 * The meta object literal for the '<em><b>Start Point</b></em>' attribute feature.
@@ -8590,6 +8610,14 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SAMPLE__STEREO_CURRENT = eINSTANCE.getSample_StereoCurrent();
+
+		/**
+		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SAMPLE__LABEL = eINSTANCE.getSample_Label();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.SampleTuneImpl <em>Sample Tune</em>}' class.

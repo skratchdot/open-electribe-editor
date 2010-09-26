@@ -84,6 +84,7 @@ import com.skratchdot.riff.wav.WavPackage;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isSlice <em>Slice</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isStereoOriginal <em>Stereo Original</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isStereoCurrent <em>Stereo Current</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getMemUsedInBytes <em>Mem Used In Bytes</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isEmpty <em>Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleNumberOriginal <em>Sample Number Original</em>}</li>
@@ -553,6 +554,16 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	 * @ordered
 	 */
 	protected static final boolean STEREO_CURRENT_EDEFAULT = true;
+
+	/**
+	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String LABEL_EDEFAULT = "true";
 
 	/**
 	 * The default value of the '{@link #getMemUsedInBytes() <em>Mem Used In Bytes</em>}' attribute.
@@ -1332,6 +1343,19 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	public String getLabel() {
+		return "" +
+			this.getSampleNumberCurrent() +
+			" - " +
+			this.getName() +
+			"";
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	public int getMemUsedInBytes() {
 		if(!this.isEmpty()) {
 			if(this.isStereoCurrent()) {
@@ -1973,6 +1997,8 @@ public class SampleImpl extends EObjectImpl implements Sample {
 				return isStereoOriginal();
 			case EsxPackage.SAMPLE__STEREO_CURRENT:
 				return isStereoCurrent();
+			case EsxPackage.SAMPLE__LABEL:
+				return getLabel();
 			case EsxPackage.SAMPLE__MEM_USED_IN_BYTES:
 				return getMemUsedInBytes();
 			case EsxPackage.SAMPLE__EMPTY:
@@ -2201,6 +2227,8 @@ public class SampleImpl extends EObjectImpl implements Sample {
 				return stereoOriginal != STEREO_ORIGINAL_EDEFAULT;
 			case EsxPackage.SAMPLE__STEREO_CURRENT:
 				return isStereoCurrent() != STEREO_CURRENT_EDEFAULT;
+			case EsxPackage.SAMPLE__LABEL:
+				return LABEL_EDEFAULT == null ? getLabel() != null : !LABEL_EDEFAULT.equals(getLabel());
 			case EsxPackage.SAMPLE__MEM_USED_IN_BYTES:
 				return getMemUsedInBytes() != MEM_USED_IN_BYTES_EDEFAULT;
 			case EsxPackage.SAMPLE__EMPTY:

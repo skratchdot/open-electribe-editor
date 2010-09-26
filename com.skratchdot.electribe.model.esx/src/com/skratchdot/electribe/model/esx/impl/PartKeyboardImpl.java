@@ -63,7 +63,7 @@ import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartKeyboardImpl#getRoll <em>Roll</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartKeyboardImpl#getReverse <em>Reverse</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartKeyboardImpl#getSampleLabel <em>Sample Label</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartKeyboardImpl#getSampleNumber <em>Sample Number</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartKeyboardImpl#getSamplePointer <em>Sample Pointer</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartKeyboardImpl#getStartPoint <em>Start Point</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartKeyboardImpl#getReservedBitsAfterReverse <em>Reserved Bits After Reverse</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartKeyboardImpl#getSequenceDataGate <em>Sequence Data Gate</em>}</li>
@@ -393,23 +393,23 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 	 */
 	protected static final String SAMPLE_LABEL_EDEFAULT = null;
 	/**
-	 * The default value of the '{@link #getSampleNumber() <em>Sample Number</em>}' attribute.
+	 * The default value of the '{@link #getSamplePointer() <em>Sample Pointer</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSampleNumber()
+	 * @see #getSamplePointer()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final short SAMPLE_NUMBER_EDEFAULT = 0;
+	protected static final short SAMPLE_POINTER_EDEFAULT = 0;
 	/**
-	 * The cached value of the '{@link #getSampleNumber() <em>Sample Number</em>}' attribute.
+	 * The cached value of the '{@link #getSamplePointer() <em>Sample Pointer</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSampleNumber()
+	 * @see #getSamplePointer()
 	 * @generated
 	 * @ordered
 	 */
-	protected short sampleNumber = SAMPLE_NUMBER_EDEFAULT;
+	protected short samplePointer = SAMPLE_POINTER_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getStartPoint() <em>Start Point</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -536,7 +536,7 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 	public void init(byte[] b) {
 		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
 		// bytes 0~1
-		this.setSampleNumber(in.getShort());
+		this.setSamplePointer(in.getShort());
 		// byte 2
 		this.setSliceNumber(in.getByte());
 		// byte 3
@@ -983,7 +983,7 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 	 * @generated NOT
 	 */
 	public String getSampleLabel() {
-		return this.getSampleLabel(this.getSampleNumber());
+		return this.getSampleLabel(this.getSamplePointer());
 	}
 
 	/**
@@ -991,8 +991,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public short getSampleNumber() {
-		return sampleNumber;
+	public short getSamplePointer() {
+		return samplePointer;
 	}
 
 	/**
@@ -1000,11 +1000,11 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSampleNumber(short newSampleNumber) {
-		short oldSampleNumber = sampleNumber;
-		sampleNumber = newSampleNumber;
+	public void setSamplePointer(short newSamplePointer) {
+		short oldSamplePointer = samplePointer;
+		samplePointer = newSamplePointer;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__SAMPLE_NUMBER, oldSampleNumber, sampleNumber));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__SAMPLE_POINTER, oldSamplePointer, samplePointer));
 	}
 
 	/**
@@ -1206,7 +1206,7 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 	public byte[] toByteArray() {
 		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_PARTS_KEYBOARD);
 		// bytes 0~1
-		buf.putShort(this.getSampleNumber());
+		buf.putShort(this.getSamplePointer());
 		// byte 2
 		buf.putByte(this.getSliceNumber());
 		// byte 3
@@ -1318,8 +1318,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 				return getReverse();
 			case EsxPackage.PART_KEYBOARD__SAMPLE_LABEL:
 				return getSampleLabel();
-			case EsxPackage.PART_KEYBOARD__SAMPLE_NUMBER:
-				return getSampleNumber();
+			case EsxPackage.PART_KEYBOARD__SAMPLE_POINTER:
+				return getSamplePointer();
 			case EsxPackage.PART_KEYBOARD__START_POINT:
 				return getStartPoint();
 			case EsxPackage.PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE:
@@ -1397,8 +1397,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 			case EsxPackage.PART_KEYBOARD__REVERSE:
 				setReverse((Reverse)newValue);
 				return;
-			case EsxPackage.PART_KEYBOARD__SAMPLE_NUMBER:
-				setSampleNumber((Short)newValue);
+			case EsxPackage.PART_KEYBOARD__SAMPLE_POINTER:
+				setSamplePointer((Short)newValue);
 				return;
 			case EsxPackage.PART_KEYBOARD__START_POINT:
 				setStartPoint((Byte)newValue);
@@ -1484,8 +1484,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 			case EsxPackage.PART_KEYBOARD__REVERSE:
 				setReverse(REVERSE_EDEFAULT);
 				return;
-			case EsxPackage.PART_KEYBOARD__SAMPLE_NUMBER:
-				setSampleNumber(SAMPLE_NUMBER_EDEFAULT);
+			case EsxPackage.PART_KEYBOARD__SAMPLE_POINTER:
+				setSamplePointer(SAMPLE_POINTER_EDEFAULT);
 				return;
 			case EsxPackage.PART_KEYBOARD__START_POINT:
 				setStartPoint(START_POINT_EDEFAULT);
@@ -1556,8 +1556,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 				return reverse != REVERSE_EDEFAULT;
 			case EsxPackage.PART_KEYBOARD__SAMPLE_LABEL:
 				return SAMPLE_LABEL_EDEFAULT == null ? getSampleLabel() != null : !SAMPLE_LABEL_EDEFAULT.equals(getSampleLabel());
-			case EsxPackage.PART_KEYBOARD__SAMPLE_NUMBER:
-				return sampleNumber != SAMPLE_NUMBER_EDEFAULT;
+			case EsxPackage.PART_KEYBOARD__SAMPLE_POINTER:
+				return samplePointer != SAMPLE_POINTER_EDEFAULT;
 			case EsxPackage.PART_KEYBOARD__START_POINT:
 				return startPoint != START_POINT_EDEFAULT;
 			case EsxPackage.PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE:
@@ -1608,7 +1608,7 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 			switch (derivedFeatureID) {
 				case EsxPackage.PART_KEYBOARD__REVERSE: return EsxPackage.PART_WITH_SAMPLE__REVERSE;
 				case EsxPackage.PART_KEYBOARD__SAMPLE_LABEL: return EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL;
-				case EsxPackage.PART_KEYBOARD__SAMPLE_NUMBER: return EsxPackage.PART_WITH_SAMPLE__SAMPLE_NUMBER;
+				case EsxPackage.PART_KEYBOARD__SAMPLE_POINTER: return EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER;
 				case EsxPackage.PART_KEYBOARD__START_POINT: return EsxPackage.PART_WITH_SAMPLE__START_POINT;
 				case EsxPackage.PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE: return EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE;
 				default: return -1;
@@ -1662,7 +1662,7 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 			switch (baseFeatureID) {
 				case EsxPackage.PART_WITH_SAMPLE__REVERSE: return EsxPackage.PART_KEYBOARD__REVERSE;
 				case EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL: return EsxPackage.PART_KEYBOARD__SAMPLE_LABEL;
-				case EsxPackage.PART_WITH_SAMPLE__SAMPLE_NUMBER: return EsxPackage.PART_KEYBOARD__SAMPLE_NUMBER;
+				case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER: return EsxPackage.PART_KEYBOARD__SAMPLE_POINTER;
 				case EsxPackage.PART_WITH_SAMPLE__START_POINT: return EsxPackage.PART_KEYBOARD__START_POINT;
 				case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE: return EsxPackage.PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE;
 				default: return -1;
@@ -1728,8 +1728,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		result.append(roll);
 		result.append(", reverse: ");
 		result.append(reverse);
-		result.append(", sampleNumber: ");
-		result.append(sampleNumber);
+		result.append(", samplePointer: ");
+		result.append(samplePointer);
 		result.append(", startPoint: ");
 		result.append(startPoint);
 		result.append(", reservedBitsAfterReverse: ");

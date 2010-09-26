@@ -1670,7 +1670,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPartWithSample_SampleNumber() {
+	public EAttribute getPartWithSample_SamplePointer() {
 		return (EAttribute)partWithSampleEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -2094,7 +2094,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_MemUsedInBytes() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(26);
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(27);
 	}
 
 	/**
@@ -2103,7 +2103,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_Empty() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(27);
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(28);
 	}
 
 	/**
@@ -2301,7 +2301,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_SampleNumberOriginal() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(28);
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(29);
 	}
 
 	/**
@@ -2310,7 +2310,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_SampleNumberCurrent() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(29);
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(30);
 	}
 
 	/**
@@ -2347,6 +2347,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 */
 	public EAttribute getSample_StereoCurrent() {
 		return (EAttribute)sampleEClass.getEStructuralFeatures().get(25);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSample_Label() {
+		return (EAttribute)sampleEClass.getEStructuralFeatures().get(26);
 	}
 
 	/**
@@ -3372,7 +3381,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		partWithSampleEClass = createEClass(PART_WITH_SAMPLE);
 		createEAttribute(partWithSampleEClass, PART_WITH_SAMPLE__REVERSE);
 		createEAttribute(partWithSampleEClass, PART_WITH_SAMPLE__SAMPLE_LABEL);
-		createEAttribute(partWithSampleEClass, PART_WITH_SAMPLE__SAMPLE_NUMBER);
+		createEAttribute(partWithSampleEClass, PART_WITH_SAMPLE__SAMPLE_POINTER);
 		createEAttribute(partWithSampleEClass, PART_WITH_SAMPLE__START_POINT);
 		createEAttribute(partWithSampleEClass, PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE);
 
@@ -3446,6 +3455,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(sampleEClass, SAMPLE__SLICE);
 		createEAttribute(sampleEClass, SAMPLE__STEREO_ORIGINAL);
 		createEAttribute(sampleEClass, SAMPLE__STEREO_CURRENT);
+		createEAttribute(sampleEClass, SAMPLE__LABEL);
 		createEAttribute(sampleEClass, SAMPLE__MEM_USED_IN_BYTES);
 		createEAttribute(sampleEClass, SAMPLE__EMPTY);
 		createEAttribute(sampleEClass, SAMPLE__SAMPLE_NUMBER_ORIGINAL);
@@ -3821,7 +3831,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEClass(partWithSampleEClass, PartWithSample.class, "PartWithSample", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPartWithSample_Reverse(), this.getReverse(), "reverse", null, 0, 1, PartWithSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPartWithSample_SampleLabel(), ecorePackage.getEString(), "sampleLabel", null, 0, 1, PartWithSample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithSample_SampleNumber(), ecorePackage.getEShort(), "sampleNumber", null, 0, 1, PartWithSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartWithSample_SamplePointer(), ecorePackage.getEShort(), "samplePointer", null, 0, 1, PartWithSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPartWithSample_StartPoint(), ecorePackage.getEByte(), "startPoint", null, 0, 1, PartWithSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPartWithSample_ReservedBitsAfterReverse(), ecorePackage.getEByte(), "reservedBitsAfterReverse", null, 0, 1, PartWithSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -3904,6 +3914,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEAttribute(getSample_Slice(), ecorePackage.getEBoolean(), "slice", null, 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_StereoOriginal(), ecorePackage.getEBoolean(), "stereoOriginal", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_StereoCurrent(), ecorePackage.getEBoolean(), "stereoCurrent", "true", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_Label(), ecorePackage.getEString(), "label", "true", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_MemUsedInBytes(), ecorePackage.getEInt(), "memUsedInBytes", "0", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_Empty(), ecorePackage.getEBoolean(), "empty", "true", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_SampleNumberOriginal(), this.getSampleNumber(), "sampleNumberOriginal", "-1", 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

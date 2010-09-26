@@ -20,9 +20,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.Part;
-import com.skratchdot.electribe.model.esx.Sample;
 import com.skratchdot.electribe.model.esx.SampleNumber;
-import com.skratchdot.electribe.model.esx.util.EsxUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -149,14 +147,9 @@ public abstract class PartImpl extends EObjectImpl implements Part {
 		if(this.eResource()!=null) {
 			Resource resource = (Resource) this.eResource();
 			Object rootObject = resource.getContents().get(0);
-			if(rootObject instanceof EsxFile && EsxUtil.isValidSampleNumber(sampleNumber)) {
+			if(rootObject instanceof EsxFile) {
 				try {
-					Sample sample = ((EsxFile) rootObject).getSampleFromPointer(sampleNumber);
-					return "" +
-					sample.getSampleNumberCurrent().getLiteral() +
-					" - " +
-					sample.getName() +
-					"";
+					return ((EsxFile) rootObject).getSampleFromPointer(sampleNumber).getLabel();
 				} catch(Exception e) {}
 			}
 		}

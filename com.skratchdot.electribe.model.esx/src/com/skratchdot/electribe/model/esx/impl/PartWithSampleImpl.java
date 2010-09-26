@@ -29,7 +29,7 @@ import com.skratchdot.electribe.model.esx.Reverse;
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartWithSampleImpl#getReverse <em>Reverse</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartWithSampleImpl#getSampleLabel <em>Sample Label</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartWithSampleImpl#getSampleNumber <em>Sample Number</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartWithSampleImpl#getSamplePointer <em>Sample Pointer</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartWithSampleImpl#getStartPoint <em>Start Point</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartWithSampleImpl#getReservedBitsAfterReverse <em>Reserved Bits After Reverse</em>}</li>
  * </ul>
@@ -69,24 +69,24 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 	protected static final String SAMPLE_LABEL_EDEFAULT = null;
 
 	/**
-	 * The default value of the '{@link #getSampleNumber() <em>Sample Number</em>}' attribute.
+	 * The default value of the '{@link #getSamplePointer() <em>Sample Pointer</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSampleNumber()
+	 * @see #getSamplePointer()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final short SAMPLE_NUMBER_EDEFAULT = 0;
+	protected static final short SAMPLE_POINTER_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getSampleNumber() <em>Sample Number</em>}' attribute.
+	 * The cached value of the '{@link #getSamplePointer() <em>Sample Pointer</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSampleNumber()
+	 * @see #getSamplePointer()
 	 * @generated
 	 * @ordered
 	 */
-	protected short sampleNumber = SAMPLE_NUMBER_EDEFAULT;
+	protected short samplePointer = SAMPLE_POINTER_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getStartPoint() <em>Start Point</em>}' attribute.
@@ -184,8 +184,8 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public short getSampleNumber() {
-		return sampleNumber;
+	public short getSamplePointer() {
+		return samplePointer;
 	}
 
 	/**
@@ -193,11 +193,11 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSampleNumber(short newSampleNumber) {
-		short oldSampleNumber = sampleNumber;
-		sampleNumber = newSampleNumber;
+	public void setSamplePointer(short newSamplePointer) {
+		short oldSamplePointer = samplePointer;
+		samplePointer = newSamplePointer;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_SAMPLE__SAMPLE_NUMBER, oldSampleNumber, sampleNumber));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER, oldSamplePointer, samplePointer));
 	}
 
 	/**
@@ -254,8 +254,8 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 				return getReverse();
 			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL:
 				return getSampleLabel();
-			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_NUMBER:
-				return getSampleNumber();
+			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER:
+				return getSamplePointer();
 			case EsxPackage.PART_WITH_SAMPLE__START_POINT:
 				return getStartPoint();
 			case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE:
@@ -275,8 +275,8 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 			case EsxPackage.PART_WITH_SAMPLE__REVERSE:
 				setReverse((Reverse)newValue);
 				return;
-			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_NUMBER:
-				setSampleNumber((Short)newValue);
+			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER:
+				setSamplePointer((Short)newValue);
 				return;
 			case EsxPackage.PART_WITH_SAMPLE__START_POINT:
 				setStartPoint((Byte)newValue);
@@ -299,8 +299,8 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 			case EsxPackage.PART_WITH_SAMPLE__REVERSE:
 				setReverse(REVERSE_EDEFAULT);
 				return;
-			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_NUMBER:
-				setSampleNumber(SAMPLE_NUMBER_EDEFAULT);
+			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER:
+				setSamplePointer(SAMPLE_POINTER_EDEFAULT);
 				return;
 			case EsxPackage.PART_WITH_SAMPLE__START_POINT:
 				setStartPoint(START_POINT_EDEFAULT);
@@ -324,8 +324,8 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 				return reverse != REVERSE_EDEFAULT;
 			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL:
 				return SAMPLE_LABEL_EDEFAULT == null ? getSampleLabel() != null : !SAMPLE_LABEL_EDEFAULT.equals(getSampleLabel());
-			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_NUMBER:
-				return sampleNumber != SAMPLE_NUMBER_EDEFAULT;
+			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER:
+				return samplePointer != SAMPLE_POINTER_EDEFAULT;
 			case EsxPackage.PART_WITH_SAMPLE__START_POINT:
 				return startPoint != START_POINT_EDEFAULT;
 			case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE:
@@ -346,8 +346,8 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (reverse: ");
 		result.append(reverse);
-		result.append(", sampleNumber: ");
-		result.append(sampleNumber);
+		result.append(", samplePointer: ");
+		result.append(samplePointer);
 		result.append(", startPoint: ");
 		result.append(startPoint);
 		result.append(", reservedBitsAfterReverse: ");

@@ -71,7 +71,7 @@ public class PartWithSampleItemProvider
 
 			addReversePropertyDescriptor(object);
 			addSampleLabelPropertyDescriptor(object);
-			addSampleNumberPropertyDescriptor(object);
+			addSamplePointerPropertyDescriptor(object);
 			addStartPointPropertyDescriptor(object);
 			addReservedBitsAfterReversePropertyDescriptor(object);
 		}
@@ -123,19 +123,19 @@ public class PartWithSampleItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Sample Number feature.
+	 * This adds a property descriptor for the Sample Pointer feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSampleNumberPropertyDescriptor(Object object) {
+	protected void addSamplePointerPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_PartWithSample_sampleNumber_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithSample_sampleNumber_feature", "_UI_PartWithSample_type"),
-				 EsxPackage.Literals.PART_WITH_SAMPLE__SAMPLE_NUMBER,
+				 getString("_UI_PartWithSample_samplePointer_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithSample_samplePointer_feature", "_UI_PartWithSample_type"),
+				 EsxPackage.Literals.PART_WITH_SAMPLE__SAMPLE_POINTER,
 				 true,
 				 false,
 				 false,
@@ -217,7 +217,7 @@ public class PartWithSampleItemProvider
 		switch (notification.getFeatureID(PartWithSample.class)) {
 			case EsxPackage.PART_WITH_SAMPLE__REVERSE:
 			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL:
-			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_NUMBER:
+			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER:
 			case EsxPackage.PART_WITH_SAMPLE__START_POINT:
 			case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

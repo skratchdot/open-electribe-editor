@@ -63,7 +63,7 @@ import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartStretchSliceImpl#getPitch <em>Pitch</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartStretchSliceImpl#getReverse <em>Reverse</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartStretchSliceImpl#getSampleLabel <em>Sample Label</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartStretchSliceImpl#getSampleNumber <em>Sample Number</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartStretchSliceImpl#getSamplePointer <em>Sample Pointer</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartStretchSliceImpl#getStartPoint <em>Start Point</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartStretchSliceImpl#getReservedBitsAfterReverse <em>Reserved Bits After Reverse</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PartStretchSliceImpl#getSequenceData <em>Sequence Data</em>}</li>
@@ -407,23 +407,23 @@ public class PartStretchSliceImpl extends PartImpl implements PartStretchSlice {
 	 */
 	protected static final String SAMPLE_LABEL_EDEFAULT = null;
 	/**
-	 * The default value of the '{@link #getSampleNumber() <em>Sample Number</em>}' attribute.
+	 * The default value of the '{@link #getSamplePointer() <em>Sample Pointer</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSampleNumber()
+	 * @see #getSamplePointer()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final short SAMPLE_NUMBER_EDEFAULT = 0;
+	protected static final short SAMPLE_POINTER_EDEFAULT = 0;
 	/**
-	 * The cached value of the '{@link #getSampleNumber() <em>Sample Number</em>}' attribute.
+	 * The cached value of the '{@link #getSamplePointer() <em>Sample Pointer</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSampleNumber()
+	 * @see #getSamplePointer()
 	 * @generated
 	 * @ordered
 	 */
-	protected short sampleNumber = SAMPLE_NUMBER_EDEFAULT;
+	protected short samplePointer = SAMPLE_POINTER_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getStartPoint() <em>Start Point</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -487,7 +487,7 @@ public class PartStretchSliceImpl extends PartImpl implements PartStretchSlice {
 	public void init(byte[] b) {
 		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
 		// bytes 0~1
-		this.setSampleNumber(in.getShort());
+		this.setSamplePointer(in.getShort());
 		// byte 2
 		this.setFilterType(FilterType.get(in.getByte()));
 		// byte 3
@@ -939,7 +939,7 @@ public class PartStretchSliceImpl extends PartImpl implements PartStretchSlice {
 	 * @generated NOT
 	 */
 	public String getSampleLabel() {
-		return this.getSampleLabel(this.getSampleNumber());
+		return this.getSampleLabel(this.getSamplePointer());
 	}
 
 	/**
@@ -947,8 +947,8 @@ public class PartStretchSliceImpl extends PartImpl implements PartStretchSlice {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public short getSampleNumber() {
-		return sampleNumber;
+	public short getSamplePointer() {
+		return samplePointer;
 	}
 
 	/**
@@ -956,11 +956,11 @@ public class PartStretchSliceImpl extends PartImpl implements PartStretchSlice {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSampleNumber(short newSampleNumber) {
-		short oldSampleNumber = sampleNumber;
-		sampleNumber = newSampleNumber;
+	public void setSamplePointer(short newSamplePointer) {
+		short oldSamplePointer = samplePointer;
+		samplePointer = newSamplePointer;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_STRETCH_SLICE__SAMPLE_NUMBER, oldSampleNumber, sampleNumber));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_STRETCH_SLICE__SAMPLE_POINTER, oldSamplePointer, samplePointer));
 	}
 
 	/**
@@ -1056,7 +1056,7 @@ public class PartStretchSliceImpl extends PartImpl implements PartStretchSlice {
 	public byte[] toByteArray() {
 		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_PARTS_STRETCHSLICE);
 		// bytes 0~1
-		buf.putShort(this.getSampleNumber());
+		buf.putShort(this.getSamplePointer());
 		// byte 2
 		buf.putUnsignedByte(this.getFilterType().getValue());
 		// byte 3
@@ -1162,8 +1162,8 @@ public class PartStretchSliceImpl extends PartImpl implements PartStretchSlice {
 				return getReverse();
 			case EsxPackage.PART_STRETCH_SLICE__SAMPLE_LABEL:
 				return getSampleLabel();
-			case EsxPackage.PART_STRETCH_SLICE__SAMPLE_NUMBER:
-				return getSampleNumber();
+			case EsxPackage.PART_STRETCH_SLICE__SAMPLE_POINTER:
+				return getSamplePointer();
 			case EsxPackage.PART_STRETCH_SLICE__START_POINT:
 				return getStartPoint();
 			case EsxPackage.PART_STRETCH_SLICE__RESERVED_BITS_AFTER_REVERSE:
@@ -1236,8 +1236,8 @@ public class PartStretchSliceImpl extends PartImpl implements PartStretchSlice {
 			case EsxPackage.PART_STRETCH_SLICE__REVERSE:
 				setReverse((Reverse)newValue);
 				return;
-			case EsxPackage.PART_STRETCH_SLICE__SAMPLE_NUMBER:
-				setSampleNumber((Short)newValue);
+			case EsxPackage.PART_STRETCH_SLICE__SAMPLE_POINTER:
+				setSamplePointer((Short)newValue);
 				return;
 			case EsxPackage.PART_STRETCH_SLICE__START_POINT:
 				setStartPoint((Byte)newValue);
@@ -1314,8 +1314,8 @@ public class PartStretchSliceImpl extends PartImpl implements PartStretchSlice {
 			case EsxPackage.PART_STRETCH_SLICE__REVERSE:
 				setReverse(REVERSE_EDEFAULT);
 				return;
-			case EsxPackage.PART_STRETCH_SLICE__SAMPLE_NUMBER:
-				setSampleNumber(SAMPLE_NUMBER_EDEFAULT);
+			case EsxPackage.PART_STRETCH_SLICE__SAMPLE_POINTER:
+				setSamplePointer(SAMPLE_POINTER_EDEFAULT);
 				return;
 			case EsxPackage.PART_STRETCH_SLICE__START_POINT:
 				setStartPoint(START_POINT_EDEFAULT);
@@ -1376,8 +1376,8 @@ public class PartStretchSliceImpl extends PartImpl implements PartStretchSlice {
 				return reverse != REVERSE_EDEFAULT;
 			case EsxPackage.PART_STRETCH_SLICE__SAMPLE_LABEL:
 				return SAMPLE_LABEL_EDEFAULT == null ? getSampleLabel() != null : !SAMPLE_LABEL_EDEFAULT.equals(getSampleLabel());
-			case EsxPackage.PART_STRETCH_SLICE__SAMPLE_NUMBER:
-				return sampleNumber != SAMPLE_NUMBER_EDEFAULT;
+			case EsxPackage.PART_STRETCH_SLICE__SAMPLE_POINTER:
+				return samplePointer != SAMPLE_POINTER_EDEFAULT;
 			case EsxPackage.PART_STRETCH_SLICE__START_POINT:
 				return startPoint != START_POINT_EDEFAULT;
 			case EsxPackage.PART_STRETCH_SLICE__RESERVED_BITS_AFTER_REVERSE:
@@ -1426,7 +1426,7 @@ public class PartStretchSliceImpl extends PartImpl implements PartStretchSlice {
 			switch (derivedFeatureID) {
 				case EsxPackage.PART_STRETCH_SLICE__REVERSE: return EsxPackage.PART_WITH_SAMPLE__REVERSE;
 				case EsxPackage.PART_STRETCH_SLICE__SAMPLE_LABEL: return EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL;
-				case EsxPackage.PART_STRETCH_SLICE__SAMPLE_NUMBER: return EsxPackage.PART_WITH_SAMPLE__SAMPLE_NUMBER;
+				case EsxPackage.PART_STRETCH_SLICE__SAMPLE_POINTER: return EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER;
 				case EsxPackage.PART_STRETCH_SLICE__START_POINT: return EsxPackage.PART_WITH_SAMPLE__START_POINT;
 				case EsxPackage.PART_STRETCH_SLICE__RESERVED_BITS_AFTER_REVERSE: return EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE;
 				default: return -1;
@@ -1479,7 +1479,7 @@ public class PartStretchSliceImpl extends PartImpl implements PartStretchSlice {
 			switch (baseFeatureID) {
 				case EsxPackage.PART_WITH_SAMPLE__REVERSE: return EsxPackage.PART_STRETCH_SLICE__REVERSE;
 				case EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL: return EsxPackage.PART_STRETCH_SLICE__SAMPLE_LABEL;
-				case EsxPackage.PART_WITH_SAMPLE__SAMPLE_NUMBER: return EsxPackage.PART_STRETCH_SLICE__SAMPLE_NUMBER;
+				case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER: return EsxPackage.PART_STRETCH_SLICE__SAMPLE_POINTER;
 				case EsxPackage.PART_WITH_SAMPLE__START_POINT: return EsxPackage.PART_STRETCH_SLICE__START_POINT;
 				case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE: return EsxPackage.PART_STRETCH_SLICE__RESERVED_BITS_AFTER_REVERSE;
 				default: return -1;
@@ -1540,8 +1540,8 @@ public class PartStretchSliceImpl extends PartImpl implements PartStretchSlice {
 		result.append(pitch);
 		result.append(", reverse: ");
 		result.append(reverse);
-		result.append(", sampleNumber: ");
-		result.append(sampleNumber);
+		result.append(", samplePointer: ");
+		result.append(samplePointer);
 		result.append(", startPoint: ");
 		result.append(startPoint);
 		result.append(", reservedBitsAfterReverse: ");

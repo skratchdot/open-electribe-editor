@@ -86,7 +86,7 @@ public class PartDrumItemProvider
 			addPitchPropertyDescriptor(object);
 			addReversePropertyDescriptor(object);
 			addSampleLabelPropertyDescriptor(object);
-			addSampleNumberPropertyDescriptor(object);
+			addSamplePointerPropertyDescriptor(object);
 			addStartPointPropertyDescriptor(object);
 			addReservedBitsAfterReversePropertyDescriptor(object);
 			addReservedBytePropertyDescriptor(object);
@@ -514,19 +514,19 @@ public class PartDrumItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Sample Number feature.
+	 * This adds a property descriptor for the Sample Pointer feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSampleNumberPropertyDescriptor(Object object) {
+	protected void addSamplePointerPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_PartWithSample_sampleNumber_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithSample_sampleNumber_feature", "_UI_PartWithSample_type"),
-				 EsxPackage.Literals.PART_WITH_SAMPLE__SAMPLE_NUMBER,
+				 getString("_UI_PartWithSample_samplePointer_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithSample_samplePointer_feature", "_UI_PartWithSample_type"),
+				 EsxPackage.Literals.PART_WITH_SAMPLE__SAMPLE_POINTER,
 				 true,
 				 false,
 				 false,
@@ -707,7 +707,7 @@ public class PartDrumItemProvider
 			case EsxPackage.PART_DRUM__PITCH:
 			case EsxPackage.PART_DRUM__REVERSE:
 			case EsxPackage.PART_DRUM__SAMPLE_LABEL:
-			case EsxPackage.PART_DRUM__SAMPLE_NUMBER:
+			case EsxPackage.PART_DRUM__SAMPLE_POINTER:
 			case EsxPackage.PART_DRUM__START_POINT:
 			case EsxPackage.PART_DRUM__RESERVED_BITS_AFTER_REVERSE:
 			case EsxPackage.PART_DRUM__RESERVED_BYTE:

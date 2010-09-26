@@ -86,6 +86,7 @@ public class SampleItemProvider
 			addSlicePropertyDescriptor(object);
 			addStereoOriginalPropertyDescriptor(object);
 			addStereoCurrentPropertyDescriptor(object);
+			addLabelPropertyDescriptor(object);
 			addMemUsedInBytesPropertyDescriptor(object);
 			addEmptyPropertyDescriptor(object);
 			addSampleNumberOriginalPropertyDescriptor(object);
@@ -499,6 +500,28 @@ public class SampleItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Label feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLabelPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sample_label_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_label_feature", "_UI_Sample_type"),
+				 EsxPackage.Literals.SAMPLE__LABEL,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Sample.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -602,6 +625,7 @@ public class SampleItemProvider
 			case EsxPackage.SAMPLE__SLICE:
 			case EsxPackage.SAMPLE__STEREO_ORIGINAL:
 			case EsxPackage.SAMPLE__STEREO_CURRENT:
+			case EsxPackage.SAMPLE__LABEL:
 			case EsxPackage.SAMPLE__MEM_USED_IN_BYTES:
 			case EsxPackage.SAMPLE__EMPTY:
 			case EsxPackage.SAMPLE__SAMPLE_NUMBER_ORIGINAL:
