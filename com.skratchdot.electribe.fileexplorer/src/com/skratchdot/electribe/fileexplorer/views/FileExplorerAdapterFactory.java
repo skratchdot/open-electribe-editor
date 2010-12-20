@@ -18,10 +18,10 @@ import org.eclipse.ui.views.properties.IPropertySource;
 
 public class FileExplorerAdapterFactory implements IAdapterFactory {
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	private static final Class[] TYPES = { File.class };
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Object getAdapter(Object adaptableObject, Class adapterType) {
 		if ((adaptableObject instanceof File) && (adapterType == IPropertySource.class)) {
 			return new FileExplorerPropertySource((File) adaptableObject);
@@ -29,7 +29,7 @@ public class FileExplorerAdapterFactory implements IAdapterFactory {
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Class[] getAdapterList() {
 		return TYPES;
 	}
