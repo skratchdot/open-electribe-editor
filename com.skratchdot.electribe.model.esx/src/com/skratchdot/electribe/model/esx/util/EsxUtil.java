@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 public class EsxUtil {
 	public static final int DEFAULT_SAMPLING_RATE = 44100;
 
-	// 0x00000000 -> 0x00000200 (32 unknown bytes)
+	// 0x00000000 -> 0x00000020 (32 unknown bytes)
 	public static final int ADDR_VALID_ESX_CHECK_1		= 0x00000000;	// K O R G . . . 0x71 E S X
 
 	// 192 bytes
@@ -74,7 +74,7 @@ public class EsxUtil {
 	public static final int ADDR_DISK_SPACE				= 0x001B0028;	// 4 bytes
 
 	// 256 mono sample headers at 40 bytes each
-	public static final int ADDR_SAMPLE_HEADER_MONO	= 0x001B0100;
+	public static final int ADDR_SAMPLE_HEADER_MONO		= 0x001B0100;
 
 	// 128 stereo sample headers at 44 bytes each
 	public static final int ADDR_SAMPLE_HEADER_STEREO	= 0x001B2900;

@@ -20,6 +20,136 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>File</b></em>'.
+ * 
+ * <style type="text/css">
+ *   table.file-format th {
+ *     background:#ccc;
+ *   }
+ *   table.file-format th, table.file-format td {
+ *     text-align:center;
+ *   }
+ * </style>
+ * <h4><a name="file-format" style="text-decoration:underline">Esx File Format:</a></h4>
+ * <table class="file-format" cellspacing="1" cellpadding="1" border="1">
+ *   <thead>
+ *     <tr>
+ *       <th>Address (start)</th>
+ *       <th>Address (end)</th>
+ *       <th>Total Size</th>
+ *       <th>Notes</th>
+ *     </tr>
+ *   </thead>
+ *   <tbody>
+ *     <tr>
+ *       <td>0x00000000</td>
+ *       <td>0x00000020</td>
+ *       <td>32 bytes</td>
+ *       <td>32 unknown bytes starting with:<br />K O R G . . . 0x71 E S X</td>
+ *     </tr>
+ *     <tr>
+ *       <td>0x00000020</td>
+ *       <td>0x000000E0</td>
+ *       <td>192 bytes</td>
+ *       <td>See {@link GlobalParameters <em>GlobalParameters</em>}</td>
+ *     </tr>
+ *     <tr>
+ *       <td>0x000000E0</td>
+ *       <td>0x00000200</td>
+ *       <td>288 bytes</td>
+ *       <td>Unknown / Reserved Bytes</td>
+ *     </tr>
+ *     <tr>
+ *       <td>0x00000200</td>
+ *       <td>0x0010BA00</td>
+ *       <td>1,095,680 bytes</td>
+ *       <td>256 patterns at 4280 bytes each<br />See {@link Pattern <em>Pattern</em>}</td>
+ *     </tr>
+ *     <tr>
+ *       <td>0x0010BA00</td>
+ *       <td>0x00130000</td>
+ *       <td>148,992 bytes</td>
+ *       <td>Unknown / Reserved Bytes</td>
+ *     </tr>
+ *     <tr>
+ *       <td>0x00130000</td>
+ *       <td>0x00138400</td>
+ *       <td>33,792 bytes</td>
+ *       <td>64 songs at 528 bytes each<br />See {@link Song <em>Song</em>}</td>
+ *     </tr>
+ *     <tr>
+ *       <td>0x00138400</td>
+ *       <td>0x0015F500</td>
+ *       <td>160,000 bytes</td>
+ *       <td>Up to 20000 song events at 8 bytes each<br />See {@link SongEvent <em>SongEvent</em>}</td>
+ *     </tr>
+ *     <tr>
+ *       <td>0x0015F500</td>
+ *       <td>0x001B0000</td>
+ *       <td>330,496 Bytes</td>
+ *       <td>Unknown / Reserved Bytes</td>
+ *     </tr>
+ *     <tr>
+ *       <td>0x001B0000</td>
+ *       <td>0x001B0020</td>
+ *       <td>32 bytes</td>
+ *       <td>32 unknown bytes starting with:<br />K O R G . . . 0x71 B P S</td>
+ *     </tr>
+ *     <tr>
+ *       <td>0x001B0020</td>
+ *       <td>0x001B0024</td>
+ *       <td>4 bytes</td>
+ *       <td>Number of mono samples being used</td>
+ *     </tr>
+ *     <tr>
+ *       <td>0x001B0024</td>
+ *       <td>0x001B0028</td>
+ *       <td>4 bytes</td>
+ *       <td>Number of stereo samples being used</td>
+ *     </tr>
+ *     <tr>
+ *       <td>0x001B0028</td>
+ *       <td>0x001B002C</td>
+ *       <td>4 bytes</td>
+ *       <td>Current Sample Offset</td>
+ *     </tr>
+ *     <tr>
+ *       <td>0x001B002C</td>
+ *       <td>0x001B0100</td>
+ *       <td>212 bytes</td>
+ *       <td>Unknown / Reserved Bytes</td>
+ *     </tr>
+ *     <tr>
+ *       <td>0x001B0100</td>
+ *       <td>0x001B2900</td>
+ *       <td>10,240 bytes</td>
+ *       <td>256 mono sample headers at 40 bytes each<br />See {@link Sample <em>Sample</em>}<br />See {@link com.skratchdot.electribe.model.esx.impl.SampleImpl#initHeaderMono <em>initHeaderMono</em>}</td>
+ *     </tr>
+ *     <tr>
+ *       <td>0x001B2900</td>
+ *       <td>0x001B3F00</td>
+ *       <td>5,632 bytes</td>
+ *       <td>128 stereo sample headers at 44 bytes each<br />See {@link Sample <em>Sample</em>}<br />See {@link com.skratchdot.electribe.model.esx.impl.SampleImpl#initHeaderStereo <em>initHeaderStereo</em>}</td>
+ *     </tr>
+ *     <tr>
+ *       <td>0x001B3F00</td>
+ *       <td>0x001B4200</td>
+ *       <td>768 bytes</td>
+ *       <td>Unknown / Reserve Bytes</td>
+ *     </tr>
+ *     <tr>
+ *       <td>0x001B4200</td>
+ *       <td>0x00250000</td>
+ *       <td>524,288 bytes</td>
+ *       <td>Slice Data: 256 slices at 2048 bytes each<br />See {@link com.skratchdot.electribe.model.esx.Sample#getSliceArray <em>Slice Array</em>}</td>
+ *     </tr>
+ *     <tr>
+ *       <td>0x00250000</td>
+ *       <td>0x01A50010</td>
+ *       <td>25,165,824 bytes (max)</td>
+ *       <td>Sample Data</td>
+ *     </tr>
+ *   </tbody>
+ * </table>
  * <!-- end-user-doc -->
  *
  * <p>
