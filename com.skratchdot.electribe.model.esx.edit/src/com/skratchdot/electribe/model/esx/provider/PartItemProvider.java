@@ -12,17 +12,12 @@
 package com.skratchdot.electribe.model.esx.provider;
 
 
-import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.Part;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
@@ -36,6 +31,14 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.MotionSequenceStatus;
+import com.skratchdot.electribe.model.esx.Part;
+import com.skratchdot.electribe.model.esx.PartKeyboard;
+import com.skratchdot.electribe.model.esx.PartWithCommon;
+import com.skratchdot.electribe.model.esx.PartWithPitch;
+import com.skratchdot.electribe.model.esx.PartWithSample;
 
 /**
  * This is the item provider adapter for a {@link com.skratchdot.electribe.model.esx.Part} object.
@@ -164,6 +167,197 @@ public class PartItemProvider
 		return label == null || label.length() == 0 ?
 			getString("_UI_Part_type") :
 			getString("_UI_Part_type") + " " + label;
+	}
+
+	@Override
+	public String getColumnText(Object object, int columnIndex) {
+		switch(columnIndex) {
+			// Part Label
+			case 0: return ((Part) object).getLabel();
+			// Level
+			case 1: return Byte.toString(((Part) object).getLevel());
+			// Motion Sequence Status
+			case 2: {
+				MotionSequenceStatus motionSequenceStatus = MotionSequenceStatus.get(((Part) object).getMotionSequenceStatus());
+				return motionSequenceStatus==null?"unknown":motionSequenceStatus.getLiteral();
+			}
+			// PartWithSample: Sample Label
+			case 3: {
+				if(object instanceof PartWithSample) {
+					return ((PartWithSample) object).getSampleLabel();
+				}
+				else {
+					return "";
+				}
+			}
+			// PartWithPitch: Pitch
+			// PartKeyboard: Glide
+			case 4: {
+				if(object instanceof PartWithPitch) {
+					return Byte.toString(((PartWithPitch) object).getPitch());
+				}
+				else if(object instanceof PartKeyboard) {
+					return Byte.toString(((PartKeyboard) object).getGlide());
+				}
+				else {
+					return "";
+				}
+			}
+			// PartWithCommon: Pan
+			case 5: {
+				if(object instanceof PartWithCommon) {
+					return Byte.toString(((PartWithCommon) object).getPan());
+				}
+				else {
+					return "";
+				}
+			}
+			// PartWithCommon: Eg Time
+			case 6: {
+				if(object instanceof PartWithCommon) {
+					return Byte.toString(((PartWithCommon) object).getEgTime());
+				}
+				else {
+					return "";
+				}
+			}			
+			// PartWithSample: Start Point
+			case 7: {
+				if(object instanceof PartWithSample) {
+					return Byte.toString(((PartWithSample) object).getStartPoint());
+				}
+				else {
+					return "";
+				}
+			}
+			// PartWithCommon: Amp Eg
+			case 8: {
+				if(object instanceof PartWithCommon) {
+					return ((PartWithCommon) object).getAmpEg().getLiteral();
+				}
+				else {
+					return "";
+				}
+			}
+			// PartWithCommon: Roll
+			case 9: {
+				if(object instanceof PartWithCommon) {
+					return ((PartWithCommon) object).getRoll().getLiteral();
+				}
+				else {
+					return "";
+				}
+			}
+			// PartWithSample: Reverse
+			case 10: {
+				if(object instanceof PartWithSample) {
+					return ((PartWithSample) object).getReverse().getLiteral();
+				}
+				else {
+					return "";
+				}
+			}
+			// PartWithCommon: FX Select
+			case 11: {
+				if(object instanceof PartWithCommon) {
+					return ((PartWithCommon) object).getFxSelect().getLiteral();
+				}
+				else {
+					return "";
+				}
+			}
+			// PartWithCommon: FX Send
+			case 12: {
+				if(object instanceof PartWithCommon) {
+					return ((PartWithCommon) object).getFxSend().getLiteral();
+				}
+				else {
+					return "";
+				}
+			}
+			// PartWithCommon: Mod Type
+			case 13: {
+				if(object instanceof PartWithCommon) {
+					return ((PartWithCommon) object).getModType().getLiteral();
+				}
+				else {
+					return "";
+				}
+			}
+			// PartWithCommon: Mod Dest
+			case 14: {
+				if(object instanceof PartWithCommon) {
+					return ((PartWithCommon) object).getModDest().getLiteral();
+				}
+				else {
+					return "";
+				}
+			}
+			// PartWithCommon: Mod Speed
+			case 15: {
+				if(object instanceof PartWithCommon) {
+					return Byte.toString(((PartWithCommon) object).getModSpeed());
+				}
+				else {
+					return "";
+				}
+			}
+			// PartWithCommon: Mod Depth
+			case 16: {
+				if(object instanceof PartWithCommon) {
+					return Byte.toString(((PartWithCommon) object).getModDepth());
+				}
+				else {
+					return "";
+				}
+			}
+			// PartWithCommon: BPM Sync
+			case 17: {
+				if(object instanceof PartWithCommon) {
+					return ((PartWithCommon) object).getBpmSync().getLiteral();
+				}
+				else {
+					return "";
+				}
+			}
+			// PartWithCommon: Cutoff
+			case 18: {
+				if(object instanceof PartWithCommon) {
+					return Byte.toString(((PartWithCommon) object).getCutoff());
+				}
+				else {
+					return "";
+				}
+			}
+			// PartWithCommon: Resonance
+			case 19: {
+				if(object instanceof PartWithCommon) {
+					return Byte.toString(((PartWithCommon) object).getResonance());
+				}
+				else {
+					return "";
+				}
+			}
+			// PartWithCommon: Eg Intensity
+			case 20: {
+				if(object instanceof PartWithCommon) {
+					return Byte.toString(((PartWithCommon) object).getEgIntensity());
+				}
+				else {
+					return "";
+				}
+			}
+			// PartWithCommon: Filter Type
+			case 21: {
+				if(object instanceof PartWithCommon) {
+					return ((PartWithCommon) object).getFilterType().getLiteral();
+				}
+				else {
+					return "";
+				}
+			}
+			default: return "";
+		}
 	}
 
 	/**

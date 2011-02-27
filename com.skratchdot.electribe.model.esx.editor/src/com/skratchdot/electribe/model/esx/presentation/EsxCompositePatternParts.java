@@ -29,15 +29,15 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 
-import com.skratchdot.electribe.model.esx.Song;
-import com.skratchdot.electribe.model.esx.SongEvent;
-import com.skratchdot.electribe.model.esx.SongPattern;
+import com.skratchdot.electribe.model.esx.Part;
+import com.skratchdot.electribe.model.esx.Pattern;
 
 public class EsxCompositePatternParts extends EsxComposite {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositePatternParts"; //$NON-NLS-1$
 
-	private Song selectedSong;
-	private List<SongEvent> selectedSongEvents;
+	private Pattern selectedPattern;
+	private List<Part> selectedPatternParts;
+	private Part selectedPart;
 	private TableViewer tableViewer;
 
 
@@ -60,7 +60,7 @@ public class EsxCompositePatternParts extends EsxComposite {
 
 		setLayout(new GridLayout(4, false));
 
-		this.tableViewer = new TableViewer(this, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
+		this.tableViewer = new TableViewer(this, SWT.BORDER | SWT.FULL_SELECTION | SWT.SINGLE);
 		this.initTableViewer();
 	}
 
@@ -75,24 +75,34 @@ public class EsxCompositePatternParts extends EsxComposite {
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 4, 1));
 
 		// Create our columns
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Position Current", 50);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Position Original", 50);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Measure", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Operation Number", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Position Number", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Step", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Control Value", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Part", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Note Length", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Note Number", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Mute Status", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Tempo", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Part Label", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Level", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "M.Seq Status", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Sample Label", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Pitch/Glide", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Pan", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Eg Time", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Start Point", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Amp Eg", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Roll", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Reverse", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "FX Select", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "FX Send", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Mod Type", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Mod Dest", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Mod Speed", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Mod Depth", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "BPM Sync", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Cutoff", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Resonance", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Eg Intensity", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Filter Type", null);
 		
 		// Setup this.tableViewer ContentProvider
 		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
 			@Override
 			public Object[] getElements(Object object) {
-				return selectedSong.getSongEvents().toArray();
+				return selectedPatternParts.toArray();
 			}
 			@Override
 			public void notifyChanged(Notification notification) {
@@ -105,15 +115,14 @@ public class EsxCompositePatternParts extends EsxComposite {
 		this.tableViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			public void selectionChanged(SelectionChangedEvent event) {
 		        IStructuredSelection selection = (IStructuredSelection) event.getSelection();
-
-		        Object[] objects = ((IStructuredSelection) selection).toArray();
-		        selectedSongEvents = new ArrayList<SongEvent>();
-				for (Object obj : objects) {
-					if(obj instanceof SongPattern) {
-						selectedSongEvents.add((SongEvent) obj);
-					}
-				}
-				refresh();
+		        Object firstElement = selection.getFirstElement();
+		        if(firstElement instanceof Part) {
+		        	selectedPart = (Part) firstElement;
+		        }
+		        else {
+		        	selectedPart = null;
+		        }
+		        refresh();
 				refreshInputs();
 			}
 		});
@@ -128,22 +137,31 @@ public class EsxCompositePatternParts extends EsxComposite {
 
 		if(input instanceof List<?>) {
 			if( ((List<?>) input).size()>1 ) {
-				this.selectedSong = null;
+				this.selectedPattern = null;
+				this.selectedPatternParts = null;
+				this.selectedPart = null;
 			}
 			else {
 				boolean isIterating = true;
 				Iterator<?> it = ((List<?>) input).iterator();
 				while (it.hasNext() && isIterating==true) {
 					Object obj = it.next();
-					if(obj instanceof Song) {
-						this.selectedSong = (Song) obj;
+					if(obj instanceof Pattern) {
+						this.selectedPattern = (Pattern) obj;
+						this.selectedPatternParts = new ArrayList<Part>();
+						this.selectedPatternParts.addAll(this.selectedPattern.getDrumParts());
+						this.selectedPatternParts.addAll(this.selectedPattern.getKeyboardParts());
+						this.selectedPatternParts.addAll(this.selectedPattern.getStretchSliceParts());
+						this.selectedPatternParts.add(this.selectedPattern.getAudioInPart());
+						this.selectedPatternParts.add(this.selectedPattern.getAccentPart());
+						this.selectedPart = null;
 						isIterating = false;
 					}
 				}
 			}
 		}
 
-		this.tableViewer.setInput(this.selectedSong);
+		this.tableViewer.setInput(this.selectedPatternParts);
 		this.refresh();
 		this.refreshInputs();
 	}
