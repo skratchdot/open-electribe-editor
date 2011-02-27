@@ -1457,6 +1457,7 @@ public class SampleImpl extends EObjectImpl implements Sample {
 				Pattern currentPattern;
 				int currentPartCount;
 				short currentSamplePointer;
+				Sample currentSample = null;
 				String currentPartList;
 				EList<PartDrum> currentDrumParts;
 				EList<PartKeyboard> currentKeyboardParts;
@@ -1474,7 +1475,12 @@ public class SampleImpl extends EObjectImpl implements Sample {
 					// Loop through all the drum parts looking for our current sample
 					for(int j=0; j<currentDrumParts.size(); j++) {
 						currentSamplePointer = currentDrumParts.get(j).getSamplePointer();
-						if(this.equals(esxFile.getSampleFromPointer(currentSamplePointer))) {
+						try {
+							currentSample = esxFile.getSampleFromPointer(currentSamplePointer);
+						} catch (Exception e) {
+							currentSample = null;
+						}
+						if(this.equals(currentSample)) {
 							currentPartCount++;
 							currentPartList += (currentPartList==""?"":",") + currentDrumParts.get(j).getLabel();
 						}
@@ -1482,7 +1488,12 @@ public class SampleImpl extends EObjectImpl implements Sample {
 					// Loop through all the keyboard parts looking for our current sample
 					for(int j=0; j<currentKeyboardParts.size(); j++) {
 						currentSamplePointer = currentKeyboardParts.get(j).getSamplePointer();
-						if(this.equals(esxFile.getSampleFromPointer(currentSamplePointer))) {
+						try {
+							currentSample = esxFile.getSampleFromPointer(currentSamplePointer);
+						} catch (Exception e) {
+							currentSample = null;
+						}
+						if(this.equals(currentSample)) {
 							currentPartCount++;
 							currentPartList += (currentPartList==""?"":",") + currentKeyboardParts.get(j).getLabel();
 						}
@@ -1490,7 +1501,12 @@ public class SampleImpl extends EObjectImpl implements Sample {
 					// Loop through all the stretchslice parts looking for our current sample
 					for(int j=0; j<currentStretchSliceParts.size(); j++) {
 						currentSamplePointer = currentStretchSliceParts.get(j).getSamplePointer();
-						if(this.equals(esxFile.getSampleFromPointer(currentSamplePointer))) {
+						try {
+							currentSample = esxFile.getSampleFromPointer(currentSamplePointer);
+						} catch (Exception e) {
+							currentSample = null;
+						}
+						if(this.equals(currentSample)) {
 							currentPartCount++;
 							currentPartList += (currentPartList==""?"":",") + currentStretchSliceParts.get(j).getLabel();
 						}
