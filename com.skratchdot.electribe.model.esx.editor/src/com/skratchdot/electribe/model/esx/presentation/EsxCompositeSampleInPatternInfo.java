@@ -100,6 +100,8 @@ public class EsxCompositeSampleInPatternInfo extends EsxComposite {
 	 */
 	@Override
 	public void setInput(Object input) {
+		if(this.isActive==false) return;
+		
 		if(input instanceof List<?>) {
 			if( ((List<?>) input).size()>1 ) {
 				this.selectedSample = null;
@@ -127,7 +129,8 @@ public class EsxCompositeSampleInPatternInfo extends EsxComposite {
 	 */
 	@Override
 	public void refresh() {
-		
+		if(this.isActive==false) return;
+
 		if(this.selectedSample!=null) {
 			this.textPartCount.setText(Integer.toString(this.selectedSample.getPartCount()));
 			this.textPatternCount.setText(Integer.toString(this.selectedSample.getPatternCount()));
@@ -143,6 +146,7 @@ public class EsxCompositeSampleInPatternInfo extends EsxComposite {
 	 */
 	@Override
 	public void refreshInputs() {
+		if(this.isActive==false) return;
 		
 	}
 

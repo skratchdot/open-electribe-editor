@@ -149,6 +149,8 @@ public class EsxCompositeSongPatterns extends EsxComposite {
 	 */
 	@Override
 	public void setInput(Object input) {
+		if(this.isActive==false) return;
+
 		if(input instanceof List<?>) {
 			if( ((List<?>) input).size()>1 ) {
 				this.selectedSong = null;
@@ -176,6 +178,8 @@ public class EsxCompositeSongPatterns extends EsxComposite {
 	 */
 	@Override
 	public void refresh() {
+		if(this.isActive==false) return;
+
 		String multipleValueString = "<Multiple Values>";
 
 		this.textPatternNumber.setText(getMultiString(this.selectedSongPatterns, EsxPackage.Literals.SONG_PATTERN__PATTERN_NUMBER, multipleValueString));
@@ -187,6 +191,8 @@ public class EsxCompositeSongPatterns extends EsxComposite {
 	 */
 	@Override
 	public void refreshInputs() {
+		if(this.isActive==false) return;
+
 		String multipleValueString = "";
 
 		this.comboPatternNumber.setText(getMultiString(this.selectedSongPatterns, EsxPackage.Literals.SONG_PATTERN__PATTERN_NUMBER, multipleValueString));

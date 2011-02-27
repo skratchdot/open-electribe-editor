@@ -186,6 +186,8 @@ public class EsxCompositePatternFx extends EsxComposite {
 	 */
 	@Override
 	public void setInput(Object input) {
+		if(this.isActive==false) return;
+
 		this.patterns = new ArrayList<Pattern>();
 
 		if(input instanceof List<?>) {
@@ -207,6 +209,8 @@ public class EsxCompositePatternFx extends EsxComposite {
 	 */
 	@Override
 	public void refresh() {
+		if(this.isActive==false) return;
+
 		String multipleValueString = "<Multiple Values>";
 
 		this.textFxChain.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__FX_CHAIN, multipleValueString));
@@ -223,6 +227,8 @@ public class EsxCompositePatternFx extends EsxComposite {
 	 */
 	@Override
 	public void refreshInputs() {
+		if(this.isActive==false) return;
+
 		String multipleValueString = "";
 
 		this.comboFxChain.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__FX_CHAIN, multipleValueString));

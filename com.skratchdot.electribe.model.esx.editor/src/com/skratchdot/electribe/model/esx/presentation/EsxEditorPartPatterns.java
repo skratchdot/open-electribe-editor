@@ -61,7 +61,9 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 	private TabItem tabPatternFx;
 	private TabItem tabPatternParts;
 	private TabItem tabPatternMotionSequences;
-	
+
+	private List<Pattern> selectedPatterns = new ArrayList<Pattern>();
+
 	/**
 	 * @param parent
 	 */
@@ -112,7 +114,18 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 		editorPatternMotionSequences = new EsxCompositePatternMotionSequences(this, tabFolder, SWT.NONE);
 		tabPatternMotionSequences.setText("Motion Sequences");
 		tabPatternMotionSequences.setControl(editorPatternMotionSequences);
+		
+		// Only display info for one tab at a time
+		editorPattern.isActive = true;
+		tabFolder.addSelectionListener(new EsxTabSelectionListener() {
 
+			@Override
+			public void onTabChange() {
+				setAllInputs();
+			}
+
+		});
+		
 		sashForm.setWeights(new int[] {1, 1});
 	}
 
@@ -208,6 +221,13 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 		// listen for selection events
 	    getSite().getPage().addSelectionListener((ISelectionListener) this);
 	}
+	
+	private void setAllInputs() {
+		this.editorPattern.setInput(selectedPatterns);
+		this.editorPatternFx.setInput(selectedPatterns);
+		this.editorPatternParts.setInput(selectedPatterns);
+		this.editorPatternMotionSequences.setInput(selectedPatterns);
+	}
 
 	/* (non-Javadoc)
 	 * @see com.skratchdot.electribe.model.esx.presentation.EsxEditorPart#selectionChanged(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
@@ -217,16 +237,13 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 		if (parentEditor.getActivePage()==EsxEditorPartPatterns.PAGE_INDEX &&
 				selection instanceof IStructuredSelection) {
 			Object[] objects = ((IStructuredSelection) selection).toArray();
-			List<Pattern> selectedPatterns = new ArrayList<Pattern>();
+			selectedPatterns = new ArrayList<Pattern>();
 			for (Object obj : objects) {
 				if(obj instanceof Pattern) {
 					selectedPatterns.add((Pattern) obj);
 				}
 			}
-			this.editorPattern.setInput(selectedPatterns);
-			this.editorPatternFx.setInput(selectedPatterns);
-			this.editorPatternParts.setInput(selectedPatterns);
-			this.editorPatternMotionSequences.setInput(selectedPatterns);		
+			setAllInputs();
 		}
 	}
 

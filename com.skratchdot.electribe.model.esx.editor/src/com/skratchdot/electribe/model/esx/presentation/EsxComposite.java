@@ -38,6 +38,7 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxComposite"; //$NON-NLS-1$
 
 	protected EsxEditorPart parentPart;
+	protected boolean isActive = false;
 
 	/**
 	 * @param parent

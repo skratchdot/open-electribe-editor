@@ -60,7 +60,8 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 	private TabItem tabSongEvents;
 	private TabItem tabSongPatterns;
 
-	
+	private List<Song> selectedSongs = new ArrayList<Song>();
+
 	/**
 	 * @param parent
 	 */
@@ -106,6 +107,17 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		editorSongPatterns = new EsxCompositeSongPatterns(this, tabFolder, SWT.NONE);
 		tabSongPatterns.setText("Song Patterns");
 		tabSongPatterns.setControl(editorSongPatterns);
+
+		// Only display info for one tab at a time
+		editorSong.isActive = true;
+		tabFolder.addSelectionListener(new EsxTabSelectionListener() {
+
+			@Override
+			public void onTabChange() {
+				setAllInputs();
+			}
+
+		});
 
 		sashForm.setWeights(new int[] {1, 1});
 	}
@@ -183,6 +195,12 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 	    getSite().getPage().addSelectionListener((ISelectionListener) this);
 	}
 
+	private void setAllInputs() {
+		this.editorSong.setInput(selectedSongs);
+		this.editorSongEvents.setInput(selectedSongs);
+		this.editorSongPatterns.setInput(selectedSongs);
+	}
+
 	/* (non-Javadoc)
 	 * @see com.skratchdot.electribe.model.esx.presentation.EsxEditorPart#selectionChanged(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
 	 */
@@ -191,15 +209,13 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		if (parentEditor.getActivePage()==EsxEditorPartSongs.PAGE_INDEX &&
 				selection instanceof IStructuredSelection) {
 			Object[] objects = ((IStructuredSelection) selection).toArray();
-			List<Song> selectedSongs = new ArrayList<Song>();
+			selectedSongs = new ArrayList<Song>();
 			for (Object obj : objects) {
 				if(obj instanceof Song) {
 					selectedSongs.add((Song) obj);
 				}
 			}
-			this.editorSong.setInput(selectedSongs);
-			this.editorSongEvents.setInput(selectedSongs);
-			this.editorSongPatterns.setInput(selectedSongs);
+			setAllInputs();
 		}
 	}
 	

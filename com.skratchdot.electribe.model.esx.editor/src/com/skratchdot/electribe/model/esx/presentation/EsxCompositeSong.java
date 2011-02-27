@@ -193,6 +193,8 @@ public class EsxCompositeSong extends EsxComposite {
 	 */
 	@Override
 	public void setInput(Object input) {
+		if(this.isActive==false) return;
+
 		this.songs = new ArrayList<Song>();
 
 		if(input instanceof List<?>) {
@@ -214,6 +216,8 @@ public class EsxCompositeSong extends EsxComposite {
 	 */
 	@Override
 	public void refresh() {
+		if(this.isActive==false) return;
+
 		String multipleValueString = "<Multiple Values>";
 
 		this.textSelectedTotal.setText(Integer.toString(this.songs.size()));
@@ -234,6 +238,8 @@ public class EsxCompositeSong extends EsxComposite {
 	 */
 	@Override
 	public void refreshInputs() {
+		if(this.isActive==false) return;
+
 		String multipleValueString = "";
 
 		this.inputName.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__NAME, multipleValueString));

@@ -76,6 +76,9 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 	private TabFolder tabFolder;
 	private TabItem tabSample;
 	private TabItem tabSampleInPatternInfo;
+	
+	private List<Sample> selectedSamples = new ArrayList<Sample>();
+
 
 	/**
 	 * @param parent
@@ -122,6 +125,17 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		editorSampleInPatternInfo = new EsxCompositeSampleInPatternInfo(this, tabFolder, SWT.NONE);
 		tabSampleInPatternInfo.setText("Pattern/Part Usage");
 		tabSampleInPatternInfo.setControl(editorSampleInPatternInfo);
+
+		// Only display info for one tab at a time
+		editorSample.isActive = true;
+		tabFolder.addSelectionListener(new EsxTabSelectionListener() {
+
+			@Override
+			public void onTabChange() {
+				setAllInputs();
+			}
+
+		});
 
 		sashForm.setWeights(new int[] {4, 3});
 	}
@@ -312,6 +326,11 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		// listen for selection events
 	    getSite().getPage().addSelectionListener((ISelectionListener) this);
 	}
+	
+	private void setAllInputs() {
+		this.editorSample.setInput(selectedSamples);
+		this.editorSampleInPatternInfo.setInput(selectedSamples);
+	}
 
 	/* (non-Javadoc)
 	 * @see com.skratchdot.electribe.model.esx.presentation.EsxEditorPart#selectionChanged(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
@@ -321,14 +340,13 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		if (parentEditor.getActivePage()==EsxEditorPartSamples.PAGE_INDEX &&
 				selection instanceof IStructuredSelection) {
 			Object[] objects = ((IStructuredSelection) selection).toArray();
-			List<Sample> selectedSamples = new ArrayList<Sample>();
+			selectedSamples = new ArrayList<Sample>();
 			for (Object obj : objects) {
 				if(obj instanceof Sample) {
 					selectedSamples.add((Sample) obj);
 				}
 			}
-			this.editorSample.setInput(selectedSamples);
-			this.editorSampleInPatternInfo.setInput(selectedSamples);
+			setAllInputs();
 		}
 	}
 

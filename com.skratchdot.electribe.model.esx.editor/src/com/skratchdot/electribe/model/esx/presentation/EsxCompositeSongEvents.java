@@ -118,6 +118,8 @@ public class EsxCompositeSongEvents extends EsxComposite {
 	 */
 	@Override
 	public void setInput(Object input) {
+		if(this.isActive==false) return;
+
 		if(input instanceof List<?>) {
 			if( ((List<?>) input).size()>1 ) {
 				this.selectedSong = null;
@@ -145,6 +147,7 @@ public class EsxCompositeSongEvents extends EsxComposite {
 	 */
 	@Override
 	public void refresh() {
+		if(this.isActive==false) return;
 	}
 
 	/* (non-Javadoc)
@@ -152,7 +155,7 @@ public class EsxCompositeSongEvents extends EsxComposite {
 	 */
 	@Override
 	public void refreshInputs() {
-		
+		if(this.isActive==false) return;
 	}
 
 }

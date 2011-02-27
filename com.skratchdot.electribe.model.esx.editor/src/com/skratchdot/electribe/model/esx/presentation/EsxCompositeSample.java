@@ -225,6 +225,8 @@ public class EsxCompositeSample extends EsxComposite {
 	 */
 	@Override
 	public void setInput(Object input) {
+		if(this.isActive==false) return;
+
 		this.samples = new ArrayList<Sample>();
 
 		if(input instanceof List<?>) {
@@ -246,6 +248,8 @@ public class EsxCompositeSample extends EsxComposite {
 	 */
 	@Override
 	public void refresh() {
+		if(this.isActive==false) return;
+
 		String multipleValueString = "<Multiple Values>";
 
 		this.textSelectedTotal.setText(Integer.toString(this.samples.size()));
@@ -274,6 +278,8 @@ public class EsxCompositeSample extends EsxComposite {
 	 */
 	@Override
 	public void refreshInputs() {
+		if(this.isActive==false) return;
+
 		String multipleValueString = "";
 
 		this.inputName.setText(getMultiString(this.samples, EsxPackage.Literals.SAMPLE__NAME, multipleValueString));
