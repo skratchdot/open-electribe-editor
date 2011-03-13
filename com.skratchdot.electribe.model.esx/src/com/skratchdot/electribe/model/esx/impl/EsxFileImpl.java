@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import com.skratchdot.electribe.model.esx.AudioChannelType;
 import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
@@ -469,7 +470,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 						&& mono.getOffsetChannel1End() != 0xFFFFFFFF) {
 					// Read in sample data
 					in.position(EsxUtil.ADDR_SAMPLE_DATA + mono.getOffsetChannel1Start());
-					mono.initOffsetChannelBoth(in.getBytes(in.position(), offset1Size));
+					mono.initOffsetChannel(in.getBytes(in.position(), offset1Size), AudioChannelType.MONO);
 				}
 			}
 			else {
@@ -486,9 +487,9 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 						&& stereo.getOffsetChannel2End() != 0xFFFFFFFF) {
 					// Read in sample data
 					in.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel1Start());
-					stereo.initOffsetChannel1(in.getBytes(in.position(), offset1Size));
+					stereo.initOffsetChannel(in.getBytes(in.position(), offset1Size), AudioChannelType.STEREO_1);
 					in.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel2Start());
-					stereo.initOffsetChannel2(in.getBytes(in.position(), offset2Size));
+					stereo.initOffsetChannel(in.getBytes(in.position(), offset2Size), AudioChannelType.STEREO_2);
 				}
 			}
 			monitor.worked(1);
@@ -1085,7 +1086,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 			// Write Sample Data
 			if(!mono.isEmpty() && mono.getNumberOfSampleFrames()>0) {
 				buf.position(EsxUtil.ADDR_SAMPLE_DATA + mono.getOffsetChannel1Start());
-				buf.putBytes(mono.toOffsetChannelBothByteArray());
+				buf.putBytes(mono.toOffsetChannelByteArray(AudioChannelType.MONO));
 			}
 	
 			monitor.worked(1);
@@ -1103,9 +1104,9 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 			// Write Sample Data
 			if(!stereo.isEmpty() && stereo.getNumberOfSampleFrames()>0) {
 				buf.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel1Start());
-				buf.putBytes(stereo.toOffsetChannel1ByteArray());
+				buf.putBytes(stereo.toOffsetChannelByteArray(AudioChannelType.STEREO_1));
 				buf.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel2Start());
-				buf.putBytes(stereo.toOffsetChannel2ByteArray());
+				buf.putBytes(stereo.toOffsetChannelByteArray(AudioChannelType.STEREO_2));
 			}
 
 			monitor.worked(1);

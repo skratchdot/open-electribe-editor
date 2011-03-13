@@ -262,6 +262,8 @@ public class EsxValidator extends EObjectValidator {
 				return validateArpeggiatorControl((ArpeggiatorControl)value, diagnostics, context);
 			case EsxPackage.ARPEGGIATOR_SCALE:
 				return validateArpeggiatorScale((ArpeggiatorScale)value, diagnostics, context);
+			case EsxPackage.AUDIO_CHANNEL_TYPE:
+				return validateAudioChannelType((AudioChannelType)value, diagnostics, context);
 			case EsxPackage.AUDIO_IN_MODE:
 				return validateAudioInMode((AudioInMode)value, diagnostics, context);
 			case EsxPackage.BEAT:
@@ -361,9 +363,11 @@ public class EsxValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateEsxFile(EsxFile esxFile, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(esxFile, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(esxFile, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(esxFile, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(esxFile, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(esxFile, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(esxFile, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(esxFile, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(esxFile, diagnostics, context);
@@ -937,6 +941,15 @@ public class EsxValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateArpeggiatorScale(ArpeggiatorScale arpeggiatorScale, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAudioChannelType(AudioChannelType audioChannelType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

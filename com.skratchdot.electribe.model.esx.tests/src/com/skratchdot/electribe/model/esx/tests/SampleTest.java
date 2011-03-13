@@ -46,15 +46,11 @@ import junit.textui.TestRunner;
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#initHeaderMono(byte[], int) <em>Init Header Mono</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#initHeaderStereo(byte[]) <em>Init Header Stereo</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#initHeaderStereo(byte[], int) <em>Init Header Stereo</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Sample#initOffsetChannel1(byte[]) <em>Init Offset Channel1</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Sample#initOffsetChannel2(byte[]) <em>Init Offset Channel2</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Sample#initOffsetChannelBoth(byte[]) <em>Init Offset Channel Both</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#initOffsetChannel(byte[], com.skratchdot.electribe.model.esx.AudioChannelType) <em>Init Offset Channel</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#initSliceArray(byte[]) <em>Init Slice Array</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#toHeaderMonoByteArray() <em>To Header Mono Byte Array</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#toHeaderStereoByteArray() <em>To Header Stereo Byte Array</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Sample#toOffsetChannel1ByteArray() <em>To Offset Channel1 Byte Array</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Sample#toOffsetChannel2ByteArray() <em>To Offset Channel2 Byte Array</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Sample#toOffsetChannelBothByteArray() <em>To Offset Channel Both Byte Array</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#toOffsetChannelByteArray(com.skratchdot.electribe.model.esx.AudioChannelType) <em>To Offset Channel Byte Array</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#toSliceByteArray() <em>To Slice Byte Array</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#toRIFFWave() <em>To RIFF Wave</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#toRIFFWaveFile(java.io.File) <em>To RIFF Wave File</em>}</li>
@@ -305,39 +301,13 @@ public class SampleTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#initOffsetChannel1(byte[]) <em>Init Offset Channel1</em>}' operation.
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#initOffsetChannel(byte[], com.skratchdot.electribe.model.esx.AudioChannelType) <em>Init Offset Channel</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.Sample#initOffsetChannel1(byte[])
+	 * @see com.skratchdot.electribe.model.esx.Sample#initOffsetChannel(byte[], com.skratchdot.electribe.model.esx.AudioChannelType)
 	 * @generated
 	 */
-	public void testInitOffsetChannel1__byte() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#initOffsetChannel2(byte[]) <em>Init Offset Channel2</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.Sample#initOffsetChannel2(byte[])
-	 * @generated
-	 */
-	public void testInitOffsetChannel2__byte() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#initOffsetChannelBoth(byte[]) <em>Init Offset Channel Both</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.Sample#initOffsetChannelBoth(byte[])
-	 * @generated
-	 */
-	public void testInitOffsetChannelBoth__byte() {
+	public void testInitOffsetChannel__byte_AudioChannelType() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();
@@ -383,39 +353,13 @@ public class SampleTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#toOffsetChannel1ByteArray() <em>To Offset Channel1 Byte Array</em>}' operation.
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#toOffsetChannelByteArray(com.skratchdot.electribe.model.esx.AudioChannelType) <em>To Offset Channel Byte Array</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.Sample#toOffsetChannel1ByteArray()
+	 * @see com.skratchdot.electribe.model.esx.Sample#toOffsetChannelByteArray(com.skratchdot.electribe.model.esx.AudioChannelType)
 	 * @generated
 	 */
-	public void testToOffsetChannel1ByteArray() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#toOffsetChannel2ByteArray() <em>To Offset Channel2 Byte Array</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.Sample#toOffsetChannel2ByteArray()
-	 * @generated
-	 */
-	public void testToOffsetChannel2ByteArray() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#toOffsetChannelBothByteArray() <em>To Offset Channel Both Byte Array</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.Sample#toOffsetChannelBothByteArray()
-	 * @generated
-	 */
-	public void testToOffsetChannelBothByteArray() {
+	public void testToOffsetChannelByteArray__AudioChannelType() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

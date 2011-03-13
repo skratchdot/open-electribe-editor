@@ -11,6 +11,7 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
+import com.skratchdot.electribe.model.esx.AudioChannelType;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -77,11 +78,15 @@ import com.skratchdot.riff.wav.WavPackage;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSampleTune <em>Sample Tune</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getNumberOfSampleFrames <em>Number Of Sample Frames</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getPlayLevel <em>Play Level</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getUnknownByte1 <em>Unknown Byte1</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getStretchStep <em>Stretch Step</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getUnknownByte2 <em>Unknown Byte2</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getUnknownByte3 <em>Unknown Byte3</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getUnknownByte4 <em>Unknown Byte4</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getUnknownByteMono1 <em>Unknown Byte Mono1</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getUnknownByteMono2 <em>Unknown Byte Mono2</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getUnknownByteMono3 <em>Unknown Byte Mono3</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getUnknownByteMono4 <em>Unknown Byte Mono4</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getUnknownByteStereo1 <em>Unknown Byte Stereo1</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getUnknownByteStereo2 <em>Unknown Byte Stereo2</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getUnknownByteStereo3 <em>Unknown Byte Stereo3</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getUnknownByteStereo4 <em>Unknown Byte Stereo4</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getAudioDataChannel1 <em>Audio Data Channel1</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getAudioDataChannel2 <em>Audio Data Channel2</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getAudioDataChannelBoth <em>Audio Data Channel Both</em>}</li>
@@ -336,26 +341,6 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	protected PlayLevel playLevel = PLAY_LEVEL_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getUnknownByte1() <em>Unknown Byte1</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUnknownByte1()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final byte UNKNOWN_BYTE1_EDEFAULT = 0x00;
-
-	/**
-	 * The cached value of the '{@link #getUnknownByte1() <em>Unknown Byte1</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUnknownByte1()
-	 * @generated
-	 * @ordered
-	 */
-	protected byte unknownByte1 = UNKNOWN_BYTE1_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getStretchStep() <em>Stretch Step</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -376,64 +361,164 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	protected StretchStep stretchStep = STRETCH_STEP_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getUnknownByte2() <em>Unknown Byte2</em>}' attribute.
+	 * The default value of the '{@link #getUnknownByteMono1() <em>Unknown Byte Mono1</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUnknownByte2()
+	 * @see #getUnknownByteMono1()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final byte UNKNOWN_BYTE2_EDEFAULT = 0x00;
+	protected static final byte UNKNOWN_BYTE_MONO1_EDEFAULT = 0x00;
 
 	/**
-	 * The cached value of the '{@link #getUnknownByte2() <em>Unknown Byte2</em>}' attribute.
+	 * The cached value of the '{@link #getUnknownByteMono1() <em>Unknown Byte Mono1</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUnknownByte2()
+	 * @see #getUnknownByteMono1()
 	 * @generated
 	 * @ordered
 	 */
-	protected byte unknownByte2 = UNKNOWN_BYTE2_EDEFAULT;
+	protected byte unknownByteMono1 = UNKNOWN_BYTE_MONO1_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getUnknownByte3() <em>Unknown Byte3</em>}' attribute.
+	 * The default value of the '{@link #getUnknownByteMono2() <em>Unknown Byte Mono2</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUnknownByte3()
+	 * @see #getUnknownByteMono2()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final byte UNKNOWN_BYTE3_EDEFAULT = 0x00;
+	protected static final byte UNKNOWN_BYTE_MONO2_EDEFAULT = 0x00;
 
 	/**
-	 * The cached value of the '{@link #getUnknownByte3() <em>Unknown Byte3</em>}' attribute.
+	 * The cached value of the '{@link #getUnknownByteMono2() <em>Unknown Byte Mono2</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUnknownByte3()
+	 * @see #getUnknownByteMono2()
 	 * @generated
 	 * @ordered
 	 */
-	protected byte unknownByte3 = UNKNOWN_BYTE3_EDEFAULT;
+	protected byte unknownByteMono2 = UNKNOWN_BYTE_MONO2_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getUnknownByte4() <em>Unknown Byte4</em>}' attribute.
+	 * The default value of the '{@link #getUnknownByteMono3() <em>Unknown Byte Mono3</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUnknownByte4()
+	 * @see #getUnknownByteMono3()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final byte UNKNOWN_BYTE4_EDEFAULT = 0x00;
+	protected static final byte UNKNOWN_BYTE_MONO3_EDEFAULT = 0x00;
 
 	/**
-	 * The cached value of the '{@link #getUnknownByte4() <em>Unknown Byte4</em>}' attribute.
+	 * The cached value of the '{@link #getUnknownByteMono3() <em>Unknown Byte Mono3</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUnknownByte4()
+	 * @see #getUnknownByteMono3()
 	 * @generated
 	 * @ordered
 	 */
-	protected byte unknownByte4 = UNKNOWN_BYTE4_EDEFAULT;
+	protected byte unknownByteMono3 = UNKNOWN_BYTE_MONO3_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getUnknownByteMono4() <em>Unknown Byte Mono4</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUnknownByteMono4()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final byte UNKNOWN_BYTE_MONO4_EDEFAULT = 0x00;
+
+	/**
+	 * The cached value of the '{@link #getUnknownByteMono4() <em>Unknown Byte Mono4</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUnknownByteMono4()
+	 * @generated
+	 * @ordered
+	 */
+	protected byte unknownByteMono4 = UNKNOWN_BYTE_MONO4_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getUnknownByteStereo1() <em>Unknown Byte Stereo1</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUnknownByteStereo1()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final byte UNKNOWN_BYTE_STEREO1_EDEFAULT = 0x00;
+
+	/**
+	 * The cached value of the '{@link #getUnknownByteStereo1() <em>Unknown Byte Stereo1</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUnknownByteStereo1()
+	 * @generated
+	 * @ordered
+	 */
+	protected byte unknownByteStereo1 = UNKNOWN_BYTE_STEREO1_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getUnknownByteStereo2() <em>Unknown Byte Stereo2</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUnknownByteStereo2()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final byte UNKNOWN_BYTE_STEREO2_EDEFAULT = 0x00;
+
+	/**
+	 * The cached value of the '{@link #getUnknownByteStereo2() <em>Unknown Byte Stereo2</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUnknownByteStereo2()
+	 * @generated
+	 * @ordered
+	 */
+	protected byte unknownByteStereo2 = UNKNOWN_BYTE_STEREO2_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getUnknownByteStereo3() <em>Unknown Byte Stereo3</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUnknownByteStereo3()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final byte UNKNOWN_BYTE_STEREO3_EDEFAULT = 0x00;
+
+	/**
+	 * The cached value of the '{@link #getUnknownByteStereo3() <em>Unknown Byte Stereo3</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUnknownByteStereo3()
+	 * @generated
+	 * @ordered
+	 */
+	protected byte unknownByteStereo3 = UNKNOWN_BYTE_STEREO3_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getUnknownByteStereo4() <em>Unknown Byte Stereo4</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUnknownByteStereo4()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final byte UNKNOWN_BYTE_STEREO4_EDEFAULT = 0x00;
+
+	/**
+	 * The cached value of the '{@link #getUnknownByteStereo4() <em>Unknown Byte Stereo4</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUnknownByteStereo4()
+	 * @generated
+	 * @ordered
+	 */
+	protected byte unknownByteStereo4 = UNKNOWN_BYTE_STEREO4_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getAudioDataChannel1() <em>Audio Data Channel1</em>}' attribute.
@@ -1092,27 +1177,6 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public byte getUnknownByte1() {
-		return unknownByte1;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUnknownByte1(byte newUnknownByte1) {
-		byte oldUnknownByte1 = unknownByte1;
-		unknownByte1 = newUnknownByte1;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__UNKNOWN_BYTE1, oldUnknownByte1, unknownByte1));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public StretchStep getStretchStep() {
 		return stretchStep;
 	}
@@ -1134,8 +1198,8 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public byte getUnknownByte2() {
-		return unknownByte2;
+	public byte getUnknownByteMono1() {
+		return unknownByteMono1;
 	}
 
 	/**
@@ -1143,11 +1207,11 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setUnknownByte2(byte newUnknownByte2) {
-		byte oldUnknownByte2 = unknownByte2;
-		unknownByte2 = newUnknownByte2;
+	public void setUnknownByteMono1(byte newUnknownByteMono1) {
+		byte oldUnknownByteMono1 = unknownByteMono1;
+		unknownByteMono1 = newUnknownByteMono1;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__UNKNOWN_BYTE2, oldUnknownByte2, unknownByte2));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO1, oldUnknownByteMono1, unknownByteMono1));
 	}
 
 	/**
@@ -1155,8 +1219,8 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public byte getUnknownByte3() {
-		return unknownByte3;
+	public byte getUnknownByteMono2() {
+		return unknownByteMono2;
 	}
 
 	/**
@@ -1164,11 +1228,11 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setUnknownByte3(byte newUnknownByte3) {
-		byte oldUnknownByte3 = unknownByte3;
-		unknownByte3 = newUnknownByte3;
+	public void setUnknownByteMono2(byte newUnknownByteMono2) {
+		byte oldUnknownByteMono2 = unknownByteMono2;
+		unknownByteMono2 = newUnknownByteMono2;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__UNKNOWN_BYTE3, oldUnknownByte3, unknownByte3));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO2, oldUnknownByteMono2, unknownByteMono2));
 	}
 
 	/**
@@ -1176,8 +1240,8 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public byte getUnknownByte4() {
-		return unknownByte4;
+	public byte getUnknownByteMono3() {
+		return unknownByteMono3;
 	}
 
 	/**
@@ -1185,11 +1249,116 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setUnknownByte4(byte newUnknownByte4) {
-		byte oldUnknownByte4 = unknownByte4;
-		unknownByte4 = newUnknownByte4;
+	public void setUnknownByteMono3(byte newUnknownByteMono3) {
+		byte oldUnknownByteMono3 = unknownByteMono3;
+		unknownByteMono3 = newUnknownByteMono3;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__UNKNOWN_BYTE4, oldUnknownByte4, unknownByte4));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO3, oldUnknownByteMono3, unknownByteMono3));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public byte getUnknownByteMono4() {
+		return unknownByteMono4;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUnknownByteMono4(byte newUnknownByteMono4) {
+		byte oldUnknownByteMono4 = unknownByteMono4;
+		unknownByteMono4 = newUnknownByteMono4;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO4, oldUnknownByteMono4, unknownByteMono4));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public byte getUnknownByteStereo1() {
+		return unknownByteStereo1;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUnknownByteStereo1(byte newUnknownByteStereo1) {
+		byte oldUnknownByteStereo1 = unknownByteStereo1;
+		unknownByteStereo1 = newUnknownByteStereo1;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO1, oldUnknownByteStereo1, unknownByteStereo1));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public byte getUnknownByteStereo2() {
+		return unknownByteStereo2;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUnknownByteStereo2(byte newUnknownByteStereo2) {
+		byte oldUnknownByteStereo2 = unknownByteStereo2;
+		unknownByteStereo2 = newUnknownByteStereo2;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO2, oldUnknownByteStereo2, unknownByteStereo2));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public byte getUnknownByteStereo3() {
+		return unknownByteStereo3;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUnknownByteStereo3(byte newUnknownByteStereo3) {
+		byte oldUnknownByteStereo3 = unknownByteStereo3;
+		unknownByteStereo3 = newUnknownByteStereo3;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO3, oldUnknownByteStereo3, unknownByteStereo3));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public byte getUnknownByteStereo4() {
+		return unknownByteStereo4;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUnknownByteStereo4(byte newUnknownByteStereo4) {
+		byte oldUnknownByteStereo4 = unknownByteStereo4;
+		unknownByteStereo4 = newUnknownByteStereo4;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO4, oldUnknownByteStereo4, unknownByteStereo4));
 	}
 
 	/**
@@ -1331,9 +1500,9 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	public boolean isSlice() {
 		return (
 			this.getSliceArray()!=null && this.getSliceArray().length>0 && (
-				this.getUnknownByte2()!=0x00 ||
-				this.getUnknownByte3()!=0x00 ||
-				this.getUnknownByte4()!=0x00
+				this.getUnknownByteMono2()!=0x00 ||
+				this.getUnknownByteMono3()!=0x00 ||
+				this.getUnknownByteMono4()!=0x00
 			)
 		);
 	}
@@ -1620,15 +1789,15 @@ public class SampleImpl extends EObjectImpl implements Sample {
 		// byte 34
 		this.setPlayLevel(PlayLevel.get(in.getByte()));
 		// byte 35
-		this.setUnknownByte1(in.getByte());
+		this.setUnknownByteMono1(in.getByte());
 		// byte 36
 		this.setStretchStep(StretchStep.get(in.getByte()));
 		// byte 37
-		this.setUnknownByte2(in.getByte());
+		this.setUnknownByteMono2(in.getByte());
 		// byte 38
-		this.setUnknownByte3(in.getByte());
+		this.setUnknownByteMono3(in.getByte());
 		// byte 39
-		this.setUnknownByte4(in.getByte());
+		this.setUnknownByteMono4(in.getByte());
 	}
 
 	/**
@@ -1679,15 +1848,51 @@ public class SampleImpl extends EObjectImpl implements Sample {
 		// byte 38
 		this.setPlayLevel(PlayLevel.get(in.getByte()));
 		// byte 39
-		this.setUnknownByte1(in.getByte());
+		this.setUnknownByteStereo1(in.getByte());
 		// byte 40
 		this.setStretchStep(StretchStep.get(in.getByte()));
 		// byte 41
-		this.setUnknownByte2(in.getByte());
+		this.setUnknownByteStereo2(in.getByte());
 		// byte 42
-		this.setUnknownByte3(in.getByte());
+		this.setUnknownByteStereo3(in.getByte());
 		// byte 43
-		this.setUnknownByte4(in.getByte());
+		this.setUnknownByteStereo4(in.getByte());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void initOffsetChannel(byte[] b, AudioChannelType audioChannelType) {
+		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
+
+		// Get number of sample frames
+		int newNumberOfSampleFrames = ((in.limit() - 16) / 2);
+		if(newNumberOfSampleFrames>0) {
+			// Store number of sample frames
+			this.setNumberOfSampleFrames(newNumberOfSampleFrames);			
+			// Ignore first 16 bytes
+			in.getLong();
+			in.getLong();
+			// Declare temp byte[]
+			byte[] newAudioDataChannel = new byte[newNumberOfSampleFrames * 2];
+			in.getBytes(newAudioDataChannel);
+			// Store audio data
+			switch(audioChannelType) {
+				case MONO:
+					this.setAudioDataChannel1(newAudioDataChannel);
+					this.setAudioDataChannel2(newAudioDataChannel);
+					break;
+				case STEREO_1:
+					this.setAudioDataChannel1(newAudioDataChannel);
+					break;
+				case STEREO_2:
+					this.setAudioDataChannel2(newAudioDataChannel);
+					break;
+			}
+			// Ignore last 2 bytes
+		}
 	}
 
 	/**
@@ -1804,15 +2009,15 @@ public class SampleImpl extends EObjectImpl implements Sample {
 		// byte 34
 		buf.putUnsignedByte(this.getPlayLevel().getValue());
 		// byte 35
-		buf.putByte(this.getUnknownByte1());
+		buf.putByte(this.getUnknownByteMono1());
 		// byte 36
 		buf.putUnsignedByte(this.getStretchStep().getValue());
 		// byte 37
-		buf.putByte(this.getUnknownByte2());
+		buf.putByte(this.getUnknownByteMono2());
 		// byte 38
-		buf.putByte(this.getUnknownByte3());
+		buf.putByte(this.getUnknownByteMono3());
 		// byte 39
-		buf.putByte(this.getUnknownByte4());
+		buf.putByte(this.getUnknownByteMono4());
 		return buf.array();
 	}
 
@@ -1844,15 +2049,45 @@ public class SampleImpl extends EObjectImpl implements Sample {
 		// byte 38
 		buf.putUnsignedByte(this.getPlayLevel().getValue());
 		// byte 39
-		buf.putByte(this.getUnknownByte1());
+		buf.putByte(this.getUnknownByteStereo1());
 		// byte 40
 		buf.putUnsignedByte(this.getStretchStep().getValue());
 		// byte 41
-		buf.putByte(this.getUnknownByte2());
+		buf.putByte(this.getUnknownByteStereo2());
 		// byte 42
-		buf.putByte(this.getUnknownByte3());
+		buf.putByte(this.getUnknownByteStereo3());
 		// byte 43
-		buf.putByte(this.getUnknownByte4());
+		buf.putByte(this.getUnknownByteStereo4());
+		return buf.array();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public byte[] toOffsetChannelByteArray(AudioChannelType audioChannelType) {
+		byte[] audioData = this.getAudioDataChannelBoth();
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(audioData.length+18);
+		buf.putInt(0x80007FFF);		
+		// Stereo Channel 2
+		if(audioChannelType==AudioChannelType.STEREO_2) {
+			buf.putInt(this.getOffsetChannel2Start());
+			buf.putInt(this.getOffsetChannel2End());
+		}
+		// Mono/Stereo Channel 1
+		else {
+			buf.putInt(this.getOffsetChannel1Start());
+			buf.putInt(this.getOffsetChannel1End());
+		}
+		buf.putUnsignedByte(this.getSampleNumberCurrent().getValue());
+		buf.putUnsignedByte(audioChannelType.getValue());
+		buf.putShort((short) 0xffff);
+		buf.putBytes(audioData);
+		// Only for MONO samples
+		if(audioChannelType==AudioChannelType.MONO) {
+			buf.putBytes(this.getAudioDataLoopStart());
+		}
 		return buf.array();
 	}
 
@@ -1862,13 +2097,14 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	 * @generated NOT
 	 */
 	public byte[] toOffsetChannel1ByteArray() {
+		// TODO: consolidate toOffsetChannel1ByteArray(), toOffsetChannel2ByteArray(), and toOffsetChannelBothByteArray() into one method
 		byte[] audioData = this.getAudioDataChannel1();
 		ExtendedByteBuffer buf = new ExtendedByteBuffer(audioData.length+16);
 		buf.putInt(0x80007FFF);
 		buf.putInt(this.getOffsetChannel1Start());
 		buf.putInt(this.getOffsetChannel1End());
 		buf.putUnsignedByte(this.getSampleNumberCurrent().getValue());
-		buf.putUnsignedByte(0); // denotes mono / channel 1
+		buf.putUnsignedByte(1); // denotes stereo / channel 1
 		buf.putShort((short) 0xffff);
 		buf.putBytes(audioData);
 		return buf.array();
@@ -1880,13 +2116,14 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	 * @generated NOT
 	 */
 	public byte[] toOffsetChannel2ByteArray() {
+		// TODO: consolidate toOffsetChannel1ByteArray(), toOffsetChannel2ByteArray(), and toOffsetChannelBothByteArray() into one method
 		byte[] audioData = this.getAudioDataChannel2();
 		ExtendedByteBuffer buf = new ExtendedByteBuffer(audioData.length+16);
 		buf.putInt(0x80007FFF);
 		buf.putInt(this.getOffsetChannel2Start());
 		buf.putInt(this.getOffsetChannel2End());
 		buf.putUnsignedByte(this.getSampleNumberCurrent().getValue());
-		buf.putUnsignedByte(0); // denotes mono / channel 1
+		buf.putUnsignedByte(2); // denotes stereo / channel 2
 		buf.putShort((short) 0xffff);
 		buf.putBytes(audioData);
 		return buf.array();
@@ -1898,6 +2135,7 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	 * @generated NOT
 	 */
 	public byte[] toOffsetChannelBothByteArray() {
+		// TODO: consolidate toOffsetChannel1ByteArray(), toOffsetChannel2ByteArray(), and toOffsetChannelBothByteArray() into one method
 		byte[] audioData = this.getAudioDataChannelBoth();
 		ExtendedByteBuffer buf = new ExtendedByteBuffer(audioData.length+18);
 		buf.putInt(0x80007FFF);
@@ -2113,16 +2351,24 @@ public class SampleImpl extends EObjectImpl implements Sample {
 				return getNumberOfSampleFrames();
 			case EsxPackage.SAMPLE__PLAY_LEVEL:
 				return getPlayLevel();
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE1:
-				return getUnknownByte1();
 			case EsxPackage.SAMPLE__STRETCH_STEP:
 				return getStretchStep();
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE2:
-				return getUnknownByte2();
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE3:
-				return getUnknownByte3();
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE4:
-				return getUnknownByte4();
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO1:
+				return getUnknownByteMono1();
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO2:
+				return getUnknownByteMono2();
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO3:
+				return getUnknownByteMono3();
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO4:
+				return getUnknownByteMono4();
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO1:
+				return getUnknownByteStereo1();
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO2:
+				return getUnknownByteStereo2();
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO3:
+				return getUnknownByteStereo3();
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO4:
+				return getUnknownByteStereo4();
 			case EsxPackage.SAMPLE__AUDIO_DATA_CHANNEL1:
 				return getAudioDataChannel1();
 			case EsxPackage.SAMPLE__AUDIO_DATA_CHANNEL2:
@@ -2205,20 +2451,32 @@ public class SampleImpl extends EObjectImpl implements Sample {
 			case EsxPackage.SAMPLE__PLAY_LEVEL:
 				setPlayLevel((PlayLevel)newValue);
 				return;
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE1:
-				setUnknownByte1((Byte)newValue);
-				return;
 			case EsxPackage.SAMPLE__STRETCH_STEP:
 				setStretchStep((StretchStep)newValue);
 				return;
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE2:
-				setUnknownByte2((Byte)newValue);
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO1:
+				setUnknownByteMono1((Byte)newValue);
 				return;
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE3:
-				setUnknownByte3((Byte)newValue);
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO2:
+				setUnknownByteMono2((Byte)newValue);
 				return;
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE4:
-				setUnknownByte4((Byte)newValue);
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO3:
+				setUnknownByteMono3((Byte)newValue);
+				return;
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO4:
+				setUnknownByteMono4((Byte)newValue);
+				return;
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO1:
+				setUnknownByteStereo1((Byte)newValue);
+				return;
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO2:
+				setUnknownByteStereo2((Byte)newValue);
+				return;
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO3:
+				setUnknownByteStereo3((Byte)newValue);
+				return;
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO4:
+				setUnknownByteStereo4((Byte)newValue);
 				return;
 			case EsxPackage.SAMPLE__AUDIO_DATA_CHANNEL1:
 				setAudioDataChannel1((byte[])newValue);
@@ -2283,20 +2541,32 @@ public class SampleImpl extends EObjectImpl implements Sample {
 			case EsxPackage.SAMPLE__PLAY_LEVEL:
 				setPlayLevel(PLAY_LEVEL_EDEFAULT);
 				return;
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE1:
-				setUnknownByte1(UNKNOWN_BYTE1_EDEFAULT);
-				return;
 			case EsxPackage.SAMPLE__STRETCH_STEP:
 				setStretchStep(STRETCH_STEP_EDEFAULT);
 				return;
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE2:
-				setUnknownByte2(UNKNOWN_BYTE2_EDEFAULT);
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO1:
+				setUnknownByteMono1(UNKNOWN_BYTE_MONO1_EDEFAULT);
 				return;
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE3:
-				setUnknownByte3(UNKNOWN_BYTE3_EDEFAULT);
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO2:
+				setUnknownByteMono2(UNKNOWN_BYTE_MONO2_EDEFAULT);
 				return;
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE4:
-				setUnknownByte4(UNKNOWN_BYTE4_EDEFAULT);
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO3:
+				setUnknownByteMono3(UNKNOWN_BYTE_MONO3_EDEFAULT);
+				return;
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO4:
+				setUnknownByteMono4(UNKNOWN_BYTE_MONO4_EDEFAULT);
+				return;
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO1:
+				setUnknownByteStereo1(UNKNOWN_BYTE_STEREO1_EDEFAULT);
+				return;
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO2:
+				setUnknownByteStereo2(UNKNOWN_BYTE_STEREO2_EDEFAULT);
+				return;
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO3:
+				setUnknownByteStereo3(UNKNOWN_BYTE_STEREO3_EDEFAULT);
+				return;
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO4:
+				setUnknownByteStereo4(UNKNOWN_BYTE_STEREO4_EDEFAULT);
 				return;
 			case EsxPackage.SAMPLE__AUDIO_DATA_CHANNEL1:
 				setAudioDataChannel1(AUDIO_DATA_CHANNEL1_EDEFAULT);
@@ -2349,16 +2619,24 @@ public class SampleImpl extends EObjectImpl implements Sample {
 				return numberOfSampleFrames != NUMBER_OF_SAMPLE_FRAMES_EDEFAULT;
 			case EsxPackage.SAMPLE__PLAY_LEVEL:
 				return playLevel != PLAY_LEVEL_EDEFAULT;
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE1:
-				return unknownByte1 != UNKNOWN_BYTE1_EDEFAULT;
 			case EsxPackage.SAMPLE__STRETCH_STEP:
 				return stretchStep != STRETCH_STEP_EDEFAULT;
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE2:
-				return unknownByte2 != UNKNOWN_BYTE2_EDEFAULT;
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE3:
-				return unknownByte3 != UNKNOWN_BYTE3_EDEFAULT;
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE4:
-				return unknownByte4 != UNKNOWN_BYTE4_EDEFAULT;
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO1:
+				return unknownByteMono1 != UNKNOWN_BYTE_MONO1_EDEFAULT;
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO2:
+				return unknownByteMono2 != UNKNOWN_BYTE_MONO2_EDEFAULT;
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO3:
+				return unknownByteMono3 != UNKNOWN_BYTE_MONO3_EDEFAULT;
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO4:
+				return unknownByteMono4 != UNKNOWN_BYTE_MONO4_EDEFAULT;
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO1:
+				return unknownByteStereo1 != UNKNOWN_BYTE_STEREO1_EDEFAULT;
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO2:
+				return unknownByteStereo2 != UNKNOWN_BYTE_STEREO2_EDEFAULT;
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO3:
+				return unknownByteStereo3 != UNKNOWN_BYTE_STEREO3_EDEFAULT;
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO4:
+				return unknownByteStereo4 != UNKNOWN_BYTE_STEREO4_EDEFAULT;
 			case EsxPackage.SAMPLE__AUDIO_DATA_CHANNEL1:
 				return AUDIO_DATA_CHANNEL1_EDEFAULT == null ? audioDataChannel1 != null : !AUDIO_DATA_CHANNEL1_EDEFAULT.equals(audioDataChannel1);
 			case EsxPackage.SAMPLE__AUDIO_DATA_CHANNEL2:
@@ -2429,16 +2707,24 @@ public class SampleImpl extends EObjectImpl implements Sample {
 		result.append(numberOfSampleFrames);
 		result.append(", playLevel: ");
 		result.append(playLevel);
-		result.append(", unknownByte1: ");
-		result.append(unknownByte1);
 		result.append(", stretchStep: ");
 		result.append(stretchStep);
-		result.append(", unknownByte2: ");
-		result.append(unknownByte2);
-		result.append(", unknownByte3: ");
-		result.append(unknownByte3);
-		result.append(", unknownByte4: ");
-		result.append(unknownByte4);
+		result.append(", unknownByteMono1: ");
+		result.append(unknownByteMono1);
+		result.append(", unknownByteMono2: ");
+		result.append(unknownByteMono2);
+		result.append(", unknownByteMono3: ");
+		result.append(unknownByteMono3);
+		result.append(", unknownByteMono4: ");
+		result.append(unknownByteMono4);
+		result.append(", unknownByteStereo1: ");
+		result.append(unknownByteStereo1);
+		result.append(", unknownByteStereo2: ");
+		result.append(unknownByteStereo2);
+		result.append(", unknownByteStereo3: ");
+		result.append(unknownByteStereo3);
+		result.append(", unknownByteStereo4: ");
+		result.append(unknownByteStereo4);
 		result.append(", audioDataChannel1: ");
 		result.append(audioDataChannel1);
 		result.append(", audioDataChannel2: ");

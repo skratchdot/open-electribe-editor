@@ -188,6 +188,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return createArpeggiatorControlFromString(eDataType, initialValue);
 			case EsxPackage.ARPEGGIATOR_SCALE:
 				return createArpeggiatorScaleFromString(eDataType, initialValue);
+			case EsxPackage.AUDIO_CHANNEL_TYPE:
+				return createAudioChannelTypeFromString(eDataType, initialValue);
 			case EsxPackage.AUDIO_IN_MODE:
 				return createAudioInModeFromString(eDataType, initialValue);
 			case EsxPackage.BEAT:
@@ -295,6 +297,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 				return convertArpeggiatorControlToString(eDataType, instanceValue);
 			case EsxPackage.ARPEGGIATOR_SCALE:
 				return convertArpeggiatorScaleToString(eDataType, instanceValue);
+			case EsxPackage.AUDIO_CHANNEL_TYPE:
+				return convertAudioChannelTypeToString(eDataType, instanceValue);
 			case EsxPackage.AUDIO_IN_MODE:
 				return convertAudioInModeToString(eDataType, instanceValue);
 			case EsxPackage.BEAT:
@@ -1673,6 +1677,44 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public String convertArpeggiatorScaleToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AudioChannelType createAudioChannelType(String literal) {
+		AudioChannelType result = AudioChannelType.get(literal);
+		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.AUDIO_CHANNEL_TYPE.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AudioChannelType createAudioChannelTypeFromString(EDataType eDataType, String initialValue) {
+		return createAudioChannelType(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertAudioChannelType(AudioChannelType instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertAudioChannelTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

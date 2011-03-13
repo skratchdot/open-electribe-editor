@@ -39,11 +39,15 @@ import com.skratchdot.riff.wav.RIFFWave;
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSampleTune <em>Sample Tune</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getNumberOfSampleFrames <em>Number Of Sample Frames</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getPlayLevel <em>Play Level</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByte1 <em>Unknown Byte1</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getStretchStep <em>Stretch Step</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByte2 <em>Unknown Byte2</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByte3 <em>Unknown Byte3</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByte4 <em>Unknown Byte4</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByteMono1 <em>Unknown Byte Mono1</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByteMono2 <em>Unknown Byte Mono2</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByteMono3 <em>Unknown Byte Mono3</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByteMono4 <em>Unknown Byte Mono4</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByteStereo1 <em>Unknown Byte Stereo1</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByteStereo2 <em>Unknown Byte Stereo2</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByteStereo3 <em>Unknown Byte Stereo3</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByteStereo4 <em>Unknown Byte Stereo4</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getAudioDataChannel1 <em>Audio Data Channel1</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getAudioDataChannel2 <em>Audio Data Channel2</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getAudioDataChannelBoth <em>Audio Data Channel Both</em>}</li>
@@ -463,32 +467,6 @@ public interface Sample extends EObject {
 	void setPlayLevel(PlayLevel value);
 
 	/**
-	 * Returns the value of the '<em><b>Unknown Byte1</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Unknown Byte1</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Unknown Byte1</em>' attribute.
-	 * @see #setUnknownByte1(byte)
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_UnknownByte1()
-	 * @model
-	 * @generated
-	 */
-	byte getUnknownByte1();
-
-	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByte1 <em>Unknown Byte1</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Unknown Byte1</em>' attribute.
-	 * @see #getUnknownByte1()
-	 * @generated
-	 */
-	void setUnknownByte1(byte value);
-
-	/**
 	 * Returns the value of the '<em><b>Stretch Step</b></em>' attribute.
 	 * The literals are from the enumeration {@link com.skratchdot.electribe.model.esx.StretchStep}.
 	 * <!-- begin-user-doc -->
@@ -518,82 +496,220 @@ public interface Sample extends EObject {
 	void setStretchStep(StretchStep value);
 
 	/**
-	 * Returns the value of the '<em><b>Unknown Byte2</b></em>' attribute.
+	 * Returns the value of the '<em><b>Unknown Byte Mono1</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Unknown Byte2</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Unknown Byte Mono1</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Unknown Byte2</em>' attribute.
-	 * @see #setUnknownByte2(byte)
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_UnknownByte2()
-	 * @model
+	 * @return the value of the '<em>Unknown Byte Mono1</em>' attribute.
+	 * @see #setUnknownByteMono1(byte)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_UnknownByteMono1()
+	 * @model default="0"
 	 * @generated
 	 */
-	byte getUnknownByte2();
+	byte getUnknownByteMono1();
 
 	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByte2 <em>Unknown Byte2</em>}' attribute.
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByteMono1 <em>Unknown Byte Mono1</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Unknown Byte2</em>' attribute.
-	 * @see #getUnknownByte2()
+	 * @param value the new value of the '<em>Unknown Byte Mono1</em>' attribute.
+	 * @see #getUnknownByteMono1()
 	 * @generated
 	 */
-	void setUnknownByte2(byte value);
+	void setUnknownByteMono1(byte value);
 
 	/**
-	 * Returns the value of the '<em><b>Unknown Byte3</b></em>' attribute.
+	 * Returns the value of the '<em><b>Unknown Byte Mono2</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Unknown Byte3</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Unknown Byte Mono2</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Unknown Byte3</em>' attribute.
-	 * @see #setUnknownByte3(byte)
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_UnknownByte3()
-	 * @model
+	 * @return the value of the '<em>Unknown Byte Mono2</em>' attribute.
+	 * @see #setUnknownByteMono2(byte)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_UnknownByteMono2()
+	 * @model default="0"
 	 * @generated
 	 */
-	byte getUnknownByte3();
+	byte getUnknownByteMono2();
 
 	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByte3 <em>Unknown Byte3</em>}' attribute.
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByteMono2 <em>Unknown Byte Mono2</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Unknown Byte3</em>' attribute.
-	 * @see #getUnknownByte3()
+	 * @param value the new value of the '<em>Unknown Byte Mono2</em>' attribute.
+	 * @see #getUnknownByteMono2()
 	 * @generated
 	 */
-	void setUnknownByte3(byte value);
+	void setUnknownByteMono2(byte value);
 
 	/**
-	 * Returns the value of the '<em><b>Unknown Byte4</b></em>' attribute.
+	 * Returns the value of the '<em><b>Unknown Byte Mono3</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Unknown Byte4</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Unknown Byte Mono3</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Unknown Byte4</em>' attribute.
-	 * @see #setUnknownByte4(byte)
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_UnknownByte4()
-	 * @model
+	 * @return the value of the '<em>Unknown Byte Mono3</em>' attribute.
+	 * @see #setUnknownByteMono3(byte)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_UnknownByteMono3()
+	 * @model default="0"
 	 * @generated
 	 */
-	byte getUnknownByte4();
+	byte getUnknownByteMono3();
 
 	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByte4 <em>Unknown Byte4</em>}' attribute.
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByteMono3 <em>Unknown Byte Mono3</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Unknown Byte4</em>' attribute.
-	 * @see #getUnknownByte4()
+	 * @param value the new value of the '<em>Unknown Byte Mono3</em>' attribute.
+	 * @see #getUnknownByteMono3()
 	 * @generated
 	 */
-	void setUnknownByte4(byte value);
+	void setUnknownByteMono3(byte value);
+
+	/**
+	 * Returns the value of the '<em><b>Unknown Byte Mono4</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Unknown Byte Mono4</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Unknown Byte Mono4</em>' attribute.
+	 * @see #setUnknownByteMono4(byte)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_UnknownByteMono4()
+	 * @model default="0"
+	 * @generated
+	 */
+	byte getUnknownByteMono4();
+
+	/**
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByteMono4 <em>Unknown Byte Mono4</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Unknown Byte Mono4</em>' attribute.
+	 * @see #getUnknownByteMono4()
+	 * @generated
+	 */
+	void setUnknownByteMono4(byte value);
+
+	/**
+	 * Returns the value of the '<em><b>Unknown Byte Stereo1</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Unknown Byte Stereo1</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Unknown Byte Stereo1</em>' attribute.
+	 * @see #setUnknownByteStereo1(byte)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_UnknownByteStereo1()
+	 * @model default="0"
+	 * @generated
+	 */
+	byte getUnknownByteStereo1();
+
+	/**
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByteStereo1 <em>Unknown Byte Stereo1</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Unknown Byte Stereo1</em>' attribute.
+	 * @see #getUnknownByteStereo1()
+	 * @generated
+	 */
+	void setUnknownByteStereo1(byte value);
+
+	/**
+	 * Returns the value of the '<em><b>Unknown Byte Stereo2</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Unknown Byte Stereo2</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Unknown Byte Stereo2</em>' attribute.
+	 * @see #setUnknownByteStereo2(byte)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_UnknownByteStereo2()
+	 * @model default="0"
+	 * @generated
+	 */
+	byte getUnknownByteStereo2();
+
+	/**
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByteStereo2 <em>Unknown Byte Stereo2</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Unknown Byte Stereo2</em>' attribute.
+	 * @see #getUnknownByteStereo2()
+	 * @generated
+	 */
+	void setUnknownByteStereo2(byte value);
+
+	/**
+	 * Returns the value of the '<em><b>Unknown Byte Stereo3</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Unknown Byte Stereo3</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Unknown Byte Stereo3</em>' attribute.
+	 * @see #setUnknownByteStereo3(byte)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_UnknownByteStereo3()
+	 * @model default="0"
+	 * @generated
+	 */
+	byte getUnknownByteStereo3();
+
+	/**
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByteStereo3 <em>Unknown Byte Stereo3</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Unknown Byte Stereo3</em>' attribute.
+	 * @see #getUnknownByteStereo3()
+	 * @generated
+	 */
+	void setUnknownByteStereo3(byte value);
+
+	/**
+	 * Returns the value of the '<em><b>Unknown Byte Stereo4</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Unknown Byte Stereo4</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Unknown Byte Stereo4</em>' attribute.
+	 * @see #setUnknownByteStereo4(byte)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_UnknownByteStereo4()
+	 * @model default="0"
+	 * @generated
+	 */
+	byte getUnknownByteStereo4();
+
+	/**
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.Sample#getUnknownByteStereo4 <em>Unknown Byte Stereo4</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Unknown Byte Stereo4</em>' attribute.
+	 * @see #getUnknownByteStereo4()
+	 * @generated
+	 */
+	void setUnknownByteStereo4(byte value);
 
 	/**
 	 * Returns the value of the '<em><b>Audio Data Channel1</b></em>' attribute.
@@ -799,23 +915,7 @@ public interface Sample extends EObject {
 	 * @model
 	 * @generated
 	 */
-	void initOffsetChannel1(byte[] b);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void initOffsetChannel2(byte[] b);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void initOffsetChannelBoth(byte[] b);
+	void initOffsetChannel(byte[] b, AudioChannelType audioChannelType);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -847,23 +947,7 @@ public interface Sample extends EObject {
 	 * @model
 	 * @generated
 	 */
-	byte[] toOffsetChannel1ByteArray();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	byte[] toOffsetChannel2ByteArray();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	byte[] toOffsetChannelBothByteArray();
+	byte[] toOffsetChannelByteArray(AudioChannelType audioChannelType);
 
 	/**
 	 * <!-- begin-user-doc -->

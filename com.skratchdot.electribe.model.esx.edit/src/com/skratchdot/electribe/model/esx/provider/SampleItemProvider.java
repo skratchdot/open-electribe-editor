@@ -82,6 +82,14 @@ public class SampleItemProvider
 			addNumberOfSampleFramesPropertyDescriptor(object);
 			addPlayLevelPropertyDescriptor(object);
 			addStretchStepPropertyDescriptor(object);
+			addUnknownByteMono1PropertyDescriptor(object);
+			addUnknownByteMono2PropertyDescriptor(object);
+			addUnknownByteMono3PropertyDescriptor(object);
+			addUnknownByteMono4PropertyDescriptor(object);
+			addUnknownByteStereo1PropertyDescriptor(object);
+			addUnknownByteStereo2PropertyDescriptor(object);
+			addUnknownByteStereo3PropertyDescriptor(object);
+			addUnknownByteStereo4PropertyDescriptor(object);
 			addLoopPropertyDescriptor(object);
 			addSlicePropertyDescriptor(object);
 			addStereoOriginalPropertyDescriptor(object);
@@ -407,6 +415,182 @@ public class SampleItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Unknown Byte Mono1 feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUnknownByteMono1PropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sample_unknownByteMono1_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_unknownByteMono1_feature", "_UI_Sample_type"),
+				 EsxPackage.Literals.SAMPLE__UNKNOWN_BYTE_MONO1,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Unknown Byte Mono2 feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUnknownByteMono2PropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sample_unknownByteMono2_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_unknownByteMono2_feature", "_UI_Sample_type"),
+				 EsxPackage.Literals.SAMPLE__UNKNOWN_BYTE_MONO2,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Unknown Byte Mono3 feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUnknownByteMono3PropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sample_unknownByteMono3_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_unknownByteMono3_feature", "_UI_Sample_type"),
+				 EsxPackage.Literals.SAMPLE__UNKNOWN_BYTE_MONO3,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Unknown Byte Mono4 feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUnknownByteMono4PropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sample_unknownByteMono4_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_unknownByteMono4_feature", "_UI_Sample_type"),
+				 EsxPackage.Literals.SAMPLE__UNKNOWN_BYTE_MONO4,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Unknown Byte Stereo1 feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUnknownByteStereo1PropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sample_unknownByteStereo1_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_unknownByteStereo1_feature", "_UI_Sample_type"),
+				 EsxPackage.Literals.SAMPLE__UNKNOWN_BYTE_STEREO1,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Unknown Byte Stereo2 feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUnknownByteStereo2PropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sample_unknownByteStereo2_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_unknownByteStereo2_feature", "_UI_Sample_type"),
+				 EsxPackage.Literals.SAMPLE__UNKNOWN_BYTE_STEREO2,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Unknown Byte Stereo3 feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUnknownByteStereo3PropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sample_unknownByteStereo3_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_unknownByteStereo3_feature", "_UI_Sample_type"),
+				 EsxPackage.Literals.SAMPLE__UNKNOWN_BYTE_STEREO3,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Unknown Byte Stereo4 feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUnknownByteStereo4PropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sample_unknownByteStereo4_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_unknownByteStereo4_feature", "_UI_Sample_type"),
+				 EsxPackage.Literals.SAMPLE__UNKNOWN_BYTE_STEREO4,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Sample Number Original feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -680,11 +864,15 @@ public class SampleItemProvider
 			case EsxPackage.SAMPLE__SAMPLE_RATE:
 			case EsxPackage.SAMPLE__NUMBER_OF_SAMPLE_FRAMES:
 			case EsxPackage.SAMPLE__PLAY_LEVEL:
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE1:
 			case EsxPackage.SAMPLE__STRETCH_STEP:
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE2:
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE3:
-			case EsxPackage.SAMPLE__UNKNOWN_BYTE4:
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO1:
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO2:
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO3:
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_MONO4:
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO1:
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO2:
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO3:
+			case EsxPackage.SAMPLE__UNKNOWN_BYTE_STEREO4:
 			case EsxPackage.SAMPLE__AUDIO_DATA_CHANNEL1:
 			case EsxPackage.SAMPLE__AUDIO_DATA_CHANNEL2:
 			case EsxPackage.SAMPLE__AUDIO_DATA_CHANNEL_BOTH:
