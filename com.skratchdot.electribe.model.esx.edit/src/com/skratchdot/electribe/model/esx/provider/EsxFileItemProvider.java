@@ -42,6 +42,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.Pattern;
 import com.skratchdot.electribe.model.esx.Sample;
 
 /**
@@ -641,7 +642,7 @@ public class EsxFileItemProvider
 		}
 		// Replace with blank patterns
 		else if(feature == EsxPackage.Literals.ESX_FILE__PATTERNS && collection.size()>0) {
-			return UnexecutableCommand.INSTANCE;
+			return this.createRemovePatternCommand(domain, owner, feature, collection);
 		}
 		// Replace with blank songs
 		else if(feature == EsxPackage.Literals.ESX_FILE__SONGS && collection.size()>0) {
@@ -679,6 +680,43 @@ public class EsxFileItemProvider
 					blankSamples = new ArrayList<Sample>();
 					blankSamples.add(blankSample);
 					cmd.append(super.createReplaceCommand(domain, owner, feature, (Sample) removedSamples[i], blankSamples));
+				}
+			}
+			
+			return cmd;
+		}
+		else {
+			return UnexecutableCommand.INSTANCE;
+		}
+	}
+
+	protected Command createRemovePatternCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, Collection<?> collection) {
+		if(feature == EsxPackage.Literals.ESX_FILE__PATTERNS && collection.size()>0 && owner instanceof EsxFile) {
+			EsxFile esxFile = (EsxFile) owner;
+			Pattern blankPattern;
+			ArrayList<Pattern> blankPatterns;
+			Object[] removedPatterns = (Object[]) collection.toArray();
+			CompoundCommand cmd = new CompoundCommand();
+
+			// Loop through our list creating blank patterns, and setting the correct
+			// original pattern number
+			for(int i=0; i<removedPatterns.length; i++) {
+				// Prepare blankPattern in this loop
+				blankPattern = null;
+
+				// Create the blankPattern and make sure it has the correct Original Number
+				if(removedPatterns[i] instanceof Pattern) {
+					blankPattern = EsxFactory.eINSTANCE.createPattern();
+					blankPattern.init(esxFile.getEmptyPattern().toByteArray(), ((Pattern) removedPatterns[i]).getPatternNumberOriginal().getValue());
+				}
+
+				// We can create a replace command
+				if(blankPattern!=null) {
+					// Create a temp collection that contains one blankPattern
+					blankPatterns = new ArrayList<Pattern>();
+					blankPatterns.add(blankPattern);
+					cmd.append(super.createReplaceCommand(domain, owner, feature, (Pattern) removedPatterns[i], blankPatterns));
 				}
 			}
 			

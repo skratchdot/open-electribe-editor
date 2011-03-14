@@ -101,6 +101,7 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
+import com.skratchdot.electribe.model.esx.editor.commands.SyncPointersCommand;
 import com.skratchdot.electribe.model.esx.editor.util.EsxEditorUtil;
 import com.skratchdot.electribe.model.esx.provider.EsxItemProviderAdapterFactory;
 
@@ -1123,28 +1124,34 @@ public class EsxEditor
 					resourceToDiagnosticMap.clear();
 					for (Resource resource : editingDomain.getResourceSet().getResources()) {
 						if ((first || !resource.getContents().isEmpty() || isPersisted(resource)) && !editingDomain.isReadOnly(resource)) {
-								// Only attempt save if resource is valid
-								Diagnostic diagnostic = Diagnostician.INSTANCE.validate(resource.getContents().get(0));
-								if (diagnostic.getSeverity() == Diagnostic.ERROR
-										|| diagnostic.getSeverity() == Diagnostic.WARNING) {
-									resourceToDiagnosticMap.put(resource, diagnostic);
-								}
-								else {
-									try {
-										// Pass IProgressMonitor to EsxResourceImpl#doSave()
-										saveOptions.put("IProgressMonitor", monitor);
+							// Attempt to sync pointers after moves
+							SyncPointersCommand cmd = new SyncPointersCommand(resource, editingDomain);
+							if(cmd.canExecute()) {
+								editingDomain.getCommandStack().execute(cmd);
+							}
 
-										// Save resource
-										long timeStamp = resource.getTimeStamp();
-										resource.save(saveOptions);
-										if (resource.getTimeStamp() != timeStamp) {
-											savedResources.add(resource);
-										}
-									}
-									catch (Exception exception) {
-										resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
+							// Only attempt save if resource is valid
+							Diagnostic diagnostic = Diagnostician.INSTANCE.validate(resource.getContents().get(0));
+							if (diagnostic.getSeverity() == Diagnostic.ERROR
+									|| diagnostic.getSeverity() == Diagnostic.WARNING) {
+								resourceToDiagnosticMap.put(resource, diagnostic);
+							}
+							else {
+								try {
+									// Pass IProgressMonitor to EsxResourceImpl#doSave()
+									saveOptions.put("IProgressMonitor", monitor);
+
+									// Save resource
+									long timeStamp = resource.getTimeStamp();
+									resource.save(saveOptions);
+									if (resource.getTimeStamp() != timeStamp) {
+										savedResources.add(resource);
 									}
 								}
+								catch (Exception exception) {
+									resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
+								}
+							}
 							first = false;
 						}
 					}

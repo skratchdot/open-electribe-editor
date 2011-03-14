@@ -931,12 +931,16 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Will return null if patternPointer is invalid or out of bounds
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public Pattern getPatternFromPointer(int patternPointer) throws IndexOutOfBoundsException {
+	public Pattern getPatternFromPointer(int patternPointer) {
+		Pattern pattern = null;
+		if(!EsxUtil.isValidPatternNumber(patternPointer)) {
+			return pattern;
+		}
 		if(this.isSyncPatternsOnMoveEnabled()) {
-			Pattern pattern;
 			for(int i=0; i<EsxUtil.NUM_PATTERNS; i++) {
 				pattern = this.getPatterns().get(i);
 				if(pattern.getPatternNumberOriginal().getValue()==patternPointer) {
@@ -945,19 +949,28 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 			}
 		}
 		else {
-			return this.getPatterns().get(patternPointer);
+			try {
+				pattern = this.getPatterns().get(patternPointer);
+			} catch(IndexOutOfBoundsException e) {
+				e.printStackTrace();
+				pattern = null;
+			}
 		}
-		throw new IndexOutOfBoundsException();
+		return pattern;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Will return null if samplePointer is invalid or out of bounds
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public Sample getSampleFromPointer(int samplePointer) throws IndexOutOfBoundsException {
+	public Sample getSampleFromPointer(int samplePointer) {
+		Sample sample = null;
+		if(!EsxUtil.isValidSampleNumber(samplePointer)) {
+			return sample;
+		}
 		if(this.isSyncSamplesOnMoveEnabled()) {
-			Sample sample;
 			for(int i=0; i<EsxUtil.NUM_SAMPLES; i++) {
 				sample = this.getSamples().get(i);
 				if(sample.getSampleNumberOriginal().getValue()==samplePointer) {
@@ -966,9 +979,14 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 			}
 		}
 		else {
-			return this.getSamples().get(samplePointer);
+			try {
+				sample = this.getSamples().get(samplePointer);
+			} catch(IndexOutOfBoundsException e) {
+				e.printStackTrace();
+				sample = null;
+			}
 		}
-		throw new IndexOutOfBoundsException();
+		return sample;
 	}
 
 	/**

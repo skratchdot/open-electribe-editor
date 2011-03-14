@@ -649,6 +649,59 @@
             </command>
          </menu>
       </menuContribution>
+      <menuContribution
+            locationURI="popup:com.skratchdot.electribe.model.esx.presentation.EsxEditorPartPatterns.PatternViewer?after=undoEnd">
+         <separator
+               name="editStart"
+               visible="true">
+         </separator>
+         <command
+               commandId="org.eclipse.ui.edit.cut"
+               style="push">
+         </command>
+         <command
+               commandId="org.eclipse.ui.edit.copy"
+               style="push">
+         </command>
+         <command
+               commandId="org.eclipse.ui.edit.paste"
+               style="push">
+         </command>
+         <separator
+               name="deleteStart"
+               visible="true">
+         </separator>
+         <command
+               commandId="org.eclipse.ui.edit.delete"
+               style="push">
+         </command>
+         <separator
+               name="editEnd"
+               visible="true">
+         </separator>
+         <menu
+               icon="icons/full/obj16/import_wiz.gif"
+               id="import"
+               label="Import">
+            <command
+                  commandId="com.skratchdot.electribe.model.esx.editor.commands.importAudioFiles"
+                  style="push">
+            </command>
+         </menu>
+         <menu
+               icon="icons/full/obj16/export_wiz.gif"
+               id="export"
+               label="Export">
+            <command
+                  commandId="com.skratchdot.electribe.model.esx.editor.commands.exportAllAudioFiles"
+                  style="push">
+            </command>
+            <command
+                  commandId="com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
    </extension>
 
    <extension point="org.eclipse.ui.perspectives">

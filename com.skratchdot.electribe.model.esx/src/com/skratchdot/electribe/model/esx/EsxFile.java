@@ -647,18 +647,18 @@ public interface EsxFile extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model exceptions="com.skratchdot.electribe.model.esx.IndexOutOfBoundsException"
+	 * @model
 	 * @generated
 	 */
-	Pattern getPatternFromPointer(int patternPointer) throws IndexOutOfBoundsException;
+	Pattern getPatternFromPointer(int patternPointer);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model exceptions="com.skratchdot.electribe.model.esx.IndexOutOfBoundsException"
+	 * @model
 	 * @generated
 	 */
-	Sample getSampleFromPointer(int samplePointer) throws IndexOutOfBoundsException;
+	Sample getSampleFromPointer(int samplePointer);
 
 	/**
 	 * <!-- begin-user-doc -->

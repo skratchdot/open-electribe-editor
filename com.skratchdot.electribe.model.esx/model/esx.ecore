@@ -4,10 +4,10 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="esx"
     nsURI="http:///com/skratchdot/electribe/model/esx.ecore" nsPrefix="com.skratchdot.electribe.model.esx">
   <eClassifiers xsi:type="ecore:EClass" name="EsxFile">
-    <eOperations name="getPatternFromPointer" eType="#//Pattern" eExceptions="#//IndexOutOfBoundsException">
+    <eOperations name="getPatternFromPointer" eType="#//Pattern">
       <eParameters name="patternPointer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
-    <eOperations name="getSampleFromPointer" eType="#//Sample" eExceptions="#//IndexOutOfBoundsException">
+    <eOperations name="getSampleFromPointer" eType="#//Sample">
       <eParameters name="samplePointer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
     <eOperations name="init">

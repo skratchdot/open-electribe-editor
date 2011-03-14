@@ -3829,11 +3829,9 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 
 		EOperation op = addEOperation(esxFileEClass, this.getPattern(), "getPatternFromPointer", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "patternPointer", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, this.getIndexOutOfBoundsException());
 
 		op = addEOperation(esxFileEClass, this.getSample(), "getSampleFromPointer", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "samplePointer", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, this.getIndexOutOfBoundsException());
 
 		op = addEOperation(esxFileEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
