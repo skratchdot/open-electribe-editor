@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2009-2010 SKRATCHDOT.COM&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA;http://www.eclipse.org/legal/epl-v10.html&#xD;&#xA; &#xD;&#xA;Contributors:&#xD;&#xA;    JEFF |:at:| SKRATCHDOT |:dot:| COM"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2009-2011 SKRATCHDOT.COM&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA;http://www.eclipse.org/legal/epl-v10.html&#xD;&#xA; &#xD;&#xA;Contributors:&#xD;&#xA;    JEFF |:at:| SKRATCHDOT |:dot:| COM"
     modelDirectory="/com.skratchdot.electribe.model.esx/src" editorDirectory="/com.skratchdot.electribe.model.esx.editorgen/src"
     modelPluginID="com.skratchdot.electribe.model.esx" modelName="Esx" richClientPlatform="true"
     importerID="org.eclipse.emf.importer.java" complianceLevel="6.0" copyrightFields="false"
