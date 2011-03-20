@@ -322,7 +322,6 @@ public class SongImpl extends EObjectImpl implements Song {
 		// Create our list of SongPatterns
 		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
 			SongPattern songPattern = EsxFactory.eINSTANCE.createSongPattern();
-			songPattern.setPositionOriginal(i);
 			this.getSongPatterns().add(i, songPattern);
 		}
 		// bytes 16~271 (SongPatterns - PatternNumber)

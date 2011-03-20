@@ -77,7 +77,6 @@ public class SongPatternItemProvider
 			addNoteOffsetPropertyDescriptor(object);
 			addPatternNumberPropertyDescriptor(object);
 			addPositionCurrentPropertyDescriptor(object);
-			addPositionOriginalPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -119,28 +118,6 @@ public class SongPatternItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_SongPattern_positionCurrent_feature", "_UI_SongPattern_type"),
 				 EsxPackage.Literals.SONG_PATTERN__POSITION_CURRENT,
 				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Position Original feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPositionOriginalPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongPattern_positionOriginal_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongPattern_positionOriginal_feature", "_UI_SongPattern_type"),
-				 EsxPackage.Literals.SONG_PATTERN__POSITION_ORIGINAL,
-				 true,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
@@ -222,13 +199,11 @@ public class SongPatternItemProvider
 	public String getColumnText(Object object, int columnIndex) {
 		switch(columnIndex) {
 			// Current Position
-			case 0: return Integer.toString(((SongPattern) object).getPositionCurrent());
-			// Original Position
-			case 1: return Integer.toString(((SongPattern) object).getPositionOriginal());
+			case 0: return Integer.toString(((SongPattern) object).getPositionCurrent()+1);
 			// Pattern Number
-			case 2: return ((SongPattern) object).getPatternNumber().getLiteral();
+			case 1: return ((SongPattern) object).getPatternNumber().getLiteral();
 			// Note Offset
-			case 3: return Byte.toString(((SongPattern) object).getNoteOffset());
+			case 2: return Byte.toString(((SongPattern) object).getNoteOffset());
 			default: return getText(object);
 		}
 	}
@@ -249,7 +224,6 @@ public class SongPatternItemProvider
 			case EsxPackage.SONG_PATTERN__NOTE_OFFSET:
 			case EsxPackage.SONG_PATTERN__PATTERN_NUMBER:
 			case EsxPackage.SONG_PATTERN__POSITION_CURRENT:
-			case EsxPackage.SONG_PATTERN__POSITION_ORIGINAL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

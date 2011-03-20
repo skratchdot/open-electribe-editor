@@ -33,7 +33,6 @@ import com.skratchdot.electribe.model.esx.SongPattern;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongPatternImpl#getNoteOffset <em>Note Offset</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongPatternImpl#getPatternNumber <em>Pattern Number</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongPatternImpl#getPositionCurrent <em>Position Current</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongPatternImpl#getPositionOriginal <em>Position Original</em>}</li>
  * </ul>
  * </p>
  *
@@ -101,26 +100,6 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 	protected static final int POSITION_CURRENT_EDEFAULT = -1;
 
 	/**
-	 * The default value of the '{@link #getPositionOriginal() <em>Position Original</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPositionOriginal()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int POSITION_ORIGINAL_EDEFAULT = -1;
-
-	/**
-	 * The cached value of the '{@link #getPositionOriginal() <em>Position Original</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPositionOriginal()
-	 * @generated
-	 * @ordered
-	 */
-	protected int positionOriginal = POSITION_ORIGINAL_EDEFAULT;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -178,27 +157,6 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getPositionOriginal() {
-		return positionOriginal;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPositionOriginal(int newPositionOriginal) {
-		int oldPositionOriginal = positionOriginal;
-		positionOriginal = newPositionOriginal;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_PATTERN__POSITION_ORIGINAL, oldPositionOriginal, positionOriginal));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public byte getNoteOffset() {
 		return noteOffset;
 	}
@@ -246,8 +204,6 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 				return getPatternNumber();
 			case EsxPackage.SONG_PATTERN__POSITION_CURRENT:
 				return getPositionCurrent();
-			case EsxPackage.SONG_PATTERN__POSITION_ORIGINAL:
-				return getPositionOriginal();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -266,9 +222,6 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 			case EsxPackage.SONG_PATTERN__PATTERN_NUMBER:
 				setPatternNumber((PatternNumber)newValue);
 				return;
-			case EsxPackage.SONG_PATTERN__POSITION_ORIGINAL:
-				setPositionOriginal((Integer)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -286,9 +239,6 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 				return;
 			case EsxPackage.SONG_PATTERN__PATTERN_NUMBER:
 				setPatternNumber(PATTERN_NUMBER_EDEFAULT);
-				return;
-			case EsxPackage.SONG_PATTERN__POSITION_ORIGINAL:
-				setPositionOriginal(POSITION_ORIGINAL_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -310,8 +260,6 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 				return patternNumber != PATTERN_NUMBER_EDEFAULT;
 			case EsxPackage.SONG_PATTERN__POSITION_CURRENT:
 				return getPositionCurrent() != POSITION_CURRENT_EDEFAULT;
-			case EsxPackage.SONG_PATTERN__POSITION_ORIGINAL:
-				return positionOriginal != POSITION_ORIGINAL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -330,8 +278,6 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 		result.append(noteOffset);
 		result.append(", patternNumber: ");
 		result.append(patternNumber);
-		result.append(", positionOriginal: ");
-		result.append(positionOriginal);
 		result.append(')');
 		return result.toString();
 	}
