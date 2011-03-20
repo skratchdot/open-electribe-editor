@@ -14,6 +14,7 @@ package com.skratchdot.electribe.model.esx.presentation;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
@@ -43,6 +44,8 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.EditorPart;
 
+import com.skratchdot.electribe.model.esx.EsxFile;
+
 /**
  * http://www.eclipse.org/articles/article.php?file=Article-Integrating-EMF-GMF-Editors/index.html
  */
@@ -51,6 +54,7 @@ public abstract class EsxEditorPart extends EditorPart
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPart"; //$NON-NLS-1$
 
 	protected EsxEditor parentEditor;
+	protected EsxFile esxFile;
 
 	/**
 	 * @param parent
@@ -58,6 +62,12 @@ public abstract class EsxEditorPart extends EditorPart
 	public EsxEditorPart(EsxEditor parent) {
 		super();
 		this.parentEditor = parent;
+		Resource resource =
+			(Resource)this.getEditingDomain().getResourceSet().getResources().get(0);
+		Object rootObject = resource.getContents().get(0);
+		if(rootObject instanceof EsxFile) {
+			this.esxFile = (EsxFile) rootObject;
+		}
 	}
 
 	/**

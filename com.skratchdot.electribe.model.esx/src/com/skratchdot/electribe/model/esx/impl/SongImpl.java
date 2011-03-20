@@ -29,7 +29,6 @@ import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.MuteHold;
 import com.skratchdot.electribe.model.esx.NextSongNumber;
-import com.skratchdot.electribe.model.esx.PatternNumber;
 import com.skratchdot.electribe.model.esx.Song;
 import com.skratchdot.electribe.model.esx.SongEvent;
 import com.skratchdot.electribe.model.esx.SongEventControl;
@@ -326,7 +325,7 @@ public class SongImpl extends EObjectImpl implements Song {
 		}
 		// bytes 16~271 (SongPatterns - PatternNumber)
 		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
-			this.getSongPatterns().get(i).setPatternNumber(PatternNumber.get(in.getUnsignedByte()));
+			this.getSongPatterns().get(i).setPatternPointer((short) in.getUnsignedByte());
 		}
 		// bytes 272~527
 		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
@@ -638,7 +637,7 @@ public class SongImpl extends EObjectImpl implements Song {
 		buf.putShort(this.getNumberOfSongEventsCurrent());
 		// bytes 16~271 (SongPatterns - PatternNumber)
 		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
-			buf.putUnsignedByte(this.getSongPatterns().get(i).getPatternNumber().getValue());
+			buf.putUnsignedByte(this.getSongPatterns().get(i).getPatternPointer());
 		}
 		// bytes 272~527
 		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {

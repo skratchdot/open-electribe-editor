@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
 import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
@@ -314,11 +313,8 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 	 */
 	@Override
 	public void setInput(Object input) {
-		Resource resource =
-			(Resource)this.getEditingDomain().getResourceSet().getResources().get(0);
-		Object rootObject = resource.getContents().get(0);
-		if(rootObject instanceof EsxFile) {
-			this.tableViewer.setInput(rootObject);
+		if(input instanceof EsxFile) {
+			this.tableViewer.setInput(input);
 			this.refresh();
 		}
 	}

@@ -72,6 +72,7 @@ public class PatternItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addLabelPropertyDescriptor(object);
 			addTempoPropertyDescriptor(object);
 			addSwingPropertyDescriptor(object);
 			addPatternLengthPropertyDescriptor(object);
@@ -103,6 +104,28 @@ public class PatternItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Pattern_name_feature", "_UI_Pattern_type"),
 				 EsxPackage.Literals.PATTERN__NAME,
 				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Label feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLabelPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Pattern_label_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Pattern_label_feature", "_UI_Pattern_type"),
+				 EsxPackage.Literals.PATTERN__LABEL,
+				 false,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -518,6 +541,7 @@ public class PatternItemProvider
 
 		switch (notification.getFeatureID(Pattern.class)) {
 			case EsxPackage.PATTERN__NAME:
+			case EsxPackage.PATTERN__LABEL:
 			case EsxPackage.PATTERN__SWING:
 			case EsxPackage.PATTERN__PATTERN_LENGTH:
 			case EsxPackage.PATTERN__RESERVED_BIT_AFTER_PATTERN_LENGTH:

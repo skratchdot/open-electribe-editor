@@ -75,7 +75,7 @@ public class EsxCompositeSampleInPatternInfo extends EsxComposite {
 
 		// Create our columns
 		this.parentPart.addColumnToTableViewer(this.tableViewer, "#", 50);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Pattern", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Pattern", 100);
 		this.parentPart.addColumnToTableViewer(this.tableViewer, "PartCount", null);
 		this.parentPart.addColumnToTableViewer(this.tableViewer, "PartList", 400);
 

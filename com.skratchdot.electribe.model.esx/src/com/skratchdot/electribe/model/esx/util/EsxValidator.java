@@ -222,12 +222,12 @@ public class EsxValidator extends EObjectValidator {
 				return validatePartWithSlice((PartWithSlice)value, diagnostics, context);
 			case EsxPackage.PATTERN:
 				return validatePattern((Pattern)value, diagnostics, context);
+			case EsxPackage.SAMPLE_IN_PATTERN_INFO:
+				return validateSampleInPatternInfo((SampleInPatternInfo)value, diagnostics, context);
 			case EsxPackage.PATTERN_SET_PARAMETER:
 				return validatePatternSetParameter((PatternSetParameter)value, diagnostics, context);
 			case EsxPackage.SAMPLE:
 				return validateSample((Sample)value, diagnostics, context);
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO:
-				return validateSampleInPatternInfo((SampleInPatternInfo)value, diagnostics, context);
 			case EsxPackage.SAMPLE_TUNE:
 				return validateSampleTune((SampleTune)value, diagnostics, context);
 			case EsxPackage.SEQUENCE_DATA:

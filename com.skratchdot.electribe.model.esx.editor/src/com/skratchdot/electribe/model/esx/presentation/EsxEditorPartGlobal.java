@@ -11,10 +11,9 @@
  */
 package com.skratchdot.electribe.model.esx.presentation;
 
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.SashForm;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
 
@@ -82,11 +81,8 @@ public class EsxEditorPartGlobal extends EsxEditorPart {
 	 */
 	@Override
 	public void setInput(Object input) {
-		Resource resource =
-			(Resource)this.getEditingDomain().getResourceSet().getResources().get(0);
-		Object rootObject = resource.getContents().get(0);
-		if(rootObject instanceof EsxFile) {
-			this.globalParameters = ((EsxFile) rootObject).getGlobalParameters();
+		if(input instanceof EsxFile) {
+			this.globalParameters = ((EsxFile) input).getGlobalParameters();
 
 			this.refresh();
 		}

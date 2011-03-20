@@ -161,16 +161,16 @@ public class EsxAdapterFactory extends AdapterFactoryImpl {
 				return createPatternAdapter();
 			}
 			@Override
+			public Adapter caseSampleInPatternInfo(SampleInPatternInfo object) {
+				return createSampleInPatternInfoAdapter();
+			}
+			@Override
 			public Adapter casePatternSetParameter(PatternSetParameter object) {
 				return createPatternSetParameterAdapter();
 			}
 			@Override
 			public Adapter caseSample(Sample object) {
 				return createSampleAdapter();
-			}
-			@Override
-			public Adapter caseSampleInPatternInfo(SampleInPatternInfo object) {
-				return createSampleInPatternInfoAdapter();
 			}
 			@Override
 			public Adapter caseSampleTune(SampleTune object) {

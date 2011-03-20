@@ -861,9 +861,9 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 		if (partNoteNumberItemProvider != null) partNoteNumberItemProvider.dispose();
 		if (partStretchSliceItemProvider != null) partStretchSliceItemProvider.dispose();
 		if (patternItemProvider != null) patternItemProvider.dispose();
+		if (sampleInPatternInfoItemProvider != null) sampleInPatternInfoItemProvider.dispose();
 		if (patternSetParameterItemProvider != null) patternSetParameterItemProvider.dispose();
 		if (sampleItemProvider != null) sampleItemProvider.dispose();
-		if (sampleInPatternInfoItemProvider != null) sampleInPatternInfoItemProvider.dispose();
 		if (sampleTuneItemProvider != null) sampleTuneItemProvider.dispose();
 		if (sequenceDataItemProvider != null) sequenceDataItemProvider.dispose();
 		if (sequenceDataGateItemProvider != null) sequenceDataGateItemProvider.dispose();

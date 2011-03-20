@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.SampleInPatternInfo#getIndex <em>Index</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.SampleInPatternInfo#getPatternNumber <em>Pattern Number</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.SampleInPatternInfo#getPatternLabel <em>Pattern Label</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.SampleInPatternInfo#getPartCount <em>Part Count</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.SampleInPatternInfo#getPartList <em>Part List</em>}</li>
  * </ul>
@@ -61,33 +61,30 @@ public interface SampleInPatternInfo extends EObject {
 	void setIndex(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Pattern Number</b></em>' attribute.
-	 * The literals are from the enumeration {@link com.skratchdot.electribe.model.esx.PatternNumber}.
+	 * Returns the value of the '<em><b>Pattern Label</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Pattern Number</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Pattern Label</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Pattern Number</em>' attribute.
-	 * @see com.skratchdot.electribe.model.esx.PatternNumber
-	 * @see #setPatternNumber(PatternNumber)
-	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSampleInPatternInfo_PatternNumber()
+	 * @return the value of the '<em>Pattern Label</em>' attribute.
+	 * @see #setPatternLabel(String)
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSampleInPatternInfo_PatternLabel()
 	 * @model
 	 * @generated
 	 */
-	PatternNumber getPatternNumber();
+	String getPatternLabel();
 
 	/**
-	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.SampleInPatternInfo#getPatternNumber <em>Pattern Number</em>}' attribute.
+	 * Sets the value of the '{@link com.skratchdot.electribe.model.esx.SampleInPatternInfo#getPatternLabel <em>Pattern Label</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Pattern Number</em>' attribute.
-	 * @see com.skratchdot.electribe.model.esx.PatternNumber
-	 * @see #getPatternNumber()
+	 * @param value the new value of the '<em>Pattern Label</em>' attribute.
+	 * @see #getPatternLabel()
 	 * @generated
 	 */
-	void setPatternNumber(PatternNumber value);
+	void setPatternLabel(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Part Count</b></em>' attribute.

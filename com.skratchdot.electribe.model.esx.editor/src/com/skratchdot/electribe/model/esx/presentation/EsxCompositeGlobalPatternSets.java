@@ -34,7 +34,6 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.PatternNumber;
 import com.skratchdot.electribe.model.esx.PatternSetParameter;
 public class EsxCompositeGlobalPatternSets extends EsxComposite {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositeGlobalParametersPatternSets"; //$NON-NLS-1$
@@ -67,10 +66,10 @@ public class EsxCompositeGlobalPatternSets extends EsxComposite {
 		setLayout(new GridLayout(4, false));
 
 		textPatternSetParameter = this.createGridData2ColumnTextLabel(this, "Pattern Number");
-		comboPatternSetParameter = this.createGridData2ColumnComboInput(this, "", this.getLiteralStrings(PatternNumber.values()) , new SelectionAdapter() {
+		comboPatternSetParameter = this.createGridData2ColumnComboInput(this, "", this.getPatternLabelStrings(), new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_NUMBER, PatternNumber.get(comboPatternSetParameter.getSelectionIndex()), false, -1);
+				setFeatureForSelectedItems(selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_POINTER, (short)comboPatternSetParameter.getSelectionIndex(), false, -1);
 			}
 		});
 
@@ -159,7 +158,7 @@ public class EsxCompositeGlobalPatternSets extends EsxComposite {
 	@Override
 	public void refresh() {
 		String multipleValueString = "<Multiple Values>";
-		this.textPatternSetParameter.setText(getMultiString(this.selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_NUMBER, multipleValueString));
+		this.textPatternSetParameter.setText(getMultiStringPatternLabels(this.selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_POINTER, multipleValueString));
 	}
 
 	/* (non-Javadoc)
@@ -168,7 +167,8 @@ public class EsxCompositeGlobalPatternSets extends EsxComposite {
 	@Override
 	public void refreshInputs() {
 		String multipleValueString = "";
-		this.comboPatternSetParameter.setText(getMultiString(this.selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_NUMBER, multipleValueString));
+		this.comboPatternSetParameter.setItems(this.getPatternLabelStrings());
+		this.comboPatternSetParameter.setText(getMultiStringPatternLabels(this.selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_POINTER, multipleValueString));
 	}
 
 }

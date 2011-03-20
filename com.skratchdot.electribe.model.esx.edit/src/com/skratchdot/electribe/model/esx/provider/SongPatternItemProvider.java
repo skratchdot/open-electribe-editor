@@ -18,6 +18,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
@@ -32,6 +33,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.SongPattern;
 
@@ -75,32 +77,10 @@ public class SongPatternItemProvider
 
 			addEmptyPropertyDescriptor(object);
 			addNoteOffsetPropertyDescriptor(object);
-			addPatternNumberPropertyDescriptor(object);
+			addPatternPointerPropertyDescriptor(object);
 			addPositionCurrentPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Pattern Number feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPatternNumberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongPattern_patternNumber_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongPattern_patternNumber_feature", "_UI_SongPattern_type"),
-				 EsxPackage.Literals.SONG_PATTERN__PATTERN_NUMBER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -139,6 +119,28 @@ public class SongPatternItemProvider
 				 getString("_UI_SongPattern_noteOffset_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_SongPattern_noteOffset_feature", "_UI_SongPattern_type"),
 				 EsxPackage.Literals.SONG_PATTERN__NOTE_OFFSET,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Pattern Pointer feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPatternPointerPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SongPattern_patternPointer_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SongPattern_patternPointer_feature", "_UI_SongPattern_type"),
+				 EsxPackage.Literals.SONG_PATTERN__PATTERN_POINTER,
 				 true,
 				 false,
 				 false,
@@ -201,7 +203,17 @@ public class SongPatternItemProvider
 			// Current Position
 			case 0: return Integer.toString(((SongPattern) object).getPositionCurrent()+1);
 			// Pattern Number
-			case 1: return ((SongPattern) object).getPatternNumber().getLiteral();
+			case 1: {
+				if(((SongPattern) object).eResource()!=null) {
+					Resource resource = (Resource) ((SongPattern) object).eResource();
+					Object rootObject = resource.getContents().get(0);
+					if(rootObject instanceof EsxFile) {
+						try {
+							return ((EsxFile) rootObject).getPatternFromPointer(((SongPattern) object).getPatternPointer()).getLabel();
+						} catch(Exception e) {}
+					}
+				}
+			}
 			// Note Offset
 			case 2: return Byte.toString(((SongPattern) object).getNoteOffset());
 			default: return getText(object);
@@ -222,7 +234,7 @@ public class SongPatternItemProvider
 		switch (notification.getFeatureID(SongPattern.class)) {
 			case EsxPackage.SONG_PATTERN__EMPTY:
 			case EsxPackage.SONG_PATTERN__NOTE_OFFSET:
-			case EsxPackage.SONG_PATTERN__PATTERN_NUMBER:
+			case EsxPackage.SONG_PATTERN__PATTERN_POINTER:
 			case EsxPackage.SONG_PATTERN__POSITION_CURRENT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
-import com.skratchdot.electribe.model.esx.AudioChannelType;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -34,6 +33,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreEList;
 
+import com.skratchdot.electribe.model.esx.AudioChannelType;
 import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
@@ -1684,7 +1684,7 @@ public class SampleImpl extends EObjectImpl implements Sample {
 					if(currentPartCount>0) {
 						SampleInPatternInfo info = EsxFactory.eINSTANCE.createSampleInPatternInfo();
 						info.setIndex(list.size()+1);
-						info.setPatternNumber(currentPattern.getPatternNumberCurrent());
+						info.setPatternLabel(currentPattern.getLabel());
 						info.setPartCount(currentPartCount);
 						info.setPartList(currentPartList);
 						list.add(info);

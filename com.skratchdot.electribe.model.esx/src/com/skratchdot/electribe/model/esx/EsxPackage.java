@@ -472,7 +472,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getPatternSetParameter()
 	 * @generated
 	 */
-	int PATTERN_SET_PARAMETER = 21;
+	int PATTERN_SET_PARAMETER = 22;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.MidiChannelTypeImpl <em>Midi Channel Type</em>}' class.
@@ -2252,13 +2252,22 @@ public interface EsxPackage extends EPackage {
 	int PATTERN__NAME = 0;
 
 	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PATTERN__LABEL = 1;
+
+	/**
 	 * The feature id for the '<em><b>Tempo</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__TEMPO = 1;
+	int PATTERN__TEMPO = 2;
 
 	/**
 	 * The feature id for the '<em><b>Swing</b></em>' attribute.
@@ -2267,7 +2276,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__SWING = 2;
+	int PATTERN__SWING = 3;
 
 	/**
 	 * The feature id for the '<em><b>Pattern Length</b></em>' attribute.
@@ -2276,7 +2285,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__PATTERN_LENGTH = 3;
+	int PATTERN__PATTERN_LENGTH = 4;
 
 	/**
 	 * The feature id for the '<em><b>Reserved Bit After Pattern Length</b></em>' attribute.
@@ -2285,7 +2294,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__RESERVED_BIT_AFTER_PATTERN_LENGTH = 4;
+	int PATTERN__RESERVED_BIT_AFTER_PATTERN_LENGTH = 5;
 
 	/**
 	 * The feature id for the '<em><b>Beat</b></em>' attribute.
@@ -2294,7 +2303,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__BEAT = 5;
+	int PATTERN__BEAT = 6;
 
 	/**
 	 * The feature id for the '<em><b>Roll Type</b></em>' attribute.
@@ -2303,7 +2312,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__ROLL_TYPE = 6;
+	int PATTERN__ROLL_TYPE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Fx Chain</b></em>' attribute.
@@ -2312,7 +2321,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__FX_CHAIN = 7;
+	int PATTERN__FX_CHAIN = 8;
 
 	/**
 	 * The feature id for the '<em><b>Last Step</b></em>' attribute.
@@ -2321,7 +2330,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__LAST_STEP = 8;
+	int PATTERN__LAST_STEP = 9;
 
 	/**
 	 * The feature id for the '<em><b>Arpeggiator Scale</b></em>' attribute.
@@ -2330,7 +2339,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__ARPEGGIATOR_SCALE = 9;
+	int PATTERN__ARPEGGIATOR_SCALE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Reserved Bits After Arpeggiator Scale</b></em>' attribute.
@@ -2339,7 +2348,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE = 10;
+	int PATTERN__RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Arpeggiator Center Note</b></em>' attribute.
@@ -2348,7 +2357,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__ARPEGGIATOR_CENTER_NOTE = 11;
+	int PATTERN__ARPEGGIATOR_CENTER_NOTE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Mute Status</b></em>' attribute.
@@ -2357,7 +2366,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__MUTE_STATUS = 12;
+	int PATTERN__MUTE_STATUS = 13;
 
 	/**
 	 * The feature id for the '<em><b>Swing Status</b></em>' attribute.
@@ -2366,7 +2375,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__SWING_STATUS = 13;
+	int PATTERN__SWING_STATUS = 14;
 
 	/**
 	 * The feature id for the '<em><b>Output Bus Status</b></em>' attribute.
@@ -2375,7 +2384,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__OUTPUT_BUS_STATUS = 14;
+	int PATTERN__OUTPUT_BUS_STATUS = 15;
 
 	/**
 	 * The feature id for the '<em><b>Accent Status</b></em>' attribute.
@@ -2384,7 +2393,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__ACCENT_STATUS = 15;
+	int PATTERN__ACCENT_STATUS = 16;
 
 	/**
 	 * The feature id for the '<em><b>Drum Parts</b></em>' containment reference list.
@@ -2393,7 +2402,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__DRUM_PARTS = 16;
+	int PATTERN__DRUM_PARTS = 17;
 
 	/**
 	 * The feature id for the '<em><b>Keyboard Parts</b></em>' containment reference list.
@@ -2402,7 +2411,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__KEYBOARD_PARTS = 17;
+	int PATTERN__KEYBOARD_PARTS = 18;
 
 	/**
 	 * The feature id for the '<em><b>Stretch Slice Parts</b></em>' containment reference list.
@@ -2411,7 +2420,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__STRETCH_SLICE_PARTS = 18;
+	int PATTERN__STRETCH_SLICE_PARTS = 19;
 
 	/**
 	 * The feature id for the '<em><b>Audio In Part</b></em>' containment reference.
@@ -2420,7 +2429,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__AUDIO_IN_PART = 19;
+	int PATTERN__AUDIO_IN_PART = 20;
 
 	/**
 	 * The feature id for the '<em><b>Accent Part</b></em>' containment reference.
@@ -2429,7 +2438,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__ACCENT_PART = 20;
+	int PATTERN__ACCENT_PART = 21;
 
 	/**
 	 * The feature id for the '<em><b>Fx Parameters</b></em>' containment reference list.
@@ -2438,7 +2447,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__FX_PARAMETERS = 21;
+	int PATTERN__FX_PARAMETERS = 22;
 
 	/**
 	 * The feature id for the '<em><b>Motion Parameters</b></em>' containment reference list.
@@ -2447,7 +2456,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__MOTION_PARAMETERS = 22;
+	int PATTERN__MOTION_PARAMETERS = 23;
 
 	/**
 	 * The feature id for the '<em><b>Empty</b></em>' attribute.
@@ -2456,7 +2465,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__EMPTY = 23;
+	int PATTERN__EMPTY = 24;
 
 	/**
 	 * The feature id for the '<em><b>Pattern Number Original</b></em>' attribute.
@@ -2465,7 +2474,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__PATTERN_NUMBER_ORIGINAL = 24;
+	int PATTERN__PATTERN_NUMBER_ORIGINAL = 25;
 
 	/**
 	 * The feature id for the '<em><b>Pattern Number Current</b></em>' attribute.
@@ -2474,7 +2483,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN__PATTERN_NUMBER_CURRENT = 25;
+	int PATTERN__PATTERN_NUMBER_CURRENT = 26;
 
 	/**
 	 * The number of structural features of the '<em>Pattern</em>' class.
@@ -2483,34 +2492,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN_FEATURE_COUNT = 26;
-
-	/**
-	 * The feature id for the '<em><b>Pattern Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PATTERN_SET_PARAMETER__PATTERN_NUMBER = 0;
-
-	/**
-	 * The feature id for the '<em><b>Position Current</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PATTERN_SET_PARAMETER__POSITION_CURRENT = 1;
-
-	/**
-	 * The number of structural features of the '<em>Pattern Set Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PATTERN_SET_PARAMETER_FEATURE_COUNT = 2;
+	int PATTERN_FEATURE_COUNT = 27;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.SampleImpl <em>Sample</em>}' class.
@@ -2520,7 +2502,89 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSample()
 	 * @generated
 	 */
-	int SAMPLE = 22;
+	int SAMPLE = 23;
+
+	/**
+	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.SampleInPatternInfoImpl <em>Sample In Pattern Info</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.impl.SampleInPatternInfoImpl
+	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSampleInPatternInfo()
+	 * @generated
+	 */
+	int SAMPLE_IN_PATTERN_INFO = 21;
+
+	/**
+	 * The feature id for the '<em><b>Index</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE_IN_PATTERN_INFO__INDEX = 0;
+
+	/**
+	 * The feature id for the '<em><b>Pattern Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL = 1;
+
+	/**
+	 * The feature id for the '<em><b>Part Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE_IN_PATTERN_INFO__PART_COUNT = 2;
+
+	/**
+	 * The feature id for the '<em><b>Part List</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE_IN_PATTERN_INFO__PART_LIST = 3;
+
+	/**
+	 * The number of structural features of the '<em>Sample In Pattern Info</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE_IN_PATTERN_INFO_FEATURE_COUNT = 4;
+
+	/**
+	 * The feature id for the '<em><b>Position Current</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PATTERN_SET_PARAMETER__POSITION_CURRENT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Pattern Pointer</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PATTERN_SET_PARAMETER__PATTERN_POINTER = 1;
+
+	/**
+	 * The number of structural features of the '<em>Pattern Set Parameter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PATTERN_SET_PARAMETER_FEATURE_COUNT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2872,61 +2936,6 @@ public interface EsxPackage extends EPackage {
 	 * @ordered
 	 */
 	int SAMPLE_FEATURE_COUNT = 38;
-
-	/**
-	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.SampleInPatternInfoImpl <em>Sample In Pattern Info</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.impl.SampleInPatternInfoImpl
-	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSampleInPatternInfo()
-	 * @generated
-	 */
-	int SAMPLE_IN_PATTERN_INFO = 23;
-
-	/**
-	 * The feature id for the '<em><b>Index</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SAMPLE_IN_PATTERN_INFO__INDEX = 0;
-
-	/**
-	 * The feature id for the '<em><b>Pattern Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SAMPLE_IN_PATTERN_INFO__PATTERN_NUMBER = 1;
-
-	/**
-	 * The feature id for the '<em><b>Part Count</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SAMPLE_IN_PATTERN_INFO__PART_COUNT = 2;
-
-	/**
-	 * The feature id for the '<em><b>Part List</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SAMPLE_IN_PATTERN_INFO__PART_LIST = 3;
-
-	/**
-	 * The number of structural features of the '<em>Sample In Pattern Info</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SAMPLE_IN_PATTERN_INFO_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.SampleTuneImpl <em>Sample Tune</em>}' class.
@@ -3832,13 +3841,13 @@ public interface EsxPackage extends EPackage {
 	int SONG_PATTERN__NOTE_OFFSET = 1;
 
 	/**
-	 * The feature id for the '<em><b>Pattern Number</b></em>' attribute.
+	 * The feature id for the '<em><b>Pattern Pointer</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SONG_PATTERN__PATTERN_NUMBER = 2;
+	int SONG_PATTERN__PATTERN_POINTER = 2;
 
 	/**
 	 * The feature id for the '<em><b>Position Current</b></em>' attribute.
@@ -4834,17 +4843,6 @@ public interface EsxPackage extends EPackage {
 	EClass getPatternSetParameter();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.PatternSetParameter#getPatternNumber <em>Pattern Number</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Pattern Number</em>'.
-	 * @see com.skratchdot.electribe.model.esx.PatternSetParameter#getPatternNumber()
-	 * @see #getPatternSetParameter()
-	 * @generated
-	 */
-	EAttribute getPatternSetParameter_PatternNumber();
-
-	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.PatternSetParameter#getPositionCurrent <em>Position Current</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4854,6 +4852,17 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPatternSetParameter_PositionCurrent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.PatternSetParameter#getPatternPointer <em>Pattern Pointer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Pattern Pointer</em>'.
+	 * @see com.skratchdot.electribe.model.esx.PatternSetParameter#getPatternPointer()
+	 * @see #getPatternSetParameter()
+	 * @generated
+	 */
+	EAttribute getPatternSetParameter_PatternPointer();
 
 	/**
 	 * Returns the meta object for class '{@link com.skratchdot.electribe.model.esx.MidiChannelType <em>Midi Channel Type</em>}'.
@@ -5648,6 +5657,17 @@ public interface EsxPackage extends EPackage {
 	EAttribute getPattern_Name();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Pattern#getLabel <em>Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Label</em>'.
+	 * @see com.skratchdot.electribe.model.esx.Pattern#getLabel()
+	 * @see #getPattern()
+	 * @generated
+	 */
+	EAttribute getPattern_Label();
+
+	/**
 	 * Returns the meta object for the containment reference '{@link com.skratchdot.electribe.model.esx.Pattern#getTempo <em>Tempo</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6317,15 +6337,15 @@ public interface EsxPackage extends EPackage {
 	EAttribute getSampleInPatternInfo_Index();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SampleInPatternInfo#getPatternNumber <em>Pattern Number</em>}'.
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SampleInPatternInfo#getPatternLabel <em>Pattern Label</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Pattern Number</em>'.
-	 * @see com.skratchdot.electribe.model.esx.SampleInPatternInfo#getPatternNumber()
+	 * @return the meta object for the attribute '<em>Pattern Label</em>'.
+	 * @see com.skratchdot.electribe.model.esx.SampleInPatternInfo#getPatternLabel()
 	 * @see #getSampleInPatternInfo()
 	 * @generated
 	 */
-	EAttribute getSampleInPatternInfo_PatternNumber();
+	EAttribute getSampleInPatternInfo_PatternLabel();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SampleInPatternInfo#getPartCount <em>Part Count</em>}'.
@@ -6589,17 +6609,6 @@ public interface EsxPackage extends EPackage {
 	EClass getSongPattern();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongPattern#getPatternNumber <em>Pattern Number</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Pattern Number</em>'.
-	 * @see com.skratchdot.electribe.model.esx.SongPattern#getPatternNumber()
-	 * @see #getSongPattern()
-	 * @generated
-	 */
-	EAttribute getSongPattern_PatternNumber();
-
-	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongPattern#getPositionCurrent <em>Position Current</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6620,6 +6629,17 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSongPattern_NoteOffset();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongPattern#getPatternPointer <em>Pattern Pointer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Pattern Pointer</em>'.
+	 * @see com.skratchdot.electribe.model.esx.SongPattern#getPatternPointer()
+	 * @see #getSongPattern()
+	 * @generated
+	 */
+	EAttribute getSongPattern_PatternPointer();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.SongPattern#isEmpty <em>Empty</em>}'.
@@ -7804,20 +7824,20 @@ public interface EsxPackage extends EPackage {
 		EClass PATTERN_SET_PARAMETER = eINSTANCE.getPatternSetParameter();
 
 		/**
-		 * The meta object literal for the '<em><b>Pattern Number</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PATTERN_SET_PARAMETER__PATTERN_NUMBER = eINSTANCE.getPatternSetParameter_PatternNumber();
-
-		/**
 		 * The meta object literal for the '<em><b>Position Current</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute PATTERN_SET_PARAMETER__POSITION_CURRENT = eINSTANCE.getPatternSetParameter_PositionCurrent();
+
+		/**
+		 * The meta object literal for the '<em><b>Pattern Pointer</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PATTERN_SET_PARAMETER__PATTERN_POINTER = eINSTANCE.getPatternSetParameter_PatternPointer();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.MidiChannelTypeImpl <em>Midi Channel Type</em>}' class.
@@ -8456,6 +8476,14 @@ public interface EsxPackage extends EPackage {
 		EAttribute PATTERN__NAME = eINSTANCE.getPattern_Name();
 
 		/**
+		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PATTERN__LABEL = eINSTANCE.getPattern_Label();
+
+		/**
 		 * The meta object literal for the '<em><b>Tempo</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -8948,12 +8976,12 @@ public interface EsxPackage extends EPackage {
 		EAttribute SAMPLE_IN_PATTERN_INFO__INDEX = eINSTANCE.getSampleInPatternInfo_Index();
 
 		/**
-		 * The meta object literal for the '<em><b>Pattern Number</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Pattern Label</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE_IN_PATTERN_INFO__PATTERN_NUMBER = eINSTANCE.getSampleInPatternInfo_PatternNumber();
+		EAttribute SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL = eINSTANCE.getSampleInPatternInfo_PatternLabel();
 
 		/**
 		 * The meta object literal for the '<em><b>Part Count</b></em>' attribute feature.
@@ -9154,14 +9182,6 @@ public interface EsxPackage extends EPackage {
 		EClass SONG_PATTERN = eINSTANCE.getSongPattern();
 
 		/**
-		 * The meta object literal for the '<em><b>Pattern Number</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SONG_PATTERN__PATTERN_NUMBER = eINSTANCE.getSongPattern_PatternNumber();
-
-		/**
 		 * The meta object literal for the '<em><b>Position Current</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -9176,6 +9196,14 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SONG_PATTERN__NOTE_OFFSET = eINSTANCE.getSongPattern_NoteOffset();
+
+		/**
+		 * The meta object literal for the '<em><b>Pattern Pointer</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SONG_PATTERN__PATTERN_POINTER = eINSTANCE.getSongPattern_PatternPointer();
 
 		/**
 		 * The meta object literal for the '<em><b>Empty</b></em>' attribute feature.

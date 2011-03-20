@@ -33,7 +33,6 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.PatternNumber;
 import com.skratchdot.electribe.model.esx.Song;
 import com.skratchdot.electribe.model.esx.SongPattern;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
@@ -70,10 +69,10 @@ public class EsxCompositeSongPatterns extends EsxComposite {
 		setLayout(new GridLayout(4, false));
 
 		textPatternNumber = this.createGridData2ColumnTextLabel(this, "Pattern Number");
-		comboPatternNumber = this.createGridData2ColumnComboInput(this, "Pattern Number", this.getLiteralStrings(PatternNumber.values()) , new SelectionAdapter() {
+		comboPatternNumber = this.createGridData2ColumnComboInput(this, "Pattern Number", this.getPatternLabelStrings(), new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(selectedSongPatterns, EsxPackage.Literals.SONG_PATTERN__PATTERN_NUMBER, PatternNumber.get(comboPatternNumber.getSelectionIndex()), false, -1);
+				setFeatureForSelectedItems(selectedSongPatterns, EsxPackage.Literals.SONG_PATTERN__PATTERN_POINTER, (short)comboPatternNumber.getSelectionIndex(), false, -1);
 			}
 		});
 
@@ -181,7 +180,7 @@ public class EsxCompositeSongPatterns extends EsxComposite {
 
 		String multipleValueString = "<Multiple Values>";
 
-		this.textPatternNumber.setText(getMultiString(this.selectedSongPatterns, EsxPackage.Literals.SONG_PATTERN__PATTERN_NUMBER, multipleValueString));
+		this.textPatternNumber.setText(getMultiStringPatternLabels(this.selectedSongPatterns, EsxPackage.Literals.SONG_PATTERN__PATTERN_POINTER, multipleValueString));
 		this.textNoteOffset.setText(getMultiString(this.selectedSongPatterns, EsxPackage.Literals.SONG_PATTERN__NOTE_OFFSET, multipleValueString));
 	}
 
@@ -194,8 +193,9 @@ public class EsxCompositeSongPatterns extends EsxComposite {
 
 		String multipleValueString = "";
 
-		this.comboPatternNumber.setText(getMultiString(this.selectedSongPatterns, EsxPackage.Literals.SONG_PATTERN__PATTERN_NUMBER, multipleValueString));
-		this.inputNoteOffset.setText(getMultiString(this.selectedSongPatterns, EsxPackage.Literals.SONG_PATTERN__NOTE_OFFSET, multipleValueString));		
+		this.comboPatternNumber.setItems(this.getPatternLabelStrings());
+		this.comboPatternNumber.setText(getMultiStringPatternLabels(this.selectedSongPatterns, EsxPackage.Literals.SONG_PATTERN__PATTERN_POINTER, multipleValueString));
+		this.inputNoteOffset.setText(getMultiString(this.selectedSongPatterns, EsxPackage.Literals.SONG_PATTERN__NOTE_OFFSET, multipleValueString));
 	}
 
 }

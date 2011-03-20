@@ -11,16 +11,13 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
-import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.PatternNumber;
-import com.skratchdot.electribe.model.esx.SampleInPatternInfo;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.SampleInPatternInfo;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,7 +27,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleInPatternInfoImpl#getIndex <em>Index</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleInPatternInfoImpl#getPatternNumber <em>Pattern Number</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleInPatternInfoImpl#getPatternLabel <em>Pattern Label</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleInPatternInfoImpl#getPartCount <em>Part Count</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleInPatternInfoImpl#getPartList <em>Part List</em>}</li>
  * </ul>
@@ -60,24 +57,24 @@ public class SampleInPatternInfoImpl extends EObjectImpl implements SampleInPatt
 	protected int index = INDEX_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getPatternNumber() <em>Pattern Number</em>}' attribute.
+	 * The default value of the '{@link #getPatternLabel() <em>Pattern Label</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPatternNumber()
+	 * @see #getPatternLabel()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final PatternNumber PATTERN_NUMBER_EDEFAULT = PatternNumber.PATTERN_A01;
+	protected static final String PATTERN_LABEL_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getPatternNumber() <em>Pattern Number</em>}' attribute.
+	 * The cached value of the '{@link #getPatternLabel() <em>Pattern Label</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPatternNumber()
+	 * @see #getPatternLabel()
 	 * @generated
 	 * @ordered
 	 */
-	protected PatternNumber patternNumber = PATTERN_NUMBER_EDEFAULT;
+	protected String patternLabel = PATTERN_LABEL_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPartCount() <em>Part Count</em>}' attribute.
@@ -164,8 +161,8 @@ public class SampleInPatternInfoImpl extends EObjectImpl implements SampleInPatt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PatternNumber getPatternNumber() {
-		return patternNumber;
+	public String getPatternLabel() {
+		return patternLabel;
 	}
 
 	/**
@@ -173,11 +170,11 @@ public class SampleInPatternInfoImpl extends EObjectImpl implements SampleInPatt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPatternNumber(PatternNumber newPatternNumber) {
-		PatternNumber oldPatternNumber = patternNumber;
-		patternNumber = newPatternNumber == null ? PATTERN_NUMBER_EDEFAULT : newPatternNumber;
+	public void setPatternLabel(String newPatternLabel) {
+		String oldPatternLabel = patternLabel;
+		patternLabel = newPatternLabel;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_NUMBER, oldPatternNumber, patternNumber));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL, oldPatternLabel, patternLabel));
 	}
 
 	/**
@@ -232,8 +229,8 @@ public class SampleInPatternInfoImpl extends EObjectImpl implements SampleInPatt
 		switch (featureID) {
 			case EsxPackage.SAMPLE_IN_PATTERN_INFO__INDEX:
 				return getIndex();
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_NUMBER:
-				return getPatternNumber();
+			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL:
+				return getPatternLabel();
 			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_COUNT:
 				return getPartCount();
 			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_LIST:
@@ -253,8 +250,8 @@ public class SampleInPatternInfoImpl extends EObjectImpl implements SampleInPatt
 			case EsxPackage.SAMPLE_IN_PATTERN_INFO__INDEX:
 				setIndex((Integer)newValue);
 				return;
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_NUMBER:
-				setPatternNumber((PatternNumber)newValue);
+			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL:
+				setPatternLabel((String)newValue);
 				return;
 			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_COUNT:
 				setPartCount((Integer)newValue);
@@ -277,8 +274,8 @@ public class SampleInPatternInfoImpl extends EObjectImpl implements SampleInPatt
 			case EsxPackage.SAMPLE_IN_PATTERN_INFO__INDEX:
 				setIndex(INDEX_EDEFAULT);
 				return;
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_NUMBER:
-				setPatternNumber(PATTERN_NUMBER_EDEFAULT);
+			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL:
+				setPatternLabel(PATTERN_LABEL_EDEFAULT);
 				return;
 			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_COUNT:
 				setPartCount(PART_COUNT_EDEFAULT);
@@ -300,8 +297,8 @@ public class SampleInPatternInfoImpl extends EObjectImpl implements SampleInPatt
 		switch (featureID) {
 			case EsxPackage.SAMPLE_IN_PATTERN_INFO__INDEX:
 				return index != INDEX_EDEFAULT;
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_NUMBER:
-				return patternNumber != PATTERN_NUMBER_EDEFAULT;
+			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL:
+				return PATTERN_LABEL_EDEFAULT == null ? patternLabel != null : !PATTERN_LABEL_EDEFAULT.equals(patternLabel);
 			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_COUNT:
 				return partCount != PART_COUNT_EDEFAULT;
 			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_LIST:
@@ -322,8 +319,8 @@ public class SampleInPatternInfoImpl extends EObjectImpl implements SampleInPatt
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (index: ");
 		result.append(index);
-		result.append(", patternNumber: ");
-		result.append(patternNumber);
+		result.append(", patternLabel: ");
+		result.append(patternLabel);
 		result.append(", partCount: ");
 		result.append(partCount);
 		result.append(", partList: ");

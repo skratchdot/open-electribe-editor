@@ -34,6 +34,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import com.skratchdot.electribe.model.esx.util.EsxUtil;
+
 public abstract class EsxComposite extends Composite implements IEditingDomainProvider {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxComposite"; //$NON-NLS-1$
 
@@ -99,6 +101,35 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 */
 	protected AdapterFactory getAdapterFactory() {
 		return parentPart.getAdapterFactory();
+	}
+
+	/**
+	 * @return
+	 */
+	protected String[] getPatternLabelStrings() {
+		if(this.parentPart.esxFile!=null) {
+			String[] literals = new String[EsxUtil.NUM_PATTERNS];
+			for(int i=0; i<EsxUtil.NUM_PATTERNS; i++) {
+				literals[i] = this.parentPart.esxFile.getPatterns().get(i).getLabel();
+			}
+			return literals;
+		}
+		return new String[0];
+	}
+
+	/**
+	 * @param list A list of EObjects
+	 * @param feature The feature to compare
+	 * @param multiText The String to return if the given features toString() values don't match
+	 * @return
+	 */
+	protected String getMultiStringPatternLabels(List<? extends EObject> list, EStructuralFeature feature, String multiText) {
+		String patternLabelString = getMultiString(list, feature, multiText);
+		try {
+			int patternPointer = Integer.parseInt(patternLabelString);
+			patternLabelString = this.parentPart.esxFile.getPatternFromPointer(patternPointer).getLabel();
+		} catch(Exception e) {}
+		return patternLabelString;
 	}
 
 	/**
@@ -379,5 +410,5 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 		}
 		return literals;
 	}
-
+	
 }

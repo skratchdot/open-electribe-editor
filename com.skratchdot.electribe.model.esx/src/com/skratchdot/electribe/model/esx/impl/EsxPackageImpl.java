@@ -1182,7 +1182,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPatternSetParameter_PatternNumber() {
+	public EAttribute getPatternSetParameter_PositionCurrent() {
 		return (EAttribute)patternSetParameterEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1191,7 +1191,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPatternSetParameter_PositionCurrent() {
+	public EAttribute getPatternSetParameter_PatternPointer() {
 		return (EAttribute)patternSetParameterEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1866,8 +1866,17 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getPattern_Label() {
+		return (EAttribute)patternEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getPattern_Tempo() {
-		return (EReference)patternEClass.getEStructuralFeatures().get(1);
+		return (EReference)patternEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1876,15 +1885,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_Swing() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPattern_PatternLength() {
 		return (EAttribute)patternEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -1893,7 +1893,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPattern_ReservedBitAfterPatternLength() {
+	public EAttribute getPattern_PatternLength() {
 		return (EAttribute)patternEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -1902,7 +1902,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPattern_Beat() {
+	public EAttribute getPattern_ReservedBitAfterPatternLength() {
 		return (EAttribute)patternEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -1911,7 +1911,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPattern_RollType() {
+	public EAttribute getPattern_Beat() {
 		return (EAttribute)patternEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -1920,7 +1920,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPattern_FxChain() {
+	public EAttribute getPattern_RollType() {
 		return (EAttribute)patternEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -1929,7 +1929,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPattern_LastStep() {
+	public EAttribute getPattern_FxChain() {
 		return (EAttribute)patternEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -1938,7 +1938,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPattern_ArpeggiatorScale() {
+	public EAttribute getPattern_LastStep() {
 		return (EAttribute)patternEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -1947,7 +1947,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPattern_ReservedBitsAfterArpeggiatorScale() {
+	public EAttribute getPattern_ArpeggiatorScale() {
 		return (EAttribute)patternEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -1956,7 +1956,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPattern_ArpeggiatorCenterNote() {
+	public EAttribute getPattern_ReservedBitsAfterArpeggiatorScale() {
 		return (EAttribute)patternEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -1965,7 +1965,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPattern_MuteStatus() {
+	public EAttribute getPattern_ArpeggiatorCenterNote() {
 		return (EAttribute)patternEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -1974,7 +1974,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPattern_SwingStatus() {
+	public EAttribute getPattern_MuteStatus() {
 		return (EAttribute)patternEClass.getEStructuralFeatures().get(13);
 	}
 
@@ -1983,7 +1983,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPattern_OutputBusStatus() {
+	public EAttribute getPattern_SwingStatus() {
 		return (EAttribute)patternEClass.getEStructuralFeatures().get(14);
 	}
 
@@ -1992,7 +1992,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPattern_AccentStatus() {
+	public EAttribute getPattern_OutputBusStatus() {
 		return (EAttribute)patternEClass.getEStructuralFeatures().get(15);
 	}
 
@@ -2001,8 +2001,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPattern_DrumParts() {
-		return (EReference)patternEClass.getEStructuralFeatures().get(16);
+	public EAttribute getPattern_AccentStatus() {
+		return (EAttribute)patternEClass.getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -2010,7 +2010,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPattern_KeyboardParts() {
+	public EReference getPattern_DrumParts() {
 		return (EReference)patternEClass.getEStructuralFeatures().get(17);
 	}
 
@@ -2019,7 +2019,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPattern_StretchSliceParts() {
+	public EReference getPattern_KeyboardParts() {
 		return (EReference)patternEClass.getEStructuralFeatures().get(18);
 	}
 
@@ -2028,7 +2028,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPattern_AudioInPart() {
+	public EReference getPattern_StretchSliceParts() {
 		return (EReference)patternEClass.getEStructuralFeatures().get(19);
 	}
 
@@ -2037,7 +2037,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPattern_AccentPart() {
+	public EReference getPattern_AudioInPart() {
 		return (EReference)patternEClass.getEStructuralFeatures().get(20);
 	}
 
@@ -2046,7 +2046,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPattern_FxParameters() {
+	public EReference getPattern_AccentPart() {
 		return (EReference)patternEClass.getEStructuralFeatures().get(21);
 	}
 
@@ -2055,7 +2055,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPattern_MotionParameters() {
+	public EReference getPattern_FxParameters() {
 		return (EReference)patternEClass.getEStructuralFeatures().get(22);
 	}
 
@@ -2064,8 +2064,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPattern_Empty() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(23);
+	public EReference getPattern_MotionParameters() {
+		return (EReference)patternEClass.getEStructuralFeatures().get(23);
 	}
 
 	/**
@@ -2073,7 +2073,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPattern_PatternNumberOriginal() {
+	public EAttribute getPattern_Empty() {
 		return (EAttribute)patternEClass.getEStructuralFeatures().get(24);
 	}
 
@@ -2082,8 +2082,17 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPattern_PatternNumberCurrent() {
+	public EAttribute getPattern_PatternNumberOriginal() {
 		return (EAttribute)patternEClass.getEStructuralFeatures().get(25);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPattern_PatternNumberCurrent() {
+		return (EAttribute)patternEClass.getEStructuralFeatures().get(26);
 	}
 
 	/**
@@ -2415,7 +2424,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSampleInPatternInfo_PatternNumber() {
+	public EAttribute getSampleInPatternInfo_PatternLabel() {
 		return (EAttribute)sampleInPatternInfoEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -2640,15 +2649,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSongPattern_PatternNumber() {
-		return (EAttribute)songPatternEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getSongPattern_PositionCurrent() {
 		return (EAttribute)songPatternEClass.getEStructuralFeatures().get(3);
 	}
@@ -2660,6 +2660,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 */
 	public EAttribute getSongPattern_NoteOffset() {
 		return (EAttribute)songPatternEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSongPattern_PatternPointer() {
+		return (EAttribute)songPatternEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -3522,6 +3531,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 
 		patternEClass = createEClass(PATTERN);
 		createEAttribute(patternEClass, PATTERN__NAME);
+		createEAttribute(patternEClass, PATTERN__LABEL);
 		createEReference(patternEClass, PATTERN__TEMPO);
 		createEAttribute(patternEClass, PATTERN__SWING);
 		createEAttribute(patternEClass, PATTERN__PATTERN_LENGTH);
@@ -3548,9 +3558,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(patternEClass, PATTERN__PATTERN_NUMBER_ORIGINAL);
 		createEAttribute(patternEClass, PATTERN__PATTERN_NUMBER_CURRENT);
 
+		sampleInPatternInfoEClass = createEClass(SAMPLE_IN_PATTERN_INFO);
+		createEAttribute(sampleInPatternInfoEClass, SAMPLE_IN_PATTERN_INFO__INDEX);
+		createEAttribute(sampleInPatternInfoEClass, SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL);
+		createEAttribute(sampleInPatternInfoEClass, SAMPLE_IN_PATTERN_INFO__PART_COUNT);
+		createEAttribute(sampleInPatternInfoEClass, SAMPLE_IN_PATTERN_INFO__PART_LIST);
+
 		patternSetParameterEClass = createEClass(PATTERN_SET_PARAMETER);
-		createEAttribute(patternSetParameterEClass, PATTERN_SET_PARAMETER__PATTERN_NUMBER);
 		createEAttribute(patternSetParameterEClass, PATTERN_SET_PARAMETER__POSITION_CURRENT);
+		createEAttribute(patternSetParameterEClass, PATTERN_SET_PARAMETER__PATTERN_POINTER);
 
 		sampleEClass = createEClass(SAMPLE);
 		createEAttribute(sampleEClass, SAMPLE__NAME);
@@ -3591,12 +3607,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEReference(sampleEClass, SAMPLE__SAMPLE_IN_PATTERN_INFO_LIST);
 		createEAttribute(sampleEClass, SAMPLE__SAMPLE_NUMBER_ORIGINAL);
 		createEAttribute(sampleEClass, SAMPLE__SAMPLE_NUMBER_CURRENT);
-
-		sampleInPatternInfoEClass = createEClass(SAMPLE_IN_PATTERN_INFO);
-		createEAttribute(sampleInPatternInfoEClass, SAMPLE_IN_PATTERN_INFO__INDEX);
-		createEAttribute(sampleInPatternInfoEClass, SAMPLE_IN_PATTERN_INFO__PATTERN_NUMBER);
-		createEAttribute(sampleInPatternInfoEClass, SAMPLE_IN_PATTERN_INFO__PART_COUNT);
-		createEAttribute(sampleInPatternInfoEClass, SAMPLE_IN_PATTERN_INFO__PART_LIST);
 
 		sampleTuneEClass = createEClass(SAMPLE_TUNE);
 		createEAttribute(sampleTuneEClass, SAMPLE_TUNE__VALUE);
@@ -3662,7 +3672,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		songPatternEClass = createEClass(SONG_PATTERN);
 		createEAttribute(songPatternEClass, SONG_PATTERN__EMPTY);
 		createEAttribute(songPatternEClass, SONG_PATTERN__NOTE_OFFSET);
-		createEAttribute(songPatternEClass, SONG_PATTERN__PATTERN_NUMBER);
+		createEAttribute(songPatternEClass, SONG_PATTERN__PATTERN_POINTER);
 		createEAttribute(songPatternEClass, SONG_PATTERN__POSITION_CURRENT);
 
 		tempoEClass = createEClass(TEMPO);
@@ -3983,6 +3993,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 
 		initEClass(patternEClass, Pattern.class, "Pattern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPattern_Name(), ecorePackage.getEString(), "name", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPattern_Label(), ecorePackage.getEString(), "label", "true", 0, 1, Pattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getPattern_Tempo(), this.getTempo(), null, "tempo", null, 1, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPattern_Swing(), this.getSwing(), "swing", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPattern_PatternLength(), this.getPatternLength(), "patternLength", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4018,9 +4029,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 
 		addEOperation(patternEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(sampleInPatternInfoEClass, SampleInPatternInfo.class, "SampleInPatternInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSampleInPatternInfo_Index(), ecorePackage.getEInt(), "index", "0", 0, 1, SampleInPatternInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSampleInPatternInfo_PatternLabel(), ecorePackage.getEString(), "patternLabel", null, 0, 1, SampleInPatternInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSampleInPatternInfo_PartCount(), ecorePackage.getEInt(), "partCount", null, 0, 1, SampleInPatternInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSampleInPatternInfo_PartList(), ecorePackage.getEString(), "partList", null, 0, 1, SampleInPatternInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(patternSetParameterEClass, PatternSetParameter.class, "PatternSetParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPatternSetParameter_PatternNumber(), this.getPatternNumber(), "patternNumber", null, 0, 1, PatternSetParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPatternSetParameter_PositionCurrent(), ecorePackage.getEInt(), "positionCurrent", "-1", 0, 1, PatternSetParameter.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPatternSetParameter_PatternPointer(), ecorePackage.getEShort(), "patternPointer", null, 0, 1, PatternSetParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sampleEClass, Sample.class, "Sample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSample_Name(), ecorePackage.getEString(), "name", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4105,12 +4122,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEOperation(sampleEClass, this.getRIFFWave(), "toRIFFWaveMono", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(sampleEClass, this.getRIFFWave(), "toRIFFWaveStereo", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(sampleInPatternInfoEClass, SampleInPatternInfo.class, "SampleInPatternInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSampleInPatternInfo_Index(), ecorePackage.getEInt(), "index", "0", 0, 1, SampleInPatternInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSampleInPatternInfo_PatternNumber(), this.getPatternNumber(), "patternNumber", null, 0, 1, SampleInPatternInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSampleInPatternInfo_PartCount(), ecorePackage.getEInt(), "partCount", null, 0, 1, SampleInPatternInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSampleInPatternInfo_PartList(), ecorePackage.getEString(), "partList", null, 0, 1, SampleInPatternInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sampleTuneEClass, SampleTune.class, "SampleTune", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSampleTune_Value(), ecorePackage.getEFloat(), "value", null, 0, 1, SampleTune.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4223,7 +4234,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEClass(songPatternEClass, SongPattern.class, "SongPattern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSongPattern_Empty(), ecorePackage.getEBoolean(), "empty", "true", 0, 1, SongPattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongPattern_NoteOffset(), ecorePackage.getEByte(), "noteOffset", null, 0, 1, SongPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongPattern_PatternNumber(), this.getPatternNumber(), "patternNumber", null, 0, 1, SongPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongPattern_PatternPointer(), ecorePackage.getEShort(), "patternPointer", null, 0, 1, SongPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSongPattern_PositionCurrent(), ecorePackage.getEInt(), "positionCurrent", "-1", 0, 1, SongPattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(tempoEClass, Tempo.class, "Tempo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

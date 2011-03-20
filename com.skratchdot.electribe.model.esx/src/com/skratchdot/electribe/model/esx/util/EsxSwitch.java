@@ -240,6 +240,12 @@ public class EsxSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EsxPackage.SAMPLE_IN_PATTERN_INFO: {
+				SampleInPatternInfo sampleInPatternInfo = (SampleInPatternInfo)theEObject;
+				T result = caseSampleInPatternInfo(sampleInPatternInfo);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EsxPackage.PATTERN_SET_PARAMETER: {
 				PatternSetParameter patternSetParameter = (PatternSetParameter)theEObject;
 				T result = casePatternSetParameter(patternSetParameter);
@@ -249,12 +255,6 @@ public class EsxSwitch<T> {
 			case EsxPackage.SAMPLE: {
 				Sample sample = (Sample)theEObject;
 				T result = caseSample(sample);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO: {
-				SampleInPatternInfo sampleInPatternInfo = (SampleInPatternInfo)theEObject;
-				T result = caseSampleInPatternInfo(sampleInPatternInfo);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

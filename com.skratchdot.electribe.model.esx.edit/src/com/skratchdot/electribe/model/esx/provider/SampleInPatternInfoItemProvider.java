@@ -74,7 +74,7 @@ public class SampleInPatternInfoItemProvider
 			super.getPropertyDescriptors(object);
 
 			addIndexPropertyDescriptor(object);
-			addPatternNumberPropertyDescriptor(object);
+			addPatternLabelPropertyDescriptor(object);
 			addPartCountPropertyDescriptor(object);
 			addPartListPropertyDescriptor(object);
 		}
@@ -104,19 +104,19 @@ public class SampleInPatternInfoItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Pattern Number feature.
+	 * This adds a property descriptor for the Pattern Label feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPatternNumberPropertyDescriptor(Object object) {
+	protected void addPatternLabelPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_SampleInPatternInfo_patternNumber_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SampleInPatternInfo_patternNumber_feature", "_UI_SampleInPatternInfo_type"),
-				 EsxPackage.Literals.SAMPLE_IN_PATTERN_INFO__PATTERN_NUMBER,
+				 getString("_UI_SampleInPatternInfo_patternLabel_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SampleInPatternInfo_patternLabel_feature", "_UI_SampleInPatternInfo_type"),
+				 EsxPackage.Literals.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL,
 				 true,
 				 false,
 				 false,
@@ -197,8 +197,8 @@ public class SampleInPatternInfoItemProvider
 		switch(columnIndex) {
 			// Index
 			case 0: return Integer.toString(((SampleInPatternInfo) object).getIndex());
-			// Pattern
-			case 1: return ((SampleInPatternInfo) object).getPatternNumber().getLiteral();
+			// Pattern Number
+			case 1: return ((SampleInPatternInfo) object).getPatternLabel();
 			// PartCount
 			case 2: return Integer.toString(((SampleInPatternInfo) object).getPartCount());
 			// PartList
@@ -220,7 +220,7 @@ public class SampleInPatternInfoItemProvider
 
 		switch (notification.getFeatureID(SampleInPatternInfo.class)) {
 			case EsxPackage.SAMPLE_IN_PATTERN_INFO__INDEX:
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_NUMBER:
+			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL:
 			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_COUNT:
 			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_LIST:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

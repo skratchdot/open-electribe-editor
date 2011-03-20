@@ -56,6 +56,7 @@ import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PatternImpl#getName <em>Name</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.PatternImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PatternImpl#getTempo <em>Tempo</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PatternImpl#getSwing <em>Swing</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PatternImpl#getPatternLength <em>Pattern Length</em>}</li>
@@ -106,6 +107,16 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String LABEL_EDEFAULT = "true";
 
 	/**
 	 * The cached value of the '{@link #getTempo() <em>Tempo</em>}' containment reference.
@@ -652,6 +663,19 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String getLabel() {
+		return "" +
+			this.getPatternNumberCurrent() +
+			" - " +
+			this.getName() +
+			"";
 	}
 
 	/**
@@ -1298,6 +1322,8 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		switch (featureID) {
 			case EsxPackage.PATTERN__NAME:
 				return getName();
+			case EsxPackage.PATTERN__LABEL:
+				return getLabel();
 			case EsxPackage.PATTERN__TEMPO:
 				return getTempo();
 			case EsxPackage.PATTERN__SWING:
@@ -1536,6 +1562,8 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		switch (featureID) {
 			case EsxPackage.PATTERN__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case EsxPackage.PATTERN__LABEL:
+				return LABEL_EDEFAULT == null ? getLabel() != null : !LABEL_EDEFAULT.equals(getLabel());
 			case EsxPackage.PATTERN__TEMPO:
 				return tempo != null;
 			case EsxPackage.PATTERN__SWING:

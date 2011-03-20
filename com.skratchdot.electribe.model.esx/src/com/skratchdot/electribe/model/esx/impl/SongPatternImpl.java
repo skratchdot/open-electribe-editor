@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.PatternNumber;
 import com.skratchdot.electribe.model.esx.Song;
 import com.skratchdot.electribe.model.esx.SongPattern;
 
@@ -31,7 +30,7 @@ import com.skratchdot.electribe.model.esx.SongPattern;
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongPatternImpl#isEmpty <em>Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongPatternImpl#getNoteOffset <em>Note Offset</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongPatternImpl#getPatternNumber <em>Pattern Number</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongPatternImpl#getPatternPointer <em>Pattern Pointer</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SongPatternImpl#getPositionCurrent <em>Position Current</em>}</li>
  * </ul>
  * </p>
@@ -70,24 +69,24 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 	protected byte noteOffset = NOTE_OFFSET_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getPatternNumber() <em>Pattern Number</em>}' attribute.
+	 * The default value of the '{@link #getPatternPointer() <em>Pattern Pointer</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPatternNumber()
+	 * @see #getPatternPointer()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final PatternNumber PATTERN_NUMBER_EDEFAULT = PatternNumber.PATTERN_A01;
+	protected static final short PATTERN_POINTER_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getPatternNumber() <em>Pattern Number</em>}' attribute.
+	 * The cached value of the '{@link #getPatternPointer() <em>Pattern Pointer</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPatternNumber()
+	 * @see #getPatternPointer()
 	 * @generated
 	 * @ordered
 	 */
-	protected PatternNumber patternNumber = PATTERN_NUMBER_EDEFAULT;
+	protected short patternPointer = PATTERN_POINTER_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPositionCurrent() <em>Position Current</em>}' attribute.
@@ -116,27 +115,6 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 	@Override
 	protected EClass eStaticClass() {
 		return EsxPackage.Literals.SONG_PATTERN;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PatternNumber getPatternNumber() {
-		return patternNumber;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPatternNumber(PatternNumber newPatternNumber) {
-		PatternNumber oldPatternNumber = patternNumber;
-		patternNumber = newPatternNumber == null ? PATTERN_NUMBER_EDEFAULT : newPatternNumber;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_PATTERN__PATTERN_NUMBER, oldPatternNumber, patternNumber));
 	}
 
 	/**
@@ -176,6 +154,27 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public short getPatternPointer() {
+		return patternPointer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPatternPointer(short newPatternPointer) {
+		short oldPatternPointer = patternPointer;
+		patternPointer = newPatternPointer;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_PATTERN__PATTERN_POINTER, oldPatternPointer, patternPointer));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public boolean isEmpty() {
@@ -200,8 +199,8 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 				return isEmpty();
 			case EsxPackage.SONG_PATTERN__NOTE_OFFSET:
 				return getNoteOffset();
-			case EsxPackage.SONG_PATTERN__PATTERN_NUMBER:
-				return getPatternNumber();
+			case EsxPackage.SONG_PATTERN__PATTERN_POINTER:
+				return getPatternPointer();
 			case EsxPackage.SONG_PATTERN__POSITION_CURRENT:
 				return getPositionCurrent();
 		}
@@ -219,8 +218,8 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 			case EsxPackage.SONG_PATTERN__NOTE_OFFSET:
 				setNoteOffset((Byte)newValue);
 				return;
-			case EsxPackage.SONG_PATTERN__PATTERN_NUMBER:
-				setPatternNumber((PatternNumber)newValue);
+			case EsxPackage.SONG_PATTERN__PATTERN_POINTER:
+				setPatternPointer((Short)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -237,8 +236,8 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 			case EsxPackage.SONG_PATTERN__NOTE_OFFSET:
 				setNoteOffset(NOTE_OFFSET_EDEFAULT);
 				return;
-			case EsxPackage.SONG_PATTERN__PATTERN_NUMBER:
-				setPatternNumber(PATTERN_NUMBER_EDEFAULT);
+			case EsxPackage.SONG_PATTERN__PATTERN_POINTER:
+				setPatternPointer(PATTERN_POINTER_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -256,8 +255,8 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 				return isEmpty() != EMPTY_EDEFAULT;
 			case EsxPackage.SONG_PATTERN__NOTE_OFFSET:
 				return noteOffset != NOTE_OFFSET_EDEFAULT;
-			case EsxPackage.SONG_PATTERN__PATTERN_NUMBER:
-				return patternNumber != PATTERN_NUMBER_EDEFAULT;
+			case EsxPackage.SONG_PATTERN__PATTERN_POINTER:
+				return patternPointer != PATTERN_POINTER_EDEFAULT;
 			case EsxPackage.SONG_PATTERN__POSITION_CURRENT:
 				return getPositionCurrent() != POSITION_CURRENT_EDEFAULT;
 		}
@@ -276,8 +275,8 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (noteOffset: ");
 		result.append(noteOffset);
-		result.append(", patternNumber: ");
-		result.append(patternNumber);
+		result.append(", patternPointer: ");
+		result.append(patternPointer);
 		result.append(')');
 		return result.toString();
 	}

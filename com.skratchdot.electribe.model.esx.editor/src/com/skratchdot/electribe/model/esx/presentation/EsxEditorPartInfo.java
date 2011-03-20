@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.presentation;
 
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.RowData;
 import org.eclipse.swt.layout.RowLayout;
@@ -36,8 +35,6 @@ import com.skratchdot.electribe.model.esx.util.EsxUtil;
 public class EsxEditorPartInfo extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartInfo"; //$NON-NLS-1$
 	public static final int PAGE_INDEX = 0;
-
-	private EsxFile esxFile;
 
 	private FormToolkit toolkit;
 	private ScrolledForm form;
@@ -266,11 +263,7 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 	 */
 	@Override
 	public void setInput(Object input) {
-		Resource resource =
-			(Resource)this.getEditingDomain().getResourceSet().getResources().get(0);
-		Object rootObject = resource.getContents().get(0);
-		if(rootObject instanceof EsxFile) {
-			this.esxFile = (EsxFile) rootObject;
+		if(input instanceof EsxFile) {
 			this.refresh();
 		}
 	}

@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.PatternNumber;
 import com.skratchdot.electribe.model.esx.PatternSetParameter;
 
 /**
@@ -29,34 +28,14 @@ import com.skratchdot.electribe.model.esx.PatternSetParameter;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.PatternSetParameterImpl#getPatternNumber <em>Pattern Number</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PatternSetParameterImpl#getPositionCurrent <em>Position Current</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.PatternSetParameterImpl#getPatternPointer <em>Pattern Pointer</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class PatternSetParameterImpl extends EObjectImpl implements PatternSetParameter {
-	/**
-	 * The default value of the '{@link #getPatternNumber() <em>Pattern Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPatternNumber()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final PatternNumber PATTERN_NUMBER_EDEFAULT = PatternNumber.PATTERN_A01;
-
-	/**
-	 * The cached value of the '{@link #getPatternNumber() <em>Pattern Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPatternNumber()
-	 * @generated
-	 * @ordered
-	 */
-	protected PatternNumber patternNumber = PATTERN_NUMBER_EDEFAULT;
-
 	/**
 	 * The default value of the '{@link #getPositionCurrent() <em>Position Current</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -66,6 +45,26 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 	 * @ordered
 	 */
 	protected static final int POSITION_CURRENT_EDEFAULT = -1;
+
+	/**
+	 * The default value of the '{@link #getPatternPointer() <em>Pattern Pointer</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPatternPointer()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final short PATTERN_POINTER_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getPatternPointer() <em>Pattern Pointer</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPatternPointer()
+	 * @generated
+	 * @ordered
+	 */
+	protected short patternPointer = PATTERN_POINTER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -89,27 +88,6 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PatternNumber getPatternNumber() {
-		return patternNumber;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPatternNumber(PatternNumber newPatternNumber) {
-		PatternNumber oldPatternNumber = patternNumber;
-		patternNumber = newPatternNumber == null ? PATTERN_NUMBER_EDEFAULT : newPatternNumber;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN_SET_PARAMETER__PATTERN_NUMBER, oldPatternNumber, patternNumber));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public int getPositionCurrent() {
@@ -128,13 +106,34 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public short getPatternPointer() {
+		return patternPointer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPatternPointer(short newPatternPointer) {
+		short oldPatternPointer = patternPointer;
+		patternPointer = newPatternPointer;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN_SET_PARAMETER__PATTERN_POINTER, oldPatternPointer, patternPointer));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_NUMBER:
-				return getPatternNumber();
 			case EsxPackage.PATTERN_SET_PARAMETER__POSITION_CURRENT:
 				return getPositionCurrent();
+			case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_POINTER:
+				return getPatternPointer();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -147,8 +146,8 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_NUMBER:
-				setPatternNumber((PatternNumber)newValue);
+			case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_POINTER:
+				setPatternPointer((Short)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -162,8 +161,8 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_NUMBER:
-				setPatternNumber(PATTERN_NUMBER_EDEFAULT);
+			case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_POINTER:
+				setPatternPointer(PATTERN_POINTER_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -177,10 +176,10 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_NUMBER:
-				return patternNumber != PATTERN_NUMBER_EDEFAULT;
 			case EsxPackage.PATTERN_SET_PARAMETER__POSITION_CURRENT:
 				return getPositionCurrent() != POSITION_CURRENT_EDEFAULT;
+			case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_POINTER:
+				return patternPointer != PATTERN_POINTER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -195,8 +194,8 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (patternNumber: ");
-		result.append(patternNumber);
+		result.append(" (patternPointer: ");
+		result.append(patternPointer);
 		result.append(')');
 		return result.toString();
 	}

@@ -261,6 +261,9 @@
     </eOperations>
     <eOperations name="toByteArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral="true"
+        derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tempo" lowerBound="1" eType="#//Tempo"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="swing" eType="#//Swing"/>
@@ -303,11 +306,18 @@
         changeable="false" volatile="true" transient="true" defaultValueLiteral="-1"
         derived="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SampleInPatternInfo">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="index" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patternLabel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="partCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="partList" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PatternSetParameter">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patternNumber" eType="#//PatternNumber"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="positionCurrent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="-1"
         derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patternPointer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Sample">
     <eOperations name="export" eExceptions="#//IOException">
@@ -414,13 +424,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleNumberCurrent" eType="#//SampleNumber"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="-1"
         derived="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SampleInPatternInfo">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="index" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="0"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patternNumber" eType="#//PatternNumber"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="partCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="partList" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SampleTune">
     <eOperations name="calculateSampleTuneFromSampleRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat">
@@ -548,7 +551,7 @@
         changeable="false" volatile="true" transient="true" defaultValueLiteral="true"
         derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="noteOffset" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patternNumber" eType="#//PatternNumber"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patternPointer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="positionCurrent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="-1"
         derived="true"/>

@@ -25,6 +25,7 @@ import junit.textui.TestRunner;
  * <p>
  * The following features are tested:
  * <ul>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#getLabel() <em>Label</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#isEmpty() <em>Empty</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#getPatternNumberCurrent() <em>Pattern Number Current</em>}</li>
  * </ul>
@@ -108,6 +109,19 @@ public class PatternTest extends TestCase {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Pattern#getLabel() <em>Label</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.Pattern#getLabel()
+	 * @generated
+	 */
+	public void testGetLabel() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 	/**

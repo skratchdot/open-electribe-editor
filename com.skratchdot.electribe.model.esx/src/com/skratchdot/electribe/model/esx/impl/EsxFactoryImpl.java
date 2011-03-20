@@ -154,9 +154,9 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 			case EsxPackage.PART_NOTE_NUMBER: return createPartNoteNumber();
 			case EsxPackage.PART_STRETCH_SLICE: return createPartStretchSlice();
 			case EsxPackage.PATTERN: return createPattern();
+			case EsxPackage.SAMPLE_IN_PATTERN_INFO: return createSampleInPatternInfo();
 			case EsxPackage.PATTERN_SET_PARAMETER: return createPatternSetParameter();
 			case EsxPackage.SAMPLE: return createSample();
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO: return createSampleInPatternInfo();
 			case EsxPackage.SAMPLE_TUNE: return createSampleTune();
 			case EsxPackage.SEQUENCE_DATA: return createSequenceData();
 			case EsxPackage.SEQUENCE_DATA_GATE: return createSequenceDataGate();

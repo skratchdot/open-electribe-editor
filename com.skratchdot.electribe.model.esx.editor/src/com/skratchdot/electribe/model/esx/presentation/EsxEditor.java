@@ -101,6 +101,7 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
+import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.editor.commands.SyncPointersCommand;
 import com.skratchdot.electribe.model.esx.editor.util.EsxEditorUtil;
 import com.skratchdot.electribe.model.esx.provider.EsxItemProviderAdapterFactory;
@@ -836,41 +837,45 @@ public class EsxEditor
 	            !(getEditingDomain().getResourceSet().getResources().get(0)).getContents().isEmpty()) {
 
 	    	try {
+	    		Resource resource =
+	    			(Resource)this.getEditingDomain().getResourceSet().getResources().get(0);
+	    		Object rootObject = resource.getContents().get(0);
+	    		EsxFile esxFile = (EsxFile) rootObject;
 
 	    		// Create a page to show the summary information
                 //
 				partInfo = new EsxEditorPartInfo(this);
 				addPage(EsxEditorPartInfo.PAGE_INDEX, partInfo, getEditorInput());
 				setPageText(EsxEditorPartInfo.PAGE_INDEX, getString("_UI_Page_Info_label"));
-				partInfo.setInput(getEditingDomain().getResourceSet());
+				partInfo.setInput(esxFile);
 
 	    		// Create a page to edit the global parameters.
                 //
 				partGlobal = new EsxEditorPartGlobal(this);
 				addPage(EsxEditorPartGlobal.PAGE_INDEX, partGlobal, getEditorInput());
 				setPageText(EsxEditorPartGlobal.PAGE_INDEX, getString("_UI_Page_Global_label"));
-				partGlobal.setInput(getEditingDomain().getResourceSet());
+				partGlobal.setInput(esxFile);
 
 	    		// Create a page to edit the patterns.
                 //
 				partPatterns = new EsxEditorPartPatterns(this);
 				addPage(EsxEditorPartPatterns.PAGE_INDEX, partPatterns, getEditorInput());
 				setPageText(EsxEditorPartPatterns.PAGE_INDEX, getString("_UI_Page_Patterns_label"));
-				partPatterns.setInput(getEditingDomain().getResourceSet());
+				partPatterns.setInput(esxFile);
 
 	    		// Create a page to edit the samples.
                 //
 				partSamples = new EsxEditorPartSamples(this);
 				addPage(EsxEditorPartSamples.PAGE_INDEX, partSamples, getEditorInput());
 				setPageText(EsxEditorPartSamples.PAGE_INDEX, getString("_UI_Page_Samples_label"));
-				partSamples.setInput(getEditingDomain().getResourceSet());
+				partSamples.setInput(esxFile);
 
 	    		// Create a page to edit the songs.
                 //
 				partSongs = new EsxEditorPartSongs(this);
 				addPage(EsxEditorPartSongs.PAGE_INDEX, partSongs, getEditorInput());
 				setPageText(EsxEditorPartSongs.PAGE_INDEX, getString("_UI_Page_Songs_label"));
-				partSongs.setInput(getEditingDomain().getResourceSet());
+				partSongs.setInput(esxFile);
 
 	    	} catch (PartInitException e) {
 	    		// add some error handling for production-quality coding

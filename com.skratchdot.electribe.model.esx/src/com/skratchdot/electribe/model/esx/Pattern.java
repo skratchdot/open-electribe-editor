@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#getName <em>Name</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#getLabel <em>Label</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#getTempo <em>Tempo</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#getSwing <em>Swing</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Pattern#getPatternLength <em>Pattern Length</em>}</li>
@@ -81,6 +82,22 @@ public interface Pattern extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Label</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Label</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Label</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getPattern_Label()
+	 * @model default="true" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	String getLabel();
 
 	/**
 	 * Returns the value of the '<em><b>Tempo</b></em>' containment reference.

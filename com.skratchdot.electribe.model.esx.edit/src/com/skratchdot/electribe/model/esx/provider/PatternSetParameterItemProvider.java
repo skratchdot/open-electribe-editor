@@ -18,6 +18,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
@@ -32,8 +33,8 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
-import com.skratchdot.electribe.model.esx.PatternNumber;
 import com.skratchdot.electribe.model.esx.PatternSetParameter;
 
 /**
@@ -67,32 +68,10 @@ public class PatternSetParameterItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addPatternNumberPropertyDescriptor(object);
 			addPositionCurrentPropertyDescriptor(object);
+			addPatternPointerPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Pattern Number feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPatternNumberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PatternSetParameter_patternNumber_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PatternSetParameter_patternNumber_feature", "_UI_PatternSetParameter_type"),
-				 EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_NUMBER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -110,6 +89,28 @@ public class PatternSetParameterItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_PatternSetParameter_positionCurrent_feature", "_UI_PatternSetParameter_type"),
 				 EsxPackage.Literals.PATTERN_SET_PARAMETER__POSITION_CURRENT,
 				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Pattern Pointer feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPatternPointerPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PatternSetParameter_patternPointer_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PatternSetParameter_patternPointer_feature", "_UI_PatternSetParameter_type"),
+				 EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_POINTER,
+				 true,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
@@ -136,11 +137,8 @@ public class PatternSetParameterItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		PatternNumber labelValue = ((PatternSetParameter)object).getPatternNumber();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_PatternSetParameter_type") :
-			getString("_UI_PatternSetParameter_type") + " " + label;
+		PatternSetParameter patternSetParameter = (PatternSetParameter)object;
+		return getString("_UI_PatternSetParameter_type") + " " + patternSetParameter.getPositionCurrent();
 	}
 
 	/* (non-Javadoc)
@@ -152,7 +150,17 @@ public class PatternSetParameterItemProvider
 			// Current Position
 			case 0: return Integer.toString(((PatternSetParameter) object).getPositionCurrent()+1);
 			// Pattern Number
-			case 1: return ((PatternSetParameter) object).getPatternNumber().getLiteral();
+			case 1: {
+				if(((PatternSetParameter) object).eResource()!=null) {
+					Resource resource = (Resource) ((PatternSetParameter) object).eResource();
+					Object rootObject = resource.getContents().get(0);
+					if(rootObject instanceof EsxFile) {
+						try {
+							return ((EsxFile) rootObject).getPatternFromPointer(((PatternSetParameter) object).getPatternPointer()).getLabel();
+						} catch(Exception e) {}
+					}
+				}
+			}
 			default: return getText(object);
 		}
 	}
@@ -169,8 +177,8 @@ public class PatternSetParameterItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(PatternSetParameter.class)) {
-			case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_NUMBER:
 			case EsxPackage.PATTERN_SET_PARAMETER__POSITION_CURRENT:
+			case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_POINTER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

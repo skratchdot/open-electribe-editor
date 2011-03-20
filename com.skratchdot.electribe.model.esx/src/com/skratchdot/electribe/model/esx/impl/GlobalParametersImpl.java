@@ -38,7 +38,6 @@ import com.skratchdot.electribe.model.esx.MidiControlChangeAssignmentName;
 import com.skratchdot.electribe.model.esx.NoteNumber;
 import com.skratchdot.electribe.model.esx.PartNoteNumber;
 import com.skratchdot.electribe.model.esx.PartNoteNumberName;
-import com.skratchdot.electribe.model.esx.PatternNumber;
 import com.skratchdot.electribe.model.esx.PatternSetParameter;
 import com.skratchdot.electribe.model.esx.PitchBendRange;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
@@ -414,7 +413,7 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 		// bytes 64~191 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_PATTERN_SET_PARAMETERS; i++) {
 			PatternSetParameter patternSetParameter = EsxFactory.eINSTANCE.createPatternSetParameter();
-			patternSetParameter.setPatternNumber(PatternNumber.get(in.getUnsignedByte()));
+			patternSetParameter.setPatternPointer((short) in.getUnsignedByte());
 			this.getPatternSetParameters().add(i, patternSetParameter);
 		}
 	}
@@ -772,7 +771,7 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 		buf.putLong(this.getReservedLong());
 		// bytes 64~191 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_PATTERN_SET_PARAMETERS; i++) {
-			buf.putUnsignedByte(this.getPatternSetParameters().get(i).getPatternNumber().getValue());
+			buf.putUnsignedByte(this.getPatternSetParameters().get(i).getPatternPointer());
 		}
 		return buf.array();
 	}
