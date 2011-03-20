@@ -2504,22 +2504,13 @@ public interface EsxPackage extends EPackage {
 	int PATTERN_SET_PARAMETER__POSITION_CURRENT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Position Original</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PATTERN_SET_PARAMETER__POSITION_ORIGINAL = 2;
-
-	/**
 	 * The number of structural features of the '<em>Pattern Set Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN_SET_PARAMETER_FEATURE_COUNT = 3;
+	int PATTERN_SET_PARAMETER_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.SampleImpl <em>Sample</em>}' class.
@@ -4872,17 +4863,6 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPatternSetParameter_PositionCurrent();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.PatternSetParameter#getPositionOriginal <em>Position Original</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Position Original</em>'.
-	 * @see com.skratchdot.electribe.model.esx.PatternSetParameter#getPositionOriginal()
-	 * @see #getPatternSetParameter()
-	 * @generated
-	 */
-	EAttribute getPatternSetParameter_PositionOriginal();
 
 	/**
 	 * Returns the meta object for class '{@link com.skratchdot.electribe.model.esx.MidiChannelType <em>Midi Channel Type</em>}'.
@@ -7858,14 +7838,6 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PATTERN_SET_PARAMETER__POSITION_CURRENT = eINSTANCE.getPatternSetParameter_PositionCurrent();
-
-		/**
-		 * The meta object literal for the '<em><b>Position Original</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PATTERN_SET_PARAMETER__POSITION_ORIGINAL = eINSTANCE.getPatternSetParameter_PositionOriginal();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.MidiChannelTypeImpl <em>Midi Channel Type</em>}' class.

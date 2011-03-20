@@ -69,7 +69,6 @@ public class PatternSetParameterItemProvider
 
 			addPatternNumberPropertyDescriptor(object);
 			addPositionCurrentPropertyDescriptor(object);
-			addPositionOriginalPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -119,28 +118,6 @@ public class PatternSetParameterItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Position Original feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPositionOriginalPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PatternSetParameter_positionOriginal_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PatternSetParameter_positionOriginal_feature", "_UI_PatternSetParameter_type"),
-				 EsxPackage.Literals.PATTERN_SET_PARAMETER__POSITION_ORIGINAL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This returns PatternSetParameter.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -173,11 +150,9 @@ public class PatternSetParameterItemProvider
 	public String getColumnText(Object object, int columnIndex) {
 		switch(columnIndex) {
 			// Current Position
-			case 0: return Integer.toString(((PatternSetParameter) object).getPositionCurrent());
-			// Original Position
-			case 1: return Integer.toString(((PatternSetParameter) object).getPositionOriginal());
+			case 0: return Integer.toString(((PatternSetParameter) object).getPositionCurrent()+1);
 			// Pattern Number
-			case 2: return ((PatternSetParameter) object).getPatternNumber().getLiteral();
+			case 1: return ((PatternSetParameter) object).getPatternNumber().getLiteral();
 			default: return getText(object);
 		}
 	}
@@ -196,7 +171,6 @@ public class PatternSetParameterItemProvider
 		switch (notification.getFeatureID(PatternSetParameter.class)) {
 			case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_NUMBER:
 			case EsxPackage.PATTERN_SET_PARAMETER__POSITION_CURRENT:
-			case EsxPackage.PATTERN_SET_PARAMETER__POSITION_ORIGINAL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

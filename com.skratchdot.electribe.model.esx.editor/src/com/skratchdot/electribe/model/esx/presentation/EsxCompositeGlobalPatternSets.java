@@ -89,9 +89,8 @@ public class EsxCompositeGlobalPatternSets extends EsxComposite {
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 4, 1));
 
 		// Create our columns
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Current Position", 120);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Original Position", 120);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Pattern Number", 120);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Position", 120);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Pattern Number", 200);
 
 		// Setup this.tableViewer ContentProvider
 		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {

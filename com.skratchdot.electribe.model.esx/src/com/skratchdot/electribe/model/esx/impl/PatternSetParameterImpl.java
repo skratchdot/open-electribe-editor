@@ -31,7 +31,6 @@ import com.skratchdot.electribe.model.esx.PatternSetParameter;
  * <ul>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PatternSetParameterImpl#getPatternNumber <em>Pattern Number</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.PatternSetParameterImpl#getPositionCurrent <em>Position Current</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.impl.PatternSetParameterImpl#getPositionOriginal <em>Position Original</em>}</li>
  * </ul>
  * </p>
  *
@@ -67,26 +66,6 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 	 * @ordered
 	 */
 	protected static final int POSITION_CURRENT_EDEFAULT = -1;
-
-	/**
-	 * The default value of the '{@link #getPositionOriginal() <em>Position Original</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPositionOriginal()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int POSITION_ORIGINAL_EDEFAULT = -1;
-
-	/**
-	 * The cached value of the '{@link #getPositionOriginal() <em>Position Original</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPositionOriginal()
-	 * @generated
-	 * @ordered
-	 */
-	protected int positionOriginal = POSITION_ORIGINAL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -149,27 +128,6 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getPositionOriginal() {
-		return positionOriginal;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPositionOriginal(int newPositionOriginal) {
-		int oldPositionOriginal = positionOriginal;
-		positionOriginal = newPositionOriginal;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN_SET_PARAMETER__POSITION_ORIGINAL, oldPositionOriginal, positionOriginal));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -177,8 +135,6 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 				return getPatternNumber();
 			case EsxPackage.PATTERN_SET_PARAMETER__POSITION_CURRENT:
 				return getPositionCurrent();
-			case EsxPackage.PATTERN_SET_PARAMETER__POSITION_ORIGINAL:
-				return getPositionOriginal();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -194,9 +150,6 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 			case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_NUMBER:
 				setPatternNumber((PatternNumber)newValue);
 				return;
-			case EsxPackage.PATTERN_SET_PARAMETER__POSITION_ORIGINAL:
-				setPositionOriginal((Integer)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -211,9 +164,6 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 		switch (featureID) {
 			case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_NUMBER:
 				setPatternNumber(PATTERN_NUMBER_EDEFAULT);
-				return;
-			case EsxPackage.PATTERN_SET_PARAMETER__POSITION_ORIGINAL:
-				setPositionOriginal(POSITION_ORIGINAL_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -231,8 +181,6 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 				return patternNumber != PATTERN_NUMBER_EDEFAULT;
 			case EsxPackage.PATTERN_SET_PARAMETER__POSITION_CURRENT:
 				return getPositionCurrent() != POSITION_CURRENT_EDEFAULT;
-			case EsxPackage.PATTERN_SET_PARAMETER__POSITION_ORIGINAL:
-				return positionOriginal != POSITION_ORIGINAL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -249,8 +197,6 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (patternNumber: ");
 		result.append(patternNumber);
-		result.append(", positionOriginal: ");
-		result.append(positionOriginal);
 		result.append(')');
 		return result.toString();
 	}

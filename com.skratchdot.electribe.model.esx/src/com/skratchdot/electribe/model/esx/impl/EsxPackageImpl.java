@@ -1200,15 +1200,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPatternSetParameter_PositionOriginal() {
-		return (EAttribute)patternSetParameterEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getMidiChannelType() {
 		return midiChannelTypeEClass;
 	}
@@ -3569,7 +3560,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		patternSetParameterEClass = createEClass(PATTERN_SET_PARAMETER);
 		createEAttribute(patternSetParameterEClass, PATTERN_SET_PARAMETER__PATTERN_NUMBER);
 		createEAttribute(patternSetParameterEClass, PATTERN_SET_PARAMETER__POSITION_CURRENT);
-		createEAttribute(patternSetParameterEClass, PATTERN_SET_PARAMETER__POSITION_ORIGINAL);
 
 		sampleEClass = createEClass(SAMPLE);
 		createEAttribute(sampleEClass, SAMPLE__NAME);
@@ -4041,7 +4031,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		initEClass(patternSetParameterEClass, PatternSetParameter.class, "PatternSetParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPatternSetParameter_PatternNumber(), this.getPatternNumber(), "patternNumber", null, 0, 1, PatternSetParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPatternSetParameter_PositionCurrent(), ecorePackage.getEInt(), "positionCurrent", "-1", 0, 1, PatternSetParameter.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPatternSetParameter_PositionOriginal(), ecorePackage.getEInt(), "positionOriginal", "-1", 0, 1, PatternSetParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sampleEClass, Sample.class, "Sample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSample_Name(), ecorePackage.getEString(), "name", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
