@@ -79,8 +79,6 @@ public class GlobalParametersItemProvider
 			addProgramChangeEnabledPropertyDescriptor(object);
 			addReservedBitsAfterProgramChangeEnabledPropertyDescriptor(object);
 			addPitchBendRangePropertyDescriptor(object);
-			addReservedLongPropertyDescriptor(object);
-			addPatternSetParametersPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -323,50 +321,6 @@ public class GlobalParametersItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Reserved Long feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addReservedLongPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GlobalParameters_reservedLong_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GlobalParameters_reservedLong_feature", "_UI_GlobalParameters_type"),
-				 EsxPackage.Literals.GLOBAL_PARAMETERS__RESERVED_LONG,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Pattern Set Parameters feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPatternSetParametersPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GlobalParameters_patternSetParameters_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GlobalParameters_patternSetParameters_feature", "_UI_GlobalParameters_type"),
-				 EsxPackage.Literals.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS,
-				 true,
-				 false,
-				 false,
-				 null,
 				 null,
 				 null));
 	}
