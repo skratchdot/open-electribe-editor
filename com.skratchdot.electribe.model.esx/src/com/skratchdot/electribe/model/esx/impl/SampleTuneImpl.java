@@ -11,6 +11,9 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.SampleTune;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
@@ -114,7 +117,8 @@ public class SampleTuneImpl extends EObjectImpl implements SampleTune {
 		float x = ((float)sampleRate)/44100;
 		float y = (float) Math.log(x);
 		float z = (float) (y/Math.log(2));
-		return 12*z;
+		BigDecimal bd = new BigDecimal(12*z).setScale(2, RoundingMode.HALF_EVEN);
+		return bd.floatValue();
 	}
 
 	/**
