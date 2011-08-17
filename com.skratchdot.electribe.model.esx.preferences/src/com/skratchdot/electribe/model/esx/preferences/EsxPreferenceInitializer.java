@@ -41,7 +41,13 @@ public class EsxPreferenceInitializer extends AbstractPreferenceInitializer {
 
 		/* FILES */
 		File file = new File(Platform.getInstallLocation().getURL().getPath()+"defaults/default.esx");
+		if(!file.exists()) {
+			file = new File(Platform.getInstanceLocation().getURL().getPath()+"defaults/default.esx");
+		}
 		File temp = new File(Platform.getInstallLocation().getURL().getPath()+"temp/");
+		if(!temp.exists()) {
+			temp = new File(Platform.getInstanceLocation().getURL().getPath()+"temp/");
+		}
 
 		store.setDefault(
 				EsxPreferenceNames.FILES_DEFAULT_ESX_FILE,
