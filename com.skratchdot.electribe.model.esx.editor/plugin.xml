@@ -509,6 +509,18 @@
                   label="Preferences"
                   style="push">
             </command>
+            <separator
+                  name="preferences.seperator"
+                  visible="true">
+            </separator>
+            <menu
+                  id="openPerspective"
+                  label="Open Perspective">
+               <dynamic
+                     class="com.skratchdot.electribe.model.esx.editor.actions.PerspectiveSwitcherMenu"
+                     id="perspectiveSwitcherMenu">
+               </dynamic>
+            </menu>
             <menu
                   commandId="org.eclipse.ui.views.showView"
                   id="showView"
@@ -518,6 +530,18 @@
                      style="push">
                </command>
             </menu>
+            <separator
+                  name="perspective.separator"
+                  visible="true">
+            </separator>
+            <command
+                  commandId="org.eclipse.ui.window.savePerspective"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.eclipse.ui.window.resetPerspective"
+                  style="push">
+            </command>
          </menu>
          <menu
                id="help"
@@ -738,9 +762,22 @@
 
    <extension point="org.eclipse.ui.perspectives">
       <perspective
-            name="%_UI_Perspective_label"
-            class="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisor$Perspective"
-            id="com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorPerspective">
+            class="com.skratchdot.electribe.model.esx.perspective.Default"
+            icon="icons/full/obj16/perspective_default.gif"
+            id="com.skratchdot.electribe.model.esx.perspective.Default"
+            name="%_UI_Perspective_Default_label">
+      </perspective>
+      <perspective
+            class="com.skratchdot.electribe.model.esx.perspective.Minimal"
+            icon="icons/full/obj16/perspective_minimal.gif"
+            id="com.skratchdot.electribe.model.esx.perspective.Minimal"
+            name="%_UI_Perspective_Minimal_label">
+      </perspective>
+      <perspective
+            class="com.skratchdot.electribe.model.esx.perspective.Alternative"
+            icon="icons/full/obj16/perspective_alternative.gif"
+            id="com.skratchdot.electribe.model.esx.perspective.Alternative"
+            name="%_UI_Perspective_Alternative_label">
       </perspective>
    </extension>
 

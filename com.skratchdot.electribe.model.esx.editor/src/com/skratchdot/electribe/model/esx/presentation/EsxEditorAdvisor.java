@@ -18,8 +18,6 @@ import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.swt.dnd.FileTransfer;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IPageLayout;
-import org.eclipse.ui.IPerspectiveFactory;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
@@ -31,6 +29,7 @@ import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
 import com.skratchdot.electribe.model.esx.editor.util.EsxEditorUtil;
+import com.skratchdot.electribe.model.esx.perspective.Default;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceInitializer;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceNames;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
@@ -81,38 +80,6 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		 */
 		public void stop() {
 			// Do nothing.
-		}
-	}
-
-	/**
-	 * RCP's perspective
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static class Perspective implements IPerspectiveFactory {
-		/**
-		 * Perspective ID
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public static final String ID_PERSPECTIVE = "com.skratchdot.electribe.model.esx.presentation.EsxEditorAdvisorPerspective";
-
-		/**
-		 * @see org.eclipse.ui.IPerspectiveFactory#createInitialLayout(org.eclipse.ui.IPageLayout)
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated NOT
-		 */
-		public void createInitialLayout(IPageLayout layout) {
-			layout.setEditorAreaVisible(true);
-			layout.addPerspectiveShortcut(ID_PERSPECTIVE);
-
-			layout.addView("com.skratchdot.electribe.fileexplorer.views.TableView", IPageLayout.BOTTOM, 0.60f, IPageLayout.ID_EDITOR_AREA);
-			layout.addView("com.skratchdot.electribe.fileexplorer.views.TreeView", IPageLayout.LEFT, 0.25f, IPageLayout.ID_EDITOR_AREA);
-			//layout.addView(IPageLayout.ID_OUTLINE, IPageLayout.RIGHT, 0.66f, IPageLayout.ID_EDITOR_AREA);
-			layout.addView(IPageLayout.ID_PROP_SHEET, IPageLayout.RIGHT, 0.75f, "com.skratchdot.electribe.fileexplorer.views.TableView");
 		}
 	}
 	
@@ -209,11 +176,11 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 	 * @see org.eclipse.ui.application.WorkbenchAdvisor#getInitialWindowPerspectiveId()
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 		@Override
 	public String getInitialWindowPerspectiveId() {
-		return Perspective.ID_PERSPECTIVE;
+		return Default.ID;
 	}
 
 	/**
