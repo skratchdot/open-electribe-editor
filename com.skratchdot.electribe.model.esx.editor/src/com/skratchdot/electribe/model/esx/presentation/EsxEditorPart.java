@@ -30,13 +30,11 @@ import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
-import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.ISelectionListener;
@@ -45,6 +43,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.EditorPart;
 
 import com.skratchdot.electribe.model.esx.EsxFile;
+import com.skratchdot.electribe.model.esx.editor.util.EsxEditorUtil;
 
 /**
  * http://www.eclipse.org/articles/article.php?file=Article-Integrating-EMF-GMF-Editors/index.html
@@ -214,15 +213,7 @@ public abstract class EsxEditorPart extends EditorPart
 	 * @param width If null, then pack() will be called. If a valid integer, then the column will have this width
 	 */
 	protected void addColumnToTableViewer(TableViewer tableViewer, String text, Integer width) {
-		TableViewerColumn tableViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
-		TableColumn column = tableViewerColumn.getColumn();
-		column.setText(text);
-		if(width==null) {
-			column.pack();
-		}
-		else {
-			column.setWidth(width);
-		}
+		EsxEditorUtil.addColumnToTableViewer(tableViewer, text, width);
 	}
 
 	/**

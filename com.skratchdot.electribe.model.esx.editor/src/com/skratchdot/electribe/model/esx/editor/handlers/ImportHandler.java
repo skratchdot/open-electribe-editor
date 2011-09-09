@@ -21,7 +21,10 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.command.ReplaceCommand;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
@@ -33,17 +36,24 @@ import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.Sample;
+import com.skratchdot.electribe.model.esx.editor.commands.SyncPointersCommand;
 import com.skratchdot.electribe.model.esx.editor.util.EsxEditorUtil;
+import com.skratchdot.electribe.model.esx.editor.wizards.pattern.ImportPatternWizard;
 import com.skratchdot.electribe.model.esx.presentation.EsxEditor;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 
 public class ImportHandler extends AbstractHandler {
 	public static final String IMPORT_AUDIO_FILES_ID = "com.skratchdot.electribe.model.esx.editor.commands.importAudioFiles";
+	public static final String IMPORT_PATTERNS_ID = "com.skratchdot.electribe.model.esx.editor.commands.importPatterns";
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// IMPORT_AUDIO_FILES_ID
 		if(event.getCommand().getId().equals(IMPORT_AUDIO_FILES_ID)) {
 			return importAudioFiles(event);
+		}
+		// IMPORT_PATTERNS_ID
+		if(event.getCommand().getId().equals(IMPORT_PATTERNS_ID)) {
+			return importPatterns(event);
 		}
 
 		return null;
@@ -144,6 +154,53 @@ public class ImportHandler extends AbstractHandler {
 				}
 			}
 		}
+	}
+
+	/**
+	 * This will open a wizard allowing the user to select an .esx
+	 * file, then choose which patterns to import.  Samples can be
+	 * optionally imported.
+	 * 
+	 * TODO: allow .psg files to be selected as well.
+	 */
+	public Object importPatterns(ExecutionEvent event) throws ExecutionException {
+		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+		IWorkbenchPage page = window.getActivePage();
+		IEditorPart editor = page.getActiveEditor();
+
+		// If the active editor is an EsxEditor
+		if(editor!=null && editor instanceof EsxEditor) {
+			// Get our EsxFile
+			EditingDomain editingDomain = ((EsxEditor) editor).getEditingDomain();
+			Resource resource =
+				(Resource)editingDomain.getResourceSet().getResources().get(0);
+			Object rootObject = resource.getContents().get(0);
+			if(rootObject instanceof EsxFile) {
+				EsxFile esxFile = (EsxFile) rootObject;
+
+				// Attempt to sync pointers if moves have occurred.
+				SyncPointersCommand cmd = new SyncPointersCommand(resource, (AdapterFactoryEditingDomain) editingDomain);
+				if(cmd.canExecute()) {
+					editingDomain.getCommandStack().execute(cmd);
+				}
+				
+				ImportPatternWizard wizard = new ImportPatternWizard();
+				wizard.init(window.getWorkbench(), esxFile);
+				WizardDialog dialog = new WizardDialog(window.getShell(), wizard);				
+				dialog.setPageSize(650, 400);
+				dialog.create();
+				dialog.open();
+			}
+		}
+		else {
+			MessageDialog.openError(
+				window.getShell(),
+				"No Destination File",
+				"Before importing patterns, please open an existing .esx file."
+			);
+		}
+
+		return null;
 	}
 
 }

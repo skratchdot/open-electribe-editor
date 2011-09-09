@@ -26,9 +26,12 @@ import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
@@ -235,6 +238,23 @@ public class EsxEditorUtil {
 			result[i] = filename;
 		}
 		return result;
+	}
+
+	/**
+	 * @param tableViewer The TableViewer that a column will be added to
+	 * @param text The name of the column. Will show up in the column header.
+	 * @param width If null, then pack() will be called. If a valid integer, then the column will have this width
+	 */
+	public static void addColumnToTableViewer(TableViewer tableViewer, String text, Integer width) {
+		TableViewerColumn tableViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
+		TableColumn column = tableViewerColumn.getColumn();
+		column.setText(text);
+		if(width==null) {
+			column.pack();
+		}
+		else {
+			column.setWidth(width);
+		}
 	}
 	
 }

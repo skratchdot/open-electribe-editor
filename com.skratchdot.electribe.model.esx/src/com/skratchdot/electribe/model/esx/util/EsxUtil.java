@@ -15,11 +15,15 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
+import com.skratchdot.electribe.model.esx.EsxFile;
+import com.skratchdot.electribe.model.esx.Sample;
 
 public class EsxUtil {
 	public static final int DEFAULT_SAMPLING_RATE = 44100;
@@ -354,6 +358,22 @@ public class EsxUtil {
 	 */
 	public static boolean isValidSongNumber(int songNumber) {
 		return (songNumber>=0 && songNumber<NUM_SONGS);
+	}
+
+	/**
+	 * @param esxFile The esx file to search
+	 * @param sample The sample to look for
+	 * @return Returns the index of the sample found (if it's sample data matches the input sample)
+	 */
+	public static int getExistingSampleIndex(EsxFile esxFile, Sample sample) {
+		for(int i=0; i<EsxUtil.NUM_SAMPLES; i++) {
+			Sample currentSample = esxFile.getSamples().get(i);
+			if(sample.getNumberOfSampleFrames() == currentSample.getNumberOfSampleFrames() &&
+				Arrays.equals(sample.getAudioDataChannelBoth(), currentSample.getAudioDataChannelBoth())) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 }
