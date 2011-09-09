@@ -11,12 +11,49 @@
  */
 package com.skratchdot.electribe.model.esx.util;
 
-import com.skratchdot.electribe.model.esx.*;
-
-import java.util.List;
-
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Switch;
+
+import com.skratchdot.electribe.model.esx.EsxFile;
+import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.GlobalParameters;
+import com.skratchdot.electribe.model.esx.MidiChannelType;
+import com.skratchdot.electribe.model.esx.MidiControlChangeAssignment;
+import com.skratchdot.electribe.model.esx.Operation;
+import com.skratchdot.electribe.model.esx.ParametersFx;
+import com.skratchdot.electribe.model.esx.ParametersMotion;
+import com.skratchdot.electribe.model.esx.Part;
+import com.skratchdot.electribe.model.esx.PartAccent;
+import com.skratchdot.electribe.model.esx.PartAudioIn;
+import com.skratchdot.electribe.model.esx.PartDrum;
+import com.skratchdot.electribe.model.esx.PartKeyboard;
+import com.skratchdot.electribe.model.esx.PartNoteNumber;
+import com.skratchdot.electribe.model.esx.PartStretchSlice;
+import com.skratchdot.electribe.model.esx.PartWithCommon;
+import com.skratchdot.electribe.model.esx.PartWithPitch;
+import com.skratchdot.electribe.model.esx.PartWithSample;
+import com.skratchdot.electribe.model.esx.PartWithSequenceData;
+import com.skratchdot.electribe.model.esx.PartWithSequenceDataGate;
+import com.skratchdot.electribe.model.esx.PartWithSlice;
+import com.skratchdot.electribe.model.esx.Pattern;
+import com.skratchdot.electribe.model.esx.PatternSetParameter;
+import com.skratchdot.electribe.model.esx.Sample;
+import com.skratchdot.electribe.model.esx.SampleInPatternInfo;
+import com.skratchdot.electribe.model.esx.SampleTune;
+import com.skratchdot.electribe.model.esx.SequenceData;
+import com.skratchdot.electribe.model.esx.SequenceDataGate;
+import com.skratchdot.electribe.model.esx.SequenceDataNote;
+import com.skratchdot.electribe.model.esx.Song;
+import com.skratchdot.electribe.model.esx.SongEvent;
+import com.skratchdot.electribe.model.esx.SongEventControl;
+import com.skratchdot.electribe.model.esx.SongEventDrumNote;
+import com.skratchdot.electribe.model.esx.SongEventKeyboardNote;
+import com.skratchdot.electribe.model.esx.SongEventMuteStatus;
+import com.skratchdot.electribe.model.esx.SongEventTempo;
+import com.skratchdot.electribe.model.esx.SongEventWithPart;
+import com.skratchdot.electribe.model.esx.SongPattern;
+import com.skratchdot.electribe.model.esx.Tempo;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,7 +68,7 @@ import org.eclipse.emf.ecore.EObject;
  * @see com.skratchdot.electribe.model.esx.EsxPackage
  * @generated
  */
-public class EsxSwitch<T> {
+public class EsxSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -53,14 +90,16 @@ public class EsxSwitch<T> {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @parameter ePackage the package in question.
+	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
-	public T doSwitch(EObject theEObject) {
-		return doSwitch(theEObject.eClass(), theEObject);
+	@Override
+	protected boolean isSwitchFor(EPackage ePackage) {
+		return ePackage == modelPackage;
 	}
 
 	/**
@@ -70,26 +109,7 @@ public class EsxSwitch<T> {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected T doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage) {
-			return doSwitch(theEClass.getClassifierID(), theEObject);
-		}
-		else {
-			List<EClass> eSuperTypes = theEClass.getESuperTypes();
-			return
-				eSuperTypes.isEmpty() ?
-					defaultCase(theEObject) :
-					doSwitch(eSuperTypes.get(0), theEObject);
-		}
-	}
-
-	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
+	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case EsxPackage.ESX_FILE: {
@@ -934,6 +954,7 @@ public class EsxSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
+	@Override
 	public T defaultCase(EObject object) {
 		return null;
 	}
