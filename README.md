@@ -16,7 +16,7 @@ is available on Windows, Linux, and Mac for free download
   
   
 ### Download Requirements ###
-Java 1.5 must be installed for this program to work properly.
+Java 1.6 must be installed for this program to work properly.
 To download the latest version of Java, visit:  
 [http://www.java.com/en/download/manual.jsp](http://www.java.com/en/download/manual.jsp) 
   
