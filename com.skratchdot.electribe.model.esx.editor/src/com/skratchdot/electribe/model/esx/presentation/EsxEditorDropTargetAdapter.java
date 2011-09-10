@@ -12,12 +12,7 @@
 package com.skratchdot.electribe.model.esx.presentation;
 
 import java.io.File;
-import java.io.IOException;
-
-import javax.sound.sampled.AudioFileFormat;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import java.util.ArrayList;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -25,8 +20,11 @@ import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DropTargetAdapter;
 import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.FileTransfer;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 
+import com.skratchdot.electribe.audioplayer.util.AudioUtil;
+import com.skratchdot.electribe.model.esx.editor.handlers.ImportHandler;
 import com.skratchdot.electribe.model.esx.editor.util.EsxEditorUtil;
 
 /**
@@ -68,16 +66,36 @@ public class EsxEditorDropTargetAdapter extends DropTargetAdapter {
 
 		if (FileTransfer.getInstance().isSupportedType(event.currentDataType)) {
 			String[] fileNames = (String[])event.data;
-            for(int i=0; i<fileNames.length; i++) {
-            	// Handle Esx Files
-            	if(fileNames[i].toLowerCase().endsWith(".esx")) {
-            		handleEsxFile(fileNames[i]);
-            	}
-            	// Handle Audio Files
-            	else {
-            		handleAudioFile(fileNames[i]);
-            	}	
+			ArrayList<String> esxFiles = new ArrayList<String>();
+			ArrayList<String> audioFiles = new ArrayList<String>();
+
+			// Build out arrays
+			for(int i=0; i<fileNames.length; i++) {
+				File file = new File(fileNames[i]);
+				if(file.isFile()) {
+					// Handle Esx Files
+	            	if(file.getAbsolutePath().toLowerCase().endsWith(".esx")) {
+	            		esxFiles.add(fileNames[i]);
+	            		//handleEsxFile(fileNames[i]);
+	            	}
+	            	// Handle Audio Files
+	            	else if(AudioUtil.isAudioFile(file)) {
+	            		audioFiles.add(fileNames[i]);
+	            		//handleAudioFile(fileNames[i]);
+	            	}
+				}
             }
+
+			// Handle esx files first
+			for(int i=0; i<esxFiles.size(); i++) {
+				handleEsxFile(esxFiles.get(i));
+			}
+
+			//  Handle audio files
+			if(audioFiles.size() > 0) {
+				handleAudioFiles((String[])audioFiles.toArray(new String[audioFiles.size()]));
+			}
+            
 		}
 
 	}
@@ -95,35 +113,38 @@ public class EsxEditorDropTargetAdapter extends DropTargetAdapter {
 	}
 
 	/**
-	 * This will ignore any fileName that does not point to a valid
-	 * audio file.  If we are passed in a valid audio fileName, and
+	 * This will ignore any file name that does not point to a valid
+	 * audio file.  If we are passed in a valid audio file, and
 	 * an Esx Editor is open, then we will try to add the file to an
 	 * open sample slot in the active editor.  If no slots are free,
 	 * or there is no active editor, then we will ignore the file.
-	 * @param fileName
+	 * @param fileNames
 	 */
-	private void handleAudioFile(String fileName) {
-		File file = new File(fileName);
-		if(file.isFile()) {
+	private void handleAudioFiles(String[] fileNames) {
+		IEditorPart editor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
 
-			// If it's a valid audio file
-			try {
-				AudioFileFormat baseFileFormat = AudioSystem.getAudioFileFormat(file);
-				AudioFormat baseFormat = baseFileFormat.getFormat();
-
-				MessageDialog.openInformation(
-					PlatformUI.getWorkbench().getDisplay().getActiveShell(),
-					"Dragging Files...",
-					baseFormat.toString()
-				);
-
-			} catch (UnsupportedAudioFileException e) {
-				//e.printStackTrace();
-			} catch (IOException e) {
-				//e.printStackTrace();
-			}
-
+		// If there's not an active editor, display a message to the user and return
+		if(editor == null) {
+			MessageDialog.openInformation(
+				PlatformUI.getWorkbench().getDisplay().getActiveShell(),
+				"Dragging Audio Files...",
+				"There is not an open .esx file to import samples into.\n\n" +
+				"Before dragging audio files, please open an existing .esx file, " +
+				"or create a new one, then try dragging your audio files again."
+			);
+			return;
 		}
-	}
 
+		// Show the samples tab if we are not already on it, or not on the info tab
+		if(editor instanceof EsxEditor) {
+			EsxEditor esxEditor = ((EsxEditor) editor);
+			if(esxEditor.getActivePage()!=EsxEditorPartSamples.PAGE_INDEX && esxEditor.getActivePage()!=EsxEditorPartInfo.PAGE_INDEX) {
+				esxEditor.setActivePage(EsxEditorPartSamples.PAGE_INDEX);
+			}
+		}
+
+		// Import audio files
+		ImportHandler.importAudioFiles(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), fileNames);
+	}
+	
 }

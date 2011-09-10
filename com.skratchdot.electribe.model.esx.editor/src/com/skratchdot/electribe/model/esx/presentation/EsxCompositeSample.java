@@ -248,7 +248,7 @@ public class EsxCompositeSample extends EsxComposite {
 	 */
 	@Override
 	public void refresh() {
-		if(this.isActive==false) return;
+		if(this.isActive==false || this.samples == null) return;
 
 		String multipleValueString = "<Multiple Values>";
 
