@@ -162,7 +162,7 @@ public class ImportPatternWizardPageSelectPatterns extends WizardPage {
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 
 		// Create our columns
-		EsxEditorUtil.addColumnToTableViewer(this.tableViewer, "Esx#", 45);
+		EsxEditorUtil.addColumnToTableViewer(this.tableViewer, "Esx#", 60);
 		EsxEditorUtil.addColumnToTableViewer(this.tableViewer, "Name", 100);
 		EsxEditorUtil.addColumnToTableViewer(this.tableViewer, "Tempo", 50);
 		EsxEditorUtil.addColumnToTableViewer(this.tableViewer, "Swing", 50);

@@ -63,8 +63,6 @@ public class ImportPatternWizardPageSelectFile extends WizardPage {
 			public void propertyChange(PropertyChangeEvent event) {
 				// Assume we are in an invalid state
 				isValidFile = false;
-				getWizard().getContainer().updateButtons();
-				getWizard().getContainer().updateMessage();
 
 				// Check to see if we have a valid esx file
 				File file = new File(fileFieldEditor.getStringValue());
