@@ -30,6 +30,10 @@ v1.0
          ws="carbon,cocoa,gtk,win32"
          arch="ppc,x86,x86_64"/>
 
+   <includes
+         id="org.eclipse.equinox.p2.rcp.feature"
+         version="0.0.0"/>
+
    <plugin
          id="com.ibm.icu"
          download-size="0"
@@ -699,6 +703,20 @@ v1.0
 
    <plugin
          id="org.eclipse.ui.editors"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.equinox.ds"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.equinox.util"
          download-size="0"
          install-size="0"
          version="0.0.0"
