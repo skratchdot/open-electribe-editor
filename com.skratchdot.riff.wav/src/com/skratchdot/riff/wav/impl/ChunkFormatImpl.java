@@ -249,7 +249,7 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 		this.setBlockAlign(buf.getUnsignedShort());
 		this.setSignificantBitsPerSample(buf.getUnsignedShort());
 
-		if(this.getCompressionCodeValue()!=CompressionCode.COMPRESSION_CODE_1_VALUE) {
+		if(this.getCompressionCodeValue()!=CompressionCode.COMPRESSION_CODE_1_VALUE || chunkSize!=this.getSize()) {
 			int numberOfExtraFormatBytes = buf.getUnsignedShort();
 
 			if(numberOfExtraFormatBytes>0) {

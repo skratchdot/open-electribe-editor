@@ -117,6 +117,7 @@ public class ChunkUnknownImpl extends ChunkImpl implements ChunkUnknown {
 
 		// Read in data size
 		int chunkDataSize = (int) buf.getUnsignedInt();
+		chunkDataSize = Math.min(chunkDataSize, buf.capacity());
 
 		// Read in the unknown data
 		byte[] unknownData = new byte[chunkDataSize];
