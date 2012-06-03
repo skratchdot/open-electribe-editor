@@ -1,0 +1,56 @@
+<project default="main">
+	<property file="build.credentials.properties" />
+
+	<target name="main">
+		<taskdef classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask" classpath="lib/ant-googlecode-0.0.3.jar" name="gcupload"/>
+
+		<!-- LINUX -->
+		<gcupload verbose="true" 
+			username="${gc.username}" password="${gc.password}" projectname="${gc.projectname}"
+			filename="${gc.filepath}${gc.filename}-v${gc.version}-linux.gtk.x86_64.tar.gz"
+			targetfilename="${gc.filename}-v${gc.version}-linux.gtk.x86_64.tar.gz"
+			summary="Linux, 64-bit [Version ${gc.version}]"
+			labels="Featured, Type-Archive, OpSys-Linux" />
+		<gcupload verbose="true" 
+			username="${gc.username}" password="${gc.password}" projectname="${gc.projectname}"
+			filename="${gc.filepath}${gc.filename}-v${gc.version}-linux.gtk.x86.tar.gz"
+			targetfilename="${gc.filename}-v${gc.version}-linux.gtk.x86.tar.gz"
+			summary="Linux, 32-bit [Version ${gc.version}]"
+			labels="Featured, Type-Archive, OpSys-Linux" />
+		
+		<!-- MAC OSX -->
+		<gcupload verbose="true" 
+			username="${gc.username}" password="${gc.password}" projectname="${gc.projectname}"
+			filename="${gc.filepath}${gc.filename}-v${gc.version}-macosx.cocoa.x86_64.tar.gz"
+			targetfilename="${gc.filename}-v${gc.version}-macosx.cocoa.x86_64.tar.gz"
+			summary="Mac OSX (Cocoa), 64-bit [Version ${gc.version}]"
+			labels="Featured, Type-Archive, OpSys-OSX" />
+		<gcupload verbose="true" 
+			username="${gc.username}" password="${gc.password}" projectname="${gc.projectname}"
+			filename="${gc.filepath}${gc.filename}-v${gc.version}-macosx.cocoa.x86.tar.gz"
+			targetfilename="${gc.filename}-v${gc.version}-macosx.cocoa.x86.tar.gz"
+			summary="Mac OSX (Cocoa), 32-bit [Version ${gc.version}]"
+			labels="Featured, Type-Archive, OpSys-OSX" />
+		<gcupload verbose="true" 
+			username="${gc.username}" password="${gc.password}" projectname="${gc.projectname}"
+			filename="${gc.filepath}${gc.filename}-v${gc.version}-macosx.cocoa.ppc.tar.gz"
+			targetfilename="${gc.filename}-v${gc.version}-macosx.cocoa.ppc.tar.gz"
+			summary="Mac OSX (Cocoa), PPC [Version ${gc.version}]"
+			labels="Featured, Type-Archive, OpSys-OSX" />
+
+		<!-- WINDOWS -->
+		<gcupload verbose="true" 
+			username="${gc.username}" password="${gc.password}" projectname="${gc.projectname}"
+			filename="${gc.filepath}${gc.filename}-v${gc.version}-win32.win32.x86_64.zip"
+			targetfilename="${gc.filename}-v${gc.version}-win32.win32.x86_64.zip"
+			summary="Windows, 64-bit [Version ${gc.version}]"
+			labels="Featured, Type-Archive, OpSys-Windows" />
+		<gcupload verbose="true" 
+			username="${gc.username}" password="${gc.password}" projectname="${gc.projectname}"
+			filename="${gc.filepath}${gc.filename}-v${gc.version}-win32.win32.x86.zip"
+			targetfilename="${gc.filename}-v${gc.version}-win32.win32.x86.zip"
+			summary="Windows, 32-bit [Version ${gc.version}]"
+			labels="Featured, Type-Archive, OpSys-Windows" />
+
+	</target>
+</project>

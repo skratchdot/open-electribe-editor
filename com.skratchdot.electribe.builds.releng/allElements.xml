@@ -80,7 +80,7 @@
 	<property name="assemble.org.eclipse.pde.build.container.feature.linux.gtk.x86_64" value="true" />
  	<target name="assemble.org.eclipse.pde.build.container.feature.linux.gtk.x86_64">
  		<ant antfile="${assembleScriptName}" dir="${buildDirectory}">			
- 			<property name="archiveName" value="${archiveNamePrefix}-linux.gtk.x86_64.zip"/>
+ 			<property name="archiveName" value="${archiveNamePrefix}-linux.gtk.x86_64.tar.gz"/>
 		</ant>
  	</target>
 	
@@ -144,6 +144,13 @@
  	<target name="assemble.org.eclipse.pde.build.container.feature.macosx.cocoa.x86">
  		<ant antfile="${assembleScriptName}" dir="${buildDirectory}">			
  			<property name="archiveName" value="${archiveNamePrefix}-macosx.cocoa.x86.tar.gz"/>
+		</ant>
+ 	</target>
+
+	<property name="assemble.org.eclipse.pde.build.container.feature.macosx.cocoa.x86_64" value="true" />
+ 	<target name="assemble.org.eclipse.pde.build.container.feature.macosx.cocoa.x86_64">
+ 		<ant antfile="${assembleScriptName}" dir="${buildDirectory}">			
+ 			<property name="archiveName" value="${archiveNamePrefix}-macosx.cocoa.x86_64.tar.gz"/>
 		</ant>
  	</target>
 

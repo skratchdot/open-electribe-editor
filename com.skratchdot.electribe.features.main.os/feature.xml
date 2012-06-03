@@ -279,15 +279,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.update.core.linux"
-         os="linux"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.swt.gtk.linux.ppc64"
          os="linux"
          ws="gtk"

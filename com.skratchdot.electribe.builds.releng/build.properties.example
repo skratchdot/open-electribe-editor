@@ -66,9 +66,12 @@ collectingFolder=${archivePrefix}
 #	macosx, cocoa, x86 & \
 #	macosx, cocoa, x86_64
 configs = win32,win32,x86 & \
-linux,gtk,x86 & \
+win32,win32,x86_64 & \
+linux, gtk, x86 & \
+linux, gtk, x86_64 & \
 macosx,cocoa,ppc & \
-macosx,cocoa,x86
+macosx, cocoa, x86 & \
+macosx, cocoa, x86_64
 
 # By default PDE creates one archive (result) per entry listed in the configs property.
 # Setting this value to true will cause PDE to only create one output containing all 
@@ -89,9 +92,11 @@ macosx,cocoa,x86
 #	aix, motif, ppc - antZip& \
 #	hpux, motif, PA_RISC - antZip& \
 #	macosx, carbon, ppc - antZip
-archivesFormat=linux,gtk,x86 - tar & \
-macosx,cocoa,ppc - tar & \
-macosx,cocoa,x86 - tar
+archivesFormat=linux, gtk, x86 - tar & \
+linux, gtk, x86_64 - tar & \
+macosx, cocoa, ppc - tar & \
+macosx, cocoa, x86 - tar & \
+macosx, cocoa, x86_64 - tar
 
 #Allow cycles involving at most one bundle that needs to be compiled with the rest being binary bundles.
 allowBinaryCycles = true
