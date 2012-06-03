@@ -44,6 +44,10 @@ button below:
 
 ### Version History ###
 
+#### v1.0.4 - Released June 3, 2012 ####
+
+- \[[BUG: #15](https://github.com/skratchdot/open-electribe-editor/issues/15)\] Fixed a bug that prevented valid 16-bit PCM wave files from loading
+
 #### v1.0.3 - Released September 10, 2011 ####
 
 - \[[FEATURE REQUEST: #3](https://github.com/skratchdot/open-electribe-editor/issues/3)\] Added the ability to import patterns from other .esx files
@@ -93,3 +97,19 @@ button below:
 
 - Song Events tab is incomplete
   
+### Credits / Development Tools / Links ###
+
+[Eclipse](http://www.eclipse.org/) - The IDE used to develop this program. Also, this product is based on Eclipse's Rich Client Platform (RCP).
+
+[EMF](http://www.eclipse.org/modeling/emf/) - The Framework used to model .esx files (as well as RIFF .wav files)
+
+[jLayer](http://www.javazoom.net/javalayer/javalayer.html) - An open source MP3 library for the Java Platform
+
+[Korg](http://www.korg.com/) - The manufacturer of the Electribe Series sampler ESX-1.
+
+**The following 2 hex editors helped me reverse engineer the .esx file format:**
+
+[HxD](http://mh-nexus.de/en/hxd/) - The Hex Editor I use to do file comparisons.
+
+[MiTeC HexEdit](http://www.mitec.cz/hex.html) - I used this for the hex calculator, and for the data display views/functions. 
+
