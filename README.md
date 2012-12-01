@@ -20,6 +20,7 @@ is available on Windows, Linux, and Mac for free download
 - [Bug Reports / Feature Requests](https://github.com/skratchdot/open-electribe-editor/issues) 
 
 - [Downloads](http://code.google.com/p/open-electribe-editor/downloads/list) 
+- [Javadocs](http://skratchdot.com/projects/open-electribe-editor/javadocs/)
 
 
 ### Download Requirements ###
