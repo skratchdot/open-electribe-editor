@@ -13,14 +13,17 @@ is available on Windows, Linux, and Mac for free download
 
 ### Links ###
 
+- [Downloads](http://code.google.com/p/open-electribe-editor/downloads/list) 
+
 - [Homepage](http://skratchdot.com/projects/open-electribe-editor/) 
 
 - [Discussion Group / Forum](http://groups.google.com/group/open-electribe-editor) 
 
 - [Bug Reports / Feature Requests](https://github.com/skratchdot/open-electribe-editor/issues) 
 
-- [Downloads](http://code.google.com/p/open-electribe-editor/downloads/list) 
 - [Javadocs](http://skratchdot.com/projects/open-electribe-editor/javadocs/)
+
+- [Wiki](https://github.com/skratchdot/open-electribe-editor/wiki)
 
 
 ### Download Requirements ###
@@ -58,6 +61,10 @@ _The following 2 hex editors helped me reverse engineer the .esx file format:_
 - [HxD](http://mh-nexus.de/en/hxd/) - The Hex Editor I use to do file comparisons.
 
 - [MiTeC HexEdit](http://www.mitec.cz/hex.html) - I used this for the hex calculator, and for the data display views/functions. 
+
+_More about the Esx File Format:_
+
+- [Esx File Format](http://skratchdot.com/projects/open-electribe-editor/javadocs/index.html?com/skratchdot/electribe/model/esx/EsxFile.html)
 
 
 ### Version History ###
