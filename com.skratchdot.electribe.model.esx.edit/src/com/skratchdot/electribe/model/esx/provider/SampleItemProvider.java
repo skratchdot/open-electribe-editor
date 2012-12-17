@@ -615,9 +615,14 @@ public class SampleItemProvider
 			// StretchStep
 			case 6: return ((Sample) object).getStretchStep().getLiteral();
 			// IsLoop
-			case 7: return ((Sample) object).isLoop()?getString("_UI_Display_Yes"):getString("_UI_Display_No");
+			case 7: 
+				if (((Sample) object).isStereoCurrent()) {
+					return ((Sample) object).isLoop() ? getString("_UI_Display_If_Mono") : getString("_UI_Display_No");
+				} else {
+					return ((Sample) object).isLoop() ? getString("_UI_Display_Yes") : getString("_UI_Display_No");
+				}
 			// IsSlice?
-			case 8: return ((Sample) object).isSlice()?getString("_UI_Display_Yes"):getString("_UI_Display_No");
+			case 8: return ((Sample) object).isSlice() ? getString("_UI_Display_Yes") : getString("_UI_Display_No");
 			// PlayLevel
 			case 9: return ((Sample) object).getPlayLevel().getLiteral();
 			// Start
@@ -629,7 +634,7 @@ public class SampleItemProvider
 			// NumSampleFrames
 			case 13: return Integer.toString(((Sample) object).getNumberOfSampleFrames());
 			// StereoOriginal
-			case 14: return ((Sample) object).isStereoOriginal()?getString("_UI_Display_Yes"):getString("_UI_Display_No");
+			case 14: return ((Sample) object).isStereoOriginal() ? getString("_UI_Display_Yes") : getString("_UI_Display_No");
 			default: return getText(object);
 		}
 	}
