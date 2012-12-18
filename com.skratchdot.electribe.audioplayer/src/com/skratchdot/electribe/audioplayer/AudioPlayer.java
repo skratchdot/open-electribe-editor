@@ -69,7 +69,7 @@ public class AudioPlayer {
 	}
 
 	public synchronized void play(Object obj, boolean isLoop) {
-		stopAllThreads();
+		stopActiveThread();
 		loopState = isLoop ? LoopState.ON : LoopState.OFF;
 		playState = PlayState.PLAYING;
 		createAudioThread(obj, isLoop);
@@ -90,17 +90,15 @@ public class AudioPlayer {
 	}
 
 	public synchronized void stop() {
-		stopAllThreads();
+		stopActiveThread();
 		playState = PlayState.STOPPED;
 	}
 
-	private void stopAllThreads() {
-		int activeCount = threadGroup.activeCount();
-		Thread[] threads = new Thread[activeCount];
-		int numThreads = threadGroup.enumerate(threads, true);
-		for (int i = 0; i < numThreads; i++) {
-			threads[i].interrupt();
-			// System.out.println("stop threads:" + threads[i]);
+	private void stopActiveThread() {
+		if (activeThread != null) {
+			activeThread.setStopped(false);
+			activeThread.setPaused(false);
+			activeThread.interrupt();
 		}
 	}
 
