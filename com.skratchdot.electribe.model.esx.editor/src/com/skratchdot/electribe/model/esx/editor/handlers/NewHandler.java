@@ -32,7 +32,7 @@ public class NewHandler extends AbstractHandler {
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// NEW_ESX_FILE_ID
-		if(event.getCommand().getId().equals(NEW_ESX_FILE_ID)) {
+		if (event.getCommand().getId().equals(NEW_ESX_FILE_ID)) {
 			return newEsxFile(event);
 		}
 
@@ -45,34 +45,37 @@ public class NewHandler extends AbstractHandler {
 	 * @throws ExecutionException
 	 */
 	public Object newEsxFile(ExecutionEvent event) throws ExecutionException {
-		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+		IWorkbenchWindow window = HandlerUtil
+				.getActiveWorkbenchWindowChecked(event);
 
 		try {
-			String[] files = EsxEditorUtil.openFilePathDialog(window.getShell(), SWT.SAVE, null);
+			String[] files = EsxEditorUtil.openFilePathDialog(
+					window.getShell(), SWT.SAVE, null);
 			if (files.length > 0) {
-				String defaultEsxFileString =  EsxPreferenceStore.getString(
-						EsxPreferenceNames.FILES_DEFAULT_ESX_FILE);
+				String defaultEsxFileString = EsxPreferenceStore
+						.getString(EsxPreferenceNames.FILES_DEFAULT_ESX_FILE);
 				File defaultEsxFile = new File(defaultEsxFileString);
 				File newEsxFile = new File(files[0]);
 
-				if(defaultEsxFile.isFile()) {
+				if (defaultEsxFile.isFile()) {
 					EsxEditorUtil.copyFile(defaultEsxFile, newEsxFile);
-					EsxEditorUtil.openEditor(window.getWorkbench(), URI.createFileURI(newEsxFile.getAbsolutePath()));
+					EsxEditorUtil.openEditor(window.getWorkbench(),
+							URI.createFileURI(newEsxFile.getAbsolutePath()));
 				} else {
 					// Display missing default .esx message
-					MessageDialog.openInformation(
-						window.getShell(),
-						EsxEditorUtil.getString("_UI_NewActionError_NoDefault_title"),
-						EsxEditorUtil.getString("_UI_NewActionError_NoDefault_message")
-					);
+					MessageDialog
+							.openInformation(
+									window.getShell(),
+									EsxEditorUtil
+											.getString("_UI_NewActionError_NoDefault_title"),
+									EsxEditorUtil
+											.getString("_UI_NewActionError_NoDefault_message"));
 				}
 			}
 		} catch (IOException e) {
-			MessageDialog.openError(
-				window.getShell(),
-				EsxEditorUtil.getString("_UI_NewActionError_label"),
-				e.getMessage()
-			);
+			MessageDialog.openError(window.getShell(),
+					EsxEditorUtil.getString("_UI_NewActionError_label"),
+					e.getMessage());
 		}
 
 		return null;

@@ -58,7 +58,8 @@ public enum SampleLoopType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	PING_PONG(1, "PING_PONG", "Alternating loop (forward/backward, also known as Ping Pong)"),
+	PING_PONG(1, "PING_PONG",
+			"Alternating loop (forward/backward, also known as Ping Pong)"),
 
 	/**
 	 * The '<em><b>BACKWARD</b></em>' literal object.
@@ -136,13 +137,8 @@ public enum SampleLoopType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final SampleLoopType[] VALUES_ARRAY =
-		new SampleLoopType[] {
-			UNKNOWN,
-			FORWARD,
-			PING_PONG,
-			BACKWARD,
-		};
+	private static final SampleLoopType[] VALUES_ARRAY = new SampleLoopType[] {
+			UNKNOWN, FORWARD, PING_PONG, BACKWARD, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Sample Loop Type</b></em>' enumerators.
@@ -150,7 +146,8 @@ public enum SampleLoopType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<SampleLoopType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<SampleLoopType> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Sample Loop Type</b></em>' literal with the specified literal value.
@@ -192,10 +189,14 @@ public enum SampleLoopType implements Enumerator {
 	 */
 	public static SampleLoopType get(int value) {
 		switch (value) {
-			case UNKNOWN_VALUE: return UNKNOWN;
-			case FORWARD_VALUE: return FORWARD;
-			case PING_PONG_VALUE: return PING_PONG;
-			case BACKWARD_VALUE: return BACKWARD;
+		case UNKNOWN_VALUE:
+			return UNKNOWN;
+		case FORWARD_VALUE:
+			return FORWARD;
+		case PING_PONG_VALUE:
+			return PING_PONG;
+		case BACKWARD_VALUE:
+			return BACKWARD;
 		}
 		return null;
 	}
@@ -239,7 +240,7 @@ public enum SampleLoopType implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -248,7 +249,7 @@ public enum SampleLoopType implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -257,7 +258,7 @@ public enum SampleLoopType implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -270,5 +271,5 @@ public enum SampleLoopType implements Enumerator {
 	public String toString() {
 		return literal;
 	}
-	
+
 } //SampleLoopType

@@ -58,7 +58,7 @@ public class PartAudioInTest extends PartTest {
 	 */
 	@Override
 	protected PartAudioIn getFixture() {
-		return (PartAudioIn)fixture;
+		return (PartAudioIn) fixture;
 	}
 
 	/**

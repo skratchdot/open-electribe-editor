@@ -58,7 +58,7 @@ public class SongEventTempoTest extends SongEventTest {
 	 */
 	@Override
 	protected SongEventTempo getFixture() {
-		return (SongEventTempo)fixture;
+		return (SongEventTempo) fixture;
 	}
 
 	/**

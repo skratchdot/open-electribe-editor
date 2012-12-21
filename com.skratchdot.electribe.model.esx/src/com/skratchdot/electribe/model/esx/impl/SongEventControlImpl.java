@@ -37,7 +37,8 @@ import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
  *
  * @generated
  */
-public class SongEventControlImpl extends SongEventImpl implements SongEventControl {
+public class SongEventControlImpl extends SongEventImpl implements
+		SongEventControl {
 	/**
 	 * The default value of the '{@link #getOperationType() <em>Operation Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -166,8 +167,9 @@ public class SongEventControlImpl extends SongEventImpl implements SongEventCont
 	 * @generated NOT
 	 */
 	public OperationType getOperationType() {
-		OperationType operationType = OperationType.get(this.getOperationNumber());
-		return (operationType==null?OperationType.get(0):operationType);
+		OperationType operationType = OperationType.get(this
+				.getOperationNumber());
+		return (operationType == null ? OperationType.get(0) : operationType);
 	}
 
 	/**
@@ -188,7 +190,8 @@ public class SongEventControlImpl extends SongEventImpl implements SongEventCont
 		byte oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT_CONTROL__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_EVENT_CONTROL__VALUE, oldValue, value));
 	}
 
 	/**
@@ -209,7 +212,9 @@ public class SongEventControlImpl extends SongEventImpl implements SongEventCont
 		byte oldReservedByte = reservedByte;
 		reservedByte = newReservedByte;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT_CONTROL__RESERVED_BYTE, oldReservedByte, reservedByte));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_EVENT_CONTROL__RESERVED_BYTE,
+					oldReservedByte, reservedByte));
 	}
 
 	/**
@@ -230,7 +235,9 @@ public class SongEventControlImpl extends SongEventImpl implements SongEventCont
 		short oldReservedShort = reservedShort;
 		reservedShort = newReservedShort;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT_CONTROL__RESERVED_SHORT, oldReservedShort, reservedShort));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_EVENT_CONTROL__RESERVED_SHORT,
+					oldReservedShort, reservedShort));
 	}
 
 	/**
@@ -239,7 +246,8 @@ public class SongEventControlImpl extends SongEventImpl implements SongEventCont
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_SONG_EVENT);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				EsxUtil.CHUNKSIZE_SONG_EVENT);
 		// byte 0
 		buf.putByte(this.getPositionNumber());
 		// byte 1
@@ -266,14 +274,14 @@ public class SongEventControlImpl extends SongEventImpl implements SongEventCont
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_CONTROL__OPERATION_TYPE:
-				return getOperationType();
-			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_BYTE:
-				return getReservedByte();
-			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_SHORT:
-				return getReservedShort();
-			case EsxPackage.SONG_EVENT_CONTROL__VALUE:
-				return getValue();
+		case EsxPackage.SONG_EVENT_CONTROL__OPERATION_TYPE:
+			return getOperationType();
+		case EsxPackage.SONG_EVENT_CONTROL__RESERVED_BYTE:
+			return getReservedByte();
+		case EsxPackage.SONG_EVENT_CONTROL__RESERVED_SHORT:
+			return getReservedShort();
+		case EsxPackage.SONG_EVENT_CONTROL__VALUE:
+			return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -286,15 +294,15 @@ public class SongEventControlImpl extends SongEventImpl implements SongEventCont
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_BYTE:
-				setReservedByte((Byte)newValue);
-				return;
-			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_SHORT:
-				setReservedShort((Short)newValue);
-				return;
-			case EsxPackage.SONG_EVENT_CONTROL__VALUE:
-				setValue((Byte)newValue);
-				return;
+		case EsxPackage.SONG_EVENT_CONTROL__RESERVED_BYTE:
+			setReservedByte((Byte) newValue);
+			return;
+		case EsxPackage.SONG_EVENT_CONTROL__RESERVED_SHORT:
+			setReservedShort((Short) newValue);
+			return;
+		case EsxPackage.SONG_EVENT_CONTROL__VALUE:
+			setValue((Byte) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -307,15 +315,15 @@ public class SongEventControlImpl extends SongEventImpl implements SongEventCont
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_BYTE:
-				setReservedByte(RESERVED_BYTE_EDEFAULT);
-				return;
-			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_SHORT:
-				setReservedShort(RESERVED_SHORT_EDEFAULT);
-				return;
-			case EsxPackage.SONG_EVENT_CONTROL__VALUE:
-				setValue(VALUE_EDEFAULT);
-				return;
+		case EsxPackage.SONG_EVENT_CONTROL__RESERVED_BYTE:
+			setReservedByte(RESERVED_BYTE_EDEFAULT);
+			return;
+		case EsxPackage.SONG_EVENT_CONTROL__RESERVED_SHORT:
+			setReservedShort(RESERVED_SHORT_EDEFAULT);
+			return;
+		case EsxPackage.SONG_EVENT_CONTROL__VALUE:
+			setValue(VALUE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -328,14 +336,14 @@ public class SongEventControlImpl extends SongEventImpl implements SongEventCont
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_CONTROL__OPERATION_TYPE:
-				return getOperationType() != OPERATION_TYPE_EDEFAULT;
-			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_BYTE:
-				return reservedByte != RESERVED_BYTE_EDEFAULT;
-			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_SHORT:
-				return reservedShort != RESERVED_SHORT_EDEFAULT;
-			case EsxPackage.SONG_EVENT_CONTROL__VALUE:
-				return value != VALUE_EDEFAULT;
+		case EsxPackage.SONG_EVENT_CONTROL__OPERATION_TYPE:
+			return getOperationType() != OPERATION_TYPE_EDEFAULT;
+		case EsxPackage.SONG_EVENT_CONTROL__RESERVED_BYTE:
+			return reservedByte != RESERVED_BYTE_EDEFAULT;
+		case EsxPackage.SONG_EVENT_CONTROL__RESERVED_SHORT:
+			return reservedShort != RESERVED_SHORT_EDEFAULT;
+		case EsxPackage.SONG_EVENT_CONTROL__VALUE:
+			return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -347,7 +355,8 @@ public class SongEventControlImpl extends SongEventImpl implements SongEventCont
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (reservedByte: ");

@@ -325,7 +325,8 @@ public class SongImpl extends EObjectImpl implements Song {
 		}
 		// bytes 16~271 (SongPatterns - PatternNumber)
 		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
-			this.getSongPatterns().get(i).setPatternPointer((short) in.getUnsignedByte());
+			this.getSongPatterns().get(i)
+					.setPatternPointer((short) in.getUnsignedByte());
 		}
 		// bytes 272~527
 		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
@@ -342,10 +343,11 @@ public class SongImpl extends EObjectImpl implements Song {
 		ExtendedByteBuffer in = new ExtendedByteBuffer(b);
 
 		byte[] songEventBytes = new byte[EsxUtil.CHUNKSIZE_SONG_EVENT];
-		while(in.position()<in.limit()) {
+		while (in.position() < in.limit()) {
 			in.getBytes(songEventBytes);
-			SongEvent songEvent = EsxFactory.eINSTANCE.createSongEvent(songEventBytes);
-			this.getSongEvents().add(songEvent);			
+			SongEvent songEvent = EsxFactory.eINSTANCE
+					.createSongEvent(songEventBytes);
+			this.getSongEvents().add(songEvent);
 		}
 	}
 
@@ -377,7 +379,8 @@ public class SongImpl extends EObjectImpl implements Song {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG__NAME, oldName, name));
 	}
 
 	/**
@@ -394,12 +397,18 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTempo(Tempo newTempo, NotificationChain msgs) {
+	public NotificationChain basicSetTempo(Tempo newTempo,
+			NotificationChain msgs) {
 		Tempo oldTempo = tempo;
 		tempo = newTempo;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.SONG__TEMPO, oldTempo, newTempo);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, EsxPackage.SONG__TEMPO, oldTempo,
+					newTempo);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -413,14 +422,19 @@ public class SongImpl extends EObjectImpl implements Song {
 		if (newTempo != tempo) {
 			NotificationChain msgs = null;
 			if (tempo != null)
-				msgs = ((InternalEObject)tempo).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.SONG__TEMPO, null, msgs);
+				msgs = ((InternalEObject) tempo).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - EsxPackage.SONG__TEMPO, null,
+						msgs);
 			if (newTempo != null)
-				msgs = ((InternalEObject)newTempo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.SONG__TEMPO, null, msgs);
+				msgs = ((InternalEObject) newTempo).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - EsxPackage.SONG__TEMPO, null,
+						msgs);
 			msgs = basicSetTempo(newTempo, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG__TEMPO, newTempo, newTempo));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG__TEMPO, newTempo, newTempo));
 	}
 
 	/**
@@ -441,7 +455,8 @@ public class SongImpl extends EObjectImpl implements Song {
 		TempoLock oldTempoLock = tempoLock;
 		tempoLock = newTempoLock == null ? TEMPO_LOCK_EDEFAULT : newTempoLock;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG__TEMPO_LOCK, oldTempoLock, tempoLock));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG__TEMPO_LOCK, oldTempoLock, tempoLock));
 	}
 
 	/**
@@ -460,9 +475,11 @@ public class SongImpl extends EObjectImpl implements Song {
 	 */
 	public void setSongLength(SongLength newSongLength) {
 		SongLength oldSongLength = songLength;
-		songLength = newSongLength == null ? SONG_LENGTH_EDEFAULT : newSongLength;
+		songLength = newSongLength == null ? SONG_LENGTH_EDEFAULT
+				: newSongLength;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG__SONG_LENGTH, oldSongLength, songLength));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG__SONG_LENGTH, oldSongLength, songLength));
 	}
 
 	/**
@@ -483,7 +500,8 @@ public class SongImpl extends EObjectImpl implements Song {
 		MuteHold oldMuteHold = muteHold;
 		muteHold = newMuteHold == null ? MUTE_HOLD_EDEFAULT : newMuteHold;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG__MUTE_HOLD, oldMuteHold, muteHold));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG__MUTE_HOLD, oldMuteHold, muteHold));
 	}
 
 	/**
@@ -502,9 +520,12 @@ public class SongImpl extends EObjectImpl implements Song {
 	 */
 	public void setNextSongNumber(NextSongNumber newNextSongNumber) {
 		NextSongNumber oldNextSongNumber = nextSongNumber;
-		nextSongNumber = newNextSongNumber == null ? NEXT_SONG_NUMBER_EDEFAULT : newNextSongNumber;
+		nextSongNumber = newNextSongNumber == null ? NEXT_SONG_NUMBER_EDEFAULT
+				: newNextSongNumber;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG__NEXT_SONG_NUMBER, oldNextSongNumber, nextSongNumber));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG__NEXT_SONG_NUMBER, oldNextSongNumber,
+					nextSongNumber));
 	}
 
 	/**
@@ -530,11 +551,14 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNumberOfSongEventsOriginal(short newNumberOfSongEventsOriginal) {
+	public void setNumberOfSongEventsOriginal(
+			short newNumberOfSongEventsOriginal) {
 		short oldNumberOfSongEventsOriginal = numberOfSongEventsOriginal;
 		numberOfSongEventsOriginal = newNumberOfSongEventsOriginal;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL, oldNumberOfSongEventsOriginal, numberOfSongEventsOriginal));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL,
+					oldNumberOfSongEventsOriginal, numberOfSongEventsOriginal));
 	}
 
 	/**
@@ -544,7 +568,8 @@ public class SongImpl extends EObjectImpl implements Song {
 	 */
 	public EList<SongPattern> getSongPatterns() {
 		if (songPatterns == null) {
-			songPatterns = new EObjectContainmentEList<SongPattern>(SongPattern.class, this, EsxPackage.SONG__SONG_PATTERNS);
+			songPatterns = new EObjectContainmentEList<SongPattern>(
+					SongPattern.class, this, EsxPackage.SONG__SONG_PATTERNS);
 		}
 		return songPatterns;
 	}
@@ -556,7 +581,8 @@ public class SongImpl extends EObjectImpl implements Song {
 	 */
 	public EList<SongEvent> getSongEvents() {
 		if (songEvents == null) {
-			songEvents = new EObjectContainmentEList<SongEvent>(SongEvent.class, this, EsxPackage.SONG__SONG_EVENTS);
+			songEvents = new EObjectContainmentEList<SongEvent>(
+					SongEvent.class, this, EsxPackage.SONG__SONG_EVENTS);
 		}
 		return songEvents;
 	}
@@ -567,11 +593,12 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * @generated NOT
 	 */
 	public boolean isEmpty() {
-		if(this.eResource()!=null) {
+		if (this.eResource() != null) {
 			Resource resource = (Resource) this.eResource();
 			Object rootObject = resource.getContents().get(0);
-			if(rootObject instanceof EsxFile) {
-				return (this.getName().equals(((EsxFile) rootObject).getEmptySong().getName()));
+			if (rootObject instanceof EsxFile) {
+				return (this.getName().equals(((EsxFile) rootObject)
+						.getEmptySong().getName()));
 			}
 		}
 		return true;
@@ -593,9 +620,12 @@ public class SongImpl extends EObjectImpl implements Song {
 	 */
 	public void setSongNumberOriginal(SongNumber newSongNumberOriginal) {
 		SongNumber oldSongNumberOriginal = songNumberOriginal;
-		songNumberOriginal = newSongNumberOriginal == null ? SONG_NUMBER_ORIGINAL_EDEFAULT : newSongNumberOriginal;
+		songNumberOriginal = newSongNumberOriginal == null ? SONG_NUMBER_ORIGINAL_EDEFAULT
+				: newSongNumberOriginal;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG__SONG_NUMBER_ORIGINAL, oldSongNumberOriginal, songNumberOriginal));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG__SONG_NUMBER_ORIGINAL,
+					oldSongNumberOriginal, songNumberOriginal));
 	}
 
 	/**
@@ -604,11 +634,12 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * @generated NOT
 	 */
 	public SongNumber getSongNumberCurrent() {
-		if(this.eResource()!=null) {
+		if (this.eResource() != null) {
 			Resource resource = (Resource) this.eResource();
 			Object rootObject = resource.getContents().get(0);
-			if(rootObject instanceof EsxFile) {
-				return SongNumber.get(((EsxFile) rootObject).getSongs().indexOf(this));
+			if (rootObject instanceof EsxFile) {
+				return SongNumber.get(((EsxFile) rootObject).getSongs()
+						.indexOf(this));
 			}
 		}
 		return SongNumber.get(-1);
@@ -622,7 +653,9 @@ public class SongImpl extends EObjectImpl implements Song {
 	public byte[] toSongByteArray() {
 		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_SONG);
 		// bytes 0~7
-		buf.putBytes(EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00), 0, 8);
+		buf.putBytes(
+				EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00),
+				0, 8);
 		// bytes 8~9
 		buf.putShort(this.getTempo().getShortFromCurrentValue());
 		// byte 10
@@ -637,7 +670,8 @@ public class SongImpl extends EObjectImpl implements Song {
 		buf.putShort(this.getNumberOfSongEventsCurrent());
 		// bytes 16~271 (SongPatterns - PatternNumber)
 		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
-			buf.putUnsignedByte(this.getSongPatterns().get(i).getPatternPointer());
+			buf.putUnsignedByte(this.getSongPatterns().get(i)
+					.getPatternPointer());
 		}
 		// bytes 272~527
 		for (int i = 0; i < EsxUtil.NUM_SONG_PATTERNS; i++) {
@@ -653,25 +687,24 @@ public class SongImpl extends EObjectImpl implements Song {
 	 */
 	public byte[] toSongEventsByteArray() {
 		short numEvents = this.getNumberOfSongEventsCurrent();
-		if(numEvents>0) {
-			ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_SONG_EVENT*numEvents);
+		if (numEvents > 0) {
+			ExtendedByteBuffer buf = new ExtendedByteBuffer(
+					EsxUtil.CHUNKSIZE_SONG_EVENT * numEvents);
 			// write song events
 			SongEvent songEvent;
-			for(int i=0; i<numEvents; i++) {
+			for (int i = 0; i < numEvents; i++) {
 				songEvent = this.getSongEvents().get(i);
-				if(songEvent instanceof SongEventControl) {
+				if (songEvent instanceof SongEventControl) {
 					buf.putBytes(((SongEventControl) songEvent).toByteArray());
-				}
-				else if(songEvent instanceof SongEventDrumNote) {
+				} else if (songEvent instanceof SongEventDrumNote) {
 					buf.putBytes(((SongEventDrumNote) songEvent).toByteArray());
-				}
-				else if(songEvent instanceof SongEventKeyboardNote) {
-					buf.putBytes(((SongEventKeyboardNote) songEvent).toByteArray());
-				}
-				else if(songEvent instanceof SongEventMuteStatus) {
-					buf.putBytes(((SongEventMuteStatus) songEvent).toByteArray());
-				}
-				else if(songEvent instanceof SongEventTempo) {
+				} else if (songEvent instanceof SongEventKeyboardNote) {
+					buf.putBytes(((SongEventKeyboardNote) songEvent)
+							.toByteArray());
+				} else if (songEvent instanceof SongEventMuteStatus) {
+					buf.putBytes(((SongEventMuteStatus) songEvent)
+							.toByteArray());
+				} else if (songEvent instanceof SongEventTempo) {
 					buf.putBytes(((SongEventTempo) songEvent).toByteArray());
 				}
 			}
@@ -686,14 +719,17 @@ public class SongImpl extends EObjectImpl implements Song {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EsxPackage.SONG__TEMPO:
-				return basicSetTempo(null, msgs);
-			case EsxPackage.SONG__SONG_PATTERNS:
-				return ((InternalEList<?>)getSongPatterns()).basicRemove(otherEnd, msgs);
-			case EsxPackage.SONG__SONG_EVENTS:
-				return ((InternalEList<?>)getSongEvents()).basicRemove(otherEnd, msgs);
+		case EsxPackage.SONG__TEMPO:
+			return basicSetTempo(null, msgs);
+		case EsxPackage.SONG__SONG_PATTERNS:
+			return ((InternalEList<?>) getSongPatterns()).basicRemove(otherEnd,
+					msgs);
+		case EsxPackage.SONG__SONG_EVENTS:
+			return ((InternalEList<?>) getSongEvents()).basicRemove(otherEnd,
+					msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -706,32 +742,32 @@ public class SongImpl extends EObjectImpl implements Song {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.SONG__NAME:
-				return getName();
-			case EsxPackage.SONG__TEMPO:
-				return getTempo();
-			case EsxPackage.SONG__TEMPO_LOCK:
-				return getTempoLock();
-			case EsxPackage.SONG__SONG_LENGTH:
-				return getSongLength();
-			case EsxPackage.SONG__MUTE_HOLD:
-				return getMuteHold();
-			case EsxPackage.SONG__NEXT_SONG_NUMBER:
-				return getNextSongNumber();
-			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_CURRENT:
-				return getNumberOfSongEventsCurrent();
-			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL:
-				return getNumberOfSongEventsOriginal();
-			case EsxPackage.SONG__SONG_PATTERNS:
-				return getSongPatterns();
-			case EsxPackage.SONG__SONG_EVENTS:
-				return getSongEvents();
-			case EsxPackage.SONG__EMPTY:
-				return isEmpty();
-			case EsxPackage.SONG__SONG_NUMBER_ORIGINAL:
-				return getSongNumberOriginal();
-			case EsxPackage.SONG__SONG_NUMBER_CURRENT:
-				return getSongNumberCurrent();
+		case EsxPackage.SONG__NAME:
+			return getName();
+		case EsxPackage.SONG__TEMPO:
+			return getTempo();
+		case EsxPackage.SONG__TEMPO_LOCK:
+			return getTempoLock();
+		case EsxPackage.SONG__SONG_LENGTH:
+			return getSongLength();
+		case EsxPackage.SONG__MUTE_HOLD:
+			return getMuteHold();
+		case EsxPackage.SONG__NEXT_SONG_NUMBER:
+			return getNextSongNumber();
+		case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_CURRENT:
+			return getNumberOfSongEventsCurrent();
+		case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL:
+			return getNumberOfSongEventsOriginal();
+		case EsxPackage.SONG__SONG_PATTERNS:
+			return getSongPatterns();
+		case EsxPackage.SONG__SONG_EVENTS:
+			return getSongEvents();
+		case EsxPackage.SONG__EMPTY:
+			return isEmpty();
+		case EsxPackage.SONG__SONG_NUMBER_ORIGINAL:
+			return getSongNumberOriginal();
+		case EsxPackage.SONG__SONG_NUMBER_CURRENT:
+			return getSongNumberCurrent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -745,38 +781,39 @@ public class SongImpl extends EObjectImpl implements Song {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.SONG__NAME:
-				setName((String)newValue);
-				return;
-			case EsxPackage.SONG__TEMPO:
-				setTempo((Tempo)newValue);
-				return;
-			case EsxPackage.SONG__TEMPO_LOCK:
-				setTempoLock((TempoLock)newValue);
-				return;
-			case EsxPackage.SONG__SONG_LENGTH:
-				setSongLength((SongLength)newValue);
-				return;
-			case EsxPackage.SONG__MUTE_HOLD:
-				setMuteHold((MuteHold)newValue);
-				return;
-			case EsxPackage.SONG__NEXT_SONG_NUMBER:
-				setNextSongNumber((NextSongNumber)newValue);
-				return;
-			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL:
-				setNumberOfSongEventsOriginal((Short)newValue);
-				return;
-			case EsxPackage.SONG__SONG_PATTERNS:
-				getSongPatterns().clear();
-				getSongPatterns().addAll((Collection<? extends SongPattern>)newValue);
-				return;
-			case EsxPackage.SONG__SONG_EVENTS:
-				getSongEvents().clear();
-				getSongEvents().addAll((Collection<? extends SongEvent>)newValue);
-				return;
-			case EsxPackage.SONG__SONG_NUMBER_ORIGINAL:
-				setSongNumberOriginal((SongNumber)newValue);
-				return;
+		case EsxPackage.SONG__NAME:
+			setName((String) newValue);
+			return;
+		case EsxPackage.SONG__TEMPO:
+			setTempo((Tempo) newValue);
+			return;
+		case EsxPackage.SONG__TEMPO_LOCK:
+			setTempoLock((TempoLock) newValue);
+			return;
+		case EsxPackage.SONG__SONG_LENGTH:
+			setSongLength((SongLength) newValue);
+			return;
+		case EsxPackage.SONG__MUTE_HOLD:
+			setMuteHold((MuteHold) newValue);
+			return;
+		case EsxPackage.SONG__NEXT_SONG_NUMBER:
+			setNextSongNumber((NextSongNumber) newValue);
+			return;
+		case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL:
+			setNumberOfSongEventsOriginal((Short) newValue);
+			return;
+		case EsxPackage.SONG__SONG_PATTERNS:
+			getSongPatterns().clear();
+			getSongPatterns().addAll(
+					(Collection<? extends SongPattern>) newValue);
+			return;
+		case EsxPackage.SONG__SONG_EVENTS:
+			getSongEvents().clear();
+			getSongEvents().addAll((Collection<? extends SongEvent>) newValue);
+			return;
+		case EsxPackage.SONG__SONG_NUMBER_ORIGINAL:
+			setSongNumberOriginal((SongNumber) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -789,36 +826,36 @@ public class SongImpl extends EObjectImpl implements Song {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case EsxPackage.SONG__TEMPO:
-				setTempo((Tempo)null);
-				return;
-			case EsxPackage.SONG__TEMPO_LOCK:
-				setTempoLock(TEMPO_LOCK_EDEFAULT);
-				return;
-			case EsxPackage.SONG__SONG_LENGTH:
-				setSongLength(SONG_LENGTH_EDEFAULT);
-				return;
-			case EsxPackage.SONG__MUTE_HOLD:
-				setMuteHold(MUTE_HOLD_EDEFAULT);
-				return;
-			case EsxPackage.SONG__NEXT_SONG_NUMBER:
-				setNextSongNumber(NEXT_SONG_NUMBER_EDEFAULT);
-				return;
-			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL:
-				setNumberOfSongEventsOriginal(NUMBER_OF_SONG_EVENTS_ORIGINAL_EDEFAULT);
-				return;
-			case EsxPackage.SONG__SONG_PATTERNS:
-				getSongPatterns().clear();
-				return;
-			case EsxPackage.SONG__SONG_EVENTS:
-				getSongEvents().clear();
-				return;
-			case EsxPackage.SONG__SONG_NUMBER_ORIGINAL:
-				setSongNumberOriginal(SONG_NUMBER_ORIGINAL_EDEFAULT);
-				return;
+		case EsxPackage.SONG__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case EsxPackage.SONG__TEMPO:
+			setTempo((Tempo) null);
+			return;
+		case EsxPackage.SONG__TEMPO_LOCK:
+			setTempoLock(TEMPO_LOCK_EDEFAULT);
+			return;
+		case EsxPackage.SONG__SONG_LENGTH:
+			setSongLength(SONG_LENGTH_EDEFAULT);
+			return;
+		case EsxPackage.SONG__MUTE_HOLD:
+			setMuteHold(MUTE_HOLD_EDEFAULT);
+			return;
+		case EsxPackage.SONG__NEXT_SONG_NUMBER:
+			setNextSongNumber(NEXT_SONG_NUMBER_EDEFAULT);
+			return;
+		case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL:
+			setNumberOfSongEventsOriginal(NUMBER_OF_SONG_EVENTS_ORIGINAL_EDEFAULT);
+			return;
+		case EsxPackage.SONG__SONG_PATTERNS:
+			getSongPatterns().clear();
+			return;
+		case EsxPackage.SONG__SONG_EVENTS:
+			getSongEvents().clear();
+			return;
+		case EsxPackage.SONG__SONG_NUMBER_ORIGINAL:
+			setSongNumberOriginal(SONG_NUMBER_ORIGINAL_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -831,32 +868,33 @@ public class SongImpl extends EObjectImpl implements Song {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case EsxPackage.SONG__TEMPO:
-				return tempo != null;
-			case EsxPackage.SONG__TEMPO_LOCK:
-				return tempoLock != TEMPO_LOCK_EDEFAULT;
-			case EsxPackage.SONG__SONG_LENGTH:
-				return songLength != SONG_LENGTH_EDEFAULT;
-			case EsxPackage.SONG__MUTE_HOLD:
-				return muteHold != MUTE_HOLD_EDEFAULT;
-			case EsxPackage.SONG__NEXT_SONG_NUMBER:
-				return nextSongNumber != NEXT_SONG_NUMBER_EDEFAULT;
-			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_CURRENT:
-				return getNumberOfSongEventsCurrent() != NUMBER_OF_SONG_EVENTS_CURRENT_EDEFAULT;
-			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL:
-				return numberOfSongEventsOriginal != NUMBER_OF_SONG_EVENTS_ORIGINAL_EDEFAULT;
-			case EsxPackage.SONG__SONG_PATTERNS:
-				return songPatterns != null && !songPatterns.isEmpty();
-			case EsxPackage.SONG__SONG_EVENTS:
-				return songEvents != null && !songEvents.isEmpty();
-			case EsxPackage.SONG__EMPTY:
-				return isEmpty() != EMPTY_EDEFAULT;
-			case EsxPackage.SONG__SONG_NUMBER_ORIGINAL:
-				return songNumberOriginal != SONG_NUMBER_ORIGINAL_EDEFAULT;
-			case EsxPackage.SONG__SONG_NUMBER_CURRENT:
-				return getSongNumberCurrent() != SONG_NUMBER_CURRENT_EDEFAULT;
+		case EsxPackage.SONG__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
+					.equals(name);
+		case EsxPackage.SONG__TEMPO:
+			return tempo != null;
+		case EsxPackage.SONG__TEMPO_LOCK:
+			return tempoLock != TEMPO_LOCK_EDEFAULT;
+		case EsxPackage.SONG__SONG_LENGTH:
+			return songLength != SONG_LENGTH_EDEFAULT;
+		case EsxPackage.SONG__MUTE_HOLD:
+			return muteHold != MUTE_HOLD_EDEFAULT;
+		case EsxPackage.SONG__NEXT_SONG_NUMBER:
+			return nextSongNumber != NEXT_SONG_NUMBER_EDEFAULT;
+		case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_CURRENT:
+			return getNumberOfSongEventsCurrent() != NUMBER_OF_SONG_EVENTS_CURRENT_EDEFAULT;
+		case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL:
+			return numberOfSongEventsOriginal != NUMBER_OF_SONG_EVENTS_ORIGINAL_EDEFAULT;
+		case EsxPackage.SONG__SONG_PATTERNS:
+			return songPatterns != null && !songPatterns.isEmpty();
+		case EsxPackage.SONG__SONG_EVENTS:
+			return songEvents != null && !songEvents.isEmpty();
+		case EsxPackage.SONG__EMPTY:
+			return isEmpty() != EMPTY_EDEFAULT;
+		case EsxPackage.SONG__SONG_NUMBER_ORIGINAL:
+			return songNumberOriginal != SONG_NUMBER_ORIGINAL_EDEFAULT;
+		case EsxPackage.SONG__SONG_NUMBER_CURRENT:
+			return getSongNumberCurrent() != SONG_NUMBER_CURRENT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -868,7 +906,8 @@ public class SongImpl extends EObjectImpl implements Song {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");

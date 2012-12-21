@@ -83,11 +83,8 @@ public enum ArpeggiatorControl implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ArpeggiatorControl[] VALUES_ARRAY =
-		new ArpeggiatorControl[] {
-			NORMAL,
-			REVERSE,
-		};
+	private static final ArpeggiatorControl[] VALUES_ARRAY = new ArpeggiatorControl[] {
+			NORMAL, REVERSE, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Arpeggiator Control</b></em>' enumerators.
@@ -95,7 +92,8 @@ public enum ArpeggiatorControl implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<ArpeggiatorControl> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ArpeggiatorControl> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Arpeggiator Control</b></em>' literal with the specified literal value.
@@ -137,8 +135,10 @@ public enum ArpeggiatorControl implements Enumerator {
 	 */
 	public static ArpeggiatorControl get(int value) {
 		switch (value) {
-			case NORMAL_VALUE: return NORMAL;
-			case REVERSE_VALUE: return REVERSE;
+		case NORMAL_VALUE:
+			return NORMAL;
+		case REVERSE_VALUE:
+			return REVERSE;
 		}
 		return null;
 	}
@@ -182,7 +182,7 @@ public enum ArpeggiatorControl implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -191,7 +191,7 @@ public enum ArpeggiatorControl implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -200,7 +200,7 @@ public enum ArpeggiatorControl implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

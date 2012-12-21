@@ -36,7 +36,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * @generated
  */
-public class MidiControlChangeAssignmentImpl extends EObjectImpl implements MidiControlChangeAssignment {
+public class MidiControlChangeAssignmentImpl extends EObjectImpl implements
+		MidiControlChangeAssignment {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -114,7 +115,9 @@ public class MidiControlChangeAssignmentImpl extends EObjectImpl implements Midi
 		MidiControlChangeAssignmentName oldName = name;
 		name = newName == null ? NAME_EDEFAULT : newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME, oldName,
+					name));
 	}
 
 	/**
@@ -135,7 +138,9 @@ public class MidiControlChangeAssignmentImpl extends EObjectImpl implements Midi
 		byte oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE, oldValue,
+					value));
 	}
 
 	/**
@@ -146,10 +151,10 @@ public class MidiControlChangeAssignmentImpl extends EObjectImpl implements Midi
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME:
-				return getName();
-			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE:
-				return getValue();
+		case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME:
+			return getName();
+		case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE:
+			return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -162,12 +167,12 @@ public class MidiControlChangeAssignmentImpl extends EObjectImpl implements Midi
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME:
-				setName((MidiControlChangeAssignmentName)newValue);
-				return;
-			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE:
-				setValue((Byte)newValue);
-				return;
+		case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME:
+			setName((MidiControlChangeAssignmentName) newValue);
+			return;
+		case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE:
+			setValue((Byte) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -180,12 +185,12 @@ public class MidiControlChangeAssignmentImpl extends EObjectImpl implements Midi
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE:
-				setValue(VALUE_EDEFAULT);
-				return;
+		case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE:
+			setValue(VALUE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -198,10 +203,10 @@ public class MidiControlChangeAssignmentImpl extends EObjectImpl implements Midi
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME:
-				return name != NAME_EDEFAULT;
-			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE:
-				return value != VALUE_EDEFAULT;
+		case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME:
+			return name != NAME_EDEFAULT;
+		case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE:
+			return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -213,7 +218,8 @@ public class MidiControlChangeAssignmentImpl extends EObjectImpl implements Midi
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");

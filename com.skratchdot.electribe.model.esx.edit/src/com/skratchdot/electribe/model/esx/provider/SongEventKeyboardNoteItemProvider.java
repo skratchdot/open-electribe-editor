@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -39,10 +38,10 @@ import com.skratchdot.electribe.model.esx.SongEventKeyboardNote;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SongEventKeyboardNoteItemProvider
-	extends SongEventItemProvider
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class SongEventKeyboardNoteItemProvider extends SongEventItemProvider
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -78,19 +77,16 @@ public class SongEventKeyboardNoteItemProvider
 	 * @generated
 	 */
 	protected void addPartPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongEventWithPart_part_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongEventWithPart_part_feature", "_UI_SongEventWithPart_type"),
-				 EsxPackage.Literals.SONG_EVENT_WITH_PART__PART,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SongEventWithPart_part_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SongEventWithPart_part_feature",
+						"_UI_SongEventWithPart_type"),
+				EsxPackage.Literals.SONG_EVENT_WITH_PART__PART, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -100,19 +96,17 @@ public class SongEventKeyboardNoteItemProvider
 	 * @generated
 	 */
 	protected void addLengthPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongEventKeyboardNote_length_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongEventKeyboardNote_length_feature", "_UI_SongEventKeyboardNote_type"),
-				 EsxPackage.Literals.SONG_EVENT_KEYBOARD_NOTE__LENGTH,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SongEventKeyboardNote_length_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SongEventKeyboardNote_length_feature",
+						"_UI_SongEventKeyboardNote_type"),
+				EsxPackage.Literals.SONG_EVENT_KEYBOARD_NOTE__LENGTH, true,
+				false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -122,19 +116,17 @@ public class SongEventKeyboardNoteItemProvider
 	 * @generated
 	 */
 	protected void addNoteNumberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongEventKeyboardNote_noteNumber_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongEventKeyboardNote_noteNumber_feature", "_UI_SongEventKeyboardNote_type"),
-				 EsxPackage.Literals.SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SongEventKeyboardNote_noteNumber_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SongEventKeyboardNote_noteNumber_feature",
+						"_UI_SongEventKeyboardNote_type"),
+				EsxPackage.Literals.SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER,
+				true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -145,7 +137,10 @@ public class SongEventKeyboardNoteItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SongEventKeyboardNote"));
+		return overlayImage(
+				object,
+				getResourceLocator().getImage(
+						"full/obj16/SongEventKeyboardNote"));
 	}
 
 	/**
@@ -156,8 +151,9 @@ public class SongEventKeyboardNoteItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		SongEventKeyboardNote songEventKeyboardNote = (SongEventKeyboardNote)object;
-		return getString("_UI_SongEventKeyboardNote_type") + " " + songEventKeyboardNote.getCurrentPosition();
+		SongEventKeyboardNote songEventKeyboardNote = (SongEventKeyboardNote) object;
+		return getString("_UI_SongEventKeyboardNote_type") + " "
+				+ songEventKeyboardNote.getCurrentPosition();
 	}
 
 	/**
@@ -172,11 +168,12 @@ public class SongEventKeyboardNoteItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SongEventKeyboardNote.class)) {
-			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__PART:
-			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__LENGTH:
-			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__PART:
+		case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__LENGTH:
+		case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -189,7 +186,8 @@ public class SongEventKeyboardNoteItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

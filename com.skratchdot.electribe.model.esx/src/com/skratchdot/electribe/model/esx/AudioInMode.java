@@ -83,11 +83,8 @@ public enum AudioInMode implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final AudioInMode[] VALUES_ARRAY =
-		new AudioInMode[] {
-			MONO,
-			STEREO,
-		};
+	private static final AudioInMode[] VALUES_ARRAY = new AudioInMode[] { MONO,
+			STEREO, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Audio In Mode</b></em>' enumerators.
@@ -95,7 +92,8 @@ public enum AudioInMode implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<AudioInMode> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<AudioInMode> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Audio In Mode</b></em>' literal with the specified literal value.
@@ -137,8 +135,10 @@ public enum AudioInMode implements Enumerator {
 	 */
 	public static AudioInMode get(int value) {
 		switch (value) {
-			case MONO_VALUE: return MONO;
-			case STEREO_VALUE: return STEREO;
+		case MONO_VALUE:
+			return MONO;
+		case STEREO_VALUE:
+			return STEREO;
 		}
 		return null;
 	}
@@ -182,7 +182,7 @@ public enum AudioInMode implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -191,7 +191,7 @@ public enum AudioInMode implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -200,7 +200,7 @@ public enum AudioInMode implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

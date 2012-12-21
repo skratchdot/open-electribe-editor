@@ -168,7 +168,7 @@ public class EsxValidator extends EObjectValidator {
 	 */
 	@Override
 	protected EPackage getEPackage() {
-	  return EsxPackage.eINSTANCE;
+		return EsxPackage.eINSTANCE;
 	}
 
 	/**
@@ -178,182 +178,233 @@ public class EsxValidator extends EObjectValidator {
 	 * @generated
 	 */
 	@Override
-	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	protected boolean validate(int classifierID, Object value,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		switch (classifierID) {
-			case EsxPackage.ESX_FILE:
-				return validateEsxFile((EsxFile)value, diagnostics, context);
-			case EsxPackage.GLOBAL_PARAMETERS:
-				return validateGlobalParameters((GlobalParameters)value, diagnostics, context);
-			case EsxPackage.MIDI_CHANNEL_TYPE:
-				return validateMidiChannelType((MidiChannelType)value, diagnostics, context);
-			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT:
-				return validateMidiControlChangeAssignment((MidiControlChangeAssignment)value, diagnostics, context);
-			case EsxPackage.OPERATION:
-				return validateOperation((Operation)value, diagnostics, context);
-			case EsxPackage.PARAMETERS_FX:
-				return validateParametersFx((ParametersFx)value, diagnostics, context);
-			case EsxPackage.PARAMETERS_MOTION:
-				return validateParametersMotion((ParametersMotion)value, diagnostics, context);
-			case EsxPackage.PART:
-				return validatePart((Part)value, diagnostics, context);
-			case EsxPackage.PART_ACCENT:
-				return validatePartAccent((PartAccent)value, diagnostics, context);
-			case EsxPackage.PART_AUDIO_IN:
-				return validatePartAudioIn((PartAudioIn)value, diagnostics, context);
-			case EsxPackage.PART_DRUM:
-				return validatePartDrum((PartDrum)value, diagnostics, context);
-			case EsxPackage.PART_KEYBOARD:
-				return validatePartKeyboard((PartKeyboard)value, diagnostics, context);
-			case EsxPackage.PART_NOTE_NUMBER:
-				return validatePartNoteNumber((PartNoteNumber)value, diagnostics, context);
-			case EsxPackage.PART_STRETCH_SLICE:
-				return validatePartStretchSlice((PartStretchSlice)value, diagnostics, context);
-			case EsxPackage.PART_WITH_COMMON:
-				return validatePartWithCommon((PartWithCommon)value, diagnostics, context);
-			case EsxPackage.PART_WITH_PITCH:
-				return validatePartWithPitch((PartWithPitch)value, diagnostics, context);
-			case EsxPackage.PART_WITH_SAMPLE:
-				return validatePartWithSample((PartWithSample)value, diagnostics, context);
-			case EsxPackage.PART_WITH_SEQUENCE_DATA:
-				return validatePartWithSequenceData((PartWithSequenceData)value, diagnostics, context);
-			case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE:
-				return validatePartWithSequenceDataGate((PartWithSequenceDataGate)value, diagnostics, context);
-			case EsxPackage.PART_WITH_SLICE:
-				return validatePartWithSlice((PartWithSlice)value, diagnostics, context);
-			case EsxPackage.PATTERN:
-				return validatePattern((Pattern)value, diagnostics, context);
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO:
-				return validateSampleInPatternInfo((SampleInPatternInfo)value, diagnostics, context);
-			case EsxPackage.PATTERN_SET_PARAMETER:
-				return validatePatternSetParameter((PatternSetParameter)value, diagnostics, context);
-			case EsxPackage.SAMPLE:
-				return validateSample((Sample)value, diagnostics, context);
-			case EsxPackage.SAMPLE_TUNE:
-				return validateSampleTune((SampleTune)value, diagnostics, context);
-			case EsxPackage.SEQUENCE_DATA:
-				return validateSequenceData((SequenceData)value, diagnostics, context);
-			case EsxPackage.SEQUENCE_DATA_GATE:
-				return validateSequenceDataGate((SequenceDataGate)value, diagnostics, context);
-			case EsxPackage.SEQUENCE_DATA_NOTE:
-				return validateSequenceDataNote((SequenceDataNote)value, diagnostics, context);
-			case EsxPackage.SONG:
-				return validateSong((Song)value, diagnostics, context);
-			case EsxPackage.SONG_EVENT:
-				return validateSongEvent((SongEvent)value, diagnostics, context);
-			case EsxPackage.SONG_EVENT_CONTROL:
-				return validateSongEventControl((SongEventControl)value, diagnostics, context);
-			case EsxPackage.SONG_EVENT_DRUM_NOTE:
-				return validateSongEventDrumNote((SongEventDrumNote)value, diagnostics, context);
-			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE:
-				return validateSongEventKeyboardNote((SongEventKeyboardNote)value, diagnostics, context);
-			case EsxPackage.SONG_EVENT_MUTE_STATUS:
-				return validateSongEventMuteStatus((SongEventMuteStatus)value, diagnostics, context);
-			case EsxPackage.SONG_EVENT_TEMPO:
-				return validateSongEventTempo((SongEventTempo)value, diagnostics, context);
-			case EsxPackage.SONG_EVENT_WITH_PART:
-				return validateSongEventWithPart((SongEventWithPart)value, diagnostics, context);
-			case EsxPackage.SONG_PATTERN:
-				return validateSongPattern((SongPattern)value, diagnostics, context);
-			case EsxPackage.TEMPO:
-				return validateTempo((Tempo)value, diagnostics, context);
-			case EsxPackage.AMP_EG:
-				return validateAmpEg((AmpEg)value, diagnostics, context);
-			case EsxPackage.ARPEGGIATOR_CONTROL:
-				return validateArpeggiatorControl((ArpeggiatorControl)value, diagnostics, context);
-			case EsxPackage.ARPEGGIATOR_SCALE:
-				return validateArpeggiatorScale((ArpeggiatorScale)value, diagnostics, context);
-			case EsxPackage.AUDIO_CHANNEL_TYPE:
-				return validateAudioChannelType((AudioChannelType)value, diagnostics, context);
-			case EsxPackage.AUDIO_IN_MODE:
-				return validateAudioInMode((AudioInMode)value, diagnostics, context);
-			case EsxPackage.BEAT:
-				return validateBeat((Beat)value, diagnostics, context);
-			case EsxPackage.BPM_SYNC:
-				return validateBpmSync((BpmSync)value, diagnostics, context);
-			case EsxPackage.ENABLED_FLAG:
-				return validateEnabledFlag((EnabledFlag)value, diagnostics, context);
-			case EsxPackage.FILTER_TYPE:
-				return validateFilterType((FilterType)value, diagnostics, context);
-			case EsxPackage.FX_CHAIN:
-				return validateFxChain((FxChain)value, diagnostics, context);
-			case EsxPackage.FX_SELECT:
-				return validateFxSelect((FxSelect)value, diagnostics, context);
-			case EsxPackage.FX_SEND:
-				return validateFxSend((FxSend)value, diagnostics, context);
-			case EsxPackage.FX_TYPE:
-				return validateFxType((FxType)value, diagnostics, context);
-			case EsxPackage.LAST_STEP:
-				return validateLastStep((LastStep)value, diagnostics, context);
-			case EsxPackage.MIDI_CHANNEL:
-				return validateMidiChannel((MidiChannel)value, diagnostics, context);
-			case EsxPackage.MIDI_CHANNEL_TYPE_NAME:
-				return validateMidiChannelTypeName((MidiChannelTypeName)value, diagnostics, context);
-			case EsxPackage.MIDI_CLOCK:
-				return validateMidiClock((MidiClock)value, diagnostics, context);
-			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT_NAME:
-				return validateMidiControlChangeAssignmentName((MidiControlChangeAssignmentName)value, diagnostics, context);
-			case EsxPackage.MOD_DEST:
-				return validateModDest((ModDest)value, diagnostics, context);
-			case EsxPackage.MOD_TYPE:
-				return validateModType((ModType)value, diagnostics, context);
-			case EsxPackage.MOTION_SEQUENCE_STATUS:
-				return validateMotionSequenceStatus((MotionSequenceStatus)value, diagnostics, context);
-			case EsxPackage.MUTE_HOLD:
-				return validateMuteHold((MuteHold)value, diagnostics, context);
-			case EsxPackage.NEXT_SONG_NUMBER:
-				return validateNextSongNumber((NextSongNumber)value, diagnostics, context);
-			case EsxPackage.NOTE_NUMBER:
-				return validateNoteNumber((NoteNumber)value, diagnostics, context);
-			case EsxPackage.OPERATION_TYPE:
-				return validateOperationType((OperationType)value, diagnostics, context);
-			case EsxPackage.PART_NOTE_NUMBER_NAME:
-				return validatePartNoteNumberName((PartNoteNumberName)value, diagnostics, context);
-			case EsxPackage.PATTERN_LENGTH:
-				return validatePatternLength((PatternLength)value, diagnostics, context);
-			case EsxPackage.PATTERN_NUMBER:
-				return validatePatternNumber((PatternNumber)value, diagnostics, context);
-			case EsxPackage.PITCH_BEND_RANGE:
-				return validatePitchBendRange((PitchBendRange)value, diagnostics, context);
-			case EsxPackage.PLAY_LEVEL:
-				return validatePlayLevel((PlayLevel)value, diagnostics, context);
-			case EsxPackage.REVERSE:
-				return validateReverse((Reverse)value, diagnostics, context);
-			case EsxPackage.ROLL:
-				return validateRoll((Roll)value, diagnostics, context);
-			case EsxPackage.ROLL_TYPE:
-				return validateRollType((RollType)value, diagnostics, context);
-			case EsxPackage.SAMPLE_NUMBER:
-				return validateSampleNumber((SampleNumber)value, diagnostics, context);
-			case EsxPackage.SONG_EVENT_PART:
-				return validateSongEventPart((SongEventPart)value, diagnostics, context);
-			case EsxPackage.SONG_LENGTH:
-				return validateSongLength((SongLength)value, diagnostics, context);
-			case EsxPackage.SONG_NUMBER:
-				return validateSongNumber((SongNumber)value, diagnostics, context);
-			case EsxPackage.STRETCH_STEP:
-				return validateStretchStep((StretchStep)value, diagnostics, context);
-			case EsxPackage.SWING:
-				return validateSwing((Swing)value, diagnostics, context);
-			case EsxPackage.TEMPO_LOCK:
-				return validateTempoLock((TempoLock)value, diagnostics, context);
-			case EsxPackage.ARRAY_LIST:
-				return validateArrayList((ArrayList<?>)value, diagnostics, context);
-			case EsxPackage.FILE:
-				return validateFile((File)value, diagnostics, context);
-			case EsxPackage.INPUT_STREAM:
-				return validateInputStream((InputStream)value, diagnostics, context);
-			case EsxPackage.INDEX_OUT_OF_BOUNDS_EXCEPTION:
-				return validateIndexOutOfBoundsException((IndexOutOfBoundsException)value, diagnostics, context);
-			case EsxPackage.IO_EXCEPTION:
-				return validateIOException((IOException)value, diagnostics, context);
-			case EsxPackage.IPROGRESS_MONITOR:
-				return validateIProgressMonitor((IProgressMonitor)value, diagnostics, context);
-			case EsxPackage.OBJECT:
-				return validateObject(value, diagnostics, context);
-			case EsxPackage.RIFF_WAVE:
-				return validateRIFFWave((RIFFWave)value, diagnostics, context);
-			default:
-				return true;
+		case EsxPackage.ESX_FILE:
+			return validateEsxFile((EsxFile) value, diagnostics, context);
+		case EsxPackage.GLOBAL_PARAMETERS:
+			return validateGlobalParameters((GlobalParameters) value,
+					diagnostics, context);
+		case EsxPackage.MIDI_CHANNEL_TYPE:
+			return validateMidiChannelType((MidiChannelType) value,
+					diagnostics, context);
+		case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT:
+			return validateMidiControlChangeAssignment(
+					(MidiControlChangeAssignment) value, diagnostics, context);
+		case EsxPackage.OPERATION:
+			return validateOperation((Operation) value, diagnostics, context);
+		case EsxPackage.PARAMETERS_FX:
+			return validateParametersFx((ParametersFx) value, diagnostics,
+					context);
+		case EsxPackage.PARAMETERS_MOTION:
+			return validateParametersMotion((ParametersMotion) value,
+					diagnostics, context);
+		case EsxPackage.PART:
+			return validatePart((Part) value, diagnostics, context);
+		case EsxPackage.PART_ACCENT:
+			return validatePartAccent((PartAccent) value, diagnostics, context);
+		case EsxPackage.PART_AUDIO_IN:
+			return validatePartAudioIn((PartAudioIn) value, diagnostics,
+					context);
+		case EsxPackage.PART_DRUM:
+			return validatePartDrum((PartDrum) value, diagnostics, context);
+		case EsxPackage.PART_KEYBOARD:
+			return validatePartKeyboard((PartKeyboard) value, diagnostics,
+					context);
+		case EsxPackage.PART_NOTE_NUMBER:
+			return validatePartNoteNumber((PartNoteNumber) value, diagnostics,
+					context);
+		case EsxPackage.PART_STRETCH_SLICE:
+			return validatePartStretchSlice((PartStretchSlice) value,
+					diagnostics, context);
+		case EsxPackage.PART_WITH_COMMON:
+			return validatePartWithCommon((PartWithCommon) value, diagnostics,
+					context);
+		case EsxPackage.PART_WITH_PITCH:
+			return validatePartWithPitch((PartWithPitch) value, diagnostics,
+					context);
+		case EsxPackage.PART_WITH_SAMPLE:
+			return validatePartWithSample((PartWithSample) value, diagnostics,
+					context);
+		case EsxPackage.PART_WITH_SEQUENCE_DATA:
+			return validatePartWithSequenceData((PartWithSequenceData) value,
+					diagnostics, context);
+		case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE:
+			return validatePartWithSequenceDataGate(
+					(PartWithSequenceDataGate) value, diagnostics, context);
+		case EsxPackage.PART_WITH_SLICE:
+			return validatePartWithSlice((PartWithSlice) value, diagnostics,
+					context);
+		case EsxPackage.PATTERN:
+			return validatePattern((Pattern) value, diagnostics, context);
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO:
+			return validateSampleInPatternInfo((SampleInPatternInfo) value,
+					diagnostics, context);
+		case EsxPackage.PATTERN_SET_PARAMETER:
+			return validatePatternSetParameter((PatternSetParameter) value,
+					diagnostics, context);
+		case EsxPackage.SAMPLE:
+			return validateSample((Sample) value, diagnostics, context);
+		case EsxPackage.SAMPLE_TUNE:
+			return validateSampleTune((SampleTune) value, diagnostics, context);
+		case EsxPackage.SEQUENCE_DATA:
+			return validateSequenceData((SequenceData) value, diagnostics,
+					context);
+		case EsxPackage.SEQUENCE_DATA_GATE:
+			return validateSequenceDataGate((SequenceDataGate) value,
+					diagnostics, context);
+		case EsxPackage.SEQUENCE_DATA_NOTE:
+			return validateSequenceDataNote((SequenceDataNote) value,
+					diagnostics, context);
+		case EsxPackage.SONG:
+			return validateSong((Song) value, diagnostics, context);
+		case EsxPackage.SONG_EVENT:
+			return validateSongEvent((SongEvent) value, diagnostics, context);
+		case EsxPackage.SONG_EVENT_CONTROL:
+			return validateSongEventControl((SongEventControl) value,
+					diagnostics, context);
+		case EsxPackage.SONG_EVENT_DRUM_NOTE:
+			return validateSongEventDrumNote((SongEventDrumNote) value,
+					diagnostics, context);
+		case EsxPackage.SONG_EVENT_KEYBOARD_NOTE:
+			return validateSongEventKeyboardNote((SongEventKeyboardNote) value,
+					diagnostics, context);
+		case EsxPackage.SONG_EVENT_MUTE_STATUS:
+			return validateSongEventMuteStatus((SongEventMuteStatus) value,
+					diagnostics, context);
+		case EsxPackage.SONG_EVENT_TEMPO:
+			return validateSongEventTempo((SongEventTempo) value, diagnostics,
+					context);
+		case EsxPackage.SONG_EVENT_WITH_PART:
+			return validateSongEventWithPart((SongEventWithPart) value,
+					diagnostics, context);
+		case EsxPackage.SONG_PATTERN:
+			return validateSongPattern((SongPattern) value, diagnostics,
+					context);
+		case EsxPackage.TEMPO:
+			return validateTempo((Tempo) value, diagnostics, context);
+		case EsxPackage.AMP_EG:
+			return validateAmpEg((AmpEg) value, diagnostics, context);
+		case EsxPackage.ARPEGGIATOR_CONTROL:
+			return validateArpeggiatorControl((ArpeggiatorControl) value,
+					diagnostics, context);
+		case EsxPackage.ARPEGGIATOR_SCALE:
+			return validateArpeggiatorScale((ArpeggiatorScale) value,
+					diagnostics, context);
+		case EsxPackage.AUDIO_CHANNEL_TYPE:
+			return validateAudioChannelType((AudioChannelType) value,
+					diagnostics, context);
+		case EsxPackage.AUDIO_IN_MODE:
+			return validateAudioInMode((AudioInMode) value, diagnostics,
+					context);
+		case EsxPackage.BEAT:
+			return validateBeat((Beat) value, diagnostics, context);
+		case EsxPackage.BPM_SYNC:
+			return validateBpmSync((BpmSync) value, diagnostics, context);
+		case EsxPackage.ENABLED_FLAG:
+			return validateEnabledFlag((EnabledFlag) value, diagnostics,
+					context);
+		case EsxPackage.FILTER_TYPE:
+			return validateFilterType((FilterType) value, diagnostics, context);
+		case EsxPackage.FX_CHAIN:
+			return validateFxChain((FxChain) value, diagnostics, context);
+		case EsxPackage.FX_SELECT:
+			return validateFxSelect((FxSelect) value, diagnostics, context);
+		case EsxPackage.FX_SEND:
+			return validateFxSend((FxSend) value, diagnostics, context);
+		case EsxPackage.FX_TYPE:
+			return validateFxType((FxType) value, diagnostics, context);
+		case EsxPackage.LAST_STEP:
+			return validateLastStep((LastStep) value, diagnostics, context);
+		case EsxPackage.MIDI_CHANNEL:
+			return validateMidiChannel((MidiChannel) value, diagnostics,
+					context);
+		case EsxPackage.MIDI_CHANNEL_TYPE_NAME:
+			return validateMidiChannelTypeName((MidiChannelTypeName) value,
+					diagnostics, context);
+		case EsxPackage.MIDI_CLOCK:
+			return validateMidiClock((MidiClock) value, diagnostics, context);
+		case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT_NAME:
+			return validateMidiControlChangeAssignmentName(
+					(MidiControlChangeAssignmentName) value, diagnostics,
+					context);
+		case EsxPackage.MOD_DEST:
+			return validateModDest((ModDest) value, diagnostics, context);
+		case EsxPackage.MOD_TYPE:
+			return validateModType((ModType) value, diagnostics, context);
+		case EsxPackage.MOTION_SEQUENCE_STATUS:
+			return validateMotionSequenceStatus((MotionSequenceStatus) value,
+					diagnostics, context);
+		case EsxPackage.MUTE_HOLD:
+			return validateMuteHold((MuteHold) value, diagnostics, context);
+		case EsxPackage.NEXT_SONG_NUMBER:
+			return validateNextSongNumber((NextSongNumber) value, diagnostics,
+					context);
+		case EsxPackage.NOTE_NUMBER:
+			return validateNoteNumber((NoteNumber) value, diagnostics, context);
+		case EsxPackage.OPERATION_TYPE:
+			return validateOperationType((OperationType) value, diagnostics,
+					context);
+		case EsxPackage.PART_NOTE_NUMBER_NAME:
+			return validatePartNoteNumberName((PartNoteNumberName) value,
+					diagnostics, context);
+		case EsxPackage.PATTERN_LENGTH:
+			return validatePatternLength((PatternLength) value, diagnostics,
+					context);
+		case EsxPackage.PATTERN_NUMBER:
+			return validatePatternNumber((PatternNumber) value, diagnostics,
+					context);
+		case EsxPackage.PITCH_BEND_RANGE:
+			return validatePitchBendRange((PitchBendRange) value, diagnostics,
+					context);
+		case EsxPackage.PLAY_LEVEL:
+			return validatePlayLevel((PlayLevel) value, diagnostics, context);
+		case EsxPackage.REVERSE:
+			return validateReverse((Reverse) value, diagnostics, context);
+		case EsxPackage.ROLL:
+			return validateRoll((Roll) value, diagnostics, context);
+		case EsxPackage.ROLL_TYPE:
+			return validateRollType((RollType) value, diagnostics, context);
+		case EsxPackage.SAMPLE_NUMBER:
+			return validateSampleNumber((SampleNumber) value, diagnostics,
+					context);
+		case EsxPackage.SONG_EVENT_PART:
+			return validateSongEventPart((SongEventPart) value, diagnostics,
+					context);
+		case EsxPackage.SONG_LENGTH:
+			return validateSongLength((SongLength) value, diagnostics, context);
+		case EsxPackage.SONG_NUMBER:
+			return validateSongNumber((SongNumber) value, diagnostics, context);
+		case EsxPackage.STRETCH_STEP:
+			return validateStretchStep((StretchStep) value, diagnostics,
+					context);
+		case EsxPackage.SWING:
+			return validateSwing((Swing) value, diagnostics, context);
+		case EsxPackage.TEMPO_LOCK:
+			return validateTempoLock((TempoLock) value, diagnostics, context);
+		case EsxPackage.ARRAY_LIST:
+			return validateArrayList((ArrayList<?>) value, diagnostics, context);
+		case EsxPackage.FILE:
+			return validateFile((File) value, diagnostics, context);
+		case EsxPackage.INPUT_STREAM:
+			return validateInputStream((InputStream) value, diagnostics,
+					context);
+		case EsxPackage.INDEX_OUT_OF_BOUNDS_EXCEPTION:
+			return validateIndexOutOfBoundsException(
+					(IndexOutOfBoundsException) value, diagnostics, context);
+		case EsxPackage.IO_EXCEPTION:
+			return validateIOException((IOException) value, diagnostics,
+					context);
+		case EsxPackage.IPROGRESS_MONITOR:
+			return validateIProgressMonitor((IProgressMonitor) value,
+					diagnostics, context);
+		case EsxPackage.OBJECT:
+			return validateObject(value, diagnostics, context);
+		case EsxPackage.RIFF_WAVE:
+			return validateRIFFWave((RIFFWave) value, diagnostics, context);
+		default:
+			return true;
 		}
 	}
 
@@ -362,17 +413,33 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateEsxFile(EsxFile esxFile, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(esxFile, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(esxFile, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(esxFile, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(esxFile, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(esxFile, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(esxFile, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(esxFile, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(esxFile, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(esxFile, diagnostics, context);
-		if (result || diagnostics != null) result &= validateEsxFile_validMemFreeInBytes(esxFile, diagnostics, context);
+	public boolean validateEsxFile(EsxFile esxFile,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(esxFile, diagnostics, context))
+			return false;
+		boolean result = validate_EveryMultiplicityConforms(esxFile,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(esxFile, diagnostics,
+					context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(esxFile, diagnostics,
+					context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(esxFile,
+					diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(esxFile, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(esxFile, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(esxFile, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(esxFile, diagnostics,
+					context);
+		if (result || diagnostics != null)
+			result &= validateEsxFile_validMemFreeInBytes(esxFile, diagnostics,
+					context);
 		return result;
 	}
 
@@ -382,7 +449,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateEsxFile_validMemFreeInBytes(EsxFile esxFile, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateEsxFile_validMemFreeInBytes(EsxFile esxFile,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return esxFile.validMemFreeInBytes(diagnostics, context);
 	}
 
@@ -391,8 +459,10 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateGlobalParameters(GlobalParameters globalParameters, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(globalParameters, diagnostics, context);
+	public boolean validateGlobalParameters(GlobalParameters globalParameters,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(globalParameters, diagnostics,
+				context);
 	}
 
 	/**
@@ -400,8 +470,11 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePatternSetParameter(PatternSetParameter patternSetParameter, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(patternSetParameter, diagnostics, context);
+	public boolean validatePatternSetParameter(
+			PatternSetParameter patternSetParameter,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(patternSetParameter,
+				diagnostics, context);
 	}
 
 	/**
@@ -409,8 +482,10 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMidiChannelType(MidiChannelType midiChannelType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(midiChannelType, diagnostics, context);
+	public boolean validateMidiChannelType(MidiChannelType midiChannelType,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(midiChannelType, diagnostics,
+				context);
 	}
 
 	/**
@@ -418,8 +493,10 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePartNoteNumber(PartNoteNumber partNoteNumber, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(partNoteNumber, diagnostics, context);
+	public boolean validatePartNoteNumber(PartNoteNumber partNoteNumber,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(partNoteNumber, diagnostics,
+				context);
 	}
 
 	/**
@@ -427,8 +504,11 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMidiControlChangeAssignment(MidiControlChangeAssignment midiControlChangeAssignment, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(midiControlChangeAssignment, diagnostics, context);
+	public boolean validateMidiControlChangeAssignment(
+			MidiControlChangeAssignment midiControlChangeAssignment,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(midiControlChangeAssignment,
+				diagnostics, context);
 	}
 
 	/**
@@ -436,7 +516,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateOperation(Operation operation, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateOperation(Operation operation,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(operation, diagnostics, context);
 	}
 
@@ -445,8 +526,10 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateParametersFx(ParametersFx parametersFx, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(parametersFx, diagnostics, context);
+	public boolean validateParametersFx(ParametersFx parametersFx,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(parametersFx, diagnostics,
+				context);
 	}
 
 	/**
@@ -454,8 +537,10 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateParametersMotion(ParametersMotion parametersMotion, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(parametersMotion, diagnostics, context);
+	public boolean validateParametersMotion(ParametersMotion parametersMotion,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(parametersMotion, diagnostics,
+				context);
 	}
 
 	/**
@@ -463,8 +548,10 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSequenceData(SequenceData sequenceData, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(sequenceData, diagnostics, context);
+	public boolean validateSequenceData(SequenceData sequenceData,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(sequenceData, diagnostics,
+				context);
 	}
 
 	/**
@@ -472,8 +559,10 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSequenceDataGate(SequenceDataGate sequenceDataGate, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(sequenceDataGate, diagnostics, context);
+	public boolean validateSequenceDataGate(SequenceDataGate sequenceDataGate,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(sequenceDataGate, diagnostics,
+				context);
 	}
 
 	/**
@@ -481,8 +570,10 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSequenceDataNote(SequenceDataNote sequenceDataNote, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(sequenceDataNote, diagnostics, context);
+	public boolean validateSequenceDataNote(SequenceDataNote sequenceDataNote,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(sequenceDataNote, diagnostics,
+				context);
 	}
 
 	/**
@@ -490,7 +581,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePart(Part part, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validatePart(Part part, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(part, diagnostics, context);
 	}
 
@@ -499,8 +591,11 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePartWithSequenceData(PartWithSequenceData partWithSequenceData, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(partWithSequenceData, diagnostics, context);
+	public boolean validatePartWithSequenceData(
+			PartWithSequenceData partWithSequenceData,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(partWithSequenceData,
+				diagnostics, context);
 	}
 
 	/**
@@ -508,8 +603,10 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePartWithCommon(PartWithCommon partWithCommon, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(partWithCommon, diagnostics, context);
+	public boolean validatePartWithCommon(PartWithCommon partWithCommon,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(partWithCommon, diagnostics,
+				context);
 	}
 
 	/**
@@ -517,8 +614,10 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePartWithSample(PartWithSample partWithSample, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(partWithSample, diagnostics, context);
+	public boolean validatePartWithSample(PartWithSample partWithSample,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(partWithSample, diagnostics,
+				context);
 	}
 
 	/**
@@ -526,8 +625,10 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePartWithSlice(PartWithSlice partWithSlice, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(partWithSlice, diagnostics, context);
+	public boolean validatePartWithSlice(PartWithSlice partWithSlice,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(partWithSlice, diagnostics,
+				context);
 	}
 
 	/**
@@ -535,8 +636,10 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePartWithPitch(PartWithPitch partWithPitch, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(partWithPitch, diagnostics, context);
+	public boolean validatePartWithPitch(PartWithPitch partWithPitch,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(partWithPitch, diagnostics,
+				context);
 	}
 
 	/**
@@ -544,8 +647,11 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePartWithSequenceDataGate(PartWithSequenceDataGate partWithSequenceDataGate, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(partWithSequenceDataGate, diagnostics, context);
+	public boolean validatePartWithSequenceDataGate(
+			PartWithSequenceDataGate partWithSequenceDataGate,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(partWithSequenceDataGate,
+				diagnostics, context);
 	}
 
 	/**
@@ -553,7 +659,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePartAccent(PartAccent partAccent, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validatePartAccent(PartAccent partAccent,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(partAccent, diagnostics, context);
 	}
 
@@ -562,8 +669,10 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePartAudioIn(PartAudioIn partAudioIn, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(partAudioIn, diagnostics, context);
+	public boolean validatePartAudioIn(PartAudioIn partAudioIn,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(partAudioIn, diagnostics,
+				context);
 	}
 
 	/**
@@ -571,7 +680,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePartDrum(PartDrum partDrum, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validatePartDrum(PartDrum partDrum,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(partDrum, diagnostics, context);
 	}
 
@@ -580,8 +690,10 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePartKeyboard(PartKeyboard partKeyboard, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(partKeyboard, diagnostics, context);
+	public boolean validatePartKeyboard(PartKeyboard partKeyboard,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(partKeyboard, diagnostics,
+				context);
 	}
 
 	/**
@@ -589,8 +701,10 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePartStretchSlice(PartStretchSlice partStretchSlice, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(partStretchSlice, diagnostics, context);
+	public boolean validatePartStretchSlice(PartStretchSlice partStretchSlice,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(partStretchSlice, diagnostics,
+				context);
 	}
 
 	/**
@@ -598,7 +712,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePattern(Pattern pattern, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validatePattern(Pattern pattern,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(pattern, diagnostics, context);
 	}
 
@@ -607,7 +722,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSample(Sample sample, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateSample(Sample sample, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(sample, diagnostics, context);
 	}
 
@@ -616,8 +732,11 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSampleInPatternInfo(SampleInPatternInfo sampleInPatternInfo, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(sampleInPatternInfo, diagnostics, context);
+	public boolean validateSampleInPatternInfo(
+			SampleInPatternInfo sampleInPatternInfo,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(sampleInPatternInfo,
+				diagnostics, context);
 	}
 
 	/**
@@ -625,7 +744,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSampleTune(SampleTune sampleTune, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateSampleTune(SampleTune sampleTune,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(sampleTune, diagnostics, context);
 	}
 
@@ -634,7 +754,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSong(Song song, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateSong(Song song, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(song, diagnostics, context);
 	}
 
@@ -643,8 +764,10 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSongPattern(SongPattern songPattern, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(songPattern, diagnostics, context);
+	public boolean validateSongPattern(SongPattern songPattern,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(songPattern, diagnostics,
+				context);
 	}
 
 	/**
@@ -652,7 +775,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSongEvent(SongEvent songEvent, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateSongEvent(SongEvent songEvent,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(songEvent, diagnostics, context);
 	}
 
@@ -661,8 +785,11 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSongEventWithPart(SongEventWithPart songEventWithPart, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(songEventWithPart, diagnostics, context);
+	public boolean validateSongEventWithPart(
+			SongEventWithPart songEventWithPart, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(songEventWithPart, diagnostics,
+				context);
 	}
 
 	/**
@@ -670,8 +797,10 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSongEventControl(SongEventControl songEventControl, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(songEventControl, diagnostics, context);
+	public boolean validateSongEventControl(SongEventControl songEventControl,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(songEventControl, diagnostics,
+				context);
 	}
 
 	/**
@@ -679,8 +808,11 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSongEventDrumNote(SongEventDrumNote songEventDrumNote, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(songEventDrumNote, diagnostics, context);
+	public boolean validateSongEventDrumNote(
+			SongEventDrumNote songEventDrumNote, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(songEventDrumNote, diagnostics,
+				context);
 	}
 
 	/**
@@ -688,8 +820,11 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSongEventKeyboardNote(SongEventKeyboardNote songEventKeyboardNote, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(songEventKeyboardNote, diagnostics, context);
+	public boolean validateSongEventKeyboardNote(
+			SongEventKeyboardNote songEventKeyboardNote,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(songEventKeyboardNote,
+				diagnostics, context);
 	}
 
 	/**
@@ -697,8 +832,10 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSongEventTempo(SongEventTempo songEventTempo, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(songEventTempo, diagnostics, context);
+	public boolean validateSongEventTempo(SongEventTempo songEventTempo,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(songEventTempo, diagnostics,
+				context);
 	}
 
 	/**
@@ -706,8 +843,11 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSongEventMuteStatus(SongEventMuteStatus songEventMuteStatus, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(songEventMuteStatus, diagnostics, context);
+	public boolean validateSongEventMuteStatus(
+			SongEventMuteStatus songEventMuteStatus,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(songEventMuteStatus,
+				diagnostics, context);
 	}
 
 	/**
@@ -715,16 +855,19 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTempo(Tempo tempo, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateTempo(Tempo tempo, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(tempo, diagnostics, context);
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateArpeggiatorControl(ArpeggiatorControl arpeggiatorControl, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateArpeggiatorControl(
+			ArpeggiatorControl arpeggiatorControl, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return true;
 	}
 
@@ -733,7 +876,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateAudioInMode(AudioInMode audioInMode, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateAudioInMode(AudioInMode audioInMode,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -742,7 +886,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMidiClock(MidiClock midiClock, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateMidiClock(MidiClock midiClock,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -751,7 +896,9 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMidiControlChangeAssignmentName(MidiControlChangeAssignmentName midiControlChangeAssignmentName, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateMidiControlChangeAssignmentName(
+			MidiControlChangeAssignmentName midiControlChangeAssignmentName,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -760,7 +907,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateEnabledFlag(EnabledFlag enabledFlag, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateEnabledFlag(EnabledFlag enabledFlag,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -769,7 +917,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePitchBendRange(PitchBendRange pitchBendRange, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validatePitchBendRange(PitchBendRange pitchBendRange,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -778,7 +927,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMidiChannel(MidiChannel midiChannel, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateMidiChannel(MidiChannel midiChannel,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -787,7 +937,9 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMidiChannelTypeName(MidiChannelTypeName midiChannelTypeName, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateMidiChannelTypeName(
+			MidiChannelTypeName midiChannelTypeName,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -796,7 +948,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePlayLevel(PlayLevel playLevel, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validatePlayLevel(PlayLevel playLevel,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -805,7 +958,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePatternNumber(PatternNumber patternNumber, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validatePatternNumber(PatternNumber patternNumber,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -814,7 +968,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSampleNumber(SampleNumber sampleNumber, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateSampleNumber(SampleNumber sampleNumber,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -823,7 +978,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSongEventPart(SongEventPart songEventPart, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateSongEventPart(SongEventPart songEventPart,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -832,7 +988,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSongNumber(SongNumber songNumber, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateSongNumber(SongNumber songNumber,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -841,7 +998,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSongLength(SongLength songLength, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateSongLength(SongLength songLength,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -850,7 +1008,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTempoLock(TempoLock tempoLock, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateTempoLock(TempoLock tempoLock,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -859,7 +1018,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMuteHold(MuteHold muteHold, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateMuteHold(MuteHold muteHold,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -868,7 +1028,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNextSongNumber(NextSongNumber nextSongNumber, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateNextSongNumber(NextSongNumber nextSongNumber,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -877,7 +1038,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateStretchStep(StretchStep stretchStep, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateStretchStep(StretchStep stretchStep,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -886,7 +1048,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSwing(Swing swing, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateSwing(Swing swing, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return true;
 	}
 
@@ -895,7 +1058,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePatternLength(PatternLength patternLength, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validatePatternLength(PatternLength patternLength,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -904,7 +1068,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateBeat(Beat beat, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateBeat(Beat beat, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return true;
 	}
 
@@ -913,7 +1078,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateRollType(RollType rollType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateRollType(RollType rollType,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -922,7 +1088,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateFxChain(FxChain fxChain, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateFxChain(FxChain fxChain,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -931,7 +1098,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateLastStep(LastStep lastStep, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateLastStep(LastStep lastStep,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -940,7 +1108,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateArpeggiatorScale(ArpeggiatorScale arpeggiatorScale, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateArpeggiatorScale(ArpeggiatorScale arpeggiatorScale,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -949,7 +1118,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateAudioChannelType(AudioChannelType audioChannelType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateAudioChannelType(AudioChannelType audioChannelType,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -958,7 +1128,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNoteNumber(NoteNumber noteNumber, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateNoteNumber(NoteNumber noteNumber,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -967,7 +1138,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateOperationType(OperationType operationType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateOperationType(OperationType operationType,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -976,7 +1148,9 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePartNoteNumberName(PartNoteNumberName partNoteNumberName, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validatePartNoteNumberName(
+			PartNoteNumberName partNoteNumberName, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return true;
 	}
 
@@ -985,7 +1159,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateFilterType(FilterType filterType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateFilterType(FilterType filterType,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -994,7 +1169,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateFxSelect(FxSelect fxSelect, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateFxSelect(FxSelect fxSelect,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -1003,7 +1179,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateFxSend(FxSend fxSend, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateFxSend(FxSend fxSend, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return true;
 	}
 
@@ -1012,7 +1189,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateFxType(FxType fxType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateFxType(FxType fxType, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return true;
 	}
 
@@ -1021,7 +1199,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateRoll(Roll roll, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateRoll(Roll roll, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return true;
 	}
 
@@ -1030,7 +1209,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateAmpEg(AmpEg ampEg, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateAmpEg(AmpEg ampEg, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return true;
 	}
 
@@ -1039,7 +1219,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateReverse(Reverse reverse, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateReverse(Reverse reverse,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -1048,7 +1229,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateModDest(ModDest modDest, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateModDest(ModDest modDest,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -1057,7 +1239,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateModType(ModType modType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateModType(ModType modType,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -1066,7 +1249,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateBpmSync(BpmSync bpmSync, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateBpmSync(BpmSync bpmSync,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -1075,7 +1259,9 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMotionSequenceStatus(MotionSequenceStatus motionSequenceStatus, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateMotionSequenceStatus(
+			MotionSequenceStatus motionSequenceStatus,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -1084,7 +1270,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateObject(Object object, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateObject(Object object, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return true;
 	}
 
@@ -1093,7 +1280,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateRIFFWave(RIFFWave riffWave, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateRIFFWave(RIFFWave riffWave,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -1102,7 +1290,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateArrayList(ArrayList<?> arrayList, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateArrayList(ArrayList<?> arrayList,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -1111,7 +1300,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateFile(File file, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateFile(File file, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return true;
 	}
 
@@ -1120,7 +1310,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateInputStream(InputStream inputStream, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateInputStream(InputStream inputStream,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -1129,7 +1320,9 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateIndexOutOfBoundsException(IndexOutOfBoundsException indexOutOfBoundsException, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateIndexOutOfBoundsException(
+			IndexOutOfBoundsException indexOutOfBoundsException,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -1138,7 +1331,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateIOException(IOException ioException, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateIOException(IOException ioException,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -1147,7 +1341,8 @@ public class EsxValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateIProgressMonitor(IProgressMonitor iProgressMonitor, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateIProgressMonitor(IProgressMonitor iProgressMonitor,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

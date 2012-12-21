@@ -22,17 +22,21 @@ public class RiffWaveException extends Exception {
 		super();
 		this.errorMessage = "General RIFFWave Exception";
 	}
+
 	public RiffWaveException(String message) {
 		super(message);
 		this.errorMessage = message;
 	}
+
 	public RiffWaveException(Throwable cause) {
 		super(cause);
 	}
+
 	public RiffWaveException(String message, Throwable cause) {
 		super(message, cause);
 		this.errorMessage = message;
 	}
+
 	@Override
 	public String getMessage() {
 		return "" + this.errorMessage + "\n" + super.getMessage();

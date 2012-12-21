@@ -112,12 +112,15 @@ public class RIFFWaveImpl extends EObjectImpl implements RIFFWave {
 	 */
 	public RIFFWaveImpl(File file) throws RiffWaveException {
 		try {
-			ExtendedByteBuffer buf = new ExtendedByteBuffer(WavUtil.getBytesFromFile(file));
+			ExtendedByteBuffer buf = new ExtendedByteBuffer(
+					WavUtil.getBytesFromFile(file));
 			buf.order(ByteOrder.LITTLE_ENDIAN);
 			this.init(buf);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new RiffWaveException("The file was not a valid RIFF Wave file.\n"+e.getMessage(), e.getCause());
+			throw new RiffWaveException(
+					"The file was not a valid RIFF Wave file.\n"
+							+ e.getMessage(), e.getCause());
 		}
 	}
 
@@ -138,7 +141,8 @@ public class RIFFWaveImpl extends EObjectImpl implements RIFFWave {
 	 */
 	public EList<Chunk> getChunks() {
 		if (chunks == null) {
-			chunks = new EObjectContainmentEList<Chunk>(Chunk.class, this, WavPackage.RIFF_WAVE__CHUNKS);
+			chunks = new EObjectContainmentEList<Chunk>(Chunk.class, this,
+					WavPackage.RIFF_WAVE__CHUNKS);
 		}
 		return chunks;
 	}
@@ -150,7 +154,9 @@ public class RIFFWaveImpl extends EObjectImpl implements RIFFWave {
 	 */
 	public EList<ParseChunkException> getParseChunkExceptions() {
 		if (parseChunkExceptions == null) {
-			parseChunkExceptions = new EObjectContainmentEList<ParseChunkException>(ParseChunkException.class, this, WavPackage.RIFF_WAVE__PARSE_CHUNK_EXCEPTIONS);
+			parseChunkExceptions = new EObjectContainmentEList<ParseChunkException>(
+					ParseChunkException.class, this,
+					WavPackage.RIFF_WAVE__PARSE_CHUNK_EXCEPTIONS);
 		}
 		return parseChunkExceptions;
 	}
@@ -162,7 +168,7 @@ public class RIFFWaveImpl extends EObjectImpl implements RIFFWave {
 	 */
 	public long getSize() {
 		long returnSize = 4;
-		for(int i=0; i<this.getChunks().size(); i++) {
+		for (int i = 0; i < this.getChunks().size(); i++) {
 			returnSize += this.getChunks().get(i).getBlockAlignedSize() + 8;
 		}
 		return returnSize;
@@ -178,7 +184,7 @@ public class RIFFWaveImpl extends EObjectImpl implements RIFFWave {
 		TreeIterator<EObject> iter = this.eAllContents();
 		while (iter.hasNext()) {
 			EObject next = iter.next();
-			if(next.eClass().equals(eClass) && next instanceof Chunk) {
+			if (next.eClass().equals(eClass) && next instanceof Chunk) {
 				chunkList.add((Chunk) next);
 			}
 		}
@@ -194,8 +200,8 @@ public class RIFFWaveImpl extends EObjectImpl implements RIFFWave {
 		TreeIterator<EObject> iter = this.eAllContents();
 		while (iter.hasNext()) {
 			EObject next = iter.next();
-			if(next.eClass().equals(eClass) && next instanceof Chunk) {
-				return (Chunk)next;
+			if (next.eClass().equals(eClass) && next instanceof Chunk) {
+				return (Chunk) next;
 			}
 		}
 		return null;
@@ -208,11 +214,11 @@ public class RIFFWaveImpl extends EObjectImpl implements RIFFWave {
 	 */
 	public void init(ExtendedByteBuffer buf) throws RiffWaveException {
 		// First read in the header info
-		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=ChunkTypeID.RIFF)
+		if (ChunkTypeID.get((int) buf.getUnsignedInt()) != ChunkTypeID.RIFF)
 			throw new RiffWaveException("Invalid Header: missing RIFF");
-		if(buf.getUnsignedInt()!=buf.limit()-8)
+		if (buf.getUnsignedInt() != buf.limit() - 8)
 			throw new RiffWaveException("Invalid Header: chunk data size");
-		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=ChunkTypeID.WAVE)
+		if (ChunkTypeID.get((int) buf.getUnsignedInt()) != ChunkTypeID.WAVE)
 			throw new RiffWaveException("Invalid Header: missing WAVE");
 
 		// loopPointer prevents an infinite loop if we try to parse a
@@ -220,7 +226,7 @@ public class RIFFWaveImpl extends EObjectImpl implements RIFFWave {
 		long loopPointer = 0;
 
 		// Loop through file reading in chunks
-		while(buf.position()<buf.limit() && buf.position()!=loopPointer) {
+		while (buf.position() < buf.limit() && buf.position() != loopPointer) {
 			// If the filePointer doesn't advance in this loop iteration,
 			// then we'll break out of the loop
 			loopPointer = buf.position();
@@ -229,12 +235,12 @@ public class RIFFWaveImpl extends EObjectImpl implements RIFFWave {
 			Chunk currentChunk = WavUtil.parseChunk(this, buf);
 
 			// If we got a chunk, add it to our list
-			if(currentChunk!=null) {
+			if (currentChunk != null) {
 				this.getChunks().add(currentChunk);
 			}
 
 			// We need to block align
-			buf.blockAlign();			
+			buf.blockAlign();
 		}
 	}
 
@@ -243,19 +249,20 @@ public class RIFFWaveImpl extends EObjectImpl implements RIFFWave {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public AudioFileFormat toAudioFileFormat() throws UnsupportedAudioFileException {
+	public AudioFileFormat toAudioFileFormat()
+			throws UnsupportedAudioFileException {
 		try {
 			AudioFormat audioFormat = this.toAudioFormat();
-			ChunkData chunkData = (ChunkData) this.getFirstChunkByEClass(WavPackage.Literals.CHUNK_DATA);
-			if(chunkData==null) {
-				throw new UnsupportedAudioFileException("Could not find a data chunk");
+			ChunkData chunkData = (ChunkData) this
+					.getFirstChunkByEClass(WavPackage.Literals.CHUNK_DATA);
+			if (chunkData == null) {
+				throw new UnsupportedAudioFileException(
+						"Could not find a data chunk");
 			}
-			return new AudioFileFormat(
-				AudioFileFormat.Type.WAVE,
-				audioFormat,
-				chunkData.getSampleDataOriginal().length/audioFormat.getFrameSize(),
-				audioFormat.properties()
-			);
+			return new AudioFileFormat(AudioFileFormat.Type.WAVE, audioFormat,
+					chunkData.getSampleDataOriginal().length
+							/ audioFormat.getFrameSize(),
+					audioFormat.properties());
 		} catch (Exception e) {
 			throw new UnsupportedAudioFileException(e.getMessage());
 		}
@@ -268,22 +275,19 @@ public class RIFFWaveImpl extends EObjectImpl implements RIFFWave {
 	 */
 	public AudioFormat toAudioFormat() throws UnsupportedAudioFileException {
 		try {
-			ChunkFormat chunkFormat = (ChunkFormat) this.getFirstChunkByEClass(WavPackage.Literals.CHUNK_FORMAT);
-			if(chunkFormat==null) {
-				throw new UnsupportedAudioFileException("Could not find a format chunk");			
-			}
-			else if(chunkFormat.getCompressionCode()==CompressionCode.COMPRESSION_CODE_1) {
+			ChunkFormat chunkFormat = (ChunkFormat) this
+					.getFirstChunkByEClass(WavPackage.Literals.CHUNK_FORMAT);
+			if (chunkFormat == null) {
+				throw new UnsupportedAudioFileException(
+						"Could not find a format chunk");
+			} else if (chunkFormat.getCompressionCode() == CompressionCode.COMPRESSION_CODE_1) {
 				Map<String, Object> properties = new HashMap<String, Object>();
-				return new AudioFormat(
-					AudioFormat.Encoding.PCM_SIGNED,
-					chunkFormat.getSampleRate(),
-					chunkFormat.getSignificantBitsPerSample(),
-					chunkFormat.getNumberOfChannels(),
-					chunkFormat.getBlockAlign(),
-					chunkFormat.getSampleRate(),
-					false,
-					properties
-				);
+				return new AudioFormat(AudioFormat.Encoding.PCM_SIGNED,
+						chunkFormat.getSampleRate(),
+						chunkFormat.getSignificantBitsPerSample(),
+						chunkFormat.getNumberOfChannels(),
+						chunkFormat.getBlockAlign(),
+						chunkFormat.getSampleRate(), false, properties);
 			}
 			throw new UnsupportedAudioFileException("Not in PCM format.");
 		} catch (Exception e) {
@@ -296,19 +300,21 @@ public class RIFFWaveImpl extends EObjectImpl implements RIFFWave {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public AudioInputStream toAudioInputStream() throws UnsupportedAudioFileException {
+	public AudioInputStream toAudioInputStream()
+			throws UnsupportedAudioFileException {
 		try {
 			AudioFormat audioFormat = this.toAudioFormat();
-			ChunkData chunkData = (ChunkData) this.getFirstChunkByEClass(WavPackage.Literals.CHUNK_DATA);
-			if(chunkData==null) {
-				throw new UnsupportedAudioFileException("Could not find a data chunk");
+			ChunkData chunkData = (ChunkData) this
+					.getFirstChunkByEClass(WavPackage.Literals.CHUNK_DATA);
+			if (chunkData == null) {
+				throw new UnsupportedAudioFileException(
+						"Could not find a data chunk");
 			}
-			ByteArrayInputStream bais = new ByteArrayInputStream(chunkData.getSampleDataOriginal());
-			return new AudioInputStream(
-				bais,
-				audioFormat,
-				chunkData.getSampleDataOriginal().length/audioFormat.getFrameSize()
-			);
+			ByteArrayInputStream bais = new ByteArrayInputStream(
+					chunkData.getSampleDataOriginal());
+			return new AudioInputStream(bais, audioFormat,
+					chunkData.getSampleDataOriginal().length
+							/ audioFormat.getFrameSize());
 		} catch (Exception e) {
 			throw new UnsupportedAudioFileException(e.getMessage());
 		}
@@ -320,24 +326,25 @@ public class RIFFWaveImpl extends EObjectImpl implements RIFFWave {
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() throws RiffWaveException {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				(int) this.getSize() + 8);
 		buf.order(ByteOrder.LITTLE_ENDIAN);
-	
+
 		buf.putUnsignedInt(ChunkTypeID.RIFF_VALUE);
 		buf.putUnsignedInt(this.getSize());
 		buf.putUnsignedInt(ChunkTypeID.WAVE_VALUE);
-	
-		for(int i=0; i<this.getChunks().size(); i++) {
+
+		for (int i = 0; i < this.getChunks().size(); i++) {
 			Chunk currentChunk = this.getChunks().get(i);
 			buf.putBytes(currentChunk.toByteArray());
 			buf.putBlockAlign();
 		}
-	
+
 		// confirm the size we wrote/calculated was correct
-		if(this.getSize()!=buf.position()-8) {
+		if (this.getSize() != buf.position() - 8) {
 			throw new RiffWaveException("Calculated incorrect chunk data size");
 		}
-	
+
 		return buf.array();
 	}
 
@@ -358,12 +365,14 @@ public class RIFFWaveImpl extends EObjectImpl implements RIFFWave {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case WavPackage.RIFF_WAVE__CHUNKS:
-				return ((InternalEList<?>)getChunks()).basicRemove(otherEnd, msgs);
-			case WavPackage.RIFF_WAVE__PARSE_CHUNK_EXCEPTIONS:
-				return ((InternalEList<?>)getParseChunkExceptions()).basicRemove(otherEnd, msgs);
+		case WavPackage.RIFF_WAVE__CHUNKS:
+			return ((InternalEList<?>) getChunks()).basicRemove(otherEnd, msgs);
+		case WavPackage.RIFF_WAVE__PARSE_CHUNK_EXCEPTIONS:
+			return ((InternalEList<?>) getParseChunkExceptions()).basicRemove(
+					otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -376,12 +385,12 @@ public class RIFFWaveImpl extends EObjectImpl implements RIFFWave {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.RIFF_WAVE__CHUNKS:
-				return getChunks();
-			case WavPackage.RIFF_WAVE__PARSE_CHUNK_EXCEPTIONS:
-				return getParseChunkExceptions();
-			case WavPackage.RIFF_WAVE__SIZE:
-				return getSize();
+		case WavPackage.RIFF_WAVE__CHUNKS:
+			return getChunks();
+		case WavPackage.RIFF_WAVE__PARSE_CHUNK_EXCEPTIONS:
+			return getParseChunkExceptions();
+		case WavPackage.RIFF_WAVE__SIZE:
+			return getSize();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -395,14 +404,15 @@ public class RIFFWaveImpl extends EObjectImpl implements RIFFWave {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.RIFF_WAVE__CHUNKS:
-				getChunks().clear();
-				getChunks().addAll((Collection<? extends Chunk>)newValue);
-				return;
-			case WavPackage.RIFF_WAVE__PARSE_CHUNK_EXCEPTIONS:
-				getParseChunkExceptions().clear();
-				getParseChunkExceptions().addAll((Collection<? extends ParseChunkException>)newValue);
-				return;
+		case WavPackage.RIFF_WAVE__CHUNKS:
+			getChunks().clear();
+			getChunks().addAll((Collection<? extends Chunk>) newValue);
+			return;
+		case WavPackage.RIFF_WAVE__PARSE_CHUNK_EXCEPTIONS:
+			getParseChunkExceptions().clear();
+			getParseChunkExceptions().addAll(
+					(Collection<? extends ParseChunkException>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -415,12 +425,12 @@ public class RIFFWaveImpl extends EObjectImpl implements RIFFWave {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.RIFF_WAVE__CHUNKS:
-				getChunks().clear();
-				return;
-			case WavPackage.RIFF_WAVE__PARSE_CHUNK_EXCEPTIONS:
-				getParseChunkExceptions().clear();
-				return;
+		case WavPackage.RIFF_WAVE__CHUNKS:
+			getChunks().clear();
+			return;
+		case WavPackage.RIFF_WAVE__PARSE_CHUNK_EXCEPTIONS:
+			getParseChunkExceptions().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -433,12 +443,13 @@ public class RIFFWaveImpl extends EObjectImpl implements RIFFWave {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.RIFF_WAVE__CHUNKS:
-				return chunks != null && !chunks.isEmpty();
-			case WavPackage.RIFF_WAVE__PARSE_CHUNK_EXCEPTIONS:
-				return parseChunkExceptions != null && !parseChunkExceptions.isEmpty();
-			case WavPackage.RIFF_WAVE__SIZE:
-				return getSize() != SIZE_EDEFAULT;
+		case WavPackage.RIFF_WAVE__CHUNKS:
+			return chunks != null && !chunks.isEmpty();
+		case WavPackage.RIFF_WAVE__PARSE_CHUNK_EXCEPTIONS:
+			return parseChunkExceptions != null
+					&& !parseChunkExceptions.isEmpty();
+		case WavPackage.RIFF_WAVE__SIZE:
+			return getSize() != SIZE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

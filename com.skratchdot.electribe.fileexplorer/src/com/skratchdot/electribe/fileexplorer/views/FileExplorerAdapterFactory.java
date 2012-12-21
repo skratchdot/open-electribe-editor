@@ -23,7 +23,8 @@ public class FileExplorerAdapterFactory implements IAdapterFactory {
 
 	@SuppressWarnings("rawtypes")
 	public Object getAdapter(Object adaptableObject, Class adapterType) {
-		if ((adaptableObject instanceof File) && (adapterType == IPropertySource.class)) {
+		if ((adaptableObject instanceof File)
+				&& (adapterType == IPropertySource.class)) {
 			return new FileExplorerPropertySource((File) adaptableObject);
 		}
 		return null;

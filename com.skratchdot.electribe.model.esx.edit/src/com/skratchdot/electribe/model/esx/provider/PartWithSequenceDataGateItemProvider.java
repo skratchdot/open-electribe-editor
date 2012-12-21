@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.PartWithSequenceDataGate;
@@ -44,10 +43,10 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PartWithSequenceDataGateItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class PartWithSequenceDataGateItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -82,10 +81,12 @@ public class PartWithSequenceDataGateItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(EsxPackage.Literals.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE);
+			childrenFeatures
+					.add(EsxPackage.Literals.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE);
 		}
 		return childrenFeatures;
 	}
@@ -126,9 +127,10 @@ public class PartWithSequenceDataGateItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(PartWithSequenceDataGate.class)) {
-			case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -141,13 +143,14 @@ public class PartWithSequenceDataGateItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-				(EsxPackage.Literals.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE,
-				 EsxFactory.eINSTANCE.createSequenceDataGate()));
+		newChildDescriptors
+				.add(createChildParameter(
+						EsxPackage.Literals.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE,
+						EsxFactory.eINSTANCE.createSequenceDataGate()));
 	}
 
 	/**

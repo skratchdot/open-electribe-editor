@@ -64,7 +64,7 @@ public class PartStretchSliceTest extends PartTest {
 	 */
 	@Override
 	protected PartStretchSlice getFixture() {
-		return (PartStretchSlice)fixture;
+		return (PartStretchSlice) fixture;
 	}
 
 	/**

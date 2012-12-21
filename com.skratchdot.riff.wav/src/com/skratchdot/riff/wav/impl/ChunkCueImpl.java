@@ -75,17 +75,20 @@ public class ChunkCueImpl extends ChunkImpl implements ChunkCue {
 	}
 
 	@Override
-	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf)
+			throws RiffWaveException {
 		// Check Chunk Type ID
-		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
-			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+		if (ChunkTypeID.get((int) buf.getUnsignedInt()) != this
+				.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "
+					+ this.getChunkTypeID().getLiteral());
 
 		// Read in data size
 		long chunkSize = buf.getUnsignedInt();
 
 		// Read in cue points
 		long numCuePoints = buf.getUnsignedInt();
-		for(int i=0; i<numCuePoints; i++) {
+		for (int i = 0; i < numCuePoints; i++) {
 			CuePoint cuePoint = WavFactory.eINSTANCE.createCuePoint();
 			cuePoint.setCuePointID(buf.getUnsignedInt());
 			cuePoint.setPosition(buf.getUnsignedInt());
@@ -97,11 +100,10 @@ public class ChunkCueImpl extends ChunkImpl implements ChunkCue {
 		}
 
 		// Does the size we read in match the size we calculate from the data read in?
-		if(chunkSize!=this.getSize()) {
-			throw new RiffWaveException("Invalid chunk size for cue chunk." +
-				"From File: " + Long.toString(chunkSize) +
-				"Calculated: " + Long.toString(this.getSize())
-			);
+		if (chunkSize != this.getSize()) {
+			throw new RiffWaveException("Invalid chunk size for cue chunk."
+					+ "From File: " + Long.toString(chunkSize) + "Calculated: "
+					+ Long.toString(this.getSize()));
 		}
 	}
 
@@ -121,7 +123,8 @@ public class ChunkCueImpl extends ChunkImpl implements ChunkCue {
 	 * @generated NOT
 	 */
 	public Long getNumberOfCuePoints() {
-		return this.getCuePoints()==null?0:(long)this.getCuePoints().size();
+		return this.getCuePoints() == null ? 0 : (long) this.getCuePoints()
+				.size();
 	}
 
 	/**
@@ -131,7 +134,8 @@ public class ChunkCueImpl extends ChunkImpl implements ChunkCue {
 	 */
 	public EList<CuePoint> getCuePoints() {
 		if (cuePoints == null) {
-			cuePoints = new EObjectResolvingEList<CuePoint>(CuePoint.class, this, WavPackage.CHUNK_CUE__CUE_POINTS);
+			cuePoints = new EObjectResolvingEList<CuePoint>(CuePoint.class,
+					this, WavPackage.CHUNK_CUE__CUE_POINTS);
 		}
 		return cuePoints;
 	}
@@ -168,10 +172,10 @@ public class ChunkCueImpl extends ChunkImpl implements ChunkCue {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.CHUNK_CUE__NUMBER_OF_CUE_POINTS:
-				return getNumberOfCuePoints();
-			case WavPackage.CHUNK_CUE__CUE_POINTS:
-				return getCuePoints();
+		case WavPackage.CHUNK_CUE__NUMBER_OF_CUE_POINTS:
+			return getNumberOfCuePoints();
+		case WavPackage.CHUNK_CUE__CUE_POINTS:
+			return getCuePoints();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -185,10 +189,10 @@ public class ChunkCueImpl extends ChunkImpl implements ChunkCue {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.CHUNK_CUE__CUE_POINTS:
-				getCuePoints().clear();
-				getCuePoints().addAll((Collection<? extends CuePoint>)newValue);
-				return;
+		case WavPackage.CHUNK_CUE__CUE_POINTS:
+			getCuePoints().clear();
+			getCuePoints().addAll((Collection<? extends CuePoint>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -201,9 +205,9 @@ public class ChunkCueImpl extends ChunkImpl implements ChunkCue {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_CUE__CUE_POINTS:
-				getCuePoints().clear();
-				return;
+		case WavPackage.CHUNK_CUE__CUE_POINTS:
+			getCuePoints().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -216,25 +220,28 @@ public class ChunkCueImpl extends ChunkImpl implements ChunkCue {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_CUE__NUMBER_OF_CUE_POINTS:
-				return NUMBER_OF_CUE_POINTS_EDEFAULT == null ? getNumberOfCuePoints() != null : !NUMBER_OF_CUE_POINTS_EDEFAULT.equals(getNumberOfCuePoints());
-			case WavPackage.CHUNK_CUE__CUE_POINTS:
-				return cuePoints != null && !cuePoints.isEmpty();
+		case WavPackage.CHUNK_CUE__NUMBER_OF_CUE_POINTS:
+			return NUMBER_OF_CUE_POINTS_EDEFAULT == null ? getNumberOfCuePoints() != null
+					: !NUMBER_OF_CUE_POINTS_EDEFAULT
+							.equals(getNumberOfCuePoints());
+		case WavPackage.CHUNK_CUE__CUE_POINTS:
+			return cuePoints != null && !cuePoints.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	@Override
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				(int) this.getSize() + 8);
 		buf.order(ByteOrder.LITTLE_ENDIAN);
 
 		buf.putUnsignedInt(this.getChunkTypeIDValue());
 		buf.putUnsignedInt(this.getSize());
-		
+
 		buf.putUnsignedInt(this.getNumberOfCuePoints());
 
-		for(int i=0; i<this.getNumberOfCuePoints(); i++) {
+		for (int i = 0; i < this.getNumberOfCuePoints(); i++) {
 			buf.putUnsignedInt(this.getCuePoints().get(i).getCuePointID());
 			buf.putUnsignedInt(this.getCuePoints().get(i).getPosition());
 			buf.putUnsignedInt(this.getCuePoints().get(i).getDataChunkID());

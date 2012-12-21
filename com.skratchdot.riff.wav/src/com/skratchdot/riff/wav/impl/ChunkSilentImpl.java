@@ -71,14 +71,18 @@ public class ChunkSilentImpl extends ChunkImpl implements ChunkSilent {
 	}
 
 	@Override
-	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf)
+			throws RiffWaveException {
 		// Check Chunk Type ID
-		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
-			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+		if (ChunkTypeID.get((int) buf.getUnsignedInt()) != this
+				.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "
+					+ this.getChunkTypeID().getLiteral());
 
 		// Read in data size
-		if(buf.getUnsignedInt()!=this.getSize())
-			throw new RiffWaveException("sInt Chunk Size is too big. Should be 4.");
+		if (buf.getUnsignedInt() != this.getSize())
+			throw new RiffWaveException(
+					"sInt Chunk Size is too big. Should be 4.");
 
 		this.setNumberOfSilentSamples(buf.getUnsignedInt());
 	}
@@ -111,7 +115,9 @@ public class ChunkSilentImpl extends ChunkImpl implements ChunkSilent {
 		Long oldNumberOfSilentSamples = numberOfSilentSamples;
 		numberOfSilentSamples = newNumberOfSilentSamples;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_SILENT__NUMBER_OF_SILENT_SAMPLES, oldNumberOfSilentSamples, numberOfSilentSamples));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_SILENT__NUMBER_OF_SILENT_SAMPLES,
+					oldNumberOfSilentSamples, numberOfSilentSamples));
 	}
 
 	/* (non-Javadoc)
@@ -146,8 +152,8 @@ public class ChunkSilentImpl extends ChunkImpl implements ChunkSilent {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.CHUNK_SILENT__NUMBER_OF_SILENT_SAMPLES:
-				return getNumberOfSilentSamples();
+		case WavPackage.CHUNK_SILENT__NUMBER_OF_SILENT_SAMPLES:
+			return getNumberOfSilentSamples();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -160,9 +166,9 @@ public class ChunkSilentImpl extends ChunkImpl implements ChunkSilent {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.CHUNK_SILENT__NUMBER_OF_SILENT_SAMPLES:
-				setNumberOfSilentSamples((Long)newValue);
-				return;
+		case WavPackage.CHUNK_SILENT__NUMBER_OF_SILENT_SAMPLES:
+			setNumberOfSilentSamples((Long) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -175,9 +181,9 @@ public class ChunkSilentImpl extends ChunkImpl implements ChunkSilent {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_SILENT__NUMBER_OF_SILENT_SAMPLES:
-				setNumberOfSilentSamples(NUMBER_OF_SILENT_SAMPLES_EDEFAULT);
-				return;
+		case WavPackage.CHUNK_SILENT__NUMBER_OF_SILENT_SAMPLES:
+			setNumberOfSilentSamples(NUMBER_OF_SILENT_SAMPLES_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -190,8 +196,10 @@ public class ChunkSilentImpl extends ChunkImpl implements ChunkSilent {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_SILENT__NUMBER_OF_SILENT_SAMPLES:
-				return NUMBER_OF_SILENT_SAMPLES_EDEFAULT == null ? numberOfSilentSamples != null : !NUMBER_OF_SILENT_SAMPLES_EDEFAULT.equals(numberOfSilentSamples);
+		case WavPackage.CHUNK_SILENT__NUMBER_OF_SILENT_SAMPLES:
+			return NUMBER_OF_SILENT_SAMPLES_EDEFAULT == null ? numberOfSilentSamples != null
+					: !NUMBER_OF_SILENT_SAMPLES_EDEFAULT
+							.equals(numberOfSilentSamples);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -203,7 +211,8 @@ public class ChunkSilentImpl extends ChunkImpl implements ChunkSilent {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (numberOfSilentSamples: ");
@@ -214,7 +223,8 @@ public class ChunkSilentImpl extends ChunkImpl implements ChunkSilent {
 
 	@Override
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				(int) this.getSize() + 8);
 		buf.order(ByteOrder.LITTLE_ENDIAN);
 
 		buf.putUnsignedInt(this.getChunkTypeIDValue());
@@ -223,6 +233,5 @@ public class ChunkSilentImpl extends ChunkImpl implements ChunkSilent {
 
 		return buf.array();
 	}
-
 
 } //ChunkSilentImpl

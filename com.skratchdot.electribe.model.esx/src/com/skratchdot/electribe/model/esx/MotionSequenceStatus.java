@@ -108,12 +108,8 @@ public enum MotionSequenceStatus implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final MotionSequenceStatus[] VALUES_ARRAY =
-		new MotionSequenceStatus[] {
-			OFF,
-			SMOOTH,
-			TRIG_HOLD,
-		};
+	private static final MotionSequenceStatus[] VALUES_ARRAY = new MotionSequenceStatus[] {
+			OFF, SMOOTH, TRIG_HOLD, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Motion Sequence Status</b></em>' enumerators.
@@ -121,7 +117,8 @@ public enum MotionSequenceStatus implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<MotionSequenceStatus> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<MotionSequenceStatus> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Motion Sequence Status</b></em>' literal with the specified literal value.
@@ -163,9 +160,12 @@ public enum MotionSequenceStatus implements Enumerator {
 	 */
 	public static MotionSequenceStatus get(int value) {
 		switch (value) {
-			case OFF_VALUE: return OFF;
-			case SMOOTH_VALUE: return SMOOTH;
-			case TRIG_HOLD_VALUE: return TRIG_HOLD;
+		case OFF_VALUE:
+			return OFF;
+		case SMOOTH_VALUE:
+			return SMOOTH;
+		case TRIG_HOLD_VALUE:
+			return TRIG_HOLD;
 		}
 		return null;
 	}
@@ -209,7 +209,7 @@ public enum MotionSequenceStatus implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -218,7 +218,7 @@ public enum MotionSequenceStatus implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -227,7 +227,7 @@ public enum MotionSequenceStatus implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

@@ -23,28 +23,32 @@ public class TableViewLabelProvider implements ITableLabelProvider {
 
 	public Image getColumnImage(Object element, int columnIndex) {
 		// The only column to have an image is the first column (the name column)
-		if (columnIndex != 0 || element==null) {
+		if (columnIndex != 0 || element == null) {
 			return null;
 		}
 
 		// Our "root directory"
-		if(element instanceof RootDirectory) {
-			return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
+		if (element instanceof RootDirectory) {
+			return PlatformUI.getWorkbench().getSharedImages()
+					.getImage(ISharedImages.IMG_OBJ_FOLDER);
 		}
 
 		// Our "parent directory"
-		else if(element instanceof ParentDirectory) {
-			return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
+		else if (element instanceof ParentDirectory) {
+			return PlatformUI.getWorkbench().getSharedImages()
+					.getImage(ISharedImages.IMG_OBJ_FOLDER);
 		}
 
 		// A regular filesystem directory
-		else if(element instanceof File && ((File) element).isDirectory()) {
-			return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);			
+		else if (element instanceof File && ((File) element).isDirectory()) {
+			return PlatformUI.getWorkbench().getSharedImages()
+					.getImage(ISharedImages.IMG_OBJ_FOLDER);
 		}
 
 		// A regular filesystem file
-		else if(element instanceof File && ((File) element).isFile()) {
-			return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FILE);
+		else if (element instanceof File && ((File) element).isFile()) {
+			return PlatformUI.getWorkbench().getSharedImages()
+					.getImage(ISharedImages.IMG_OBJ_FILE);
 		}
 
 		else {
@@ -55,27 +59,23 @@ public class TableViewLabelProvider implements ITableLabelProvider {
 
 	public String getColumnText(Object element, int columnIndex) {
 		// Our "parent directory"
-		if(element instanceof ParentDirectory) {
-			if(columnIndex == 0) {
+		if (element instanceof ParentDirectory) {
+			if (columnIndex == 0) {
 				return "..";
-			}
-			else {
+			} else {
 				return "";
 			}
 		}
 
 		// Directories/Files
-		if(element instanceof File) {
+		if (element instanceof File) {
 			if (columnIndex == 0) {
 				return FileExplorerUtil.getFileName((File) element);
-			}
-			else if (columnIndex == 1) {
+			} else if (columnIndex == 1) {
 				return FileExplorerUtil.getFileSize((File) element);
-			}
-			else if (columnIndex == 2) {
+			} else if (columnIndex == 2) {
 				return FileExplorerUtil.getFileType((File) element);
-			}
-			else if (columnIndex == 3) {
+			} else if (columnIndex == 3) {
 				return FileExplorerUtil.getFileDate((File) element);
 			}
 		}

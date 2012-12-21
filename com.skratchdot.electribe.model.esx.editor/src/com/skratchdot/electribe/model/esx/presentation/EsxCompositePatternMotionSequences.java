@@ -53,13 +53,15 @@ public class EsxCompositePatternMotionSequences extends EsxComposite {
 	 * @param parentComposite
 	 * @param style
 	 */
-	public EsxCompositePatternMotionSequences(EsxEditorPart parentPart, Composite parentComposite, int style) {
+	public EsxCompositePatternMotionSequences(EsxEditorPart parentPart,
+			Composite parentComposite, int style) {
 		super(parentPart, parentComposite, style);
 		this.parentPart = parentPart;
 
 		setLayout(new GridLayout(4, false));
 
-		this.tableViewer = new TableViewer(this, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
+		this.tableViewer = new TableViewer(this, SWT.BORDER
+				| SWT.FULL_SELECTION | SWT.MULTI);
 		this.initTableViewer();
 	}
 
@@ -75,41 +77,50 @@ public class EsxCompositePatternMotionSequences extends EsxComposite {
 
 		// Create our columns
 		this.parentPart.addColumnToTableViewer(this.tableViewer, "#", 30);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Operation Type", null);
-		for(int i=0; i<EsxUtil.NUM_MOTION_OPERATIONS; i++) {
-			this.parentPart.addColumnToTableViewer(this.tableViewer, "Step"+i, null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer,
+				"Operation Type", null);
+		for (int i = 0; i < EsxUtil.NUM_MOTION_OPERATIONS; i++) {
+			this.parentPart.addColumnToTableViewer(this.tableViewer,
+					"Step" + i, null);
 		}
 
-		
 		// Setup this.tableViewer ContentProvider
-		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
+		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(
+				this.getAdapterFactory()) {
 			@Override
 			public Object[] getElements(Object object) {
 				return selectedPattern.getMotionParameters().toArray();
 			}
+
 			@Override
 			public void notifyChanged(Notification notification) {
 				super.notifyChanged(new ViewerNotification(notification));
-			}			
-		});
-
-		this.tableViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(getAdapterFactory(), this.tableViewer));
-
-		this.tableViewer.addSelectionChangedListener(new ISelectionChangedListener() {
-			public void selectionChanged(SelectionChangedEvent event) {
-		        IStructuredSelection selection = (IStructuredSelection) event.getSelection();
-
-		        Object[] objects = ((IStructuredSelection) selection).toArray();
-		        selectedParametersMotion = new ArrayList<ParametersMotion>();
-				for (Object obj : objects) {
-					if(obj instanceof ParametersMotion) {
-						selectedParametersMotion.add((ParametersMotion) obj);
-					}
-				}
-				refresh();
-				refreshInputs();
 			}
 		});
+
+		this.tableViewer
+				.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(
+						getAdapterFactory(), this.tableViewer));
+
+		this.tableViewer
+				.addSelectionChangedListener(new ISelectionChangedListener() {
+					public void selectionChanged(SelectionChangedEvent event) {
+						IStructuredSelection selection = (IStructuredSelection) event
+								.getSelection();
+
+						Object[] objects = ((IStructuredSelection) selection)
+								.toArray();
+						selectedParametersMotion = new ArrayList<ParametersMotion>();
+						for (Object obj : objects) {
+							if (obj instanceof ParametersMotion) {
+								selectedParametersMotion
+										.add((ParametersMotion) obj);
+							}
+						}
+						refresh();
+						refreshInputs();
+					}
+				});
 	}
 
 	/* (non-Javadoc)
@@ -117,18 +128,18 @@ public class EsxCompositePatternMotionSequences extends EsxComposite {
 	 */
 	@Override
 	public void setInput(Object input) {
-		if(this.isActive==false) return;
+		if (this.isActive == false)
+			return;
 
-		if(input instanceof List<?>) {
-			if( ((List<?>) input).size()>1 ) {
+		if (input instanceof List<?>) {
+			if (((List<?>) input).size() > 1) {
 				this.selectedPattern = null;
-			}
-			else {
+			} else {
 				boolean isIterating = true;
 				Iterator<?> it = ((List<?>) input).iterator();
-				while (it.hasNext() && isIterating==true) {
+				while (it.hasNext() && isIterating == true) {
 					Object obj = it.next();
-					if(obj instanceof Pattern) {
+					if (obj instanceof Pattern) {
 						this.selectedPattern = (Pattern) obj;
 						isIterating = false;
 					}
@@ -146,7 +157,8 @@ public class EsxCompositePatternMotionSequences extends EsxComposite {
 	 */
 	@Override
 	public void refresh() {
-		if(this.isActive==false) return;
+		if (this.isActive == false)
+			return;
 	}
 
 	/* (non-Javadoc)
@@ -154,7 +166,8 @@ public class EsxCompositePatternMotionSequences extends EsxComposite {
 	 */
 	@Override
 	public void refreshInputs() {
-		if(this.isActive==false) return;
+		if (this.isActive == false)
+			return;
 	}
 
 }

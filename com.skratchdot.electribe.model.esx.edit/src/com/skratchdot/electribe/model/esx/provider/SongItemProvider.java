@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -47,10 +46,10 @@ import com.skratchdot.electribe.model.esx.Song;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SongItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class SongItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -94,19 +93,15 @@ public class SongItemProvider
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Song_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Song_name_feature", "_UI_Song_type"),
-				 EsxPackage.Literals.SONG__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Song_name_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Song_name_feature", "_UI_Song_type"),
+				EsxPackage.Literals.SONG__NAME, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -116,19 +111,15 @@ public class SongItemProvider
 	 * @generated
 	 */
 	protected void addTempoPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Song_tempo_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Song_tempo_feature", "_UI_Song_type"),
-				 EsxPackage.Literals.SONG__TEMPO,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Song_tempo_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Song_tempo_feature", "_UI_Song_type"),
+				EsxPackage.Literals.SONG__TEMPO, false, false, false, null,
+				null, null));
 	}
 
 	/**
@@ -138,19 +129,15 @@ public class SongItemProvider
 	 * @generated
 	 */
 	protected void addTempoLockPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Song_tempoLock_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Song_tempoLock_feature", "_UI_Song_type"),
-				 EsxPackage.Literals.SONG__TEMPO_LOCK,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Song_tempoLock_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Song_tempoLock_feature", "_UI_Song_type"),
+				EsxPackage.Literals.SONG__TEMPO_LOCK, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -160,19 +147,15 @@ public class SongItemProvider
 	 * @generated
 	 */
 	protected void addSongLengthPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Song_songLength_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Song_songLength_feature", "_UI_Song_type"),
-				 EsxPackage.Literals.SONG__SONG_LENGTH,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Song_songLength_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Song_songLength_feature", "_UI_Song_type"),
+				EsxPackage.Literals.SONG__SONG_LENGTH, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -182,19 +165,15 @@ public class SongItemProvider
 	 * @generated
 	 */
 	protected void addMuteHoldPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Song_muteHold_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Song_muteHold_feature", "_UI_Song_type"),
-				 EsxPackage.Literals.SONG__MUTE_HOLD,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Song_muteHold_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Song_muteHold_feature", "_UI_Song_type"),
+				EsxPackage.Literals.SONG__MUTE_HOLD, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -204,19 +183,15 @@ public class SongItemProvider
 	 * @generated
 	 */
 	protected void addNextSongNumberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Song_nextSongNumber_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Song_nextSongNumber_feature", "_UI_Song_type"),
-				 EsxPackage.Literals.SONG__NEXT_SONG_NUMBER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Song_nextSongNumber_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Song_nextSongNumber_feature", "_UI_Song_type"),
+				EsxPackage.Literals.SONG__NEXT_SONG_NUMBER, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -226,19 +201,17 @@ public class SongItemProvider
 	 * @generated
 	 */
 	protected void addNumberOfSongEventsCurrentPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Song_numberOfSongEventsCurrent_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Song_numberOfSongEventsCurrent_feature", "_UI_Song_type"),
-				 EsxPackage.Literals.SONG__NUMBER_OF_SONG_EVENTS_CURRENT,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Song_numberOfSongEventsCurrent_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Song_numberOfSongEventsCurrent_feature",
+						"_UI_Song_type"),
+				EsxPackage.Literals.SONG__NUMBER_OF_SONG_EVENTS_CURRENT, false,
+				false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -248,19 +221,17 @@ public class SongItemProvider
 	 * @generated
 	 */
 	protected void addNumberOfSongEventsOriginalPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Song_numberOfSongEventsOriginal_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Song_numberOfSongEventsOriginal_feature", "_UI_Song_type"),
-				 EsxPackage.Literals.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Song_numberOfSongEventsOriginal_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Song_numberOfSongEventsOriginal_feature",
+						"_UI_Song_type"),
+				EsxPackage.Literals.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL,
+				false, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -270,19 +241,15 @@ public class SongItemProvider
 	 * @generated
 	 */
 	protected void addEmptyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Song_empty_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Song_empty_feature", "_UI_Song_type"),
-				 EsxPackage.Literals.SONG__EMPTY,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Song_empty_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Song_empty_feature", "_UI_Song_type"),
+				EsxPackage.Literals.SONG__EMPTY, false, false, false,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -292,19 +259,18 @@ public class SongItemProvider
 	 * @generated
 	 */
 	protected void addSongNumberOriginalPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Song_songNumberOriginal_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Song_songNumberOriginal_feature", "_UI_Song_type"),
-				 EsxPackage.Literals.SONG__SONG_NUMBER_ORIGINAL,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_Song_songNumberOriginal_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_Song_songNumberOriginal_feature",
+								"_UI_Song_type"),
+						EsxPackage.Literals.SONG__SONG_NUMBER_ORIGINAL, false,
+						false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -314,19 +280,15 @@ public class SongItemProvider
 	 * @generated
 	 */
 	protected void addSongNumberCurrentPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Song_songNumberCurrent_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Song_songNumberCurrent_feature", "_UI_Song_type"),
-				 EsxPackage.Literals.SONG__SONG_NUMBER_CURRENT,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Song_songNumberCurrent_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Song_songNumberCurrent_feature", "_UI_Song_type"),
+				EsxPackage.Literals.SONG__SONG_NUMBER_CURRENT, false, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -338,7 +300,8 @@ public class SongItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(EsxPackage.Literals.SONG__SONG_PATTERNS);
@@ -368,7 +331,8 @@ public class SongItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Song"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/Song"));
 	}
 
 	/**
@@ -379,10 +343,9 @@ public class SongItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Song)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Song_type") :
-			getString("_UI_Song_type") + " " + label;
+		String label = ((Song) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_Song_type")
+				: getString("_UI_Song_type") + " " + label;
 	}
 
 	/**
@@ -392,26 +355,37 @@ public class SongItemProvider
 	 */
 	@Override
 	public String getColumnText(Object object, int columnIndex) {
-		switch(columnIndex) {
-			// Esx#
-			case 0: return ((Song) object).getSongNumberCurrent().toString();
+		switch (columnIndex) {
+		// Esx#
+		case 0:
+			return ((Song) object).getSongNumberCurrent().toString();
 			// Orig#
-			case 1: return ((Song) object).getSongNumberOriginal().toString();
+		case 1:
+			return ((Song) object).getSongNumberOriginal().toString();
 			// Name
-			case 2: return ((Song) object).getName();
+		case 2:
+			return ((Song) object).getName();
 			// Tempo
-			case 3: return Float.toString(((Song) object).getTempo().getValue());
+		case 3:
+			return Float.toString(((Song) object).getTempo().getValue());
 			// TempoLock
-			case 4: return ((Song) object).getTempoLock().getLiteral();
+		case 4:
+			return ((Song) object).getTempoLock().getLiteral();
 			// Length
-			case 5: return ((Song) object).getSongLength().getLiteral();
+		case 5:
+			return ((Song) object).getSongLength().getLiteral();
 			// MuteHold
-			case 6: return ((Song) object).getMuteHold().getLiteral();
+		case 6:
+			return ((Song) object).getMuteHold().getLiteral();
 			// NextSong
-			case 7: return ((Song) object).getNextSongNumber().getLiteral();
+		case 7:
+			return ((Song) object).getNextSongNumber().getLiteral();
 			// NumOfEvents
-			case 8: return Short.toString(((Song) object).getNumberOfSongEventsCurrent());
-			default: return getText(object);
+		case 8:
+			return Short.toString(((Song) object)
+					.getNumberOfSongEventsCurrent());
+		default:
+			return getText(object);
 		}
 	}
 
@@ -427,23 +401,25 @@ public class SongItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Song.class)) {
-			case EsxPackage.SONG__NAME:
-			case EsxPackage.SONG__TEMPO:
-			case EsxPackage.SONG__TEMPO_LOCK:
-			case EsxPackage.SONG__SONG_LENGTH:
-			case EsxPackage.SONG__MUTE_HOLD:
-			case EsxPackage.SONG__NEXT_SONG_NUMBER:
-			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_CURRENT:
-			case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL:
-			case EsxPackage.SONG__EMPTY:
-			case EsxPackage.SONG__SONG_NUMBER_ORIGINAL:
-			case EsxPackage.SONG__SONG_NUMBER_CURRENT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case EsxPackage.SONG__SONG_PATTERNS:
-			case EsxPackage.SONG__SONG_EVENTS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case EsxPackage.SONG__NAME:
+		case EsxPackage.SONG__TEMPO:
+		case EsxPackage.SONG__TEMPO_LOCK:
+		case EsxPackage.SONG__SONG_LENGTH:
+		case EsxPackage.SONG__MUTE_HOLD:
+		case EsxPackage.SONG__NEXT_SONG_NUMBER:
+		case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_CURRENT:
+		case EsxPackage.SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL:
+		case EsxPackage.SONG__EMPTY:
+		case EsxPackage.SONG__SONG_NUMBER_ORIGINAL:
+		case EsxPackage.SONG__SONG_NUMBER_CURRENT:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
+		case EsxPackage.SONG__SONG_PATTERNS:
+		case EsxPackage.SONG__SONG_EVENTS:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -456,38 +432,33 @@ public class SongItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-				(EsxPackage.Literals.SONG__SONG_PATTERNS,
-				 EsxFactory.eINSTANCE.createSongPattern()));
+		newChildDescriptors.add(createChildParameter(
+				EsxPackage.Literals.SONG__SONG_PATTERNS,
+				EsxFactory.eINSTANCE.createSongPattern()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(EsxPackage.Literals.SONG__SONG_EVENTS,
-				 EsxFactory.eINSTANCE.createSongEventControl()));
+		newChildDescriptors.add(createChildParameter(
+				EsxPackage.Literals.SONG__SONG_EVENTS,
+				EsxFactory.eINSTANCE.createSongEventControl()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(EsxPackage.Literals.SONG__SONG_EVENTS,
-				 EsxFactory.eINSTANCE.createSongEventDrumNote()));
+		newChildDescriptors.add(createChildParameter(
+				EsxPackage.Literals.SONG__SONG_EVENTS,
+				EsxFactory.eINSTANCE.createSongEventDrumNote()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(EsxPackage.Literals.SONG__SONG_EVENTS,
-				 EsxFactory.eINSTANCE.createSongEventKeyboardNote()));
+		newChildDescriptors.add(createChildParameter(
+				EsxPackage.Literals.SONG__SONG_EVENTS,
+				EsxFactory.eINSTANCE.createSongEventKeyboardNote()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(EsxPackage.Literals.SONG__SONG_EVENTS,
-				 EsxFactory.eINSTANCE.createSongEventMuteStatus()));
+		newChildDescriptors.add(createChildParameter(
+				EsxPackage.Literals.SONG__SONG_EVENTS,
+				EsxFactory.eINSTANCE.createSongEventMuteStatus()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(EsxPackage.Literals.SONG__SONG_EVENTS,
-				 EsxFactory.eINSTANCE.createSongEventTempo()));
+		newChildDescriptors.add(createChildParameter(
+				EsxPackage.Literals.SONG__SONG_EVENTS,
+				EsxFactory.eINSTANCE.createSongEventTempo()));
 	}
 
 	/**
@@ -506,8 +477,8 @@ public class SongItemProvider
 			EStructuralFeature feature, Object value) {
 
 		// When setting name, only allow 8 characters
-		if(feature == EsxPackage.Literals.SONG__NAME) {
-			value = StringUtils.left((String)value, 8);
+		if (feature == EsxPackage.Literals.SONG__NAME) {
+			value = StringUtils.left((String) value, 8);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

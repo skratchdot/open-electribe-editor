@@ -435,7 +435,8 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		// byte 8
 		int packedByte8 = in.getUnsignedByte();
 		this.setModDest(ModDest.get(EsxUtil.unpackInt(packedByte8, 3, 0)));
-		this.setReservedBitAfterModDepth((byte) EsxUtil.unpackInt(packedByte8, 1, 3));
+		this.setReservedBitAfterModDepth((byte) EsxUtil.unpackInt(packedByte8,
+				1, 3));
 		this.setModType(ModType.get(EsxUtil.unpackInt(packedByte8, 3, 4)));
 		this.setBpmSync(BpmSync.get(EsxUtil.unpackInt(packedByte8, 1, 7)));
 		// byte 9
@@ -449,13 +450,15 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		// bytes 12~27 (16 bytes)
 		tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA];
 		in.getBytes(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA);
-		SequenceData newSequenceData = EsxFactory.eINSTANCE.createSequenceData();
+		SequenceData newSequenceData = EsxFactory.eINSTANCE
+				.createSequenceData();
 		newSequenceData.setSequenceData(tempBytes);
 		this.setSequenceData(newSequenceData);
 		// bytes 28~155 (128 bytes)
 		tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA_GATE];
 		in.getBytes(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA_GATE);
-		SequenceDataGate newSequenceDataGate = EsxFactory.eINSTANCE.createSequenceDataGate();
+		SequenceDataGate newSequenceDataGate = EsxFactory.eINSTANCE
+				.createSequenceDataGate();
 		newSequenceDataGate.setSequenceDataGate(tempBytes);
 		this.setSequenceDataGate(newSequenceDataGate);
 	}
@@ -488,7 +491,8 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		AmpEg oldAmpEg = ampEg;
 		ampEg = newAmpEg == null ? AMP_EG_EDEFAULT : newAmpEg;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__AMP_EG, oldAmpEg, ampEg));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_AUDIO_IN__AMP_EG, oldAmpEg, ampEg));
 	}
 
 	/**
@@ -509,7 +513,8 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		BpmSync oldBpmSync = bpmSync;
 		bpmSync = newBpmSync == null ? BPM_SYNC_EDEFAULT : newBpmSync;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__BPM_SYNC, oldBpmSync, bpmSync));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_AUDIO_IN__BPM_SYNC, oldBpmSync, bpmSync));
 	}
 
 	/**
@@ -530,7 +535,8 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		byte oldCutoff = cutoff;
 		cutoff = newCutoff;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__CUTOFF, oldCutoff, cutoff));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_AUDIO_IN__CUTOFF, oldCutoff, cutoff));
 	}
 
 	/**
@@ -551,7 +557,9 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		byte oldEgIntensity = egIntensity;
 		egIntensity = newEgIntensity;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__EG_INTENSITY, oldEgIntensity, egIntensity));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_AUDIO_IN__EG_INTENSITY, oldEgIntensity,
+					egIntensity));
 	}
 
 	/**
@@ -572,7 +580,8 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		byte oldEgTime = egTime;
 		egTime = newEgTime;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__EG_TIME, oldEgTime, egTime));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_AUDIO_IN__EG_TIME, oldEgTime, egTime));
 	}
 
 	/**
@@ -591,9 +600,12 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 	 */
 	public void setFilterType(FilterType newFilterType) {
 		FilterType oldFilterType = filterType;
-		filterType = newFilterType == null ? FILTER_TYPE_EDEFAULT : newFilterType;
+		filterType = newFilterType == null ? FILTER_TYPE_EDEFAULT
+				: newFilterType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__FILTER_TYPE, oldFilterType, filterType));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_AUDIO_IN__FILTER_TYPE, oldFilterType,
+					filterType));
 	}
 
 	/**
@@ -614,7 +626,8 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		FxSelect oldFxSelect = fxSelect;
 		fxSelect = newFxSelect == null ? FX_SELECT_EDEFAULT : newFxSelect;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__FX_SELECT, oldFxSelect, fxSelect));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_AUDIO_IN__FX_SELECT, oldFxSelect, fxSelect));
 	}
 
 	/**
@@ -635,7 +648,8 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		FxSend oldFxSend = fxSend;
 		fxSend = newFxSend == null ? FX_SEND_EDEFAULT : newFxSend;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__FX_SEND, oldFxSend, fxSend));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_AUDIO_IN__FX_SEND, oldFxSend, fxSend));
 	}
 
 	/**
@@ -656,7 +670,8 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		byte oldModDepth = modDepth;
 		modDepth = newModDepth;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__MOD_DEPTH, oldModDepth, modDepth));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_AUDIO_IN__MOD_DEPTH, oldModDepth, modDepth));
 	}
 
 	/**
@@ -677,7 +692,8 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		ModDest oldModDest = modDest;
 		modDest = newModDest == null ? MOD_DEST_EDEFAULT : newModDest;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__MOD_DEST, oldModDest, modDest));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_AUDIO_IN__MOD_DEST, oldModDest, modDest));
 	}
 
 	/**
@@ -698,7 +714,8 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		byte oldModSpeed = modSpeed;
 		modSpeed = newModSpeed;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__MOD_SPEED, oldModSpeed, modSpeed));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_AUDIO_IN__MOD_SPEED, oldModSpeed, modSpeed));
 	}
 
 	/**
@@ -719,7 +736,8 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		ModType oldModType = modType;
 		modType = newModType == null ? MOD_TYPE_EDEFAULT : newModType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__MOD_TYPE, oldModType, modType));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_AUDIO_IN__MOD_TYPE, oldModType, modType));
 	}
 
 	/**
@@ -740,7 +758,8 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		byte oldPan = pan;
 		pan = newPan;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__PAN, oldPan, pan));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_AUDIO_IN__PAN, oldPan, pan));
 	}
 
 	/**
@@ -761,7 +780,9 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		byte oldReservedBitAfterModDepth = reservedBitAfterModDepth;
 		reservedBitAfterModDepth = newReservedBitAfterModDepth;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__RESERVED_BIT_AFTER_MOD_DEPTH, oldReservedBitAfterModDepth, reservedBitAfterModDepth));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_AUDIO_IN__RESERVED_BIT_AFTER_MOD_DEPTH,
+					oldReservedBitAfterModDepth, reservedBitAfterModDepth));
 	}
 
 	/**
@@ -782,7 +803,9 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		byte oldResonance = resonance;
 		resonance = newResonance;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__RESONANCE, oldResonance, resonance));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_AUDIO_IN__RESONANCE, oldResonance,
+					resonance));
 	}
 
 	/**
@@ -803,7 +826,8 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		Roll oldRoll = roll;
 		roll = newRoll == null ? ROLL_EDEFAULT : newRoll;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__ROLL, oldRoll, roll));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_AUDIO_IN__ROLL, oldRoll, roll));
 	}
 
 	/**
@@ -820,12 +844,18 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSequenceData(SequenceData newSequenceData, NotificationChain msgs) {
+	public NotificationChain basicSetSequenceData(SequenceData newSequenceData,
+			NotificationChain msgs) {
 		SequenceData oldSequenceData = sequenceData;
 		sequenceData = newSequenceData;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA, oldSequenceData, newSequenceData);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA,
+					oldSequenceData, newSequenceData);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -839,14 +869,22 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		if (newSequenceData != sequenceData) {
 			NotificationChain msgs = null;
 			if (sequenceData != null)
-				msgs = ((InternalEObject)sequenceData).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA, null, msgs);
+				msgs = ((InternalEObject) sequenceData).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+								- EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA,
+						null, msgs);
 			if (newSequenceData != null)
-				msgs = ((InternalEObject)newSequenceData).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA, null, msgs);
+				msgs = ((InternalEObject) newSequenceData).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+								- EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA,
+						null, msgs);
 			msgs = basicSetSequenceData(newSequenceData, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA, newSequenceData, newSequenceData));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA, newSequenceData,
+					newSequenceData));
 	}
 
 	/**
@@ -863,12 +901,19 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSequenceDataGate(SequenceDataGate newSequenceDataGate, NotificationChain msgs) {
+	public NotificationChain basicSetSequenceDataGate(
+			SequenceDataGate newSequenceDataGate, NotificationChain msgs) {
 		SequenceDataGate oldSequenceDataGate = sequenceDataGate;
 		sequenceDataGate = newSequenceDataGate;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE, oldSequenceDataGate, newSequenceDataGate);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET,
+					EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE,
+					oldSequenceDataGate, newSequenceDataGate);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -882,14 +927,22 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		if (newSequenceDataGate != sequenceDataGate) {
 			NotificationChain msgs = null;
 			if (sequenceDataGate != null)
-				msgs = ((InternalEObject)sequenceDataGate).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE, null, msgs);
+				msgs = ((InternalEObject) sequenceDataGate).eInverseRemove(
+						this, EOPPOSITE_FEATURE_BASE
+								- EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE,
+						null, msgs);
 			if (newSequenceDataGate != null)
-				msgs = ((InternalEObject)newSequenceDataGate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE, null, msgs);
+				msgs = ((InternalEObject) newSequenceDataGate).eInverseAdd(
+						this, EOPPOSITE_FEATURE_BASE
+								- EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE,
+						null, msgs);
 			msgs = basicSetSequenceDataGate(newSequenceDataGate, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE, newSequenceDataGate, newSequenceDataGate));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE,
+					newSequenceDataGate, newSequenceDataGate));
 	}
 
 	/**
@@ -910,7 +963,9 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		byte oldReservedBitsByte7 = reservedBitsByte7;
 		reservedBitsByte7 = newReservedBitsByte7;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_AUDIO_IN__RESERVED_BITS_BYTE7, oldReservedBitsByte7, reservedBitsByte7));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_AUDIO_IN__RESERVED_BITS_BYTE7,
+					oldReservedBitsByte7, reservedBitsByte7));
 	}
 
 	/**
@@ -919,7 +974,8 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_PARTS_AUDIOIN);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				EsxUtil.CHUNKSIZE_PARTS_AUDIOIN);
 		// byte 0
 		buf.putUnsignedByte(this.getFilterType().getValue());
 		// byte 1
@@ -936,18 +992,27 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 		buf.putByte(this.getEgTime());
 		// byte 7
 		int packedByte7 = 0x00;
-		packedByte7 = EsxUtil.packInt(packedByte7, this.getFxSelect().getValue(), 2, 0);
-		packedByte7 = EsxUtil.packInt(packedByte7, this.getFxSend().getValue(), 1, 2);
-		packedByte7 = EsxUtil.packInt(packedByte7, this.getRoll().getValue(), 1, 3);
-		packedByte7 = EsxUtil.packInt(packedByte7, this.getAmpEg().getValue(), 1, 4);
-		packedByte7 = EsxUtil.packInt(packedByte7, this.getReservedBitsByte7(), 3, 5);
+		packedByte7 = EsxUtil.packInt(packedByte7, this.getFxSelect()
+				.getValue(), 2, 0);
+		packedByte7 = EsxUtil.packInt(packedByte7, this.getFxSend().getValue(),
+				1, 2);
+		packedByte7 = EsxUtil.packInt(packedByte7, this.getRoll().getValue(),
+				1, 3);
+		packedByte7 = EsxUtil.packInt(packedByte7, this.getAmpEg().getValue(),
+				1, 4);
+		packedByte7 = EsxUtil.packInt(packedByte7, this.getReservedBitsByte7(),
+				3, 5);
 		buf.putUnsignedByte(packedByte7);
 		// byte 8
 		int packedByte8 = 0x00;
-		packedByte8 = EsxUtil.packInt(packedByte8, this.getModDest().getValue(), 3, 0);
-		packedByte8 = EsxUtil.packInt(packedByte8, this.getReservedBitAfterModDepth(), 1, 3);
-		packedByte8 = EsxUtil.packInt(packedByte8, this.getModType().getValue(), 3, 4);
-		packedByte8 = EsxUtil.packInt(packedByte8, this.getBpmSync().getValue(), 1, 7);
+		packedByte8 = EsxUtil.packInt(packedByte8,
+				this.getModDest().getValue(), 3, 0);
+		packedByte8 = EsxUtil.packInt(packedByte8,
+				this.getReservedBitAfterModDepth(), 1, 3);
+		packedByte8 = EsxUtil.packInt(packedByte8,
+				this.getModType().getValue(), 3, 4);
+		packedByte8 = EsxUtil.packInt(packedByte8,
+				this.getBpmSync().getValue(), 1, 7);
 		buf.putUnsignedByte(packedByte8);
 		// byte 9
 		buf.putByte(this.getModSpeed());
@@ -968,12 +1033,13 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA:
-				return basicSetSequenceData(null, msgs);
-			case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE:
-				return basicSetSequenceDataGate(null, msgs);
+		case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA:
+			return basicSetSequenceData(null, msgs);
+		case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE:
+			return basicSetSequenceDataGate(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -986,44 +1052,44 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.PART_AUDIO_IN__AMP_EG:
-				return getAmpEg();
-			case EsxPackage.PART_AUDIO_IN__BPM_SYNC:
-				return getBpmSync();
-			case EsxPackage.PART_AUDIO_IN__CUTOFF:
-				return getCutoff();
-			case EsxPackage.PART_AUDIO_IN__EG_INTENSITY:
-				return getEgIntensity();
-			case EsxPackage.PART_AUDIO_IN__EG_TIME:
-				return getEgTime();
-			case EsxPackage.PART_AUDIO_IN__FILTER_TYPE:
-				return getFilterType();
-			case EsxPackage.PART_AUDIO_IN__FX_SELECT:
-				return getFxSelect();
-			case EsxPackage.PART_AUDIO_IN__FX_SEND:
-				return getFxSend();
-			case EsxPackage.PART_AUDIO_IN__MOD_DEPTH:
-				return getModDepth();
-			case EsxPackage.PART_AUDIO_IN__MOD_DEST:
-				return getModDest();
-			case EsxPackage.PART_AUDIO_IN__MOD_SPEED:
-				return getModSpeed();
-			case EsxPackage.PART_AUDIO_IN__MOD_TYPE:
-				return getModType();
-			case EsxPackage.PART_AUDIO_IN__PAN:
-				return getPan();
-			case EsxPackage.PART_AUDIO_IN__RESERVED_BIT_AFTER_MOD_DEPTH:
-				return getReservedBitAfterModDepth();
-			case EsxPackage.PART_AUDIO_IN__RESONANCE:
-				return getResonance();
-			case EsxPackage.PART_AUDIO_IN__ROLL:
-				return getRoll();
-			case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA:
-				return getSequenceData();
-			case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE:
-				return getSequenceDataGate();
-			case EsxPackage.PART_AUDIO_IN__RESERVED_BITS_BYTE7:
-				return getReservedBitsByte7();
+		case EsxPackage.PART_AUDIO_IN__AMP_EG:
+			return getAmpEg();
+		case EsxPackage.PART_AUDIO_IN__BPM_SYNC:
+			return getBpmSync();
+		case EsxPackage.PART_AUDIO_IN__CUTOFF:
+			return getCutoff();
+		case EsxPackage.PART_AUDIO_IN__EG_INTENSITY:
+			return getEgIntensity();
+		case EsxPackage.PART_AUDIO_IN__EG_TIME:
+			return getEgTime();
+		case EsxPackage.PART_AUDIO_IN__FILTER_TYPE:
+			return getFilterType();
+		case EsxPackage.PART_AUDIO_IN__FX_SELECT:
+			return getFxSelect();
+		case EsxPackage.PART_AUDIO_IN__FX_SEND:
+			return getFxSend();
+		case EsxPackage.PART_AUDIO_IN__MOD_DEPTH:
+			return getModDepth();
+		case EsxPackage.PART_AUDIO_IN__MOD_DEST:
+			return getModDest();
+		case EsxPackage.PART_AUDIO_IN__MOD_SPEED:
+			return getModSpeed();
+		case EsxPackage.PART_AUDIO_IN__MOD_TYPE:
+			return getModType();
+		case EsxPackage.PART_AUDIO_IN__PAN:
+			return getPan();
+		case EsxPackage.PART_AUDIO_IN__RESERVED_BIT_AFTER_MOD_DEPTH:
+			return getReservedBitAfterModDepth();
+		case EsxPackage.PART_AUDIO_IN__RESONANCE:
+			return getResonance();
+		case EsxPackage.PART_AUDIO_IN__ROLL:
+			return getRoll();
+		case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA:
+			return getSequenceData();
+		case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE:
+			return getSequenceDataGate();
+		case EsxPackage.PART_AUDIO_IN__RESERVED_BITS_BYTE7:
+			return getReservedBitsByte7();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1036,63 +1102,63 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.PART_AUDIO_IN__AMP_EG:
-				setAmpEg((AmpEg)newValue);
-				return;
-			case EsxPackage.PART_AUDIO_IN__BPM_SYNC:
-				setBpmSync((BpmSync)newValue);
-				return;
-			case EsxPackage.PART_AUDIO_IN__CUTOFF:
-				setCutoff((Byte)newValue);
-				return;
-			case EsxPackage.PART_AUDIO_IN__EG_INTENSITY:
-				setEgIntensity((Byte)newValue);
-				return;
-			case EsxPackage.PART_AUDIO_IN__EG_TIME:
-				setEgTime((Byte)newValue);
-				return;
-			case EsxPackage.PART_AUDIO_IN__FILTER_TYPE:
-				setFilterType((FilterType)newValue);
-				return;
-			case EsxPackage.PART_AUDIO_IN__FX_SELECT:
-				setFxSelect((FxSelect)newValue);
-				return;
-			case EsxPackage.PART_AUDIO_IN__FX_SEND:
-				setFxSend((FxSend)newValue);
-				return;
-			case EsxPackage.PART_AUDIO_IN__MOD_DEPTH:
-				setModDepth((Byte)newValue);
-				return;
-			case EsxPackage.PART_AUDIO_IN__MOD_DEST:
-				setModDest((ModDest)newValue);
-				return;
-			case EsxPackage.PART_AUDIO_IN__MOD_SPEED:
-				setModSpeed((Byte)newValue);
-				return;
-			case EsxPackage.PART_AUDIO_IN__MOD_TYPE:
-				setModType((ModType)newValue);
-				return;
-			case EsxPackage.PART_AUDIO_IN__PAN:
-				setPan((Byte)newValue);
-				return;
-			case EsxPackage.PART_AUDIO_IN__RESERVED_BIT_AFTER_MOD_DEPTH:
-				setReservedBitAfterModDepth((Byte)newValue);
-				return;
-			case EsxPackage.PART_AUDIO_IN__RESONANCE:
-				setResonance((Byte)newValue);
-				return;
-			case EsxPackage.PART_AUDIO_IN__ROLL:
-				setRoll((Roll)newValue);
-				return;
-			case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA:
-				setSequenceData((SequenceData)newValue);
-				return;
-			case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE:
-				setSequenceDataGate((SequenceDataGate)newValue);
-				return;
-			case EsxPackage.PART_AUDIO_IN__RESERVED_BITS_BYTE7:
-				setReservedBitsByte7((Byte)newValue);
-				return;
+		case EsxPackage.PART_AUDIO_IN__AMP_EG:
+			setAmpEg((AmpEg) newValue);
+			return;
+		case EsxPackage.PART_AUDIO_IN__BPM_SYNC:
+			setBpmSync((BpmSync) newValue);
+			return;
+		case EsxPackage.PART_AUDIO_IN__CUTOFF:
+			setCutoff((Byte) newValue);
+			return;
+		case EsxPackage.PART_AUDIO_IN__EG_INTENSITY:
+			setEgIntensity((Byte) newValue);
+			return;
+		case EsxPackage.PART_AUDIO_IN__EG_TIME:
+			setEgTime((Byte) newValue);
+			return;
+		case EsxPackage.PART_AUDIO_IN__FILTER_TYPE:
+			setFilterType((FilterType) newValue);
+			return;
+		case EsxPackage.PART_AUDIO_IN__FX_SELECT:
+			setFxSelect((FxSelect) newValue);
+			return;
+		case EsxPackage.PART_AUDIO_IN__FX_SEND:
+			setFxSend((FxSend) newValue);
+			return;
+		case EsxPackage.PART_AUDIO_IN__MOD_DEPTH:
+			setModDepth((Byte) newValue);
+			return;
+		case EsxPackage.PART_AUDIO_IN__MOD_DEST:
+			setModDest((ModDest) newValue);
+			return;
+		case EsxPackage.PART_AUDIO_IN__MOD_SPEED:
+			setModSpeed((Byte) newValue);
+			return;
+		case EsxPackage.PART_AUDIO_IN__MOD_TYPE:
+			setModType((ModType) newValue);
+			return;
+		case EsxPackage.PART_AUDIO_IN__PAN:
+			setPan((Byte) newValue);
+			return;
+		case EsxPackage.PART_AUDIO_IN__RESERVED_BIT_AFTER_MOD_DEPTH:
+			setReservedBitAfterModDepth((Byte) newValue);
+			return;
+		case EsxPackage.PART_AUDIO_IN__RESONANCE:
+			setResonance((Byte) newValue);
+			return;
+		case EsxPackage.PART_AUDIO_IN__ROLL:
+			setRoll((Roll) newValue);
+			return;
+		case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA:
+			setSequenceData((SequenceData) newValue);
+			return;
+		case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE:
+			setSequenceDataGate((SequenceDataGate) newValue);
+			return;
+		case EsxPackage.PART_AUDIO_IN__RESERVED_BITS_BYTE7:
+			setReservedBitsByte7((Byte) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1105,63 +1171,63 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_AUDIO_IN__AMP_EG:
-				setAmpEg(AMP_EG_EDEFAULT);
-				return;
-			case EsxPackage.PART_AUDIO_IN__BPM_SYNC:
-				setBpmSync(BPM_SYNC_EDEFAULT);
-				return;
-			case EsxPackage.PART_AUDIO_IN__CUTOFF:
-				setCutoff(CUTOFF_EDEFAULT);
-				return;
-			case EsxPackage.PART_AUDIO_IN__EG_INTENSITY:
-				setEgIntensity(EG_INTENSITY_EDEFAULT);
-				return;
-			case EsxPackage.PART_AUDIO_IN__EG_TIME:
-				setEgTime(EG_TIME_EDEFAULT);
-				return;
-			case EsxPackage.PART_AUDIO_IN__FILTER_TYPE:
-				setFilterType(FILTER_TYPE_EDEFAULT);
-				return;
-			case EsxPackage.PART_AUDIO_IN__FX_SELECT:
-				setFxSelect(FX_SELECT_EDEFAULT);
-				return;
-			case EsxPackage.PART_AUDIO_IN__FX_SEND:
-				setFxSend(FX_SEND_EDEFAULT);
-				return;
-			case EsxPackage.PART_AUDIO_IN__MOD_DEPTH:
-				setModDepth(MOD_DEPTH_EDEFAULT);
-				return;
-			case EsxPackage.PART_AUDIO_IN__MOD_DEST:
-				setModDest(MOD_DEST_EDEFAULT);
-				return;
-			case EsxPackage.PART_AUDIO_IN__MOD_SPEED:
-				setModSpeed(MOD_SPEED_EDEFAULT);
-				return;
-			case EsxPackage.PART_AUDIO_IN__MOD_TYPE:
-				setModType(MOD_TYPE_EDEFAULT);
-				return;
-			case EsxPackage.PART_AUDIO_IN__PAN:
-				setPan(PAN_EDEFAULT);
-				return;
-			case EsxPackage.PART_AUDIO_IN__RESERVED_BIT_AFTER_MOD_DEPTH:
-				setReservedBitAfterModDepth(RESERVED_BIT_AFTER_MOD_DEPTH_EDEFAULT);
-				return;
-			case EsxPackage.PART_AUDIO_IN__RESONANCE:
-				setResonance(RESONANCE_EDEFAULT);
-				return;
-			case EsxPackage.PART_AUDIO_IN__ROLL:
-				setRoll(ROLL_EDEFAULT);
-				return;
-			case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA:
-				setSequenceData((SequenceData)null);
-				return;
-			case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE:
-				setSequenceDataGate((SequenceDataGate)null);
-				return;
-			case EsxPackage.PART_AUDIO_IN__RESERVED_BITS_BYTE7:
-				setReservedBitsByte7(RESERVED_BITS_BYTE7_EDEFAULT);
-				return;
+		case EsxPackage.PART_AUDIO_IN__AMP_EG:
+			setAmpEg(AMP_EG_EDEFAULT);
+			return;
+		case EsxPackage.PART_AUDIO_IN__BPM_SYNC:
+			setBpmSync(BPM_SYNC_EDEFAULT);
+			return;
+		case EsxPackage.PART_AUDIO_IN__CUTOFF:
+			setCutoff(CUTOFF_EDEFAULT);
+			return;
+		case EsxPackage.PART_AUDIO_IN__EG_INTENSITY:
+			setEgIntensity(EG_INTENSITY_EDEFAULT);
+			return;
+		case EsxPackage.PART_AUDIO_IN__EG_TIME:
+			setEgTime(EG_TIME_EDEFAULT);
+			return;
+		case EsxPackage.PART_AUDIO_IN__FILTER_TYPE:
+			setFilterType(FILTER_TYPE_EDEFAULT);
+			return;
+		case EsxPackage.PART_AUDIO_IN__FX_SELECT:
+			setFxSelect(FX_SELECT_EDEFAULT);
+			return;
+		case EsxPackage.PART_AUDIO_IN__FX_SEND:
+			setFxSend(FX_SEND_EDEFAULT);
+			return;
+		case EsxPackage.PART_AUDIO_IN__MOD_DEPTH:
+			setModDepth(MOD_DEPTH_EDEFAULT);
+			return;
+		case EsxPackage.PART_AUDIO_IN__MOD_DEST:
+			setModDest(MOD_DEST_EDEFAULT);
+			return;
+		case EsxPackage.PART_AUDIO_IN__MOD_SPEED:
+			setModSpeed(MOD_SPEED_EDEFAULT);
+			return;
+		case EsxPackage.PART_AUDIO_IN__MOD_TYPE:
+			setModType(MOD_TYPE_EDEFAULT);
+			return;
+		case EsxPackage.PART_AUDIO_IN__PAN:
+			setPan(PAN_EDEFAULT);
+			return;
+		case EsxPackage.PART_AUDIO_IN__RESERVED_BIT_AFTER_MOD_DEPTH:
+			setReservedBitAfterModDepth(RESERVED_BIT_AFTER_MOD_DEPTH_EDEFAULT);
+			return;
+		case EsxPackage.PART_AUDIO_IN__RESONANCE:
+			setResonance(RESONANCE_EDEFAULT);
+			return;
+		case EsxPackage.PART_AUDIO_IN__ROLL:
+			setRoll(ROLL_EDEFAULT);
+			return;
+		case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA:
+			setSequenceData((SequenceData) null);
+			return;
+		case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE:
+			setSequenceDataGate((SequenceDataGate) null);
+			return;
+		case EsxPackage.PART_AUDIO_IN__RESERVED_BITS_BYTE7:
+			setReservedBitsByte7(RESERVED_BITS_BYTE7_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1174,44 +1240,44 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_AUDIO_IN__AMP_EG:
-				return ampEg != AMP_EG_EDEFAULT;
-			case EsxPackage.PART_AUDIO_IN__BPM_SYNC:
-				return bpmSync != BPM_SYNC_EDEFAULT;
-			case EsxPackage.PART_AUDIO_IN__CUTOFF:
-				return cutoff != CUTOFF_EDEFAULT;
-			case EsxPackage.PART_AUDIO_IN__EG_INTENSITY:
-				return egIntensity != EG_INTENSITY_EDEFAULT;
-			case EsxPackage.PART_AUDIO_IN__EG_TIME:
-				return egTime != EG_TIME_EDEFAULT;
-			case EsxPackage.PART_AUDIO_IN__FILTER_TYPE:
-				return filterType != FILTER_TYPE_EDEFAULT;
-			case EsxPackage.PART_AUDIO_IN__FX_SELECT:
-				return fxSelect != FX_SELECT_EDEFAULT;
-			case EsxPackage.PART_AUDIO_IN__FX_SEND:
-				return fxSend != FX_SEND_EDEFAULT;
-			case EsxPackage.PART_AUDIO_IN__MOD_DEPTH:
-				return modDepth != MOD_DEPTH_EDEFAULT;
-			case EsxPackage.PART_AUDIO_IN__MOD_DEST:
-				return modDest != MOD_DEST_EDEFAULT;
-			case EsxPackage.PART_AUDIO_IN__MOD_SPEED:
-				return modSpeed != MOD_SPEED_EDEFAULT;
-			case EsxPackage.PART_AUDIO_IN__MOD_TYPE:
-				return modType != MOD_TYPE_EDEFAULT;
-			case EsxPackage.PART_AUDIO_IN__PAN:
-				return pan != PAN_EDEFAULT;
-			case EsxPackage.PART_AUDIO_IN__RESERVED_BIT_AFTER_MOD_DEPTH:
-				return reservedBitAfterModDepth != RESERVED_BIT_AFTER_MOD_DEPTH_EDEFAULT;
-			case EsxPackage.PART_AUDIO_IN__RESONANCE:
-				return resonance != RESONANCE_EDEFAULT;
-			case EsxPackage.PART_AUDIO_IN__ROLL:
-				return roll != ROLL_EDEFAULT;
-			case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA:
-				return sequenceData != null;
-			case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE:
-				return sequenceDataGate != null;
-			case EsxPackage.PART_AUDIO_IN__RESERVED_BITS_BYTE7:
-				return reservedBitsByte7 != RESERVED_BITS_BYTE7_EDEFAULT;
+		case EsxPackage.PART_AUDIO_IN__AMP_EG:
+			return ampEg != AMP_EG_EDEFAULT;
+		case EsxPackage.PART_AUDIO_IN__BPM_SYNC:
+			return bpmSync != BPM_SYNC_EDEFAULT;
+		case EsxPackage.PART_AUDIO_IN__CUTOFF:
+			return cutoff != CUTOFF_EDEFAULT;
+		case EsxPackage.PART_AUDIO_IN__EG_INTENSITY:
+			return egIntensity != EG_INTENSITY_EDEFAULT;
+		case EsxPackage.PART_AUDIO_IN__EG_TIME:
+			return egTime != EG_TIME_EDEFAULT;
+		case EsxPackage.PART_AUDIO_IN__FILTER_TYPE:
+			return filterType != FILTER_TYPE_EDEFAULT;
+		case EsxPackage.PART_AUDIO_IN__FX_SELECT:
+			return fxSelect != FX_SELECT_EDEFAULT;
+		case EsxPackage.PART_AUDIO_IN__FX_SEND:
+			return fxSend != FX_SEND_EDEFAULT;
+		case EsxPackage.PART_AUDIO_IN__MOD_DEPTH:
+			return modDepth != MOD_DEPTH_EDEFAULT;
+		case EsxPackage.PART_AUDIO_IN__MOD_DEST:
+			return modDest != MOD_DEST_EDEFAULT;
+		case EsxPackage.PART_AUDIO_IN__MOD_SPEED:
+			return modSpeed != MOD_SPEED_EDEFAULT;
+		case EsxPackage.PART_AUDIO_IN__MOD_TYPE:
+			return modType != MOD_TYPE_EDEFAULT;
+		case EsxPackage.PART_AUDIO_IN__PAN:
+			return pan != PAN_EDEFAULT;
+		case EsxPackage.PART_AUDIO_IN__RESERVED_BIT_AFTER_MOD_DEPTH:
+			return reservedBitAfterModDepth != RESERVED_BIT_AFTER_MOD_DEPTH_EDEFAULT;
+		case EsxPackage.PART_AUDIO_IN__RESONANCE:
+			return resonance != RESONANCE_EDEFAULT;
+		case EsxPackage.PART_AUDIO_IN__ROLL:
+			return roll != ROLL_EDEFAULT;
+		case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA:
+			return sequenceData != null;
+		case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE:
+			return sequenceDataGate != null;
+		case EsxPackage.PART_AUDIO_IN__RESERVED_BITS_BYTE7:
+			return reservedBitsByte7 != RESERVED_BITS_BYTE7_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1225,35 +1291,56 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == PartWithCommon.class) {
 			switch (derivedFeatureID) {
-				case EsxPackage.PART_AUDIO_IN__AMP_EG: return EsxPackage.PART_WITH_COMMON__AMP_EG;
-				case EsxPackage.PART_AUDIO_IN__BPM_SYNC: return EsxPackage.PART_WITH_COMMON__BPM_SYNC;
-				case EsxPackage.PART_AUDIO_IN__CUTOFF: return EsxPackage.PART_WITH_COMMON__CUTOFF;
-				case EsxPackage.PART_AUDIO_IN__EG_INTENSITY: return EsxPackage.PART_WITH_COMMON__EG_INTENSITY;
-				case EsxPackage.PART_AUDIO_IN__EG_TIME: return EsxPackage.PART_WITH_COMMON__EG_TIME;
-				case EsxPackage.PART_AUDIO_IN__FILTER_TYPE: return EsxPackage.PART_WITH_COMMON__FILTER_TYPE;
-				case EsxPackage.PART_AUDIO_IN__FX_SELECT: return EsxPackage.PART_WITH_COMMON__FX_SELECT;
-				case EsxPackage.PART_AUDIO_IN__FX_SEND: return EsxPackage.PART_WITH_COMMON__FX_SEND;
-				case EsxPackage.PART_AUDIO_IN__MOD_DEPTH: return EsxPackage.PART_WITH_COMMON__MOD_DEPTH;
-				case EsxPackage.PART_AUDIO_IN__MOD_DEST: return EsxPackage.PART_WITH_COMMON__MOD_DEST;
-				case EsxPackage.PART_AUDIO_IN__MOD_SPEED: return EsxPackage.PART_WITH_COMMON__MOD_SPEED;
-				case EsxPackage.PART_AUDIO_IN__MOD_TYPE: return EsxPackage.PART_WITH_COMMON__MOD_TYPE;
-				case EsxPackage.PART_AUDIO_IN__PAN: return EsxPackage.PART_WITH_COMMON__PAN;
-				case EsxPackage.PART_AUDIO_IN__RESERVED_BIT_AFTER_MOD_DEPTH: return EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH;
-				case EsxPackage.PART_AUDIO_IN__RESONANCE: return EsxPackage.PART_WITH_COMMON__RESONANCE;
-				case EsxPackage.PART_AUDIO_IN__ROLL: return EsxPackage.PART_WITH_COMMON__ROLL;
-				default: return -1;
+			case EsxPackage.PART_AUDIO_IN__AMP_EG:
+				return EsxPackage.PART_WITH_COMMON__AMP_EG;
+			case EsxPackage.PART_AUDIO_IN__BPM_SYNC:
+				return EsxPackage.PART_WITH_COMMON__BPM_SYNC;
+			case EsxPackage.PART_AUDIO_IN__CUTOFF:
+				return EsxPackage.PART_WITH_COMMON__CUTOFF;
+			case EsxPackage.PART_AUDIO_IN__EG_INTENSITY:
+				return EsxPackage.PART_WITH_COMMON__EG_INTENSITY;
+			case EsxPackage.PART_AUDIO_IN__EG_TIME:
+				return EsxPackage.PART_WITH_COMMON__EG_TIME;
+			case EsxPackage.PART_AUDIO_IN__FILTER_TYPE:
+				return EsxPackage.PART_WITH_COMMON__FILTER_TYPE;
+			case EsxPackage.PART_AUDIO_IN__FX_SELECT:
+				return EsxPackage.PART_WITH_COMMON__FX_SELECT;
+			case EsxPackage.PART_AUDIO_IN__FX_SEND:
+				return EsxPackage.PART_WITH_COMMON__FX_SEND;
+			case EsxPackage.PART_AUDIO_IN__MOD_DEPTH:
+				return EsxPackage.PART_WITH_COMMON__MOD_DEPTH;
+			case EsxPackage.PART_AUDIO_IN__MOD_DEST:
+				return EsxPackage.PART_WITH_COMMON__MOD_DEST;
+			case EsxPackage.PART_AUDIO_IN__MOD_SPEED:
+				return EsxPackage.PART_WITH_COMMON__MOD_SPEED;
+			case EsxPackage.PART_AUDIO_IN__MOD_TYPE:
+				return EsxPackage.PART_WITH_COMMON__MOD_TYPE;
+			case EsxPackage.PART_AUDIO_IN__PAN:
+				return EsxPackage.PART_WITH_COMMON__PAN;
+			case EsxPackage.PART_AUDIO_IN__RESERVED_BIT_AFTER_MOD_DEPTH:
+				return EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH;
+			case EsxPackage.PART_AUDIO_IN__RESONANCE:
+				return EsxPackage.PART_WITH_COMMON__RESONANCE;
+			case EsxPackage.PART_AUDIO_IN__ROLL:
+				return EsxPackage.PART_WITH_COMMON__ROLL;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == PartWithSequenceData.class) {
 			switch (derivedFeatureID) {
-				case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA: return EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA;
-				default: return -1;
+			case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA:
+				return EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == PartWithSequenceDataGate.class) {
 			switch (derivedFeatureID) {
-				case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE: return EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE;
-				default: return -1;
+			case EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE:
+				return EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
@@ -1268,35 +1355,56 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == PartWithCommon.class) {
 			switch (baseFeatureID) {
-				case EsxPackage.PART_WITH_COMMON__AMP_EG: return EsxPackage.PART_AUDIO_IN__AMP_EG;
-				case EsxPackage.PART_WITH_COMMON__BPM_SYNC: return EsxPackage.PART_AUDIO_IN__BPM_SYNC;
-				case EsxPackage.PART_WITH_COMMON__CUTOFF: return EsxPackage.PART_AUDIO_IN__CUTOFF;
-				case EsxPackage.PART_WITH_COMMON__EG_INTENSITY: return EsxPackage.PART_AUDIO_IN__EG_INTENSITY;
-				case EsxPackage.PART_WITH_COMMON__EG_TIME: return EsxPackage.PART_AUDIO_IN__EG_TIME;
-				case EsxPackage.PART_WITH_COMMON__FILTER_TYPE: return EsxPackage.PART_AUDIO_IN__FILTER_TYPE;
-				case EsxPackage.PART_WITH_COMMON__FX_SELECT: return EsxPackage.PART_AUDIO_IN__FX_SELECT;
-				case EsxPackage.PART_WITH_COMMON__FX_SEND: return EsxPackage.PART_AUDIO_IN__FX_SEND;
-				case EsxPackage.PART_WITH_COMMON__MOD_DEPTH: return EsxPackage.PART_AUDIO_IN__MOD_DEPTH;
-				case EsxPackage.PART_WITH_COMMON__MOD_DEST: return EsxPackage.PART_AUDIO_IN__MOD_DEST;
-				case EsxPackage.PART_WITH_COMMON__MOD_SPEED: return EsxPackage.PART_AUDIO_IN__MOD_SPEED;
-				case EsxPackage.PART_WITH_COMMON__MOD_TYPE: return EsxPackage.PART_AUDIO_IN__MOD_TYPE;
-				case EsxPackage.PART_WITH_COMMON__PAN: return EsxPackage.PART_AUDIO_IN__PAN;
-				case EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH: return EsxPackage.PART_AUDIO_IN__RESERVED_BIT_AFTER_MOD_DEPTH;
-				case EsxPackage.PART_WITH_COMMON__RESONANCE: return EsxPackage.PART_AUDIO_IN__RESONANCE;
-				case EsxPackage.PART_WITH_COMMON__ROLL: return EsxPackage.PART_AUDIO_IN__ROLL;
-				default: return -1;
+			case EsxPackage.PART_WITH_COMMON__AMP_EG:
+				return EsxPackage.PART_AUDIO_IN__AMP_EG;
+			case EsxPackage.PART_WITH_COMMON__BPM_SYNC:
+				return EsxPackage.PART_AUDIO_IN__BPM_SYNC;
+			case EsxPackage.PART_WITH_COMMON__CUTOFF:
+				return EsxPackage.PART_AUDIO_IN__CUTOFF;
+			case EsxPackage.PART_WITH_COMMON__EG_INTENSITY:
+				return EsxPackage.PART_AUDIO_IN__EG_INTENSITY;
+			case EsxPackage.PART_WITH_COMMON__EG_TIME:
+				return EsxPackage.PART_AUDIO_IN__EG_TIME;
+			case EsxPackage.PART_WITH_COMMON__FILTER_TYPE:
+				return EsxPackage.PART_AUDIO_IN__FILTER_TYPE;
+			case EsxPackage.PART_WITH_COMMON__FX_SELECT:
+				return EsxPackage.PART_AUDIO_IN__FX_SELECT;
+			case EsxPackage.PART_WITH_COMMON__FX_SEND:
+				return EsxPackage.PART_AUDIO_IN__FX_SEND;
+			case EsxPackage.PART_WITH_COMMON__MOD_DEPTH:
+				return EsxPackage.PART_AUDIO_IN__MOD_DEPTH;
+			case EsxPackage.PART_WITH_COMMON__MOD_DEST:
+				return EsxPackage.PART_AUDIO_IN__MOD_DEST;
+			case EsxPackage.PART_WITH_COMMON__MOD_SPEED:
+				return EsxPackage.PART_AUDIO_IN__MOD_SPEED;
+			case EsxPackage.PART_WITH_COMMON__MOD_TYPE:
+				return EsxPackage.PART_AUDIO_IN__MOD_TYPE;
+			case EsxPackage.PART_WITH_COMMON__PAN:
+				return EsxPackage.PART_AUDIO_IN__PAN;
+			case EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH:
+				return EsxPackage.PART_AUDIO_IN__RESERVED_BIT_AFTER_MOD_DEPTH;
+			case EsxPackage.PART_WITH_COMMON__RESONANCE:
+				return EsxPackage.PART_AUDIO_IN__RESONANCE;
+			case EsxPackage.PART_WITH_COMMON__ROLL:
+				return EsxPackage.PART_AUDIO_IN__ROLL;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == PartWithSequenceData.class) {
 			switch (baseFeatureID) {
-				case EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA: return EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA;
-				default: return -1;
+			case EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA:
+				return EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == PartWithSequenceDataGate.class) {
 			switch (baseFeatureID) {
-				case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE: return EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE;
-				default: return -1;
+			case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
+				return EsxPackage.PART_AUDIO_IN__SEQUENCE_DATA_GATE;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
@@ -1309,7 +1417,8 @@ public class PartAudioInImpl extends PartImpl implements PartAudioIn {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (ampEg: ");

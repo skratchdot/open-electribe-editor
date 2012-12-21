@@ -41,7 +41,7 @@ public class EsxCompositeGlobalMidiCC extends EsxComposite {
 	private List<MidiControlChangeAssignment> midiControlChangeAssignments;
 	private List<MidiControlChangeAssignment> selectedItems;
 	private TableViewer tableViewer;
-	
+
 	private Text textMidiControlChangeAssignment;
 	private Text inputMidiControlChangeAssignment;
 
@@ -58,21 +58,29 @@ public class EsxCompositeGlobalMidiCC extends EsxComposite {
 	 * @param parentComposite
 	 * @param style
 	 */
-	public EsxCompositeGlobalMidiCC(EsxEditorPart parentPart, Composite parentComposite, int style) {
+	public EsxCompositeGlobalMidiCC(EsxEditorPart parentPart,
+			Composite parentComposite, int style) {
 		super(parentPart, parentComposite, style);
 		this.parentPart = parentPart;
 
 		setLayout(new GridLayout(4, false));
 
-		textMidiControlChangeAssignment = this.createGridData2ColumnTextLabel(this, "Midi CC Assignment");
-		inputMidiControlChangeAssignment = this.createGridData2ColumnTextInput(this, "", new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(selectedItems, EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE, Byte.parseByte(inputMidiControlChangeAssignment.getText()), false, -1);
-			}
-		});
+		textMidiControlChangeAssignment = this.createGridData2ColumnTextLabel(
+				this, "Midi CC Assignment");
+		inputMidiControlChangeAssignment = this.createGridData2ColumnTextInput(
+				this, "", new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(
+								selectedItems,
+								EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE,
+								Byte.parseByte(inputMidiControlChangeAssignment
+										.getText()), false, -1);
+					}
+				});
 
-		this.tableViewer = new TableViewer(this, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
+		this.tableViewer = new TableViewer(this, SWT.BORDER
+				| SWT.FULL_SELECTION | SWT.MULTI);
 		this.initTableViewer();
 	}
 
@@ -91,7 +99,8 @@ public class EsxCompositeGlobalMidiCC extends EsxComposite {
 		this.parentPart.addColumnToTableViewer(this.tableViewer, "Value", 50);
 
 		// Setup this.tableViewer ContentProvider
-		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
+		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(
+				this.getAdapterFactory()) {
 			@Override
 			public Object[] getElements(Object object) {
 				return midiControlChangeAssignments.toArray();
@@ -100,26 +109,32 @@ public class EsxCompositeGlobalMidiCC extends EsxComposite {
 			@Override
 			public void notifyChanged(Notification notification) {
 				super.notifyChanged(new ViewerNotification(notification));
-			}			
-		});
-
-		this.tableViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(getAdapterFactory(), this.tableViewer));
-
-		this.tableViewer.addSelectionChangedListener(new ISelectionChangedListener() {
-			public void selectionChanged(SelectionChangedEvent event) {
-		        IStructuredSelection selection = (IStructuredSelection) event.getSelection();
-
-		        Object[] objects = ((IStructuredSelection) selection).toArray();
-				selectedItems = new ArrayList<MidiControlChangeAssignment>();
-				for (Object obj : objects) {
-					if(obj instanceof MidiControlChangeAssignment) {
-						selectedItems.add((MidiControlChangeAssignment) obj);
-					}
-				}
-				refresh();
-				refreshInputs();
 			}
 		});
+
+		this.tableViewer
+				.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(
+						getAdapterFactory(), this.tableViewer));
+
+		this.tableViewer
+				.addSelectionChangedListener(new ISelectionChangedListener() {
+					public void selectionChanged(SelectionChangedEvent event) {
+						IStructuredSelection selection = (IStructuredSelection) event
+								.getSelection();
+
+						Object[] objects = ((IStructuredSelection) selection)
+								.toArray();
+						selectedItems = new ArrayList<MidiControlChangeAssignment>();
+						for (Object obj : objects) {
+							if (obj instanceof MidiControlChangeAssignment) {
+								selectedItems
+										.add((MidiControlChangeAssignment) obj);
+							}
+						}
+						refresh();
+						refreshInputs();
+					}
+				});
 	}
 
 	/* (non-Javadoc)
@@ -129,12 +144,13 @@ public class EsxCompositeGlobalMidiCC extends EsxComposite {
 	public void setInput(Object input) {
 		this.midiControlChangeAssignments = new ArrayList<MidiControlChangeAssignment>();
 
-		if(input instanceof List<?>) {
+		if (input instanceof List<?>) {
 			Iterator<?> it = ((List<?>) input).iterator();
 			while (it.hasNext()) {
 				Object obj = it.next();
-				if(obj instanceof MidiControlChangeAssignment) {
-					this.midiControlChangeAssignments.add((MidiControlChangeAssignment) obj);
+				if (obj instanceof MidiControlChangeAssignment) {
+					this.midiControlChangeAssignments
+							.add((MidiControlChangeAssignment) obj);
 				}
 			}
 		}
@@ -150,7 +166,10 @@ public class EsxCompositeGlobalMidiCC extends EsxComposite {
 	@Override
 	public void refresh() {
 		String multipleValueString = "<Multiple Values>";
-		this.textMidiControlChangeAssignment.setText(getMultiString(this.selectedItems, EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE, multipleValueString));
+		this.textMidiControlChangeAssignment.setText(getMultiString(
+				this.selectedItems,
+				EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE,
+				multipleValueString));
 	}
 
 	/* (non-Javadoc)
@@ -159,7 +178,10 @@ public class EsxCompositeGlobalMidiCC extends EsxComposite {
 	@Override
 	public void refreshInputs() {
 		String multipleValueString = "";
-		this.inputMidiControlChangeAssignment.setText(getMultiString(this.selectedItems, EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE, multipleValueString));
+		this.inputMidiControlChangeAssignment.setText(getMultiString(
+				this.selectedItems,
+				EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE,
+				multipleValueString));
 	}
 
 }

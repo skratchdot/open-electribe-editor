@@ -45,7 +45,7 @@ import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
 public class EsxEditorPartSongs extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartSongs"; //$NON-NLS-1$
 	public static final int PAGE_INDEX = 4;
-	public static final String ID_SONG_VIEWER = ID+".SongViewer"; //$NON-NLS-1$
+	public static final String ID_SONG_VIEWER = ID + ".SongViewer"; //$NON-NLS-1$
 
 	private TableViewer tableViewer;
 	private TableScrollSpeedListener tableViewerScrollSpeedListener;
@@ -75,35 +75,37 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 	public void createPartControl(Composite parent) {
 		// Create sashForm
 		SashForm sashForm = new SashForm(parent, SWT.NONE);
-		
+
 		// Create groupSongs
 		Group groupSongs = new Group(sashForm, SWT.NONE);
 		groupSongs.setLayout(new GridLayout(1, true));
 		groupSongs.setText("Songs");
 
 		// Create this.tableViewer
-		this.tableViewer = new TableViewer(groupSongs, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
+		this.tableViewer = new TableViewer(groupSongs, SWT.BORDER
+				| SWT.FULL_SELECTION | SWT.MULTI);
 		this.initTableViewer();
 
 		// Create groupSelectedSongs
 		Group groupSelectedSongs = new Group(sashForm, SWT.NONE);
 		groupSelectedSongs.setLayout(new FillLayout(SWT.HORIZONTAL));
 		groupSelectedSongs.setText("Selected Songs");
-		
+
 		tabFolder = new TabFolder(groupSelectedSongs, SWT.NONE);
-		
+
 		tabSong = new TabItem(tabFolder, SWT.NONE);
 		editorSong = new EsxCompositeSong(this, tabFolder, SWT.NONE);
 		tabSong.setText("Song Editor");
 		tabSong.setControl(editorSong);
-		
+
 		tabSongEvents = new TabItem(tabFolder, SWT.NONE);
 		editorSongEvents = new EsxCompositeSongEvents(this, tabFolder, SWT.NONE);
 		tabSongEvents.setText("Song Events");
 		tabSongEvents.setControl(editorSongEvents);
 
 		tabSongPatterns = new TabItem(tabFolder, SWT.NONE);
-		editorSongPatterns = new EsxCompositeSongPatterns(this, tabFolder, SWT.NONE);
+		editorSongPatterns = new EsxCompositeSongPatterns(this, tabFolder,
+				SWT.NONE);
 		tabSongPatterns.setText("Song Patterns");
 		tabSongPatterns.setControl(editorSongPatterns);
 
@@ -118,7 +120,7 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 
 		});
 
-		sashForm.setWeights(new int[] {1, 1});
+		sashForm.setWeights(new int[] { 1, 1 });
 	}
 
 	/**
@@ -149,49 +151,48 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		}
 
 		// Setup this.tableViewer ContentProvider
-		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
+		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(
+				this.getAdapterFactory()) {
 
 			@Override
 			public Object[] getElements(Object object) {
-				return ((EsxFile)object).getSongs().toArray();
+				return ((EsxFile) object).getSongs().toArray();
 			}
 
 			@Override
 			public void notifyChanged(Notification notification) {
 				super.notifyChanged(new ViewerNotification(notification));
 			}
-			
+
 		});
 
 		// Label Provider		
-		this.tableViewer.setLabelProvider(new TableViewerColorProvider(
-			this.getAdapterFactory(),
-			this.tableViewer,
-			EsxPreferenceStore.getSongsBackgroundColorWhenNotEmpty(),
-			EsxPreferenceStore.getSongsBackgroundColorWhenEmpty(),
-			EsxPreferenceStore.getSongsForegroundColorWhenNotEmpty(),
-			EsxPreferenceStore.getSongsForegroundColorWhenEmpty()
-		));
+		this.tableViewer.setLabelProvider(new TableViewerColorProvider(this
+				.getAdapterFactory(), this.tableViewer, EsxPreferenceStore
+				.getSongsBackgroundColorWhenNotEmpty(), EsxPreferenceStore
+				.getSongsBackgroundColorWhenEmpty(), EsxPreferenceStore
+				.getSongsForegroundColorWhenNotEmpty(), EsxPreferenceStore
+				.getSongsForegroundColorWhenEmpty()));
 
 		// Sync the scroll speed with our preference
 		tableViewerScrollSpeedListener = this.syncScrollSpeedWithPreference(
-			this.tableViewer,
-			tableViewerScrollSpeedListener,
-			EsxPreferenceStore.getSongsScrollSpeed(),
-			EsxPreferenceStore.getSongsUseScrollSpeed()
-		);
+				this.tableViewer, tableViewerScrollSpeedListener,
+				EsxPreferenceStore.getSongsScrollSpeed(),
+				EsxPreferenceStore.getSongsUseScrollSpeed());
 
 		// listen for preference change events
-		PlatformUI.getPreferenceStore().addPropertyChangeListener((IPropertyChangeListener) this);
+		PlatformUI.getPreferenceStore().addPropertyChangeListener(
+				(IPropertyChangeListener) this);
 
 		// Context Menu
-	    createContextMenuFor(this.tableViewer, EsxEditorPartSongs.ID_SONG_VIEWER);
+		createContextMenuFor(this.tableViewer,
+				EsxEditorPartSongs.ID_SONG_VIEWER);
 
-	    // Selection Provider For EsxEditor
-	    getEditorSite().setSelectionProvider(this.tableViewer);
+		// Selection Provider For EsxEditor
+		getEditorSite().setSelectionProvider(this.tableViewer);
 
 		// listen for selection events
-	    getSite().getPage().addSelectionListener((ISelectionListener) this);
+		getSite().getPage().addSelectionListener((ISelectionListener) this);
 	}
 
 	private void setAllInputs() {
@@ -205,19 +206,19 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 	 */
 	@Override
 	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-		if (parentEditor.getActivePage()==EsxEditorPartSongs.PAGE_INDEX &&
-				selection instanceof IStructuredSelection) {
+		if (parentEditor.getActivePage() == EsxEditorPartSongs.PAGE_INDEX
+				&& selection instanceof IStructuredSelection) {
 			Object[] objects = ((IStructuredSelection) selection).toArray();
 			selectedSongs = new ArrayList<Song>();
 			for (Object obj : objects) {
-				if(obj instanceof Song) {
+				if (obj instanceof Song) {
 					selectedSongs.add((Song) obj);
 				}
 			}
 			setAllInputs();
 		}
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see com.skratchdot.electribe.model.esx.presentation.EsxEditorPart#propertyChange(org.eclipse.jface.util.PropertyChangeEvent)
 	 */
@@ -226,28 +227,35 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		super.propertyChange(event);
 
 		// Scroll Speed Changes
-		if(event.getProperty().equals(EsxPreferenceNames.SONGS_SCROLL_SPEED) ||
-			event.getProperty().equals(EsxPreferenceNames.SONGS_USE_SCROLL_SPEED)) {
-			tableViewerScrollSpeedListener = this.syncScrollSpeedWithPreference(
-				this.tableViewer,
-				tableViewerScrollSpeedListener,
-				EsxPreferenceStore.getSongsScrollSpeed(),
-				EsxPreferenceStore.getSongsUseScrollSpeed()
-			);
+		if (event.getProperty().equals(EsxPreferenceNames.SONGS_SCROLL_SPEED)
+				|| event.getProperty().equals(
+						EsxPreferenceNames.SONGS_USE_SCROLL_SPEED)) {
+			tableViewerScrollSpeedListener = this
+					.syncScrollSpeedWithPreference(this.tableViewer,
+							tableViewerScrollSpeedListener,
+							EsxPreferenceStore.getSongsScrollSpeed(),
+							EsxPreferenceStore.getSongsUseScrollSpeed());
 			this.tableViewer.refresh();
 		}
 
 		// Color Changes
-		if(event.getProperty().equals(EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_NOT_EMPTY) ||
-				event.getProperty().equals(EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_EMPTY) ||
-				event.getProperty().equals(EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_NOT_EMPTY) ||
-				event.getProperty().equals(EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_EMPTY)) {
-			((TableViewerColorProvider)this.tableViewer.getLabelProvider()).setAllColors(
-				EsxPreferenceStore.getSongsBackgroundColorWhenNotEmpty(),
-				EsxPreferenceStore.getSongsBackgroundColorWhenEmpty(),
-				EsxPreferenceStore.getSongsForegroundColorWhenNotEmpty(),
-				EsxPreferenceStore.getSongsForegroundColorWhenEmpty()
-			);
+		if (event.getProperty().equals(
+				EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_NOT_EMPTY)
+				|| event.getProperty().equals(
+						EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_EMPTY)
+				|| event.getProperty()
+						.equals(EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_NOT_EMPTY)
+				|| event.getProperty().equals(
+						EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_EMPTY)) {
+			((TableViewerColorProvider) this.tableViewer.getLabelProvider())
+					.setAllColors(EsxPreferenceStore
+							.getSongsBackgroundColorWhenNotEmpty(),
+							EsxPreferenceStore
+									.getSongsBackgroundColorWhenEmpty(),
+							EsxPreferenceStore
+									.getSongsForegroundColorWhenNotEmpty(),
+							EsxPreferenceStore
+									.getSongsForegroundColorWhenEmpty());
 			this.tableViewer.refresh();
 		}
 	}
@@ -260,9 +268,10 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		super.dispose();
 
 		// Remove Listeners added in createPartControl()
-		PlatformUI.getPreferenceStore().removePropertyChangeListener((IPropertyChangeListener) this);
+		PlatformUI.getPreferenceStore().removePropertyChangeListener(
+				(IPropertyChangeListener) this);
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see com.skratchdot.electribe.model.esx.presentation.EsxEditorPart#setFocus()
 	 */
@@ -276,7 +285,7 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 	 */
 	@Override
 	public void setInput(Object input) {
-		if(input instanceof EsxFile) {
+		if (input instanceof EsxFile) {
 			this.tableViewer.setInput(input);
 			this.refresh();
 		}
@@ -286,7 +295,8 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 	 * 
 	 */
 	public void refresh() {
-		if(this.parentEditor.getActivePage()!=EsxEditorPartSongs.PAGE_INDEX) return;
+		if (this.parentEditor.getActivePage() != EsxEditorPartSongs.PAGE_INDEX)
+			return;
 
 		this.tableViewer.refresh();
 		this.editorSong.refresh();

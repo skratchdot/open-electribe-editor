@@ -42,8 +42,8 @@ import com.skratchdot.electribe.audioplayer.util.AudioUtil;
 import com.skratchdot.electribe.fileexplorer.Activator;
 import com.skratchdot.electribe.fileexplorer.preferences.PreferenceConstants;
 
-public class TableView extends ViewPart
-	implements ISelectionListener, IPropertyChangeListener, IDoubleClickListener {
+public class TableView extends ViewPart implements ISelectionListener,
+		IPropertyChangeListener, IDoubleClickListener {
 	public static final String ID = "com.skratchdot.electribe.fileexplorer.views.TableView";
 	public static final RootDirectory root = new RootDirectory();
 
@@ -76,15 +76,21 @@ public class TableView extends ViewPart
 		// Add drag support
 		int ops = DND.DROP_COPY | DND.DROP_MOVE;
 		Transfer[] transfers = new Transfer[] { FileTransfer.getInstance() };
-		viewer.addDragSupport(ops, transfers, new FileExplorerDragSourceAdapter(viewer));
+		viewer.addDragSupport(ops, transfers,
+				new FileExplorerDragSourceAdapter(viewer));
 
 		viewer.setUseHashlookup(true); // try to speed things up
 		viewer.setContentProvider(new TableViewContentProvider(
-			Activator.getDefault().getPreferenceStore()
-				.getBoolean(PreferenceConstants.PREFNAME_TABLEVIEW_ONLYSHOWINGDIRECTORIES),
-			Activator.getDefault().getPreferenceStore()
-				.getString(PreferenceConstants.PREFNAME_TABLEVIEW_FILEFILTERARRAY)
-		));
+				Activator
+						.getDefault()
+						.getPreferenceStore()
+						.getBoolean(
+								PreferenceConstants.PREFNAME_TABLEVIEW_ONLYSHOWINGDIRECTORIES),
+				Activator
+						.getDefault()
+						.getPreferenceStore()
+						.getString(
+								PreferenceConstants.PREFNAME_TABLEVIEW_FILEFILTERARRAY)));
 		viewer.setLabelProvider(new TableViewLabelProvider());
 		viewer.setSorter(new FileExplorerSorter());
 		viewer.getTable().setHeaderVisible(true);
@@ -100,13 +106,12 @@ public class TableView extends ViewPart
 		viewer.addDoubleClickListener((IDoubleClickListener) this);
 
 		// listen for selection events from "FileTreeViewer"
-		getSite().getPage().addSelectionListener(
-			TreeView.ID,
-			(ISelectionListener) this
-		);
+		getSite().getPage().addSelectionListener(TreeView.ID,
+				(ISelectionListener) this);
 
 		// listen for preference change events
-		Activator.getDefault().getPreferenceStore().addPropertyChangeListener((IPropertyChangeListener) this);
+		Activator.getDefault().getPreferenceStore()
+				.addPropertyChangeListener((IPropertyChangeListener) this);
 
 	}
 
@@ -115,11 +120,10 @@ public class TableView extends ViewPart
 		super.dispose();
 
 		// Remove Listeners added in createPartControl()
-		getSite().getPage().removeSelectionListener(
-			TreeView.ID,
-			(ISelectionListener) this
-		);
-		Activator.getDefault().getPreferenceStore().removePropertyChangeListener((IPropertyChangeListener) this);
+		getSite().getPage().removeSelectionListener(TreeView.ID,
+				(ISelectionListener) this);
+		Activator.getDefault().getPreferenceStore()
+				.removePropertyChangeListener((IPropertyChangeListener) this);
 
 	}
 
@@ -129,8 +133,10 @@ public class TableView extends ViewPart
 	}
 
 	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-		if (part instanceof TreeView && selection instanceof IStructuredSelection) {
-			Object firstObject = ((IStructuredSelection) selection).getFirstElement();
+		if (part instanceof TreeView
+				&& selection instanceof IStructuredSelection) {
+			Object firstObject = ((IStructuredSelection) selection)
+					.getFirstElement();
 			// Handle File
 			if (firstObject != null && firstObject instanceof File) {
 				viewer.setInput((File) firstObject);
@@ -140,22 +146,27 @@ public class TableView extends ViewPart
 
 	public void propertyChange(PropertyChangeEvent event) {
 		// If PREFNAME_TABLEVIEW_ONLYSHOWINGDIRECTORIES has changed
-		if(event.getProperty().equals(PreferenceConstants.PREFNAME_TABLEVIEW_ONLYSHOWINGDIRECTORIES)) {
+		if (event.getProperty().equals(
+				PreferenceConstants.PREFNAME_TABLEVIEW_ONLYSHOWINGDIRECTORIES)) {
 			((TableViewContentProvider) viewer.getContentProvider())
-				.getFilter().setOnlyShowingDirectories((Boolean)event.getNewValue());
+					.getFilter().setOnlyShowingDirectories(
+							(Boolean) event.getNewValue());
 			viewer.refresh();
 		}
 		// If PREFNAME_TABLEVIEW_FILEFILTERARRAY has changed
-		if(event.getProperty().equals(PreferenceConstants.PREFNAME_TABLEVIEW_FILEFILTERARRAY)) {
+		if (event.getProperty().equals(
+				PreferenceConstants.PREFNAME_TABLEVIEW_FILEFILTERARRAY)) {
 			((TableViewContentProvider) viewer.getContentProvider())
-				.getFilter().setFileFilterString((String)event.getNewValue());
+					.getFilter().setFileFilterString(
+							(String) event.getNewValue());
 			viewer.refresh();
 		}
 	}
 
 	public void doubleClick(DoubleClickEvent event) {
 		ISelection selection = event.getSelection();
-		Object firstObject = ((IStructuredSelection) selection).getFirstElement();
+		Object firstObject = ((IStructuredSelection) selection)
+				.getFirstElement();
 
 		// Handle File
 		if (firstObject != null && firstObject instanceof File) {
@@ -167,20 +178,32 @@ public class TableView extends ViewPart
 
 			// Try to open the selected file with the default editor
 			else {
-				IWorkbenchPage page = getSite().getWorkbenchWindow().getActivePage();
-				if (page!=null) {
+				IWorkbenchPage page = getSite().getWorkbenchWindow()
+						.getActivePage();
+				if (page != null) {
 					try {
 						// Try to open the file in a registered editor
-						IEditorDescriptor editorDescriptor = getSite().getWorkbenchWindow().getWorkbench().getEditorRegistry().getDefaultEditor(((File) firstObject).getName());
-						if(editorDescriptor!=null && editorDescriptor.isInternal()) {
-							IFileStore fileStore = EFS.getLocalFileSystem().getStore(new Path(((File) firstObject).getPath()));
+						IEditorDescriptor editorDescriptor = getSite()
+								.getWorkbenchWindow()
+								.getWorkbench()
+								.getEditorRegistry()
+								.getDefaultEditor(
+										((File) firstObject).getName());
+						if (editorDescriptor != null
+								&& editorDescriptor.isInternal()) {
+							IFileStore fileStore = EFS.getLocalFileSystem()
+									.getStore(
+											new Path(((File) firstObject)
+													.getPath()));
 							IDE.openEditorOnFileStore(page, fileStore);
 						}
 						// Try to play the file in AudioPlayer
-						else if(AudioUtil.isAudioFile((File) firstObject)) {
-							IHandlerService handlerService =
-								(IHandlerService) getSite().getService(IHandlerService.class);
-							handlerService.executeCommand(LoopAndPlayHandler.PLAY_OR_LOOP_COMMAND_ID, null);
+						else if (AudioUtil.isAudioFile((File) firstObject)) {
+							IHandlerService handlerService = (IHandlerService) getSite()
+									.getService(IHandlerService.class);
+							handlerService.executeCommand(
+									LoopAndPlayHandler.PLAY_OR_LOOP_COMMAND_ID,
+									null);
 						}
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -192,8 +215,9 @@ public class TableView extends ViewPart
 		// Try to navigate to the parent directory.
 		else if (firstObject != null && firstObject instanceof ParentDirectory) {
 			Object currentInput = viewer.getInput();
-			if(currentInput instanceof File && ((File)currentInput).getParentFile()!=null) {
-				viewer.setInput(((File)currentInput).getParentFile());
+			if (currentInput instanceof File
+					&& ((File) currentInput).getParentFile() != null) {
+				viewer.setInput(((File) currentInput).getParentFile());
 			} else {
 				viewer.setInput(root);
 			}

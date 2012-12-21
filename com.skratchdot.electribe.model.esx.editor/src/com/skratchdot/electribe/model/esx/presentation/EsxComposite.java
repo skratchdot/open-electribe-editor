@@ -36,7 +36,8 @@ import org.eclipse.swt.widgets.Text;
 
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 
-public abstract class EsxComposite extends Composite implements IEditingDomainProvider {
+public abstract class EsxComposite extends Composite implements
+		IEditingDomainProvider {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxComposite"; //$NON-NLS-1$
 
 	protected EsxEditorPart parentPart;
@@ -55,7 +56,8 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * @param parentComposite
 	 * @param style
 	 */
-	public EsxComposite(EsxEditorPart parentPart, Composite parentComposite, int style) {
+	public EsxComposite(EsxEditorPart parentPart, Composite parentComposite,
+			int style) {
 		super(parentComposite, style);
 		this.parentPart = parentPart;
 	}
@@ -93,7 +95,7 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * @return
 	 */
 	protected BasicCommandStack getCommandStack() {
-		return ((BasicCommandStack)getEditingDomain().getCommandStack());
+		return ((BasicCommandStack) getEditingDomain().getCommandStack());
 	}
 
 	/**
@@ -107,10 +109,11 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * @return
 	 */
 	protected String[] getPatternLabelStrings() {
-		if(this.parentPart.esxFile!=null) {
+		if (this.parentPart.esxFile != null) {
 			String[] literals = new String[EsxUtil.NUM_PATTERNS];
-			for(int i=0; i<EsxUtil.NUM_PATTERNS; i++) {
-				literals[i] = this.parentPart.esxFile.getPatterns().get(i).getLabel();
+			for (int i = 0; i < EsxUtil.NUM_PATTERNS; i++) {
+				literals[i] = this.parentPart.esxFile.getPatterns().get(i)
+						.getLabel();
 			}
 			return literals;
 		}
@@ -123,12 +126,15 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * @param multiText The String to return if the given features toString() values don't match
 	 * @return
 	 */
-	protected String getMultiStringPatternLabels(List<? extends EObject> list, EStructuralFeature feature, String multiText) {
+	protected String getMultiStringPatternLabels(List<? extends EObject> list,
+			EStructuralFeature feature, String multiText) {
 		String patternLabelString = getMultiString(list, feature, multiText);
 		try {
 			int patternPointer = Integer.parseInt(patternLabelString);
-			patternLabelString = this.parentPart.esxFile.getPatternFromPointer(patternPointer).getLabel();
-		} catch(Exception e) {}
+			patternLabelString = this.parentPart.esxFile.getPatternFromPointer(
+					patternPointer).getLabel();
+		} catch (Exception e) {
+		}
 		return patternLabelString;
 	}
 
@@ -143,7 +149,8 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * @param multiText The String to return if the given features toString() values don't match
 	 * @return
 	 */
-	protected String getMultiString(List<? extends EObject> list, EStructuralFeature feature, String multiText) {
+	protected String getMultiString(List<? extends EObject> list,
+			EStructuralFeature feature, String multiText) {
 		return getMultiString(list, feature, multiText, null);
 	}
 
@@ -155,14 +162,13 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * @param multiText The String to return if the given features toString() values don't match
 	 * @return
 	 */
-	protected String getMultiString(List<? extends EObject> list, EStructuralFeature featureOne, int featureOneIndex, EStructuralFeature featureTwo, String multiText) {
+	protected String getMultiString(List<? extends EObject> list,
+			EStructuralFeature featureOne, int featureOneIndex,
+			EStructuralFeature featureTwo, String multiText) {
 		return getMultiString(
-				getListOfEObjectsWithinEObject(list, featureOne, featureOneIndex),
-				featureTwo,
-				multiText
-			);
+				getListOfEObjectsWithinEObject(list, featureOne,
+						featureOneIndex), featureTwo, multiText);
 	}
-
 
 	/**
 	 * This takes a list of EObjects and compares the given feature's toString() values.
@@ -177,9 +183,11 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * @param featureLabel Can be null, or a "sub-feature" of feature.
 	 * @return
 	 */
-	protected String getMultiString(List<? extends EObject> list, EStructuralFeature feature, String multiText, EStructuralFeature featureLabel) {
+	protected String getMultiString(List<? extends EObject> list,
+			EStructuralFeature feature, String multiText,
+			EStructuralFeature featureLabel) {
 		// Return immediately because an invalid list was passed in
-		if(list==null || list.size()<1) {
+		if (list == null || list.size() < 1) {
 			return "";
 		}
 
@@ -190,14 +198,14 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 		// Compare firstString to all other strings
 		Object currentObject = null;
 		String currentString = "";
-		for(int i=1; i<list.size(); i++) {
+		for (int i = 1; i < list.size(); i++) {
 			currentObject = list.get(i).eGet(feature);
 			currentString = getFeatureString(currentObject, featureLabel);
-			if(!firstString.equals(currentString)) {
+			if (!firstString.equals(currentString)) {
 				return multiText;
 			}
 		}
-		
+
 		// If we made it this far, all strings are the same
 		return StringUtils.trim(firstString);
 	}
@@ -208,16 +216,16 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * @return
 	 */
 	private String getFeatureString(Object obj, EStructuralFeature featureLabel) {
-		String featureString = (obj==null?"":obj.toString());
-		if(featureLabel!=null && obj instanceof EObject) {
+		String featureString = (obj == null ? "" : obj.toString());
+		if (featureLabel != null && obj instanceof EObject) {
 			Object firstObjectLabel = ((EObject) obj).eGet(featureLabel);
-			if(obj!=null) {
+			if (obj != null) {
 				featureString = firstObjectLabel.toString();
 			}
 		}
 		return featureString;
 	}
-	
+
 	/**
 	 * This function is intended to be called from within a loop, passing
 	 * a different currentIndex each time.  It will return the given string
@@ -228,31 +236,33 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * @param maxAppendStringLength The maximum length of the string that is returned
 	 * @return
 	 */
-	protected String getMultiNumberString(final String string, final int currentIndex, final int listSize, final int maxAppendStringLength) {
-		if(listSize<=1) {
+	protected String getMultiNumberString(final String string,
+			final int currentIndex, final int listSize,
+			final int maxAppendStringLength) {
+		if (listSize <= 1) {
 			return string;
-		}
-		else {
+		} else {
 			int listSizeStringLength = Integer.toString(listSize).length();
-			return StringUtils.left(
-				string,
-				maxAppendStringLength-listSizeStringLength
-			) + StringUtils.leftPad(Integer.toString(currentIndex+1), listSizeStringLength, "0");
+			return StringUtils.left(string, maxAppendStringLength
+					- listSizeStringLength)
+					+ StringUtils.leftPad(Integer.toString(currentIndex + 1),
+							listSizeStringLength, "0");
 		}
 	}
-	
+
 	/**
 	 * @param list A list of EObjects
 	 * @param feature The feature to compare
 	 * @param value The value to compare
 	 * @return Returns the count of features in the given list that are equal to the given value
 	 */
-	protected int getCountInListWithValue(List<? extends EObject> list, EStructuralFeature feature, Object value) {
+	protected int getCountInListWithValue(List<? extends EObject> list,
+			EStructuralFeature feature, Object value) {
 		int returnValue = 0;
 		Object currentValue;
-		for(int i=0; i<list.size(); i++) {
+		for (int i = 0; i < list.size(); i++) {
 			currentValue = list.get(i).eGet(feature);
-			if(currentValue!=null && currentValue.equals(value)) {
+			if (currentValue != null && currentValue.equals(value)) {
 				returnValue++;
 			}
 		}
@@ -266,18 +276,21 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * @param appendNumber If true, then we will attempt to append a number to the end of value (value should be a string)
 	 * @param maxAppendStringLength Only used if appendNumber is true. This is the maxlength of the string we are trying to append to
 	 */
-	protected void setFeatureForSelectedItems(List<? extends EObject> list, EStructuralFeature feature, Object value, boolean appendNumber, int maxAppendStringLength) {
+	protected void setFeatureForSelectedItems(List<? extends EObject> list,
+			EStructuralFeature feature, Object value, boolean appendNumber,
+			int maxAppendStringLength) {
 		CompoundCommand cmd = new CompoundCommand();
-		
-		for(int i=0; i<list.size(); i++) {
+
+		for (int i = 0; i < list.size(); i++) {
 			cmd.append(SetCommand.create(
-				this.getEditingDomain(),
-				list.get(i),
-				feature,
-				(appendNumber==false?value:getMultiNumberString(value.toString(), i, list.size(), maxAppendStringLength))
-			));
+					this.getEditingDomain(),
+					list.get(i),
+					feature,
+					(appendNumber == false ? value : getMultiNumberString(
+							value.toString(), i, list.size(),
+							maxAppendStringLength))));
 		}
-		if(cmd.canExecute()) {
+		if (cmd.canExecute()) {
 			this.getCommandStack().execute(cmd);
 		}
 	}
@@ -289,7 +302,8 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * @param feature The feature to look for within each EObject
 	 * @return Returns a List of EObjects.
 	 */
-	protected List<? extends EObject> getListOfEObjectsWithinEObject(List<? extends EObject> list, EStructuralFeature feature) {
+	protected List<? extends EObject> getListOfEObjectsWithinEObject(
+			List<? extends EObject> list, EStructuralFeature feature) {
 		return getListOfEObjectsWithinEObject(list, feature, -1);
 	}
 
@@ -299,26 +313,28 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * @param featureIndex If this is specified, then the feature is an EList. This is the index of the feature.
 	 * @return Returns a List of EObjects.
 	 */
-	protected List<? extends EObject> getListOfEObjectsWithinEObject(List<? extends EObject> list, EStructuralFeature feature, int featureIndex) {
+	protected List<? extends EObject> getListOfEObjectsWithinEObject(
+			List<? extends EObject> list, EStructuralFeature feature,
+			int featureIndex) {
 		List<EObject> returnList = new ArrayList<EObject>();
 		for (EObject eObj : list) {
 			Object obj = eObj.eGet(feature);
-			if(obj instanceof EList<?> && featureIndex!=-1) {
-				returnList.add((EObject) ((EList<?>)obj).get(featureIndex));
-			}
-			else if(obj instanceof EObject && featureIndex==-1) {
+			if (obj instanceof EList<?> && featureIndex != -1) {
+				returnList.add((EObject) ((EList<?>) obj).get(featureIndex));
+			} else if (obj instanceof EObject && featureIndex == -1) {
 				returnList.add((EObject) obj);
 			}
 		}
 		return returnList;
 	}
-	
+
 	/**
 	 * @param parent
 	 */
-	protected void createGridData2ColumnSpacer (final Composite parent) {
+	protected void createGridData2ColumnSpacer(final Composite parent) {
 		Label label = new Label(parent, SWT.NONE);
-		label.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 2, 1));
+		label.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 2,
+				1));
 	}
 
 	/**
@@ -329,7 +345,8 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	protected Text createGridData2ColumnTextLabel(Composite parent, String title) {
 		Label label = new Label(parent, SWT.NONE);
 		label.setAlignment(SWT.RIGHT);
-		label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false,
+				1, 1));
 		label.setText(title + ":");
 
 		Text text = new Text(parent, SWT.BORDER | SWT.READ_ONLY);
@@ -344,7 +361,8 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * @param selectionAdapter
 	 * @return
 	 */
-	protected Text createGridData2ColumnTextInput(Composite parent, String title, SelectionAdapter selectionAdapter) {
+	protected Text createGridData2ColumnTextInput(Composite parent,
+			String title, SelectionAdapter selectionAdapter) {
 		Text text = new Text(parent, SWT.BORDER);
 		text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
@@ -361,11 +379,13 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * @param selectionAdapter
 	 * @return
 	 */
-	protected Combo createGridData2ColumnComboInput(Composite parent, String title, String[] comboItems, SelectionAdapter selectionAdapter) {
+	protected Combo createGridData2ColumnComboInput(Composite parent,
+			String title, String[] comboItems, SelectionAdapter selectionAdapter) {
 		Combo combo = new Combo(parent, SWT.READ_ONLY);
 		combo.setItems(comboItems);
-		combo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		
+		combo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1,
+				1));
+
 		Button button = new Button(parent, SWT.NONE);
 		button.addSelectionListener(selectionAdapter);
 		button.setText("Set " + title);
@@ -378,11 +398,13 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 * @param setSelection
 	 * @return
 	 */
-	protected Button createGridData4ColumnCheckButton(Composite parent, String title, boolean setSelection) {
+	protected Button createGridData4ColumnCheckButton(Composite parent,
+			String title, boolean setSelection) {
 		Button check = new Button(parent, SWT.CHECK);
 		check.setSelection(setSelection);
 		check.setText(title);
-		check.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 4, 1));
+		check.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 4,
+				1));
 		return check;
 	}
 
@@ -392,7 +414,7 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 */
 	protected String[] getLiteralStrings(Enumerator[] enumArray) {
 		String[] literals = new String[enumArray.length];
-		for(int i=0; i<enumArray.length; i++) {
+		for (int i = 0; i < enumArray.length; i++) {
 			literals[i] = enumArray[i].getLiteral();
 		}
 		return literals;
@@ -405,10 +427,10 @@ public abstract class EsxComposite extends Composite implements IEditingDomainPr
 	 */
 	protected String[] getLiteralStrings(int startValue, int length) {
 		String[] literals = new String[length];
-		for(int i=0; i<literals.length; i++) {
+		for (int i = 0; i < literals.length; i++) {
 			literals[i] = Integer.toString(startValue + i);
 		}
 		return literals;
 	}
-	
+
 }

@@ -19,9 +19,10 @@ import org.eclipse.jface.viewers.Viewer;
 public class TableViewContentProvider implements IStructuredContentProvider {
 	private FileExplorerFilter filter;
 
-	public TableViewContentProvider(Boolean onlyShowingDirectories, String fileFilterArray) {
+	public TableViewContentProvider(Boolean onlyShowingDirectories,
+			String fileFilterArray) {
 		super();
-		filter = new FileExplorerFilter(onlyShowingDirectories,fileFilterArray);
+		filter = new FileExplorerFilter(onlyShowingDirectories, fileFilterArray);
 	}
 
 	public FileExplorerFilter getFilter() {
@@ -34,38 +35,37 @@ public class TableViewContentProvider implements IStructuredContentProvider {
 
 	public Object[] getElements(Object inputElement) {
 		// We only need to return the root files
-		if(inputElement==null || inputElement instanceof RootDirectory) {
+		if (inputElement == null || inputElement instanceof RootDirectory) {
 			return File.listRoots();
 		}
-		
+
 		// Declare our returnElements array which always contains a "parent directory"
 		// in the first position
 		Object[] returnElements = null;
 
 		// We will loop through our list of directories/files after adding the "parent directory"
 		Object[] listOfFiles = ((File) inputElement).listFiles(filter);
-		
+
 		// Only need to return "parent directory"
-		if(listOfFiles==null) {
+		if (listOfFiles == null) {
 			// Initialize our return array
 			returnElements = new Object[1];
 
 			// Add our "parent directory"
 			returnElements[0] = new ParentDirectory();
-			
+
 			// Only return "parent directory"
 			return returnElements;
-		}
-		else {
+		} else {
 			// Initialize our return array
-			returnElements = new Object[listOfFiles.length+1];
+			returnElements = new Object[listOfFiles.length + 1];
 
 			// Add our "parent directory"
 			returnElements[0] = new ParentDirectory();
 
 			// Add all of our other directory/files
-			for(int i=0;i<listOfFiles.length;i++) {
-				returnElements[i+1] = listOfFiles[i];
+			for (int i = 0; i < listOfFiles.length; i++) {
+				returnElements[i + 1] = listOfFiles[i];
 			}
 
 			// Return "parent directory" along with other directory/files

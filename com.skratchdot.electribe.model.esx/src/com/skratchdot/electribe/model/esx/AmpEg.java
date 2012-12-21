@@ -83,11 +83,7 @@ public enum AmpEg implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final AmpEg[] VALUES_ARRAY =
-		new AmpEg[] {
-			GATE,
-			EG,
-		};
+	private static final AmpEg[] VALUES_ARRAY = new AmpEg[] { GATE, EG, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Amp Eg</b></em>' enumerators.
@@ -95,7 +91,8 @@ public enum AmpEg implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<AmpEg> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<AmpEg> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Amp Eg</b></em>' literal with the specified literal value.
@@ -137,8 +134,10 @@ public enum AmpEg implements Enumerator {
 	 */
 	public static AmpEg get(int value) {
 		switch (value) {
-			case GATE_VALUE: return GATE;
-			case EG_VALUE: return EG;
+		case GATE_VALUE:
+			return GATE;
+		case EG_VALUE:
+			return EG;
 		}
 		return null;
 	}
@@ -182,7 +181,7 @@ public enum AmpEg implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -191,7 +190,7 @@ public enum AmpEg implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -200,7 +199,7 @@ public enum AmpEg implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

@@ -26,10 +26,9 @@ public class PauseHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
 		try {
-			if(AudioPlayer.getInstance().getPlayState()==PlayState.PLAYING) {
+			if (AudioPlayer.getInstance().getPlayState() == PlayState.PLAYING) {
 				AudioPlayer.getInstance().pause();
-			}
-			else if(AudioPlayer.getInstance().getPlayState()==PlayState.PAUSED) {
+			} else if (AudioPlayer.getInstance().getPlayState() == PlayState.PAUSED) {
 				AudioPlayer.getInstance().resume();
 			}
 		} catch (Exception e) {

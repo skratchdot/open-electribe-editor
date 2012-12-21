@@ -63,7 +63,7 @@ public class EsxAdapterFactory extends AdapterFactoryImpl {
 			return true;
 		}
 		if (object instanceof EObject) {
-			return ((EObject)object).eClass().getEPackage() == modelPackage;
+			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -74,165 +74,204 @@ public class EsxAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EsxSwitch<Adapter> modelSwitch =
-		new EsxSwitch<Adapter>() {
-			@Override
-			public Adapter caseEsxFile(EsxFile object) {
-				return createEsxFileAdapter();
-			}
-			@Override
-			public Adapter caseGlobalParameters(GlobalParameters object) {
-				return createGlobalParametersAdapter();
-			}
-			@Override
-			public Adapter caseMidiChannelType(MidiChannelType object) {
-				return createMidiChannelTypeAdapter();
-			}
-			@Override
-			public Adapter caseMidiControlChangeAssignment(MidiControlChangeAssignment object) {
-				return createMidiControlChangeAssignmentAdapter();
-			}
-			@Override
-			public Adapter caseOperation(Operation object) {
-				return createOperationAdapter();
-			}
-			@Override
-			public Adapter caseParametersFx(ParametersFx object) {
-				return createParametersFxAdapter();
-			}
-			@Override
-			public Adapter caseParametersMotion(ParametersMotion object) {
-				return createParametersMotionAdapter();
-			}
-			@Override
-			public Adapter casePart(Part object) {
-				return createPartAdapter();
-			}
-			@Override
-			public Adapter casePartAccent(PartAccent object) {
-				return createPartAccentAdapter();
-			}
-			@Override
-			public Adapter casePartAudioIn(PartAudioIn object) {
-				return createPartAudioInAdapter();
-			}
-			@Override
-			public Adapter casePartDrum(PartDrum object) {
-				return createPartDrumAdapter();
-			}
-			@Override
-			public Adapter casePartKeyboard(PartKeyboard object) {
-				return createPartKeyboardAdapter();
-			}
-			@Override
-			public Adapter casePartNoteNumber(PartNoteNumber object) {
-				return createPartNoteNumberAdapter();
-			}
-			@Override
-			public Adapter casePartStretchSlice(PartStretchSlice object) {
-				return createPartStretchSliceAdapter();
-			}
-			@Override
-			public Adapter casePartWithCommon(PartWithCommon object) {
-				return createPartWithCommonAdapter();
-			}
-			@Override
-			public Adapter casePartWithPitch(PartWithPitch object) {
-				return createPartWithPitchAdapter();
-			}
-			@Override
-			public Adapter casePartWithSample(PartWithSample object) {
-				return createPartWithSampleAdapter();
-			}
-			@Override
-			public Adapter casePartWithSequenceData(PartWithSequenceData object) {
-				return createPartWithSequenceDataAdapter();
-			}
-			@Override
-			public Adapter casePartWithSequenceDataGate(PartWithSequenceDataGate object) {
-				return createPartWithSequenceDataGateAdapter();
-			}
-			@Override
-			public Adapter casePartWithSlice(PartWithSlice object) {
-				return createPartWithSliceAdapter();
-			}
-			@Override
-			public Adapter casePattern(Pattern object) {
-				return createPatternAdapter();
-			}
-			@Override
-			public Adapter caseSampleInPatternInfo(SampleInPatternInfo object) {
-				return createSampleInPatternInfoAdapter();
-			}
-			@Override
-			public Adapter casePatternSetParameter(PatternSetParameter object) {
-				return createPatternSetParameterAdapter();
-			}
-			@Override
-			public Adapter caseSample(Sample object) {
-				return createSampleAdapter();
-			}
-			@Override
-			public Adapter caseSampleTune(SampleTune object) {
-				return createSampleTuneAdapter();
-			}
-			@Override
-			public Adapter caseSequenceData(SequenceData object) {
-				return createSequenceDataAdapter();
-			}
-			@Override
-			public Adapter caseSequenceDataGate(SequenceDataGate object) {
-				return createSequenceDataGateAdapter();
-			}
-			@Override
-			public Adapter caseSequenceDataNote(SequenceDataNote object) {
-				return createSequenceDataNoteAdapter();
-			}
-			@Override
-			public Adapter caseSong(Song object) {
-				return createSongAdapter();
-			}
-			@Override
-			public Adapter caseSongEvent(SongEvent object) {
-				return createSongEventAdapter();
-			}
-			@Override
-			public Adapter caseSongEventControl(SongEventControl object) {
-				return createSongEventControlAdapter();
-			}
-			@Override
-			public Adapter caseSongEventDrumNote(SongEventDrumNote object) {
-				return createSongEventDrumNoteAdapter();
-			}
-			@Override
-			public Adapter caseSongEventKeyboardNote(SongEventKeyboardNote object) {
-				return createSongEventKeyboardNoteAdapter();
-			}
-			@Override
-			public Adapter caseSongEventMuteStatus(SongEventMuteStatus object) {
-				return createSongEventMuteStatusAdapter();
-			}
-			@Override
-			public Adapter caseSongEventTempo(SongEventTempo object) {
-				return createSongEventTempoAdapter();
-			}
-			@Override
-			public Adapter caseSongEventWithPart(SongEventWithPart object) {
-				return createSongEventWithPartAdapter();
-			}
-			@Override
-			public Adapter caseSongPattern(SongPattern object) {
-				return createSongPatternAdapter();
-			}
-			@Override
-			public Adapter caseTempo(Tempo object) {
-				return createTempoAdapter();
-			}
-			@Override
-			public Adapter defaultCase(EObject object) {
-				return createEObjectAdapter();
-			}
-		};
+	protected EsxSwitch<Adapter> modelSwitch = new EsxSwitch<Adapter>() {
+		@Override
+		public Adapter caseEsxFile(EsxFile object) {
+			return createEsxFileAdapter();
+		}
+
+		@Override
+		public Adapter caseGlobalParameters(GlobalParameters object) {
+			return createGlobalParametersAdapter();
+		}
+
+		@Override
+		public Adapter caseMidiChannelType(MidiChannelType object) {
+			return createMidiChannelTypeAdapter();
+		}
+
+		@Override
+		public Adapter caseMidiControlChangeAssignment(
+				MidiControlChangeAssignment object) {
+			return createMidiControlChangeAssignmentAdapter();
+		}
+
+		@Override
+		public Adapter caseOperation(Operation object) {
+			return createOperationAdapter();
+		}
+
+		@Override
+		public Adapter caseParametersFx(ParametersFx object) {
+			return createParametersFxAdapter();
+		}
+
+		@Override
+		public Adapter caseParametersMotion(ParametersMotion object) {
+			return createParametersMotionAdapter();
+		}
+
+		@Override
+		public Adapter casePart(Part object) {
+			return createPartAdapter();
+		}
+
+		@Override
+		public Adapter casePartAccent(PartAccent object) {
+			return createPartAccentAdapter();
+		}
+
+		@Override
+		public Adapter casePartAudioIn(PartAudioIn object) {
+			return createPartAudioInAdapter();
+		}
+
+		@Override
+		public Adapter casePartDrum(PartDrum object) {
+			return createPartDrumAdapter();
+		}
+
+		@Override
+		public Adapter casePartKeyboard(PartKeyboard object) {
+			return createPartKeyboardAdapter();
+		}
+
+		@Override
+		public Adapter casePartNoteNumber(PartNoteNumber object) {
+			return createPartNoteNumberAdapter();
+		}
+
+		@Override
+		public Adapter casePartStretchSlice(PartStretchSlice object) {
+			return createPartStretchSliceAdapter();
+		}
+
+		@Override
+		public Adapter casePartWithCommon(PartWithCommon object) {
+			return createPartWithCommonAdapter();
+		}
+
+		@Override
+		public Adapter casePartWithPitch(PartWithPitch object) {
+			return createPartWithPitchAdapter();
+		}
+
+		@Override
+		public Adapter casePartWithSample(PartWithSample object) {
+			return createPartWithSampleAdapter();
+		}
+
+		@Override
+		public Adapter casePartWithSequenceData(PartWithSequenceData object) {
+			return createPartWithSequenceDataAdapter();
+		}
+
+		@Override
+		public Adapter casePartWithSequenceDataGate(
+				PartWithSequenceDataGate object) {
+			return createPartWithSequenceDataGateAdapter();
+		}
+
+		@Override
+		public Adapter casePartWithSlice(PartWithSlice object) {
+			return createPartWithSliceAdapter();
+		}
+
+		@Override
+		public Adapter casePattern(Pattern object) {
+			return createPatternAdapter();
+		}
+
+		@Override
+		public Adapter caseSampleInPatternInfo(SampleInPatternInfo object) {
+			return createSampleInPatternInfoAdapter();
+		}
+
+		@Override
+		public Adapter casePatternSetParameter(PatternSetParameter object) {
+			return createPatternSetParameterAdapter();
+		}
+
+		@Override
+		public Adapter caseSample(Sample object) {
+			return createSampleAdapter();
+		}
+
+		@Override
+		public Adapter caseSampleTune(SampleTune object) {
+			return createSampleTuneAdapter();
+		}
+
+		@Override
+		public Adapter caseSequenceData(SequenceData object) {
+			return createSequenceDataAdapter();
+		}
+
+		@Override
+		public Adapter caseSequenceDataGate(SequenceDataGate object) {
+			return createSequenceDataGateAdapter();
+		}
+
+		@Override
+		public Adapter caseSequenceDataNote(SequenceDataNote object) {
+			return createSequenceDataNoteAdapter();
+		}
+
+		@Override
+		public Adapter caseSong(Song object) {
+			return createSongAdapter();
+		}
+
+		@Override
+		public Adapter caseSongEvent(SongEvent object) {
+			return createSongEventAdapter();
+		}
+
+		@Override
+		public Adapter caseSongEventControl(SongEventControl object) {
+			return createSongEventControlAdapter();
+		}
+
+		@Override
+		public Adapter caseSongEventDrumNote(SongEventDrumNote object) {
+			return createSongEventDrumNoteAdapter();
+		}
+
+		@Override
+		public Adapter caseSongEventKeyboardNote(SongEventKeyboardNote object) {
+			return createSongEventKeyboardNoteAdapter();
+		}
+
+		@Override
+		public Adapter caseSongEventMuteStatus(SongEventMuteStatus object) {
+			return createSongEventMuteStatusAdapter();
+		}
+
+		@Override
+		public Adapter caseSongEventTempo(SongEventTempo object) {
+			return createSongEventTempoAdapter();
+		}
+
+		@Override
+		public Adapter caseSongEventWithPart(SongEventWithPart object) {
+			return createSongEventWithPartAdapter();
+		}
+
+		@Override
+		public Adapter caseSongPattern(SongPattern object) {
+			return createSongPatternAdapter();
+		}
+
+		@Override
+		public Adapter caseTempo(Tempo object) {
+			return createTempoAdapter();
+		}
+
+		@Override
+		public Adapter defaultCase(EObject object) {
+			return createEObjectAdapter();
+		}
+	};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -244,9 +283,8 @@ public class EsxAdapterFactory extends AdapterFactoryImpl {
 	 */
 	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject) target);
 	}
-
 
 	/**
 	 * Creates a new adapter for an object of class '{@link com.skratchdot.electribe.model.esx.EsxFile <em>File</em>}'.

@@ -133,13 +133,8 @@ public enum Beat implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final Beat[] VALUES_ARRAY =
-		new Beat[] {
-			BEAT_16TH,
-			BEAT_32ND,
-			BEAT_8TRI,
-			BEAT_16_TRI,
-		};
+	private static final Beat[] VALUES_ARRAY = new Beat[] { BEAT_16TH,
+			BEAT_32ND, BEAT_8TRI, BEAT_16_TRI, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Beat</b></em>' enumerators.
@@ -147,7 +142,8 @@ public enum Beat implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<Beat> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<Beat> VALUES = Collections.unmodifiableList(Arrays
+			.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Beat</b></em>' literal with the specified literal value.
@@ -189,10 +185,14 @@ public enum Beat implements Enumerator {
 	 */
 	public static Beat get(int value) {
 		switch (value) {
-			case BEAT_16TH_VALUE: return BEAT_16TH;
-			case BEAT_32ND_VALUE: return BEAT_32ND;
-			case BEAT_8TRI_VALUE: return BEAT_8TRI;
-			case BEAT_16_TRI_VALUE: return BEAT_16_TRI;
+		case BEAT_16TH_VALUE:
+			return BEAT_16TH;
+		case BEAT_32ND_VALUE:
+			return BEAT_32ND;
+		case BEAT_8TRI_VALUE:
+			return BEAT_8TRI;
+		case BEAT_16_TRI_VALUE:
+			return BEAT_16_TRI;
 		}
 		return null;
 	}
@@ -236,7 +236,7 @@ public enum Beat implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -245,7 +245,7 @@ public enum Beat implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -254,7 +254,7 @@ public enum Beat implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

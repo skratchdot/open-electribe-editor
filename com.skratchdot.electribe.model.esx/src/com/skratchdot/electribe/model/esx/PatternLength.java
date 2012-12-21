@@ -233,17 +233,9 @@ public enum PatternLength implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final PatternLength[] VALUES_ARRAY =
-		new PatternLength[] {
-			LENGTH_1,
-			LENGTH_2,
-			LENGTH_3,
-			LENGTH_4,
-			LENGTH_5,
-			LENGTH_6,
-			LENGTH_7,
-			LENGTH_8,
-		};
+	private static final PatternLength[] VALUES_ARRAY = new PatternLength[] {
+			LENGTH_1, LENGTH_2, LENGTH_3, LENGTH_4, LENGTH_5, LENGTH_6,
+			LENGTH_7, LENGTH_8, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Pattern Length</b></em>' enumerators.
@@ -251,7 +243,8 @@ public enum PatternLength implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<PatternLength> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<PatternLength> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Pattern Length</b></em>' literal with the specified literal value.
@@ -293,14 +286,22 @@ public enum PatternLength implements Enumerator {
 	 */
 	public static PatternLength get(int value) {
 		switch (value) {
-			case LENGTH_1_VALUE: return LENGTH_1;
-			case LENGTH_2_VALUE: return LENGTH_2;
-			case LENGTH_3_VALUE: return LENGTH_3;
-			case LENGTH_4_VALUE: return LENGTH_4;
-			case LENGTH_5_VALUE: return LENGTH_5;
-			case LENGTH_6_VALUE: return LENGTH_6;
-			case LENGTH_7_VALUE: return LENGTH_7;
-			case LENGTH_8_VALUE: return LENGTH_8;
+		case LENGTH_1_VALUE:
+			return LENGTH_1;
+		case LENGTH_2_VALUE:
+			return LENGTH_2;
+		case LENGTH_3_VALUE:
+			return LENGTH_3;
+		case LENGTH_4_VALUE:
+			return LENGTH_4;
+		case LENGTH_5_VALUE:
+			return LENGTH_5;
+		case LENGTH_6_VALUE:
+			return LENGTH_6;
+		case LENGTH_7_VALUE:
+			return LENGTH_7;
+		case LENGTH_8_VALUE:
+			return LENGTH_8;
 		}
 		return null;
 	}
@@ -344,7 +345,7 @@ public enum PatternLength implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -353,7 +354,7 @@ public enum PatternLength implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -362,7 +363,7 @@ public enum PatternLength implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

@@ -133,13 +133,8 @@ public enum FxChain implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final FxChain[] VALUES_ARRAY =
-		new FxChain[] {
-			NONE,
-			FX_12,
-			FX_23,
-			FX_123,
-		};
+	private static final FxChain[] VALUES_ARRAY = new FxChain[] { NONE, FX_12,
+			FX_23, FX_123, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Fx Chain</b></em>' enumerators.
@@ -147,7 +142,8 @@ public enum FxChain implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<FxChain> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<FxChain> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Fx Chain</b></em>' literal with the specified literal value.
@@ -189,10 +185,14 @@ public enum FxChain implements Enumerator {
 	 */
 	public static FxChain get(int value) {
 		switch (value) {
-			case NONE_VALUE: return NONE;
-			case FX_12_VALUE: return FX_12;
-			case FX_23_VALUE: return FX_23;
-			case FX_123_VALUE: return FX_123;
+		case NONE_VALUE:
+			return NONE;
+		case FX_12_VALUE:
+			return FX_12;
+		case FX_23_VALUE:
+			return FX_23;
+		case FX_123_VALUE:
+			return FX_123;
 		}
 		return null;
 	}
@@ -236,7 +236,7 @@ public enum FxChain implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -245,7 +245,7 @@ public enum FxChain implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -254,7 +254,7 @@ public enum FxChain implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

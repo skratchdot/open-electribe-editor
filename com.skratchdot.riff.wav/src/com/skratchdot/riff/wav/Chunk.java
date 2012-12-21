@@ -107,7 +107,8 @@ public interface Chunk extends EObject {
 	 * @model exceptions="com.skratchdot.riff.wav.RiffWaveException" bufDataType="com.skratchdot.riff.wav.ExtendedByteBuffer"
 	 * @generated
 	 */
-	void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException;
+	void init(RIFFWave riffWave, ExtendedByteBuffer buf)
+			throws RiffWaveException;
 
 	/**
 	 * <!-- begin-user-doc -->

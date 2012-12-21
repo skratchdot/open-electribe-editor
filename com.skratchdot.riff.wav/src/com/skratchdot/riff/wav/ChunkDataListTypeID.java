@@ -86,11 +86,8 @@ public enum ChunkDataListTypeID implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ChunkDataListTypeID[] VALUES_ARRAY =
-		new ChunkDataListTypeID[] {
-			UNKNOWN,
-			ADTL,
-		};
+	private static final ChunkDataListTypeID[] VALUES_ARRAY = new ChunkDataListTypeID[] {
+			UNKNOWN, ADTL, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Chunk Data List Type ID</b></em>' enumerators.
@@ -98,7 +95,8 @@ public enum ChunkDataListTypeID implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<ChunkDataListTypeID> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ChunkDataListTypeID> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Chunk Data List Type ID</b></em>' literal with the specified literal value.
@@ -140,8 +138,10 @@ public enum ChunkDataListTypeID implements Enumerator {
 	 */
 	public static ChunkDataListTypeID get(int value) {
 		switch (value) {
-			case UNKNOWN_VALUE: return UNKNOWN;
-			case ADTL_VALUE: return ADTL;
+		case UNKNOWN_VALUE:
+			return UNKNOWN;
+		case ADTL_VALUE:
+			return ADTL;
 		}
 		return null;
 	}
@@ -185,7 +185,7 @@ public enum ChunkDataListTypeID implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -194,7 +194,7 @@ public enum ChunkDataListTypeID implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -203,7 +203,7 @@ public enum ChunkDataListTypeID implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -216,5 +216,5 @@ public enum ChunkDataListTypeID implements Enumerator {
 	public String toString() {
 		return literal;
 	}
-	
+
 } //ChunkDataListTypeID

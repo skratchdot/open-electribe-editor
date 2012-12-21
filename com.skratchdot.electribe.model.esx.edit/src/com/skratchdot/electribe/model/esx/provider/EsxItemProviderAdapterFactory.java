@@ -41,7 +41,8 @@ import com.skratchdot.electribe.model.esx.util.EsxAdapterFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
+public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements
+		ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -121,7 +122,8 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	@Override
 	public Adapter createGlobalParametersAdapter() {
 		if (globalParametersItemProvider == null) {
-			globalParametersItemProvider = new GlobalParametersItemProvider(this);
+			globalParametersItemProvider = new GlobalParametersItemProvider(
+					this);
 		}
 
 		return globalParametersItemProvider;
@@ -144,7 +146,8 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	@Override
 	public Adapter createPatternSetParameterAdapter() {
 		if (patternSetParameterItemProvider == null) {
-			patternSetParameterItemProvider = new PatternSetParameterItemProvider(this);
+			patternSetParameterItemProvider = new PatternSetParameterItemProvider(
+					this);
 		}
 
 		return patternSetParameterItemProvider;
@@ -190,7 +193,8 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	@Override
 	public Adapter createSampleInPatternInfoAdapter() {
 		if (sampleInPatternInfoItemProvider == null) {
-			sampleInPatternInfoItemProvider = new SampleInPatternInfoItemProvider(this);
+			sampleInPatternInfoItemProvider = new SampleInPatternInfoItemProvider(
+					this);
 		}
 
 		return sampleInPatternInfoItemProvider;
@@ -259,7 +263,8 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	@Override
 	public Adapter createMidiControlChangeAssignmentAdapter() {
 		if (midiControlChangeAssignmentItemProvider == null) {
-			midiControlChangeAssignmentItemProvider = new MidiControlChangeAssignmentItemProvider(this);
+			midiControlChangeAssignmentItemProvider = new MidiControlChangeAssignmentItemProvider(
+					this);
 		}
 
 		return midiControlChangeAssignmentItemProvider;
@@ -328,7 +333,8 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	@Override
 	public Adapter createParametersMotionAdapter() {
 		if (parametersMotionItemProvider == null) {
-			parametersMotionItemProvider = new ParametersMotionItemProvider(this);
+			parametersMotionItemProvider = new ParametersMotionItemProvider(
+					this);
 		}
 
 		return parametersMotionItemProvider;
@@ -374,7 +380,8 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	@Override
 	public Adapter createSequenceDataGateAdapter() {
 		if (sequenceDataGateItemProvider == null) {
-			sequenceDataGateItemProvider = new SequenceDataGateItemProvider(this);
+			sequenceDataGateItemProvider = new SequenceDataGateItemProvider(
+					this);
 		}
 
 		return sequenceDataGateItemProvider;
@@ -397,7 +404,8 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	@Override
 	public Adapter createSequenceDataNoteAdapter() {
 		if (sequenceDataNoteItemProvider == null) {
-			sequenceDataNoteItemProvider = new SequenceDataNoteItemProvider(this);
+			sequenceDataNoteItemProvider = new SequenceDataNoteItemProvider(
+					this);
 		}
 
 		return sequenceDataNoteItemProvider;
@@ -512,7 +520,8 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	@Override
 	public Adapter createPartStretchSliceAdapter() {
 		if (partStretchSliceItemProvider == null) {
-			partStretchSliceItemProvider = new PartStretchSliceItemProvider(this);
+			partStretchSliceItemProvider = new PartStretchSliceItemProvider(
+					this);
 		}
 
 		return partStretchSliceItemProvider;
@@ -650,7 +659,8 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	@Override
 	public Adapter createSongEventControlAdapter() {
 		if (songEventControlItemProvider == null) {
-			songEventControlItemProvider = new SongEventControlItemProvider(this);
+			songEventControlItemProvider = new SongEventControlItemProvider(
+					this);
 		}
 
 		return songEventControlItemProvider;
@@ -673,7 +683,8 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	@Override
 	public Adapter createSongEventDrumNoteAdapter() {
 		if (songEventDrumNoteItemProvider == null) {
-			songEventDrumNoteItemProvider = new SongEventDrumNoteItemProvider(this);
+			songEventDrumNoteItemProvider = new SongEventDrumNoteItemProvider(
+					this);
 		}
 
 		return songEventDrumNoteItemProvider;
@@ -696,7 +707,8 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	@Override
 	public Adapter createSongEventKeyboardNoteAdapter() {
 		if (songEventKeyboardNoteItemProvider == null) {
-			songEventKeyboardNoteItemProvider = new SongEventKeyboardNoteItemProvider(this);
+			songEventKeyboardNoteItemProvider = new SongEventKeyboardNoteItemProvider(
+					this);
 		}
 
 		return songEventKeyboardNoteItemProvider;
@@ -742,7 +754,8 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	@Override
 	public Adapter createSongEventMuteStatusAdapter() {
 		if (songEventMuteStatusItemProvider == null) {
-			songEventMuteStatusItemProvider = new SongEventMuteStatusItemProvider(this);
+			songEventMuteStatusItemProvider = new SongEventMuteStatusItemProvider(
+					this);
 		}
 
 		return songEventMuteStatusItemProvider;
@@ -755,7 +768,8 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+		return parentAdapterFactory == null ? this : parentAdapterFactory
+				.getRootAdapterFactory();
 	}
 
 	/**
@@ -764,7 +778,8 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
+	public void setParentAdapterFactory(
+			ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
@@ -798,7 +813,8 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>)
+					|| (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -847,35 +863,64 @@ public class EsxItemProviderAdapterFactory extends EsxAdapterFactory implements 
 	 * @generated
 	 */
 	public void dispose() {
-		if (esxFileItemProvider != null) esxFileItemProvider.dispose();
-		if (globalParametersItemProvider != null) globalParametersItemProvider.dispose();
-		if (midiChannelTypeItemProvider != null) midiChannelTypeItemProvider.dispose();
-		if (midiControlChangeAssignmentItemProvider != null) midiControlChangeAssignmentItemProvider.dispose();
-		if (operationItemProvider != null) operationItemProvider.dispose();
-		if (parametersFxItemProvider != null) parametersFxItemProvider.dispose();
-		if (parametersMotionItemProvider != null) parametersMotionItemProvider.dispose();
-		if (partAccentItemProvider != null) partAccentItemProvider.dispose();
-		if (partAudioInItemProvider != null) partAudioInItemProvider.dispose();
-		if (partDrumItemProvider != null) partDrumItemProvider.dispose();
-		if (partKeyboardItemProvider != null) partKeyboardItemProvider.dispose();
-		if (partNoteNumberItemProvider != null) partNoteNumberItemProvider.dispose();
-		if (partStretchSliceItemProvider != null) partStretchSliceItemProvider.dispose();
-		if (patternItemProvider != null) patternItemProvider.dispose();
-		if (sampleInPatternInfoItemProvider != null) sampleInPatternInfoItemProvider.dispose();
-		if (patternSetParameterItemProvider != null) patternSetParameterItemProvider.dispose();
-		if (sampleItemProvider != null) sampleItemProvider.dispose();
-		if (sampleTuneItemProvider != null) sampleTuneItemProvider.dispose();
-		if (sequenceDataItemProvider != null) sequenceDataItemProvider.dispose();
-		if (sequenceDataGateItemProvider != null) sequenceDataGateItemProvider.dispose();
-		if (sequenceDataNoteItemProvider != null) sequenceDataNoteItemProvider.dispose();
-		if (songItemProvider != null) songItemProvider.dispose();
-		if (songEventControlItemProvider != null) songEventControlItemProvider.dispose();
-		if (songEventDrumNoteItemProvider != null) songEventDrumNoteItemProvider.dispose();
-		if (songEventKeyboardNoteItemProvider != null) songEventKeyboardNoteItemProvider.dispose();
-		if (songEventMuteStatusItemProvider != null) songEventMuteStatusItemProvider.dispose();
-		if (songEventTempoItemProvider != null) songEventTempoItemProvider.dispose();
-		if (songPatternItemProvider != null) songPatternItemProvider.dispose();
-		if (tempoItemProvider != null) tempoItemProvider.dispose();
+		if (esxFileItemProvider != null)
+			esxFileItemProvider.dispose();
+		if (globalParametersItemProvider != null)
+			globalParametersItemProvider.dispose();
+		if (midiChannelTypeItemProvider != null)
+			midiChannelTypeItemProvider.dispose();
+		if (midiControlChangeAssignmentItemProvider != null)
+			midiControlChangeAssignmentItemProvider.dispose();
+		if (operationItemProvider != null)
+			operationItemProvider.dispose();
+		if (parametersFxItemProvider != null)
+			parametersFxItemProvider.dispose();
+		if (parametersMotionItemProvider != null)
+			parametersMotionItemProvider.dispose();
+		if (partAccentItemProvider != null)
+			partAccentItemProvider.dispose();
+		if (partAudioInItemProvider != null)
+			partAudioInItemProvider.dispose();
+		if (partDrumItemProvider != null)
+			partDrumItemProvider.dispose();
+		if (partKeyboardItemProvider != null)
+			partKeyboardItemProvider.dispose();
+		if (partNoteNumberItemProvider != null)
+			partNoteNumberItemProvider.dispose();
+		if (partStretchSliceItemProvider != null)
+			partStretchSliceItemProvider.dispose();
+		if (patternItemProvider != null)
+			patternItemProvider.dispose();
+		if (sampleInPatternInfoItemProvider != null)
+			sampleInPatternInfoItemProvider.dispose();
+		if (patternSetParameterItemProvider != null)
+			patternSetParameterItemProvider.dispose();
+		if (sampleItemProvider != null)
+			sampleItemProvider.dispose();
+		if (sampleTuneItemProvider != null)
+			sampleTuneItemProvider.dispose();
+		if (sequenceDataItemProvider != null)
+			sequenceDataItemProvider.dispose();
+		if (sequenceDataGateItemProvider != null)
+			sequenceDataGateItemProvider.dispose();
+		if (sequenceDataNoteItemProvider != null)
+			sequenceDataNoteItemProvider.dispose();
+		if (songItemProvider != null)
+			songItemProvider.dispose();
+		if (songEventControlItemProvider != null)
+			songEventControlItemProvider.dispose();
+		if (songEventDrumNoteItemProvider != null)
+			songEventDrumNoteItemProvider.dispose();
+		if (songEventKeyboardNoteItemProvider != null)
+			songEventKeyboardNoteItemProvider.dispose();
+		if (songEventMuteStatusItemProvider != null)
+			songEventMuteStatusItemProvider.dispose();
+		if (songEventTempoItemProvider != null)
+			songEventTempoItemProvider.dispose();
+		if (songPatternItemProvider != null)
+			songPatternItemProvider.dispose();
+		if (tempoItemProvider != null)
+			tempoItemProvider.dispose();
 	}
 
 }

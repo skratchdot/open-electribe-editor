@@ -158,14 +158,8 @@ public enum ModType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ModType[] VALUES_ARRAY =
-		new ModType[] {
-			SAWTOOTH,
-			SQUARE,
-			TRIANGLE,
-			SAND_H,
-			ENVELOPE,
-		};
+	private static final ModType[] VALUES_ARRAY = new ModType[] { SAWTOOTH,
+			SQUARE, TRIANGLE, SAND_H, ENVELOPE, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Mod Type</b></em>' enumerators.
@@ -173,7 +167,8 @@ public enum ModType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<ModType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ModType> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Mod Type</b></em>' literal with the specified literal value.
@@ -215,11 +210,16 @@ public enum ModType implements Enumerator {
 	 */
 	public static ModType get(int value) {
 		switch (value) {
-			case SAWTOOTH_VALUE: return SAWTOOTH;
-			case SQUARE_VALUE: return SQUARE;
-			case TRIANGLE_VALUE: return TRIANGLE;
-			case SAND_H_VALUE: return SAND_H;
-			case ENVELOPE_VALUE: return ENVELOPE;
+		case SAWTOOTH_VALUE:
+			return SAWTOOTH;
+		case SQUARE_VALUE:
+			return SQUARE;
+		case TRIANGLE_VALUE:
+			return TRIANGLE;
+		case SAND_H_VALUE:
+			return SAND_H;
+		case ENVELOPE_VALUE:
+			return ENVELOPE;
 		}
 		return null;
 	}
@@ -263,7 +263,7 @@ public enum ModType implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -272,7 +272,7 @@ public enum ModType implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -281,7 +281,7 @@ public enum ModType implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

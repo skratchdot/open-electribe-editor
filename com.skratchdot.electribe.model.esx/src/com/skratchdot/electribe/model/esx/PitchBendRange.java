@@ -658,34 +658,14 @@ public enum PitchBendRange implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final PitchBendRange[] VALUES_ARRAY =
-		new PitchBendRange[] {
-			PITCH_BEND_N12,
-			PITCH_BEND_N11,
-			PITCH_BEND_N10,
-			PITCH_BEND_N9,
-			PITCH_BEND_N8,
-			PITCH_BEND_N7,
-			PITCH_BEND_N6,
-			PITCH_BEND_N5,
-			PITCH_BEND_N4,
-			PITCH_BEND_N3,
-			PITCH_BEND_N2,
-			PITCH_BEND_N1,
-			PITCH_BEND_0,
-			PITCH_BEND_1,
-			PITCH_BEND_2,
-			PITCH_BEND_3,
-			PITCH_BEND_4,
-			PITCH_BEND_5,
-			PITCH_BEND_6,
-			PITCH_BEND_7,
-			PITCH_BEND_8,
-			PITCH_BEND_9,
-			PITCH_BEND_10,
-			PITCH_BEND_11,
-			PITCH_BEND_12,
-		};
+	private static final PitchBendRange[] VALUES_ARRAY = new PitchBendRange[] {
+			PITCH_BEND_N12, PITCH_BEND_N11, PITCH_BEND_N10, PITCH_BEND_N9,
+			PITCH_BEND_N8, PITCH_BEND_N7, PITCH_BEND_N6, PITCH_BEND_N5,
+			PITCH_BEND_N4, PITCH_BEND_N3, PITCH_BEND_N2, PITCH_BEND_N1,
+			PITCH_BEND_0, PITCH_BEND_1, PITCH_BEND_2, PITCH_BEND_3,
+			PITCH_BEND_4, PITCH_BEND_5, PITCH_BEND_6, PITCH_BEND_7,
+			PITCH_BEND_8, PITCH_BEND_9, PITCH_BEND_10, PITCH_BEND_11,
+			PITCH_BEND_12, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Pitch Bend Range</b></em>' enumerators.
@@ -693,7 +673,8 @@ public enum PitchBendRange implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<PitchBendRange> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<PitchBendRange> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Pitch Bend Range</b></em>' literal with the specified literal value.
@@ -735,31 +716,56 @@ public enum PitchBendRange implements Enumerator {
 	 */
 	public static PitchBendRange get(int value) {
 		switch (value) {
-			case PITCH_BEND_N12_VALUE: return PITCH_BEND_N12;
-			case PITCH_BEND_N11_VALUE: return PITCH_BEND_N11;
-			case PITCH_BEND_N10_VALUE: return PITCH_BEND_N10;
-			case PITCH_BEND_N9_VALUE: return PITCH_BEND_N9;
-			case PITCH_BEND_N8_VALUE: return PITCH_BEND_N8;
-			case PITCH_BEND_N7_VALUE: return PITCH_BEND_N7;
-			case PITCH_BEND_N6_VALUE: return PITCH_BEND_N6;
-			case PITCH_BEND_N5_VALUE: return PITCH_BEND_N5;
-			case PITCH_BEND_N4_VALUE: return PITCH_BEND_N4;
-			case PITCH_BEND_N3_VALUE: return PITCH_BEND_N3;
-			case PITCH_BEND_N2_VALUE: return PITCH_BEND_N2;
-			case PITCH_BEND_N1_VALUE: return PITCH_BEND_N1;
-			case PITCH_BEND_0_VALUE: return PITCH_BEND_0;
-			case PITCH_BEND_1_VALUE: return PITCH_BEND_1;
-			case PITCH_BEND_2_VALUE: return PITCH_BEND_2;
-			case PITCH_BEND_3_VALUE: return PITCH_BEND_3;
-			case PITCH_BEND_4_VALUE: return PITCH_BEND_4;
-			case PITCH_BEND_5_VALUE: return PITCH_BEND_5;
-			case PITCH_BEND_6_VALUE: return PITCH_BEND_6;
-			case PITCH_BEND_7_VALUE: return PITCH_BEND_7;
-			case PITCH_BEND_8_VALUE: return PITCH_BEND_8;
-			case PITCH_BEND_9_VALUE: return PITCH_BEND_9;
-			case PITCH_BEND_10_VALUE: return PITCH_BEND_10;
-			case PITCH_BEND_11_VALUE: return PITCH_BEND_11;
-			case PITCH_BEND_12_VALUE: return PITCH_BEND_12;
+		case PITCH_BEND_N12_VALUE:
+			return PITCH_BEND_N12;
+		case PITCH_BEND_N11_VALUE:
+			return PITCH_BEND_N11;
+		case PITCH_BEND_N10_VALUE:
+			return PITCH_BEND_N10;
+		case PITCH_BEND_N9_VALUE:
+			return PITCH_BEND_N9;
+		case PITCH_BEND_N8_VALUE:
+			return PITCH_BEND_N8;
+		case PITCH_BEND_N7_VALUE:
+			return PITCH_BEND_N7;
+		case PITCH_BEND_N6_VALUE:
+			return PITCH_BEND_N6;
+		case PITCH_BEND_N5_VALUE:
+			return PITCH_BEND_N5;
+		case PITCH_BEND_N4_VALUE:
+			return PITCH_BEND_N4;
+		case PITCH_BEND_N3_VALUE:
+			return PITCH_BEND_N3;
+		case PITCH_BEND_N2_VALUE:
+			return PITCH_BEND_N2;
+		case PITCH_BEND_N1_VALUE:
+			return PITCH_BEND_N1;
+		case PITCH_BEND_0_VALUE:
+			return PITCH_BEND_0;
+		case PITCH_BEND_1_VALUE:
+			return PITCH_BEND_1;
+		case PITCH_BEND_2_VALUE:
+			return PITCH_BEND_2;
+		case PITCH_BEND_3_VALUE:
+			return PITCH_BEND_3;
+		case PITCH_BEND_4_VALUE:
+			return PITCH_BEND_4;
+		case PITCH_BEND_5_VALUE:
+			return PITCH_BEND_5;
+		case PITCH_BEND_6_VALUE:
+			return PITCH_BEND_6;
+		case PITCH_BEND_7_VALUE:
+			return PITCH_BEND_7;
+		case PITCH_BEND_8_VALUE:
+			return PITCH_BEND_8;
+		case PITCH_BEND_9_VALUE:
+			return PITCH_BEND_9;
+		case PITCH_BEND_10_VALUE:
+			return PITCH_BEND_10;
+		case PITCH_BEND_11_VALUE:
+			return PITCH_BEND_11;
+		case PITCH_BEND_12_VALUE:
+			return PITCH_BEND_12;
 		}
 		return null;
 	}
@@ -803,7 +809,7 @@ public enum PitchBendRange implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -812,7 +818,7 @@ public enum PitchBendRange implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -821,7 +827,7 @@ public enum PitchBendRange implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

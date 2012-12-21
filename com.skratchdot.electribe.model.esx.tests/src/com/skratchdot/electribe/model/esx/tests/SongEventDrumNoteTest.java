@@ -58,7 +58,7 @@ public class SongEventDrumNoteTest extends SongEventTest {
 	 */
 	@Override
 	protected SongEventDrumNote getFixture() {
-		return (SongEventDrumNote)fixture;
+		return (SongEventDrumNote) fixture;
 	}
 
 	/**

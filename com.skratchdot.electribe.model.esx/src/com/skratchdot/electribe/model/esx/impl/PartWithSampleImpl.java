@@ -37,7 +37,8 @@ import com.skratchdot.electribe.model.esx.Reverse;
  *
  * @generated
  */
-public abstract class PartWithSampleImpl extends EObjectImpl implements PartWithSample {
+public abstract class PartWithSampleImpl extends EObjectImpl implements
+		PartWithSample {
 	/**
 	 * The default value of the '{@link #getReverse() <em>Reverse</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -165,7 +166,8 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 		Reverse oldReverse = reverse;
 		reverse = newReverse == null ? REVERSE_EDEFAULT : newReverse;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_SAMPLE__REVERSE, oldReverse, reverse));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_SAMPLE__REVERSE, oldReverse, reverse));
 	}
 
 	/**
@@ -197,7 +199,9 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 		short oldSamplePointer = samplePointer;
 		samplePointer = newSamplePointer;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER, oldSamplePointer, samplePointer));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER,
+					oldSamplePointer, samplePointer));
 	}
 
 	/**
@@ -218,7 +222,9 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 		byte oldStartPoint = startPoint;
 		startPoint = newStartPoint;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_SAMPLE__START_POINT, oldStartPoint, startPoint));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_SAMPLE__START_POINT, oldStartPoint,
+					startPoint));
 	}
 
 	/**
@@ -239,7 +245,9 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 		byte oldReservedBitsAfterReverse = reservedBitsAfterReverse;
 		reservedBitsAfterReverse = newReservedBitsAfterReverse;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE, oldReservedBitsAfterReverse, reservedBitsAfterReverse));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE,
+					oldReservedBitsAfterReverse, reservedBitsAfterReverse));
 	}
 
 	/**
@@ -250,16 +258,16 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_SAMPLE__REVERSE:
-				return getReverse();
-			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL:
-				return getSampleLabel();
-			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER:
-				return getSamplePointer();
-			case EsxPackage.PART_WITH_SAMPLE__START_POINT:
-				return getStartPoint();
-			case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE:
-				return getReservedBitsAfterReverse();
+		case EsxPackage.PART_WITH_SAMPLE__REVERSE:
+			return getReverse();
+		case EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL:
+			return getSampleLabel();
+		case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER:
+			return getSamplePointer();
+		case EsxPackage.PART_WITH_SAMPLE__START_POINT:
+			return getStartPoint();
+		case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE:
+			return getReservedBitsAfterReverse();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -272,18 +280,18 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_SAMPLE__REVERSE:
-				setReverse((Reverse)newValue);
-				return;
-			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER:
-				setSamplePointer((Short)newValue);
-				return;
-			case EsxPackage.PART_WITH_SAMPLE__START_POINT:
-				setStartPoint((Byte)newValue);
-				return;
-			case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE:
-				setReservedBitsAfterReverse((Byte)newValue);
-				return;
+		case EsxPackage.PART_WITH_SAMPLE__REVERSE:
+			setReverse((Reverse) newValue);
+			return;
+		case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER:
+			setSamplePointer((Short) newValue);
+			return;
+		case EsxPackage.PART_WITH_SAMPLE__START_POINT:
+			setStartPoint((Byte) newValue);
+			return;
+		case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE:
+			setReservedBitsAfterReverse((Byte) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -296,18 +304,18 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_SAMPLE__REVERSE:
-				setReverse(REVERSE_EDEFAULT);
-				return;
-			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER:
-				setSamplePointer(SAMPLE_POINTER_EDEFAULT);
-				return;
-			case EsxPackage.PART_WITH_SAMPLE__START_POINT:
-				setStartPoint(START_POINT_EDEFAULT);
-				return;
-			case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE:
-				setReservedBitsAfterReverse(RESERVED_BITS_AFTER_REVERSE_EDEFAULT);
-				return;
+		case EsxPackage.PART_WITH_SAMPLE__REVERSE:
+			setReverse(REVERSE_EDEFAULT);
+			return;
+		case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER:
+			setSamplePointer(SAMPLE_POINTER_EDEFAULT);
+			return;
+		case EsxPackage.PART_WITH_SAMPLE__START_POINT:
+			setStartPoint(START_POINT_EDEFAULT);
+			return;
+		case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE:
+			setReservedBitsAfterReverse(RESERVED_BITS_AFTER_REVERSE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -320,16 +328,17 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_SAMPLE__REVERSE:
-				return reverse != REVERSE_EDEFAULT;
-			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL:
-				return SAMPLE_LABEL_EDEFAULT == null ? getSampleLabel() != null : !SAMPLE_LABEL_EDEFAULT.equals(getSampleLabel());
-			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER:
-				return samplePointer != SAMPLE_POINTER_EDEFAULT;
-			case EsxPackage.PART_WITH_SAMPLE__START_POINT:
-				return startPoint != START_POINT_EDEFAULT;
-			case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE:
-				return reservedBitsAfterReverse != RESERVED_BITS_AFTER_REVERSE_EDEFAULT;
+		case EsxPackage.PART_WITH_SAMPLE__REVERSE:
+			return reverse != REVERSE_EDEFAULT;
+		case EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL:
+			return SAMPLE_LABEL_EDEFAULT == null ? getSampleLabel() != null
+					: !SAMPLE_LABEL_EDEFAULT.equals(getSampleLabel());
+		case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER:
+			return samplePointer != SAMPLE_POINTER_EDEFAULT;
+		case EsxPackage.PART_WITH_SAMPLE__START_POINT:
+			return startPoint != START_POINT_EDEFAULT;
+		case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE:
+			return reservedBitsAfterReverse != RESERVED_BITS_AFTER_REVERSE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -341,7 +350,8 @@ public abstract class PartWithSampleImpl extends EObjectImpl implements PartWith
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (reverse: ");

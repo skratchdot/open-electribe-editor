@@ -135,7 +135,8 @@ public abstract class PartImpl extends EObjectImpl implements Part {
 		byte oldLevel = level;
 		level = newLevel;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART__LEVEL, oldLevel, level));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART__LEVEL, oldLevel, level));
 	}
 
 	/**
@@ -156,7 +157,9 @@ public abstract class PartImpl extends EObjectImpl implements Part {
 		byte oldMotionSequenceStatus = motionSequenceStatus;
 		motionSequenceStatus = newMotionSequenceStatus;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART__MOTION_SEQUENCE_STATUS, oldMotionSequenceStatus, motionSequenceStatus));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART__MOTION_SEQUENCE_STATUS,
+					oldMotionSequenceStatus, motionSequenceStatus));
 	}
 
 	/**
@@ -165,13 +168,15 @@ public abstract class PartImpl extends EObjectImpl implements Part {
 	 * @generated NOT
 	 */
 	public String getSampleLabel(short sampleNumber) {
-		if(this.eResource()!=null) {
+		if (this.eResource() != null) {
 			Resource resource = (Resource) this.eResource();
 			Object rootObject = resource.getContents().get(0);
-			if(rootObject instanceof EsxFile) {
+			if (rootObject instanceof EsxFile) {
 				try {
-					return ((EsxFile) rootObject).getSampleFromPointer(sampleNumber).getLabel();
-				} catch(Exception e) {}
+					return ((EsxFile) rootObject).getSampleFromPointer(
+							sampleNumber).getLabel();
+				} catch (Exception e) {
+				}
 			}
 		}
 		return SampleNumber.get(-1).getName();
@@ -185,12 +190,12 @@ public abstract class PartImpl extends EObjectImpl implements Part {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.PART__LABEL:
-				return getLabel();
-			case EsxPackage.PART__LEVEL:
-				return getLevel();
-			case EsxPackage.PART__MOTION_SEQUENCE_STATUS:
-				return getMotionSequenceStatus();
+		case EsxPackage.PART__LABEL:
+			return getLabel();
+		case EsxPackage.PART__LEVEL:
+			return getLevel();
+		case EsxPackage.PART__MOTION_SEQUENCE_STATUS:
+			return getMotionSequenceStatus();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -203,12 +208,12 @@ public abstract class PartImpl extends EObjectImpl implements Part {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.PART__LEVEL:
-				setLevel((Byte)newValue);
-				return;
-			case EsxPackage.PART__MOTION_SEQUENCE_STATUS:
-				setMotionSequenceStatus((Byte)newValue);
-				return;
+		case EsxPackage.PART__LEVEL:
+			setLevel((Byte) newValue);
+			return;
+		case EsxPackage.PART__MOTION_SEQUENCE_STATUS:
+			setMotionSequenceStatus((Byte) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -221,12 +226,12 @@ public abstract class PartImpl extends EObjectImpl implements Part {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART__LEVEL:
-				setLevel(LEVEL_EDEFAULT);
-				return;
-			case EsxPackage.PART__MOTION_SEQUENCE_STATUS:
-				setMotionSequenceStatus(MOTION_SEQUENCE_STATUS_EDEFAULT);
-				return;
+		case EsxPackage.PART__LEVEL:
+			setLevel(LEVEL_EDEFAULT);
+			return;
+		case EsxPackage.PART__MOTION_SEQUENCE_STATUS:
+			setMotionSequenceStatus(MOTION_SEQUENCE_STATUS_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -239,12 +244,13 @@ public abstract class PartImpl extends EObjectImpl implements Part {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART__LABEL:
-				return LABEL_EDEFAULT == null ? getLabel() != null : !LABEL_EDEFAULT.equals(getLabel());
-			case EsxPackage.PART__LEVEL:
-				return level != LEVEL_EDEFAULT;
-			case EsxPackage.PART__MOTION_SEQUENCE_STATUS:
-				return motionSequenceStatus != MOTION_SEQUENCE_STATUS_EDEFAULT;
+		case EsxPackage.PART__LABEL:
+			return LABEL_EDEFAULT == null ? getLabel() != null
+					: !LABEL_EDEFAULT.equals(getLabel());
+		case EsxPackage.PART__LEVEL:
+			return level != LEVEL_EDEFAULT;
+		case EsxPackage.PART__MOTION_SEQUENCE_STATUS:
+			return motionSequenceStatus != MOTION_SEQUENCE_STATUS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -256,7 +262,8 @@ public abstract class PartImpl extends EObjectImpl implements Part {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (level: ");

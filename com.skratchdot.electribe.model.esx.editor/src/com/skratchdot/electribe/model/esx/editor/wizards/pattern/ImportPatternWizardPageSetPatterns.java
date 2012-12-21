@@ -60,13 +60,14 @@ public class ImportPatternWizardPageSetPatterns extends WizardPage {
 		Composite container = new Composite(parent, SWT.NULL);
 		setControl(container);
 		container.setLayout(new GridLayout(2, false));
-		
-		tableViewer = new TableViewer(container, SWT.BORDER | SWT.FULL_SELECTION);
+
+		tableViewer = new TableViewer(container, SWT.BORDER
+				| SWT.FULL_SELECTION);
 		table = tableViewer.getTable();
 		table.setLinesVisible(true);
 		table.setHeaderVisible(true);
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
-		
+
 		TableColumn tableColumnSource = new TableColumn(table, SWT.NONE);
 		tableColumnSource.setWidth(200);
 		tableColumnSource.setText("Source Patterns");
@@ -74,7 +75,7 @@ public class ImportPatternWizardPageSetPatterns extends WizardPage {
 		TableColumn tableColumnDestination = new TableColumn(table, SWT.NONE);
 		tableColumnDestination.setWidth(200);
 		tableColumnDestination.setText("Desination Patterns");
-		
+
 		tableViewer.setLabelProvider(new ITableLabelProvider() {
 
 			@Override
@@ -85,25 +86,28 @@ public class ImportPatternWizardPageSetPatterns extends WizardPage {
 			public boolean isLabelProperty(Object element, String property) {
 				return false;
 			}
-			
+
 			@Override
 			public void dispose() {
 			}
-			
+
 			@Override
 			public void addListener(ILabelProviderListener listener) {
 			}
-			
+
 			@Override
 			public String getColumnText(Object element, int columnIndex) {
-				if(columnIndex == 0) {
-					return ((ImportPatternWizard) getWizard()).getSrcEsxFile().getPatterns().get(((PatternMap) element).source).getLabel();
-				}
-				else {
-					return ((ImportPatternWizard) getWizard()).getDestEsxFile().getPatterns().get(((PatternMap) element).destination).getLabel();
+				if (columnIndex == 0) {
+					return ((ImportPatternWizard) getWizard()).getSrcEsxFile()
+							.getPatterns().get(((PatternMap) element).source)
+							.getLabel();
+				} else {
+					return ((ImportPatternWizard) getWizard()).getDestEsxFile()
+							.getPatterns()
+							.get(((PatternMap) element).destination).getLabel();
 				}
 			}
-			
+
 			@Override
 			public Image getColumnImage(Object element, int columnIndex) {
 				return null;
@@ -117,19 +121,22 @@ public class ImportPatternWizardPageSetPatterns extends WizardPage {
 			}
 
 			@Override
-			public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+			public void inputChanged(Viewer viewer, Object oldInput,
+					Object newInput) {
 			}
 
 			@Override
 			public Object[] getElements(Object inputElement) {
 				return (PatternMap[]) inputElement;
 			}
-			
+
 		});
 
-		this.tableViewer.setCellModifier(new PatternMapCellModifier(this.tableViewer));
-		this.tableViewer.setColumnProperties(new String[] { "source", "destination" });
-		
+		this.tableViewer.setCellModifier(new PatternMapCellModifier(
+				this.tableViewer));
+		this.tableViewer.setColumnProperties(new String[] { "source",
+				"destination" });
+
 		Button btnRecalculateDestinations = new Button(container, SWT.NONE);
 		btnRecalculateDestinations.setText("Recalculate Destinations");
 		btnRecalculateDestinations.addSelectionListener(new SelectionAdapter() {
@@ -138,7 +145,7 @@ public class ImportPatternWizardPageSetPatterns extends WizardPage {
 				recalculateDestinations();
 			}
 		});
-		
+
 		Button btnResetDestinations = new Button(container, SWT.NONE);
 		btnResetDestinations.setText("Reset Destinations");
 		btnResetDestinations.addSelectionListener(new SelectionAdapter() {
@@ -148,7 +155,7 @@ public class ImportPatternWizardPageSetPatterns extends WizardPage {
 			}
 		});
 	}
-	
+
 	@Override
 	public boolean canFlipToNextPage() {
 		return canFlip;
@@ -157,61 +164,64 @@ public class ImportPatternWizardPageSetPatterns extends WizardPage {
 	@Override
 	public void setVisible(boolean visible) {
 		super.setVisible(visible);
-		if(visible) {
-			patternNumbers = ((ImportPatternWizard)getWizard()).getPageSelectPatterns().uniquePatterns.toArray();
+		if (visible) {
+			patternNumbers = ((ImportPatternWizard) getWizard())
+					.getPageSelectPatterns().uniquePatterns.toArray();
 			Arrays.sort(patternNumbers);
-			canFlip = ((ImportPatternWizard) getWizard()).getPageSelectPatterns().isImportSampleButtonChecked();
+			canFlip = ((ImportPatternWizard) getWizard())
+					.getPageSelectPatterns().isImportSampleButtonChecked();
 
 			// Set patternMaps
 			patternMaps = new PatternMap[patternNumbers.length];
-			for (int i=0; i<patternNumbers.length; i++) {
-				patternMaps[i] = new PatternMap((Integer)patternNumbers[i], (Integer)patternNumbers[i]);
+			for (int i = 0; i < patternNumbers.length; i++) {
+				patternMaps[i] = new PatternMap((Integer) patternNumbers[i],
+						(Integer) patternNumbers[i]);
 			}
-			
+
 			// Create pattern labels
 			final String[] patternLabels = new String[EsxUtil.NUM_PATTERNS];
-			for(int i=0; i<EsxUtil.NUM_PATTERNS; i++) {
-				patternLabels[i] = ((ImportPatternWizard)getWizard()).getDestEsxFile().getPatterns().get(i).getLabel();
+			for (int i = 0; i < EsxUtil.NUM_PATTERNS; i++) {
+				patternLabels[i] = ((ImportPatternWizard) getWizard())
+						.getDestEsxFile().getPatterns().get(i).getLabel();
 			}
 			this.tableViewer.setCellEditors(new CellEditor[] {
-				null,
-				new ComboBoxCellEditor(this.tableViewer.getTable(), patternLabels, SWT.READ_ONLY)
-			});
+					null,
+					new ComboBoxCellEditor(this.tableViewer.getTable(),
+							patternLabels, SWT.READ_ONLY) });
 
 			// Set our input
 			this.recalculateDestinations();
-			
+
 			// Make sure next/finish buttons are enabled/disabled
 			((ImportPatternWizard) getWizard()).setAbleToFinish(!canFlip);
 			getWizard().getContainer().updateButtons();
 		}
 	}
-	
+
 	private void recalculateDestinations() {
 		// Keep track of empty patterns, and patterns in use
 		ArrayList<Integer> patternsEmpty = new ArrayList<Integer>();
 		ArrayList<Integer> patternsInUse = new ArrayList<Integer>();
-		for(int i=0; i<EsxUtil.NUM_PATTERNS; i++) {
-			Pattern pattern = ((ImportPatternWizard) getWizard()).getDestEsxFile().getPatterns().get(i);
-			if(pattern.isEmpty()) {
+		for (int i = 0; i < EsxUtil.NUM_PATTERNS; i++) {
+			Pattern pattern = ((ImportPatternWizard) getWizard())
+					.getDestEsxFile().getPatterns().get(i);
+			if (pattern.isEmpty()) {
 				patternsEmpty.add(i);
-			}
-			else {
+			} else {
 				patternsInUse.add(i);
 			}
 		}
 
 		// Set patternMaps
 		patternMaps = new PatternMap[patternNumbers.length];
-		for (int i=0; i<patternNumbers.length; i++) {
+		for (int i = 0; i < patternNumbers.length; i++) {
 			int index = -1;
-			if(patternsEmpty.size()>0) {
+			if (patternsEmpty.size() > 0) {
 				index = patternsEmpty.remove(0);
-			}
-			else if(patternsInUse.size() > 0) {
+			} else if (patternsInUse.size() > 0) {
 				index = patternsInUse.remove(0);
 			}
-			patternMaps[i] = new PatternMap((Integer)patternNumbers[i], index);
+			patternMaps[i] = new PatternMap((Integer) patternNumbers[i], index);
 		}
 
 		this.tableViewer.setInput(patternMaps);
@@ -220,8 +230,9 @@ public class ImportPatternWizardPageSetPatterns extends WizardPage {
 	private void resetDestinations() {
 		// Set patternMaps
 		patternMaps = new PatternMap[patternNumbers.length];
-		for (int i=0; i<patternNumbers.length; i++) {
-			patternMaps[i] = new PatternMap((Integer)patternNumbers[i], (Integer)patternNumbers[i]);
+		for (int i = 0; i < patternNumbers.length; i++) {
+			patternMaps[i] = new PatternMap((Integer) patternNumbers[i],
+					(Integer) patternNumbers[i]);
 		}
 
 		this.tableViewer.setInput(patternMaps);
@@ -230,5 +241,5 @@ public class ImportPatternWizardPageSetPatterns extends WizardPage {
 	public PatternMap[] getPatternMaps() {
 		return patternMaps;
 	}
-	
+
 }

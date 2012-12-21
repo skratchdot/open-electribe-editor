@@ -133,13 +133,8 @@ public enum FilterType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final FilterType[] VALUES_ARRAY =
-		new FilterType[] {
-			LPF,
-			HPF,
-			BPF,
-			BPF_PLUS,
-		};
+	private static final FilterType[] VALUES_ARRAY = new FilterType[] { LPF,
+			HPF, BPF, BPF_PLUS, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Filter Type</b></em>' enumerators.
@@ -147,7 +142,8 @@ public enum FilterType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<FilterType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<FilterType> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Filter Type</b></em>' literal with the specified literal value.
@@ -189,10 +185,14 @@ public enum FilterType implements Enumerator {
 	 */
 	public static FilterType get(int value) {
 		switch (value) {
-			case LPF_VALUE: return LPF;
-			case HPF_VALUE: return HPF;
-			case BPF_VALUE: return BPF;
-			case BPF_PLUS_VALUE: return BPF_PLUS;
+		case LPF_VALUE:
+			return LPF;
+		case HPF_VALUE:
+			return HPF;
+		case BPF_VALUE:
+			return BPF;
+		case BPF_PLUS_VALUE:
+			return BPF_PLUS;
 		}
 		return null;
 	}
@@ -236,7 +236,7 @@ public enum FilterType implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -245,7 +245,7 @@ public enum FilterType implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -254,7 +254,7 @@ public enum FilterType implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -44,10 +43,10 @@ import com.skratchdot.electribe.model.esx.util.EsxUtil;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ParametersMotionItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class ParametersMotionItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -84,19 +83,17 @@ public class ParametersMotionItemProvider
 	 * @generated
 	 */
 	protected void addCurrentPositionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ParametersMotion_currentPosition_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ParametersMotion_currentPosition_feature", "_UI_ParametersMotion_type"),
-				 EsxPackage.Literals.PARAMETERS_MOTION__CURRENT_POSITION,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_ParametersMotion_currentPosition_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_ParametersMotion_currentPosition_feature",
+						"_UI_ParametersMotion_type"),
+				EsxPackage.Literals.PARAMETERS_MOTION__CURRENT_POSITION, false,
+				false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -106,19 +103,16 @@ public class ParametersMotionItemProvider
 	 * @generated
 	 */
 	protected void addEmptyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ParametersMotion_empty_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ParametersMotion_empty_feature", "_UI_ParametersMotion_type"),
-				 EsxPackage.Literals.PARAMETERS_MOTION__EMPTY,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_ParametersMotion_empty_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_ParametersMotion_empty_feature",
+						"_UI_ParametersMotion_type"),
+				EsxPackage.Literals.PARAMETERS_MOTION__EMPTY, false, false,
+				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -128,19 +122,17 @@ public class ParametersMotionItemProvider
 	 * @generated
 	 */
 	protected void addOperationNumberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ParametersMotion_operationNumber_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ParametersMotion_operationNumber_feature", "_UI_ParametersMotion_type"),
-				 EsxPackage.Literals.PARAMETERS_MOTION__OPERATION_NUMBER,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_ParametersMotion_operationNumber_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_ParametersMotion_operationNumber_feature",
+						"_UI_ParametersMotion_type"),
+				EsxPackage.Literals.PARAMETERS_MOTION__OPERATION_NUMBER, false,
+				false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -150,19 +142,17 @@ public class ParametersMotionItemProvider
 	 * @generated
 	 */
 	protected void addOperationTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ParametersMotion_operationType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ParametersMotion_operationType_feature", "_UI_ParametersMotion_type"),
-				 EsxPackage.Literals.PARAMETERS_MOTION__OPERATION_TYPE,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_ParametersMotion_operationType_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_ParametersMotion_operationType_feature",
+						"_UI_ParametersMotion_type"),
+				EsxPackage.Literals.PARAMETERS_MOTION__OPERATION_TYPE, false,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -174,10 +164,12 @@ public class ParametersMotionItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(EsxPackage.Literals.PARAMETERS_MOTION__OPERATION);
+			childrenFeatures
+					.add(EsxPackage.Literals.PARAMETERS_MOTION__OPERATION);
 		}
 		return childrenFeatures;
 	}
@@ -203,7 +195,8 @@ public class ParametersMotionItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ParametersMotion"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/ParametersMotion"));
 	}
 
 	/**
@@ -214,27 +207,32 @@ public class ParametersMotionItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		ParametersMotion parametersMotion = (ParametersMotion)object;
-		return getString("_UI_ParametersMotion_type") + " " + parametersMotion.getCurrentPosition();
+		ParametersMotion parametersMotion = (ParametersMotion) object;
+		return getString("_UI_ParametersMotion_type") + " "
+				+ parametersMotion.getCurrentPosition();
 	}
 
 	@Override
 	public String getColumnText(Object object, int columnIndex) {
-		switch(columnIndex) {
-			// Position
-			case 0: return Integer.toString(((ParametersMotion) object).getCurrentPosition());
+		switch (columnIndex) {
+		// Position
+		case 0:
+			return Integer.toString(((ParametersMotion) object)
+					.getCurrentPosition());
 			// Orig#
-			case 1: return ((ParametersMotion) object).getOperationType().getLiteral();
+		case 1:
+			return ((ParametersMotion) object).getOperationType().getLiteral();
 			// OperationValue
-			default: {
-				int operationIndex = columnIndex-2;
-				if(operationIndex>=0 && operationIndex<EsxUtil.NUM_MOTION_OPERATIONS) {
-					return Byte.toString(((ParametersMotion) object).getOperation().get(operationIndex).getValue());
-				}
-				else {
-					return getText(object);
-				}
+		default: {
+			int operationIndex = columnIndex - 2;
+			if (operationIndex >= 0
+					&& operationIndex < EsxUtil.NUM_MOTION_OPERATIONS) {
+				return Byte.toString(((ParametersMotion) object).getOperation()
+						.get(operationIndex).getValue());
+			} else {
+				return getText(object);
 			}
+		}
 		}
 	}
 
@@ -250,15 +248,17 @@ public class ParametersMotionItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ParametersMotion.class)) {
-			case EsxPackage.PARAMETERS_MOTION__CURRENT_POSITION:
-			case EsxPackage.PARAMETERS_MOTION__EMPTY:
-			case EsxPackage.PARAMETERS_MOTION__OPERATION_NUMBER:
-			case EsxPackage.PARAMETERS_MOTION__OPERATION_TYPE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case EsxPackage.PARAMETERS_MOTION__OPERATION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case EsxPackage.PARAMETERS_MOTION__CURRENT_POSITION:
+		case EsxPackage.PARAMETERS_MOTION__EMPTY:
+		case EsxPackage.PARAMETERS_MOTION__OPERATION_NUMBER:
+		case EsxPackage.PARAMETERS_MOTION__OPERATION_TYPE:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
+		case EsxPackage.PARAMETERS_MOTION__OPERATION:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -271,13 +271,13 @@ public class ParametersMotionItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-				(EsxPackage.Literals.PARAMETERS_MOTION__OPERATION,
-				 EsxFactory.eINSTANCE.createOperation()));
+		newChildDescriptors.add(createChildParameter(
+				EsxPackage.Literals.PARAMETERS_MOTION__OPERATION,
+				EsxFactory.eINSTANCE.createOperation()));
 	}
 
 	/**

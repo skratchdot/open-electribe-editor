@@ -37,7 +37,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * @generated
  */
-public abstract class PartWithSequenceDataGateImpl extends EObjectImpl implements PartWithSequenceDataGate {
+public abstract class PartWithSequenceDataGateImpl extends EObjectImpl
+		implements PartWithSequenceDataGate {
 	/**
 	 * The cached value of the '{@link #getSequenceDataGate() <em>Sequence Data Gate</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -81,12 +82,20 @@ public abstract class PartWithSequenceDataGateImpl extends EObjectImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSequenceDataGate(SequenceDataGate newSequenceDataGate, NotificationChain msgs) {
+	public NotificationChain basicSetSequenceDataGate(
+			SequenceDataGate newSequenceDataGate, NotificationChain msgs) {
 		SequenceDataGate oldSequenceDataGate = sequenceDataGate;
 		sequenceDataGate = newSequenceDataGate;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE, oldSequenceDataGate, newSequenceDataGate);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(
+					this,
+					Notification.SET,
+					EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE,
+					oldSequenceDataGate, newSequenceDataGate);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -100,14 +109,28 @@ public abstract class PartWithSequenceDataGateImpl extends EObjectImpl implement
 		if (newSequenceDataGate != sequenceDataGate) {
 			NotificationChain msgs = null;
 			if (sequenceDataGate != null)
-				msgs = ((InternalEObject)sequenceDataGate).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE, null, msgs);
+				msgs = ((InternalEObject) sequenceDataGate)
+						.eInverseRemove(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE,
+								null, msgs);
 			if (newSequenceDataGate != null)
-				msgs = ((InternalEObject)newSequenceDataGate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE, null, msgs);
+				msgs = ((InternalEObject) newSequenceDataGate)
+						.eInverseAdd(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE,
+								null, msgs);
 			msgs = basicSetSequenceDataGate(newSequenceDataGate, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE, newSequenceDataGate, newSequenceDataGate));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(
+					this,
+					Notification.SET,
+					EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE,
+					newSequenceDataGate, newSequenceDataGate));
 	}
 
 	/**
@@ -116,10 +139,11 @@ public abstract class PartWithSequenceDataGateImpl extends EObjectImpl implement
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
-				return basicSetSequenceDataGate(null, msgs);
+		case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
+			return basicSetSequenceDataGate(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -132,8 +156,8 @@ public abstract class PartWithSequenceDataGateImpl extends EObjectImpl implement
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
-				return getSequenceDataGate();
+		case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
+			return getSequenceDataGate();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -146,9 +170,9 @@ public abstract class PartWithSequenceDataGateImpl extends EObjectImpl implement
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
-				setSequenceDataGate((SequenceDataGate)newValue);
-				return;
+		case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
+			setSequenceDataGate((SequenceDataGate) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -161,9 +185,9 @@ public abstract class PartWithSequenceDataGateImpl extends EObjectImpl implement
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
-				setSequenceDataGate((SequenceDataGate)null);
-				return;
+		case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
+			setSequenceDataGate((SequenceDataGate) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -176,8 +200,8 @@ public abstract class PartWithSequenceDataGateImpl extends EObjectImpl implement
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
-				return sequenceDataGate != null;
+		case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
+			return sequenceDataGate != null;
 		}
 		return super.eIsSet(featureID);
 	}

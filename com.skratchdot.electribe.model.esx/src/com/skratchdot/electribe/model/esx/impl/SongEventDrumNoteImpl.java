@@ -37,7 +37,8 @@ import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
  *
  * @generated
  */
-public class SongEventDrumNoteImpl extends SongEventImpl implements SongEventDrumNote {
+public class SongEventDrumNoteImpl extends SongEventImpl implements
+		SongEventDrumNote {
 	/**
 	 * The default value of the '{@link #getPart() <em>Part</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -168,7 +169,8 @@ public class SongEventDrumNoteImpl extends SongEventImpl implements SongEventDru
 		SongEventPart oldPart = part;
 		part = newPart == null ? PART_EDEFAULT : newPart;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT_DRUM_NOTE__PART, oldPart, part));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_EVENT_DRUM_NOTE__PART, oldPart, part));
 	}
 
 	/**
@@ -189,7 +191,9 @@ public class SongEventDrumNoteImpl extends SongEventImpl implements SongEventDru
 		byte oldReservedByte = reservedByte;
 		reservedByte = newReservedByte;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_BYTE, oldReservedByte, reservedByte));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_BYTE,
+					oldReservedByte, reservedByte));
 	}
 
 	/**
@@ -210,7 +214,9 @@ public class SongEventDrumNoteImpl extends SongEventImpl implements SongEventDru
 		short oldReservedShort = reservedShort;
 		reservedShort = newReservedShort;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_SHORT, oldReservedShort, reservedShort));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_SHORT,
+					oldReservedShort, reservedShort));
 	}
 
 	/**
@@ -219,7 +225,8 @@ public class SongEventDrumNoteImpl extends SongEventImpl implements SongEventDru
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_SONG_EVENT);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				EsxUtil.CHUNKSIZE_SONG_EVENT);
 		// byte 0
 		buf.putByte(this.getPositionNumber());
 		// byte 1
@@ -246,12 +253,12 @@ public class SongEventDrumNoteImpl extends SongEventImpl implements SongEventDru
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_DRUM_NOTE__PART:
-				return getPart();
-			case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_BYTE:
-				return getReservedByte();
-			case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_SHORT:
-				return getReservedShort();
+		case EsxPackage.SONG_EVENT_DRUM_NOTE__PART:
+			return getPart();
+		case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_BYTE:
+			return getReservedByte();
+		case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_SHORT:
+			return getReservedShort();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -264,15 +271,15 @@ public class SongEventDrumNoteImpl extends SongEventImpl implements SongEventDru
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_DRUM_NOTE__PART:
-				setPart((SongEventPart)newValue);
-				return;
-			case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_BYTE:
-				setReservedByte((Byte)newValue);
-				return;
-			case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_SHORT:
-				setReservedShort((Short)newValue);
-				return;
+		case EsxPackage.SONG_EVENT_DRUM_NOTE__PART:
+			setPart((SongEventPart) newValue);
+			return;
+		case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_BYTE:
+			setReservedByte((Byte) newValue);
+			return;
+		case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_SHORT:
+			setReservedShort((Short) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -285,15 +292,15 @@ public class SongEventDrumNoteImpl extends SongEventImpl implements SongEventDru
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_DRUM_NOTE__PART:
-				setPart(PART_EDEFAULT);
-				return;
-			case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_BYTE:
-				setReservedByte(RESERVED_BYTE_EDEFAULT);
-				return;
-			case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_SHORT:
-				setReservedShort(RESERVED_SHORT_EDEFAULT);
-				return;
+		case EsxPackage.SONG_EVENT_DRUM_NOTE__PART:
+			setPart(PART_EDEFAULT);
+			return;
+		case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_BYTE:
+			setReservedByte(RESERVED_BYTE_EDEFAULT);
+			return;
+		case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_SHORT:
+			setReservedShort(RESERVED_SHORT_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -306,12 +313,12 @@ public class SongEventDrumNoteImpl extends SongEventImpl implements SongEventDru
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_DRUM_NOTE__PART:
-				return part != PART_EDEFAULT;
-			case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_BYTE:
-				return reservedByte != RESERVED_BYTE_EDEFAULT;
-			case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_SHORT:
-				return reservedShort != RESERVED_SHORT_EDEFAULT;
+		case EsxPackage.SONG_EVENT_DRUM_NOTE__PART:
+			return part != PART_EDEFAULT;
+		case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_BYTE:
+			return reservedByte != RESERVED_BYTE_EDEFAULT;
+		case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_SHORT:
+			return reservedShort != RESERVED_SHORT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -325,8 +332,10 @@ public class SongEventDrumNoteImpl extends SongEventImpl implements SongEventDru
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == SongEventWithPart.class) {
 			switch (derivedFeatureID) {
-				case EsxPackage.SONG_EVENT_DRUM_NOTE__PART: return EsxPackage.SONG_EVENT_WITH_PART__PART;
-				default: return -1;
+			case EsxPackage.SONG_EVENT_DRUM_NOTE__PART:
+				return EsxPackage.SONG_EVENT_WITH_PART__PART;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
@@ -341,8 +350,10 @@ public class SongEventDrumNoteImpl extends SongEventImpl implements SongEventDru
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == SongEventWithPart.class) {
 			switch (baseFeatureID) {
-				case EsxPackage.SONG_EVENT_WITH_PART__PART: return EsxPackage.SONG_EVENT_DRUM_NOTE__PART;
-				default: return -1;
+			case EsxPackage.SONG_EVENT_WITH_PART__PART:
+				return EsxPackage.SONG_EVENT_DRUM_NOTE__PART;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
@@ -355,7 +366,8 @@ public class SongEventDrumNoteImpl extends SongEventImpl implements SongEventDru
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (part: ");

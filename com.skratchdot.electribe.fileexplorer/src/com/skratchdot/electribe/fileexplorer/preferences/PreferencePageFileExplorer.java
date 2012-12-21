@@ -23,15 +23,14 @@ import org.eclipse.ui.preferences.IWorkbenchPreferenceContainer;
 
 import com.skratchdot.electribe.fileexplorer.Activator;
 
-public class PreferencePageFileExplorer extends PreferencePage implements IWorkbenchPreferencePage {
+public class PreferencePageFileExplorer extends PreferencePage implements
+		IWorkbenchPreferencePage {
 	public static final String ID = "com.skratchdot.electribe.fileexplorer.preferences.PreferencePageFileExplorer";
 
 	public void init(IWorkbench workbench) {
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
-		setDescription(
-			"You can edit a specific feature by expanding the " +
-			"tree, or by clicking one of the links below."
-		);
+		setDescription("You can edit a specific feature by expanding the "
+				+ "tree, or by clicking one of the links below.");
 	}
 
 	@Override
@@ -41,23 +40,19 @@ public class PreferencePageFileExplorer extends PreferencePage implements IWorkb
 
 		// Link to PreferencePageTableView
 		new PreferenceLinkArea(
-			composite,
-			SWT.NONE,
-			PreferencePageTableView.ID,
-			"See <a>''{0}''</a> to edit the preferences for the File Explorer Table View.",
-			(IWorkbenchPreferenceContainer) getContainer(),
-			null
-		);
+				composite,
+				SWT.NONE,
+				PreferencePageTableView.ID,
+				"See <a>''{0}''</a> to edit the preferences for the File Explorer Table View.",
+				(IWorkbenchPreferenceContainer) getContainer(), null);
 
 		// Link to PreferencePageTreeView
 		new PreferenceLinkArea(
-			composite,
-			SWT.NONE,
-			PreferencePageTreeView.ID,
-			"See <a>''{0}''</a> to edit the preferences for the File Explorer Tree View.",
-			(IWorkbenchPreferenceContainer) getContainer(),
-			null
-		);
+				composite,
+				SWT.NONE,
+				PreferencePageTreeView.ID,
+				"See <a>''{0}''</a> to edit the preferences for the File Explorer Tree View.",
+				(IWorkbenchPreferenceContainer) getContainer(), null);
 
 		return composite;
 	}

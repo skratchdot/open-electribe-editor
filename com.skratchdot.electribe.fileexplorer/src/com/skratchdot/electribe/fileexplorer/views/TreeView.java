@@ -41,8 +41,8 @@ import com.skratchdot.electribe.audioplayer.util.AudioUtil;
 import com.skratchdot.electribe.fileexplorer.Activator;
 import com.skratchdot.electribe.fileexplorer.preferences.PreferenceConstants;
 
-public class TreeView extends ViewPart
-	implements ISelectionListener, IPropertyChangeListener, IDoubleClickListener {
+public class TreeView extends ViewPart implements ISelectionListener,
+		IPropertyChangeListener, IDoubleClickListener {
 	public static final String ID = "com.skratchdot.electribe.fileexplorer.views.TreeView";
 	public static final RootDirectory root = new RootDirectory();
 
@@ -55,18 +55,24 @@ public class TreeView extends ViewPart
 		// Add drag support
 		int ops = DND.DROP_COPY;
 		Transfer[] transfers = new Transfer[] { FileTransfer.getInstance() };
-		viewer.addDragSupport(ops, transfers, new FileExplorerDragSourceAdapter(viewer));
+		viewer.addDragSupport(ops, transfers,
+				new FileExplorerDragSourceAdapter(viewer));
 
 		viewer.setUseHashlookup(true); // try to speed things up
 		viewer.setContentProvider(new TreeViewContentProvider(
-			Activator.getDefault().getPreferenceStore()
-				.getBoolean(PreferenceConstants.PREFNAME_TREEVIEW_ONLYSHOWINGDIRECTORIES),
-			Activator.getDefault().getPreferenceStore()
-				.getString(PreferenceConstants.PREFNAME_TREEVIEW_FILEFILTERARRAY)
-		));
+				Activator
+						.getDefault()
+						.getPreferenceStore()
+						.getBoolean(
+								PreferenceConstants.PREFNAME_TREEVIEW_ONLYSHOWINGDIRECTORIES),
+				Activator
+						.getDefault()
+						.getPreferenceStore()
+						.getString(
+								PreferenceConstants.PREFNAME_TREEVIEW_FILEFILTERARRAY)));
 		viewer.setLabelProvider(new TreeViewLabelProvider());
 		viewer.setSorter(new FileExplorerSorter());
-		viewer.setInput(root); 
+		viewer.setInput(root);
 
 		// This view is a selection provider
 		getSite().setSelectionProvider(viewer);
@@ -75,7 +81,8 @@ public class TreeView extends ViewPart
 		FileExplorerUtil.createContextMenuFor(getSite(), viewer, TableView.ID);
 
 		// listen for preference change events
-		Activator.getDefault().getPreferenceStore().addPropertyChangeListener((IPropertyChangeListener) this);
+		Activator.getDefault().getPreferenceStore()
+				.addPropertyChangeListener((IPropertyChangeListener) this);
 	}
 
 	@Override
@@ -83,7 +90,8 @@ public class TreeView extends ViewPart
 		super.dispose();
 
 		// Remove Listeners added in createPartControl()
-		Activator.getDefault().getPreferenceStore().removePropertyChangeListener((IPropertyChangeListener) this);
+		Activator.getDefault().getPreferenceStore()
+				.removePropertyChangeListener((IPropertyChangeListener) this);
 	}
 
 	@Override
@@ -97,42 +105,57 @@ public class TreeView extends ViewPart
 
 	public void propertyChange(PropertyChangeEvent event) {
 		// If PREFNAME_TREEVIEW_ONLYSHOWINGDIRECTORIES has changed
-		if(event.getProperty().equals(PreferenceConstants.PREFNAME_TREEVIEW_ONLYSHOWINGDIRECTORIES)) {
-			((TreeViewContentProvider) viewer.getContentProvider())
-				.getFilter().setOnlyShowingDirectories((Boolean)event.getNewValue());
+		if (event.getProperty().equals(
+				PreferenceConstants.PREFNAME_TREEVIEW_ONLYSHOWINGDIRECTORIES)) {
+			((TreeViewContentProvider) viewer.getContentProvider()).getFilter()
+					.setOnlyShowingDirectories((Boolean) event.getNewValue());
 			viewer.refresh();
 		}
 		// If PREFNAME_TREEVIEW_FILEFILTERARRAY has changed
-		if(event.getProperty().equals(PreferenceConstants.PREFNAME_TREEVIEW_FILEFILTERARRAY)) {
-			((TreeViewContentProvider) viewer.getContentProvider())
-				.getFilter().setFileFilterString((String)event.getNewValue());
+		if (event.getProperty().equals(
+				PreferenceConstants.PREFNAME_TREEVIEW_FILEFILTERARRAY)) {
+			((TreeViewContentProvider) viewer.getContentProvider()).getFilter()
+					.setFileFilterString((String) event.getNewValue());
 			viewer.refresh();
 		}
 	}
 
 	public void doubleClick(DoubleClickEvent event) {
 		ISelection selection = event.getSelection();
-		Object firstObject = ((IStructuredSelection) selection).getFirstElement();
+		Object firstObject = ((IStructuredSelection) selection)
+				.getFirstElement();
 
 		// Handle File
 		if (firstObject != null && firstObject instanceof File) {
 
 			// Navigate to the selected directory
 			if (((File) firstObject).isFile()) {
-				IWorkbenchPage page = getSite().getWorkbenchWindow().getActivePage();
-				if (page!=null) {
+				IWorkbenchPage page = getSite().getWorkbenchWindow()
+						.getActivePage();
+				if (page != null) {
 					try {
 						// Try to open the file in a registered editor
-						IEditorDescriptor editorDescriptor = getSite().getWorkbenchWindow().getWorkbench().getEditorRegistry().getDefaultEditor(((File) firstObject).getName());
-						if(editorDescriptor!=null && editorDescriptor.isInternal()) {
-							IFileStore fileStore = EFS.getLocalFileSystem().getStore(new Path(((File) firstObject).getPath()));
+						IEditorDescriptor editorDescriptor = getSite()
+								.getWorkbenchWindow()
+								.getWorkbench()
+								.getEditorRegistry()
+								.getDefaultEditor(
+										((File) firstObject).getName());
+						if (editorDescriptor != null
+								&& editorDescriptor.isInternal()) {
+							IFileStore fileStore = EFS.getLocalFileSystem()
+									.getStore(
+											new Path(((File) firstObject)
+													.getPath()));
 							IDE.openEditorOnFileStore(page, fileStore);
 						}
 						// Try to play the file in AudioPlayer
-						else if(AudioUtil.isAudioFile((File) firstObject)) {
-							IHandlerService handlerService =
-								(IHandlerService) getSite().getService(IHandlerService.class);
-							handlerService.executeCommand(LoopAndPlayHandler.PLAY_OR_LOOP_COMMAND_ID, null);
+						else if (AudioUtil.isAudioFile((File) firstObject)) {
+							IHandlerService handlerService = (IHandlerService) getSite()
+									.getService(IHandlerService.class);
+							handlerService.executeCommand(
+									LoopAndPlayHandler.PLAY_OR_LOOP_COMMAND_ID,
+									null);
 						}
 					} catch (Exception e) {
 						e.printStackTrace();

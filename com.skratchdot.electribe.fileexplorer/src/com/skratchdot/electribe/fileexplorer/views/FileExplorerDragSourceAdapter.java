@@ -23,7 +23,7 @@ import org.eclipse.swt.dnd.FileTransfer;
 
 public class FileExplorerDragSourceAdapter extends DragSourceAdapter {
 	private Viewer viewer;
-	
+
 	public FileExplorerDragSourceAdapter(Viewer viewer) {
 		super();
 		this.viewer = viewer;
@@ -40,12 +40,11 @@ public class FileExplorerDragSourceAdapter extends DragSourceAdapter {
 
 		String[] files = this.getFileListFromSelection();
 
-		if(files.length>0) {
-			if(FileTransfer.getInstance().isSupportedType(event.dataType)) {
-		    	event.data = files;
-		    }
-		}
-		else {
+		if (files.length > 0) {
+			if (FileTransfer.getInstance().isSupportedType(event.dataType)) {
+				event.data = files;
+			}
+		} else {
 			event.doit = false;
 		}
 	}
@@ -56,17 +55,18 @@ public class FileExplorerDragSourceAdapter extends DragSourceAdapter {
 
 		String[] files = this.getFileListFromSelection();
 
-		event.doit = (files.length>0);
+		event.doit = (files.length > 0);
 
 	}
-	
+
 	private String[] getFileListFromSelection() {
-		IStructuredSelection selection = (IStructuredSelection) viewer.getSelection();
+		IStructuredSelection selection = (IStructuredSelection) viewer
+				.getSelection();
 
 		ArrayList<String> fileList = new ArrayList<String>();
 		for (Iterator<?> i = selection.iterator(); i.hasNext();) {
 			Object current = i.next();
-			if(current instanceof File) {
+			if (current instanceof File) {
 				String filePath = ((File) current).getAbsolutePath();
 				fileList.add(filePath);
 			}

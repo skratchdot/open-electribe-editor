@@ -75,17 +75,20 @@ public class ChunkPlayListImpl extends ChunkImpl implements ChunkPlayList {
 	}
 
 	@Override
-	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf)
+			throws RiffWaveException {
 		// Check Chunk Type ID
-		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
-			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+		if (ChunkTypeID.get((int) buf.getUnsignedInt()) != this
+				.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "
+					+ this.getChunkTypeID().getLiteral());
 
 		// Read in data size
 		long chunkSize = buf.getUnsignedInt();
 
 		// Read in segments
 		long numSegments = buf.getUnsignedInt();
-		for(int i=0; i<numSegments; i++) {
+		for (int i = 0; i < numSegments; i++) {
 			Segment segment = WavFactory.eINSTANCE.createSegment();
 			segment.setCuePointID(buf.getUnsignedInt());
 			segment.setLengthInSamples(buf.getUnsignedInt());
@@ -94,12 +97,13 @@ public class ChunkPlayListImpl extends ChunkImpl implements ChunkPlayList {
 		}
 
 		// Does the size we read in match the size we calculate from the data read in?
-		if(chunkSize!=this.getSize()) {
-			ParseChunkException pce = WavFactory.eINSTANCE.createParseChunkException();
-			pce.setException(new Exception("Invalid chunk size for format chunk." +
-				"From File: " + Long.toString(chunkSize) +
-				"Calculated: " + Long.toString(this.getSize())
-			));
+		if (chunkSize != this.getSize()) {
+			ParseChunkException pce = WavFactory.eINSTANCE
+					.createParseChunkException();
+			pce.setException(new Exception(
+					"Invalid chunk size for format chunk." + "From File: "
+							+ Long.toString(chunkSize) + "Calculated: "
+							+ Long.toString(this.getSize())));
 			riffWave.getParseChunkExceptions().add(pce);
 		}
 	}
@@ -120,7 +124,8 @@ public class ChunkPlayListImpl extends ChunkImpl implements ChunkPlayList {
 	 * @generated NOT
 	 */
 	public Long getNumberOfSegments() {
-		return this.getSegments()==null?0:(long)this.getSegments().size();
+		return this.getSegments() == null ? 0 : (long) this.getSegments()
+				.size();
 	}
 
 	/**
@@ -130,7 +135,8 @@ public class ChunkPlayListImpl extends ChunkImpl implements ChunkPlayList {
 	 */
 	public EList<Segment> getSegments() {
 		if (segments == null) {
-			segments = new EObjectResolvingEList<Segment>(Segment.class, this, WavPackage.CHUNK_PLAY_LIST__SEGMENTS);
+			segments = new EObjectResolvingEList<Segment>(Segment.class, this,
+					WavPackage.CHUNK_PLAY_LIST__SEGMENTS);
 		}
 		return segments;
 	}
@@ -167,10 +173,10 @@ public class ChunkPlayListImpl extends ChunkImpl implements ChunkPlayList {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.CHUNK_PLAY_LIST__NUMBER_OF_SEGMENTS:
-				return getNumberOfSegments();
-			case WavPackage.CHUNK_PLAY_LIST__SEGMENTS:
-				return getSegments();
+		case WavPackage.CHUNK_PLAY_LIST__NUMBER_OF_SEGMENTS:
+			return getNumberOfSegments();
+		case WavPackage.CHUNK_PLAY_LIST__SEGMENTS:
+			return getSegments();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -184,10 +190,10 @@ public class ChunkPlayListImpl extends ChunkImpl implements ChunkPlayList {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.CHUNK_PLAY_LIST__SEGMENTS:
-				getSegments().clear();
-				getSegments().addAll((Collection<? extends Segment>)newValue);
-				return;
+		case WavPackage.CHUNK_PLAY_LIST__SEGMENTS:
+			getSegments().clear();
+			getSegments().addAll((Collection<? extends Segment>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -200,9 +206,9 @@ public class ChunkPlayListImpl extends ChunkImpl implements ChunkPlayList {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_PLAY_LIST__SEGMENTS:
-				getSegments().clear();
-				return;
+		case WavPackage.CHUNK_PLAY_LIST__SEGMENTS:
+			getSegments().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -215,25 +221,28 @@ public class ChunkPlayListImpl extends ChunkImpl implements ChunkPlayList {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_PLAY_LIST__NUMBER_OF_SEGMENTS:
-				return NUMBER_OF_SEGMENTS_EDEFAULT == null ? getNumberOfSegments() != null : !NUMBER_OF_SEGMENTS_EDEFAULT.equals(getNumberOfSegments());
-			case WavPackage.CHUNK_PLAY_LIST__SEGMENTS:
-				return segments != null && !segments.isEmpty();
+		case WavPackage.CHUNK_PLAY_LIST__NUMBER_OF_SEGMENTS:
+			return NUMBER_OF_SEGMENTS_EDEFAULT == null ? getNumberOfSegments() != null
+					: !NUMBER_OF_SEGMENTS_EDEFAULT
+							.equals(getNumberOfSegments());
+		case WavPackage.CHUNK_PLAY_LIST__SEGMENTS:
+			return segments != null && !segments.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	@Override
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				(int) this.getSize() + 8);
 		buf.order(ByteOrder.LITTLE_ENDIAN);
 
 		buf.putUnsignedInt(this.getChunkTypeIDValue());
 		buf.putUnsignedInt(this.getSize());
-		
+
 		buf.putUnsignedInt(this.getNumberOfSegments());
 
-		for(int i=0; i<this.getNumberOfSegments(); i++) {
+		for (int i = 0; i < this.getNumberOfSegments(); i++) {
 			buf.putUnsignedInt(this.getSegments().get(i).getCuePointID());
 			buf.putUnsignedInt(this.getSegments().get(i).getLengthInSamples());
 			buf.putUnsignedInt(this.getSegments().get(i).getNumberOfRepeats());

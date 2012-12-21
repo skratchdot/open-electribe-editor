@@ -562,11 +562,13 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		this.setRoll(Roll.get(EsxUtil.unpackInt(packedByte13, 1, 3)));
 		this.setAmpEg(AmpEg.get(EsxUtil.unpackInt(packedByte13, 1, 4)));
 		this.setReverse(Reverse.get(EsxUtil.unpackInt(packedByte13, 1, 5)));
-		this.setReservedBitsAfterReverse((byte) EsxUtil.unpackInt(packedByte13, 2, 6));
+		this.setReservedBitsAfterReverse((byte) EsxUtil.unpackInt(packedByte13,
+				2, 6));
 		// byte 14
 		int packedByte14 = in.getUnsignedByte();
 		this.setModDest(ModDest.get(EsxUtil.unpackInt(packedByte14, 3, 0)));
-		this.setReservedBitAfterModDepth((byte) EsxUtil.unpackInt(packedByte14, 1, 3));
+		this.setReservedBitAfterModDepth((byte) EsxUtil.unpackInt(packedByte14,
+				1, 3));
 		this.setModType(ModType.get(EsxUtil.unpackInt(packedByte14, 3, 4)));
 		this.setBpmSync(BpmSync.get(EsxUtil.unpackInt(packedByte14, 1, 7)));
 		// byte 15
@@ -578,7 +580,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		// bytes 18~33
 		byte[] tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA];
 		in.getBytes(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA);
-		SequenceData newSequenceData = EsxFactory.eINSTANCE.createSequenceData();
+		SequenceData newSequenceData = EsxFactory.eINSTANCE
+				.createSequenceData();
 		newSequenceData.setSequenceData(tempBytes);
 		this.setSequenceData(newSequenceData);
 	}
@@ -611,7 +614,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		AmpEg oldAmpEg = ampEg;
 		ampEg = newAmpEg == null ? AMP_EG_EDEFAULT : newAmpEg;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__AMP_EG, oldAmpEg, ampEg));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__AMP_EG, oldAmpEg, ampEg));
 	}
 
 	/**
@@ -632,7 +636,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		BpmSync oldBpmSync = bpmSync;
 		bpmSync = newBpmSync == null ? BPM_SYNC_EDEFAULT : newBpmSync;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__BPM_SYNC, oldBpmSync, bpmSync));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__BPM_SYNC, oldBpmSync, bpmSync));
 	}
 
 	/**
@@ -653,7 +658,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		byte oldCutoff = cutoff;
 		cutoff = newCutoff;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__CUTOFF, oldCutoff, cutoff));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__CUTOFF, oldCutoff, cutoff));
 	}
 
 	/**
@@ -674,7 +680,9 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		byte oldEgIntensity = egIntensity;
 		egIntensity = newEgIntensity;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__EG_INTENSITY, oldEgIntensity, egIntensity));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__EG_INTENSITY, oldEgIntensity,
+					egIntensity));
 	}
 
 	/**
@@ -695,7 +703,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		byte oldEgTime = egTime;
 		egTime = newEgTime;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__EG_TIME, oldEgTime, egTime));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__EG_TIME, oldEgTime, egTime));
 	}
 
 	/**
@@ -714,9 +723,12 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 	 */
 	public void setFilterType(FilterType newFilterType) {
 		FilterType oldFilterType = filterType;
-		filterType = newFilterType == null ? FILTER_TYPE_EDEFAULT : newFilterType;
+		filterType = newFilterType == null ? FILTER_TYPE_EDEFAULT
+				: newFilterType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__FILTER_TYPE, oldFilterType, filterType));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__FILTER_TYPE, oldFilterType,
+					filterType));
 	}
 
 	/**
@@ -737,7 +749,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		FxSelect oldFxSelect = fxSelect;
 		fxSelect = newFxSelect == null ? FX_SELECT_EDEFAULT : newFxSelect;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__FX_SELECT, oldFxSelect, fxSelect));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__FX_SELECT, oldFxSelect, fxSelect));
 	}
 
 	/**
@@ -758,7 +771,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		FxSend oldFxSend = fxSend;
 		fxSend = newFxSend == null ? FX_SEND_EDEFAULT : newFxSend;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__FX_SEND, oldFxSend, fxSend));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__FX_SEND, oldFxSend, fxSend));
 	}
 
 	/**
@@ -779,7 +793,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		byte oldModDepth = modDepth;
 		modDepth = newModDepth;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__MOD_DEPTH, oldModDepth, modDepth));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__MOD_DEPTH, oldModDepth, modDepth));
 	}
 
 	/**
@@ -800,7 +815,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		ModDest oldModDest = modDest;
 		modDest = newModDest == null ? MOD_DEST_EDEFAULT : newModDest;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__MOD_DEST, oldModDest, modDest));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__MOD_DEST, oldModDest, modDest));
 	}
 
 	/**
@@ -821,7 +837,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		byte oldModSpeed = modSpeed;
 		modSpeed = newModSpeed;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__MOD_SPEED, oldModSpeed, modSpeed));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__MOD_SPEED, oldModSpeed, modSpeed));
 	}
 
 	/**
@@ -842,7 +859,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		ModType oldModType = modType;
 		modType = newModType == null ? MOD_TYPE_EDEFAULT : newModType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__MOD_TYPE, oldModType, modType));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__MOD_TYPE, oldModType, modType));
 	}
 
 	/**
@@ -863,7 +881,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		byte oldPan = pan;
 		pan = newPan;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__PAN, oldPan, pan));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__PAN, oldPan, pan));
 	}
 
 	/**
@@ -884,7 +903,9 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		byte oldReservedBitAfterModDepth = reservedBitAfterModDepth;
 		reservedBitAfterModDepth = newReservedBitAfterModDepth;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__RESERVED_BIT_AFTER_MOD_DEPTH, oldReservedBitAfterModDepth, reservedBitAfterModDepth));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__RESERVED_BIT_AFTER_MOD_DEPTH,
+					oldReservedBitAfterModDepth, reservedBitAfterModDepth));
 	}
 
 	/**
@@ -905,7 +926,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		byte oldResonance = resonance;
 		resonance = newResonance;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__RESONANCE, oldResonance, resonance));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__RESONANCE, oldResonance, resonance));
 	}
 
 	/**
@@ -926,7 +948,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		Roll oldRoll = roll;
 		roll = newRoll == null ? ROLL_EDEFAULT : newRoll;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__ROLL, oldRoll, roll));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__ROLL, oldRoll, roll));
 	}
 
 	/**
@@ -947,7 +970,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		byte oldPitch = pitch;
 		pitch = newPitch;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__PITCH, oldPitch, pitch));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__PITCH, oldPitch, pitch));
 	}
 
 	/**
@@ -968,7 +992,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		Reverse oldReverse = reverse;
 		reverse = newReverse == null ? REVERSE_EDEFAULT : newReverse;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__REVERSE, oldReverse, reverse));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__REVERSE, oldReverse, reverse));
 	}
 
 	/**
@@ -1009,7 +1034,9 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		short oldSamplePointer = samplePointer;
 		samplePointer = newSamplePointer;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__SAMPLE_POINTER, oldSamplePointer, samplePointer));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__SAMPLE_POINTER, oldSamplePointer,
+					samplePointer));
 	}
 
 	/**
@@ -1030,7 +1057,9 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		byte oldStartPoint = startPoint;
 		startPoint = newStartPoint;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__START_POINT, oldStartPoint, startPoint));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__START_POINT, oldStartPoint,
+					startPoint));
 	}
 
 	/**
@@ -1051,7 +1080,9 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		byte oldReservedBitsAfterReverse = reservedBitsAfterReverse;
 		reservedBitsAfterReverse = newReservedBitsAfterReverse;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__RESERVED_BITS_AFTER_REVERSE, oldReservedBitsAfterReverse, reservedBitsAfterReverse));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__RESERVED_BITS_AFTER_REVERSE,
+					oldReservedBitsAfterReverse, reservedBitsAfterReverse));
 	}
 
 	/**
@@ -1068,12 +1099,18 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSequenceData(SequenceData newSequenceData, NotificationChain msgs) {
+	public NotificationChain basicSetSequenceData(SequenceData newSequenceData,
+			NotificationChain msgs) {
 		SequenceData oldSequenceData = sequenceData;
 		sequenceData = newSequenceData;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__SEQUENCE_DATA, oldSequenceData, newSequenceData);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, EsxPackage.PART_DRUM__SEQUENCE_DATA,
+					oldSequenceData, newSequenceData);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -1087,14 +1124,22 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		if (newSequenceData != sequenceData) {
 			NotificationChain msgs = null;
 			if (sequenceData != null)
-				msgs = ((InternalEObject)sequenceData).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PART_DRUM__SEQUENCE_DATA, null, msgs);
+				msgs = ((InternalEObject) sequenceData).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+								- EsxPackage.PART_DRUM__SEQUENCE_DATA, null,
+						msgs);
 			if (newSequenceData != null)
-				msgs = ((InternalEObject)newSequenceData).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PART_DRUM__SEQUENCE_DATA, null, msgs);
+				msgs = ((InternalEObject) newSequenceData).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+								- EsxPackage.PART_DRUM__SEQUENCE_DATA, null,
+						msgs);
 			msgs = basicSetSequenceData(newSequenceData, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__SEQUENCE_DATA, newSequenceData, newSequenceData));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__SEQUENCE_DATA, newSequenceData,
+					newSequenceData));
 	}
 
 	/**
@@ -1115,7 +1160,9 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		byte oldReservedByte = reservedByte;
 		reservedByte = newReservedByte;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__RESERVED_BYTE, oldReservedByte, reservedByte));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__RESERVED_BYTE, oldReservedByte,
+					reservedByte));
 	}
 
 	/**
@@ -1136,7 +1183,9 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		byte oldSliceNumber = sliceNumber;
 		sliceNumber = newSliceNumber;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_DRUM__SLICE_NUMBER, oldSliceNumber, sliceNumber));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_DRUM__SLICE_NUMBER, oldSliceNumber,
+					sliceNumber));
 	}
 
 	/**
@@ -1145,7 +1194,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_PARTS_DRUM);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				EsxUtil.CHUNKSIZE_PARTS_DRUM);
 		// bytes 0~1
 		buf.putShort(this.getSamplePointer());
 		// byte 2
@@ -1172,19 +1222,29 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		buf.putByte(this.getStartPoint());
 		// byte 13
 		int packedByte13 = 0x00;
-		packedByte13 = EsxUtil.packInt(packedByte13, this.getFxSelect().getValue(), 2, 0);
-		packedByte13 = EsxUtil.packInt(packedByte13, this.getFxSend().getValue(), 1, 2);
-		packedByte13 = EsxUtil.packInt(packedByte13, this.getRoll().getValue(), 1, 3);
-		packedByte13 = EsxUtil.packInt(packedByte13, this.getAmpEg().getValue(), 1, 4);
-		packedByte13 = EsxUtil.packInt(packedByte13, this.getReverse().getValue(), 1, 5);
-		packedByte13 = EsxUtil.packInt(packedByte13, this.getReservedBitsAfterReverse(), 2, 6);
+		packedByte13 = EsxUtil.packInt(packedByte13, this.getFxSelect()
+				.getValue(), 2, 0);
+		packedByte13 = EsxUtil.packInt(packedByte13, this.getFxSend()
+				.getValue(), 1, 2);
+		packedByte13 = EsxUtil.packInt(packedByte13, this.getRoll().getValue(),
+				1, 3);
+		packedByte13 = EsxUtil.packInt(packedByte13,
+				this.getAmpEg().getValue(), 1, 4);
+		packedByte13 = EsxUtil.packInt(packedByte13, this.getReverse()
+				.getValue(), 1, 5);
+		packedByte13 = EsxUtil.packInt(packedByte13,
+				this.getReservedBitsAfterReverse(), 2, 6);
 		buf.putUnsignedByte(packedByte13);
 		// byte 14
 		int packedByte14 = 0x00;
-		packedByte14 = EsxUtil.packInt(packedByte14, this.getModDest().getValue(), 3, 0);
-		packedByte14 = EsxUtil.packInt(packedByte14, this.getReservedBitAfterModDepth(), 1, 3);
-		packedByte14 = EsxUtil.packInt(packedByte14, this.getModType().getValue(), 3, 4);
-		packedByte14 = EsxUtil.packInt(packedByte14, this.getBpmSync().getValue(), 1, 7);
+		packedByte14 = EsxUtil.packInt(packedByte14, this.getModDest()
+				.getValue(), 3, 0);
+		packedByte14 = EsxUtil.packInt(packedByte14,
+				this.getReservedBitAfterModDepth(), 1, 3);
+		packedByte14 = EsxUtil.packInt(packedByte14, this.getModType()
+				.getValue(), 3, 4);
+		packedByte14 = EsxUtil.packInt(packedByte14, this.getBpmSync()
+				.getValue(), 1, 7);
 		buf.putUnsignedByte(packedByte14);
 		// byte 15
 		buf.putByte(this.getModSpeed());
@@ -1203,10 +1263,11 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EsxPackage.PART_DRUM__SEQUENCE_DATA:
-				return basicSetSequenceData(null, msgs);
+		case EsxPackage.PART_DRUM__SEQUENCE_DATA:
+			return basicSetSequenceData(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1219,56 +1280,56 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.PART_DRUM__AMP_EG:
-				return getAmpEg();
-			case EsxPackage.PART_DRUM__BPM_SYNC:
-				return getBpmSync();
-			case EsxPackage.PART_DRUM__CUTOFF:
-				return getCutoff();
-			case EsxPackage.PART_DRUM__EG_INTENSITY:
-				return getEgIntensity();
-			case EsxPackage.PART_DRUM__EG_TIME:
-				return getEgTime();
-			case EsxPackage.PART_DRUM__FILTER_TYPE:
-				return getFilterType();
-			case EsxPackage.PART_DRUM__FX_SELECT:
-				return getFxSelect();
-			case EsxPackage.PART_DRUM__FX_SEND:
-				return getFxSend();
-			case EsxPackage.PART_DRUM__MOD_DEPTH:
-				return getModDepth();
-			case EsxPackage.PART_DRUM__MOD_DEST:
-				return getModDest();
-			case EsxPackage.PART_DRUM__MOD_SPEED:
-				return getModSpeed();
-			case EsxPackage.PART_DRUM__MOD_TYPE:
-				return getModType();
-			case EsxPackage.PART_DRUM__PAN:
-				return getPan();
-			case EsxPackage.PART_DRUM__RESERVED_BIT_AFTER_MOD_DEPTH:
-				return getReservedBitAfterModDepth();
-			case EsxPackage.PART_DRUM__RESONANCE:
-				return getResonance();
-			case EsxPackage.PART_DRUM__ROLL:
-				return getRoll();
-			case EsxPackage.PART_DRUM__PITCH:
-				return getPitch();
-			case EsxPackage.PART_DRUM__REVERSE:
-				return getReverse();
-			case EsxPackage.PART_DRUM__SAMPLE_LABEL:
-				return getSampleLabel();
-			case EsxPackage.PART_DRUM__SAMPLE_POINTER:
-				return getSamplePointer();
-			case EsxPackage.PART_DRUM__START_POINT:
-				return getStartPoint();
-			case EsxPackage.PART_DRUM__RESERVED_BITS_AFTER_REVERSE:
-				return getReservedBitsAfterReverse();
-			case EsxPackage.PART_DRUM__SEQUENCE_DATA:
-				return getSequenceData();
-			case EsxPackage.PART_DRUM__RESERVED_BYTE:
-				return getReservedByte();
-			case EsxPackage.PART_DRUM__SLICE_NUMBER:
-				return getSliceNumber();
+		case EsxPackage.PART_DRUM__AMP_EG:
+			return getAmpEg();
+		case EsxPackage.PART_DRUM__BPM_SYNC:
+			return getBpmSync();
+		case EsxPackage.PART_DRUM__CUTOFF:
+			return getCutoff();
+		case EsxPackage.PART_DRUM__EG_INTENSITY:
+			return getEgIntensity();
+		case EsxPackage.PART_DRUM__EG_TIME:
+			return getEgTime();
+		case EsxPackage.PART_DRUM__FILTER_TYPE:
+			return getFilterType();
+		case EsxPackage.PART_DRUM__FX_SELECT:
+			return getFxSelect();
+		case EsxPackage.PART_DRUM__FX_SEND:
+			return getFxSend();
+		case EsxPackage.PART_DRUM__MOD_DEPTH:
+			return getModDepth();
+		case EsxPackage.PART_DRUM__MOD_DEST:
+			return getModDest();
+		case EsxPackage.PART_DRUM__MOD_SPEED:
+			return getModSpeed();
+		case EsxPackage.PART_DRUM__MOD_TYPE:
+			return getModType();
+		case EsxPackage.PART_DRUM__PAN:
+			return getPan();
+		case EsxPackage.PART_DRUM__RESERVED_BIT_AFTER_MOD_DEPTH:
+			return getReservedBitAfterModDepth();
+		case EsxPackage.PART_DRUM__RESONANCE:
+			return getResonance();
+		case EsxPackage.PART_DRUM__ROLL:
+			return getRoll();
+		case EsxPackage.PART_DRUM__PITCH:
+			return getPitch();
+		case EsxPackage.PART_DRUM__REVERSE:
+			return getReverse();
+		case EsxPackage.PART_DRUM__SAMPLE_LABEL:
+			return getSampleLabel();
+		case EsxPackage.PART_DRUM__SAMPLE_POINTER:
+			return getSamplePointer();
+		case EsxPackage.PART_DRUM__START_POINT:
+			return getStartPoint();
+		case EsxPackage.PART_DRUM__RESERVED_BITS_AFTER_REVERSE:
+			return getReservedBitsAfterReverse();
+		case EsxPackage.PART_DRUM__SEQUENCE_DATA:
+			return getSequenceData();
+		case EsxPackage.PART_DRUM__RESERVED_BYTE:
+			return getReservedByte();
+		case EsxPackage.PART_DRUM__SLICE_NUMBER:
+			return getSliceNumber();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1281,78 +1342,78 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.PART_DRUM__AMP_EG:
-				setAmpEg((AmpEg)newValue);
-				return;
-			case EsxPackage.PART_DRUM__BPM_SYNC:
-				setBpmSync((BpmSync)newValue);
-				return;
-			case EsxPackage.PART_DRUM__CUTOFF:
-				setCutoff((Byte)newValue);
-				return;
-			case EsxPackage.PART_DRUM__EG_INTENSITY:
-				setEgIntensity((Byte)newValue);
-				return;
-			case EsxPackage.PART_DRUM__EG_TIME:
-				setEgTime((Byte)newValue);
-				return;
-			case EsxPackage.PART_DRUM__FILTER_TYPE:
-				setFilterType((FilterType)newValue);
-				return;
-			case EsxPackage.PART_DRUM__FX_SELECT:
-				setFxSelect((FxSelect)newValue);
-				return;
-			case EsxPackage.PART_DRUM__FX_SEND:
-				setFxSend((FxSend)newValue);
-				return;
-			case EsxPackage.PART_DRUM__MOD_DEPTH:
-				setModDepth((Byte)newValue);
-				return;
-			case EsxPackage.PART_DRUM__MOD_DEST:
-				setModDest((ModDest)newValue);
-				return;
-			case EsxPackage.PART_DRUM__MOD_SPEED:
-				setModSpeed((Byte)newValue);
-				return;
-			case EsxPackage.PART_DRUM__MOD_TYPE:
-				setModType((ModType)newValue);
-				return;
-			case EsxPackage.PART_DRUM__PAN:
-				setPan((Byte)newValue);
-				return;
-			case EsxPackage.PART_DRUM__RESERVED_BIT_AFTER_MOD_DEPTH:
-				setReservedBitAfterModDepth((Byte)newValue);
-				return;
-			case EsxPackage.PART_DRUM__RESONANCE:
-				setResonance((Byte)newValue);
-				return;
-			case EsxPackage.PART_DRUM__ROLL:
-				setRoll((Roll)newValue);
-				return;
-			case EsxPackage.PART_DRUM__PITCH:
-				setPitch((Byte)newValue);
-				return;
-			case EsxPackage.PART_DRUM__REVERSE:
-				setReverse((Reverse)newValue);
-				return;
-			case EsxPackage.PART_DRUM__SAMPLE_POINTER:
-				setSamplePointer((Short)newValue);
-				return;
-			case EsxPackage.PART_DRUM__START_POINT:
-				setStartPoint((Byte)newValue);
-				return;
-			case EsxPackage.PART_DRUM__RESERVED_BITS_AFTER_REVERSE:
-				setReservedBitsAfterReverse((Byte)newValue);
-				return;
-			case EsxPackage.PART_DRUM__SEQUENCE_DATA:
-				setSequenceData((SequenceData)newValue);
-				return;
-			case EsxPackage.PART_DRUM__RESERVED_BYTE:
-				setReservedByte((Byte)newValue);
-				return;
-			case EsxPackage.PART_DRUM__SLICE_NUMBER:
-				setSliceNumber((Byte)newValue);
-				return;
+		case EsxPackage.PART_DRUM__AMP_EG:
+			setAmpEg((AmpEg) newValue);
+			return;
+		case EsxPackage.PART_DRUM__BPM_SYNC:
+			setBpmSync((BpmSync) newValue);
+			return;
+		case EsxPackage.PART_DRUM__CUTOFF:
+			setCutoff((Byte) newValue);
+			return;
+		case EsxPackage.PART_DRUM__EG_INTENSITY:
+			setEgIntensity((Byte) newValue);
+			return;
+		case EsxPackage.PART_DRUM__EG_TIME:
+			setEgTime((Byte) newValue);
+			return;
+		case EsxPackage.PART_DRUM__FILTER_TYPE:
+			setFilterType((FilterType) newValue);
+			return;
+		case EsxPackage.PART_DRUM__FX_SELECT:
+			setFxSelect((FxSelect) newValue);
+			return;
+		case EsxPackage.PART_DRUM__FX_SEND:
+			setFxSend((FxSend) newValue);
+			return;
+		case EsxPackage.PART_DRUM__MOD_DEPTH:
+			setModDepth((Byte) newValue);
+			return;
+		case EsxPackage.PART_DRUM__MOD_DEST:
+			setModDest((ModDest) newValue);
+			return;
+		case EsxPackage.PART_DRUM__MOD_SPEED:
+			setModSpeed((Byte) newValue);
+			return;
+		case EsxPackage.PART_DRUM__MOD_TYPE:
+			setModType((ModType) newValue);
+			return;
+		case EsxPackage.PART_DRUM__PAN:
+			setPan((Byte) newValue);
+			return;
+		case EsxPackage.PART_DRUM__RESERVED_BIT_AFTER_MOD_DEPTH:
+			setReservedBitAfterModDepth((Byte) newValue);
+			return;
+		case EsxPackage.PART_DRUM__RESONANCE:
+			setResonance((Byte) newValue);
+			return;
+		case EsxPackage.PART_DRUM__ROLL:
+			setRoll((Roll) newValue);
+			return;
+		case EsxPackage.PART_DRUM__PITCH:
+			setPitch((Byte) newValue);
+			return;
+		case EsxPackage.PART_DRUM__REVERSE:
+			setReverse((Reverse) newValue);
+			return;
+		case EsxPackage.PART_DRUM__SAMPLE_POINTER:
+			setSamplePointer((Short) newValue);
+			return;
+		case EsxPackage.PART_DRUM__START_POINT:
+			setStartPoint((Byte) newValue);
+			return;
+		case EsxPackage.PART_DRUM__RESERVED_BITS_AFTER_REVERSE:
+			setReservedBitsAfterReverse((Byte) newValue);
+			return;
+		case EsxPackage.PART_DRUM__SEQUENCE_DATA:
+			setSequenceData((SequenceData) newValue);
+			return;
+		case EsxPackage.PART_DRUM__RESERVED_BYTE:
+			setReservedByte((Byte) newValue);
+			return;
+		case EsxPackage.PART_DRUM__SLICE_NUMBER:
+			setSliceNumber((Byte) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1365,78 +1426,78 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_DRUM__AMP_EG:
-				setAmpEg(AMP_EG_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__BPM_SYNC:
-				setBpmSync(BPM_SYNC_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__CUTOFF:
-				setCutoff(CUTOFF_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__EG_INTENSITY:
-				setEgIntensity(EG_INTENSITY_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__EG_TIME:
-				setEgTime(EG_TIME_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__FILTER_TYPE:
-				setFilterType(FILTER_TYPE_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__FX_SELECT:
-				setFxSelect(FX_SELECT_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__FX_SEND:
-				setFxSend(FX_SEND_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__MOD_DEPTH:
-				setModDepth(MOD_DEPTH_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__MOD_DEST:
-				setModDest(MOD_DEST_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__MOD_SPEED:
-				setModSpeed(MOD_SPEED_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__MOD_TYPE:
-				setModType(MOD_TYPE_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__PAN:
-				setPan(PAN_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__RESERVED_BIT_AFTER_MOD_DEPTH:
-				setReservedBitAfterModDepth(RESERVED_BIT_AFTER_MOD_DEPTH_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__RESONANCE:
-				setResonance(RESONANCE_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__ROLL:
-				setRoll(ROLL_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__PITCH:
-				setPitch(PITCH_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__REVERSE:
-				setReverse(REVERSE_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__SAMPLE_POINTER:
-				setSamplePointer(SAMPLE_POINTER_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__START_POINT:
-				setStartPoint(START_POINT_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__RESERVED_BITS_AFTER_REVERSE:
-				setReservedBitsAfterReverse(RESERVED_BITS_AFTER_REVERSE_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__SEQUENCE_DATA:
-				setSequenceData((SequenceData)null);
-				return;
-			case EsxPackage.PART_DRUM__RESERVED_BYTE:
-				setReservedByte(RESERVED_BYTE_EDEFAULT);
-				return;
-			case EsxPackage.PART_DRUM__SLICE_NUMBER:
-				setSliceNumber(SLICE_NUMBER_EDEFAULT);
-				return;
+		case EsxPackage.PART_DRUM__AMP_EG:
+			setAmpEg(AMP_EG_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__BPM_SYNC:
+			setBpmSync(BPM_SYNC_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__CUTOFF:
+			setCutoff(CUTOFF_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__EG_INTENSITY:
+			setEgIntensity(EG_INTENSITY_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__EG_TIME:
+			setEgTime(EG_TIME_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__FILTER_TYPE:
+			setFilterType(FILTER_TYPE_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__FX_SELECT:
+			setFxSelect(FX_SELECT_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__FX_SEND:
+			setFxSend(FX_SEND_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__MOD_DEPTH:
+			setModDepth(MOD_DEPTH_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__MOD_DEST:
+			setModDest(MOD_DEST_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__MOD_SPEED:
+			setModSpeed(MOD_SPEED_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__MOD_TYPE:
+			setModType(MOD_TYPE_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__PAN:
+			setPan(PAN_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__RESERVED_BIT_AFTER_MOD_DEPTH:
+			setReservedBitAfterModDepth(RESERVED_BIT_AFTER_MOD_DEPTH_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__RESONANCE:
+			setResonance(RESONANCE_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__ROLL:
+			setRoll(ROLL_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__PITCH:
+			setPitch(PITCH_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__REVERSE:
+			setReverse(REVERSE_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__SAMPLE_POINTER:
+			setSamplePointer(SAMPLE_POINTER_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__START_POINT:
+			setStartPoint(START_POINT_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__RESERVED_BITS_AFTER_REVERSE:
+			setReservedBitsAfterReverse(RESERVED_BITS_AFTER_REVERSE_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__SEQUENCE_DATA:
+			setSequenceData((SequenceData) null);
+			return;
+		case EsxPackage.PART_DRUM__RESERVED_BYTE:
+			setReservedByte(RESERVED_BYTE_EDEFAULT);
+			return;
+		case EsxPackage.PART_DRUM__SLICE_NUMBER:
+			setSliceNumber(SLICE_NUMBER_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1449,56 +1510,57 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_DRUM__AMP_EG:
-				return ampEg != AMP_EG_EDEFAULT;
-			case EsxPackage.PART_DRUM__BPM_SYNC:
-				return bpmSync != BPM_SYNC_EDEFAULT;
-			case EsxPackage.PART_DRUM__CUTOFF:
-				return cutoff != CUTOFF_EDEFAULT;
-			case EsxPackage.PART_DRUM__EG_INTENSITY:
-				return egIntensity != EG_INTENSITY_EDEFAULT;
-			case EsxPackage.PART_DRUM__EG_TIME:
-				return egTime != EG_TIME_EDEFAULT;
-			case EsxPackage.PART_DRUM__FILTER_TYPE:
-				return filterType != FILTER_TYPE_EDEFAULT;
-			case EsxPackage.PART_DRUM__FX_SELECT:
-				return fxSelect != FX_SELECT_EDEFAULT;
-			case EsxPackage.PART_DRUM__FX_SEND:
-				return fxSend != FX_SEND_EDEFAULT;
-			case EsxPackage.PART_DRUM__MOD_DEPTH:
-				return modDepth != MOD_DEPTH_EDEFAULT;
-			case EsxPackage.PART_DRUM__MOD_DEST:
-				return modDest != MOD_DEST_EDEFAULT;
-			case EsxPackage.PART_DRUM__MOD_SPEED:
-				return modSpeed != MOD_SPEED_EDEFAULT;
-			case EsxPackage.PART_DRUM__MOD_TYPE:
-				return modType != MOD_TYPE_EDEFAULT;
-			case EsxPackage.PART_DRUM__PAN:
-				return pan != PAN_EDEFAULT;
-			case EsxPackage.PART_DRUM__RESERVED_BIT_AFTER_MOD_DEPTH:
-				return reservedBitAfterModDepth != RESERVED_BIT_AFTER_MOD_DEPTH_EDEFAULT;
-			case EsxPackage.PART_DRUM__RESONANCE:
-				return resonance != RESONANCE_EDEFAULT;
-			case EsxPackage.PART_DRUM__ROLL:
-				return roll != ROLL_EDEFAULT;
-			case EsxPackage.PART_DRUM__PITCH:
-				return pitch != PITCH_EDEFAULT;
-			case EsxPackage.PART_DRUM__REVERSE:
-				return reverse != REVERSE_EDEFAULT;
-			case EsxPackage.PART_DRUM__SAMPLE_LABEL:
-				return SAMPLE_LABEL_EDEFAULT == null ? getSampleLabel() != null : !SAMPLE_LABEL_EDEFAULT.equals(getSampleLabel());
-			case EsxPackage.PART_DRUM__SAMPLE_POINTER:
-				return samplePointer != SAMPLE_POINTER_EDEFAULT;
-			case EsxPackage.PART_DRUM__START_POINT:
-				return startPoint != START_POINT_EDEFAULT;
-			case EsxPackage.PART_DRUM__RESERVED_BITS_AFTER_REVERSE:
-				return reservedBitsAfterReverse != RESERVED_BITS_AFTER_REVERSE_EDEFAULT;
-			case EsxPackage.PART_DRUM__SEQUENCE_DATA:
-				return sequenceData != null;
-			case EsxPackage.PART_DRUM__RESERVED_BYTE:
-				return reservedByte != RESERVED_BYTE_EDEFAULT;
-			case EsxPackage.PART_DRUM__SLICE_NUMBER:
-				return sliceNumber != SLICE_NUMBER_EDEFAULT;
+		case EsxPackage.PART_DRUM__AMP_EG:
+			return ampEg != AMP_EG_EDEFAULT;
+		case EsxPackage.PART_DRUM__BPM_SYNC:
+			return bpmSync != BPM_SYNC_EDEFAULT;
+		case EsxPackage.PART_DRUM__CUTOFF:
+			return cutoff != CUTOFF_EDEFAULT;
+		case EsxPackage.PART_DRUM__EG_INTENSITY:
+			return egIntensity != EG_INTENSITY_EDEFAULT;
+		case EsxPackage.PART_DRUM__EG_TIME:
+			return egTime != EG_TIME_EDEFAULT;
+		case EsxPackage.PART_DRUM__FILTER_TYPE:
+			return filterType != FILTER_TYPE_EDEFAULT;
+		case EsxPackage.PART_DRUM__FX_SELECT:
+			return fxSelect != FX_SELECT_EDEFAULT;
+		case EsxPackage.PART_DRUM__FX_SEND:
+			return fxSend != FX_SEND_EDEFAULT;
+		case EsxPackage.PART_DRUM__MOD_DEPTH:
+			return modDepth != MOD_DEPTH_EDEFAULT;
+		case EsxPackage.PART_DRUM__MOD_DEST:
+			return modDest != MOD_DEST_EDEFAULT;
+		case EsxPackage.PART_DRUM__MOD_SPEED:
+			return modSpeed != MOD_SPEED_EDEFAULT;
+		case EsxPackage.PART_DRUM__MOD_TYPE:
+			return modType != MOD_TYPE_EDEFAULT;
+		case EsxPackage.PART_DRUM__PAN:
+			return pan != PAN_EDEFAULT;
+		case EsxPackage.PART_DRUM__RESERVED_BIT_AFTER_MOD_DEPTH:
+			return reservedBitAfterModDepth != RESERVED_BIT_AFTER_MOD_DEPTH_EDEFAULT;
+		case EsxPackage.PART_DRUM__RESONANCE:
+			return resonance != RESONANCE_EDEFAULT;
+		case EsxPackage.PART_DRUM__ROLL:
+			return roll != ROLL_EDEFAULT;
+		case EsxPackage.PART_DRUM__PITCH:
+			return pitch != PITCH_EDEFAULT;
+		case EsxPackage.PART_DRUM__REVERSE:
+			return reverse != REVERSE_EDEFAULT;
+		case EsxPackage.PART_DRUM__SAMPLE_LABEL:
+			return SAMPLE_LABEL_EDEFAULT == null ? getSampleLabel() != null
+					: !SAMPLE_LABEL_EDEFAULT.equals(getSampleLabel());
+		case EsxPackage.PART_DRUM__SAMPLE_POINTER:
+			return samplePointer != SAMPLE_POINTER_EDEFAULT;
+		case EsxPackage.PART_DRUM__START_POINT:
+			return startPoint != START_POINT_EDEFAULT;
+		case EsxPackage.PART_DRUM__RESERVED_BITS_AFTER_REVERSE:
+			return reservedBitsAfterReverse != RESERVED_BITS_AFTER_REVERSE_EDEFAULT;
+		case EsxPackage.PART_DRUM__SEQUENCE_DATA:
+			return sequenceData != null;
+		case EsxPackage.PART_DRUM__RESERVED_BYTE:
+			return reservedByte != RESERVED_BYTE_EDEFAULT;
+		case EsxPackage.PART_DRUM__SLICE_NUMBER:
+			return sliceNumber != SLICE_NUMBER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1512,52 +1574,82 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == PartWithCommon.class) {
 			switch (derivedFeatureID) {
-				case EsxPackage.PART_DRUM__AMP_EG: return EsxPackage.PART_WITH_COMMON__AMP_EG;
-				case EsxPackage.PART_DRUM__BPM_SYNC: return EsxPackage.PART_WITH_COMMON__BPM_SYNC;
-				case EsxPackage.PART_DRUM__CUTOFF: return EsxPackage.PART_WITH_COMMON__CUTOFF;
-				case EsxPackage.PART_DRUM__EG_INTENSITY: return EsxPackage.PART_WITH_COMMON__EG_INTENSITY;
-				case EsxPackage.PART_DRUM__EG_TIME: return EsxPackage.PART_WITH_COMMON__EG_TIME;
-				case EsxPackage.PART_DRUM__FILTER_TYPE: return EsxPackage.PART_WITH_COMMON__FILTER_TYPE;
-				case EsxPackage.PART_DRUM__FX_SELECT: return EsxPackage.PART_WITH_COMMON__FX_SELECT;
-				case EsxPackage.PART_DRUM__FX_SEND: return EsxPackage.PART_WITH_COMMON__FX_SEND;
-				case EsxPackage.PART_DRUM__MOD_DEPTH: return EsxPackage.PART_WITH_COMMON__MOD_DEPTH;
-				case EsxPackage.PART_DRUM__MOD_DEST: return EsxPackage.PART_WITH_COMMON__MOD_DEST;
-				case EsxPackage.PART_DRUM__MOD_SPEED: return EsxPackage.PART_WITH_COMMON__MOD_SPEED;
-				case EsxPackage.PART_DRUM__MOD_TYPE: return EsxPackage.PART_WITH_COMMON__MOD_TYPE;
-				case EsxPackage.PART_DRUM__PAN: return EsxPackage.PART_WITH_COMMON__PAN;
-				case EsxPackage.PART_DRUM__RESERVED_BIT_AFTER_MOD_DEPTH: return EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH;
-				case EsxPackage.PART_DRUM__RESONANCE: return EsxPackage.PART_WITH_COMMON__RESONANCE;
-				case EsxPackage.PART_DRUM__ROLL: return EsxPackage.PART_WITH_COMMON__ROLL;
-				default: return -1;
+			case EsxPackage.PART_DRUM__AMP_EG:
+				return EsxPackage.PART_WITH_COMMON__AMP_EG;
+			case EsxPackage.PART_DRUM__BPM_SYNC:
+				return EsxPackage.PART_WITH_COMMON__BPM_SYNC;
+			case EsxPackage.PART_DRUM__CUTOFF:
+				return EsxPackage.PART_WITH_COMMON__CUTOFF;
+			case EsxPackage.PART_DRUM__EG_INTENSITY:
+				return EsxPackage.PART_WITH_COMMON__EG_INTENSITY;
+			case EsxPackage.PART_DRUM__EG_TIME:
+				return EsxPackage.PART_WITH_COMMON__EG_TIME;
+			case EsxPackage.PART_DRUM__FILTER_TYPE:
+				return EsxPackage.PART_WITH_COMMON__FILTER_TYPE;
+			case EsxPackage.PART_DRUM__FX_SELECT:
+				return EsxPackage.PART_WITH_COMMON__FX_SELECT;
+			case EsxPackage.PART_DRUM__FX_SEND:
+				return EsxPackage.PART_WITH_COMMON__FX_SEND;
+			case EsxPackage.PART_DRUM__MOD_DEPTH:
+				return EsxPackage.PART_WITH_COMMON__MOD_DEPTH;
+			case EsxPackage.PART_DRUM__MOD_DEST:
+				return EsxPackage.PART_WITH_COMMON__MOD_DEST;
+			case EsxPackage.PART_DRUM__MOD_SPEED:
+				return EsxPackage.PART_WITH_COMMON__MOD_SPEED;
+			case EsxPackage.PART_DRUM__MOD_TYPE:
+				return EsxPackage.PART_WITH_COMMON__MOD_TYPE;
+			case EsxPackage.PART_DRUM__PAN:
+				return EsxPackage.PART_WITH_COMMON__PAN;
+			case EsxPackage.PART_DRUM__RESERVED_BIT_AFTER_MOD_DEPTH:
+				return EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH;
+			case EsxPackage.PART_DRUM__RESONANCE:
+				return EsxPackage.PART_WITH_COMMON__RESONANCE;
+			case EsxPackage.PART_DRUM__ROLL:
+				return EsxPackage.PART_WITH_COMMON__ROLL;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == PartWithPitch.class) {
 			switch (derivedFeatureID) {
-				case EsxPackage.PART_DRUM__PITCH: return EsxPackage.PART_WITH_PITCH__PITCH;
-				default: return -1;
+			case EsxPackage.PART_DRUM__PITCH:
+				return EsxPackage.PART_WITH_PITCH__PITCH;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == PartWithSample.class) {
 			switch (derivedFeatureID) {
-				case EsxPackage.PART_DRUM__REVERSE: return EsxPackage.PART_WITH_SAMPLE__REVERSE;
-				case EsxPackage.PART_DRUM__SAMPLE_LABEL: return EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL;
-				case EsxPackage.PART_DRUM__SAMPLE_POINTER: return EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER;
-				case EsxPackage.PART_DRUM__START_POINT: return EsxPackage.PART_WITH_SAMPLE__START_POINT;
-				case EsxPackage.PART_DRUM__RESERVED_BITS_AFTER_REVERSE: return EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE;
-				default: return -1;
+			case EsxPackage.PART_DRUM__REVERSE:
+				return EsxPackage.PART_WITH_SAMPLE__REVERSE;
+			case EsxPackage.PART_DRUM__SAMPLE_LABEL:
+				return EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL;
+			case EsxPackage.PART_DRUM__SAMPLE_POINTER:
+				return EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER;
+			case EsxPackage.PART_DRUM__START_POINT:
+				return EsxPackage.PART_WITH_SAMPLE__START_POINT;
+			case EsxPackage.PART_DRUM__RESERVED_BITS_AFTER_REVERSE:
+				return EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == PartWithSequenceData.class) {
 			switch (derivedFeatureID) {
-				case EsxPackage.PART_DRUM__SEQUENCE_DATA: return EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA;
-				default: return -1;
+			case EsxPackage.PART_DRUM__SEQUENCE_DATA:
+				return EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == PartWithSlice.class) {
 			switch (derivedFeatureID) {
-				case EsxPackage.PART_DRUM__RESERVED_BYTE: return EsxPackage.PART_WITH_SLICE__RESERVED_BYTE;
-				case EsxPackage.PART_DRUM__SLICE_NUMBER: return EsxPackage.PART_WITH_SLICE__SLICE_NUMBER;
-				default: return -1;
+			case EsxPackage.PART_DRUM__RESERVED_BYTE:
+				return EsxPackage.PART_WITH_SLICE__RESERVED_BYTE;
+			case EsxPackage.PART_DRUM__SLICE_NUMBER:
+				return EsxPackage.PART_WITH_SLICE__SLICE_NUMBER;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
@@ -1572,52 +1664,82 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == PartWithCommon.class) {
 			switch (baseFeatureID) {
-				case EsxPackage.PART_WITH_COMMON__AMP_EG: return EsxPackage.PART_DRUM__AMP_EG;
-				case EsxPackage.PART_WITH_COMMON__BPM_SYNC: return EsxPackage.PART_DRUM__BPM_SYNC;
-				case EsxPackage.PART_WITH_COMMON__CUTOFF: return EsxPackage.PART_DRUM__CUTOFF;
-				case EsxPackage.PART_WITH_COMMON__EG_INTENSITY: return EsxPackage.PART_DRUM__EG_INTENSITY;
-				case EsxPackage.PART_WITH_COMMON__EG_TIME: return EsxPackage.PART_DRUM__EG_TIME;
-				case EsxPackage.PART_WITH_COMMON__FILTER_TYPE: return EsxPackage.PART_DRUM__FILTER_TYPE;
-				case EsxPackage.PART_WITH_COMMON__FX_SELECT: return EsxPackage.PART_DRUM__FX_SELECT;
-				case EsxPackage.PART_WITH_COMMON__FX_SEND: return EsxPackage.PART_DRUM__FX_SEND;
-				case EsxPackage.PART_WITH_COMMON__MOD_DEPTH: return EsxPackage.PART_DRUM__MOD_DEPTH;
-				case EsxPackage.PART_WITH_COMMON__MOD_DEST: return EsxPackage.PART_DRUM__MOD_DEST;
-				case EsxPackage.PART_WITH_COMMON__MOD_SPEED: return EsxPackage.PART_DRUM__MOD_SPEED;
-				case EsxPackage.PART_WITH_COMMON__MOD_TYPE: return EsxPackage.PART_DRUM__MOD_TYPE;
-				case EsxPackage.PART_WITH_COMMON__PAN: return EsxPackage.PART_DRUM__PAN;
-				case EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH: return EsxPackage.PART_DRUM__RESERVED_BIT_AFTER_MOD_DEPTH;
-				case EsxPackage.PART_WITH_COMMON__RESONANCE: return EsxPackage.PART_DRUM__RESONANCE;
-				case EsxPackage.PART_WITH_COMMON__ROLL: return EsxPackage.PART_DRUM__ROLL;
-				default: return -1;
+			case EsxPackage.PART_WITH_COMMON__AMP_EG:
+				return EsxPackage.PART_DRUM__AMP_EG;
+			case EsxPackage.PART_WITH_COMMON__BPM_SYNC:
+				return EsxPackage.PART_DRUM__BPM_SYNC;
+			case EsxPackage.PART_WITH_COMMON__CUTOFF:
+				return EsxPackage.PART_DRUM__CUTOFF;
+			case EsxPackage.PART_WITH_COMMON__EG_INTENSITY:
+				return EsxPackage.PART_DRUM__EG_INTENSITY;
+			case EsxPackage.PART_WITH_COMMON__EG_TIME:
+				return EsxPackage.PART_DRUM__EG_TIME;
+			case EsxPackage.PART_WITH_COMMON__FILTER_TYPE:
+				return EsxPackage.PART_DRUM__FILTER_TYPE;
+			case EsxPackage.PART_WITH_COMMON__FX_SELECT:
+				return EsxPackage.PART_DRUM__FX_SELECT;
+			case EsxPackage.PART_WITH_COMMON__FX_SEND:
+				return EsxPackage.PART_DRUM__FX_SEND;
+			case EsxPackage.PART_WITH_COMMON__MOD_DEPTH:
+				return EsxPackage.PART_DRUM__MOD_DEPTH;
+			case EsxPackage.PART_WITH_COMMON__MOD_DEST:
+				return EsxPackage.PART_DRUM__MOD_DEST;
+			case EsxPackage.PART_WITH_COMMON__MOD_SPEED:
+				return EsxPackage.PART_DRUM__MOD_SPEED;
+			case EsxPackage.PART_WITH_COMMON__MOD_TYPE:
+				return EsxPackage.PART_DRUM__MOD_TYPE;
+			case EsxPackage.PART_WITH_COMMON__PAN:
+				return EsxPackage.PART_DRUM__PAN;
+			case EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH:
+				return EsxPackage.PART_DRUM__RESERVED_BIT_AFTER_MOD_DEPTH;
+			case EsxPackage.PART_WITH_COMMON__RESONANCE:
+				return EsxPackage.PART_DRUM__RESONANCE;
+			case EsxPackage.PART_WITH_COMMON__ROLL:
+				return EsxPackage.PART_DRUM__ROLL;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == PartWithPitch.class) {
 			switch (baseFeatureID) {
-				case EsxPackage.PART_WITH_PITCH__PITCH: return EsxPackage.PART_DRUM__PITCH;
-				default: return -1;
+			case EsxPackage.PART_WITH_PITCH__PITCH:
+				return EsxPackage.PART_DRUM__PITCH;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == PartWithSample.class) {
 			switch (baseFeatureID) {
-				case EsxPackage.PART_WITH_SAMPLE__REVERSE: return EsxPackage.PART_DRUM__REVERSE;
-				case EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL: return EsxPackage.PART_DRUM__SAMPLE_LABEL;
-				case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER: return EsxPackage.PART_DRUM__SAMPLE_POINTER;
-				case EsxPackage.PART_WITH_SAMPLE__START_POINT: return EsxPackage.PART_DRUM__START_POINT;
-				case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE: return EsxPackage.PART_DRUM__RESERVED_BITS_AFTER_REVERSE;
-				default: return -1;
+			case EsxPackage.PART_WITH_SAMPLE__REVERSE:
+				return EsxPackage.PART_DRUM__REVERSE;
+			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL:
+				return EsxPackage.PART_DRUM__SAMPLE_LABEL;
+			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER:
+				return EsxPackage.PART_DRUM__SAMPLE_POINTER;
+			case EsxPackage.PART_WITH_SAMPLE__START_POINT:
+				return EsxPackage.PART_DRUM__START_POINT;
+			case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE:
+				return EsxPackage.PART_DRUM__RESERVED_BITS_AFTER_REVERSE;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == PartWithSequenceData.class) {
 			switch (baseFeatureID) {
-				case EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA: return EsxPackage.PART_DRUM__SEQUENCE_DATA;
-				default: return -1;
+			case EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA:
+				return EsxPackage.PART_DRUM__SEQUENCE_DATA;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == PartWithSlice.class) {
 			switch (baseFeatureID) {
-				case EsxPackage.PART_WITH_SLICE__RESERVED_BYTE: return EsxPackage.PART_DRUM__RESERVED_BYTE;
-				case EsxPackage.PART_WITH_SLICE__SLICE_NUMBER: return EsxPackage.PART_DRUM__SLICE_NUMBER;
-				default: return -1;
+			case EsxPackage.PART_WITH_SLICE__RESERVED_BYTE:
+				return EsxPackage.PART_DRUM__RESERVED_BYTE;
+			case EsxPackage.PART_WITH_SLICE__SLICE_NUMBER:
+				return EsxPackage.PART_DRUM__SLICE_NUMBER;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
@@ -1630,7 +1752,8 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (ampEg: ");
@@ -1688,11 +1811,11 @@ public class PartDrumImpl extends PartImpl implements PartDrum {
 		int containerIndex = 0;
 
 		EObject parent = this.eContainer();
-		if(parent instanceof Pattern) {
+		if (parent instanceof Pattern) {
 			containerIndex = ((Pattern) parent).getDrumParts().indexOf(this);
 		}
 
-		return SongEventPart.get(0+containerIndex).getLiteral();
+		return SongEventPart.get(0 + containerIndex).getLiteral();
 	}
 
 } //PartDrumImpl

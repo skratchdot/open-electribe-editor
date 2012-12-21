@@ -89,10 +89,13 @@ public class ChunkDataImpl extends ChunkImpl implements ChunkData {
 	}
 
 	@Override
-	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf)
+			throws RiffWaveException {
 		// Check Chunk Type ID
-		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
-			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+		if (ChunkTypeID.get((int) buf.getUnsignedInt()) != this
+				.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "
+					+ this.getChunkTypeID().getLiteral());
 
 		// Read in data size
 		int chunkSize = (int) buf.getUnsignedInt();
@@ -120,7 +123,8 @@ public class ChunkDataImpl extends ChunkImpl implements ChunkData {
 	 */
 	public EList<Channel> getChannels() {
 		if (channels == null) {
-			channels = new EObjectContainmentEList<Channel>(Channel.class, this, WavPackage.CHUNK_DATA__CHANNELS);
+			channels = new EObjectContainmentEList<Channel>(Channel.class,
+					this, WavPackage.CHUNK_DATA__CHANNELS);
 		}
 		return channels;
 	}
@@ -143,7 +147,9 @@ public class ChunkDataImpl extends ChunkImpl implements ChunkData {
 		byte[] oldSampleDataOriginal = sampleDataOriginal;
 		sampleDataOriginal = newSampleDataOriginal;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_DATA__SAMPLE_DATA_ORIGINAL, oldSampleDataOriginal, sampleDataOriginal));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_DATA__SAMPLE_DATA_ORIGINAL,
+					oldSampleDataOriginal, sampleDataOriginal));
 	}
 
 	/* (non-Javadoc)
@@ -167,7 +173,7 @@ public class ChunkDataImpl extends ChunkImpl implements ChunkData {
 	 */
 	@Override
 	public long getSize() {
-		if(this.getSampleDataOriginal()!=null) {
+		if (this.getSampleDataOriginal() != null) {
 			return this.getSampleDataOriginal().length;
 		}
 		return 0;
@@ -179,10 +185,12 @@ public class ChunkDataImpl extends ChunkImpl implements ChunkData {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case WavPackage.CHUNK_DATA__CHANNELS:
-				return ((InternalEList<?>)getChannels()).basicRemove(otherEnd, msgs);
+		case WavPackage.CHUNK_DATA__CHANNELS:
+			return ((InternalEList<?>) getChannels()).basicRemove(otherEnd,
+					msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -195,10 +203,10 @@ public class ChunkDataImpl extends ChunkImpl implements ChunkData {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.CHUNK_DATA__CHANNELS:
-				return getChannels();
-			case WavPackage.CHUNK_DATA__SAMPLE_DATA_ORIGINAL:
-				return getSampleDataOriginal();
+		case WavPackage.CHUNK_DATA__CHANNELS:
+			return getChannels();
+		case WavPackage.CHUNK_DATA__SAMPLE_DATA_ORIGINAL:
+			return getSampleDataOriginal();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -212,13 +220,13 @@ public class ChunkDataImpl extends ChunkImpl implements ChunkData {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.CHUNK_DATA__CHANNELS:
-				getChannels().clear();
-				getChannels().addAll((Collection<? extends Channel>)newValue);
-				return;
-			case WavPackage.CHUNK_DATA__SAMPLE_DATA_ORIGINAL:
-				setSampleDataOriginal((byte[])newValue);
-				return;
+		case WavPackage.CHUNK_DATA__CHANNELS:
+			getChannels().clear();
+			getChannels().addAll((Collection<? extends Channel>) newValue);
+			return;
+		case WavPackage.CHUNK_DATA__SAMPLE_DATA_ORIGINAL:
+			setSampleDataOriginal((byte[]) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -231,12 +239,12 @@ public class ChunkDataImpl extends ChunkImpl implements ChunkData {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_DATA__CHANNELS:
-				getChannels().clear();
-				return;
-			case WavPackage.CHUNK_DATA__SAMPLE_DATA_ORIGINAL:
-				setSampleDataOriginal(SAMPLE_DATA_ORIGINAL_EDEFAULT);
-				return;
+		case WavPackage.CHUNK_DATA__CHANNELS:
+			getChannels().clear();
+			return;
+		case WavPackage.CHUNK_DATA__SAMPLE_DATA_ORIGINAL:
+			setSampleDataOriginal(SAMPLE_DATA_ORIGINAL_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -249,10 +257,11 @@ public class ChunkDataImpl extends ChunkImpl implements ChunkData {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_DATA__CHANNELS:
-				return channels != null && !channels.isEmpty();
-			case WavPackage.CHUNK_DATA__SAMPLE_DATA_ORIGINAL:
-				return SAMPLE_DATA_ORIGINAL_EDEFAULT == null ? sampleDataOriginal != null : !SAMPLE_DATA_ORIGINAL_EDEFAULT.equals(sampleDataOriginal);
+		case WavPackage.CHUNK_DATA__CHANNELS:
+			return channels != null && !channels.isEmpty();
+		case WavPackage.CHUNK_DATA__SAMPLE_DATA_ORIGINAL:
+			return SAMPLE_DATA_ORIGINAL_EDEFAULT == null ? sampleDataOriginal != null
+					: !SAMPLE_DATA_ORIGINAL_EDEFAULT.equals(sampleDataOriginal);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -264,7 +273,8 @@ public class ChunkDataImpl extends ChunkImpl implements ChunkData {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (sampleDataOriginal: ");
@@ -275,12 +285,13 @@ public class ChunkDataImpl extends ChunkImpl implements ChunkData {
 
 	@Override
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				(int) this.getSize() + 8);
 		buf.order(ByteOrder.LITTLE_ENDIAN);
 
 		buf.putUnsignedInt(this.getChunkTypeIDValue());
 		buf.putUnsignedInt(this.getSize());
-		if(this.getSampleDataOriginal()!=null) {
+		if (this.getSampleDataOriginal() != null) {
 			buf.putBytes(this.getSampleDataOriginal());
 		}
 

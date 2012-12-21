@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.audioplayer.util;
 
-
 import java.io.File;
 import java.io.IOException;
 
@@ -23,8 +22,9 @@ public class AudioUtil {
 
 	public static boolean isStereo(File file) {
 		try {
-			AudioFileFormat audioFileFormat = AudioSystem.getAudioFileFormat(file);
-			return (audioFileFormat.getFormat().getChannels()>1);
+			AudioFileFormat audioFileFormat = AudioSystem
+					.getAudioFileFormat(file);
+			return (audioFileFormat.getFormat().getChannels() > 1);
 		} catch (UnsupportedAudioFileException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -32,7 +32,7 @@ public class AudioUtil {
 		}
 		return false;
 	}
-	
+
 	public static boolean isAudioFile(File file) {
 		try {
 			AudioSystem.getAudioFileFormat(file);

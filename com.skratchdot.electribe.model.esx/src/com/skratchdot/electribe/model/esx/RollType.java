@@ -108,12 +108,8 @@ public enum RollType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final RollType[] VALUES_ARRAY =
-		new RollType[] {
-			ROLL_2,
-			ROLL_3,
-			ROLL_4,
-		};
+	private static final RollType[] VALUES_ARRAY = new RollType[] { ROLL_2,
+			ROLL_3, ROLL_4, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Roll Type</b></em>' enumerators.
@@ -121,7 +117,8 @@ public enum RollType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<RollType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<RollType> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Roll Type</b></em>' literal with the specified literal value.
@@ -163,9 +160,12 @@ public enum RollType implements Enumerator {
 	 */
 	public static RollType get(int value) {
 		switch (value) {
-			case ROLL_2_VALUE: return ROLL_2;
-			case ROLL_3_VALUE: return ROLL_3;
-			case ROLL_4_VALUE: return ROLL_4;
+		case ROLL_2_VALUE:
+			return ROLL_2;
+		case ROLL_3_VALUE:
+			return ROLL_3;
+		case ROLL_4_VALUE:
+			return ROLL_4;
 		}
 		return null;
 	}
@@ -209,7 +209,7 @@ public enum RollType implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -218,7 +218,7 @@ public enum RollType implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -227,7 +227,7 @@ public enum RollType implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

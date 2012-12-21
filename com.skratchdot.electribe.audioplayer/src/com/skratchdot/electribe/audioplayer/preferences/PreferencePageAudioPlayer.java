@@ -33,10 +33,8 @@ public class PreferencePageAudioPlayer extends FieldEditorPreferencePage
 	 */
 	public void init(IWorkbench workbench) {
 		setPreferenceStore(PlatformUI.getPreferenceStore());
-		setDescription(
-			"You can set the way the AudioPlayer behaves when " +
-			"double-clicking on an audio file or sample."
-		);
+		setDescription("You can set the way the AudioPlayer behaves when "
+				+ "double-clicking on an audio file or sample.");
 	}
 
 	/**
@@ -45,7 +43,20 @@ public class PreferencePageAudioPlayer extends FieldEditorPreferencePage
 	@Override
 	protected void createFieldEditors() {
 		// Create the field editors
-		addField(new ComboFieldEditor(PreferenceConstants.AUDIOPLAYER_DOUBLECLICK_BEHAVIOR, "Active Selection Double-Click Behavior:", new String[][]{{"Play/Loop", PreferenceConstants.AUDIOPLAYER_DOUBLECLICK_PLAY_OR_LOOP}, {"Loop Always", PreferenceConstants.AUDIOPLAYER_DOUBLECLICK_LOOP_ALWAYS}, {"Play Always", PreferenceConstants.AUDIOPLAYER_DOUBLECLICK_PLAY_ALWAYS}}, getFieldEditorParent()));
+		addField(new ComboFieldEditor(
+				PreferenceConstants.AUDIOPLAYER_DOUBLECLICK_BEHAVIOR,
+				"Active Selection Double-Click Behavior:",
+				new String[][] {
+						{
+								"Play/Loop",
+								PreferenceConstants.AUDIOPLAYER_DOUBLECLICK_PLAY_OR_LOOP },
+						{
+								"Loop Always",
+								PreferenceConstants.AUDIOPLAYER_DOUBLECLICK_LOOP_ALWAYS },
+						{
+								"Play Always",
+								PreferenceConstants.AUDIOPLAYER_DOUBLECLICK_PLAY_ALWAYS } },
+				getFieldEditorParent()));
 	}
 
 }

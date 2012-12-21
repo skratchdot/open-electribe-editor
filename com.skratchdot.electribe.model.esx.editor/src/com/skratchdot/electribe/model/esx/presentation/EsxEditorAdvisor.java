@@ -34,7 +34,6 @@ import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceInitializer;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceNames;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
 
-
 /**
  * Customized {@link WorkbenchAdvisor} for the RCP application.
  * <!-- begin-user-doc -->
@@ -59,15 +58,14 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 			WorkbenchAdvisor workbenchAdvisor = new EsxEditorAdvisor();
 			Display display = PlatformUI.createDisplay();
 			try {
-				int returnCode = PlatformUI.createAndRunWorkbench(display, workbenchAdvisor);
+				int returnCode = PlatformUI.createAndRunWorkbench(display,
+						workbenchAdvisor);
 				if (returnCode == PlatformUI.RETURN_RESTART) {
 					return IApplication.EXIT_RESTART;
-				}
-				else {
+				} else {
 					return IApplication.EXIT_OK;
 				}
-			}
-			finally {
+			} finally {
 				display.dispose();
 			}
 		}
@@ -82,7 +80,7 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 			// Do nothing.
 		}
 	}
-	
+
 	/**
 	 * RCP's window advisor
 	 * <!-- begin-user-doc -->
@@ -99,7 +97,7 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		public WindowAdvisor(IWorkbenchWindowConfigurer configurer) {
 			super(configurer);
 		}
-		
+
 		/**
 		 * @see org.eclipse.ui.application.WorkbenchWindowAdvisor#preWindowOpen()
 		 * <!-- begin-user-doc -->
@@ -112,10 +110,12 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 			configurer.setInitialSize(new Point(800, 600));
 			configurer.setShowCoolBar(true);
 			configurer.setShowStatusLine(true);
-	        configurer.setShowProgressIndicator(true);
-			configurer.setTitle(EsxEditorUtil.getString("_UI_Application_title"));
+			configurer.setShowProgressIndicator(true);
+			configurer.setTitle(EsxEditorUtil
+					.getString("_UI_Application_title"));
 			configurer.addEditorAreaTransfer(FileTransfer.getInstance());
-			configurer.configureEditorAreaDropListener(new EsxEditorDropTargetAdapter());
+			configurer
+					.configureEditorAreaDropListener(new EsxEditorDropTargetAdapter());
 
 			// Make sure our preferences are initialized with default values
 			EsxPreferenceInitializer preferenceInitializer = new EsxPreferenceInitializer();
@@ -129,7 +129,8 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		 * @generated
 		 */
 		@Override
-		public ActionBarAdvisor createActionBarAdvisor(IActionBarConfigurer configurer) {
+		public ActionBarAdvisor createActionBarAdvisor(
+				IActionBarConfigurer configurer) {
 			return new WindowActionBarAdvisor(configurer);
 		}
 	}
@@ -169,16 +170,16 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 			//register(ActionFactory.SELECT_ALL.create(window));
 			register(ActionFactory.UNDO.create(window));
 		}
-	
+
 	}
-	
+
 	/**
 	 * @see org.eclipse.ui.application.WorkbenchAdvisor#getInitialWindowPerspectiveId()
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-		@Override
+	@Override
 	public String getInitialWindowPerspectiveId() {
 		return Default.ID;
 	}
@@ -189,7 +190,7 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-		@Override
+	@Override
 	public void initialize(IWorkbenchConfigurer configurer) {
 		super.initialize(configurer);
 		configurer.setSaveAndRestore(true);
@@ -201,8 +202,9 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-		@Override
-	public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(IWorkbenchWindowConfigurer configurer) {
+	@Override
+	public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(
+			IWorkbenchWindowConfigurer configurer) {
 		return new WindowAdvisor(configurer);
 	}
 
@@ -212,13 +214,13 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 	 * After shutting down, we try to clear out the "temp" folder.
 	 * <!-- end-user-doc -->
 	 */
-		@Override
+	@Override
 	public void postShutdown() {
 		super.postShutdown();
 
 		// Attempt to clear up space in the temp folder
-		String tempDirectoryString = EsxPreferenceStore.getString(
-				EsxPreferenceNames.FILES_TEMP_DIRECTORY);
+		String tempDirectoryString = EsxPreferenceStore
+				.getString(EsxPreferenceNames.FILES_TEMP_DIRECTORY);
 		File tempDirectory = new File(tempDirectoryString);
 		EsxEditorUtil.clearTempDirectory(tempDirectory);
 	}

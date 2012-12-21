@@ -66,7 +66,7 @@ public class WavAdapterFactory extends AdapterFactoryImpl {
 			return true;
 		}
 		if (object instanceof EObject) {
-			return ((EObject)object).eClass().getEPackage() == modelPackage;
+			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -77,113 +77,138 @@ public class WavAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected WavSwitch<Adapter> modelSwitch =
-		new WavSwitch<Adapter>() {
-			@Override
-			public Adapter caseRIFFWave(RIFFWave object) {
-				return createRIFFWaveAdapter();
-			}
-			@Override
-			public Adapter caseChannel(Channel object) {
-				return createChannelAdapter();
-			}
-			@Override
-			public Adapter caseChunk(Chunk object) {
-				return createChunkAdapter();
-			}
-			@Override
-			public Adapter caseChunkCue(ChunkCue object) {
-				return createChunkCueAdapter();
-			}
-			@Override
-			public Adapter caseChunkData(ChunkData object) {
-				return createChunkDataAdapter();
-			}
-			@Override
-			public Adapter caseChunkDataList(ChunkDataList object) {
-				return createChunkDataListAdapter();
-			}
-			@Override
-			public Adapter caseChunkDataListType(ChunkDataListType object) {
-				return createChunkDataListTypeAdapter();
-			}
-			@Override
-			public Adapter caseChunkDataListTypeLabel(ChunkDataListTypeLabel object) {
-				return createChunkDataListTypeLabelAdapter();
-			}
-			@Override
-			public Adapter caseChunkDataListTypeLabeledText(ChunkDataListTypeLabeledText object) {
-				return createChunkDataListTypeLabeledTextAdapter();
-			}
-			@Override
-			public Adapter caseChunkDataListTypeNote(ChunkDataListTypeNote object) {
-				return createChunkDataListTypeNoteAdapter();
-			}
-			@Override
-			public Adapter caseChunkFact(ChunkFact object) {
-				return createChunkFactAdapter();
-			}
-			@Override
-			public Adapter caseChunkFormat(ChunkFormat object) {
-				return createChunkFormatAdapter();
-			}
-			@Override
-			public Adapter caseChunkInstrument(ChunkInstrument object) {
-				return createChunkInstrumentAdapter();
-			}
-			@Override
-			public Adapter caseChunkPlayList(ChunkPlayList object) {
-				return createChunkPlayListAdapter();
-			}
-			@Override
-			public Adapter caseChunkSampler(ChunkSampler object) {
-				return createChunkSamplerAdapter();
-			}
-			@Override
-			public Adapter caseChunkSilent(ChunkSilent object) {
-				return createChunkSilentAdapter();
-			}
-			@Override
-			public Adapter caseChunkUnknown(ChunkUnknown object) {
-				return createChunkUnknownAdapter();
-			}
-			@Override
-			public Adapter caseChunkWaveList(ChunkWaveList object) {
-				return createChunkWaveListAdapter();
-			}
-			@Override
-			public Adapter caseCuePoint(CuePoint object) {
-				return createCuePointAdapter();
-			}
-			@Override
-			public Adapter caseParseChunkException(ParseChunkException object) {
-				return createParseChunkExceptionAdapter();
-			}
-			@Override
-			public Adapter caseSampleData(SampleData object) {
-				return createSampleDataAdapter();
-			}
-			@Override
-			public Adapter caseSampleData8Bit(SampleData8Bit object) {
-				return createSampleData8BitAdapter();
-			}
-			@Override
-			public Adapter caseSampleData16Bit(SampleData16Bit object) {
-				return createSampleData16BitAdapter();
-			}
-			@Override
-			public Adapter caseSampleLoop(SampleLoop object) {
-				return createSampleLoopAdapter();
-			}
-			@Override
-			public Adapter caseSegment(Segment object) {
-				return createSegmentAdapter();
-			}
-			@Override
-			public Adapter defaultCase(EObject object) {
-				return createEObjectAdapter();
-			}
-		};
+	protected WavSwitch<Adapter> modelSwitch = new WavSwitch<Adapter>() {
+		@Override
+		public Adapter caseRIFFWave(RIFFWave object) {
+			return createRIFFWaveAdapter();
+		}
+
+		@Override
+		public Adapter caseChannel(Channel object) {
+			return createChannelAdapter();
+		}
+
+		@Override
+		public Adapter caseChunk(Chunk object) {
+			return createChunkAdapter();
+		}
+
+		@Override
+		public Adapter caseChunkCue(ChunkCue object) {
+			return createChunkCueAdapter();
+		}
+
+		@Override
+		public Adapter caseChunkData(ChunkData object) {
+			return createChunkDataAdapter();
+		}
+
+		@Override
+		public Adapter caseChunkDataList(ChunkDataList object) {
+			return createChunkDataListAdapter();
+		}
+
+		@Override
+		public Adapter caseChunkDataListType(ChunkDataListType object) {
+			return createChunkDataListTypeAdapter();
+		}
+
+		@Override
+		public Adapter caseChunkDataListTypeLabel(ChunkDataListTypeLabel object) {
+			return createChunkDataListTypeLabelAdapter();
+		}
+
+		@Override
+		public Adapter caseChunkDataListTypeLabeledText(
+				ChunkDataListTypeLabeledText object) {
+			return createChunkDataListTypeLabeledTextAdapter();
+		}
+
+		@Override
+		public Adapter caseChunkDataListTypeNote(ChunkDataListTypeNote object) {
+			return createChunkDataListTypeNoteAdapter();
+		}
+
+		@Override
+		public Adapter caseChunkFact(ChunkFact object) {
+			return createChunkFactAdapter();
+		}
+
+		@Override
+		public Adapter caseChunkFormat(ChunkFormat object) {
+			return createChunkFormatAdapter();
+		}
+
+		@Override
+		public Adapter caseChunkInstrument(ChunkInstrument object) {
+			return createChunkInstrumentAdapter();
+		}
+
+		@Override
+		public Adapter caseChunkPlayList(ChunkPlayList object) {
+			return createChunkPlayListAdapter();
+		}
+
+		@Override
+		public Adapter caseChunkSampler(ChunkSampler object) {
+			return createChunkSamplerAdapter();
+		}
+
+		@Override
+		public Adapter caseChunkSilent(ChunkSilent object) {
+			return createChunkSilentAdapter();
+		}
+
+		@Override
+		public Adapter caseChunkUnknown(ChunkUnknown object) {
+			return createChunkUnknownAdapter();
+		}
+
+		@Override
+		public Adapter caseChunkWaveList(ChunkWaveList object) {
+			return createChunkWaveListAdapter();
+		}
+
+		@Override
+		public Adapter caseCuePoint(CuePoint object) {
+			return createCuePointAdapter();
+		}
+
+		@Override
+		public Adapter caseParseChunkException(ParseChunkException object) {
+			return createParseChunkExceptionAdapter();
+		}
+
+		@Override
+		public Adapter caseSampleData(SampleData object) {
+			return createSampleDataAdapter();
+		}
+
+		@Override
+		public Adapter caseSampleData8Bit(SampleData8Bit object) {
+			return createSampleData8BitAdapter();
+		}
+
+		@Override
+		public Adapter caseSampleData16Bit(SampleData16Bit object) {
+			return createSampleData16BitAdapter();
+		}
+
+		@Override
+		public Adapter caseSampleLoop(SampleLoop object) {
+			return createSampleLoopAdapter();
+		}
+
+		@Override
+		public Adapter caseSegment(Segment object) {
+			return createSegmentAdapter();
+		}
+
+		@Override
+		public Adapter defaultCase(EObject object) {
+			return createEObjectAdapter();
+		}
+	};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -195,9 +220,8 @@ public class WavAdapterFactory extends AdapterFactoryImpl {
 	 */
 	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject) target);
 	}
-
 
 	/**
 	 * Creates a new adapter for an object of class '{@link com.skratchdot.riff.wav.RIFFWave <em>RIFF Wave</em>}'.

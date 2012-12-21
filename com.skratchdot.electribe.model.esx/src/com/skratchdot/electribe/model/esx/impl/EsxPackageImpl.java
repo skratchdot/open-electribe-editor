@@ -759,10 +759,14 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public static EsxPackage init() {
-		if (isInited) return (EsxPackage)EPackage.Registry.INSTANCE.getEPackage(EsxPackage.eNS_URI);
+		if (isInited)
+			return (EsxPackage) EPackage.Registry.INSTANCE
+					.getEPackage(EsxPackage.eNS_URI);
 
 		// Obtain or create and register package
-		EsxPackageImpl theEsxPackage = (EsxPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof EsxPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new EsxPackageImpl());
+		EsxPackageImpl theEsxPackage = (EsxPackageImpl) (EPackage.Registry.INSTANCE
+				.get(eNS_URI) instanceof EsxPackageImpl ? EPackage.Registry.INSTANCE
+				.get(eNS_URI) : new EsxPackageImpl());
 
 		isInited = true;
 
@@ -773,18 +777,16 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		theEsxPackage.initializePackageContents();
 
 		// Register package validator
-		EValidator.Registry.INSTANCE.put
-			(theEsxPackage, 
-			 new EValidator.Descriptor() {
-				 public EValidator getEValidator() {
-					 return EsxValidator.INSTANCE;
-				 }
-			 });
+		EValidator.Registry.INSTANCE.put(theEsxPackage,
+				new EValidator.Descriptor() {
+					public EValidator getEValidator() {
+						return EsxValidator.INSTANCE;
+					}
+				});
 
 		// Mark meta-data to indicate it can't be changed
 		theEsxPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(EsxPackage.eNS_URI, theEsxPackage);
 		return theEsxPackage;
@@ -805,7 +807,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getEsxFile_OriginalNonAudioData() {
-		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) esxFileEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -814,7 +816,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getEsxFile_GlobalParameters() {
-		return (EReference)esxFileEClass.getEStructuralFeatures().get(1);
+		return (EReference) esxFileEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -823,7 +825,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getEsxFile_Patterns() {
-		return (EReference)esxFileEClass.getEStructuralFeatures().get(2);
+		return (EReference) esxFileEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -832,7 +834,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getEsxFile_Songs() {
-		return (EReference)esxFileEClass.getEStructuralFeatures().get(3);
+		return (EReference) esxFileEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -841,7 +843,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getEsxFile_Samples() {
-		return (EReference)esxFileEClass.getEStructuralFeatures().get(4);
+		return (EReference) esxFileEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -850,7 +852,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getEsxFile_EmptyPattern() {
-		return (EReference)esxFileEClass.getEStructuralFeatures().get(5);
+		return (EReference) esxFileEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -859,7 +861,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getEsxFile_EmptySong() {
-		return (EReference)esxFileEClass.getEStructuralFeatures().get(6);
+		return (EReference) esxFileEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -868,7 +870,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getEsxFile_MaxSampleOffset() {
-		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(7);
+		return (EAttribute) esxFileEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -877,7 +879,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getEsxFile_MemUsedInBytes() {
-		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(8);
+		return (EAttribute) esxFileEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -886,7 +888,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getEsxFile_MemUsedInSeconds() {
-		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(9);
+		return (EAttribute) esxFileEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -895,7 +897,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getEsxFile_MemFreeInBytes() {
-		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(10);
+		return (EAttribute) esxFileEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -904,7 +906,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getEsxFile_MemFreeInSeconds() {
-		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(11);
+		return (EAttribute) esxFileEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -913,7 +915,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getEsxFile_NumPatternsEmpty() {
-		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(12);
+		return (EAttribute) esxFileEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -922,7 +924,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getEsxFile_NumPatternsNotEmpty() {
-		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(13);
+		return (EAttribute) esxFileEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -931,7 +933,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getEsxFile_NumSamplesEmpty() {
-		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(14);
+		return (EAttribute) esxFileEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -940,7 +942,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getEsxFile_NumSamplesNotEmpty() {
-		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(15);
+		return (EAttribute) esxFileEClass.getEStructuralFeatures().get(15);
 	}
 
 	/**
@@ -949,7 +951,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getEsxFile_NumSamplesMonoEmpty() {
-		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(16);
+		return (EAttribute) esxFileEClass.getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -958,7 +960,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getEsxFile_NumSamplesMonoNotEmpty() {
-		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(17);
+		return (EAttribute) esxFileEClass.getEStructuralFeatures().get(17);
 	}
 
 	/**
@@ -967,7 +969,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getEsxFile_NumSamplesStereoEmpty() {
-		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(18);
+		return (EAttribute) esxFileEClass.getEStructuralFeatures().get(18);
 	}
 
 	/**
@@ -976,7 +978,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getEsxFile_NumSamplesStereoNotEmpty() {
-		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(19);
+		return (EAttribute) esxFileEClass.getEStructuralFeatures().get(19);
 	}
 
 	/**
@@ -985,7 +987,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getEsxFile_NumSongsEmpty() {
-		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(20);
+		return (EAttribute) esxFileEClass.getEStructuralFeatures().get(20);
 	}
 
 	/**
@@ -994,7 +996,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getEsxFile_NumSongsNotEmpty() {
-		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(21);
+		return (EAttribute) esxFileEClass.getEStructuralFeatures().get(21);
 	}
 
 	/**
@@ -1003,7 +1005,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getEsxFile_SyncPatternsOnMoveEnabled() {
-		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(22);
+		return (EAttribute) esxFileEClass.getEStructuralFeatures().get(22);
 	}
 
 	/**
@@ -1012,7 +1014,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getEsxFile_SyncSamplesOnMoveEnabled() {
-		return (EAttribute)esxFileEClass.getEStructuralFeatures().get(23);
+		return (EAttribute) esxFileEClass.getEStructuralFeatures().get(23);
 	}
 
 	/**
@@ -1030,7 +1032,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getGlobalParameters_MemoryProtectEnabled() {
-		return (EAttribute)globalParametersEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) globalParametersEClass.getEStructuralFeatures()
+				.get(0);
 	}
 
 	/**
@@ -1039,7 +1042,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getGlobalParameters_ReservedByte() {
-		return (EAttribute)globalParametersEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) globalParametersEClass.getEStructuralFeatures()
+				.get(1);
 	}
 
 	/**
@@ -1048,7 +1052,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getGlobalParameters_ArpeggiatorControl() {
-		return (EAttribute)globalParametersEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) globalParametersEClass.getEStructuralFeatures()
+				.get(2);
 	}
 
 	/**
@@ -1057,7 +1062,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getGlobalParameters_AudioInMode() {
-		return (EAttribute)globalParametersEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) globalParametersEClass.getEStructuralFeatures()
+				.get(3);
 	}
 
 	/**
@@ -1066,7 +1072,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getGlobalParameters_MidiClock() {
-		return (EAttribute)globalParametersEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) globalParametersEClass.getEStructuralFeatures()
+				.get(4);
 	}
 
 	/**
@@ -1075,7 +1082,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getGlobalParameters_NoteMessageEnabled() {
-		return (EAttribute)globalParametersEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) globalParametersEClass.getEStructuralFeatures()
+				.get(5);
 	}
 
 	/**
@@ -1084,7 +1092,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getGlobalParameters_SystemExEnabled() {
-		return (EAttribute)globalParametersEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) globalParametersEClass.getEStructuralFeatures()
+				.get(6);
 	}
 
 	/**
@@ -1093,7 +1102,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getGlobalParameters_ControlChangeEnabled() {
-		return (EAttribute)globalParametersEClass.getEStructuralFeatures().get(7);
+		return (EAttribute) globalParametersEClass.getEStructuralFeatures()
+				.get(7);
 	}
 
 	/**
@@ -1102,7 +1112,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getGlobalParameters_ProgramChangeEnabled() {
-		return (EAttribute)globalParametersEClass.getEStructuralFeatures().get(8);
+		return (EAttribute) globalParametersEClass.getEStructuralFeatures()
+				.get(8);
 	}
 
 	/**
@@ -1111,7 +1122,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getGlobalParameters_ReservedBitsAfterProgramChangeEnabled() {
-		return (EAttribute)globalParametersEClass.getEStructuralFeatures().get(9);
+		return (EAttribute) globalParametersEClass.getEStructuralFeatures()
+				.get(9);
 	}
 
 	/**
@@ -1120,7 +1132,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getGlobalParameters_PitchBendRange() {
-		return (EAttribute)globalParametersEClass.getEStructuralFeatures().get(10);
+		return (EAttribute) globalParametersEClass.getEStructuralFeatures()
+				.get(10);
 	}
 
 	/**
@@ -1129,7 +1142,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getGlobalParameters_MidiChannels() {
-		return (EReference)globalParametersEClass.getEStructuralFeatures().get(11);
+		return (EReference) globalParametersEClass.getEStructuralFeatures()
+				.get(11);
 	}
 
 	/**
@@ -1138,7 +1152,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getGlobalParameters_PartNoteNumbers() {
-		return (EReference)globalParametersEClass.getEStructuralFeatures().get(12);
+		return (EReference) globalParametersEClass.getEStructuralFeatures()
+				.get(12);
 	}
 
 	/**
@@ -1147,7 +1162,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getGlobalParameters_MidiControlChangeAssignments() {
-		return (EReference)globalParametersEClass.getEStructuralFeatures().get(13);
+		return (EReference) globalParametersEClass.getEStructuralFeatures()
+				.get(13);
 	}
 
 	/**
@@ -1156,7 +1172,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getGlobalParameters_ReservedLong() {
-		return (EAttribute)globalParametersEClass.getEStructuralFeatures().get(14);
+		return (EAttribute) globalParametersEClass.getEStructuralFeatures()
+				.get(14);
 	}
 
 	/**
@@ -1165,7 +1182,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getGlobalParameters_PatternSetParameters() {
-		return (EReference)globalParametersEClass.getEStructuralFeatures().get(15);
+		return (EReference) globalParametersEClass.getEStructuralFeatures()
+				.get(15);
 	}
 
 	/**
@@ -1183,7 +1201,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPatternSetParameter_PositionCurrent() {
-		return (EAttribute)patternSetParameterEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) patternSetParameterEClass.getEStructuralFeatures()
+				.get(0);
 	}
 
 	/**
@@ -1192,7 +1211,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPatternSetParameter_PatternPointer() {
-		return (EAttribute)patternSetParameterEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) patternSetParameterEClass.getEStructuralFeatures()
+				.get(1);
 	}
 
 	/**
@@ -1210,7 +1230,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getMidiChannelType_Name() {
-		return (EAttribute)midiChannelTypeEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) midiChannelTypeEClass.getEStructuralFeatures().get(
+				0);
 	}
 
 	/**
@@ -1219,7 +1240,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getMidiChannelType_MidiChannel() {
-		return (EAttribute)midiChannelTypeEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) midiChannelTypeEClass.getEStructuralFeatures().get(
+				1);
 	}
 
 	/**
@@ -1237,7 +1259,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartNoteNumber_Name() {
-		return (EAttribute)partNoteNumberEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) partNoteNumberEClass.getEStructuralFeatures()
+				.get(0);
 	}
 
 	/**
@@ -1246,7 +1269,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartNoteNumber_NoteNumber() {
-		return (EAttribute)partNoteNumberEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) partNoteNumberEClass.getEStructuralFeatures()
+				.get(1);
 	}
 
 	/**
@@ -1264,7 +1288,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getMidiControlChangeAssignment_Name() {
-		return (EAttribute)midiControlChangeAssignmentEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) midiControlChangeAssignmentEClass
+				.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1273,7 +1298,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getMidiControlChangeAssignment_Value() {
-		return (EAttribute)midiControlChangeAssignmentEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) midiControlChangeAssignmentEClass
+				.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1291,7 +1317,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getOperation_Value() {
-		return (EAttribute)operationEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) operationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1309,7 +1335,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getParametersFx_EffectType() {
-		return (EAttribute)parametersFxEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) parametersFxEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1318,7 +1344,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getParametersFx_Edit1() {
-		return (EAttribute)parametersFxEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) parametersFxEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1327,7 +1353,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getParametersFx_Edit2() {
-		return (EAttribute)parametersFxEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) parametersFxEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1336,7 +1362,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getParametersFx_MotionSequenceStatus() {
-		return (EAttribute)parametersFxEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) parametersFxEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1354,7 +1380,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getParametersMotion_CurrentPosition() {
-		return (EAttribute)parametersMotionEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) parametersMotionEClass.getEStructuralFeatures()
+				.get(0);
 	}
 
 	/**
@@ -1363,7 +1390,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getParametersMotion_Empty() {
-		return (EAttribute)parametersMotionEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) parametersMotionEClass.getEStructuralFeatures()
+				.get(1);
 	}
 
 	/**
@@ -1372,7 +1400,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getParametersMotion_Operation() {
-		return (EReference)parametersMotionEClass.getEStructuralFeatures().get(2);
+		return (EReference) parametersMotionEClass.getEStructuralFeatures()
+				.get(2);
 	}
 
 	/**
@@ -1381,7 +1410,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getParametersMotion_OperationNumber() {
-		return (EAttribute)parametersMotionEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) parametersMotionEClass.getEStructuralFeatures()
+				.get(3);
 	}
 
 	/**
@@ -1390,7 +1420,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getParametersMotion_OperationType() {
-		return (EAttribute)parametersMotionEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) parametersMotionEClass.getEStructuralFeatures()
+				.get(4);
 	}
 
 	/**
@@ -1408,7 +1439,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSequenceData_SequenceData() {
-		return (EAttribute)sequenceDataEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) sequenceDataEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1426,7 +1457,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSequenceDataGate_SequenceDataGate() {
-		return (EAttribute)sequenceDataGateEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) sequenceDataGateEClass.getEStructuralFeatures()
+				.get(0);
 	}
 
 	/**
@@ -1444,7 +1476,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSequenceDataNote_SequenceDataNote() {
-		return (EAttribute)sequenceDataNoteEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) sequenceDataNoteEClass.getEStructuralFeatures()
+				.get(0);
 	}
 
 	/**
@@ -1462,7 +1495,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPart_Label() {
-		return (EAttribute)partEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) partEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1471,7 +1504,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPart_Level() {
-		return (EAttribute)partEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) partEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1480,7 +1513,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPart_MotionSequenceStatus() {
-		return (EAttribute)partEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) partEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1498,7 +1531,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getPartWithSequenceData_SequenceData() {
-		return (EReference)partWithSequenceDataEClass.getEStructuralFeatures().get(0);
+		return (EReference) partWithSequenceDataEClass.getEStructuralFeatures()
+				.get(0);
 	}
 
 	/**
@@ -1516,7 +1550,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithCommon_AmpEg() {
-		return (EAttribute)partWithCommonEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) partWithCommonEClass.getEStructuralFeatures()
+				.get(0);
 	}
 
 	/**
@@ -1525,7 +1560,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithCommon_BpmSync() {
-		return (EAttribute)partWithCommonEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) partWithCommonEClass.getEStructuralFeatures()
+				.get(1);
 	}
 
 	/**
@@ -1534,7 +1570,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithCommon_Cutoff() {
-		return (EAttribute)partWithCommonEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) partWithCommonEClass.getEStructuralFeatures()
+				.get(2);
 	}
 
 	/**
@@ -1543,7 +1580,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithCommon_EgIntensity() {
-		return (EAttribute)partWithCommonEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) partWithCommonEClass.getEStructuralFeatures()
+				.get(3);
 	}
 
 	/**
@@ -1552,7 +1590,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithCommon_EgTime() {
-		return (EAttribute)partWithCommonEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) partWithCommonEClass.getEStructuralFeatures()
+				.get(4);
 	}
 
 	/**
@@ -1561,7 +1600,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithCommon_FilterType() {
-		return (EAttribute)partWithCommonEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) partWithCommonEClass.getEStructuralFeatures()
+				.get(5);
 	}
 
 	/**
@@ -1570,7 +1610,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithCommon_FxSelect() {
-		return (EAttribute)partWithCommonEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) partWithCommonEClass.getEStructuralFeatures()
+				.get(6);
 	}
 
 	/**
@@ -1579,7 +1620,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithCommon_FxSend() {
-		return (EAttribute)partWithCommonEClass.getEStructuralFeatures().get(7);
+		return (EAttribute) partWithCommonEClass.getEStructuralFeatures()
+				.get(7);
 	}
 
 	/**
@@ -1588,7 +1630,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithCommon_ModDepth() {
-		return (EAttribute)partWithCommonEClass.getEStructuralFeatures().get(8);
+		return (EAttribute) partWithCommonEClass.getEStructuralFeatures()
+				.get(8);
 	}
 
 	/**
@@ -1597,7 +1640,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithCommon_ModDest() {
-		return (EAttribute)partWithCommonEClass.getEStructuralFeatures().get(9);
+		return (EAttribute) partWithCommonEClass.getEStructuralFeatures()
+				.get(9);
 	}
 
 	/**
@@ -1606,7 +1650,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithCommon_ModSpeed() {
-		return (EAttribute)partWithCommonEClass.getEStructuralFeatures().get(10);
+		return (EAttribute) partWithCommonEClass.getEStructuralFeatures().get(
+				10);
 	}
 
 	/**
@@ -1615,7 +1660,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithCommon_ModType() {
-		return (EAttribute)partWithCommonEClass.getEStructuralFeatures().get(11);
+		return (EAttribute) partWithCommonEClass.getEStructuralFeatures().get(
+				11);
 	}
 
 	/**
@@ -1624,7 +1670,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithCommon_Pan() {
-		return (EAttribute)partWithCommonEClass.getEStructuralFeatures().get(12);
+		return (EAttribute) partWithCommonEClass.getEStructuralFeatures().get(
+				12);
 	}
 
 	/**
@@ -1633,7 +1680,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithCommon_ReservedBitAfterModDepth() {
-		return (EAttribute)partWithCommonEClass.getEStructuralFeatures().get(13);
+		return (EAttribute) partWithCommonEClass.getEStructuralFeatures().get(
+				13);
 	}
 
 	/**
@@ -1642,7 +1690,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithCommon_Resonance() {
-		return (EAttribute)partWithCommonEClass.getEStructuralFeatures().get(14);
+		return (EAttribute) partWithCommonEClass.getEStructuralFeatures().get(
+				14);
 	}
 
 	/**
@@ -1651,7 +1700,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithCommon_Roll() {
-		return (EAttribute)partWithCommonEClass.getEStructuralFeatures().get(15);
+		return (EAttribute) partWithCommonEClass.getEStructuralFeatures().get(
+				15);
 	}
 
 	/**
@@ -1669,7 +1719,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithSample_Reverse() {
-		return (EAttribute)partWithSampleEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) partWithSampleEClass.getEStructuralFeatures()
+				.get(0);
 	}
 
 	/**
@@ -1678,7 +1729,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithSample_SampleLabel() {
-		return (EAttribute)partWithSampleEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) partWithSampleEClass.getEStructuralFeatures()
+				.get(1);
 	}
 
 	/**
@@ -1687,7 +1739,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithSample_SamplePointer() {
-		return (EAttribute)partWithSampleEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) partWithSampleEClass.getEStructuralFeatures()
+				.get(2);
 	}
 
 	/**
@@ -1696,7 +1749,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithSample_StartPoint() {
-		return (EAttribute)partWithSampleEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) partWithSampleEClass.getEStructuralFeatures()
+				.get(3);
 	}
 
 	/**
@@ -1705,7 +1759,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithSample_ReservedBitsAfterReverse() {
-		return (EAttribute)partWithSampleEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) partWithSampleEClass.getEStructuralFeatures()
+				.get(4);
 	}
 
 	/**
@@ -1723,7 +1778,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithSlice_ReservedByte() {
-		return (EAttribute)partWithSliceEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) partWithSliceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1732,7 +1787,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithSlice_SliceNumber() {
-		return (EAttribute)partWithSliceEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) partWithSliceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1750,7 +1805,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartWithPitch_Pitch() {
-		return (EAttribute)partWithPitchEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) partWithPitchEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1768,7 +1823,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getPartWithSequenceDataGate_SequenceDataGate() {
-		return (EReference)partWithSequenceDataGateEClass.getEStructuralFeatures().get(0);
+		return (EReference) partWithSequenceDataGateEClass
+				.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1795,7 +1851,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartAudioIn_ReservedBitsByte7() {
-		return (EAttribute)partAudioInEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) partAudioInEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1822,7 +1878,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPartKeyboard_Glide() {
-		return (EAttribute)partKeyboardEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) partKeyboardEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1831,7 +1887,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getPartKeyboard_SequenceDataNote() {
-		return (EReference)partKeyboardEClass.getEStructuralFeatures().get(1);
+		return (EReference) partKeyboardEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1858,7 +1914,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_Name() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) patternEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1867,7 +1923,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_Label() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) patternEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1876,7 +1932,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getPattern_Tempo() {
-		return (EReference)patternEClass.getEStructuralFeatures().get(2);
+		return (EReference) patternEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1885,7 +1941,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_Swing() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) patternEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1894,7 +1950,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_PatternLength() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) patternEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1903,7 +1959,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_ReservedBitAfterPatternLength() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) patternEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1912,7 +1968,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_Beat() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) patternEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -1921,7 +1977,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_RollType() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(7);
+		return (EAttribute) patternEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -1930,7 +1986,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_FxChain() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(8);
+		return (EAttribute) patternEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -1939,7 +1995,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_LastStep() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(9);
+		return (EAttribute) patternEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -1948,7 +2004,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_ArpeggiatorScale() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(10);
+		return (EAttribute) patternEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -1957,7 +2013,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_ReservedBitsAfterArpeggiatorScale() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(11);
+		return (EAttribute) patternEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -1966,7 +2022,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_ArpeggiatorCenterNote() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(12);
+		return (EAttribute) patternEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -1975,7 +2031,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_MuteStatus() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(13);
+		return (EAttribute) patternEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -1984,7 +2040,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_SwingStatus() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(14);
+		return (EAttribute) patternEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -1993,7 +2049,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_OutputBusStatus() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(15);
+		return (EAttribute) patternEClass.getEStructuralFeatures().get(15);
 	}
 
 	/**
@@ -2002,7 +2058,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_AccentStatus() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(16);
+		return (EAttribute) patternEClass.getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -2011,7 +2067,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getPattern_DrumParts() {
-		return (EReference)patternEClass.getEStructuralFeatures().get(17);
+		return (EReference) patternEClass.getEStructuralFeatures().get(17);
 	}
 
 	/**
@@ -2020,7 +2076,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getPattern_KeyboardParts() {
-		return (EReference)patternEClass.getEStructuralFeatures().get(18);
+		return (EReference) patternEClass.getEStructuralFeatures().get(18);
 	}
 
 	/**
@@ -2029,7 +2085,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getPattern_StretchSliceParts() {
-		return (EReference)patternEClass.getEStructuralFeatures().get(19);
+		return (EReference) patternEClass.getEStructuralFeatures().get(19);
 	}
 
 	/**
@@ -2038,7 +2094,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getPattern_AudioInPart() {
-		return (EReference)patternEClass.getEStructuralFeatures().get(20);
+		return (EReference) patternEClass.getEStructuralFeatures().get(20);
 	}
 
 	/**
@@ -2047,7 +2103,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getPattern_AccentPart() {
-		return (EReference)patternEClass.getEStructuralFeatures().get(21);
+		return (EReference) patternEClass.getEStructuralFeatures().get(21);
 	}
 
 	/**
@@ -2056,7 +2112,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getPattern_FxParameters() {
-		return (EReference)patternEClass.getEStructuralFeatures().get(22);
+		return (EReference) patternEClass.getEStructuralFeatures().get(22);
 	}
 
 	/**
@@ -2065,7 +2121,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getPattern_MotionParameters() {
-		return (EReference)patternEClass.getEStructuralFeatures().get(23);
+		return (EReference) patternEClass.getEStructuralFeatures().get(23);
 	}
 
 	/**
@@ -2074,7 +2130,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_Empty() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(24);
+		return (EAttribute) patternEClass.getEStructuralFeatures().get(24);
 	}
 
 	/**
@@ -2083,7 +2139,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_PatternNumberOriginal() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(25);
+		return (EAttribute) patternEClass.getEStructuralFeatures().get(25);
 	}
 
 	/**
@@ -2092,7 +2148,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getPattern_PatternNumberCurrent() {
-		return (EAttribute)patternEClass.getEStructuralFeatures().get(26);
+		return (EAttribute) patternEClass.getEStructuralFeatures().get(26);
 	}
 
 	/**
@@ -2110,7 +2166,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_Name() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2119,7 +2175,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_MemUsedInBytes() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(31);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(31);
 	}
 
 	/**
@@ -2128,7 +2184,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_Empty() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(32);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(32);
 	}
 
 	/**
@@ -2137,7 +2193,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_PartCount() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(33);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(33);
 	}
 
 	/**
@@ -2146,7 +2202,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_PatternCount() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(34);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(34);
 	}
 
 	/**
@@ -2155,7 +2211,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getSample_SampleInPatternInfoList() {
-		return (EReference)sampleEClass.getEStructuralFeatures().get(35);
+		return (EReference) sampleEClass.getEStructuralFeatures().get(35);
 	}
 
 	/**
@@ -2164,7 +2220,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_OffsetChannel1Start() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2173,7 +2229,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_OffsetChannel1End() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2182,7 +2238,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_OffsetChannel2Start() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -2191,7 +2247,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_OffsetChannel2End() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -2200,7 +2256,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_Start() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -2209,7 +2265,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_End() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -2218,7 +2274,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_LoopStart() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(7);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -2227,7 +2283,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_SampleRate() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(8);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -2236,7 +2292,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getSample_SampleTune() {
-		return (EReference)sampleEClass.getEStructuralFeatures().get(9);
+		return (EReference) sampleEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -2245,7 +2301,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_NumberOfSampleFrames() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(10);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -2254,7 +2310,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_PlayLevel() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(11);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -2263,7 +2319,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_StretchStep() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(12);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -2272,7 +2328,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_UnknownByteMono1() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(13);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -2281,7 +2337,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_UnknownByteMono2() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(14);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -2290,7 +2346,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_UnknownByteMono3() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(15);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(15);
 	}
 
 	/**
@@ -2299,7 +2355,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_UnknownByteMono4() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(16);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -2308,7 +2364,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_UnknownByteStereo1() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(17);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(17);
 	}
 
 	/**
@@ -2317,7 +2373,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_UnknownByteStereo2() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(18);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(18);
 	}
 
 	/**
@@ -2326,7 +2382,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_UnknownByteStereo3() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(19);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(19);
 	}
 
 	/**
@@ -2335,7 +2391,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_UnknownByteStereo4() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(20);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(20);
 	}
 
 	/**
@@ -2344,7 +2400,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_AudioDataChannel1() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(21);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(21);
 	}
 
 	/**
@@ -2353,7 +2409,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_AudioDataChannel2() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(22);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(22);
 	}
 
 	/**
@@ -2362,7 +2418,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_AudioDataChannelBoth() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(23);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(23);
 	}
 
 	/**
@@ -2371,7 +2427,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_AudioDataLoopStart() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(24);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(24);
 	}
 
 	/**
@@ -2380,7 +2436,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_SliceArray() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(25);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(25);
 	}
 
 	/**
@@ -2389,7 +2445,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_SampleNumberOriginal() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(36);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(36);
 	}
 
 	/**
@@ -2398,7 +2454,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_SampleNumberCurrent() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(37);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(37);
 	}
 
 	/**
@@ -2416,7 +2472,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSampleInPatternInfo_Index() {
-		return (EAttribute)sampleInPatternInfoEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) sampleInPatternInfoEClass.getEStructuralFeatures()
+				.get(0);
 	}
 
 	/**
@@ -2425,7 +2482,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSampleInPatternInfo_PatternLabel() {
-		return (EAttribute)sampleInPatternInfoEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) sampleInPatternInfoEClass.getEStructuralFeatures()
+				.get(1);
 	}
 
 	/**
@@ -2434,7 +2492,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSampleInPatternInfo_PartCount() {
-		return (EAttribute)sampleInPatternInfoEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) sampleInPatternInfoEClass.getEStructuralFeatures()
+				.get(2);
 	}
 
 	/**
@@ -2443,7 +2502,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSampleInPatternInfo_PartList() {
-		return (EAttribute)sampleInPatternInfoEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) sampleInPatternInfoEClass.getEStructuralFeatures()
+				.get(3);
 	}
 
 	/**
@@ -2452,7 +2512,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_Loop() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(26);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(26);
 	}
 
 	/**
@@ -2461,7 +2521,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_Slice() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(27);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(27);
 	}
 
 	/**
@@ -2470,7 +2530,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_StereoOriginal() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(28);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(28);
 	}
 
 	/**
@@ -2479,7 +2539,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_StereoCurrent() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(29);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(29);
 	}
 
 	/**
@@ -2488,7 +2548,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_Label() {
-		return (EAttribute)sampleEClass.getEStructuralFeatures().get(30);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(30);
 	}
 
 	/**
@@ -2506,7 +2566,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSampleTune_Value() {
-		return (EAttribute)sampleTuneEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) sampleTuneEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2524,7 +2584,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSong_Name() {
-		return (EAttribute)songEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) songEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2533,7 +2593,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getSong_Tempo() {
-		return (EReference)songEClass.getEStructuralFeatures().get(1);
+		return (EReference) songEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2542,7 +2602,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSong_TempoLock() {
-		return (EAttribute)songEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) songEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2551,7 +2611,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSong_SongLength() {
-		return (EAttribute)songEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) songEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -2560,7 +2620,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSong_MuteHold() {
-		return (EAttribute)songEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) songEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -2569,7 +2629,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSong_NextSongNumber() {
-		return (EAttribute)songEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) songEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -2578,7 +2638,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSong_NumberOfSongEventsCurrent() {
-		return (EAttribute)songEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) songEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -2587,7 +2647,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSong_NumberOfSongEventsOriginal() {
-		return (EAttribute)songEClass.getEStructuralFeatures().get(7);
+		return (EAttribute) songEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -2596,7 +2656,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getSong_SongPatterns() {
-		return (EReference)songEClass.getEStructuralFeatures().get(8);
+		return (EReference) songEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -2605,7 +2665,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getSong_SongEvents() {
-		return (EReference)songEClass.getEStructuralFeatures().get(9);
+		return (EReference) songEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -2614,7 +2674,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSong_Empty() {
-		return (EAttribute)songEClass.getEStructuralFeatures().get(10);
+		return (EAttribute) songEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -2623,7 +2683,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSong_SongNumberOriginal() {
-		return (EAttribute)songEClass.getEStructuralFeatures().get(11);
+		return (EAttribute) songEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -2632,7 +2692,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSong_SongNumberCurrent() {
-		return (EAttribute)songEClass.getEStructuralFeatures().get(12);
+		return (EAttribute) songEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -2650,7 +2710,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongPattern_PositionCurrent() {
-		return (EAttribute)songPatternEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) songPatternEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -2659,7 +2719,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongPattern_NoteOffset() {
-		return (EAttribute)songPatternEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) songPatternEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2668,7 +2728,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongPattern_PatternPointer() {
-		return (EAttribute)songPatternEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) songPatternEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2677,7 +2737,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongPattern_Empty() {
-		return (EAttribute)songPatternEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) songPatternEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2695,7 +2755,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getTempo_Value() {
-		return (EAttribute)tempoEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) tempoEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2713,7 +2773,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEvent_CurrentPosition() {
-		return (EAttribute)songEventEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) songEventEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2722,7 +2782,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEvent_EventInfo() {
-		return (EAttribute)songEventEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) songEventEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2731,7 +2791,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEvent_EventType() {
-		return (EAttribute)songEventEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) songEventEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2740,7 +2800,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEvent_Measure() {
-		return (EAttribute)songEventEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) songEventEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -2749,7 +2809,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEvent_OperationNumber() {
-		return (EAttribute)songEventEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) songEventEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -2758,7 +2818,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEvent_PositionNumber() {
-		return (EAttribute)songEventEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) songEventEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -2767,7 +2827,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEvent_Step() {
-		return (EAttribute)songEventEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) songEventEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -2785,7 +2845,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEventWithPart_Part() {
-		return (EAttribute)songEventWithPartEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) songEventWithPartEClass.getEStructuralFeatures()
+				.get(0);
 	}
 
 	/**
@@ -2803,7 +2864,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEventControl_OperationType() {
-		return (EAttribute)songEventControlEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) songEventControlEClass.getEStructuralFeatures()
+				.get(0);
 	}
 
 	/**
@@ -2812,7 +2874,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEventControl_Value() {
-		return (EAttribute)songEventControlEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) songEventControlEClass.getEStructuralFeatures()
+				.get(3);
 	}
 
 	/**
@@ -2821,7 +2884,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEventControl_ReservedByte() {
-		return (EAttribute)songEventControlEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) songEventControlEClass.getEStructuralFeatures()
+				.get(1);
 	}
 
 	/**
@@ -2830,7 +2894,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEventControl_ReservedShort() {
-		return (EAttribute)songEventControlEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) songEventControlEClass.getEStructuralFeatures()
+				.get(2);
 	}
 
 	/**
@@ -2848,7 +2913,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEventDrumNote_ReservedByte() {
-		return (EAttribute)songEventDrumNoteEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) songEventDrumNoteEClass.getEStructuralFeatures()
+				.get(0);
 	}
 
 	/**
@@ -2857,7 +2923,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEventDrumNote_ReservedShort() {
-		return (EAttribute)songEventDrumNoteEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) songEventDrumNoteEClass.getEStructuralFeatures()
+				.get(1);
 	}
 
 	/**
@@ -2875,7 +2942,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEventKeyboardNote_Length() {
-		return (EAttribute)songEventKeyboardNoteEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) songEventKeyboardNoteEClass
+				.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2884,7 +2952,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEventKeyboardNote_NoteNumber() {
-		return (EAttribute)songEventKeyboardNoteEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) songEventKeyboardNoteEClass
+				.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2902,7 +2971,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EReference getSongEventTempo_Tempo() {
-		return (EReference)songEventTempoEClass.getEStructuralFeatures().get(1);
+		return (EReference) songEventTempoEClass.getEStructuralFeatures()
+				.get(1);
 	}
 
 	/**
@@ -2911,7 +2981,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEventTempo_ReservedShort() {
-		return (EAttribute)songEventTempoEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) songEventTempoEClass.getEStructuralFeatures()
+				.get(0);
 	}
 
 	/**
@@ -2929,7 +3000,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEventMuteStatus_ReservedShort() {
-		return (EAttribute)songEventMuteStatusEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) songEventMuteStatusEClass.getEStructuralFeatures()
+				.get(0);
 	}
 
 	/**
@@ -2938,7 +3010,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSongEventMuteStatus_MuteStatus() {
-		return (EAttribute)songEventMuteStatusEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) songEventMuteStatusEClass.getEStructuralFeatures()
+				.get(1);
 	}
 
 	/**
@@ -3379,7 +3452,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EsxFactory getEsxFactory() {
-		return (EsxFactory)getEFactoryInstance();
+		return (EsxFactory) getEFactoryInstance();
 	}
 
 	/**
@@ -3397,7 +3470,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public void createPackageContents() {
-		if (isCreated) return;
+		if (isCreated)
+			return;
 		isCreated = true;
 
 		// Create classes and their features
@@ -3428,30 +3502,47 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(esxFileEClass, ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED);
 
 		globalParametersEClass = createEClass(GLOBAL_PARAMETERS);
-		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED);
-		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__RESERVED_BYTE);
-		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__ARPEGGIATOR_CONTROL);
-		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__AUDIO_IN_MODE);
+		createEAttribute(globalParametersEClass,
+				GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED);
+		createEAttribute(globalParametersEClass,
+				GLOBAL_PARAMETERS__RESERVED_BYTE);
+		createEAttribute(globalParametersEClass,
+				GLOBAL_PARAMETERS__ARPEGGIATOR_CONTROL);
+		createEAttribute(globalParametersEClass,
+				GLOBAL_PARAMETERS__AUDIO_IN_MODE);
 		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__MIDI_CLOCK);
-		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__NOTE_MESSAGE_ENABLED);
-		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__SYSTEM_EX_ENABLED);
-		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__CONTROL_CHANGE_ENABLED);
-		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__PROGRAM_CHANGE_ENABLED);
-		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED);
-		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__PITCH_BEND_RANGE);
-		createEReference(globalParametersEClass, GLOBAL_PARAMETERS__MIDI_CHANNELS);
-		createEReference(globalParametersEClass, GLOBAL_PARAMETERS__PART_NOTE_NUMBERS);
-		createEReference(globalParametersEClass, GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS);
-		createEAttribute(globalParametersEClass, GLOBAL_PARAMETERS__RESERVED_LONG);
-		createEReference(globalParametersEClass, GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS);
+		createEAttribute(globalParametersEClass,
+				GLOBAL_PARAMETERS__NOTE_MESSAGE_ENABLED);
+		createEAttribute(globalParametersEClass,
+				GLOBAL_PARAMETERS__SYSTEM_EX_ENABLED);
+		createEAttribute(globalParametersEClass,
+				GLOBAL_PARAMETERS__CONTROL_CHANGE_ENABLED);
+		createEAttribute(globalParametersEClass,
+				GLOBAL_PARAMETERS__PROGRAM_CHANGE_ENABLED);
+		createEAttribute(globalParametersEClass,
+				GLOBAL_PARAMETERS__RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED);
+		createEAttribute(globalParametersEClass,
+				GLOBAL_PARAMETERS__PITCH_BEND_RANGE);
+		createEReference(globalParametersEClass,
+				GLOBAL_PARAMETERS__MIDI_CHANNELS);
+		createEReference(globalParametersEClass,
+				GLOBAL_PARAMETERS__PART_NOTE_NUMBERS);
+		createEReference(globalParametersEClass,
+				GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS);
+		createEAttribute(globalParametersEClass,
+				GLOBAL_PARAMETERS__RESERVED_LONG);
+		createEReference(globalParametersEClass,
+				GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS);
 
 		midiChannelTypeEClass = createEClass(MIDI_CHANNEL_TYPE);
 		createEAttribute(midiChannelTypeEClass, MIDI_CHANNEL_TYPE__NAME);
 		createEAttribute(midiChannelTypeEClass, MIDI_CHANNEL_TYPE__MIDI_CHANNEL);
 
 		midiControlChangeAssignmentEClass = createEClass(MIDI_CONTROL_CHANGE_ASSIGNMENT);
-		createEAttribute(midiControlChangeAssignmentEClass, MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME);
-		createEAttribute(midiControlChangeAssignmentEClass, MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE);
+		createEAttribute(midiControlChangeAssignmentEClass,
+				MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME);
+		createEAttribute(midiControlChangeAssignmentEClass,
+				MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE);
 
 		operationEClass = createEClass(OPERATION);
 		createEAttribute(operationEClass, OPERATION__VALUE);
@@ -3460,14 +3551,18 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(parametersFxEClass, PARAMETERS_FX__EFFECT_TYPE);
 		createEAttribute(parametersFxEClass, PARAMETERS_FX__EDIT1);
 		createEAttribute(parametersFxEClass, PARAMETERS_FX__EDIT2);
-		createEAttribute(parametersFxEClass, PARAMETERS_FX__MOTION_SEQUENCE_STATUS);
+		createEAttribute(parametersFxEClass,
+				PARAMETERS_FX__MOTION_SEQUENCE_STATUS);
 
 		parametersMotionEClass = createEClass(PARAMETERS_MOTION);
-		createEAttribute(parametersMotionEClass, PARAMETERS_MOTION__CURRENT_POSITION);
+		createEAttribute(parametersMotionEClass,
+				PARAMETERS_MOTION__CURRENT_POSITION);
 		createEAttribute(parametersMotionEClass, PARAMETERS_MOTION__EMPTY);
 		createEReference(parametersMotionEClass, PARAMETERS_MOTION__OPERATION);
-		createEAttribute(parametersMotionEClass, PARAMETERS_MOTION__OPERATION_NUMBER);
-		createEAttribute(parametersMotionEClass, PARAMETERS_MOTION__OPERATION_TYPE);
+		createEAttribute(parametersMotionEClass,
+				PARAMETERS_MOTION__OPERATION_NUMBER);
+		createEAttribute(parametersMotionEClass,
+				PARAMETERS_MOTION__OPERATION_TYPE);
 
 		partEClass = createEClass(PART);
 		createEAttribute(partEClass, PART__LABEL);
@@ -3505,7 +3600,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(partWithCommonEClass, PART_WITH_COMMON__MOD_SPEED);
 		createEAttribute(partWithCommonEClass, PART_WITH_COMMON__MOD_TYPE);
 		createEAttribute(partWithCommonEClass, PART_WITH_COMMON__PAN);
-		createEAttribute(partWithCommonEClass, PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH);
+		createEAttribute(partWithCommonEClass,
+				PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH);
 		createEAttribute(partWithCommonEClass, PART_WITH_COMMON__RESONANCE);
 		createEAttribute(partWithCommonEClass, PART_WITH_COMMON__ROLL);
 
@@ -3517,13 +3613,16 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(partWithSampleEClass, PART_WITH_SAMPLE__SAMPLE_LABEL);
 		createEAttribute(partWithSampleEClass, PART_WITH_SAMPLE__SAMPLE_POINTER);
 		createEAttribute(partWithSampleEClass, PART_WITH_SAMPLE__START_POINT);
-		createEAttribute(partWithSampleEClass, PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE);
+		createEAttribute(partWithSampleEClass,
+				PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE);
 
 		partWithSequenceDataEClass = createEClass(PART_WITH_SEQUENCE_DATA);
-		createEReference(partWithSequenceDataEClass, PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA);
+		createEReference(partWithSequenceDataEClass,
+				PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA);
 
 		partWithSequenceDataGateEClass = createEClass(PART_WITH_SEQUENCE_DATA_GATE);
-		createEReference(partWithSequenceDataGateEClass, PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE);
+		createEReference(partWithSequenceDataGateEClass,
+				PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE);
 
 		partWithSliceEClass = createEClass(PART_WITH_SLICE);
 		createEAttribute(partWithSliceEClass, PART_WITH_SLICE__RESERVED_BYTE);
@@ -3535,13 +3634,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEReference(patternEClass, PATTERN__TEMPO);
 		createEAttribute(patternEClass, PATTERN__SWING);
 		createEAttribute(patternEClass, PATTERN__PATTERN_LENGTH);
-		createEAttribute(patternEClass, PATTERN__RESERVED_BIT_AFTER_PATTERN_LENGTH);
+		createEAttribute(patternEClass,
+				PATTERN__RESERVED_BIT_AFTER_PATTERN_LENGTH);
 		createEAttribute(patternEClass, PATTERN__BEAT);
 		createEAttribute(patternEClass, PATTERN__ROLL_TYPE);
 		createEAttribute(patternEClass, PATTERN__FX_CHAIN);
 		createEAttribute(patternEClass, PATTERN__LAST_STEP);
 		createEAttribute(patternEClass, PATTERN__ARPEGGIATOR_SCALE);
-		createEAttribute(patternEClass, PATTERN__RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE);
+		createEAttribute(patternEClass,
+				PATTERN__RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE);
 		createEAttribute(patternEClass, PATTERN__ARPEGGIATOR_CENTER_NOTE);
 		createEAttribute(patternEClass, PATTERN__MUTE_STATUS);
 		createEAttribute(patternEClass, PATTERN__SWING_STATUS);
@@ -3559,14 +3660,20 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(patternEClass, PATTERN__PATTERN_NUMBER_CURRENT);
 
 		sampleInPatternInfoEClass = createEClass(SAMPLE_IN_PATTERN_INFO);
-		createEAttribute(sampleInPatternInfoEClass, SAMPLE_IN_PATTERN_INFO__INDEX);
-		createEAttribute(sampleInPatternInfoEClass, SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL);
-		createEAttribute(sampleInPatternInfoEClass, SAMPLE_IN_PATTERN_INFO__PART_COUNT);
-		createEAttribute(sampleInPatternInfoEClass, SAMPLE_IN_PATTERN_INFO__PART_LIST);
+		createEAttribute(sampleInPatternInfoEClass,
+				SAMPLE_IN_PATTERN_INFO__INDEX);
+		createEAttribute(sampleInPatternInfoEClass,
+				SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL);
+		createEAttribute(sampleInPatternInfoEClass,
+				SAMPLE_IN_PATTERN_INFO__PART_COUNT);
+		createEAttribute(sampleInPatternInfoEClass,
+				SAMPLE_IN_PATTERN_INFO__PART_LIST);
 
 		patternSetParameterEClass = createEClass(PATTERN_SET_PARAMETER);
-		createEAttribute(patternSetParameterEClass, PATTERN_SET_PARAMETER__POSITION_CURRENT);
-		createEAttribute(patternSetParameterEClass, PATTERN_SET_PARAMETER__PATTERN_POINTER);
+		createEAttribute(patternSetParameterEClass,
+				PATTERN_SET_PARAMETER__POSITION_CURRENT);
+		createEAttribute(patternSetParameterEClass,
+				PATTERN_SET_PARAMETER__PATTERN_POINTER);
 
 		sampleEClass = createEClass(SAMPLE);
 		createEAttribute(sampleEClass, SAMPLE__NAME);
@@ -3615,10 +3722,12 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(sequenceDataEClass, SEQUENCE_DATA__SEQUENCE_DATA);
 
 		sequenceDataGateEClass = createEClass(SEQUENCE_DATA_GATE);
-		createEAttribute(sequenceDataGateEClass, SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE);
+		createEAttribute(sequenceDataGateEClass,
+				SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE);
 
 		sequenceDataNoteEClass = createEClass(SEQUENCE_DATA_NOTE);
-		createEAttribute(sequenceDataNoteEClass, SEQUENCE_DATA_NOTE__SEQUENCE_DATA_NOTE);
+		createEAttribute(sequenceDataNoteEClass,
+				SEQUENCE_DATA_NOTE__SEQUENCE_DATA_NOTE);
 
 		songEClass = createEClass(SONG);
 		createEAttribute(songEClass, SONG__NAME);
@@ -3645,22 +3754,31 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(songEventEClass, SONG_EVENT__STEP);
 
 		songEventControlEClass = createEClass(SONG_EVENT_CONTROL);
-		createEAttribute(songEventControlEClass, SONG_EVENT_CONTROL__OPERATION_TYPE);
-		createEAttribute(songEventControlEClass, SONG_EVENT_CONTROL__RESERVED_BYTE);
-		createEAttribute(songEventControlEClass, SONG_EVENT_CONTROL__RESERVED_SHORT);
+		createEAttribute(songEventControlEClass,
+				SONG_EVENT_CONTROL__OPERATION_TYPE);
+		createEAttribute(songEventControlEClass,
+				SONG_EVENT_CONTROL__RESERVED_BYTE);
+		createEAttribute(songEventControlEClass,
+				SONG_EVENT_CONTROL__RESERVED_SHORT);
 		createEAttribute(songEventControlEClass, SONG_EVENT_CONTROL__VALUE);
 
 		songEventDrumNoteEClass = createEClass(SONG_EVENT_DRUM_NOTE);
-		createEAttribute(songEventDrumNoteEClass, SONG_EVENT_DRUM_NOTE__RESERVED_BYTE);
-		createEAttribute(songEventDrumNoteEClass, SONG_EVENT_DRUM_NOTE__RESERVED_SHORT);
+		createEAttribute(songEventDrumNoteEClass,
+				SONG_EVENT_DRUM_NOTE__RESERVED_BYTE);
+		createEAttribute(songEventDrumNoteEClass,
+				SONG_EVENT_DRUM_NOTE__RESERVED_SHORT);
 
 		songEventKeyboardNoteEClass = createEClass(SONG_EVENT_KEYBOARD_NOTE);
-		createEAttribute(songEventKeyboardNoteEClass, SONG_EVENT_KEYBOARD_NOTE__LENGTH);
-		createEAttribute(songEventKeyboardNoteEClass, SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER);
+		createEAttribute(songEventKeyboardNoteEClass,
+				SONG_EVENT_KEYBOARD_NOTE__LENGTH);
+		createEAttribute(songEventKeyboardNoteEClass,
+				SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER);
 
 		songEventMuteStatusEClass = createEClass(SONG_EVENT_MUTE_STATUS);
-		createEAttribute(songEventMuteStatusEClass, SONG_EVENT_MUTE_STATUS__RESERVED_SHORT);
-		createEAttribute(songEventMuteStatusEClass, SONG_EVENT_MUTE_STATUS__MUTE_STATUS);
+		createEAttribute(songEventMuteStatusEClass,
+				SONG_EVENT_MUTE_STATUS__RESERVED_SHORT);
+		createEAttribute(songEventMuteStatusEClass,
+				SONG_EVENT_MUTE_STATUS__MUTE_STATUS);
 
 		songEventTempoEClass = createEClass(SONG_EVENT_TEMPO);
 		createEAttribute(songEventTempoEClass, SONG_EVENT_TEMPO__RESERVED_SHORT);
@@ -3746,7 +3864,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public void initializePackageContents() {
-		if (isInitialized) return;
+		if (isInitialized)
+			return;
 		isInitialized = true;
 
 		// Initialize package
@@ -3765,7 +3884,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		partAudioInEClass.getESuperTypes().add(this.getPart());
 		partAudioInEClass.getESuperTypes().add(this.getPartWithCommon());
 		partAudioInEClass.getESuperTypes().add(this.getPartWithSequenceData());
-		partAudioInEClass.getESuperTypes().add(this.getPartWithSequenceDataGate());
+		partAudioInEClass.getESuperTypes().add(
+				this.getPartWithSequenceDataGate());
 		partDrumEClass.getESuperTypes().add(this.getPart());
 		partDrumEClass.getESuperTypes().add(this.getPartWithCommon());
 		partDrumEClass.getESuperTypes().add(this.getPartWithPitch());
@@ -3775,70 +3895,165 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		partKeyboardEClass.getESuperTypes().add(this.getPart());
 		partKeyboardEClass.getESuperTypes().add(this.getPartWithCommon());
 		partKeyboardEClass.getESuperTypes().add(this.getPartWithSample());
-		partKeyboardEClass.getESuperTypes().add(this.getPartWithSequenceDataGate());
+		partKeyboardEClass.getESuperTypes().add(
+				this.getPartWithSequenceDataGate());
 		partKeyboardEClass.getESuperTypes().add(this.getPartWithSlice());
 		partStretchSliceEClass.getESuperTypes().add(this.getPart());
 		partStretchSliceEClass.getESuperTypes().add(this.getPartWithCommon());
 		partStretchSliceEClass.getESuperTypes().add(this.getPartWithPitch());
 		partStretchSliceEClass.getESuperTypes().add(this.getPartWithSample());
-		partStretchSliceEClass.getESuperTypes().add(this.getPartWithSequenceData());
+		partStretchSliceEClass.getESuperTypes().add(
+				this.getPartWithSequenceData());
 		songEventControlEClass.getESuperTypes().add(this.getSongEvent());
 		songEventDrumNoteEClass.getESuperTypes().add(this.getSongEvent());
-		songEventDrumNoteEClass.getESuperTypes().add(this.getSongEventWithPart());
+		songEventDrumNoteEClass.getESuperTypes().add(
+				this.getSongEventWithPart());
 		songEventKeyboardNoteEClass.getESuperTypes().add(this.getSongEvent());
-		songEventKeyboardNoteEClass.getESuperTypes().add(this.getSongEventWithPart());
+		songEventKeyboardNoteEClass.getESuperTypes().add(
+				this.getSongEventWithPart());
 		songEventMuteStatusEClass.getESuperTypes().add(this.getSongEvent());
 		songEventTempoEClass.getESuperTypes().add(this.getSongEvent());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(esxFileEClass, EsxFile.class, "EsxFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEsxFile_OriginalNonAudioData(), ecorePackage.getEByteArray(), "originalNonAudioData", null, 0, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEsxFile_GlobalParameters(), this.getGlobalParameters(), null, "globalParameters", null, 1, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEsxFile_Patterns(), this.getPattern(), null, "patterns", null, 256, 256, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEsxFile_Songs(), this.getSong(), null, "songs", null, 64, 64, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEsxFile_Samples(), this.getSample(), null, "samples", null, 384, 384, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEsxFile_EmptyPattern(), this.getPattern(), null, "emptyPattern", null, 1, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEsxFile_EmptySong(), this.getSong(), null, "emptySong", null, 1, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_MaxSampleOffset(), ecorePackage.getEInt(), "maxSampleOffset", "0", 0, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_MemUsedInBytes(), ecorePackage.getEInt(), "memUsedInBytes", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_MemUsedInSeconds(), ecorePackage.getEFloat(), "memUsedInSeconds", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_MemFreeInBytes(), ecorePackage.getEInt(), "memFreeInBytes", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_MemFreeInSeconds(), ecorePackage.getEFloat(), "memFreeInSeconds", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_NumPatternsEmpty(), ecorePackage.getEInt(), "numPatternsEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_NumPatternsNotEmpty(), ecorePackage.getEInt(), "numPatternsNotEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_NumSamplesEmpty(), ecorePackage.getEInt(), "numSamplesEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_NumSamplesNotEmpty(), ecorePackage.getEInt(), "numSamplesNotEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_NumSamplesMonoEmpty(), ecorePackage.getEInt(), "numSamplesMonoEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_NumSamplesMonoNotEmpty(), ecorePackage.getEInt(), "numSamplesMonoNotEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_NumSamplesStereoEmpty(), ecorePackage.getEInt(), "numSamplesStereoEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_NumSamplesStereoNotEmpty(), ecorePackage.getEInt(), "numSamplesStereoNotEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_NumSongsEmpty(), ecorePackage.getEInt(), "numSongsEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_NumSongsNotEmpty(), ecorePackage.getEInt(), "numSongsNotEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_SyncPatternsOnMoveEnabled(), ecorePackage.getEBoolean(), "syncPatternsOnMoveEnabled", "true", 0, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEsxFile_SyncSamplesOnMoveEnabled(), ecorePackage.getEBoolean(), "syncSamplesOnMoveEnabled", "true", 0, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(esxFileEClass, EsxFile.class, "EsxFile", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEsxFile_OriginalNonAudioData(),
+				ecorePackage.getEByteArray(), "originalNonAudioData", null, 0,
+				1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEsxFile_GlobalParameters(),
+				this.getGlobalParameters(), null, "globalParameters", null, 1,
+				1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getEsxFile_Patterns(), this.getPattern(), null,
+				"patterns", null, 256, 256, EsxFile.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEsxFile_Songs(), this.getSong(), null, "songs", null,
+				64, 64, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEsxFile_Samples(), this.getSample(), null, "samples",
+				null, 384, 384, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEsxFile_EmptyPattern(), this.getPattern(), null,
+				"emptyPattern", null, 1, 1, EsxFile.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEsxFile_EmptySong(), this.getSong(), null,
+				"emptySong", null, 1, 1, EsxFile.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_MaxSampleOffset(), ecorePackage.getEInt(),
+				"maxSampleOffset", "0", 0, 1, EsxFile.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_MemUsedInBytes(), ecorePackage.getEInt(),
+				"memUsedInBytes", "0", 0, 1, EsxFile.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_MemUsedInSeconds(), ecorePackage.getEFloat(),
+				"memUsedInSeconds", "0", 0, 1, EsxFile.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_MemFreeInBytes(), ecorePackage.getEInt(),
+				"memFreeInBytes", "0", 0, 1, EsxFile.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_MemFreeInSeconds(), ecorePackage.getEFloat(),
+				"memFreeInSeconds", "0", 0, 1, EsxFile.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumPatternsEmpty(), ecorePackage.getEInt(),
+				"numPatternsEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumPatternsNotEmpty(),
+				ecorePackage.getEInt(), "numPatternsNotEmpty", "0", 0, 1,
+				EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSamplesEmpty(), ecorePackage.getEInt(),
+				"numSamplesEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSamplesNotEmpty(), ecorePackage.getEInt(),
+				"numSamplesNotEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSamplesMonoEmpty(),
+				ecorePackage.getEInt(), "numSamplesMonoEmpty", "0", 0, 1,
+				EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSamplesMonoNotEmpty(),
+				ecorePackage.getEInt(), "numSamplesMonoNotEmpty", "0", 0, 1,
+				EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSamplesStereoEmpty(),
+				ecorePackage.getEInt(), "numSamplesStereoEmpty", "0", 0, 1,
+				EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSamplesStereoNotEmpty(),
+				ecorePackage.getEInt(), "numSamplesStereoNotEmpty", "0", 0, 1,
+				EsxFile.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSongsEmpty(), ecorePackage.getEInt(),
+				"numSongsEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_NumSongsNotEmpty(), ecorePackage.getEInt(),
+				"numSongsNotEmpty", "0", 0, 1, EsxFile.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEsxFile_SyncPatternsOnMoveEnabled(),
+				ecorePackage.getEBoolean(), "syncPatternsOnMoveEnabled",
+				"true", 0, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getEsxFile_SyncSamplesOnMoveEnabled(),
+				ecorePackage.getEBoolean(), "syncSamplesOnMoveEnabled", "true",
+				0, 1, EsxFile.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		EOperation op = addEOperation(esxFileEClass, this.getPattern(), "getPatternFromPointer", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "patternPointer", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(esxFileEClass, this.getPattern(),
+				"getPatternFromPointer", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "patternPointer", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(esxFileEClass, this.getSample(), "getSampleFromPointer", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "samplePointer", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(esxFileEClass, this.getSample(),
+				"getSampleFromPointer", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "samplePointer", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(esxFileEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(esxFileEClass, null, "init", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		op = addEOperation(esxFileEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIProgressMonitor(), "monitor", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(esxFileEClass, null, "init", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, this.getIProgressMonitor(), "monitor", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(esxFileEClass, null, "setAllOffsets", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(esxFileEClass, null, "setAllOffsets", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		addEOperation(esxFileEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(esxFileEClass, ecorePackage.getEByteArray(),
+				"toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(esxFileEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIProgressMonitor(), "monitor", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(esxFileEClass, ecorePackage.getEByteArray(),
+				"toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIProgressMonitor(), "monitor", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(esxFileEClass, ecorePackage.getEBoolean(), "validMemFreeInBytes", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(esxFileEClass, ecorePackage.getEBoolean(),
+				"validMemFreeInBytes", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0,
+				1, IS_UNIQUE, IS_ORDERED);
 		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
 		EGenericType g2 = createEGenericType(this.getObject());
 		g1.getETypeArguments().add(g2);
@@ -3846,414 +4061,1148 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(globalParametersEClass, GlobalParameters.class, "GlobalParameters", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getGlobalParameters_MemoryProtectEnabled(), this.getEnabledFlag(), "memoryProtectEnabled", null, 0, 1, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGlobalParameters_ReservedByte(), ecorePackage.getEByte(), "reservedByte", null, 0, 1, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGlobalParameters_ArpeggiatorControl(), this.getArpeggiatorControl(), "arpeggiatorControl", null, 0, 1, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGlobalParameters_AudioInMode(), this.getAudioInMode(), "audioInMode", null, 0, 1, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGlobalParameters_MidiClock(), this.getMidiClock(), "midiClock", null, 0, 1, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGlobalParameters_NoteMessageEnabled(), this.getEnabledFlag(), "noteMessageEnabled", null, 0, 1, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGlobalParameters_SystemExEnabled(), this.getEnabledFlag(), "systemExEnabled", null, 0, 1, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGlobalParameters_ControlChangeEnabled(), this.getEnabledFlag(), "controlChangeEnabled", null, 0, 1, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGlobalParameters_ProgramChangeEnabled(), this.getEnabledFlag(), "programChangeEnabled", null, 0, 1, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGlobalParameters_ReservedBitsAfterProgramChangeEnabled(), ecorePackage.getEByte(), "reservedBitsAfterProgramChangeEnabled", null, 0, 1, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGlobalParameters_PitchBendRange(), this.getPitchBendRange(), "pitchBendRange", null, 0, 1, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGlobalParameters_MidiChannels(), this.getMidiChannelType(), null, "midiChannels", null, 3, 3, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGlobalParameters_PartNoteNumbers(), this.getPartNoteNumber(), null, "partNoteNumbers", null, 13, 13, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGlobalParameters_MidiControlChangeAssignments(), this.getMidiControlChangeAssignment(), null, "midiControlChangeAssignments", null, 33, 33, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGlobalParameters_ReservedLong(), ecorePackage.getELong(), "reservedLong", null, 0, 1, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGlobalParameters_PatternSetParameters(), this.getPatternSetParameter(), null, "patternSetParameters", null, 128, 128, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(globalParametersEClass, GlobalParameters.class,
+				"GlobalParameters", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGlobalParameters_MemoryProtectEnabled(),
+				this.getEnabledFlag(), "memoryProtectEnabled", null, 0, 1,
+				GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getGlobalParameters_ReservedByte(),
+				ecorePackage.getEByte(), "reservedByte", null, 0, 1,
+				GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getGlobalParameters_ArpeggiatorControl(),
+				this.getArpeggiatorControl(), "arpeggiatorControl", null, 0, 1,
+				GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getGlobalParameters_AudioInMode(),
+				this.getAudioInMode(), "audioInMode", null, 0, 1,
+				GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getGlobalParameters_MidiClock(), this.getMidiClock(),
+				"midiClock", null, 0, 1, GlobalParameters.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGlobalParameters_NoteMessageEnabled(),
+				this.getEnabledFlag(), "noteMessageEnabled", null, 0, 1,
+				GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getGlobalParameters_SystemExEnabled(),
+				this.getEnabledFlag(), "systemExEnabled", null, 0, 1,
+				GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getGlobalParameters_ControlChangeEnabled(),
+				this.getEnabledFlag(), "controlChangeEnabled", null, 0, 1,
+				GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getGlobalParameters_ProgramChangeEnabled(),
+				this.getEnabledFlag(), "programChangeEnabled", null, 0, 1,
+				GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(
+				getGlobalParameters_ReservedBitsAfterProgramChangeEnabled(),
+				ecorePackage.getEByte(),
+				"reservedBitsAfterProgramChangeEnabled", null, 0, 1,
+				GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getGlobalParameters_PitchBendRange(),
+				this.getPitchBendRange(), "pitchBendRange", null, 0, 1,
+				GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getGlobalParameters_MidiChannels(),
+				this.getMidiChannelType(), null, "midiChannels", null, 3, 3,
+				GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGlobalParameters_PartNoteNumbers(),
+				this.getPartNoteNumber(), null, "partNoteNumbers", null, 13,
+				13, GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGlobalParameters_MidiControlChangeAssignments(),
+				this.getMidiControlChangeAssignment(), null,
+				"midiControlChangeAssignments", null, 33, 33,
+				GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGlobalParameters_ReservedLong(),
+				ecorePackage.getELong(), "reservedLong", null, 0, 1,
+				GlobalParameters.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getGlobalParameters_PatternSetParameters(),
+				this.getPatternSetParameter(), null, "patternSetParameters",
+				null, 128, 128, GlobalParameters.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(globalParametersEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(globalParametersEClass, null, "init", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		addEOperation(globalParametersEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(globalParametersEClass, ecorePackage.getEByteArray(),
+				"toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(midiChannelTypeEClass, MidiChannelType.class, "MidiChannelType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMidiChannelType_Name(), this.getMidiChannelTypeName(), "name", null, 0, 1, MidiChannelType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMidiChannelType_MidiChannel(), this.getMidiChannel(), "midiChannel", null, 0, 1, MidiChannelType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(midiChannelTypeEClass, MidiChannelType.class,
+				"MidiChannelType", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMidiChannelType_Name(),
+				this.getMidiChannelTypeName(), "name", null, 0, 1,
+				MidiChannelType.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getMidiChannelType_MidiChannel(), this.getMidiChannel(),
+				"midiChannel", null, 0, 1, MidiChannelType.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(midiControlChangeAssignmentEClass, MidiControlChangeAssignment.class, "MidiControlChangeAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMidiControlChangeAssignment_Name(), this.getMidiControlChangeAssignmentName(), "name", null, 0, 1, MidiControlChangeAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMidiControlChangeAssignment_Value(), ecorePackage.getEByte(), "value", null, 0, 1, MidiControlChangeAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(midiControlChangeAssignmentEClass,
+				MidiControlChangeAssignment.class,
+				"MidiControlChangeAssignment", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMidiControlChangeAssignment_Name(),
+				this.getMidiControlChangeAssignmentName(), "name", null, 0, 1,
+				MidiControlChangeAssignment.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getMidiControlChangeAssignment_Value(),
+				ecorePackage.getEByte(), "value", null, 0, 1,
+				MidiControlChangeAssignment.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOperation_Value(), ecorePackage.getEByte(), "value", "0", 1, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOperation_Value(), ecorePackage.getEByte(), "value",
+				"0", 1, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(parametersFxEClass, ParametersFx.class, "ParametersFx", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParametersFx_EffectType(), this.getFxType(), "effectType", null, 0, 1, ParametersFx.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParametersFx_Edit1(), ecorePackage.getEByte(), "edit1", null, 0, 1, ParametersFx.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParametersFx_Edit2(), ecorePackage.getEByte(), "edit2", null, 0, 1, ParametersFx.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParametersFx_MotionSequenceStatus(), ecorePackage.getEByte(), "motionSequenceStatus", null, 0, 1, ParametersFx.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(parametersFxEClass, ParametersFx.class, "ParametersFx",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getParametersFx_EffectType(), this.getFxType(),
+				"effectType", null, 0, 1, ParametersFx.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParametersFx_Edit1(), ecorePackage.getEByte(),
+				"edit1", null, 0, 1, ParametersFx.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParametersFx_Edit2(), ecorePackage.getEByte(),
+				"edit2", null, 0, 1, ParametersFx.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParametersFx_MotionSequenceStatus(),
+				ecorePackage.getEByte(), "motionSequenceStatus", null, 0, 1,
+				ParametersFx.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(parametersFxEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(parametersFxEClass, null, "init", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		addEOperation(parametersFxEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(parametersFxEClass, ecorePackage.getEByteArray(),
+				"toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(parametersMotionEClass, ParametersMotion.class, "ParametersMotion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParametersMotion_CurrentPosition(), ecorePackage.getEInt(), "currentPosition", "-1", 0, 1, ParametersMotion.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParametersMotion_Empty(), ecorePackage.getEBoolean(), "empty", "true", 0, 1, ParametersMotion.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getParametersMotion_Operation(), this.getOperation(), null, "operation", null, 128, 128, ParametersMotion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParametersMotion_OperationNumber(), ecorePackage.getEShort(), "operationNumber", null, 0, 1, ParametersMotion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParametersMotion_OperationType(), this.getOperationType(), "operationType", "-1", 0, 1, ParametersMotion.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEClass(parametersMotionEClass, ParametersMotion.class,
+				"ParametersMotion", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getParametersMotion_CurrentPosition(),
+				ecorePackage.getEInt(), "currentPosition", "-1", 0, 1,
+				ParametersMotion.class, IS_TRANSIENT, IS_VOLATILE,
+				!IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getParametersMotion_Empty(), ecorePackage.getEBoolean(),
+				"empty", "true", 0, 1, ParametersMotion.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
+		initEReference(getParametersMotion_Operation(), this.getOperation(),
+				null, "operation", null, 128, 128, ParametersMotion.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getParametersMotion_OperationNumber(),
+				ecorePackage.getEShort(), "operationNumber", null, 0, 1,
+				ParametersMotion.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getParametersMotion_OperationType(),
+				this.getOperationType(), "operationType", "-1", 0, 1,
+				ParametersMotion.class, IS_TRANSIENT, IS_VOLATILE,
+				!IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED,
+				IS_ORDERED);
 
-		op = addEOperation(parametersMotionEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(parametersMotionEClass, null, "init", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		addEOperation(parametersMotionEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(parametersMotionEClass, ecorePackage.getEByteArray(),
+				"toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(partEClass, Part.class, "Part", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPart_Label(), ecorePackage.getEString(), "label", "true", 0, 1, Part.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPart_Level(), ecorePackage.getEByte(), "level", null, 0, 1, Part.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPart_MotionSequenceStatus(), ecorePackage.getEByte(), "motionSequenceStatus", null, 0, 1, Part.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(partEClass, Part.class, "Part", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPart_Label(), ecorePackage.getEString(), "label",
+				"true", 0, 1, Part.class, IS_TRANSIENT, IS_VOLATILE,
+				!IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPart_Level(), ecorePackage.getEByte(), "level", null,
+				0, 1, Part.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPart_MotionSequenceStatus(), ecorePackage.getEByte(),
+				"motionSequenceStatus", null, 0, 1, Part.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(partEClass, ecorePackage.getEString(), "getSampleLabel", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEShort(), "sampleNumber", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(partEClass, ecorePackage.getEString(),
+				"getSampleLabel", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEShort(), "sampleNumber", 1, 1,
+				IS_UNIQUE, IS_ORDERED);
 
-		initEClass(partAccentEClass, PartAccent.class, "PartAccent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(partAccentEClass, PartAccent.class, "PartAccent",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(partAccentEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(partAccentEClass, null, "init", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		addEOperation(partAccentEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(partAccentEClass, ecorePackage.getEByteArray(),
+				"toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(partAudioInEClass, PartAudioIn.class, "PartAudioIn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPartAudioIn_ReservedBitsByte7(), ecorePackage.getEByte(), "reservedBitsByte7", null, 0, 1, PartAudioIn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(partAudioInEClass, PartAudioIn.class, "PartAudioIn",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPartAudioIn_ReservedBitsByte7(),
+				ecorePackage.getEByte(), "reservedBitsByte7", null, 0, 1,
+				PartAudioIn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(partAudioInEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(partAudioInEClass, null, "init", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		addEOperation(partAudioInEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(partAudioInEClass, ecorePackage.getEByteArray(),
+				"toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(partDrumEClass, PartDrum.class, "PartDrum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(partDrumEClass, PartDrum.class, "PartDrum", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(partDrumEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(partDrumEClass, null, "init", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		addEOperation(partDrumEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(partDrumEClass, ecorePackage.getEByteArray(),
+				"toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(partKeyboardEClass, PartKeyboard.class, "PartKeyboard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPartKeyboard_Glide(), ecorePackage.getEByte(), "glide", null, 0, 1, PartKeyboard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPartKeyboard_SequenceDataNote(), this.getSequenceDataNote(), null, "sequenceDataNote", null, 0, 1, PartKeyboard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(partKeyboardEClass, PartKeyboard.class, "PartKeyboard",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPartKeyboard_Glide(), ecorePackage.getEByte(),
+				"glide", null, 0, 1, PartKeyboard.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getPartKeyboard_SequenceDataNote(),
+				this.getSequenceDataNote(), null, "sequenceDataNote", null, 0,
+				1, PartKeyboard.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(partKeyboardEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(partKeyboardEClass, null, "init", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		addEOperation(partKeyboardEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(partKeyboardEClass, ecorePackage.getEByteArray(),
+				"toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(partNoteNumberEClass, PartNoteNumber.class, "PartNoteNumber", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPartNoteNumber_Name(), this.getPartNoteNumberName(), "name", null, 0, 1, PartNoteNumber.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartNoteNumber_NoteNumber(), this.getNoteNumber(), "noteNumber", null, 0, 1, PartNoteNumber.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(partNoteNumberEClass, PartNoteNumber.class,
+				"PartNoteNumber", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPartNoteNumber_Name(), this.getPartNoteNumberName(),
+				"name", null, 0, 1, PartNoteNumber.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartNoteNumber_NoteNumber(), this.getNoteNumber(),
+				"noteNumber", null, 0, 1, PartNoteNumber.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(partStretchSliceEClass, PartStretchSlice.class, "PartStretchSlice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(partStretchSliceEClass, PartStretchSlice.class,
+				"PartStretchSlice", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(partStretchSliceEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(partStretchSliceEClass, null, "init", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		addEOperation(partStretchSliceEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(partStretchSliceEClass, ecorePackage.getEByteArray(),
+				"toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(partWithCommonEClass, PartWithCommon.class, "PartWithCommon", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPartWithCommon_AmpEg(), this.getAmpEg(), "ampEg", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithCommon_BpmSync(), this.getBpmSync(), "bpmSync", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithCommon_Cutoff(), ecorePackage.getEByte(), "cutoff", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithCommon_EgIntensity(), ecorePackage.getEByte(), "egIntensity", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithCommon_EgTime(), ecorePackage.getEByte(), "egTime", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithCommon_FilterType(), this.getFilterType(), "filterType", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithCommon_FxSelect(), this.getFxSelect(), "fxSelect", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithCommon_FxSend(), this.getFxSend(), "fxSend", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithCommon_ModDepth(), ecorePackage.getEByte(), "modDepth", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithCommon_ModDest(), this.getModDest(), "modDest", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithCommon_ModSpeed(), ecorePackage.getEByte(), "modSpeed", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithCommon_ModType(), this.getModType(), "modType", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithCommon_Pan(), ecorePackage.getEByte(), "pan", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithCommon_ReservedBitAfterModDepth(), ecorePackage.getEByte(), "reservedBitAfterModDepth", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithCommon_Resonance(), ecorePackage.getEByte(), "resonance", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithCommon_Roll(), this.getRoll(), "roll", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(partWithCommonEClass, PartWithCommon.class,
+				"PartWithCommon", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPartWithCommon_AmpEg(), this.getAmpEg(), "ampEg",
+				null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPartWithCommon_BpmSync(), this.getBpmSync(),
+				"bpmSync", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartWithCommon_Cutoff(), ecorePackage.getEByte(),
+				"cutoff", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartWithCommon_EgIntensity(),
+				ecorePackage.getEByte(), "egIntensity", null, 0, 1,
+				PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPartWithCommon_EgTime(), ecorePackage.getEByte(),
+				"egTime", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartWithCommon_FilterType(), this.getFilterType(),
+				"filterType", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartWithCommon_FxSelect(), this.getFxSelect(),
+				"fxSelect", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartWithCommon_FxSend(), this.getFxSend(), "fxSend",
+				null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPartWithCommon_ModDepth(), ecorePackage.getEByte(),
+				"modDepth", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartWithCommon_ModDest(), this.getModDest(),
+				"modDest", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartWithCommon_ModSpeed(), ecorePackage.getEByte(),
+				"modSpeed", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartWithCommon_ModType(), this.getModType(),
+				"modType", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartWithCommon_Pan(), ecorePackage.getEByte(), "pan",
+				null, 0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPartWithCommon_ReservedBitAfterModDepth(),
+				ecorePackage.getEByte(), "reservedBitAfterModDepth", null, 0,
+				1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPartWithCommon_Resonance(), ecorePackage.getEByte(),
+				"resonance", null, 0, 1, PartWithCommon.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartWithCommon_Roll(), this.getRoll(), "roll", null,
+				0, 1, PartWithCommon.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(partWithPitchEClass, PartWithPitch.class, "PartWithPitch", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPartWithPitch_Pitch(), ecorePackage.getEByte(), "pitch", null, 0, 1, PartWithPitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(partWithPitchEClass, PartWithPitch.class, "PartWithPitch",
+				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPartWithPitch_Pitch(), ecorePackage.getEByte(),
+				"pitch", null, 0, 1, PartWithPitch.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(partWithSampleEClass, PartWithSample.class, "PartWithSample", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPartWithSample_Reverse(), this.getReverse(), "reverse", null, 0, 1, PartWithSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithSample_SampleLabel(), ecorePackage.getEString(), "sampleLabel", null, 0, 1, PartWithSample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithSample_SamplePointer(), ecorePackage.getEShort(), "samplePointer", null, 0, 1, PartWithSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithSample_StartPoint(), ecorePackage.getEByte(), "startPoint", null, 0, 1, PartWithSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithSample_ReservedBitsAfterReverse(), ecorePackage.getEByte(), "reservedBitsAfterReverse", null, 0, 1, PartWithSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(partWithSampleEClass, PartWithSample.class,
+				"PartWithSample", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPartWithSample_Reverse(), this.getReverse(),
+				"reverse", null, 0, 1, PartWithSample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartWithSample_SampleLabel(),
+				ecorePackage.getEString(), "sampleLabel", null, 0, 1,
+				PartWithSample.class, IS_TRANSIENT, IS_VOLATILE,
+				!IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPartWithSample_SamplePointer(),
+				ecorePackage.getEShort(), "samplePointer", null, 0, 1,
+				PartWithSample.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPartWithSample_StartPoint(), ecorePackage.getEByte(),
+				"startPoint", null, 0, 1, PartWithSample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartWithSample_ReservedBitsAfterReverse(),
+				ecorePackage.getEByte(), "reservedBitsAfterReverse", null, 0,
+				1, PartWithSample.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(partWithSequenceDataEClass, PartWithSequenceData.class, "PartWithSequenceData", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPartWithSequenceData_SequenceData(), this.getSequenceData(), null, "sequenceData", null, 0, 1, PartWithSequenceData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(partWithSequenceDataEClass, PartWithSequenceData.class,
+				"PartWithSequenceData", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPartWithSequenceData_SequenceData(),
+				this.getSequenceData(), null, "sequenceData", null, 0, 1,
+				PartWithSequenceData.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(partWithSequenceDataGateEClass, PartWithSequenceDataGate.class, "PartWithSequenceDataGate", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPartWithSequenceDataGate_SequenceDataGate(), this.getSequenceDataGate(), null, "sequenceDataGate", null, 0, 1, PartWithSequenceDataGate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(partWithSequenceDataGateEClass,
+				PartWithSequenceDataGate.class, "PartWithSequenceDataGate",
+				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPartWithSequenceDataGate_SequenceDataGate(),
+				this.getSequenceDataGate(), null, "sequenceDataGate", null, 0,
+				1, PartWithSequenceDataGate.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(partWithSliceEClass, PartWithSlice.class, "PartWithSlice", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPartWithSlice_ReservedByte(), ecorePackage.getEByte(), "reservedByte", null, 0, 1, PartWithSlice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartWithSlice_SliceNumber(), ecorePackage.getEByte(), "sliceNumber", null, 0, 1, PartWithSlice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(partWithSliceEClass, PartWithSlice.class, "PartWithSlice",
+				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPartWithSlice_ReservedByte(),
+				ecorePackage.getEByte(), "reservedByte", null, 0, 1,
+				PartWithSlice.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPartWithSlice_SliceNumber(), ecorePackage.getEByte(),
+				"sliceNumber", null, 0, 1, PartWithSlice.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(patternEClass, Pattern.class, "Pattern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPattern_Name(), ecorePackage.getEString(), "name", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_Label(), ecorePackage.getEString(), "label", "true", 0, 1, Pattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getPattern_Tempo(), this.getTempo(), null, "tempo", null, 1, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_Swing(), this.getSwing(), "swing", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_PatternLength(), this.getPatternLength(), "patternLength", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_ReservedBitAfterPatternLength(), ecorePackage.getEByte(), "reservedBitAfterPatternLength", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_Beat(), this.getBeat(), "beat", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_RollType(), this.getRollType(), "rollType", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_FxChain(), this.getFxChain(), "fxChain", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_LastStep(), this.getLastStep(), "lastStep", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_ArpeggiatorScale(), this.getArpeggiatorScale(), "arpeggiatorScale", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_ReservedBitsAfterArpeggiatorScale(), ecorePackage.getEByte(), "reservedBitsAfterArpeggiatorScale", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_ArpeggiatorCenterNote(), this.getNoteNumber(), "arpeggiatorCenterNote", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_MuteStatus(), ecorePackage.getEShort(), "muteStatus", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_SwingStatus(), ecorePackage.getEShort(), "swingStatus", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_OutputBusStatus(), ecorePackage.getEShort(), "outputBusStatus", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_AccentStatus(), ecorePackage.getEShort(), "accentStatus", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPattern_DrumParts(), this.getPartDrum(), null, "drumParts", null, 9, 9, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPattern_KeyboardParts(), this.getPartKeyboard(), null, "keyboardParts", null, 2, 2, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPattern_StretchSliceParts(), this.getPartStretchSlice(), null, "stretchSliceParts", null, 3, 3, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPattern_AudioInPart(), this.getPartAudioIn(), null, "audioInPart", null, 1, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPattern_AccentPart(), this.getPartAccent(), null, "accentPart", null, 1, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPattern_FxParameters(), this.getParametersFx(), null, "fxParameters", null, 3, 3, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPattern_MotionParameters(), this.getParametersMotion(), null, "motionParameters", null, 24, 24, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_Empty(), ecorePackage.getEBoolean(), "empty", "true", 0, 1, Pattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_PatternNumberOriginal(), this.getPatternNumber(), "patternNumberOriginal", "-1", 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_PatternNumberCurrent(), this.getPatternNumber(), "patternNumberCurrent", "-1", 0, 1, Pattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEClass(patternEClass, Pattern.class, "Pattern", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPattern_Name(), ecorePackage.getEString(), "name",
+				null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPattern_Label(), ecorePackage.getEString(), "label",
+				"true", 0, 1, Pattern.class, IS_TRANSIENT, IS_VOLATILE,
+				!IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getPattern_Tempo(), this.getTempo(), null, "tempo",
+				null, 1, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPattern_Swing(), this.getSwing(), "swing", null, 0,
+				1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPattern_PatternLength(), this.getPatternLength(),
+				"patternLength", null, 0, 1, Pattern.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPattern_ReservedBitAfterPatternLength(),
+				ecorePackage.getEByte(), "reservedBitAfterPatternLength", null,
+				0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPattern_Beat(), this.getBeat(), "beat", null, 0, 1,
+				Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPattern_RollType(), this.getRollType(), "rollType",
+				null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPattern_FxChain(), this.getFxChain(), "fxChain",
+				null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPattern_LastStep(), this.getLastStep(), "lastStep",
+				null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPattern_ArpeggiatorScale(),
+				this.getArpeggiatorScale(), "arpeggiatorScale", null, 0, 1,
+				Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPattern_ReservedBitsAfterArpeggiatorScale(),
+				ecorePackage.getEByte(), "reservedBitsAfterArpeggiatorScale",
+				null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPattern_ArpeggiatorCenterNote(),
+				this.getNoteNumber(), "arpeggiatorCenterNote", null, 0, 1,
+				Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPattern_MuteStatus(), ecorePackage.getEShort(),
+				"muteStatus", null, 0, 1, Pattern.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPattern_SwingStatus(), ecorePackage.getEShort(),
+				"swingStatus", null, 0, 1, Pattern.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPattern_OutputBusStatus(), ecorePackage.getEShort(),
+				"outputBusStatus", null, 0, 1, Pattern.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPattern_AccentStatus(), ecorePackage.getEShort(),
+				"accentStatus", null, 0, 1, Pattern.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getPattern_DrumParts(), this.getPartDrum(), null,
+				"drumParts", null, 9, 9, Pattern.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPattern_KeyboardParts(), this.getPartKeyboard(),
+				null, "keyboardParts", null, 2, 2, Pattern.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getPattern_StretchSliceParts(),
+				this.getPartStretchSlice(), null, "stretchSliceParts", null, 3,
+				3, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getPattern_AudioInPart(), this.getPartAudioIn(), null,
+				"audioInPart", null, 1, 1, Pattern.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPattern_AccentPart(), this.getPartAccent(), null,
+				"accentPart", null, 1, 1, Pattern.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPattern_FxParameters(), this.getParametersFx(), null,
+				"fxParameters", null, 3, 3, Pattern.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPattern_MotionParameters(),
+				this.getParametersMotion(), null, "motionParameters", null, 24,
+				24, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPattern_Empty(), ecorePackage.getEBoolean(), "empty",
+				"true", 0, 1, Pattern.class, IS_TRANSIENT, IS_VOLATILE,
+				!IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPattern_PatternNumberOriginal(),
+				this.getPatternNumber(), "patternNumberOriginal", "-1", 0, 1,
+				Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPattern_PatternNumberCurrent(),
+				this.getPatternNumber(), "patternNumberCurrent", "-1", 0, 1,
+				Pattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(patternEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(patternEClass, null, "init", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		op = addEOperation(patternEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "patternNumber", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(patternEClass, null, "init", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "patternNumber", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(patternEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(patternEClass, ecorePackage.getEByteArray(),
+				"toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(sampleInPatternInfoEClass, SampleInPatternInfo.class, "SampleInPatternInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSampleInPatternInfo_Index(), ecorePackage.getEInt(), "index", "0", 0, 1, SampleInPatternInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSampleInPatternInfo_PatternLabel(), ecorePackage.getEString(), "patternLabel", null, 0, 1, SampleInPatternInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSampleInPatternInfo_PartCount(), ecorePackage.getEInt(), "partCount", null, 0, 1, SampleInPatternInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSampleInPatternInfo_PartList(), ecorePackage.getEString(), "partList", null, 0, 1, SampleInPatternInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(sampleInPatternInfoEClass, SampleInPatternInfo.class,
+				"SampleInPatternInfo", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSampleInPatternInfo_Index(), ecorePackage.getEInt(),
+				"index", "0", 0, 1, SampleInPatternInfo.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSampleInPatternInfo_PatternLabel(),
+				ecorePackage.getEString(), "patternLabel", null, 0, 1,
+				SampleInPatternInfo.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getSampleInPatternInfo_PartCount(),
+				ecorePackage.getEInt(), "partCount", null, 0, 1,
+				SampleInPatternInfo.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getSampleInPatternInfo_PartList(),
+				ecorePackage.getEString(), "partList", null, 0, 1,
+				SampleInPatternInfo.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(patternSetParameterEClass, PatternSetParameter.class, "PatternSetParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPatternSetParameter_PositionCurrent(), ecorePackage.getEInt(), "positionCurrent", "-1", 0, 1, PatternSetParameter.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPatternSetParameter_PatternPointer(), ecorePackage.getEShort(), "patternPointer", null, 0, 1, PatternSetParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(patternSetParameterEClass, PatternSetParameter.class,
+				"PatternSetParameter", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPatternSetParameter_PositionCurrent(),
+				ecorePackage.getEInt(), "positionCurrent", "-1", 0, 1,
+				PatternSetParameter.class, IS_TRANSIENT, IS_VOLATILE,
+				!IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPatternSetParameter_PatternPointer(),
+				ecorePackage.getEShort(), "patternPointer", null, 0, 1,
+				PatternSetParameter.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(sampleEClass, Sample.class, "Sample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSample_Name(), ecorePackage.getEString(), "name", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_OffsetChannel1Start(), ecorePackage.getEInt(), "offsetChannel1Start", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_OffsetChannel1End(), ecorePackage.getEInt(), "offsetChannel1End", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_OffsetChannel2Start(), ecorePackage.getEInt(), "offsetChannel2Start", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_OffsetChannel2End(), ecorePackage.getEInt(), "offsetChannel2End", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_Start(), ecorePackage.getEInt(), "start", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_End(), ecorePackage.getEInt(), "end", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_LoopStart(), ecorePackage.getEInt(), "loopStart", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_SampleRate(), ecorePackage.getEInt(), "sampleRate", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSample_SampleTune(), this.getSampleTune(), null, "sampleTune", null, 1, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_NumberOfSampleFrames(), ecorePackage.getEInt(), "numberOfSampleFrames", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_PlayLevel(), this.getPlayLevel(), "playLevel", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_StretchStep(), this.getStretchStep(), "stretchStep", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_UnknownByteMono1(), ecorePackage.getEByte(), "unknownByteMono1", "0", 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_UnknownByteMono2(), ecorePackage.getEByte(), "unknownByteMono2", "0", 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_UnknownByteMono3(), ecorePackage.getEByte(), "unknownByteMono3", "0", 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_UnknownByteMono4(), ecorePackage.getEByte(), "unknownByteMono4", "0", 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_UnknownByteStereo1(), ecorePackage.getEByte(), "unknownByteStereo1", "0", 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_UnknownByteStereo2(), ecorePackage.getEByte(), "unknownByteStereo2", "0", 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_UnknownByteStereo3(), ecorePackage.getEByte(), "unknownByteStereo3", "0", 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_UnknownByteStereo4(), ecorePackage.getEByte(), "unknownByteStereo4", "0", 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_AudioDataChannel1(), ecorePackage.getEByteArray(), "audioDataChannel1", "", 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_AudioDataChannel2(), ecorePackage.getEByteArray(), "audioDataChannel2", "", 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_AudioDataChannelBoth(), ecorePackage.getEByteArray(), "audioDataChannelBoth", null, 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_AudioDataLoopStart(), ecorePackage.getEByteArray(), "audioDataLoopStart", null, 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_SliceArray(), ecorePackage.getEByteArray(), "sliceArray", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_Loop(), ecorePackage.getEBoolean(), "loop", null, 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_Slice(), ecorePackage.getEBoolean(), "slice", null, 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_StereoOriginal(), ecorePackage.getEBoolean(), "stereoOriginal", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_StereoCurrent(), ecorePackage.getEBoolean(), "stereoCurrent", "true", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_Label(), ecorePackage.getEString(), "label", "true", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_MemUsedInBytes(), ecorePackage.getEInt(), "memUsedInBytes", "0", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_Empty(), ecorePackage.getEBoolean(), "empty", "true", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_PartCount(), ecorePackage.getEInt(), "partCount", null, 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_PatternCount(), ecorePackage.getEInt(), "patternCount", null, 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getSample_SampleInPatternInfoList(), this.getSampleInPatternInfo(), null, "sampleInPatternInfoList", null, 0, -1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_SampleNumberOriginal(), this.getSampleNumber(), "sampleNumberOriginal", "-1", 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSample_SampleNumberCurrent(), this.getSampleNumber(), "sampleNumberCurrent", "-1", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEClass(sampleEClass, Sample.class, "Sample", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSample_Name(), ecorePackage.getEString(), "name",
+				null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getSample_OffsetChannel1Start(), ecorePackage.getEInt(),
+				"offsetChannel1Start", null, 0, 1, Sample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_OffsetChannel1End(), ecorePackage.getEInt(),
+				"offsetChannel1End", null, 0, 1, Sample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_OffsetChannel2Start(), ecorePackage.getEInt(),
+				"offsetChannel2Start", null, 0, 1, Sample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_OffsetChannel2End(), ecorePackage.getEInt(),
+				"offsetChannel2End", null, 0, 1, Sample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_Start(), ecorePackage.getEInt(), "start",
+				null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getSample_End(), ecorePackage.getEInt(), "end", null, 0,
+				1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_LoopStart(), ecorePackage.getEInt(),
+				"loopStart", null, 0, 1, Sample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_SampleRate(), ecorePackage.getEInt(),
+				"sampleRate", null, 0, 1, Sample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getSample_SampleTune(), this.getSampleTune(), null,
+				"sampleTune", null, 1, 1, Sample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_NumberOfSampleFrames(),
+				ecorePackage.getEInt(), "numberOfSampleFrames", null, 0, 1,
+				Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_PlayLevel(), this.getPlayLevel(), "playLevel",
+				null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getSample_StretchStep(), this.getStretchStep(),
+				"stretchStep", null, 0, 1, Sample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_UnknownByteMono1(), ecorePackage.getEByte(),
+				"unknownByteMono1", "0", 0, 1, Sample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_UnknownByteMono2(), ecorePackage.getEByte(),
+				"unknownByteMono2", "0", 0, 1, Sample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_UnknownByteMono3(), ecorePackage.getEByte(),
+				"unknownByteMono3", "0", 0, 1, Sample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_UnknownByteMono4(), ecorePackage.getEByte(),
+				"unknownByteMono4", "0", 0, 1, Sample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_UnknownByteStereo1(), ecorePackage.getEByte(),
+				"unknownByteStereo1", "0", 0, 1, Sample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_UnknownByteStereo2(), ecorePackage.getEByte(),
+				"unknownByteStereo2", "0", 0, 1, Sample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_UnknownByteStereo3(), ecorePackage.getEByte(),
+				"unknownByteStereo3", "0", 0, 1, Sample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_UnknownByteStereo4(), ecorePackage.getEByte(),
+				"unknownByteStereo4", "0", 0, 1, Sample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_AudioDataChannel1(),
+				ecorePackage.getEByteArray(), "audioDataChannel1", "", 0, 1,
+				Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_AudioDataChannel2(),
+				ecorePackage.getEByteArray(), "audioDataChannel2", "", 0, 1,
+				Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_AudioDataChannelBoth(),
+				ecorePackage.getEByteArray(), "audioDataChannelBoth", null, 0,
+				1, Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_AudioDataLoopStart(),
+				ecorePackage.getEByteArray(), "audioDataLoopStart", null, 0, 1,
+				Sample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_SliceArray(), ecorePackage.getEByteArray(),
+				"sliceArray", null, 0, 1, Sample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_Loop(), ecorePackage.getEBoolean(), "loop",
+				null, 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE,
+				!IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getSample_Slice(), ecorePackage.getEBoolean(), "slice",
+				null, 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE,
+				!IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getSample_StereoOriginal(), ecorePackage.getEBoolean(),
+				"stereoOriginal", null, 0, 1, Sample.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_StereoCurrent(), ecorePackage.getEBoolean(),
+				"stereoCurrent", "true", 0, 1, Sample.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_Label(), ecorePackage.getEString(), "label",
+				"true", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE,
+				!IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getSample_MemUsedInBytes(), ecorePackage.getEInt(),
+				"memUsedInBytes", "0", 0, 1, Sample.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_Empty(), ecorePackage.getEBoolean(), "empty",
+				"true", 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE,
+				!IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getSample_PartCount(), ecorePackage.getEInt(),
+				"partCount", null, 0, 1, Sample.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_PatternCount(), ecorePackage.getEInt(),
+				"patternCount", null, 0, 1, Sample.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
+		initEReference(getSample_SampleInPatternInfoList(),
+				this.getSampleInPatternInfo(), null, "sampleInPatternInfoList",
+				null, 0, -1, Sample.class, IS_TRANSIENT, IS_VOLATILE,
+				!IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_SampleNumberOriginal(),
+				this.getSampleNumber(), "sampleNumberOriginal", "-1", 0, 1,
+				Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSample_SampleNumberCurrent(), this.getSampleNumber(),
+				"sampleNumberCurrent", "-1", 0, 1, Sample.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(sampleEClass, null, "export", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(sampleEClass, null, "export", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 		addEParameter(op, this.getFile(), "file", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getIOException());
 
-		op = addEOperation(sampleEClass, null, "initHeaderMono", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(sampleEClass, null, "initHeaderMono", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		op = addEOperation(sampleEClass, null, "initHeaderMono", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "sampleNumber", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(sampleEClass, null, "initHeaderMono", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "sampleNumber", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(sampleEClass, null, "initHeaderStereo", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(sampleEClass, null, "initHeaderStereo", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		op = addEOperation(sampleEClass, null, "initHeaderStereo", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "sampleNumber", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(sampleEClass, null, "initHeaderStereo", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "sampleNumber", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(sampleEClass, null, "initOffsetChannel", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAudioChannelType(), "audioChannelType", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(sampleEClass, null, "initOffsetChannel", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, this.getAudioChannelType(), "audioChannelType", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(sampleEClass, null, "initSliceArray", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(sampleEClass, null, "initSliceArray", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		addEOperation(sampleEClass, ecorePackage.getEByteArray(), "toHeaderMonoByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(sampleEClass, ecorePackage.getEByteArray(),
+				"toHeaderMonoByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(sampleEClass, ecorePackage.getEByteArray(), "toHeaderStereoByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(sampleEClass, ecorePackage.getEByteArray(),
+				"toHeaderStereoByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(sampleEClass, ecorePackage.getEByteArray(), "toOffsetChannelByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAudioChannelType(), "audioChannelType", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(sampleEClass, ecorePackage.getEByteArray(),
+				"toOffsetChannelByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getAudioChannelType(), "audioChannelType", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(sampleEClass, ecorePackage.getEByteArray(), "toSliceByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(sampleEClass, ecorePackage.getEByteArray(),
+				"toSliceByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(sampleEClass, this.getRIFFWave(), "toRIFFWave", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(sampleEClass, this.getRIFFWave(), "toRIFFWave", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(sampleEClass, null, "toRIFFWaveFile", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(sampleEClass, null, "toRIFFWaveFile", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getFile(), "file", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getIOException());
 
-		initEClass(sampleTuneEClass, SampleTune.class, "SampleTune", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSampleTune_Value(), ecorePackage.getEFloat(), "value", null, 0, 1, SampleTune.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(sampleTuneEClass, SampleTune.class, "SampleTune",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSampleTune_Value(), ecorePackage.getEFloat(),
+				"value", null, 0, 1, SampleTune.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(sampleTuneEClass, ecorePackage.getEFloat(), "calculateSampleTuneFromSampleRate", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "sampleRate", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(sampleTuneEClass, ecorePackage.getEFloat(),
+				"calculateSampleTuneFromSampleRate", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "sampleRate", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(sampleTuneEClass, ecorePackage.getEShort(), "getShortFromCurrentValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(sampleTuneEClass, ecorePackage.getEShort(),
+				"getShortFromCurrentValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(sampleTuneEClass, null, "setCurrentValueFromShort", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEShort(), "packedShort", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(sampleTuneEClass, null, "setCurrentValueFromShort",
+				0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEShort(), "packedShort", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
 
-		initEClass(sequenceDataEClass, SequenceData.class, "SequenceData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSequenceData_SequenceData(), ecorePackage.getEByteArray(), "sequenceData", null, 0, 1, SequenceData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(sequenceDataEClass, SequenceData.class, "SequenceData",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSequenceData_SequenceData(),
+				ecorePackage.getEByteArray(), "sequenceData", null, 0, 1,
+				SequenceData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(sequenceDataGateEClass, SequenceDataGate.class, "SequenceDataGate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSequenceDataGate_SequenceDataGate(), ecorePackage.getEByteArray(), "sequenceDataGate", null, 0, 1, SequenceDataGate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(sequenceDataGateEClass, SequenceDataGate.class,
+				"SequenceDataGate", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSequenceDataGate_SequenceDataGate(),
+				ecorePackage.getEByteArray(), "sequenceDataGate", null, 0, 1,
+				SequenceDataGate.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(sequenceDataNoteEClass, SequenceDataNote.class, "SequenceDataNote", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSequenceDataNote_SequenceDataNote(), ecorePackage.getEByteArray(), "sequenceDataNote", null, 0, 1, SequenceDataNote.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(sequenceDataNoteEClass, SequenceDataNote.class,
+				"SequenceDataNote", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSequenceDataNote_SequenceDataNote(),
+				ecorePackage.getEByteArray(), "sequenceDataNote", null, 0, 1,
+				SequenceDataNote.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(songEClass, Song.class, "Song", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSong_Name(), ecorePackage.getEString(), "name", null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSong_Tempo(), this.getTempo(), null, "tempo", null, 1, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSong_TempoLock(), this.getTempoLock(), "tempoLock", null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSong_SongLength(), this.getSongLength(), "songLength", null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSong_MuteHold(), this.getMuteHold(), "muteHold", null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSong_NextSongNumber(), this.getNextSongNumber(), "nextSongNumber", null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSong_NumberOfSongEventsCurrent(), ecorePackage.getEShort(), "numberOfSongEventsCurrent", null, 0, 1, Song.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSong_NumberOfSongEventsOriginal(), ecorePackage.getEShort(), "numberOfSongEventsOriginal", "0", 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSong_SongPatterns(), this.getSongPattern(), null, "songPatterns", null, 256, 256, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSong_SongEvents(), this.getSongEvent(), null, "songEvents", null, 0, 20000, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSong_Empty(), ecorePackage.getEBoolean(), "empty", "true", 0, 1, Song.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSong_SongNumberOriginal(), this.getSongNumber(), "songNumberOriginal", "-1", 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSong_SongNumberCurrent(), this.getSongNumber(), "songNumberCurrent", "-1", 0, 1, Song.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEClass(songEClass, Song.class, "Song", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSong_Name(), ecorePackage.getEString(), "name", null,
+				0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSong_Tempo(), this.getTempo(), null, "tempo", null,
+				1, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSong_TempoLock(), this.getTempoLock(), "tempoLock",
+				null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getSong_SongLength(), this.getSongLength(),
+				"songLength", null, 0, 1, Song.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSong_MuteHold(), this.getMuteHold(), "muteHold",
+				null, 0, 1, Song.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getSong_NextSongNumber(), this.getNextSongNumber(),
+				"nextSongNumber", null, 0, 1, Song.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSong_NumberOfSongEventsCurrent(),
+				ecorePackage.getEShort(), "numberOfSongEventsCurrent", null, 0,
+				1, Song.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSong_NumberOfSongEventsOriginal(),
+				ecorePackage.getEShort(), "numberOfSongEventsOriginal", "0", 0,
+				1, Song.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSong_SongPatterns(), this.getSongPattern(), null,
+				"songPatterns", null, 256, 256, Song.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSong_SongEvents(), this.getSongEvent(), null,
+				"songEvents", null, 0, 20000, Song.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSong_Empty(), ecorePackage.getEBoolean(), "empty",
+				"true", 0, 1, Song.class, IS_TRANSIENT, IS_VOLATILE,
+				!IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getSong_SongNumberOriginal(), this.getSongNumber(),
+				"songNumberOriginal", "-1", 0, 1, Song.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSong_SongNumberCurrent(), this.getSongNumber(),
+				"songNumberCurrent", "-1", 0, 1, Song.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(songEClass, null, "initSong", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(songEClass, null, "initSong", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		op = addEOperation(songEClass, null, "initSong", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "songNumber", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(songEClass, null, "initSong", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "songNumber", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(songEClass, null, "initSongEvents", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(songEClass, null, "initSongEvents", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		addEOperation(songEClass, ecorePackage.getEByteArray(), "toSongByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(songEClass, ecorePackage.getEByteArray(),
+				"toSongByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(songEClass, ecorePackage.getEByteArray(), "toSongEventsByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(songEClass, ecorePackage.getEByteArray(),
+				"toSongEventsByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(songEventEClass, SongEvent.class, "SongEvent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSongEvent_CurrentPosition(), ecorePackage.getEInt(), "currentPosition", "-1", 0, 1, SongEvent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongEvent_EventInfo(), ecorePackage.getEString(), "eventInfo", "-1", 0, 1, SongEvent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongEvent_EventType(), ecorePackage.getEString(), "eventType", "-1", 0, 1, SongEvent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongEvent_Measure(), ecorePackage.getEByte(), "measure", null, 0, 1, SongEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongEvent_OperationNumber(), ecorePackage.getEShort(), "operationNumber", null, 0, 1, SongEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongEvent_PositionNumber(), ecorePackage.getEByte(), "positionNumber", null, 0, 1, SongEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongEvent_Step(), ecorePackage.getEByte(), "step", null, 0, 1, SongEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(songEventEClass, SongEvent.class, "SongEvent", IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSongEvent_CurrentPosition(), ecorePackage.getEInt(),
+				"currentPosition", "-1", 0, 1, SongEvent.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongEvent_EventInfo(), ecorePackage.getEString(),
+				"eventInfo", "-1", 0, 1, SongEvent.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongEvent_EventType(), ecorePackage.getEString(),
+				"eventType", "-1", 0, 1, SongEvent.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongEvent_Measure(), ecorePackage.getEByte(),
+				"measure", null, 0, 1, SongEvent.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongEvent_OperationNumber(),
+				ecorePackage.getEShort(), "operationNumber", null, 0, 1,
+				SongEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongEvent_PositionNumber(), ecorePackage.getEByte(),
+				"positionNumber", null, 0, 1, SongEvent.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongEvent_Step(), ecorePackage.getEByte(), "step",
+				null, 0, 1, SongEvent.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(songEventControlEClass, SongEventControl.class, "SongEventControl", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSongEventControl_OperationType(), this.getOperationType(), "operationType", "-1", 0, 1, SongEventControl.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongEventControl_ReservedByte(), ecorePackage.getEByte(), "reservedByte", null, 0, 1, SongEventControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongEventControl_ReservedShort(), ecorePackage.getEShort(), "reservedShort", "-21846", 0, 1, SongEventControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongEventControl_Value(), ecorePackage.getEByte(), "value", null, 0, 1, SongEventControl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(songEventControlEClass, SongEventControl.class,
+				"SongEventControl", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSongEventControl_OperationType(),
+				this.getOperationType(), "operationType", "-1", 0, 1,
+				SongEventControl.class, IS_TRANSIENT, IS_VOLATILE,
+				!IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getSongEventControl_ReservedByte(),
+				ecorePackage.getEByte(), "reservedByte", null, 0, 1,
+				SongEventControl.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getSongEventControl_ReservedShort(),
+				ecorePackage.getEShort(), "reservedShort", "-21846", 0, 1,
+				SongEventControl.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getSongEventControl_Value(), ecorePackage.getEByte(),
+				"value", null, 0, 1, SongEventControl.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(songEventControlEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(songEventControlEClass, null, "init", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		addEOperation(songEventControlEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(songEventControlEClass, ecorePackage.getEByteArray(),
+				"toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(songEventDrumNoteEClass, SongEventDrumNote.class, "SongEventDrumNote", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSongEventDrumNote_ReservedByte(), ecorePackage.getEByte(), "reservedByte", null, 0, 1, SongEventDrumNote.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongEventDrumNote_ReservedShort(), ecorePackage.getEShort(), "reservedShort", null, 0, 1, SongEventDrumNote.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(songEventDrumNoteEClass, SongEventDrumNote.class,
+				"SongEventDrumNote", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSongEventDrumNote_ReservedByte(),
+				ecorePackage.getEByte(), "reservedByte", null, 0, 1,
+				SongEventDrumNote.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getSongEventDrumNote_ReservedShort(),
+				ecorePackage.getEShort(), "reservedShort", null, 0, 1,
+				SongEventDrumNote.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		op = addEOperation(songEventDrumNoteEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(songEventDrumNoteEClass, null, "init", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		addEOperation(songEventDrumNoteEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(songEventDrumNoteEClass, ecorePackage.getEByteArray(),
+				"toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(songEventKeyboardNoteEClass, SongEventKeyboardNote.class, "SongEventKeyboardNote", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSongEventKeyboardNote_Length(), ecorePackage.getEShort(), "length", null, 0, 1, SongEventKeyboardNote.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongEventKeyboardNote_NoteNumber(), ecorePackage.getEByte(), "noteNumber", null, 0, 1, SongEventKeyboardNote.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(songEventKeyboardNoteEClass, SongEventKeyboardNote.class,
+				"SongEventKeyboardNote", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSongEventKeyboardNote_Length(),
+				ecorePackage.getEShort(), "length", null, 0, 1,
+				SongEventKeyboardNote.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getSongEventKeyboardNote_NoteNumber(),
+				ecorePackage.getEByte(), "noteNumber", null, 0, 1,
+				SongEventKeyboardNote.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		op = addEOperation(songEventKeyboardNoteEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(songEventKeyboardNoteEClass, null, "init", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		addEOperation(songEventKeyboardNoteEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(songEventKeyboardNoteEClass,
+				ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		initEClass(songEventMuteStatusEClass, SongEventMuteStatus.class, "SongEventMuteStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSongEventMuteStatus_ReservedShort(), ecorePackage.getEShort(), "reservedShort", null, 0, 1, SongEventMuteStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongEventMuteStatus_MuteStatus(), ecorePackage.getEShort(), "muteStatus", null, 0, 1, SongEventMuteStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(songEventMuteStatusEClass, SongEventMuteStatus.class,
+				"SongEventMuteStatus", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSongEventMuteStatus_ReservedShort(),
+				ecorePackage.getEShort(), "reservedShort", null, 0, 1,
+				SongEventMuteStatus.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getSongEventMuteStatus_MuteStatus(),
+				ecorePackage.getEShort(), "muteStatus", null, 0, 1,
+				SongEventMuteStatus.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		op = addEOperation(songEventMuteStatusEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(songEventMuteStatusEClass, null, "init", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		addEOperation(songEventMuteStatusEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(songEventMuteStatusEClass, ecorePackage.getEByteArray(),
+				"toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(songEventTempoEClass, SongEventTempo.class, "SongEventTempo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSongEventTempo_ReservedShort(), ecorePackage.getEShort(), "reservedShort", null, 0, 1, SongEventTempo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSongEventTempo_Tempo(), this.getTempo(), null, "tempo", null, 1, 1, SongEventTempo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(songEventTempoEClass, SongEventTempo.class,
+				"SongEventTempo", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSongEventTempo_ReservedShort(),
+				ecorePackage.getEShort(), "reservedShort", null, 0, 1,
+				SongEventTempo.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getSongEventTempo_Tempo(), this.getTempo(), null,
+				"tempo", null, 1, 1, SongEventTempo.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(songEventTempoEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(songEventTempoEClass, null, "init", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByteArray(), "b", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		addEOperation(songEventTempoEClass, ecorePackage.getEByteArray(), "toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(songEventTempoEClass, ecorePackage.getEByteArray(),
+				"toByteArray", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(songEventWithPartEClass, SongEventWithPart.class, "SongEventWithPart", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSongEventWithPart_Part(), this.getSongEventPart(), "part", null, 0, 1, SongEventWithPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(songEventWithPartEClass, SongEventWithPart.class,
+				"SongEventWithPart", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSongEventWithPart_Part(), this.getSongEventPart(),
+				"part", null, 0, 1, SongEventWithPart.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(songPatternEClass, SongPattern.class, "SongPattern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSongPattern_Empty(), ecorePackage.getEBoolean(), "empty", "true", 0, 1, SongPattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongPattern_NoteOffset(), ecorePackage.getEByte(), "noteOffset", null, 0, 1, SongPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongPattern_PatternPointer(), ecorePackage.getEShort(), "patternPointer", null, 0, 1, SongPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSongPattern_PositionCurrent(), ecorePackage.getEInt(), "positionCurrent", "-1", 0, 1, SongPattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEClass(songPatternEClass, SongPattern.class, "SongPattern",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSongPattern_Empty(), ecorePackage.getEBoolean(),
+				"empty", "true", 0, 1, SongPattern.class, IS_TRANSIENT,
+				IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongPattern_NoteOffset(), ecorePackage.getEByte(),
+				"noteOffset", null, 0, 1, SongPattern.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongPattern_PatternPointer(),
+				ecorePackage.getEShort(), "patternPointer", null, 0, 1,
+				SongPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSongPattern_PositionCurrent(),
+				ecorePackage.getEInt(), "positionCurrent", "-1", 0, 1,
+				SongPattern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
-		initEClass(tempoEClass, Tempo.class, "Tempo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTempo_Value(), ecorePackage.getEFloat(), "value", null, 0, 1, Tempo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(tempoEClass, Tempo.class, "Tempo", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTempo_Value(), ecorePackage.getEFloat(), "value",
+				null, 0, 1, Tempo.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		addEOperation(tempoEClass, ecorePackage.getEShort(), "getShortFromCurrentValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(tempoEClass, ecorePackage.getEShort(),
+				"getShortFromCurrentValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(tempoEClass, ecorePackage.getEFloat(), "getValidValue", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEFloat(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(tempoEClass, ecorePackage.getEFloat(),
+				"getValidValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEFloat(), "value", 1, 1, IS_UNIQUE,
+				IS_ORDERED);
 
-		op = addEOperation(tempoEClass, null, "setCurrentValueFromShort", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEShort(), "packedShort", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(tempoEClass, null, "setCurrentValueFromShort", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEShort(), "packedShort", 1, 1,
+				IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(ampEgEEnum, AmpEg.class, "AmpEg");
 		addEEnumLiteral(ampEgEEnum, AmpEg.GATE);
 		addEEnumLiteral(ampEgEEnum, AmpEg.EG);
 
-		initEEnum(arpeggiatorControlEEnum, ArpeggiatorControl.class, "ArpeggiatorControl");
+		initEEnum(arpeggiatorControlEEnum, ArpeggiatorControl.class,
+				"ArpeggiatorControl");
 		addEEnumLiteral(arpeggiatorControlEEnum, ArpeggiatorControl.NORMAL);
 		addEEnumLiteral(arpeggiatorControlEEnum, ArpeggiatorControl.REVERSE);
 
-		initEEnum(arpeggiatorScaleEEnum, ArpeggiatorScale.class, "ArpeggiatorScale");
+		initEEnum(arpeggiatorScaleEEnum, ArpeggiatorScale.class,
+				"ArpeggiatorScale");
 		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.CHROMATIC);
 		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.IONIAN);
 		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.DORIAN);
@@ -4265,28 +5214,37 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MAJOR_BLUES);
 		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MINOR_BLUES);
 		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.DIMINISH);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.COMBINATION_DIMINISH);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MAJOR_PENTATONIC);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MINOR_PENTATONIC);
+		addEEnumLiteral(arpeggiatorScaleEEnum,
+				ArpeggiatorScale.COMBINATION_DIMINISH);
+		addEEnumLiteral(arpeggiatorScaleEEnum,
+				ArpeggiatorScale.MAJOR_PENTATONIC);
+		addEEnumLiteral(arpeggiatorScaleEEnum,
+				ArpeggiatorScale.MINOR_PENTATONIC);
 		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.RAGA_BHAIRAV);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.RAGA_GAMANASRAMA);
+		addEEnumLiteral(arpeggiatorScaleEEnum,
+				ArpeggiatorScale.RAGA_GAMANASRAMA);
 		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.RAGA_TODI);
 		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.SPANISH_SCALE);
 		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.GYPSY_SCALE);
 		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.ARABIAN_SCALE);
 		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.EGYPTIAN_SCALE);
 		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.HAWAIIAN_SCALE);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.BALI_ISLAND_SCALE);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.JAPANESE_MIYAKOBUSHI);
+		addEEnumLiteral(arpeggiatorScaleEEnum,
+				ArpeggiatorScale.BALI_ISLAND_SCALE);
+		addEEnumLiteral(arpeggiatorScaleEEnum,
+				ArpeggiatorScale.JAPANESE_MIYAKOBUSHI);
 		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.RYUKYU_SCALE);
 		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.WHOLETONE);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MINOR_3RD_INTERVAL);
-		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.MAJOR_3RD_INTERVAL);
+		addEEnumLiteral(arpeggiatorScaleEEnum,
+				ArpeggiatorScale.MINOR_3RD_INTERVAL);
+		addEEnumLiteral(arpeggiatorScaleEEnum,
+				ArpeggiatorScale.MAJOR_3RD_INTERVAL);
 		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.FOURTH_INTERVAL);
 		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.FIFTH_INTERVAL);
 		addEEnumLiteral(arpeggiatorScaleEEnum, ArpeggiatorScale.OCTAVE_INTERVAL);
 
-		initEEnum(audioChannelTypeEEnum, AudioChannelType.class, "AudioChannelType");
+		initEEnum(audioChannelTypeEEnum, AudioChannelType.class,
+				"AudioChannelType");
 		addEEnumLiteral(audioChannelTypeEEnum, AudioChannelType.MONO);
 		addEEnumLiteral(audioChannelTypeEEnum, AudioChannelType.STEREO_1);
 		addEEnumLiteral(audioChannelTypeEEnum, AudioChannelType.STEREO_2);
@@ -4384,7 +5342,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEEnumLiteral(midiChannelEEnum, MidiChannel.CHANNEL_15);
 		addEEnumLiteral(midiChannelEEnum, MidiChannel.CHANNEL_16);
 
-		initEEnum(midiChannelTypeNameEEnum, MidiChannelTypeName.class, "MidiChannelTypeName");
+		initEEnum(midiChannelTypeNameEEnum, MidiChannelTypeName.class,
+				"MidiChannelTypeName");
 		addEEnumLiteral(midiChannelTypeNameEEnum, MidiChannelTypeName.NAME_00);
 		addEEnumLiteral(midiChannelTypeNameEEnum, MidiChannelTypeName.NAME_01);
 		addEEnumLiteral(midiChannelTypeNameEEnum, MidiChannelTypeName.NAME_02);
@@ -4394,40 +5353,75 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEEnumLiteral(midiClockEEnum, MidiClock.EXT);
 		addEEnumLiteral(midiClockEEnum, MidiClock.AUTO);
 
-		initEEnum(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.class, "MidiControlChangeAssignmentName");
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_00);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_01);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_02);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_03);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_04);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_05);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_06);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_07);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_08);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_09);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_10);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_11);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_12);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_13);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_14);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_15);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_16);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_17);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_18);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_19);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_20);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_21);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_22);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_23);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_24);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_25);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_26);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_27);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_28);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_29);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_30);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_31);
-		addEEnumLiteral(midiControlChangeAssignmentNameEEnum, MidiControlChangeAssignmentName.NAME_32);
+		initEEnum(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.class,
+				"MidiControlChangeAssignmentName");
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_00);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_01);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_02);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_03);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_04);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_05);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_06);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_07);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_08);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_09);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_10);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_11);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_12);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_13);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_14);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_15);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_16);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_17);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_18);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_19);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_20);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_21);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_22);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_23);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_24);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_25);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_26);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_27);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_28);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_29);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_30);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_31);
+		addEEnumLiteral(midiControlChangeAssignmentNameEEnum,
+				MidiControlChangeAssignmentName.NAME_32);
 
 		initEEnum(modDestEEnum, ModDest.class, "ModDest");
 		addEEnumLiteral(modDestEEnum, ModDest.PITCH);
@@ -4442,10 +5436,12 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEEnumLiteral(modTypeEEnum, ModType.SAND_H);
 		addEEnumLiteral(modTypeEEnum, ModType.ENVELOPE);
 
-		initEEnum(motionSequenceStatusEEnum, MotionSequenceStatus.class, "MotionSequenceStatus");
+		initEEnum(motionSequenceStatusEEnum, MotionSequenceStatus.class,
+				"MotionSequenceStatus");
 		addEEnumLiteral(motionSequenceStatusEEnum, MotionSequenceStatus.OFF);
 		addEEnumLiteral(motionSequenceStatusEEnum, MotionSequenceStatus.SMOOTH);
-		addEEnumLiteral(motionSequenceStatusEEnum, MotionSequenceStatus.TRIG_HOLD);
+		addEEnumLiteral(motionSequenceStatusEEnum,
+				MotionSequenceStatus.TRIG_HOLD);
 
 		initEEnum(muteHoldEEnum, MuteHold.class, "MuteHold");
 		addEEnumLiteral(muteHoldEEnum, MuteHold.MUTE_HOLD_OFF);
@@ -4963,7 +5959,8 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1EF);
 		addEEnumLiteral(operationTypeEEnum, OperationType.OP_1F5);
 
-		initEEnum(partNoteNumberNameEEnum, PartNoteNumberName.class, "PartNoteNumberName");
+		initEEnum(partNoteNumberNameEEnum, PartNoteNumberName.class,
+				"PartNoteNumberName");
 		addEEnumLiteral(partNoteNumberNameEEnum, PartNoteNumberName.NAME_00);
 		addEEnumLiteral(partNoteNumberNameEEnum, PartNoteNumberName.NAME_01);
 		addEEnumLiteral(partNoteNumberNameEEnum, PartNoteNumberName.NAME_02);
@@ -6183,14 +7180,24 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEEnumLiteral(tempoLockEEnum, TempoLock.TEMPO_LOCK_ON);
 
 		// Initialize data types
-		initEDataType(arrayListEDataType, ArrayList.class, "ArrayList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(fileEDataType, File.class, "File", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(inputStreamEDataType, InputStream.class, "InputStream", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(indexOutOfBoundsExceptionEDataType, IndexOutOfBoundsException.class, "IndexOutOfBoundsException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(ioExceptionEDataType, IOException.class, "IOException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(iProgressMonitorEDataType, IProgressMonitor.class, "IProgressMonitor", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(objectEDataType, Object.class, "Object", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(riffWaveEDataType, RIFFWave.class, "RIFFWave", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(arrayListEDataType, ArrayList.class, "ArrayList",
+				IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(fileEDataType, File.class, "File", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(inputStreamEDataType, InputStream.class, "InputStream",
+				IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(indexOutOfBoundsExceptionEDataType,
+				IndexOutOfBoundsException.class, "IndexOutOfBoundsException",
+				IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(ioExceptionEDataType, IOException.class, "IOException",
+				IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(iProgressMonitorEDataType, IProgressMonitor.class,
+				"IProgressMonitor", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(objectEDataType, Object.class, "Object", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(riffWaveEDataType, RIFFWave.class, "RIFFWave",
+				IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

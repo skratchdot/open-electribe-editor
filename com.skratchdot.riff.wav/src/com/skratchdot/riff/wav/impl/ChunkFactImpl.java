@@ -71,15 +71,18 @@ public class ChunkFactImpl extends ChunkImpl implements ChunkFact {
 	}
 
 	@Override
-	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf)
+			throws RiffWaveException {
 		// Check Chunk Type ID
-		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
-			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+		if (ChunkTypeID.get((int) buf.getUnsignedInt()) != this
+				.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "
+					+ this.getChunkTypeID().getLiteral());
 
 		// Read in data size
 		int chunkSize = (int) buf.getUnsignedInt();
 
-		if(chunkSize>0) {
+		if (chunkSize > 0) {
 			byte[] newFormatDependantData = new byte[chunkSize];
 			buf.getBytes(newFormatDependantData);
 			this.setFormatDependantData(newFormatDependantData);
@@ -114,7 +117,9 @@ public class ChunkFactImpl extends ChunkImpl implements ChunkFact {
 		byte[] oldFormatDependantData = formatDependantData;
 		formatDependantData = newFormatDependantData;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_FACT__FORMAT_DEPENDANT_DATA, oldFormatDependantData, formatDependantData));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_FACT__FORMAT_DEPENDANT_DATA,
+					oldFormatDependantData, formatDependantData));
 	}
 
 	/* (non-Javadoc)
@@ -138,7 +143,7 @@ public class ChunkFactImpl extends ChunkImpl implements ChunkFact {
 	 */
 	@Override
 	public long getSize() {
-		if(this.getFormatDependantData()!=null) {
+		if (this.getFormatDependantData() != null) {
 			return this.getFormatDependantData().length;
 		}
 		return 0;
@@ -152,8 +157,8 @@ public class ChunkFactImpl extends ChunkImpl implements ChunkFact {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.CHUNK_FACT__FORMAT_DEPENDANT_DATA:
-				return getFormatDependantData();
+		case WavPackage.CHUNK_FACT__FORMAT_DEPENDANT_DATA:
+			return getFormatDependantData();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -166,9 +171,9 @@ public class ChunkFactImpl extends ChunkImpl implements ChunkFact {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.CHUNK_FACT__FORMAT_DEPENDANT_DATA:
-				setFormatDependantData((byte[])newValue);
-				return;
+		case WavPackage.CHUNK_FACT__FORMAT_DEPENDANT_DATA:
+			setFormatDependantData((byte[]) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -181,9 +186,9 @@ public class ChunkFactImpl extends ChunkImpl implements ChunkFact {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_FACT__FORMAT_DEPENDANT_DATA:
-				setFormatDependantData(FORMAT_DEPENDANT_DATA_EDEFAULT);
-				return;
+		case WavPackage.CHUNK_FACT__FORMAT_DEPENDANT_DATA:
+			setFormatDependantData(FORMAT_DEPENDANT_DATA_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -196,8 +201,10 @@ public class ChunkFactImpl extends ChunkImpl implements ChunkFact {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_FACT__FORMAT_DEPENDANT_DATA:
-				return FORMAT_DEPENDANT_DATA_EDEFAULT == null ? formatDependantData != null : !FORMAT_DEPENDANT_DATA_EDEFAULT.equals(formatDependantData);
+		case WavPackage.CHUNK_FACT__FORMAT_DEPENDANT_DATA:
+			return FORMAT_DEPENDANT_DATA_EDEFAULT == null ? formatDependantData != null
+					: !FORMAT_DEPENDANT_DATA_EDEFAULT
+							.equals(formatDependantData);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -209,7 +216,8 @@ public class ChunkFactImpl extends ChunkImpl implements ChunkFact {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (formatDependantData: ");
@@ -220,12 +228,13 @@ public class ChunkFactImpl extends ChunkImpl implements ChunkFact {
 
 	@Override
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				(int) this.getSize() + 8);
 		buf.order(ByteOrder.LITTLE_ENDIAN);
 
 		buf.putUnsignedInt(this.getChunkTypeIDValue());
 		buf.putUnsignedInt(this.getSize());
-		if(this.getFormatDependantData()!=null) {
+		if (this.getFormatDependantData() != null) {
 			buf.putBytes(this.getFormatDependantData());
 		}
 

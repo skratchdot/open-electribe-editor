@@ -11,8 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx;
 
-
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Part Drum</b></em>'.
@@ -23,7 +21,8 @@ package com.skratchdot.electribe.model.esx;
  * @model
  * @generated
  */
-public interface PartDrum extends Part, PartWithCommon, PartWithPitch, PartWithSample, PartWithSequenceData, PartWithSlice {
+public interface PartDrum extends Part, PartWithCommon, PartWithPitch,
+		PartWithSample, PartWithSequenceData, PartWithSlice {
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -42,10 +41,10 @@ import com.skratchdot.electribe.model.esx.PartNoteNumberName;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PartNoteNumberItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class PartNoteNumberItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -80,19 +79,16 @@ public class PartNoteNumberItemProvider
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartNoteNumber_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartNoteNumber_name_feature", "_UI_PartNoteNumber_type"),
-				 EsxPackage.Literals.PART_NOTE_NUMBER__NAME,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartNoteNumber_name_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartNoteNumber_name_feature",
+						"_UI_PartNoteNumber_type"),
+				EsxPackage.Literals.PART_NOTE_NUMBER__NAME, false, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -102,19 +98,16 @@ public class PartNoteNumberItemProvider
 	 * @generated
 	 */
 	protected void addNoteNumberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartNoteNumber_noteNumber_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartNoteNumber_noteNumber_feature", "_UI_PartNoteNumber_type"),
-				 EsxPackage.Literals.PART_NOTE_NUMBER__NOTE_NUMBER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartNoteNumber_noteNumber_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartNoteNumber_noteNumber_feature",
+						"_UI_PartNoteNumber_type"),
+				EsxPackage.Literals.PART_NOTE_NUMBER__NOTE_NUMBER, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -125,7 +118,8 @@ public class PartNoteNumberItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/PartNoteNumber"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/PartNoteNumber"));
 	}
 
 	/**
@@ -136,11 +130,10 @@ public class PartNoteNumberItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		PartNoteNumberName labelValue = ((PartNoteNumber)object).getName();
+		PartNoteNumberName labelValue = ((PartNoteNumber) object).getName();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_PartNoteNumber_type") :
-			getString("_UI_PartNoteNumber_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_PartNoteNumber_type")
+				: getString("_UI_PartNoteNumber_type") + " " + label;
 	}
 
 	/* (non-Javadoc)
@@ -148,12 +141,15 @@ public class PartNoteNumberItemProvider
 	 */
 	@Override
 	public String getColumnText(Object object, int columnIndex) {
-		switch(columnIndex) {
-			// Name
-			case 0: return ((PartNoteNumber) object).getName().toString();
+		switch (columnIndex) {
+		// Name
+		case 0:
+			return ((PartNoteNumber) object).getName().toString();
 			// Value
-			case 1: return ((PartNoteNumber) object).getNoteNumber().getLiteral();
-			default: return getText(object);
+		case 1:
+			return ((PartNoteNumber) object).getNoteNumber().getLiteral();
+		default:
+			return getText(object);
 		}
 	}
 
@@ -169,10 +165,11 @@ public class PartNoteNumberItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(PartNoteNumber.class)) {
-			case EsxPackage.PART_NOTE_NUMBER__NAME:
-			case EsxPackage.PART_NOTE_NUMBER__NOTE_NUMBER:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case EsxPackage.PART_NOTE_NUMBER__NAME:
+		case EsxPackage.PART_NOTE_NUMBER__NOTE_NUMBER:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -185,7 +182,8 @@ public class PartNoteNumberItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

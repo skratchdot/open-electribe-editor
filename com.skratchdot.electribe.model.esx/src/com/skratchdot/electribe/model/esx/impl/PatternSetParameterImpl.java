@@ -35,7 +35,8 @@ import com.skratchdot.electribe.model.esx.PatternSetParameter;
  *
  * @generated
  */
-public class PatternSetParameterImpl extends EObjectImpl implements PatternSetParameter {
+public class PatternSetParameterImpl extends EObjectImpl implements
+		PatternSetParameter {
 	/**
 	 * The default value of the '{@link #getPositionCurrent() <em>Position Current</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -91,11 +92,12 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 	 * @generated NOT
 	 */
 	public int getPositionCurrent() {
-		if(this.eResource()!=null) {
+		if (this.eResource() != null) {
 			Resource resource = (Resource) this.eResource();
 			Object rootObject = resource.getContents().get(0);
-			if(rootObject instanceof EsxFile) {
-				return ((EsxFile) rootObject).getGlobalParameters().getPatternSetParameters().indexOf(this);
+			if (rootObject instanceof EsxFile) {
+				return ((EsxFile) rootObject).getGlobalParameters()
+						.getPatternSetParameters().indexOf(this);
 			}
 		}
 		return -1;
@@ -119,7 +121,9 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 		short oldPatternPointer = patternPointer;
 		patternPointer = newPatternPointer;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN_SET_PARAMETER__PATTERN_POINTER, oldPatternPointer, patternPointer));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN_SET_PARAMETER__PATTERN_POINTER,
+					oldPatternPointer, patternPointer));
 	}
 
 	/**
@@ -130,10 +134,10 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.PATTERN_SET_PARAMETER__POSITION_CURRENT:
-				return getPositionCurrent();
-			case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_POINTER:
-				return getPatternPointer();
+		case EsxPackage.PATTERN_SET_PARAMETER__POSITION_CURRENT:
+			return getPositionCurrent();
+		case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_POINTER:
+			return getPatternPointer();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -146,9 +150,9 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_POINTER:
-				setPatternPointer((Short)newValue);
-				return;
+		case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_POINTER:
+			setPatternPointer((Short) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -161,9 +165,9 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_POINTER:
-				setPatternPointer(PATTERN_POINTER_EDEFAULT);
-				return;
+		case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_POINTER:
+			setPatternPointer(PATTERN_POINTER_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -176,10 +180,10 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PATTERN_SET_PARAMETER__POSITION_CURRENT:
-				return getPositionCurrent() != POSITION_CURRENT_EDEFAULT;
-			case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_POINTER:
-				return patternPointer != PATTERN_POINTER_EDEFAULT;
+		case EsxPackage.PATTERN_SET_PARAMETER__POSITION_CURRENT:
+			return getPositionCurrent() != POSITION_CURRENT_EDEFAULT;
+		case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_POINTER:
+			return patternPointer != PATTERN_POINTER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -191,7 +195,8 @@ public class PatternSetParameterImpl extends EObjectImpl implements PatternSetPa
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (patternPointer: ");

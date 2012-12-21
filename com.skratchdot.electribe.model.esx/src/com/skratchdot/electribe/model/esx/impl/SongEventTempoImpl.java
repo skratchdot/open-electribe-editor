@@ -98,7 +98,7 @@ public class SongEventTempoImpl extends SongEventImpl implements SongEventTempo 
 		// bytes 6~7
 		Tempo newTempo = EsxFactory.eINSTANCE.createTempo();
 		newTempo.setCurrentValueFromShort(in.getShort());
-		this.setTempo(newTempo);		
+		this.setTempo(newTempo);
 	}
 
 	/**
@@ -135,12 +135,18 @@ public class SongEventTempoImpl extends SongEventImpl implements SongEventTempo 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTempo(Tempo newTempo, NotificationChain msgs) {
+	public NotificationChain basicSetTempo(Tempo newTempo,
+			NotificationChain msgs) {
 		Tempo oldTempo = tempo;
 		tempo = newTempo;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT_TEMPO__TEMPO, oldTempo, newTempo);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, EsxPackage.SONG_EVENT_TEMPO__TEMPO,
+					oldTempo, newTempo);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -154,14 +160,21 @@ public class SongEventTempoImpl extends SongEventImpl implements SongEventTempo 
 		if (newTempo != tempo) {
 			NotificationChain msgs = null;
 			if (tempo != null)
-				msgs = ((InternalEObject)tempo).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.SONG_EVENT_TEMPO__TEMPO, null, msgs);
+				msgs = ((InternalEObject) tempo).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+								- EsxPackage.SONG_EVENT_TEMPO__TEMPO, null,
+						msgs);
 			if (newTempo != null)
-				msgs = ((InternalEObject)newTempo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.SONG_EVENT_TEMPO__TEMPO, null, msgs);
+				msgs = ((InternalEObject) newTempo).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+								- EsxPackage.SONG_EVENT_TEMPO__TEMPO, null,
+						msgs);
 			msgs = basicSetTempo(newTempo, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT_TEMPO__TEMPO, newTempo, newTempo));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_EVENT_TEMPO__TEMPO, newTempo, newTempo));
 	}
 
 	/**
@@ -182,7 +195,9 @@ public class SongEventTempoImpl extends SongEventImpl implements SongEventTempo 
 		short oldReservedShort = reservedShort;
 		reservedShort = newReservedShort;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT_TEMPO__RESERVED_SHORT, oldReservedShort, reservedShort));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_EVENT_TEMPO__RESERVED_SHORT,
+					oldReservedShort, reservedShort));
 	}
 
 	/**
@@ -191,7 +206,8 @@ public class SongEventTempoImpl extends SongEventImpl implements SongEventTempo 
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_SONG_EVENT);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				EsxUtil.CHUNKSIZE_SONG_EVENT);
 		// byte 0
 		buf.putByte(this.getPositionNumber());
 		// byte 1
@@ -204,7 +220,7 @@ public class SongEventTempoImpl extends SongEventImpl implements SongEventTempo 
 		// bytes 4~5
 		buf.putShort(this.getReservedShort());
 		// bytes 6~7
-		buf.putShort(this.getTempo().getShortFromCurrentValue());		
+		buf.putShort(this.getTempo().getShortFromCurrentValue());
 		return buf.array();
 	}
 
@@ -214,10 +230,11 @@ public class SongEventTempoImpl extends SongEventImpl implements SongEventTempo 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_TEMPO__TEMPO:
-				return basicSetTempo(null, msgs);
+		case EsxPackage.SONG_EVENT_TEMPO__TEMPO:
+			return basicSetTempo(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -230,10 +247,10 @@ public class SongEventTempoImpl extends SongEventImpl implements SongEventTempo 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_TEMPO__RESERVED_SHORT:
-				return getReservedShort();
-			case EsxPackage.SONG_EVENT_TEMPO__TEMPO:
-				return getTempo();
+		case EsxPackage.SONG_EVENT_TEMPO__RESERVED_SHORT:
+			return getReservedShort();
+		case EsxPackage.SONG_EVENT_TEMPO__TEMPO:
+			return getTempo();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -246,12 +263,12 @@ public class SongEventTempoImpl extends SongEventImpl implements SongEventTempo 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_TEMPO__RESERVED_SHORT:
-				setReservedShort((Short)newValue);
-				return;
-			case EsxPackage.SONG_EVENT_TEMPO__TEMPO:
-				setTempo((Tempo)newValue);
-				return;
+		case EsxPackage.SONG_EVENT_TEMPO__RESERVED_SHORT:
+			setReservedShort((Short) newValue);
+			return;
+		case EsxPackage.SONG_EVENT_TEMPO__TEMPO:
+			setTempo((Tempo) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -264,12 +281,12 @@ public class SongEventTempoImpl extends SongEventImpl implements SongEventTempo 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_TEMPO__RESERVED_SHORT:
-				setReservedShort(RESERVED_SHORT_EDEFAULT);
-				return;
-			case EsxPackage.SONG_EVENT_TEMPO__TEMPO:
-				setTempo((Tempo)null);
-				return;
+		case EsxPackage.SONG_EVENT_TEMPO__RESERVED_SHORT:
+			setReservedShort(RESERVED_SHORT_EDEFAULT);
+			return;
+		case EsxPackage.SONG_EVENT_TEMPO__TEMPO:
+			setTempo((Tempo) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -282,10 +299,10 @@ public class SongEventTempoImpl extends SongEventImpl implements SongEventTempo 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_TEMPO__RESERVED_SHORT:
-				return reservedShort != RESERVED_SHORT_EDEFAULT;
-			case EsxPackage.SONG_EVENT_TEMPO__TEMPO:
-				return tempo != null;
+		case EsxPackage.SONG_EVENT_TEMPO__RESERVED_SHORT:
+			return reservedShort != RESERVED_SHORT_EDEFAULT;
+		case EsxPackage.SONG_EVENT_TEMPO__TEMPO:
+			return tempo != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -297,7 +314,8 @@ public class SongEventTempoImpl extends SongEventImpl implements SongEventTempo 
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (reservedShort: ");

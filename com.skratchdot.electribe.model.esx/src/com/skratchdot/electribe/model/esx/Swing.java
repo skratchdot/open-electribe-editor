@@ -683,35 +683,12 @@ public enum Swing implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final Swing[] VALUES_ARRAY =
-		new Swing[] {
-			PERCENT_50,
-			PERCENT_51,
-			PERCENT_52,
-			PERCENT_53,
-			PERCENT_54,
-			PERCENT_55,
-			PERCENT_56,
-			PERCENT_57,
-			PERCENT_58,
-			PERCENT_59,
-			PERCENT_60,
-			PERCENT_61,
-			PERCENT_62,
-			PERCENT_63,
-			PERCENT_64,
-			PERCENT_65,
-			PERCENT_66,
-			PERCENT_67,
-			PERCENT_68,
-			PERCENT_69,
-			PERCENT_70,
-			PERCENT_71,
-			PERCENT_72,
-			PERCENT_73,
-			PERCENT_74,
-			PERCENT_75,
-		};
+	private static final Swing[] VALUES_ARRAY = new Swing[] { PERCENT_50,
+			PERCENT_51, PERCENT_52, PERCENT_53, PERCENT_54, PERCENT_55,
+			PERCENT_56, PERCENT_57, PERCENT_58, PERCENT_59, PERCENT_60,
+			PERCENT_61, PERCENT_62, PERCENT_63, PERCENT_64, PERCENT_65,
+			PERCENT_66, PERCENT_67, PERCENT_68, PERCENT_69, PERCENT_70,
+			PERCENT_71, PERCENT_72, PERCENT_73, PERCENT_74, PERCENT_75, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Swing</b></em>' enumerators.
@@ -719,7 +696,8 @@ public enum Swing implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<Swing> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<Swing> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Swing</b></em>' literal with the specified literal value.
@@ -761,32 +739,58 @@ public enum Swing implements Enumerator {
 	 */
 	public static Swing get(int value) {
 		switch (value) {
-			case PERCENT_50_VALUE: return PERCENT_50;
-			case PERCENT_51_VALUE: return PERCENT_51;
-			case PERCENT_52_VALUE: return PERCENT_52;
-			case PERCENT_53_VALUE: return PERCENT_53;
-			case PERCENT_54_VALUE: return PERCENT_54;
-			case PERCENT_55_VALUE: return PERCENT_55;
-			case PERCENT_56_VALUE: return PERCENT_56;
-			case PERCENT_57_VALUE: return PERCENT_57;
-			case PERCENT_58_VALUE: return PERCENT_58;
-			case PERCENT_59_VALUE: return PERCENT_59;
-			case PERCENT_60_VALUE: return PERCENT_60;
-			case PERCENT_61_VALUE: return PERCENT_61;
-			case PERCENT_62_VALUE: return PERCENT_62;
-			case PERCENT_63_VALUE: return PERCENT_63;
-			case PERCENT_64_VALUE: return PERCENT_64;
-			case PERCENT_65_VALUE: return PERCENT_65;
-			case PERCENT_66_VALUE: return PERCENT_66;
-			case PERCENT_67_VALUE: return PERCENT_67;
-			case PERCENT_68_VALUE: return PERCENT_68;
-			case PERCENT_69_VALUE: return PERCENT_69;
-			case PERCENT_70_VALUE: return PERCENT_70;
-			case PERCENT_71_VALUE: return PERCENT_71;
-			case PERCENT_72_VALUE: return PERCENT_72;
-			case PERCENT_73_VALUE: return PERCENT_73;
-			case PERCENT_74_VALUE: return PERCENT_74;
-			case PERCENT_75_VALUE: return PERCENT_75;
+		case PERCENT_50_VALUE:
+			return PERCENT_50;
+		case PERCENT_51_VALUE:
+			return PERCENT_51;
+		case PERCENT_52_VALUE:
+			return PERCENT_52;
+		case PERCENT_53_VALUE:
+			return PERCENT_53;
+		case PERCENT_54_VALUE:
+			return PERCENT_54;
+		case PERCENT_55_VALUE:
+			return PERCENT_55;
+		case PERCENT_56_VALUE:
+			return PERCENT_56;
+		case PERCENT_57_VALUE:
+			return PERCENT_57;
+		case PERCENT_58_VALUE:
+			return PERCENT_58;
+		case PERCENT_59_VALUE:
+			return PERCENT_59;
+		case PERCENT_60_VALUE:
+			return PERCENT_60;
+		case PERCENT_61_VALUE:
+			return PERCENT_61;
+		case PERCENT_62_VALUE:
+			return PERCENT_62;
+		case PERCENT_63_VALUE:
+			return PERCENT_63;
+		case PERCENT_64_VALUE:
+			return PERCENT_64;
+		case PERCENT_65_VALUE:
+			return PERCENT_65;
+		case PERCENT_66_VALUE:
+			return PERCENT_66;
+		case PERCENT_67_VALUE:
+			return PERCENT_67;
+		case PERCENT_68_VALUE:
+			return PERCENT_68;
+		case PERCENT_69_VALUE:
+			return PERCENT_69;
+		case PERCENT_70_VALUE:
+			return PERCENT_70;
+		case PERCENT_71_VALUE:
+			return PERCENT_71;
+		case PERCENT_72_VALUE:
+			return PERCENT_72;
+		case PERCENT_73_VALUE:
+			return PERCENT_73;
+		case PERCENT_74_VALUE:
+			return PERCENT_74;
+		case PERCENT_75_VALUE:
+			return PERCENT_75;
 		}
 		return null;
 	}
@@ -830,7 +834,7 @@ public enum Swing implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -839,7 +843,7 @@ public enum Swing implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -848,7 +852,7 @@ public enum Swing implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

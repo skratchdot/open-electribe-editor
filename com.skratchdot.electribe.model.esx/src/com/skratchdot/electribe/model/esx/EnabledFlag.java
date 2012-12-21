@@ -83,11 +83,8 @@ public enum EnabledFlag implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final EnabledFlag[] VALUES_ARRAY =
-		new EnabledFlag[] {
-			DISABLED,
-			ENABLED,
-		};
+	private static final EnabledFlag[] VALUES_ARRAY = new EnabledFlag[] {
+			DISABLED, ENABLED, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Enabled Flag</b></em>' enumerators.
@@ -95,7 +92,8 @@ public enum EnabledFlag implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<EnabledFlag> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<EnabledFlag> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Enabled Flag</b></em>' literal with the specified literal value.
@@ -137,8 +135,10 @@ public enum EnabledFlag implements Enumerator {
 	 */
 	public static EnabledFlag get(int value) {
 		switch (value) {
-			case DISABLED_VALUE: return DISABLED;
-			case ENABLED_VALUE: return ENABLED;
+		case DISABLED_VALUE:
+			return DISABLED;
+		case ENABLED_VALUE:
+			return ENABLED;
 		}
 		return null;
 	}
@@ -182,7 +182,7 @@ public enum EnabledFlag implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -191,7 +191,7 @@ public enum EnabledFlag implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -200,7 +200,7 @@ public enum EnabledFlag implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

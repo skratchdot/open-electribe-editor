@@ -433,25 +433,10 @@ public enum SongEventPart implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final SongEventPart[] VALUES_ARRAY =
-		new SongEventPart[] {
-			NAME_00,
-			NAME_01,
-			NAME_02,
-			NAME_03,
-			NAME_04,
-			NAME_05,
-			NAME_06,
-			NAME_07,
-			NAME_08,
-			NAME_09,
-			NAME_10,
-			NAME_11,
-			NAME_12,
-			NAME_13,
-			NAME_14,
-			NAME_15,
-		};
+	private static final SongEventPart[] VALUES_ARRAY = new SongEventPart[] {
+			NAME_00, NAME_01, NAME_02, NAME_03, NAME_04, NAME_05, NAME_06,
+			NAME_07, NAME_08, NAME_09, NAME_10, NAME_11, NAME_12, NAME_13,
+			NAME_14, NAME_15, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Song Event Part</b></em>' enumerators.
@@ -459,7 +444,8 @@ public enum SongEventPart implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<SongEventPart> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<SongEventPart> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Song Event Part</b></em>' literal with the specified literal value.
@@ -501,22 +487,38 @@ public enum SongEventPart implements Enumerator {
 	 */
 	public static SongEventPart get(int value) {
 		switch (value) {
-			case NAME_00_VALUE: return NAME_00;
-			case NAME_01_VALUE: return NAME_01;
-			case NAME_02_VALUE: return NAME_02;
-			case NAME_03_VALUE: return NAME_03;
-			case NAME_04_VALUE: return NAME_04;
-			case NAME_05_VALUE: return NAME_05;
-			case NAME_06_VALUE: return NAME_06;
-			case NAME_07_VALUE: return NAME_07;
-			case NAME_08_VALUE: return NAME_08;
-			case NAME_09_VALUE: return NAME_09;
-			case NAME_10_VALUE: return NAME_10;
-			case NAME_11_VALUE: return NAME_11;
-			case NAME_12_VALUE: return NAME_12;
-			case NAME_13_VALUE: return NAME_13;
-			case NAME_14_VALUE: return NAME_14;
-			case NAME_15_VALUE: return NAME_15;
+		case NAME_00_VALUE:
+			return NAME_00;
+		case NAME_01_VALUE:
+			return NAME_01;
+		case NAME_02_VALUE:
+			return NAME_02;
+		case NAME_03_VALUE:
+			return NAME_03;
+		case NAME_04_VALUE:
+			return NAME_04;
+		case NAME_05_VALUE:
+			return NAME_05;
+		case NAME_06_VALUE:
+			return NAME_06;
+		case NAME_07_VALUE:
+			return NAME_07;
+		case NAME_08_VALUE:
+			return NAME_08;
+		case NAME_09_VALUE:
+			return NAME_09;
+		case NAME_10_VALUE:
+			return NAME_10;
+		case NAME_11_VALUE:
+			return NAME_11;
+		case NAME_12_VALUE:
+			return NAME_12;
+		case NAME_13_VALUE:
+			return NAME_13;
+		case NAME_14_VALUE:
+			return NAME_14;
+		case NAME_15_VALUE:
+			return NAME_15;
 		}
 		return null;
 	}
@@ -560,7 +562,7 @@ public enum SongEventPart implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -569,7 +571,7 @@ public enum SongEventPart implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -578,7 +580,7 @@ public enum SongEventPart implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -591,5 +593,5 @@ public enum SongEventPart implements Enumerator {
 	public String toString() {
 		return literal;
 	}
-	
+
 } //SongEventPart

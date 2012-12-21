@@ -389,20 +389,25 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		// Store all our "non-sample data" which will be overwritten when saving
 		// the file
 		monitor.subTask("Loading original non-audio data");
-		this.setOriginalNonAudioData(in.getBytes(EsxUtil.ADDR_VALID_ESX_CHECK_1, EsxUtil.SIZE_FILE_MIN));
+		this.setOriginalNonAudioData(in.getBytes(
+				EsxUtil.ADDR_VALID_ESX_CHECK_1, EsxUtil.SIZE_FILE_MIN));
 
 		// Get Global Parameters
 		monitor.subTask("Loading Global Parameters");
-		GlobalParameters newGlobalParameters = EsxFactory.eINSTANCE.createGlobalParameters();
-		newGlobalParameters.init(in.getBytes(EsxUtil.ADDR_GLOBAL_PARAMETERS, EsxUtil.CHUNKSIZE_GLOBAL_PARAMETERS));		
+		GlobalParameters newGlobalParameters = EsxFactory.eINSTANCE
+				.createGlobalParameters();
+		newGlobalParameters.init(in.getBytes(EsxUtil.ADDR_GLOBAL_PARAMETERS,
+				EsxUtil.CHUNKSIZE_GLOBAL_PARAMETERS));
 		this.setGlobalParameters(newGlobalParameters);
 
 		// Get Patterns
 		in.position(EsxUtil.ADDR_PATTERN_DATA);
 		for (int i = 0; i < EsxUtil.NUM_PATTERNS; i++) {
-			monitor.subTask("Loading pattern " + (i + 1) + " of " + EsxUtil.NUM_PATTERNS);
+			monitor.subTask("Loading pattern " + (i + 1) + " of "
+					+ EsxUtil.NUM_PATTERNS);
 			Pattern pattern = EsxFactory.eINSTANCE.createPattern();
-			pattern.init(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_PATTERN), i);
+			pattern.init(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_PATTERN),
+					i);
 			this.getPatterns().add(i, pattern);
 			monitor.worked(1);
 		}
@@ -410,7 +415,8 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		// Get Songs
 		in.position(EsxUtil.ADDR_SONG_DATA);
 		for (int i = 0; i < EsxUtil.NUM_SONGS; i++) {
-			monitor.subTask("Loading song " + (i + 1) + " of " + EsxUtil.NUM_SONGS);
+			monitor.subTask("Loading song " + (i + 1) + " of "
+					+ EsxUtil.NUM_SONGS);
 			Song song = EsxFactory.eINSTANCE.createSong();
 			song.initSong(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_SONG), i);
 			this.getSongs().add(i, song);
@@ -419,77 +425,98 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 
 		// Get Song Events
 		in.position(EsxUtil.ADDR_SONG_EVENT_DATA);
-		for (int i=0; i<EsxUtil.NUM_SONGS; i++) {
-			monitor.subTask("Saving song event data for song " + (i + 1) + " of " + EsxUtil.NUM_SONGS);
+		for (int i = 0; i < EsxUtil.NUM_SONGS; i++) {
+			monitor.subTask("Saving song event data for song " + (i + 1)
+					+ " of " + EsxUtil.NUM_SONGS);
 			Song song = this.getSongs().get(i);
-			if(song.getNumberOfSongEventsOriginal() > 0) {
-				byte[] songEventBytes = new byte[song.getNumberOfSongEventsOriginal()*EsxUtil.CHUNKSIZE_SONG_EVENT];
+			if (song.getNumberOfSongEventsOriginal() > 0) {
+				byte[] songEventBytes = new byte[song
+						.getNumberOfSongEventsOriginal()
+						* EsxUtil.CHUNKSIZE_SONG_EVENT];
 				in.getBytes(songEventBytes);
-				song.initSongEvents(songEventBytes);				
+				song.initSongEvents(songEventBytes);
 			}
 			monitor.worked(1);
 		}
 
 		// Get Sample Headers: MONO
 		in.position(EsxUtil.ADDR_SAMPLE_HEADER_MONO);
-		for(int i=0; i<EsxUtil.NUM_SAMPLES_MONO; i++) {
-			monitor.subTask("Loading sample header " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES);
+		for (int i = 0; i < EsxUtil.NUM_SAMPLES_MONO; i++) {
+			monitor.subTask("Loading sample header " + (i + 1) + " of "
+					+ EsxUtil.NUM_SAMPLES);
 			Sample mono = EsxFactory.eINSTANCE.createSample();
-			mono.initHeaderMono(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_SAMPLE_HEADER_MONO), i);
+			mono.initHeaderMono(in.getBytes(in.position(),
+					EsxUtil.CHUNKSIZE_SAMPLE_HEADER_MONO), i);
 			this.getSamples().add(i, mono);
 			monitor.worked(1);
 		}
 
 		// Get Sample Headers: STEREO
 		in.position(EsxUtil.ADDR_SAMPLE_HEADER_STEREO);
-		for(int i=EsxUtil.NUM_SAMPLES_MONO; i<EsxUtil.NUM_SAMPLES; i++) {
-			monitor.subTask("Loading sample header " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES);
+		for (int i = EsxUtil.NUM_SAMPLES_MONO; i < EsxUtil.NUM_SAMPLES; i++) {
+			monitor.subTask("Loading sample header " + (i + 1) + " of "
+					+ EsxUtil.NUM_SAMPLES);
 			Sample stereo = EsxFactory.eINSTANCE.createSample();
-			stereo.initHeaderStereo(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_SAMPLE_HEADER_STEREO), i);
+			stereo.initHeaderStereo(in.getBytes(in.position(),
+					EsxUtil.CHUNKSIZE_SAMPLE_HEADER_STEREO), i);
 			this.getSamples().add(i, stereo);
 			monitor.worked(1);
 		}
 
 		// Get Slice Info
 		in.position(EsxUtil.ADDR_SLICE_DATA);
-		for(int i=0; i<EsxUtil.NUM_SAMPLES_MONO && i<EsxUtil.NUM_SLICE_DATA; i++) {
-			monitor.subTask("Loading slice data " + (i + 1) + " of " + EsxUtil.NUM_SLICE_DATA);
+		for (int i = 0; i < EsxUtil.NUM_SAMPLES_MONO
+				&& i < EsxUtil.NUM_SLICE_DATA; i++) {
+			monitor.subTask("Loading slice data " + (i + 1) + " of "
+					+ EsxUtil.NUM_SLICE_DATA);
 			Sample mono = this.getSamples().get(i);
-			mono.initSliceArray(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_SLICE_DATA));
+			mono.initSliceArray(in.getBytes(in.position(),
+					EsxUtil.CHUNKSIZE_SLICE_DATA));
 			monitor.worked(i);
 		}
 
 		// Get sample info
 		for (int i = 0; i < EsxUtil.NUM_SAMPLES; i++) {
-			monitor.subTask("Loading sample data " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES);
-			if(i < EsxUtil.NUM_SAMPLES_MONO) {
+			monitor.subTask("Loading sample data " + (i + 1) + " of "
+					+ EsxUtil.NUM_SAMPLES);
+			if (i < EsxUtil.NUM_SAMPLES_MONO) {
 				Sample mono = this.getSamples().get(i);
-				int offset1Size = mono.getOffsetChannel1End() - mono.getOffsetChannel1Start();
+				int offset1Size = mono.getOffsetChannel1End()
+						- mono.getOffsetChannel1Start();
 				if (offset1Size > 0
 						&& mono.getOffsetChannel1Start() != 0xFFFFFFFF
 						&& mono.getOffsetChannel1End() != 0xFFFFFFFF) {
 					// Read in sample data
-					in.position(EsxUtil.ADDR_SAMPLE_DATA + mono.getOffsetChannel1Start());
-					mono.initOffsetChannel(in.getBytes(in.position(), offset1Size), AudioChannelType.MONO);
+					in.position(EsxUtil.ADDR_SAMPLE_DATA
+							+ mono.getOffsetChannel1Start());
+					mono.initOffsetChannel(
+							in.getBytes(in.position(), offset1Size),
+							AudioChannelType.MONO);
 				}
-			}
-			else {
+			} else {
 				Sample stereo = this.getSamples().get(i);
 
-				int offset1Size = stereo.getOffsetChannel1End() - stereo.getOffsetChannel1Start();
-				int offset2Size = stereo.getOffsetChannel2End() - stereo.getOffsetChannel2Start();
-				if (offset1Size == offset2Size
-						&& offset1Size > 0
+				int offset1Size = stereo.getOffsetChannel1End()
+						- stereo.getOffsetChannel1Start();
+				int offset2Size = stereo.getOffsetChannel2End()
+						- stereo.getOffsetChannel2Start();
+				if (offset1Size == offset2Size && offset1Size > 0
 						&& offset2Size > 0
 						&& stereo.getOffsetChannel1Start() != 0xFFFFFFFF
 						&& stereo.getOffsetChannel1End() != 0xFFFFFFFF
 						&& stereo.getOffsetChannel2Start() != 0xFFFFFFFF
 						&& stereo.getOffsetChannel2End() != 0xFFFFFFFF) {
 					// Read in sample data
-					in.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel1Start());
-					stereo.initOffsetChannel(in.getBytes(in.position(), offset1Size), AudioChannelType.STEREO_1);
-					in.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel2Start());
-					stereo.initOffsetChannel(in.getBytes(in.position(), offset2Size), AudioChannelType.STEREO_2);
+					in.position(EsxUtil.ADDR_SAMPLE_DATA
+							+ stereo.getOffsetChannel1Start());
+					stereo.initOffsetChannel(
+							in.getBytes(in.position(), offset1Size),
+							AudioChannelType.STEREO_1);
+					in.position(EsxUtil.ADDR_SAMPLE_DATA
+							+ stereo.getOffsetChannel2Start());
+					stereo.initOffsetChannel(
+							in.getBytes(in.position(), offset2Size),
+							AudioChannelType.STEREO_2);
 				}
 			}
 			monitor.worked(1);
@@ -497,18 +524,21 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 
 		// Initialize the blank pattern
 		Pattern emptyPattern = EsxFactory.eINSTANCE.createPattern();
-		emptyPattern.init(this.getPatterns().get(EsxUtil.NUM_PATTERNS-1).toByteArray());
+		emptyPattern.init(this.getPatterns().get(EsxUtil.NUM_PATTERNS - 1)
+				.toByteArray());
 		this.setEmptyPattern(emptyPattern);
 
 		// Initialize the blank pattern
 		Song emptySong = EsxFactory.eINSTANCE.createSong();
-		emptySong.initSong(this.getSongs().get(EsxUtil.NUM_SONGS-1).toSongByteArray());
-		emptySong.initSongEvents(this.getSongs().get(EsxUtil.NUM_SONGS-1).toSongEventsByteArray());
+		emptySong.initSong(this.getSongs().get(EsxUtil.NUM_SONGS - 1)
+				.toSongByteArray());
+		emptySong.initSongEvents(this.getSongs().get(EsxUtil.NUM_SONGS - 1)
+				.toSongEventsByteArray());
 		this.setEmptySong(emptySong);
 
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -536,7 +566,9 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		byte[] oldOriginalNonAudioData = originalNonAudioData;
 		originalNonAudioData = newOriginalNonAudioData;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__ORIGINAL_NON_AUDIO_DATA, oldOriginalNonAudioData, originalNonAudioData));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.ESX_FILE__ORIGINAL_NON_AUDIO_DATA,
+					oldOriginalNonAudioData, originalNonAudioData));
 	}
 
 	/**
@@ -553,12 +585,18 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetGlobalParameters(GlobalParameters newGlobalParameters, NotificationChain msgs) {
+	public NotificationChain basicSetGlobalParameters(
+			GlobalParameters newGlobalParameters, NotificationChain msgs) {
 		GlobalParameters oldGlobalParameters = globalParameters;
 		globalParameters = newGlobalParameters;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__GLOBAL_PARAMETERS, oldGlobalParameters, newGlobalParameters);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, EsxPackage.ESX_FILE__GLOBAL_PARAMETERS,
+					oldGlobalParameters, newGlobalParameters);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -572,14 +610,22 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		if (newGlobalParameters != globalParameters) {
 			NotificationChain msgs = null;
 			if (globalParameters != null)
-				msgs = ((InternalEObject)globalParameters).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.ESX_FILE__GLOBAL_PARAMETERS, null, msgs);
+				msgs = ((InternalEObject) globalParameters).eInverseRemove(
+						this, EOPPOSITE_FEATURE_BASE
+								- EsxPackage.ESX_FILE__GLOBAL_PARAMETERS, null,
+						msgs);
 			if (newGlobalParameters != null)
-				msgs = ((InternalEObject)newGlobalParameters).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.ESX_FILE__GLOBAL_PARAMETERS, null, msgs);
+				msgs = ((InternalEObject) newGlobalParameters).eInverseAdd(
+						this, EOPPOSITE_FEATURE_BASE
+								- EsxPackage.ESX_FILE__GLOBAL_PARAMETERS, null,
+						msgs);
 			msgs = basicSetGlobalParameters(newGlobalParameters, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__GLOBAL_PARAMETERS, newGlobalParameters, newGlobalParameters));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.ESX_FILE__GLOBAL_PARAMETERS,
+					newGlobalParameters, newGlobalParameters));
 	}
 
 	/**
@@ -589,7 +635,8 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 */
 	public EList<Pattern> getPatterns() {
 		if (patterns == null) {
-			patterns = new EObjectContainmentEList<Pattern>(Pattern.class, this, EsxPackage.ESX_FILE__PATTERNS);
+			patterns = new EObjectContainmentEList<Pattern>(Pattern.class,
+					this, EsxPackage.ESX_FILE__PATTERNS);
 		}
 		return patterns;
 	}
@@ -601,7 +648,8 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 */
 	public EList<Song> getSongs() {
 		if (songs == null) {
-			songs = new EObjectContainmentEList<Song>(Song.class, this, EsxPackage.ESX_FILE__SONGS);
+			songs = new EObjectContainmentEList<Song>(Song.class, this,
+					EsxPackage.ESX_FILE__SONGS);
 		}
 		return songs;
 	}
@@ -613,7 +661,8 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 */
 	public EList<Sample> getSamples() {
 		if (samples == null) {
-			samples = new EObjectContainmentEList<Sample>(Sample.class, this, EsxPackage.ESX_FILE__SAMPLES);
+			samples = new EObjectContainmentEList<Sample>(Sample.class, this,
+					EsxPackage.ESX_FILE__SAMPLES);
 		}
 		return samples;
 	}
@@ -632,12 +681,18 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetEmptyPattern(Pattern newEmptyPattern, NotificationChain msgs) {
+	public NotificationChain basicSetEmptyPattern(Pattern newEmptyPattern,
+			NotificationChain msgs) {
 		Pattern oldEmptyPattern = emptyPattern;
 		emptyPattern = newEmptyPattern;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__EMPTY_PATTERN, oldEmptyPattern, newEmptyPattern);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, EsxPackage.ESX_FILE__EMPTY_PATTERN,
+					oldEmptyPattern, newEmptyPattern);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -651,14 +706,22 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		if (newEmptyPattern != emptyPattern) {
 			NotificationChain msgs = null;
 			if (emptyPattern != null)
-				msgs = ((InternalEObject)emptyPattern).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.ESX_FILE__EMPTY_PATTERN, null, msgs);
+				msgs = ((InternalEObject) emptyPattern).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+								- EsxPackage.ESX_FILE__EMPTY_PATTERN, null,
+						msgs);
 			if (newEmptyPattern != null)
-				msgs = ((InternalEObject)newEmptyPattern).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.ESX_FILE__EMPTY_PATTERN, null, msgs);
+				msgs = ((InternalEObject) newEmptyPattern).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+								- EsxPackage.ESX_FILE__EMPTY_PATTERN, null,
+						msgs);
 			msgs = basicSetEmptyPattern(newEmptyPattern, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__EMPTY_PATTERN, newEmptyPattern, newEmptyPattern));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.ESX_FILE__EMPTY_PATTERN, newEmptyPattern,
+					newEmptyPattern));
 	}
 
 	/**
@@ -675,12 +738,18 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetEmptySong(Song newEmptySong, NotificationChain msgs) {
+	public NotificationChain basicSetEmptySong(Song newEmptySong,
+			NotificationChain msgs) {
 		Song oldEmptySong = emptySong;
 		emptySong = newEmptySong;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__EMPTY_SONG, oldEmptySong, newEmptySong);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, EsxPackage.ESX_FILE__EMPTY_SONG,
+					oldEmptySong, newEmptySong);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -694,14 +763,19 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		if (newEmptySong != emptySong) {
 			NotificationChain msgs = null;
 			if (emptySong != null)
-				msgs = ((InternalEObject)emptySong).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.ESX_FILE__EMPTY_SONG, null, msgs);
+				msgs = ((InternalEObject) emptySong).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+								- EsxPackage.ESX_FILE__EMPTY_SONG, null, msgs);
 			if (newEmptySong != null)
-				msgs = ((InternalEObject)newEmptySong).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.ESX_FILE__EMPTY_SONG, null, msgs);
+				msgs = ((InternalEObject) newEmptySong).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+								- EsxPackage.ESX_FILE__EMPTY_SONG, null, msgs);
 			msgs = basicSetEmptySong(newEmptySong, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__EMPTY_SONG, newEmptySong, newEmptySong));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.ESX_FILE__EMPTY_SONG, newEmptySong, newEmptySong));
 	}
 
 	/**
@@ -722,7 +796,9 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		int oldMaxSampleOffset = maxSampleOffset;
 		maxSampleOffset = newMaxSampleOffset;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__MAX_SAMPLE_OFFSET, oldMaxSampleOffset, maxSampleOffset));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.ESX_FILE__MAX_SAMPLE_OFFSET, oldMaxSampleOffset,
+					maxSampleOffset));
 	}
 
 	/**
@@ -732,7 +808,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 */
 	public int getMemUsedInBytes() {
 		int returnValue = 0;
-		for(int i=0; i<this.getSamples().size(); i++) {
+		for (int i = 0; i < this.getSamples().size(); i++) {
 			returnValue += this.getSamples().get(i).getMemUsedInBytes();
 		}
 		return returnValue;
@@ -745,7 +821,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 */
 	public float getMemUsedInSeconds() {
 		int memUsedInBytes = this.getMemUsedInBytes();
-		return ((float)memUsedInBytes)/(2*44100);
+		return ((float) memUsedInBytes) / (2 * 44100);
 	}
 
 	/**
@@ -764,7 +840,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 */
 	public float getMemFreeInSeconds() {
 		int memFreeInBytes = this.getMemFreeInBytes();
-		return ((float)memFreeInBytes)/(2*44100);
+		return ((float) memFreeInBytes) / (2 * 44100);
 	}
 
 	/**
@@ -774,7 +850,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 */
 	public int getNumPatternsEmpty() {
 		int returnValue = 0;
-		for(int i=0; i<this.getPatterns().size(); i++) {
+		for (int i = 0; i < this.getPatterns().size(); i++) {
 			if (this.getPatterns().get(i).isEmpty()) {
 				returnValue++;
 			}
@@ -788,7 +864,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * @generated NOT
 	 */
 	public int getNumPatternsNotEmpty() {
-		return EsxUtil.NUM_PATTERNS-this.getNumPatternsEmpty();
+		return EsxUtil.NUM_PATTERNS - this.getNumPatternsEmpty();
 	}
 
 	/**
@@ -798,7 +874,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 */
 	public int getNumSamplesEmpty() {
 		int returnValue = 0;
-		for(int i=0; i<this.getSamples().size(); i++) {
+		for (int i = 0; i < this.getSamples().size(); i++) {
 			if (this.getSamples().get(i).isEmpty()) {
 				returnValue++;
 			}
@@ -812,7 +888,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * @generated NOT
 	 */
 	public int getNumSamplesNotEmpty() {
-		return EsxUtil.NUM_SAMPLES-this.getNumSamplesEmpty();
+		return EsxUtil.NUM_SAMPLES - this.getNumSamplesEmpty();
 	}
 
 	/**
@@ -822,7 +898,8 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 */
 	public int getNumSamplesMonoEmpty() {
 		int returnValue = 0;
-		for(int i=0; i<this.getSamples().size() && i<EsxUtil.NUM_SAMPLES_MONO; i++) {
+		for (int i = 0; i < this.getSamples().size()
+				&& i < EsxUtil.NUM_SAMPLES_MONO; i++) {
 			if (this.getSamples().get(i).isEmpty()) {
 				returnValue++;
 			}
@@ -846,7 +923,8 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 */
 	public int getNumSamplesStereoEmpty() {
 		int returnValue = 0;
-		for(int i=EsxUtil.NUM_SAMPLES_MONO; i<this.getSamples().size() && i<EsxUtil.NUM_SAMPLES; i++) {
+		for (int i = EsxUtil.NUM_SAMPLES_MONO; i < this.getSamples().size()
+				&& i < EsxUtil.NUM_SAMPLES; i++) {
 			if (this.getSamples().get(i).isEmpty()) {
 				returnValue++;
 			}
@@ -860,7 +938,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * @generated NOT
 	 */
 	public int getNumSamplesStereoNotEmpty() {
-		return EsxUtil.NUM_SAMPLES_STEREO-this.getNumSamplesStereoEmpty();
+		return EsxUtil.NUM_SAMPLES_STEREO - this.getNumSamplesStereoEmpty();
 	}
 
 	/**
@@ -870,7 +948,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 */
 	public int getNumSongsEmpty() {
 		int returnValue = 0;
-		for(int i=0; i<this.getSongs().size(); i++) {
+		for (int i = 0; i < this.getSongs().size(); i++) {
 			if (this.getSongs().get(i).isEmpty()) {
 				returnValue++;
 			}
@@ -884,7 +962,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * @generated NOT
 	 */
 	public int getNumSongsNotEmpty() {
-		return EsxUtil.NUM_SONGS-this.getNumSongsEmpty();
+		return EsxUtil.NUM_SONGS - this.getNumSongsEmpty();
 	}
 
 	/**
@@ -901,11 +979,14 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSyncPatternsOnMoveEnabled(boolean newSyncPatternsOnMoveEnabled) {
+	public void setSyncPatternsOnMoveEnabled(
+			boolean newSyncPatternsOnMoveEnabled) {
 		boolean oldSyncPatternsOnMoveEnabled = syncPatternsOnMoveEnabled;
 		syncPatternsOnMoveEnabled = newSyncPatternsOnMoveEnabled;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED, oldSyncPatternsOnMoveEnabled, syncPatternsOnMoveEnabled));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED,
+					oldSyncPatternsOnMoveEnabled, syncPatternsOnMoveEnabled));
 	}
 
 	/**
@@ -926,7 +1007,9 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		boolean oldSyncSamplesOnMoveEnabled = syncSamplesOnMoveEnabled;
 		syncSamplesOnMoveEnabled = newSyncSamplesOnMoveEnabled;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED, oldSyncSamplesOnMoveEnabled, syncSamplesOnMoveEnabled));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED,
+					oldSyncSamplesOnMoveEnabled, syncSamplesOnMoveEnabled));
 	}
 
 	/**
@@ -937,21 +1020,20 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 */
 	public Pattern getPatternFromPointer(int patternPointer) {
 		Pattern pattern = null;
-		if(!EsxUtil.isValidPatternNumber(patternPointer)) {
+		if (!EsxUtil.isValidPatternNumber(patternPointer)) {
 			return pattern;
 		}
-		if(this.isSyncPatternsOnMoveEnabled()) {
-			for(int i=0; i<EsxUtil.NUM_PATTERNS; i++) {
+		if (this.isSyncPatternsOnMoveEnabled()) {
+			for (int i = 0; i < EsxUtil.NUM_PATTERNS; i++) {
 				pattern = this.getPatterns().get(i);
-				if(pattern.getPatternNumberOriginal().getValue()==patternPointer) {
+				if (pattern.getPatternNumberOriginal().getValue() == patternPointer) {
 					return pattern;
 				}
 			}
-		}
-		else {
+		} else {
 			try {
 				pattern = this.getPatterns().get(patternPointer);
-			} catch(IndexOutOfBoundsException e) {
+			} catch (IndexOutOfBoundsException e) {
 				e.printStackTrace();
 				pattern = null;
 			}
@@ -967,21 +1049,20 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 */
 	public Sample getSampleFromPointer(int samplePointer) {
 		Sample sample = null;
-		if(!EsxUtil.isValidSampleNumber(samplePointer)) {
+		if (!EsxUtil.isValidSampleNumber(samplePointer)) {
 			return sample;
 		}
-		if(this.isSyncSamplesOnMoveEnabled()) {
-			for(int i=0; i<EsxUtil.NUM_SAMPLES; i++) {
+		if (this.isSyncSamplesOnMoveEnabled()) {
+			for (int i = 0; i < EsxUtil.NUM_SAMPLES; i++) {
 				sample = this.getSamples().get(i);
-				if(sample.getSampleNumberOriginal().getValue()==samplePointer) {
+				if (sample.getSampleNumberOriginal().getValue() == samplePointer) {
 					return sample;
 				}
 			}
-		}
-		else {
+		} else {
 			try {
 				sample = this.getSamples().get(samplePointer);
-			} catch(IndexOutOfBoundsException e) {
+			} catch (IndexOutOfBoundsException e) {
 				e.printStackTrace();
 				sample = null;
 			}
@@ -998,32 +1079,40 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		// Initialize max sample offset
 		this.setMaxSampleOffset(0);
 
-		for (int i=0; i<EsxUtil.NUM_SAMPLES; i++) {
+		for (int i = 0; i < EsxUtil.NUM_SAMPLES; i++) {
 			Sample currentSample = this.getSamples().get(i);
 
-			if(currentSample.getNumberOfSampleFrames()>0) {
+			if (currentSample.getNumberOfSampleFrames() > 0) {
 				// offsetChannel1Start
 				currentSample.setOffsetChannel1Start(this.getMaxSampleOffset());
 				// update offset
-				this.setMaxSampleOffset(this.getMaxSampleOffset() + (currentSample.getNumberOfSampleFrames() * 2) + 16);
+				this.setMaxSampleOffset(this.getMaxSampleOffset()
+						+ (currentSample.getNumberOfSampleFrames() * 2) + 16);
 				// offsetChannel1End
 				currentSample.setOffsetChannel1End(this.getMaxSampleOffset());
 				// update offset: blockAlign/loopStartSample
-				this.setMaxSampleOffset(this.getMaxSampleOffset() + (currentSample.getNumberOfSampleFrames()%2==0?4:2));
+				this.setMaxSampleOffset(this.getMaxSampleOffset()
+						+ (currentSample.getNumberOfSampleFrames() % 2 == 0 ? 4
+								: 2));
 
 				// NEED TO HANDLE CHANNEL 2
-				if(currentSample.isStereoCurrent()) {
+				if (currentSample.isStereoCurrent()) {
 					// offsetChannel2Start
-					currentSample.setOffsetChannel2Start(this.getMaxSampleOffset());
+					currentSample.setOffsetChannel2Start(this
+							.getMaxSampleOffset());
 					// update offset
-					this.setMaxSampleOffset(this.getMaxSampleOffset() + (currentSample.getNumberOfSampleFrames() * 2) + 16);
+					this.setMaxSampleOffset(this.getMaxSampleOffset()
+							+ (currentSample.getNumberOfSampleFrames() * 2)
+							+ 16);
 					// offsetChannel1End
-					currentSample.setOffsetChannel2End(this.getMaxSampleOffset());
+					currentSample.setOffsetChannel2End(this
+							.getMaxSampleOffset());
 					// update offset: blockAlign
-					this.setMaxSampleOffset(this.getMaxSampleOffset() + (currentSample.getNumberOfSampleFrames()%2==0?4:2));
+					this.setMaxSampleOffset(this.getMaxSampleOffset()
+							+ (currentSample.getNumberOfSampleFrames() % 2 == 0 ? 4
+									: 2));
 				}
-			}
-			else {
+			} else {
 				currentSample.setOffsetChannel1Start(0xFFFFFFFF);
 				currentSample.setOffsetChannel2Start(0xFFFFFFFF);
 				currentSample.setOffsetChannel1End(0xFFFFFFFF);
@@ -1059,27 +1148,30 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		// Write global parameters
 		buf.position(EsxUtil.ADDR_GLOBAL_PARAMETERS);
 		buf.putBytes(this.getGlobalParameters().toByteArray());
-	
+
 		// Write Pattern Data
 		buf.position(EsxUtil.ADDR_PATTERN_DATA);
-		for (int i=0; i<EsxUtil.NUM_PATTERNS; i++) {
-			monitor.subTask("Saving pattern " + (i + 1) + " of " + EsxUtil.NUM_PATTERNS);
+		for (int i = 0; i < EsxUtil.NUM_PATTERNS; i++) {
+			monitor.subTask("Saving pattern " + (i + 1) + " of "
+					+ EsxUtil.NUM_PATTERNS);
 			buf.putBytes(this.getPatterns().get(i).toByteArray());
 			monitor.worked(1);
 		}
-	
+
 		// Write Song Data
 		buf.position(EsxUtil.ADDR_SONG_DATA);
-		for (int i=0; i<EsxUtil.NUM_SONGS; i++) {
-			monitor.subTask("Saving song " + (i + 1) + " of " + EsxUtil.NUM_SONGS);
+		for (int i = 0; i < EsxUtil.NUM_SONGS; i++) {
+			monitor.subTask("Saving song " + (i + 1) + " of "
+					+ EsxUtil.NUM_SONGS);
 			buf.putBytes(this.getSongs().get(i).toSongByteArray());
 			monitor.worked(1);
 		}
-		
+
 		// Write Song Event Data
 		buf.position(EsxUtil.ADDR_SONG_EVENT_DATA);
-		for (int i=0; i<EsxUtil.NUM_SONGS; i++) {
-			monitor.subTask("Saving song event data for song " + (i + 1) + " of " + EsxUtil.NUM_SONGS);
+		for (int i = 0; i < EsxUtil.NUM_SONGS; i++) {
+			monitor.subTask("Saving song event data for song " + (i + 1)
+					+ " of " + EsxUtil.NUM_SONGS);
 			buf.putBytes(this.getSongs().get(i).toSongEventsByteArray());
 			monitor.worked(1);
 		}
@@ -1090,41 +1182,52 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 
 		// Write Mono Sample Data
 		for (int i = 0; i < EsxUtil.NUM_SAMPLES_MONO; i++) {
-			monitor.subTask("Saving mono sample " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES_MONO);
+			monitor.subTask("Saving mono sample " + (i + 1) + " of "
+					+ EsxUtil.NUM_SAMPLES_MONO);
 			Sample mono = this.getSamples().get(i);
 
 			// Write Sample Header Info
-			buf.position(EsxUtil.ADDR_SAMPLE_HEADER_MONO + (i * EsxUtil.CHUNKSIZE_SAMPLE_HEADER_MONO));
+			buf.position(EsxUtil.ADDR_SAMPLE_HEADER_MONO
+					+ (i * EsxUtil.CHUNKSIZE_SAMPLE_HEADER_MONO));
 			buf.putBytes(mono.toHeaderMonoByteArray());
-	
+
 			// Write Slice Info
-			buf.position(EsxUtil.ADDR_SLICE_DATA + (i * EsxUtil.CHUNKSIZE_SLICE_DATA));
+			buf.position(EsxUtil.ADDR_SLICE_DATA
+					+ (i * EsxUtil.CHUNKSIZE_SLICE_DATA));
 			buf.putBytes(mono.toSliceByteArray());
 
 			// Write Sample Data
-			if(!mono.isEmpty() && mono.getNumberOfSampleFrames()>0) {
-				buf.position(EsxUtil.ADDR_SAMPLE_DATA + mono.getOffsetChannel1Start());
-				buf.putBytes(mono.toOffsetChannelByteArray(AudioChannelType.MONO));
+			if (!mono.isEmpty() && mono.getNumberOfSampleFrames() > 0) {
+				buf.position(EsxUtil.ADDR_SAMPLE_DATA
+						+ mono.getOffsetChannel1Start());
+				buf.putBytes(mono
+						.toOffsetChannelByteArray(AudioChannelType.MONO));
 			}
-	
+
 			monitor.worked(1);
 		}
 
 		// Write Stereo Sample Data
 		for (int i = 0; i < EsxUtil.NUM_SAMPLES_STEREO; i++) {
-			monitor.subTask("Saving stereo sample " + (i + 1) + " of " + EsxUtil.NUM_SAMPLES_STEREO);
+			monitor.subTask("Saving stereo sample " + (i + 1) + " of "
+					+ EsxUtil.NUM_SAMPLES_STEREO);
 			Sample stereo = this.getSamples().get(i + EsxUtil.NUM_SAMPLES_MONO);
 
 			// Write Sample Header Info
-			buf.position(EsxUtil.ADDR_SAMPLE_HEADER_STEREO + (i * EsxUtil.CHUNKSIZE_SAMPLE_HEADER_STEREO));
+			buf.position(EsxUtil.ADDR_SAMPLE_HEADER_STEREO
+					+ (i * EsxUtil.CHUNKSIZE_SAMPLE_HEADER_STEREO));
 			buf.putBytes(stereo.toHeaderStereoByteArray());
 
 			// Write Sample Data
-			if(!stereo.isEmpty() && stereo.getNumberOfSampleFrames() > 0) {
-				buf.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel1Start());
-				buf.putBytes(stereo.toOffsetChannelByteArray(AudioChannelType.STEREO_1));
-				buf.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel2Start());
-				buf.putBytes(stereo.toOffsetChannelByteArray(AudioChannelType.STEREO_2));
+			if (!stereo.isEmpty() && stereo.getNumberOfSampleFrames() > 0) {
+				buf.position(EsxUtil.ADDR_SAMPLE_DATA
+						+ stereo.getOffsetChannel1Start());
+				buf.putBytes(stereo
+						.toOffsetChannelByteArray(AudioChannelType.STEREO_1));
+				buf.position(EsxUtil.ADDR_SAMPLE_DATA
+						+ stereo.getOffsetChannel2Start());
+				buf.putBytes(stereo
+						.toOffsetChannelByteArray(AudioChannelType.STEREO_2));
 			}
 
 			monitor.worked(1);
@@ -1158,20 +1261,24 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public boolean validMemFreeInBytes(DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validMemFreeInBytes(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (this.getMemFreeInBytes()<0) {
+		if (this.getMemFreeInBytes() < 0) {
 			if (diagnostics != null) {
-				diagnostics.add
-					(new BasicDiagnostic
-						(Diagnostic.ERROR,
-						 EsxValidator.DIAGNOSTIC_SOURCE,
-						 EsxValidator.ESX_FILE__VALID_MEM_FREE_IN_BYTES,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", new Object[] { "validMemFreeInBytes", EObjectValidator.getObjectLabel(this, context) }),
-						 new Object [] { this }));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+						EsxValidator.DIAGNOSTIC_SOURCE,
+						EsxValidator.ESX_FILE__VALID_MEM_FREE_IN_BYTES,
+						EcorePlugin.INSTANCE.getString(
+								"_UI_GenericInvariant_diagnostic",
+								new Object[] {
+										"validMemFreeInBytes",
+										EObjectValidator.getObjectLabel(this,
+												context) }),
+						new Object[] { this }));
 			}
 			return false;
 		}
@@ -1184,20 +1291,23 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EsxPackage.ESX_FILE__GLOBAL_PARAMETERS:
-				return basicSetGlobalParameters(null, msgs);
-			case EsxPackage.ESX_FILE__PATTERNS:
-				return ((InternalEList<?>)getPatterns()).basicRemove(otherEnd, msgs);
-			case EsxPackage.ESX_FILE__SONGS:
-				return ((InternalEList<?>)getSongs()).basicRemove(otherEnd, msgs);
-			case EsxPackage.ESX_FILE__SAMPLES:
-				return ((InternalEList<?>)getSamples()).basicRemove(otherEnd, msgs);
-			case EsxPackage.ESX_FILE__EMPTY_PATTERN:
-				return basicSetEmptyPattern(null, msgs);
-			case EsxPackage.ESX_FILE__EMPTY_SONG:
-				return basicSetEmptySong(null, msgs);
+		case EsxPackage.ESX_FILE__GLOBAL_PARAMETERS:
+			return basicSetGlobalParameters(null, msgs);
+		case EsxPackage.ESX_FILE__PATTERNS:
+			return ((InternalEList<?>) getPatterns()).basicRemove(otherEnd,
+					msgs);
+		case EsxPackage.ESX_FILE__SONGS:
+			return ((InternalEList<?>) getSongs()).basicRemove(otherEnd, msgs);
+		case EsxPackage.ESX_FILE__SAMPLES:
+			return ((InternalEList<?>) getSamples())
+					.basicRemove(otherEnd, msgs);
+		case EsxPackage.ESX_FILE__EMPTY_PATTERN:
+			return basicSetEmptyPattern(null, msgs);
+		case EsxPackage.ESX_FILE__EMPTY_SONG:
+			return basicSetEmptySong(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1210,54 +1320,54 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.ESX_FILE__ORIGINAL_NON_AUDIO_DATA:
-				return getOriginalNonAudioData();
-			case EsxPackage.ESX_FILE__GLOBAL_PARAMETERS:
-				return getGlobalParameters();
-			case EsxPackage.ESX_FILE__PATTERNS:
-				return getPatterns();
-			case EsxPackage.ESX_FILE__SONGS:
-				return getSongs();
-			case EsxPackage.ESX_FILE__SAMPLES:
-				return getSamples();
-			case EsxPackage.ESX_FILE__EMPTY_PATTERN:
-				return getEmptyPattern();
-			case EsxPackage.ESX_FILE__EMPTY_SONG:
-				return getEmptySong();
-			case EsxPackage.ESX_FILE__MAX_SAMPLE_OFFSET:
-				return getMaxSampleOffset();
-			case EsxPackage.ESX_FILE__MEM_USED_IN_BYTES:
-				return getMemUsedInBytes();
-			case EsxPackage.ESX_FILE__MEM_USED_IN_SECONDS:
-				return getMemUsedInSeconds();
-			case EsxPackage.ESX_FILE__MEM_FREE_IN_BYTES:
-				return getMemFreeInBytes();
-			case EsxPackage.ESX_FILE__MEM_FREE_IN_SECONDS:
-				return getMemFreeInSeconds();
-			case EsxPackage.ESX_FILE__NUM_PATTERNS_EMPTY:
-				return getNumPatternsEmpty();
-			case EsxPackage.ESX_FILE__NUM_PATTERNS_NOT_EMPTY:
-				return getNumPatternsNotEmpty();
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_EMPTY:
-				return getNumSamplesEmpty();
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_NOT_EMPTY:
-				return getNumSamplesNotEmpty();
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_EMPTY:
-				return getNumSamplesMonoEmpty();
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_NOT_EMPTY:
-				return getNumSamplesMonoNotEmpty();
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_EMPTY:
-				return getNumSamplesStereoEmpty();
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_NOT_EMPTY:
-				return getNumSamplesStereoNotEmpty();
-			case EsxPackage.ESX_FILE__NUM_SONGS_EMPTY:
-				return getNumSongsEmpty();
-			case EsxPackage.ESX_FILE__NUM_SONGS_NOT_EMPTY:
-				return getNumSongsNotEmpty();
-			case EsxPackage.ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED:
-				return isSyncPatternsOnMoveEnabled();
-			case EsxPackage.ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED:
-				return isSyncSamplesOnMoveEnabled();
+		case EsxPackage.ESX_FILE__ORIGINAL_NON_AUDIO_DATA:
+			return getOriginalNonAudioData();
+		case EsxPackage.ESX_FILE__GLOBAL_PARAMETERS:
+			return getGlobalParameters();
+		case EsxPackage.ESX_FILE__PATTERNS:
+			return getPatterns();
+		case EsxPackage.ESX_FILE__SONGS:
+			return getSongs();
+		case EsxPackage.ESX_FILE__SAMPLES:
+			return getSamples();
+		case EsxPackage.ESX_FILE__EMPTY_PATTERN:
+			return getEmptyPattern();
+		case EsxPackage.ESX_FILE__EMPTY_SONG:
+			return getEmptySong();
+		case EsxPackage.ESX_FILE__MAX_SAMPLE_OFFSET:
+			return getMaxSampleOffset();
+		case EsxPackage.ESX_FILE__MEM_USED_IN_BYTES:
+			return getMemUsedInBytes();
+		case EsxPackage.ESX_FILE__MEM_USED_IN_SECONDS:
+			return getMemUsedInSeconds();
+		case EsxPackage.ESX_FILE__MEM_FREE_IN_BYTES:
+			return getMemFreeInBytes();
+		case EsxPackage.ESX_FILE__MEM_FREE_IN_SECONDS:
+			return getMemFreeInSeconds();
+		case EsxPackage.ESX_FILE__NUM_PATTERNS_EMPTY:
+			return getNumPatternsEmpty();
+		case EsxPackage.ESX_FILE__NUM_PATTERNS_NOT_EMPTY:
+			return getNumPatternsNotEmpty();
+		case EsxPackage.ESX_FILE__NUM_SAMPLES_EMPTY:
+			return getNumSamplesEmpty();
+		case EsxPackage.ESX_FILE__NUM_SAMPLES_NOT_EMPTY:
+			return getNumSamplesNotEmpty();
+		case EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_EMPTY:
+			return getNumSamplesMonoEmpty();
+		case EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_NOT_EMPTY:
+			return getNumSamplesMonoNotEmpty();
+		case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_EMPTY:
+			return getNumSamplesStereoEmpty();
+		case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_NOT_EMPTY:
+			return getNumSamplesStereoNotEmpty();
+		case EsxPackage.ESX_FILE__NUM_SONGS_EMPTY:
+			return getNumSongsEmpty();
+		case EsxPackage.ESX_FILE__NUM_SONGS_NOT_EMPTY:
+			return getNumSongsNotEmpty();
+		case EsxPackage.ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED:
+			return isSyncPatternsOnMoveEnabled();
+		case EsxPackage.ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED:
+			return isSyncSamplesOnMoveEnabled();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1271,39 +1381,39 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.ESX_FILE__ORIGINAL_NON_AUDIO_DATA:
-				setOriginalNonAudioData((byte[])newValue);
-				return;
-			case EsxPackage.ESX_FILE__GLOBAL_PARAMETERS:
-				setGlobalParameters((GlobalParameters)newValue);
-				return;
-			case EsxPackage.ESX_FILE__PATTERNS:
-				getPatterns().clear();
-				getPatterns().addAll((Collection<? extends Pattern>)newValue);
-				return;
-			case EsxPackage.ESX_FILE__SONGS:
-				getSongs().clear();
-				getSongs().addAll((Collection<? extends Song>)newValue);
-				return;
-			case EsxPackage.ESX_FILE__SAMPLES:
-				getSamples().clear();
-				getSamples().addAll((Collection<? extends Sample>)newValue);
-				return;
-			case EsxPackage.ESX_FILE__EMPTY_PATTERN:
-				setEmptyPattern((Pattern)newValue);
-				return;
-			case EsxPackage.ESX_FILE__EMPTY_SONG:
-				setEmptySong((Song)newValue);
-				return;
-			case EsxPackage.ESX_FILE__MAX_SAMPLE_OFFSET:
-				setMaxSampleOffset((Integer)newValue);
-				return;
-			case EsxPackage.ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED:
-				setSyncPatternsOnMoveEnabled((Boolean)newValue);
-				return;
-			case EsxPackage.ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED:
-				setSyncSamplesOnMoveEnabled((Boolean)newValue);
-				return;
+		case EsxPackage.ESX_FILE__ORIGINAL_NON_AUDIO_DATA:
+			setOriginalNonAudioData((byte[]) newValue);
+			return;
+		case EsxPackage.ESX_FILE__GLOBAL_PARAMETERS:
+			setGlobalParameters((GlobalParameters) newValue);
+			return;
+		case EsxPackage.ESX_FILE__PATTERNS:
+			getPatterns().clear();
+			getPatterns().addAll((Collection<? extends Pattern>) newValue);
+			return;
+		case EsxPackage.ESX_FILE__SONGS:
+			getSongs().clear();
+			getSongs().addAll((Collection<? extends Song>) newValue);
+			return;
+		case EsxPackage.ESX_FILE__SAMPLES:
+			getSamples().clear();
+			getSamples().addAll((Collection<? extends Sample>) newValue);
+			return;
+		case EsxPackage.ESX_FILE__EMPTY_PATTERN:
+			setEmptyPattern((Pattern) newValue);
+			return;
+		case EsxPackage.ESX_FILE__EMPTY_SONG:
+			setEmptySong((Song) newValue);
+			return;
+		case EsxPackage.ESX_FILE__MAX_SAMPLE_OFFSET:
+			setMaxSampleOffset((Integer) newValue);
+			return;
+		case EsxPackage.ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED:
+			setSyncPatternsOnMoveEnabled((Boolean) newValue);
+			return;
+		case EsxPackage.ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED:
+			setSyncSamplesOnMoveEnabled((Boolean) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1316,36 +1426,36 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.ESX_FILE__ORIGINAL_NON_AUDIO_DATA:
-				setOriginalNonAudioData(ORIGINAL_NON_AUDIO_DATA_EDEFAULT);
-				return;
-			case EsxPackage.ESX_FILE__GLOBAL_PARAMETERS:
-				setGlobalParameters((GlobalParameters)null);
-				return;
-			case EsxPackage.ESX_FILE__PATTERNS:
-				getPatterns().clear();
-				return;
-			case EsxPackage.ESX_FILE__SONGS:
-				getSongs().clear();
-				return;
-			case EsxPackage.ESX_FILE__SAMPLES:
-				getSamples().clear();
-				return;
-			case EsxPackage.ESX_FILE__EMPTY_PATTERN:
-				setEmptyPattern((Pattern)null);
-				return;
-			case EsxPackage.ESX_FILE__EMPTY_SONG:
-				setEmptySong((Song)null);
-				return;
-			case EsxPackage.ESX_FILE__MAX_SAMPLE_OFFSET:
-				setMaxSampleOffset(MAX_SAMPLE_OFFSET_EDEFAULT);
-				return;
-			case EsxPackage.ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED:
-				setSyncPatternsOnMoveEnabled(SYNC_PATTERNS_ON_MOVE_ENABLED_EDEFAULT);
-				return;
-			case EsxPackage.ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED:
-				setSyncSamplesOnMoveEnabled(SYNC_SAMPLES_ON_MOVE_ENABLED_EDEFAULT);
-				return;
+		case EsxPackage.ESX_FILE__ORIGINAL_NON_AUDIO_DATA:
+			setOriginalNonAudioData(ORIGINAL_NON_AUDIO_DATA_EDEFAULT);
+			return;
+		case EsxPackage.ESX_FILE__GLOBAL_PARAMETERS:
+			setGlobalParameters((GlobalParameters) null);
+			return;
+		case EsxPackage.ESX_FILE__PATTERNS:
+			getPatterns().clear();
+			return;
+		case EsxPackage.ESX_FILE__SONGS:
+			getSongs().clear();
+			return;
+		case EsxPackage.ESX_FILE__SAMPLES:
+			getSamples().clear();
+			return;
+		case EsxPackage.ESX_FILE__EMPTY_PATTERN:
+			setEmptyPattern((Pattern) null);
+			return;
+		case EsxPackage.ESX_FILE__EMPTY_SONG:
+			setEmptySong((Song) null);
+			return;
+		case EsxPackage.ESX_FILE__MAX_SAMPLE_OFFSET:
+			setMaxSampleOffset(MAX_SAMPLE_OFFSET_EDEFAULT);
+			return;
+		case EsxPackage.ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED:
+			setSyncPatternsOnMoveEnabled(SYNC_PATTERNS_ON_MOVE_ENABLED_EDEFAULT);
+			return;
+		case EsxPackage.ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED:
+			setSyncSamplesOnMoveEnabled(SYNC_SAMPLES_ON_MOVE_ENABLED_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1358,54 +1468,56 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.ESX_FILE__ORIGINAL_NON_AUDIO_DATA:
-				return ORIGINAL_NON_AUDIO_DATA_EDEFAULT == null ? originalNonAudioData != null : !ORIGINAL_NON_AUDIO_DATA_EDEFAULT.equals(originalNonAudioData);
-			case EsxPackage.ESX_FILE__GLOBAL_PARAMETERS:
-				return globalParameters != null;
-			case EsxPackage.ESX_FILE__PATTERNS:
-				return patterns != null && !patterns.isEmpty();
-			case EsxPackage.ESX_FILE__SONGS:
-				return songs != null && !songs.isEmpty();
-			case EsxPackage.ESX_FILE__SAMPLES:
-				return samples != null && !samples.isEmpty();
-			case EsxPackage.ESX_FILE__EMPTY_PATTERN:
-				return emptyPattern != null;
-			case EsxPackage.ESX_FILE__EMPTY_SONG:
-				return emptySong != null;
-			case EsxPackage.ESX_FILE__MAX_SAMPLE_OFFSET:
-				return maxSampleOffset != MAX_SAMPLE_OFFSET_EDEFAULT;
-			case EsxPackage.ESX_FILE__MEM_USED_IN_BYTES:
-				return getMemUsedInBytes() != MEM_USED_IN_BYTES_EDEFAULT;
-			case EsxPackage.ESX_FILE__MEM_USED_IN_SECONDS:
-				return getMemUsedInSeconds() != MEM_USED_IN_SECONDS_EDEFAULT;
-			case EsxPackage.ESX_FILE__MEM_FREE_IN_BYTES:
-				return getMemFreeInBytes() != MEM_FREE_IN_BYTES_EDEFAULT;
-			case EsxPackage.ESX_FILE__MEM_FREE_IN_SECONDS:
-				return getMemFreeInSeconds() != MEM_FREE_IN_SECONDS_EDEFAULT;
-			case EsxPackage.ESX_FILE__NUM_PATTERNS_EMPTY:
-				return getNumPatternsEmpty() != NUM_PATTERNS_EMPTY_EDEFAULT;
-			case EsxPackage.ESX_FILE__NUM_PATTERNS_NOT_EMPTY:
-				return getNumPatternsNotEmpty() != NUM_PATTERNS_NOT_EMPTY_EDEFAULT;
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_EMPTY:
-				return getNumSamplesEmpty() != NUM_SAMPLES_EMPTY_EDEFAULT;
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_NOT_EMPTY:
-				return getNumSamplesNotEmpty() != NUM_SAMPLES_NOT_EMPTY_EDEFAULT;
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_EMPTY:
-				return getNumSamplesMonoEmpty() != NUM_SAMPLES_MONO_EMPTY_EDEFAULT;
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_NOT_EMPTY:
-				return getNumSamplesMonoNotEmpty() != NUM_SAMPLES_MONO_NOT_EMPTY_EDEFAULT;
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_EMPTY:
-				return getNumSamplesStereoEmpty() != NUM_SAMPLES_STEREO_EMPTY_EDEFAULT;
-			case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_NOT_EMPTY:
-				return getNumSamplesStereoNotEmpty() != NUM_SAMPLES_STEREO_NOT_EMPTY_EDEFAULT;
-			case EsxPackage.ESX_FILE__NUM_SONGS_EMPTY:
-				return getNumSongsEmpty() != NUM_SONGS_EMPTY_EDEFAULT;
-			case EsxPackage.ESX_FILE__NUM_SONGS_NOT_EMPTY:
-				return getNumSongsNotEmpty() != NUM_SONGS_NOT_EMPTY_EDEFAULT;
-			case EsxPackage.ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED:
-				return syncPatternsOnMoveEnabled != SYNC_PATTERNS_ON_MOVE_ENABLED_EDEFAULT;
-			case EsxPackage.ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED:
-				return syncSamplesOnMoveEnabled != SYNC_SAMPLES_ON_MOVE_ENABLED_EDEFAULT;
+		case EsxPackage.ESX_FILE__ORIGINAL_NON_AUDIO_DATA:
+			return ORIGINAL_NON_AUDIO_DATA_EDEFAULT == null ? originalNonAudioData != null
+					: !ORIGINAL_NON_AUDIO_DATA_EDEFAULT
+							.equals(originalNonAudioData);
+		case EsxPackage.ESX_FILE__GLOBAL_PARAMETERS:
+			return globalParameters != null;
+		case EsxPackage.ESX_FILE__PATTERNS:
+			return patterns != null && !patterns.isEmpty();
+		case EsxPackage.ESX_FILE__SONGS:
+			return songs != null && !songs.isEmpty();
+		case EsxPackage.ESX_FILE__SAMPLES:
+			return samples != null && !samples.isEmpty();
+		case EsxPackage.ESX_FILE__EMPTY_PATTERN:
+			return emptyPattern != null;
+		case EsxPackage.ESX_FILE__EMPTY_SONG:
+			return emptySong != null;
+		case EsxPackage.ESX_FILE__MAX_SAMPLE_OFFSET:
+			return maxSampleOffset != MAX_SAMPLE_OFFSET_EDEFAULT;
+		case EsxPackage.ESX_FILE__MEM_USED_IN_BYTES:
+			return getMemUsedInBytes() != MEM_USED_IN_BYTES_EDEFAULT;
+		case EsxPackage.ESX_FILE__MEM_USED_IN_SECONDS:
+			return getMemUsedInSeconds() != MEM_USED_IN_SECONDS_EDEFAULT;
+		case EsxPackage.ESX_FILE__MEM_FREE_IN_BYTES:
+			return getMemFreeInBytes() != MEM_FREE_IN_BYTES_EDEFAULT;
+		case EsxPackage.ESX_FILE__MEM_FREE_IN_SECONDS:
+			return getMemFreeInSeconds() != MEM_FREE_IN_SECONDS_EDEFAULT;
+		case EsxPackage.ESX_FILE__NUM_PATTERNS_EMPTY:
+			return getNumPatternsEmpty() != NUM_PATTERNS_EMPTY_EDEFAULT;
+		case EsxPackage.ESX_FILE__NUM_PATTERNS_NOT_EMPTY:
+			return getNumPatternsNotEmpty() != NUM_PATTERNS_NOT_EMPTY_EDEFAULT;
+		case EsxPackage.ESX_FILE__NUM_SAMPLES_EMPTY:
+			return getNumSamplesEmpty() != NUM_SAMPLES_EMPTY_EDEFAULT;
+		case EsxPackage.ESX_FILE__NUM_SAMPLES_NOT_EMPTY:
+			return getNumSamplesNotEmpty() != NUM_SAMPLES_NOT_EMPTY_EDEFAULT;
+		case EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_EMPTY:
+			return getNumSamplesMonoEmpty() != NUM_SAMPLES_MONO_EMPTY_EDEFAULT;
+		case EsxPackage.ESX_FILE__NUM_SAMPLES_MONO_NOT_EMPTY:
+			return getNumSamplesMonoNotEmpty() != NUM_SAMPLES_MONO_NOT_EMPTY_EDEFAULT;
+		case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_EMPTY:
+			return getNumSamplesStereoEmpty() != NUM_SAMPLES_STEREO_EMPTY_EDEFAULT;
+		case EsxPackage.ESX_FILE__NUM_SAMPLES_STEREO_NOT_EMPTY:
+			return getNumSamplesStereoNotEmpty() != NUM_SAMPLES_STEREO_NOT_EMPTY_EDEFAULT;
+		case EsxPackage.ESX_FILE__NUM_SONGS_EMPTY:
+			return getNumSongsEmpty() != NUM_SONGS_EMPTY_EDEFAULT;
+		case EsxPackage.ESX_FILE__NUM_SONGS_NOT_EMPTY:
+			return getNumSongsNotEmpty() != NUM_SONGS_NOT_EMPTY_EDEFAULT;
+		case EsxPackage.ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED:
+			return syncPatternsOnMoveEnabled != SYNC_PATTERNS_ON_MOVE_ENABLED_EDEFAULT;
+		case EsxPackage.ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED:
+			return syncSamplesOnMoveEnabled != SYNC_SAMPLES_ON_MOVE_ENABLED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1417,7 +1529,8 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (originalNonAudioData: ");

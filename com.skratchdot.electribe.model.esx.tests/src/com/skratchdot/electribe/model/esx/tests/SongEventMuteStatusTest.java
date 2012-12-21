@@ -58,7 +58,7 @@ public class SongEventMuteStatusTest extends SongEventTest {
 	 */
 	@Override
 	protected SongEventMuteStatus getFixture() {
-		return (SongEventMuteStatus)fixture;
+		return (SongEventMuteStatus) fixture;
 	}
 
 	/**

@@ -45,7 +45,8 @@ import com.skratchdot.riff.wav.util.RiffWaveException;
  *
  * @generated
  */
-public class ChunkDataListTypeLabeledTextImpl extends ChunkDataListTypeImpl implements ChunkDataListTypeLabeledText {
+public class ChunkDataListTypeLabeledTextImpl extends ChunkDataListTypeImpl
+		implements ChunkDataListTypeLabeledText {
 	/**
 	 * The default value of the '{@link #getSampleLength() <em>Sample Length</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -176,10 +177,13 @@ public class ChunkDataListTypeLabeledTextImpl extends ChunkDataListTypeImpl impl
 	}
 
 	@Override
-	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf)
+			throws RiffWaveException {
 		// Check Chunk Type ID
-		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
-			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+		if (ChunkTypeID.get((int) buf.getUnsignedInt()) != this
+				.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "
+					+ this.getChunkTypeID().getLiteral());
 
 		// Read in data size
 		int chunkSize = (int) buf.getUnsignedInt();
@@ -192,8 +196,8 @@ public class ChunkDataListTypeLabeledTextImpl extends ChunkDataListTypeImpl impl
 		this.setDialect(buf.getUnsignedShort());
 		this.setCodePage(buf.getUnsignedShort());
 
-		int textSize = chunkSize-20;
-		if(textSize>0) {
+		int textSize = chunkSize - 20;
+		if (textSize > 0) {
 			byte[] newText = new byte[textSize];
 			buf.getBytes(newText);
 			this.setText(newText);
@@ -228,7 +232,11 @@ public class ChunkDataListTypeLabeledTextImpl extends ChunkDataListTypeImpl impl
 		Long oldSampleLength = sampleLength;
 		sampleLength = newSampleLength;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__SAMPLE_LENGTH, oldSampleLength, sampleLength));
+			eNotify(new ENotificationImpl(
+					this,
+					Notification.SET,
+					WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__SAMPLE_LENGTH,
+					oldSampleLength, sampleLength));
 	}
 
 	/**
@@ -249,7 +257,9 @@ public class ChunkDataListTypeLabeledTextImpl extends ChunkDataListTypeImpl impl
 		Long oldPurposeID = purposeID;
 		purposeID = newPurposeID;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__PURPOSE_ID, oldPurposeID, purposeID));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__PURPOSE_ID,
+					oldPurposeID, purposeID));
 	}
 
 	/**
@@ -270,7 +280,9 @@ public class ChunkDataListTypeLabeledTextImpl extends ChunkDataListTypeImpl impl
 		Integer oldCountry = country;
 		country = newCountry;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__COUNTRY, oldCountry, country));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__COUNTRY,
+					oldCountry, country));
 	}
 
 	/**
@@ -291,7 +303,9 @@ public class ChunkDataListTypeLabeledTextImpl extends ChunkDataListTypeImpl impl
 		Integer oldLanguage = language;
 		language = newLanguage;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__LANGUAGE, oldLanguage, language));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__LANGUAGE,
+					oldLanguage, language));
 	}
 
 	/**
@@ -312,7 +326,9 @@ public class ChunkDataListTypeLabeledTextImpl extends ChunkDataListTypeImpl impl
 		Integer oldDialect = dialect;
 		dialect = newDialect;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__DIALECT, oldDialect, dialect));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__DIALECT,
+					oldDialect, dialect));
 	}
 
 	/**
@@ -333,7 +349,9 @@ public class ChunkDataListTypeLabeledTextImpl extends ChunkDataListTypeImpl impl
 		Integer oldCodePage = codePage;
 		codePage = newCodePage;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__CODE_PAGE, oldCodePage, codePage));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__CODE_PAGE,
+					oldCodePage, codePage));
 	}
 
 	/* (non-Javadoc)
@@ -357,7 +375,7 @@ public class ChunkDataListTypeLabeledTextImpl extends ChunkDataListTypeImpl impl
 	 */
 	@Override
 	public long getSize() {
-		return this.getText()==null?20:20+this.getText().length;
+		return this.getText() == null ? 20 : 20 + this.getText().length;
 	}
 
 	/**
@@ -368,18 +386,18 @@ public class ChunkDataListTypeLabeledTextImpl extends ChunkDataListTypeImpl impl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__SAMPLE_LENGTH:
-				return getSampleLength();
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__PURPOSE_ID:
-				return getPurposeID();
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__COUNTRY:
-				return getCountry();
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__LANGUAGE:
-				return getLanguage();
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__DIALECT:
-				return getDialect();
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__CODE_PAGE:
-				return getCodePage();
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__SAMPLE_LENGTH:
+			return getSampleLength();
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__PURPOSE_ID:
+			return getPurposeID();
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__COUNTRY:
+			return getCountry();
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__LANGUAGE:
+			return getLanguage();
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__DIALECT:
+			return getDialect();
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__CODE_PAGE:
+			return getCodePage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -392,24 +410,24 @@ public class ChunkDataListTypeLabeledTextImpl extends ChunkDataListTypeImpl impl
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__SAMPLE_LENGTH:
-				setSampleLength((Long)newValue);
-				return;
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__PURPOSE_ID:
-				setPurposeID((Long)newValue);
-				return;
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__COUNTRY:
-				setCountry((Integer)newValue);
-				return;
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__LANGUAGE:
-				setLanguage((Integer)newValue);
-				return;
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__DIALECT:
-				setDialect((Integer)newValue);
-				return;
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__CODE_PAGE:
-				setCodePage((Integer)newValue);
-				return;
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__SAMPLE_LENGTH:
+			setSampleLength((Long) newValue);
+			return;
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__PURPOSE_ID:
+			setPurposeID((Long) newValue);
+			return;
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__COUNTRY:
+			setCountry((Integer) newValue);
+			return;
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__LANGUAGE:
+			setLanguage((Integer) newValue);
+			return;
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__DIALECT:
+			setDialect((Integer) newValue);
+			return;
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__CODE_PAGE:
+			setCodePage((Integer) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -422,24 +440,24 @@ public class ChunkDataListTypeLabeledTextImpl extends ChunkDataListTypeImpl impl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__SAMPLE_LENGTH:
-				setSampleLength(SAMPLE_LENGTH_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__PURPOSE_ID:
-				setPurposeID(PURPOSE_ID_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__COUNTRY:
-				setCountry(COUNTRY_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__LANGUAGE:
-				setLanguage(LANGUAGE_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__DIALECT:
-				setDialect(DIALECT_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__CODE_PAGE:
-				setCodePage(CODE_PAGE_EDEFAULT);
-				return;
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__SAMPLE_LENGTH:
+			setSampleLength(SAMPLE_LENGTH_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__PURPOSE_ID:
+			setPurposeID(PURPOSE_ID_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__COUNTRY:
+			setCountry(COUNTRY_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__LANGUAGE:
+			setLanguage(LANGUAGE_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__DIALECT:
+			setDialect(DIALECT_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__CODE_PAGE:
+			setCodePage(CODE_PAGE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -452,18 +470,24 @@ public class ChunkDataListTypeLabeledTextImpl extends ChunkDataListTypeImpl impl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__SAMPLE_LENGTH:
-				return SAMPLE_LENGTH_EDEFAULT == null ? sampleLength != null : !SAMPLE_LENGTH_EDEFAULT.equals(sampleLength);
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__PURPOSE_ID:
-				return PURPOSE_ID_EDEFAULT == null ? purposeID != null : !PURPOSE_ID_EDEFAULT.equals(purposeID);
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__COUNTRY:
-				return COUNTRY_EDEFAULT == null ? country != null : !COUNTRY_EDEFAULT.equals(country);
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__LANGUAGE:
-				return LANGUAGE_EDEFAULT == null ? language != null : !LANGUAGE_EDEFAULT.equals(language);
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__DIALECT:
-				return DIALECT_EDEFAULT == null ? dialect != null : !DIALECT_EDEFAULT.equals(dialect);
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__CODE_PAGE:
-				return CODE_PAGE_EDEFAULT == null ? codePage != null : !CODE_PAGE_EDEFAULT.equals(codePage);
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__SAMPLE_LENGTH:
+			return SAMPLE_LENGTH_EDEFAULT == null ? sampleLength != null
+					: !SAMPLE_LENGTH_EDEFAULT.equals(sampleLength);
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__PURPOSE_ID:
+			return PURPOSE_ID_EDEFAULT == null ? purposeID != null
+					: !PURPOSE_ID_EDEFAULT.equals(purposeID);
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__COUNTRY:
+			return COUNTRY_EDEFAULT == null ? country != null
+					: !COUNTRY_EDEFAULT.equals(country);
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__LANGUAGE:
+			return LANGUAGE_EDEFAULT == null ? language != null
+					: !LANGUAGE_EDEFAULT.equals(language);
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__DIALECT:
+			return DIALECT_EDEFAULT == null ? dialect != null
+					: !DIALECT_EDEFAULT.equals(dialect);
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT__CODE_PAGE:
+			return CODE_PAGE_EDEFAULT == null ? codePage != null
+					: !CODE_PAGE_EDEFAULT.equals(codePage);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -475,7 +499,8 @@ public class ChunkDataListTypeLabeledTextImpl extends ChunkDataListTypeImpl impl
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (sampleLength: ");
@@ -496,12 +521,13 @@ public class ChunkDataListTypeLabeledTextImpl extends ChunkDataListTypeImpl impl
 
 	@Override
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				(int) this.getSize() + 8);
 		buf.order(ByteOrder.LITTLE_ENDIAN);
 
 		buf.putUnsignedInt(this.getChunkTypeIDValue());
 		buf.putUnsignedInt(this.getSize());
-		
+
 		buf.putUnsignedInt(this.getCuePointID());
 		buf.putUnsignedInt(this.getSampleLength());
 		buf.putUnsignedInt(this.getPurposeID());
@@ -509,8 +535,8 @@ public class ChunkDataListTypeLabeledTextImpl extends ChunkDataListTypeImpl impl
 		buf.putUnsignedShort(this.getLanguage());
 		buf.putUnsignedShort(this.getDialect());
 		buf.putUnsignedShort(this.getCodePage());
-		
-		if(this.getText()!=null) {
+
+		if (this.getText() != null) {
 			buf.putBytes(this.getText());
 		}
 

@@ -124,8 +124,8 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 	 */
 	public int getPositionCurrent() {
 		EObject container = this.eContainer();
-		if(container!=null && container instanceof Song) {
-			return ((Song)container).getSongPatterns().indexOf(this);
+		if (container != null && container instanceof Song) {
+			return ((Song) container).getSongPatterns().indexOf(this);
 		}
 		return -1;
 	}
@@ -148,7 +148,9 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 		byte oldNoteOffset = noteOffset;
 		noteOffset = newNoteOffset;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_PATTERN__NOTE_OFFSET, oldNoteOffset, noteOffset));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_PATTERN__NOTE_OFFSET, oldNoteOffset,
+					noteOffset));
 	}
 
 	/**
@@ -169,7 +171,9 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 		short oldPatternPointer = patternPointer;
 		patternPointer = newPatternPointer;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_PATTERN__PATTERN_POINTER, oldPatternPointer, patternPointer));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_PATTERN__PATTERN_POINTER,
+					oldPatternPointer, patternPointer));
 	}
 
 	/**
@@ -179,9 +183,9 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 	 */
 	public boolean isEmpty() {
 		EObject container = this.eContainer();
-		if(container!=null && container instanceof Song) {
+		if (container != null && container instanceof Song) {
 			int songLength = ((Song) container).getSongLength().getValue();
-			int songIndex = ((Song)container).getSongPatterns().indexOf(this);
+			int songIndex = ((Song) container).getSongPatterns().indexOf(this);
 			return songIndex > songLength;
 		}
 		return true;
@@ -195,14 +199,14 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.SONG_PATTERN__EMPTY:
-				return isEmpty();
-			case EsxPackage.SONG_PATTERN__NOTE_OFFSET:
-				return getNoteOffset();
-			case EsxPackage.SONG_PATTERN__PATTERN_POINTER:
-				return getPatternPointer();
-			case EsxPackage.SONG_PATTERN__POSITION_CURRENT:
-				return getPositionCurrent();
+		case EsxPackage.SONG_PATTERN__EMPTY:
+			return isEmpty();
+		case EsxPackage.SONG_PATTERN__NOTE_OFFSET:
+			return getNoteOffset();
+		case EsxPackage.SONG_PATTERN__PATTERN_POINTER:
+			return getPatternPointer();
+		case EsxPackage.SONG_PATTERN__POSITION_CURRENT:
+			return getPositionCurrent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -215,12 +219,12 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.SONG_PATTERN__NOTE_OFFSET:
-				setNoteOffset((Byte)newValue);
-				return;
-			case EsxPackage.SONG_PATTERN__PATTERN_POINTER:
-				setPatternPointer((Short)newValue);
-				return;
+		case EsxPackage.SONG_PATTERN__NOTE_OFFSET:
+			setNoteOffset((Byte) newValue);
+			return;
+		case EsxPackage.SONG_PATTERN__PATTERN_POINTER:
+			setPatternPointer((Short) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -233,12 +237,12 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG_PATTERN__NOTE_OFFSET:
-				setNoteOffset(NOTE_OFFSET_EDEFAULT);
-				return;
-			case EsxPackage.SONG_PATTERN__PATTERN_POINTER:
-				setPatternPointer(PATTERN_POINTER_EDEFAULT);
-				return;
+		case EsxPackage.SONG_PATTERN__NOTE_OFFSET:
+			setNoteOffset(NOTE_OFFSET_EDEFAULT);
+			return;
+		case EsxPackage.SONG_PATTERN__PATTERN_POINTER:
+			setPatternPointer(PATTERN_POINTER_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -251,14 +255,14 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG_PATTERN__EMPTY:
-				return isEmpty() != EMPTY_EDEFAULT;
-			case EsxPackage.SONG_PATTERN__NOTE_OFFSET:
-				return noteOffset != NOTE_OFFSET_EDEFAULT;
-			case EsxPackage.SONG_PATTERN__PATTERN_POINTER:
-				return patternPointer != PATTERN_POINTER_EDEFAULT;
-			case EsxPackage.SONG_PATTERN__POSITION_CURRENT:
-				return getPositionCurrent() != POSITION_CURRENT_EDEFAULT;
+		case EsxPackage.SONG_PATTERN__EMPTY:
+			return isEmpty() != EMPTY_EDEFAULT;
+		case EsxPackage.SONG_PATTERN__NOTE_OFFSET:
+			return noteOffset != NOTE_OFFSET_EDEFAULT;
+		case EsxPackage.SONG_PATTERN__PATTERN_POINTER:
+			return patternPointer != PATTERN_POINTER_EDEFAULT;
+		case EsxPackage.SONG_PATTERN__POSITION_CURRENT:
+			return getPositionCurrent() != POSITION_CURRENT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -270,7 +274,8 @@ public class SongPatternImpl extends EObjectImpl implements SongPattern {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (noteOffset: ");

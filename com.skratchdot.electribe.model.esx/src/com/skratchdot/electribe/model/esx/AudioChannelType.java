@@ -106,12 +106,8 @@ public enum AudioChannelType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final AudioChannelType[] VALUES_ARRAY =
-		new AudioChannelType[] {
-			MONO,
-			STEREO_1,
-			STEREO_2,
-		};
+	private static final AudioChannelType[] VALUES_ARRAY = new AudioChannelType[] {
+			MONO, STEREO_1, STEREO_2, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Audio Channel Type</b></em>' enumerators.
@@ -119,7 +115,8 @@ public enum AudioChannelType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<AudioChannelType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<AudioChannelType> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Audio Channel Type</b></em>' literal with the specified literal value.
@@ -161,9 +158,12 @@ public enum AudioChannelType implements Enumerator {
 	 */
 	public static AudioChannelType get(int value) {
 		switch (value) {
-			case MONO_VALUE: return MONO;
-			case STEREO_1_VALUE: return STEREO_1;
-			case STEREO_2_VALUE: return STEREO_2;
+		case MONO_VALUE:
+			return MONO;
+		case STEREO_1_VALUE:
+			return STEREO_1;
+		case STEREO_2_VALUE:
+			return STEREO_2;
 		}
 		return null;
 	}
@@ -207,7 +207,7 @@ public enum AudioChannelType implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -216,7 +216,7 @@ public enum AudioChannelType implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -225,7 +225,7 @@ public enum AudioChannelType implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -238,5 +238,5 @@ public enum AudioChannelType implements Enumerator {
 	public String toString() {
 		return literal;
 	}
-	
+
 } //AudioChannelType

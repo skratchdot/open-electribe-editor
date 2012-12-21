@@ -40,11 +40,12 @@ public class ExportHandler extends AbstractHandler {
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// EXPORT_ALL_AUDIO_FILES_ID
-		if(event.getCommand().getId().equals(EXPORT_ALL_AUDIO_FILES_ID)) {
+		if (event.getCommand().getId().equals(EXPORT_ALL_AUDIO_FILES_ID)) {
 			return exportAllAudioFiles(event);
 		}
 		// EXPORT_ALL_SELECTED_FILES_ID
-		else if(event.getCommand().getId().equals(EXPORT_ALL_SELECTED_FILES_ID)) {
+		else if (event.getCommand().getId()
+				.equals(EXPORT_ALL_SELECTED_FILES_ID)) {
 			return exportSelectedAudioFiles(event);
 		}
 
@@ -58,21 +59,25 @@ public class ExportHandler extends AbstractHandler {
 	 * @return
 	 * @throws ExecutionException
 	 */
-	public Object exportAllAudioFiles(ExecutionEvent event) throws ExecutionException {
-		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+	public Object exportAllAudioFiles(ExecutionEvent event)
+			throws ExecutionException {
+		IWorkbenchWindow window = HandlerUtil
+				.getActiveWorkbenchWindowChecked(event);
 
 		DirectoryDialog directoryDialog = new DirectoryDialog(window.getShell());
-		directoryDialog.setMessage(EsxEditorUtil.getString("_UI_Export_Samples_Select_Dir"));
+		directoryDialog.setMessage(EsxEditorUtil
+				.getString("_UI_Export_Samples_Select_Dir"));
 
 		String directory = directoryDialog.open();
-		if(directory!=null) {
+		if (directory != null) {
 			exportAudioFilesToDirectory(window.getWorkbench(), directory);
 		}
 
 		return null;
 	}
-	
-	public Object exportSelectedAudioFiles(ExecutionEvent event) throws ExecutionException {
+
+	public Object exportSelectedAudioFiles(ExecutionEvent event)
+			throws ExecutionException {
 		//IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 		return null;
 	}
@@ -83,22 +88,24 @@ public class ExportHandler extends AbstractHandler {
 	 * @param workbench
 	 * @param directory A valid, non-null path to the directory in which .wav files will be exported to
 	 */
-	public static void exportAudioFilesToDirectory(IWorkbench workbench, String directory) {
+	public static void exportAudioFilesToDirectory(IWorkbench workbench,
+			String directory) {
 		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
 		IWorkbenchPage page = window.getActivePage();
 		IEditorPart editor = page.getActiveEditor();
-		
+
 		// We've chosen to load a few audio files into the active editor
-		if(directory!=null) {
+		if (directory != null) {
 			// If the active editor is an EsxEditor
-			if(editor!=null && editor instanceof EsxEditor) {
-				
+			if (editor != null && editor instanceof EsxEditor) {
+
 				// Get our EsxFile
-				EditingDomain editingDomain = ((EsxEditor) editor).getEditingDomain();
-				Resource resource =
-					(Resource)editingDomain.getResourceSet().getResources().get(0);
+				EditingDomain editingDomain = ((EsxEditor) editor)
+						.getEditingDomain();
+				Resource resource = (Resource) editingDomain.getResourceSet()
+						.getResources().get(0);
 				Object rootObject = resource.getContents().get(0);
-				if(rootObject instanceof EsxFile) {
+				if (rootObject instanceof EsxFile) {
 					EsxFile esxFile = (EsxFile) rootObject;
 
 					// These will be used if we bring up the overwrite files prompt
@@ -106,46 +113,53 @@ public class ExportHandler extends AbstractHandler {
 					boolean overwriteAllFiles = false;
 					boolean writeCurrentFile = false;
 
-					for(int i=0; i<esxFile.getSamples().size(); i++) {
+					for (int i = 0; i < esxFile.getSamples().size(); i++) {
 						Sample currentSample = esxFile.getSamples().get(i);
-						if(currentSample.isEmpty()==false) {
+						if (currentSample.isEmpty() == false) {
 
 							// Setup Filename
-							String filename = ""+
-								EsxPreferenceStore.getString(EsxPreferenceNames.EXPORT_FILENAME_FORMAT)+
-								".wav";
-							filename = filename.replace("%s%", currentSample.getName().trim());
-							filename = filename.replace("%n%", currentSample.getSampleNumberCurrent().getLiteral());
-							filename = filename.replaceAll("[^a-zA-Z0-9 _.-]", "_");
+							String filename = ""
+									+ EsxPreferenceStore
+											.getString(EsxPreferenceNames.EXPORT_FILENAME_FORMAT)
+									+ ".wav";
+							filename = filename.replace("%s%", currentSample
+									.getName().trim());
+							filename = filename.replace("%n%", currentSample
+									.getSampleNumberCurrent().getLiteral());
+							filename = filename.replaceAll("[^a-zA-Z0-9 _.-]",
+									"_");
 
-							File file = new File(directory+File.separator+filename);
+							File file = new File(directory + File.separator
+									+ filename);
 							writeCurrentFile = true;
 
 							// Check if we need to overwrite the file
-							if(file.exists()) {
-								if(rememberThisDecision) {
+							if (file.exists()) {
+								if (rememberThisDecision) {
 									writeCurrentFile = overwriteAllFiles;
-								}
-								else {
-									MessageDialogWithToggle dialog =
-										MessageDialogWithToggle.openYesNoQuestion(
-											window.getShell(),
-											EsxEditorUtil.getString("_UI_Export_Samples_Overwrite_Title"),
-											EsxEditorUtil.getString("_UI_Export_Samples_Overwrite_Message", file.getAbsoluteFile()),
-											EsxEditorUtil.getString("_UI_Export_Samples_Overwrite_Toggle"),
-											rememberThisDecision,
-											null,
-											null
-										);
-									writeCurrentFile = dialog.getReturnCode()==IDialogConstants.YES_ID;
-									if(dialog.getToggleState()==true) {
+								} else {
+									MessageDialogWithToggle dialog = MessageDialogWithToggle
+											.openYesNoQuestion(
+													window.getShell(),
+													EsxEditorUtil
+															.getString("_UI_Export_Samples_Overwrite_Title"),
+													EsxEditorUtil
+															.getString(
+																	"_UI_Export_Samples_Overwrite_Message",
+																	file.getAbsoluteFile()),
+													EsxEditorUtil
+															.getString("_UI_Export_Samples_Overwrite_Toggle"),
+													rememberThisDecision, null,
+													null);
+									writeCurrentFile = dialog.getReturnCode() == IDialogConstants.YES_ID;
+									if (dialog.getToggleState() == true) {
 										rememberThisDecision = true;
 										overwriteAllFiles = writeCurrentFile;
 									}
 								}
 							}
-							
-							if(writeCurrentFile==true) {
+
+							if (writeCurrentFile == true) {
 								try {
 									currentSample.export(file);
 								} catch (Exception e) {

@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -39,10 +38,10 @@ import com.skratchdot.electribe.model.esx.SongEventDrumNote;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SongEventDrumNoteItemProvider
-	extends SongEventItemProvider
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class SongEventDrumNoteItemProvider extends SongEventItemProvider
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -78,19 +77,16 @@ public class SongEventDrumNoteItemProvider
 	 * @generated
 	 */
 	protected void addPartPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongEventWithPart_part_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongEventWithPart_part_feature", "_UI_SongEventWithPart_type"),
-				 EsxPackage.Literals.SONG_EVENT_WITH_PART__PART,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SongEventWithPart_part_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SongEventWithPart_part_feature",
+						"_UI_SongEventWithPart_type"),
+				EsxPackage.Literals.SONG_EVENT_WITH_PART__PART, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -100,19 +96,17 @@ public class SongEventDrumNoteItemProvider
 	 * @generated
 	 */
 	protected void addReservedBytePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongEventDrumNote_reservedByte_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongEventDrumNote_reservedByte_feature", "_UI_SongEventDrumNote_type"),
-				 EsxPackage.Literals.SONG_EVENT_DRUM_NOTE__RESERVED_BYTE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SongEventDrumNote_reservedByte_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SongEventDrumNote_reservedByte_feature",
+						"_UI_SongEventDrumNote_type"),
+				EsxPackage.Literals.SONG_EVENT_DRUM_NOTE__RESERVED_BYTE, true,
+				false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -122,19 +116,17 @@ public class SongEventDrumNoteItemProvider
 	 * @generated
 	 */
 	protected void addReservedShortPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongEventDrumNote_reservedShort_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongEventDrumNote_reservedShort_feature", "_UI_SongEventDrumNote_type"),
-				 EsxPackage.Literals.SONG_EVENT_DRUM_NOTE__RESERVED_SHORT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SongEventDrumNote_reservedShort_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SongEventDrumNote_reservedShort_feature",
+						"_UI_SongEventDrumNote_type"),
+				EsxPackage.Literals.SONG_EVENT_DRUM_NOTE__RESERVED_SHORT, true,
+				false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -145,7 +137,8 @@ public class SongEventDrumNoteItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SongEventDrumNote"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/SongEventDrumNote"));
 	}
 
 	/**
@@ -156,8 +149,9 @@ public class SongEventDrumNoteItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		SongEventDrumNote songEventDrumNote = (SongEventDrumNote)object;
-		return getString("_UI_SongEventDrumNote_type") + " " + songEventDrumNote.getCurrentPosition();
+		SongEventDrumNote songEventDrumNote = (SongEventDrumNote) object;
+		return getString("_UI_SongEventDrumNote_type") + " "
+				+ songEventDrumNote.getCurrentPosition();
 	}
 
 	/**
@@ -172,11 +166,12 @@ public class SongEventDrumNoteItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SongEventDrumNote.class)) {
-			case EsxPackage.SONG_EVENT_DRUM_NOTE__PART:
-			case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_BYTE:
-			case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_SHORT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case EsxPackage.SONG_EVENT_DRUM_NOTE__PART:
+		case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_BYTE:
+		case EsxPackage.SONG_EVENT_DRUM_NOTE__RESERVED_SHORT:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -189,7 +184,8 @@ public class SongEventDrumNoteItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

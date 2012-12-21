@@ -858,42 +858,12 @@ public enum MidiControlChangeAssignmentName implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final MidiControlChangeAssignmentName[] VALUES_ARRAY =
-		new MidiControlChangeAssignmentName[] {
-			NAME_00,
-			NAME_01,
-			NAME_02,
-			NAME_03,
-			NAME_04,
-			NAME_05,
-			NAME_06,
-			NAME_07,
-			NAME_08,
-			NAME_09,
-			NAME_10,
-			NAME_11,
-			NAME_12,
-			NAME_13,
-			NAME_14,
-			NAME_15,
-			NAME_16,
-			NAME_17,
-			NAME_18,
-			NAME_19,
-			NAME_20,
-			NAME_21,
-			NAME_22,
-			NAME_23,
-			NAME_24,
-			NAME_25,
-			NAME_26,
-			NAME_27,
-			NAME_28,
-			NAME_29,
-			NAME_30,
-			NAME_31,
-			NAME_32,
-		};
+	private static final MidiControlChangeAssignmentName[] VALUES_ARRAY = new MidiControlChangeAssignmentName[] {
+			NAME_00, NAME_01, NAME_02, NAME_03, NAME_04, NAME_05, NAME_06,
+			NAME_07, NAME_08, NAME_09, NAME_10, NAME_11, NAME_12, NAME_13,
+			NAME_14, NAME_15, NAME_16, NAME_17, NAME_18, NAME_19, NAME_20,
+			NAME_21, NAME_22, NAME_23, NAME_24, NAME_25, NAME_26, NAME_27,
+			NAME_28, NAME_29, NAME_30, NAME_31, NAME_32, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Midi Control Change Assignment Name</b></em>' enumerators.
@@ -901,7 +871,8 @@ public enum MidiControlChangeAssignmentName implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<MidiControlChangeAssignmentName> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<MidiControlChangeAssignmentName> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Midi Control Change Assignment Name</b></em>' literal with the specified literal value.
@@ -943,39 +914,72 @@ public enum MidiControlChangeAssignmentName implements Enumerator {
 	 */
 	public static MidiControlChangeAssignmentName get(int value) {
 		switch (value) {
-			case NAME_00_VALUE: return NAME_00;
-			case NAME_01_VALUE: return NAME_01;
-			case NAME_02_VALUE: return NAME_02;
-			case NAME_03_VALUE: return NAME_03;
-			case NAME_04_VALUE: return NAME_04;
-			case NAME_05_VALUE: return NAME_05;
-			case NAME_06_VALUE: return NAME_06;
-			case NAME_07_VALUE: return NAME_07;
-			case NAME_08_VALUE: return NAME_08;
-			case NAME_09_VALUE: return NAME_09;
-			case NAME_10_VALUE: return NAME_10;
-			case NAME_11_VALUE: return NAME_11;
-			case NAME_12_VALUE: return NAME_12;
-			case NAME_13_VALUE: return NAME_13;
-			case NAME_14_VALUE: return NAME_14;
-			case NAME_15_VALUE: return NAME_15;
-			case NAME_16_VALUE: return NAME_16;
-			case NAME_17_VALUE: return NAME_17;
-			case NAME_18_VALUE: return NAME_18;
-			case NAME_19_VALUE: return NAME_19;
-			case NAME_20_VALUE: return NAME_20;
-			case NAME_21_VALUE: return NAME_21;
-			case NAME_22_VALUE: return NAME_22;
-			case NAME_23_VALUE: return NAME_23;
-			case NAME_24_VALUE: return NAME_24;
-			case NAME_25_VALUE: return NAME_25;
-			case NAME_26_VALUE: return NAME_26;
-			case NAME_27_VALUE: return NAME_27;
-			case NAME_28_VALUE: return NAME_28;
-			case NAME_29_VALUE: return NAME_29;
-			case NAME_30_VALUE: return NAME_30;
-			case NAME_31_VALUE: return NAME_31;
-			case NAME_32_VALUE: return NAME_32;
+		case NAME_00_VALUE:
+			return NAME_00;
+		case NAME_01_VALUE:
+			return NAME_01;
+		case NAME_02_VALUE:
+			return NAME_02;
+		case NAME_03_VALUE:
+			return NAME_03;
+		case NAME_04_VALUE:
+			return NAME_04;
+		case NAME_05_VALUE:
+			return NAME_05;
+		case NAME_06_VALUE:
+			return NAME_06;
+		case NAME_07_VALUE:
+			return NAME_07;
+		case NAME_08_VALUE:
+			return NAME_08;
+		case NAME_09_VALUE:
+			return NAME_09;
+		case NAME_10_VALUE:
+			return NAME_10;
+		case NAME_11_VALUE:
+			return NAME_11;
+		case NAME_12_VALUE:
+			return NAME_12;
+		case NAME_13_VALUE:
+			return NAME_13;
+		case NAME_14_VALUE:
+			return NAME_14;
+		case NAME_15_VALUE:
+			return NAME_15;
+		case NAME_16_VALUE:
+			return NAME_16;
+		case NAME_17_VALUE:
+			return NAME_17;
+		case NAME_18_VALUE:
+			return NAME_18;
+		case NAME_19_VALUE:
+			return NAME_19;
+		case NAME_20_VALUE:
+			return NAME_20;
+		case NAME_21_VALUE:
+			return NAME_21;
+		case NAME_22_VALUE:
+			return NAME_22;
+		case NAME_23_VALUE:
+			return NAME_23;
+		case NAME_24_VALUE:
+			return NAME_24;
+		case NAME_25_VALUE:
+			return NAME_25;
+		case NAME_26_VALUE:
+			return NAME_26;
+		case NAME_27_VALUE:
+			return NAME_27;
+		case NAME_28_VALUE:
+			return NAME_28;
+		case NAME_29_VALUE:
+			return NAME_29;
+		case NAME_30_VALUE:
+			return NAME_30;
+		case NAME_31_VALUE:
+			return NAME_31;
+		case NAME_32_VALUE:
+			return NAME_32;
 		}
 		return null;
 	}
@@ -1007,7 +1011,8 @@ public enum MidiControlChangeAssignmentName implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private MidiControlChangeAssignmentName(int value, String name, String literal) {
+	private MidiControlChangeAssignmentName(int value, String name,
+			String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -1019,7 +1024,7 @@ public enum MidiControlChangeAssignmentName implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -1028,7 +1033,7 @@ public enum MidiControlChangeAssignmentName implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -1037,7 +1042,7 @@ public enum MidiControlChangeAssignmentName implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -1050,5 +1055,5 @@ public enum MidiControlChangeAssignmentName implements Enumerator {
 	public String toString() {
 		return literal;
 	}
-	
+
 } //MidiControlChangeAssignmentName

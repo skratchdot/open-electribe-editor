@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -42,10 +41,11 @@ import com.skratchdot.electribe.model.esx.MidiControlChangeAssignmentName;
  * <!-- end-user-doc -->
  * @generated
  */
-public class MidiControlChangeAssignmentItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class MidiControlChangeAssignmentItemProvider extends
+		ItemProviderAdapter implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider,
+		IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider,
+		ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -80,19 +80,17 @@ public class MidiControlChangeAssignmentItemProvider
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_MidiControlChangeAssignment_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_MidiControlChangeAssignment_name_feature", "_UI_MidiControlChangeAssignment_type"),
-				 EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_MidiControlChangeAssignment_name_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_MidiControlChangeAssignment_name_feature",
+						"_UI_MidiControlChangeAssignment_type"),
+				EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME,
+				false, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -102,19 +100,17 @@ public class MidiControlChangeAssignmentItemProvider
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_MidiControlChangeAssignment_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_MidiControlChangeAssignment_value_feature", "_UI_MidiControlChangeAssignment_type"),
-				 EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_MidiControlChangeAssignment_value_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_MidiControlChangeAssignment_value_feature",
+						"_UI_MidiControlChangeAssignment_type"),
+				EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE,
+				true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -125,7 +121,10 @@ public class MidiControlChangeAssignmentItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/MidiControlChangeAssignment"));
+		return overlayImage(
+				object,
+				getResourceLocator().getImage(
+						"full/obj16/MidiControlChangeAssignment"));
 	}
 
 	/**
@@ -136,11 +135,12 @@ public class MidiControlChangeAssignmentItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		MidiControlChangeAssignmentName labelValue = ((MidiControlChangeAssignment)object).getName();
+		MidiControlChangeAssignmentName labelValue = ((MidiControlChangeAssignment) object)
+				.getName();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_MidiControlChangeAssignment_type") :
-			getString("_UI_MidiControlChangeAssignment_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_MidiControlChangeAssignment_type")
+				: getString("_UI_MidiControlChangeAssignment_type") + " "
+						+ label;
 	}
 
 	/* (non-Javadoc)
@@ -148,12 +148,16 @@ public class MidiControlChangeAssignmentItemProvider
 	 */
 	@Override
 	public String getColumnText(Object object, int columnIndex) {
-		switch(columnIndex) {
-			// Name
-			case 0: return ((MidiControlChangeAssignment) object).getName().toString();
+		switch (columnIndex) {
+		// Name
+		case 0:
+			return ((MidiControlChangeAssignment) object).getName().toString();
 			// Value
-			case 1: return Byte.toString(((MidiControlChangeAssignment) object).getValue());
-			default: return getText(object);
+		case 1:
+			return Byte.toString(((MidiControlChangeAssignment) object)
+					.getValue());
+		default:
+			return getText(object);
 		}
 	}
 
@@ -169,10 +173,11 @@ public class MidiControlChangeAssignmentItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(MidiControlChangeAssignment.class)) {
-			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME:
-			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME:
+		case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -185,7 +190,8 @@ public class MidiControlChangeAssignmentItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

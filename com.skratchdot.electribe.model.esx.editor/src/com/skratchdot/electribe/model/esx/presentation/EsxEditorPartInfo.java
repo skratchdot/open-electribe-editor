@@ -31,7 +31,6 @@ import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.util.EsxUtil;
 
-
 public class EsxEditorPartInfo extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartInfo"; //$NON-NLS-1$
 	public static final int PAGE_INDEX = 0;
@@ -82,14 +81,15 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		createSectionSamples("Samples", EsxEditorPartSamples.PAGE_INDEX);
 		createSectionSongs("Songs", EsxEditorPartSongs.PAGE_INDEX);
 	}
-	
+
 	/**
 	 * @param title
 	 */
 	private void createSectionComposite(String title) {
 		td = new TableWrapData(TableWrapData.FILL_GRAB);
 
-		section = toolkit.createSection(form.getBody(), Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+		section = toolkit.createSection(form.getBody(), Section.TITLE_BAR
+				| Section.TWISTIE | Section.EXPANDED);
 		section.setLayoutData(td);
 		section.addExpansionListener(new ExpansionAdapter() {
 			public void expansionStateChanged(ExpansionEvent e) {
@@ -98,10 +98,11 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		});
 		section.setText(title);
 		sectionComposite = toolkit.createComposite(section);
-		sectionComposite.setLayout(createRowLayout(SWT.VERTICAL,0,0,0,0,0));
+		sectionComposite
+				.setLayout(createRowLayout(SWT.VERTICAL, 0, 0, 0, 0, 0));
 		section.setClient(sectionComposite);
 	}
-	
+
 	/**
 	 * @param type
 	 * @param marginTop
@@ -111,7 +112,8 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 	 * @param spacing
 	 * @return
 	 */
-	private RowLayout createRowLayout(int type, int marginTop, int marginRight, int marginLeft, int marginBottom, int spacing) {
+	private RowLayout createRowLayout(int type, int marginTop, int marginRight,
+			int marginLeft, int marginBottom, int spacing) {
 		RowLayout rowLayout = new RowLayout(type);
 		rowLayout.marginTop = marginTop;
 		rowLayout.marginRight = marginRight;
@@ -127,7 +129,8 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 	private void createRowSpacer() {
 		rowSpacer = new Composite(sectionComposite, SWT.NONE);
 		rowSpacer.setLayoutData(new RowData(rowLabelWidth, rowSpacerHeight));
-		rowSpacer.setBackground(getSite().getShell().getDisplay().getSystemColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
+		rowSpacer.setBackground(getSite().getShell().getDisplay()
+				.getSystemColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
 	}
 
 	/**
@@ -136,11 +139,12 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 	private void createRow(String title) {
 		createRowSpacer();
 		rowComposite = new Composite(sectionComposite, SWT.NONE);
-		rowComposite.setLayout(createRowLayout(SWT.HORIZONTAL,0,0,0,0,5));
+		rowComposite.setLayout(createRowLayout(SWT.HORIZONTAL, 0, 0, 0, 0, 5));
 		/* LABEL */
 		label = new Label(rowComposite, SWT.NONE);
 		label.setAlignment(SWT.RIGHT);
-		label.setBackground(getSite().getShell().getDisplay().getSystemColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
+		label.setBackground(getSite().getShell().getDisplay()
+				.getSystemColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
 		label.setLayoutData(new RowData(rowLabelWidth, rowLabelHeight));
 		label.setText(title);
 		createRowSpacer();
@@ -154,7 +158,7 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 	private Text createTextRow(String title) {
 		/* Create The Row */
 		this.createRow(title);
-		
+
 		Text text = new Text(rowComposite, SWT.READ_ONLY | SWT.NONE);
 		text.setLayoutData(new RowData(250, SWT.DEFAULT));
 		return text;
@@ -165,10 +169,12 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 	 * @param pageIndex
 	 * @param description
 	 */
-	private void createDescription(String title, final int pageIndex, String description) {
+	private void createDescription(String title, final int pageIndex,
+			String description) {
 		rowComposite = new Composite(sectionComposite, SWT.NONE);
-		rowComposite.setLayout(createRowLayout(SWT.HORIZONTAL,0,0,0,5,0));
-		Hyperlink link = toolkit.createHyperlink(rowComposite, title.toUpperCase(), SWT.NONE);
+		rowComposite.setLayout(createRowLayout(SWT.HORIZONTAL, 0, 0, 0, 5, 0));
+		Hyperlink link = toolkit.createHyperlink(rowComposite,
+				title.toUpperCase(), SWT.NONE);
 		link.addHyperlinkListener(new HyperlinkAdapter() {
 			@Override
 			public void linkActivated(HyperlinkEvent e) {
@@ -189,23 +195,24 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 
 		// Description
 		this.createDescription(
-			title,
-			pageIndex,
-			"The Samples tab will let you arrange and edit your samples." +
-			" Please note: if you have a negative amount of \"Free Memory\"," +
-			" you will not be able to save your .esx file. In this case you will" +
-			" have to delete a few samples until you have a positive amount of free" +
-			" memory (or 0)."
-		);
+				title,
+				pageIndex,
+				"The Samples tab will let you arrange and edit your samples."
+						+ " Please note: if you have a negative amount of \"Free Memory\","
+						+ " you will not be able to save your .esx file. In this case you will"
+						+ " have to delete a few samples until you have a positive amount of free"
+						+ " memory (or 0).");
 
 		// Number Of Samples Not Empty:
 		textNumSamplesNotEmpty = this.createTextRow("# Samples Used:");
 
 		// Number Of Mono Samples Not Empty:
-		textNumSamplesMonoNotEmpty = this.createTextRow("# Samples Used (MONO):");
+		textNumSamplesMonoNotEmpty = this
+				.createTextRow("# Samples Used (MONO):");
 
 		// Number Of Stereo Samples Not Empty:
-		textNumSamplesStereoNotEmpty = this.createTextRow("# Samples Used (STEREO):");
+		textNumSamplesStereoNotEmpty = this
+				.createTextRow("# Samples Used (STEREO):");
 
 		// Memory Used In Bytes:
 		textMemUsedInBytes = this.createTextRow("Memory Used (In Bytes):");
@@ -216,7 +223,7 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		// Memory Free In Bytes:
 		textMemFree = this.createTextRow("Memory Free:");
 	}
-	
+
 	/**
 	 * @param title
 	 * @param pageIndex
@@ -226,11 +233,8 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 		this.createSectionComposite(title);
 
 		// Description
-		this.createDescription(
-			title,
-			pageIndex,
-			"The Patterns tab will let you arrange and edit your patterns."
-		);
+		this.createDescription(title, pageIndex,
+				"The Patterns tab will let you arrange and edit your patterns.");
 
 		// Number Of Patterns Not Empty:
 		textNumPatternsNotEmpty = this.createTextRow("# Patterns Used:");
@@ -246,13 +250,12 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 
 		// Description
 		this.createDescription(
-			title,
-			pageIndex,
-			"The Songs tab will let you arrange and edit your songs." +
-			" Please note: if you have a more than 20,000 song events," +
-			" you will not be able to save your .esx file. In this case you will" +
-			" have to delete a song events until you have less than 20,000"
-		);
+				title,
+				pageIndex,
+				"The Songs tab will let you arrange and edit your songs."
+						+ " Please note: if you have a more than 20,000 song events,"
+						+ " you will not be able to save your .esx file. In this case you will"
+						+ " have to delete a song events until you have less than 20,000");
 
 		// Number Of Songs Not Empty:
 		textNumSongsNotEmpty = this.createTextRow("# Songs Used:");
@@ -263,7 +266,7 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 	 */
 	@Override
 	public void setInput(Object input) {
-		if(input instanceof EsxFile) {
+		if (input instanceof EsxFile) {
 			this.refresh();
 		}
 	}
@@ -281,16 +284,29 @@ public class EsxEditorPartInfo extends EsxEditorPart {
 	 * 
 	 */
 	public void refresh() {
-		if(this.parentEditor.getActivePage()!=EsxEditorPartInfo.PAGE_INDEX) return;
+		if (this.parentEditor.getActivePage() != EsxEditorPartInfo.PAGE_INDEX)
+			return;
 
-		textMemFree.setText(""+esxFile.getMemFreeInBytes()+" bytes ("+esxFile.getMemFreeInSeconds()+" seconds)");
-		textMemUsedInBytes.setText("Using " + esxFile.getMemUsedInBytes() + " of " + EsxUtil.MAX_SAMPLE_MEM_IN_BYTES);
-		textMemUsedInSeconds.setText("Using " + esxFile.getMemUsedInSeconds() + " of " + EsxUtil.MAX_SAMPLE_MEM_IN_SECONDS);
-		textNumSamplesNotEmpty.setText("Using " + esxFile.getNumSamplesNotEmpty() + " of " + EsxUtil.NUM_SAMPLES);
-		textNumSamplesMonoNotEmpty.setText("Using " + esxFile.getNumSamplesMonoNotEmpty() + " of " + EsxUtil.NUM_SAMPLES_MONO);
-		textNumSamplesStereoNotEmpty.setText("Using " + esxFile.getNumSamplesStereoNotEmpty() + " of " + EsxUtil.NUM_SAMPLES_STEREO);
-		textNumPatternsNotEmpty.setText("Using " + esxFile.getNumPatternsNotEmpty() + " of " + EsxUtil.NUM_PATTERNS);
-		textNumSongsNotEmpty.setText("Using " + esxFile.getNumSongsNotEmpty() + " of " + EsxUtil.NUM_SONGS);
+		textMemFree.setText("" + esxFile.getMemFreeInBytes() + " bytes ("
+				+ esxFile.getMemFreeInSeconds() + " seconds)");
+		textMemUsedInBytes.setText("Using " + esxFile.getMemUsedInBytes()
+				+ " of " + EsxUtil.MAX_SAMPLE_MEM_IN_BYTES);
+		textMemUsedInSeconds.setText("Using " + esxFile.getMemUsedInSeconds()
+				+ " of " + EsxUtil.MAX_SAMPLE_MEM_IN_SECONDS);
+		textNumSamplesNotEmpty.setText("Using "
+				+ esxFile.getNumSamplesNotEmpty() + " of "
+				+ EsxUtil.NUM_SAMPLES);
+		textNumSamplesMonoNotEmpty.setText("Using "
+				+ esxFile.getNumSamplesMonoNotEmpty() + " of "
+				+ EsxUtil.NUM_SAMPLES_MONO);
+		textNumSamplesStereoNotEmpty.setText("Using "
+				+ esxFile.getNumSamplesStereoNotEmpty() + " of "
+				+ EsxUtil.NUM_SAMPLES_STEREO);
+		textNumPatternsNotEmpty.setText("Using "
+				+ esxFile.getNumPatternsNotEmpty() + " of "
+				+ EsxUtil.NUM_PATTERNS);
+		textNumSongsNotEmpty.setText("Using " + esxFile.getNumSongsNotEmpty()
+				+ " of " + EsxUtil.NUM_SONGS);
 	}
 
 }

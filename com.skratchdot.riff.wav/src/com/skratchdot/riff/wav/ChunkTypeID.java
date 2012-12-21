@@ -49,29 +49,29 @@ public enum ChunkTypeID implements Enumerator {
 	 * @ordered
 	 */
 	RIFF(1179011410, "RIFF", "RIFF Header Chunk - 'RIFF'"), /**
-	 * The '<em><b>WAVE</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #WAVE_VALUE
-	 * @generated
-	 * @ordered
-	 */
+															* The '<em><b>WAVE</b></em>' literal object.
+															* <!-- begin-user-doc -->
+															* <!-- end-user-doc -->
+															* @see #WAVE_VALUE
+															* @generated
+															* @ordered
+															*/
 	WAVE(1163280727, "WAVE", "WAVE Header Chunk - 'WAVE'"), /**
-	 * The '<em><b>CUE </b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CUE__VALUE
-	 * @generated
-	 * @ordered
-	 */
+															* The '<em><b>CUE </b></em>' literal object.
+															* <!-- begin-user-doc -->
+															* <!-- end-user-doc -->
+															* @see #CUE__VALUE
+															* @generated
+															* @ordered
+															*/
 	CUE_(543520099, "CUE_", "Cue Chunk - 'cue '"), /**
-	 * The '<em><b>DATA</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #DATA_VALUE
-	 * @generated
-	 * @ordered
-	 */
+													* The '<em><b>DATA</b></em>' literal object.
+													* <!-- begin-user-doc -->
+													* <!-- end-user-doc -->
+													* @see #DATA_VALUE
+													* @generated
+													* @ordered
+													*/
 	DATA(1635017060, "DATA", "Data Chunk - 'data'"),
 
 	/**
@@ -93,45 +93,45 @@ public enum ChunkTypeID implements Enumerator {
 	 * @ordered
 	 */
 	FMT_(544501094, "FMT_", "Format Chunk - 'fmt '"), /**
-	 * The '<em><b>INST</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #INST_VALUE
-	 * @generated
-	 * @ordered
-	 */
+														* The '<em><b>INST</b></em>' literal object.
+														* <!-- begin-user-doc -->
+														* <!-- end-user-doc -->
+														* @see #INST_VALUE
+														* @generated
+														* @ordered
+														*/
 	INST(1953721961, "INST", "Instrument Chunk - 'inst'"), /**
-	 * The '<em><b>LABL</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #LABL_VALUE
-	 * @generated
-	 * @ordered
-	 */
+															* The '<em><b>LABL</b></em>' literal object.
+															* <!-- begin-user-doc -->
+															* <!-- end-user-doc -->
+															* @see #LABL_VALUE
+															* @generated
+															* @ordered
+															*/
 	LABL(1818386796, "LABL", "Label Chunk - 'labl'"), /**
-	 * The '<em><b>LIST</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #LIST_VALUE
-	 * @generated
-	 * @ordered
-	 */
+														* The '<em><b>LIST</b></em>' literal object.
+														* <!-- begin-user-doc -->
+														* <!-- end-user-doc -->
+														* @see #LIST_VALUE
+														* @generated
+														* @ordered
+														*/
 	LIST(1953720684, "LIST", "Data List Chunk - 'list'"), /**
-	 * The '<em><b>LTXT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #LTXT_VALUE
-	 * @generated
-	 * @ordered
-	 */
+															* The '<em><b>LTXT</b></em>' literal object.
+															* <!-- begin-user-doc -->
+															* <!-- end-user-doc -->
+															* @see #LTXT_VALUE
+															* @generated
+															* @ordered
+															*/
 	LTXT(1954051180, "LTXT", "Labeled Text Chunk - 'ltxt'"), /**
-	 * The '<em><b>NOTE</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #NOTE_VALUE
-	 * @generated
-	 * @ordered
-	 */
+																* The '<em><b>NOTE</b></em>' literal object.
+																* <!-- begin-user-doc -->
+																* <!-- end-user-doc -->
+																* @see #NOTE_VALUE
+																* @generated
+																* @ordered
+																*/
 	NOTE(1702129518, "NOTE", "Note Chunk - 'note'"),
 
 	/**
@@ -143,29 +143,29 @@ public enum ChunkTypeID implements Enumerator {
 	 * @ordered
 	 */
 	PLST(1953721456, "PLST", "Playlist Chunk - 'plst'"), /**
-	 * The '<em><b>SINT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #SINT_VALUE
-	 * @generated
-	 * @ordered
-	 */
+															* The '<em><b>SINT</b></em>' literal object.
+															* <!-- begin-user-doc -->
+															* <!-- end-user-doc -->
+															* @see #SINT_VALUE
+															* @generated
+															* @ordered
+															*/
 	SINT(1953393779, "SINT", "Silent Chunk - 'slnt'"), /**
-	 * The '<em><b>SMPL</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #SMPL_VALUE
-	 * @generated
-	 * @ordered
-	 */
+														* The '<em><b>SMPL</b></em>' literal object.
+														* <!-- begin-user-doc -->
+														* <!-- end-user-doc -->
+														* @see #SMPL_VALUE
+														* @generated
+														* @ordered
+														*/
 	SMPL(1819307379, "SMPL", "Sampler Chunk - 'smpl'"), /**
-	 * The '<em><b>WAVL</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #WAVL_VALUE
-	 * @generated
-	 * @ordered
-	 */
+														* The '<em><b>WAVL</b></em>' literal object.
+														* <!-- begin-user-doc -->
+														* <!-- end-user-doc -->
+														* @see #WAVL_VALUE
+														* @generated
+														* @ordered
+														*/
 	WAVL(1819697527, "WAVL", "Wave List Chunk - 'wavl'");
 
 	/**
@@ -414,25 +414,9 @@ public enum ChunkTypeID implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ChunkTypeID[] VALUES_ARRAY =
-		new ChunkTypeID[] {
-			UNKNOWN,
-			RIFF,
-			WAVE,
-			CUE_,
-			DATA,
-			FACT,
-			FMT_,
-			INST,
-			LABL,
-			LIST,
-			LTXT,
-			NOTE,
-			PLST,
-			SINT,
-			SMPL,
-			WAVL,
-		};
+	private static final ChunkTypeID[] VALUES_ARRAY = new ChunkTypeID[] {
+			UNKNOWN, RIFF, WAVE, CUE_, DATA, FACT, FMT_, INST, LABL, LIST,
+			LTXT, NOTE, PLST, SINT, SMPL, WAVL, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Chunk Type ID</b></em>' enumerators.
@@ -440,7 +424,8 @@ public enum ChunkTypeID implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<ChunkTypeID> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ChunkTypeID> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Chunk Type ID</b></em>' literal with the specified literal value.
@@ -482,22 +467,38 @@ public enum ChunkTypeID implements Enumerator {
 	 */
 	public static ChunkTypeID get(int value) {
 		switch (value) {
-			case UNKNOWN_VALUE: return UNKNOWN;
-			case RIFF_VALUE: return RIFF;
-			case WAVE_VALUE: return WAVE;
-			case CUE__VALUE: return CUE_;
-			case DATA_VALUE: return DATA;
-			case FACT_VALUE: return FACT;
-			case FMT__VALUE: return FMT_;
-			case INST_VALUE: return INST;
-			case LABL_VALUE: return LABL;
-			case LIST_VALUE: return LIST;
-			case LTXT_VALUE: return LTXT;
-			case NOTE_VALUE: return NOTE;
-			case PLST_VALUE: return PLST;
-			case SINT_VALUE: return SINT;
-			case SMPL_VALUE: return SMPL;
-			case WAVL_VALUE: return WAVL;
+		case UNKNOWN_VALUE:
+			return UNKNOWN;
+		case RIFF_VALUE:
+			return RIFF;
+		case WAVE_VALUE:
+			return WAVE;
+		case CUE__VALUE:
+			return CUE_;
+		case DATA_VALUE:
+			return DATA;
+		case FACT_VALUE:
+			return FACT;
+		case FMT__VALUE:
+			return FMT_;
+		case INST_VALUE:
+			return INST;
+		case LABL_VALUE:
+			return LABL;
+		case LIST_VALUE:
+			return LIST;
+		case LTXT_VALUE:
+			return LTXT;
+		case NOTE_VALUE:
+			return NOTE;
+		case PLST_VALUE:
+			return PLST;
+		case SINT_VALUE:
+			return SINT;
+		case SMPL_VALUE:
+			return SMPL;
+		case WAVL_VALUE:
+			return WAVL;
 		}
 		return null;
 	}
@@ -541,7 +542,7 @@ public enum ChunkTypeID implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -550,7 +551,7 @@ public enum ChunkTypeID implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -559,7 +560,7 @@ public enum ChunkTypeID implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -572,5 +573,5 @@ public enum ChunkTypeID implements Enumerator {
 	public String toString() {
 		return literal;
 	}
-	
+
 } //ChunkTypeID

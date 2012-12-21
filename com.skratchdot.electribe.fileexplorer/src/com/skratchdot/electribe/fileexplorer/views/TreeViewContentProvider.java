@@ -19,9 +19,10 @@ import org.eclipse.jface.viewers.Viewer;
 public class TreeViewContentProvider implements ITreeContentProvider {
 	private FileExplorerFilter filter;
 
-	public TreeViewContentProvider(Boolean onlyShowingDirectories, String fileFilterArray) {
+	public TreeViewContentProvider(Boolean onlyShowingDirectories,
+			String fileFilterArray) {
 		super();
-		filter = new FileExplorerFilter(onlyShowingDirectories,fileFilterArray);
+		filter = new FileExplorerFilter(onlyShowingDirectories, fileFilterArray);
 	}
 
 	public FileExplorerFilter getFilter() {

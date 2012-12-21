@@ -35,7 +35,8 @@ import com.skratchdot.electribe.model.esx.SampleInPatternInfo;
  *
  * @generated
  */
-public class SampleInPatternInfoImpl extends EObjectImpl implements SampleInPatternInfo {
+public class SampleInPatternInfoImpl extends EObjectImpl implements
+		SampleInPatternInfo {
 	/**
 	 * The default value of the '{@link #getIndex() <em>Index</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -153,7 +154,8 @@ public class SampleInPatternInfoImpl extends EObjectImpl implements SampleInPatt
 		int oldIndex = index;
 		index = newIndex;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE_IN_PATTERN_INFO__INDEX, oldIndex, index));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SAMPLE_IN_PATTERN_INFO__INDEX, oldIndex, index));
 	}
 
 	/**
@@ -174,7 +176,9 @@ public class SampleInPatternInfoImpl extends EObjectImpl implements SampleInPatt
 		String oldPatternLabel = patternLabel;
 		patternLabel = newPatternLabel;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL, oldPatternLabel, patternLabel));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL,
+					oldPatternLabel, patternLabel));
 	}
 
 	/**
@@ -195,7 +199,9 @@ public class SampleInPatternInfoImpl extends EObjectImpl implements SampleInPatt
 		int oldPartCount = partCount;
 		partCount = newPartCount;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_COUNT, oldPartCount, partCount));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_COUNT,
+					oldPartCount, partCount));
 	}
 
 	/**
@@ -216,7 +222,9 @@ public class SampleInPatternInfoImpl extends EObjectImpl implements SampleInPatt
 		String oldPartList = partList;
 		partList = newPartList;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_LIST, oldPartList, partList));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_LIST, oldPartList,
+					partList));
 	}
 
 	/**
@@ -227,14 +235,14 @@ public class SampleInPatternInfoImpl extends EObjectImpl implements SampleInPatt
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__INDEX:
-				return getIndex();
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL:
-				return getPatternLabel();
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_COUNT:
-				return getPartCount();
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_LIST:
-				return getPartList();
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__INDEX:
+			return getIndex();
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL:
+			return getPatternLabel();
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_COUNT:
+			return getPartCount();
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_LIST:
+			return getPartList();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -247,18 +255,18 @@ public class SampleInPatternInfoImpl extends EObjectImpl implements SampleInPatt
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__INDEX:
-				setIndex((Integer)newValue);
-				return;
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL:
-				setPatternLabel((String)newValue);
-				return;
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_COUNT:
-				setPartCount((Integer)newValue);
-				return;
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_LIST:
-				setPartList((String)newValue);
-				return;
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__INDEX:
+			setIndex((Integer) newValue);
+			return;
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL:
+			setPatternLabel((String) newValue);
+			return;
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_COUNT:
+			setPartCount((Integer) newValue);
+			return;
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_LIST:
+			setPartList((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -271,18 +279,18 @@ public class SampleInPatternInfoImpl extends EObjectImpl implements SampleInPatt
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__INDEX:
-				setIndex(INDEX_EDEFAULT);
-				return;
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL:
-				setPatternLabel(PATTERN_LABEL_EDEFAULT);
-				return;
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_COUNT:
-				setPartCount(PART_COUNT_EDEFAULT);
-				return;
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_LIST:
-				setPartList(PART_LIST_EDEFAULT);
-				return;
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__INDEX:
+			setIndex(INDEX_EDEFAULT);
+			return;
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL:
+			setPatternLabel(PATTERN_LABEL_EDEFAULT);
+			return;
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_COUNT:
+			setPartCount(PART_COUNT_EDEFAULT);
+			return;
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_LIST:
+			setPartList(PART_LIST_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -295,14 +303,16 @@ public class SampleInPatternInfoImpl extends EObjectImpl implements SampleInPatt
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__INDEX:
-				return index != INDEX_EDEFAULT;
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL:
-				return PATTERN_LABEL_EDEFAULT == null ? patternLabel != null : !PATTERN_LABEL_EDEFAULT.equals(patternLabel);
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_COUNT:
-				return partCount != PART_COUNT_EDEFAULT;
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_LIST:
-				return PART_LIST_EDEFAULT == null ? partList != null : !PART_LIST_EDEFAULT.equals(partList);
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__INDEX:
+			return index != INDEX_EDEFAULT;
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL:
+			return PATTERN_LABEL_EDEFAULT == null ? patternLabel != null
+					: !PATTERN_LABEL_EDEFAULT.equals(patternLabel);
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_COUNT:
+			return partCount != PART_COUNT_EDEFAULT;
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_LIST:
+			return PART_LIST_EDEFAULT == null ? partList != null
+					: !PART_LIST_EDEFAULT.equals(partList);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -314,7 +324,8 @@ public class SampleInPatternInfoImpl extends EObjectImpl implements SampleInPatt
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (index: ");

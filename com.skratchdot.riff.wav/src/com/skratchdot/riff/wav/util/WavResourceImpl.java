@@ -49,7 +49,8 @@ public class WavResourceImpl extends ResourceImpl {
 	protected void doLoad(InputStream inputStream, Map<?, ?> options)
 			throws IOException {
 		try {
-			ExtendedByteBuffer buf = new ExtendedByteBuffer(WavUtil.inputStreamToByteArray(inputStream));
+			ExtendedByteBuffer buf = new ExtendedByteBuffer(
+					WavUtil.inputStreamToByteArray(inputStream));
 			buf.order(ByteOrder.LITTLE_ENDIAN);
 			RIFFWave riffWave = WavFactory.eINSTANCE.createRIFFWave();
 			riffWave.init(buf);

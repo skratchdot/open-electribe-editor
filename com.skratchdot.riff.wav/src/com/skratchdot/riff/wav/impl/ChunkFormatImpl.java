@@ -232,27 +232,32 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 	}
 
 	@Override
-	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf)
+			throws RiffWaveException {
 		// Check Chunk Type ID
-		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
-			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+		if (ChunkTypeID.get((int) buf.getUnsignedInt()) != this
+				.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "
+					+ this.getChunkTypeID().getLiteral());
 
 		// Read in data size
 		long chunkSize = buf.getUnsignedInt();
 
 		// Set member variables
 		this.setCompressionCodeValue(buf.getUnsignedShort());
-		this.setCompressionCode(CompressionCode.get(this.getCompressionCodeValue()));
+		this.setCompressionCode(CompressionCode.get(this
+				.getCompressionCodeValue()));
 		this.setNumberOfChannels(buf.getUnsignedShort());
 		this.setSampleRate(buf.getUnsignedInt());
 		this.setAverageBytesPerSecond(buf.getUnsignedInt());
 		this.setBlockAlign(buf.getUnsignedShort());
 		this.setSignificantBitsPerSample(buf.getUnsignedShort());
 
-		if(this.getCompressionCodeValue()!=CompressionCode.COMPRESSION_CODE_1_VALUE || chunkSize!=this.getSize()) {
+		if (this.getCompressionCodeValue() != CompressionCode.COMPRESSION_CODE_1_VALUE
+				|| chunkSize != this.getSize()) {
 			int numberOfExtraFormatBytes = buf.getUnsignedShort();
 
-			if(numberOfExtraFormatBytes>0) {
+			if (numberOfExtraFormatBytes > 0) {
 				byte[] newExtraFormatBytes = new byte[numberOfExtraFormatBytes];
 				buf.getBytes(newExtraFormatBytes);
 				this.setExtraFormatBytes(newExtraFormatBytes);
@@ -260,12 +265,13 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 		}
 
 		// Does the size we read in, match the size we calculate from the data read
-		if(chunkSize!=this.getSize()) {
-			ParseChunkException pce = WavFactory.eINSTANCE.createParseChunkException();
-			pce.setException(new Exception("Invalid chunk size for format chunk." +
-				"From File: " + Long.toString(chunkSize) +
-				"Calculated: " + Long.toString(this.getSize())
-			));
+		if (chunkSize != this.getSize()) {
+			ParseChunkException pce = WavFactory.eINSTANCE
+					.createParseChunkException();
+			pce.setException(new Exception(
+					"Invalid chunk size for format chunk." + "From File: "
+							+ Long.toString(chunkSize) + "Calculated: "
+							+ Long.toString(this.getSize())));
 			riffWave.getParseChunkExceptions().add(pce);
 		}
 	}
@@ -296,9 +302,12 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 	 */
 	public void setCompressionCode(CompressionCode newCompressionCode) {
 		CompressionCode oldCompressionCode = compressionCode;
-		compressionCode = newCompressionCode == null ? COMPRESSION_CODE_EDEFAULT : newCompressionCode;
+		compressionCode = newCompressionCode == null ? COMPRESSION_CODE_EDEFAULT
+				: newCompressionCode;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_FORMAT__COMPRESSION_CODE, oldCompressionCode, compressionCode));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_FORMAT__COMPRESSION_CODE,
+					oldCompressionCode, compressionCode));
 	}
 
 	/**
@@ -319,7 +328,9 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 		Integer oldCompressionCodeValue = compressionCodeValue;
 		compressionCodeValue = newCompressionCodeValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_FORMAT__COMPRESSION_CODE_VALUE, oldCompressionCodeValue, compressionCodeValue));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_FORMAT__COMPRESSION_CODE_VALUE,
+					oldCompressionCodeValue, compressionCodeValue));
 	}
 
 	/**
@@ -340,7 +351,9 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 		Integer oldNumberOfChannels = numberOfChannels;
 		numberOfChannels = newNumberOfChannels;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_FORMAT__NUMBER_OF_CHANNELS, oldNumberOfChannels, numberOfChannels));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_FORMAT__NUMBER_OF_CHANNELS,
+					oldNumberOfChannels, numberOfChannels));
 	}
 
 	/**
@@ -361,7 +374,9 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 		Long oldSampleRate = sampleRate;
 		sampleRate = newSampleRate;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_FORMAT__SAMPLE_RATE, oldSampleRate, sampleRate));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_FORMAT__SAMPLE_RATE, oldSampleRate,
+					sampleRate));
 	}
 
 	/**
@@ -382,7 +397,9 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 		Long oldAverageBytesPerSecond = averageBytesPerSecond;
 		averageBytesPerSecond = newAverageBytesPerSecond;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_FORMAT__AVERAGE_BYTES_PER_SECOND, oldAverageBytesPerSecond, averageBytesPerSecond));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_FORMAT__AVERAGE_BYTES_PER_SECOND,
+					oldAverageBytesPerSecond, averageBytesPerSecond));
 	}
 
 	/**
@@ -403,7 +420,9 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 		Integer oldBlockAlign = blockAlign;
 		blockAlign = newBlockAlign;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_FORMAT__BLOCK_ALIGN, oldBlockAlign, blockAlign));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_FORMAT__BLOCK_ALIGN, oldBlockAlign,
+					blockAlign));
 	}
 
 	/**
@@ -424,7 +443,9 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 		Integer oldSignificantBitsPerSample = significantBitsPerSample;
 		significantBitsPerSample = newSignificantBitsPerSample;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_FORMAT__SIGNIFICANT_BITS_PER_SAMPLE, oldSignificantBitsPerSample, significantBitsPerSample));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_FORMAT__SIGNIFICANT_BITS_PER_SAMPLE,
+					oldSignificantBitsPerSample, significantBitsPerSample));
 	}
 
 	/**
@@ -433,7 +454,8 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 	 * @generated NOT
 	 */
 	public Integer getNumberOfExtraFormatBytes() {
-		return this.getExtraFormatBytes()==null?0:this.getExtraFormatBytes().length;
+		return this.getExtraFormatBytes() == null ? 0 : this
+				.getExtraFormatBytes().length;
 	}
 
 	/**
@@ -454,7 +476,9 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 		byte[] oldExtraFormatBytes = extraFormatBytes;
 		extraFormatBytes = newExtraFormatBytes;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_FORMAT__EXTRA_FORMAT_BYTES, oldExtraFormatBytes, extraFormatBytes));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_FORMAT__EXTRA_FORMAT_BYTES,
+					oldExtraFormatBytes, extraFormatBytes));
 	}
 
 	/* (non-Javadoc)
@@ -478,7 +502,7 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 	 */
 	@Override
 	public long getSize() {
-		if(this.getCompressionCodeValue()!=CompressionCode.COMPRESSION_CODE_1_VALUE) {
+		if (this.getCompressionCodeValue() != CompressionCode.COMPRESSION_CODE_1_VALUE) {
 			return 18 + this.getNumberOfExtraFormatBytes();
 		}
 		return 16;
@@ -492,24 +516,24 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.CHUNK_FORMAT__COMPRESSION_CODE:
-				return getCompressionCode();
-			case WavPackage.CHUNK_FORMAT__COMPRESSION_CODE_VALUE:
-				return getCompressionCodeValue();
-			case WavPackage.CHUNK_FORMAT__NUMBER_OF_CHANNELS:
-				return getNumberOfChannels();
-			case WavPackage.CHUNK_FORMAT__SAMPLE_RATE:
-				return getSampleRate();
-			case WavPackage.CHUNK_FORMAT__AVERAGE_BYTES_PER_SECOND:
-				return getAverageBytesPerSecond();
-			case WavPackage.CHUNK_FORMAT__BLOCK_ALIGN:
-				return getBlockAlign();
-			case WavPackage.CHUNK_FORMAT__SIGNIFICANT_BITS_PER_SAMPLE:
-				return getSignificantBitsPerSample();
-			case WavPackage.CHUNK_FORMAT__NUMBER_OF_EXTRA_FORMAT_BYTES:
-				return getNumberOfExtraFormatBytes();
-			case WavPackage.CHUNK_FORMAT__EXTRA_FORMAT_BYTES:
-				return getExtraFormatBytes();
+		case WavPackage.CHUNK_FORMAT__COMPRESSION_CODE:
+			return getCompressionCode();
+		case WavPackage.CHUNK_FORMAT__COMPRESSION_CODE_VALUE:
+			return getCompressionCodeValue();
+		case WavPackage.CHUNK_FORMAT__NUMBER_OF_CHANNELS:
+			return getNumberOfChannels();
+		case WavPackage.CHUNK_FORMAT__SAMPLE_RATE:
+			return getSampleRate();
+		case WavPackage.CHUNK_FORMAT__AVERAGE_BYTES_PER_SECOND:
+			return getAverageBytesPerSecond();
+		case WavPackage.CHUNK_FORMAT__BLOCK_ALIGN:
+			return getBlockAlign();
+		case WavPackage.CHUNK_FORMAT__SIGNIFICANT_BITS_PER_SAMPLE:
+			return getSignificantBitsPerSample();
+		case WavPackage.CHUNK_FORMAT__NUMBER_OF_EXTRA_FORMAT_BYTES:
+			return getNumberOfExtraFormatBytes();
+		case WavPackage.CHUNK_FORMAT__EXTRA_FORMAT_BYTES:
+			return getExtraFormatBytes();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -522,30 +546,30 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.CHUNK_FORMAT__COMPRESSION_CODE:
-				setCompressionCode((CompressionCode)newValue);
-				return;
-			case WavPackage.CHUNK_FORMAT__COMPRESSION_CODE_VALUE:
-				setCompressionCodeValue((Integer)newValue);
-				return;
-			case WavPackage.CHUNK_FORMAT__NUMBER_OF_CHANNELS:
-				setNumberOfChannels((Integer)newValue);
-				return;
-			case WavPackage.CHUNK_FORMAT__SAMPLE_RATE:
-				setSampleRate((Long)newValue);
-				return;
-			case WavPackage.CHUNK_FORMAT__AVERAGE_BYTES_PER_SECOND:
-				setAverageBytesPerSecond((Long)newValue);
-				return;
-			case WavPackage.CHUNK_FORMAT__BLOCK_ALIGN:
-				setBlockAlign((Integer)newValue);
-				return;
-			case WavPackage.CHUNK_FORMAT__SIGNIFICANT_BITS_PER_SAMPLE:
-				setSignificantBitsPerSample((Integer)newValue);
-				return;
-			case WavPackage.CHUNK_FORMAT__EXTRA_FORMAT_BYTES:
-				setExtraFormatBytes((byte[])newValue);
-				return;
+		case WavPackage.CHUNK_FORMAT__COMPRESSION_CODE:
+			setCompressionCode((CompressionCode) newValue);
+			return;
+		case WavPackage.CHUNK_FORMAT__COMPRESSION_CODE_VALUE:
+			setCompressionCodeValue((Integer) newValue);
+			return;
+		case WavPackage.CHUNK_FORMAT__NUMBER_OF_CHANNELS:
+			setNumberOfChannels((Integer) newValue);
+			return;
+		case WavPackage.CHUNK_FORMAT__SAMPLE_RATE:
+			setSampleRate((Long) newValue);
+			return;
+		case WavPackage.CHUNK_FORMAT__AVERAGE_BYTES_PER_SECOND:
+			setAverageBytesPerSecond((Long) newValue);
+			return;
+		case WavPackage.CHUNK_FORMAT__BLOCK_ALIGN:
+			setBlockAlign((Integer) newValue);
+			return;
+		case WavPackage.CHUNK_FORMAT__SIGNIFICANT_BITS_PER_SAMPLE:
+			setSignificantBitsPerSample((Integer) newValue);
+			return;
+		case WavPackage.CHUNK_FORMAT__EXTRA_FORMAT_BYTES:
+			setExtraFormatBytes((byte[]) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -558,30 +582,30 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_FORMAT__COMPRESSION_CODE:
-				setCompressionCode(COMPRESSION_CODE_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_FORMAT__COMPRESSION_CODE_VALUE:
-				setCompressionCodeValue(COMPRESSION_CODE_VALUE_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_FORMAT__NUMBER_OF_CHANNELS:
-				setNumberOfChannels(NUMBER_OF_CHANNELS_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_FORMAT__SAMPLE_RATE:
-				setSampleRate(SAMPLE_RATE_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_FORMAT__AVERAGE_BYTES_PER_SECOND:
-				setAverageBytesPerSecond(AVERAGE_BYTES_PER_SECOND_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_FORMAT__BLOCK_ALIGN:
-				setBlockAlign(BLOCK_ALIGN_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_FORMAT__SIGNIFICANT_BITS_PER_SAMPLE:
-				setSignificantBitsPerSample(SIGNIFICANT_BITS_PER_SAMPLE_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_FORMAT__EXTRA_FORMAT_BYTES:
-				setExtraFormatBytes(EXTRA_FORMAT_BYTES_EDEFAULT);
-				return;
+		case WavPackage.CHUNK_FORMAT__COMPRESSION_CODE:
+			setCompressionCode(COMPRESSION_CODE_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_FORMAT__COMPRESSION_CODE_VALUE:
+			setCompressionCodeValue(COMPRESSION_CODE_VALUE_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_FORMAT__NUMBER_OF_CHANNELS:
+			setNumberOfChannels(NUMBER_OF_CHANNELS_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_FORMAT__SAMPLE_RATE:
+			setSampleRate(SAMPLE_RATE_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_FORMAT__AVERAGE_BYTES_PER_SECOND:
+			setAverageBytesPerSecond(AVERAGE_BYTES_PER_SECOND_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_FORMAT__BLOCK_ALIGN:
+			setBlockAlign(BLOCK_ALIGN_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_FORMAT__SIGNIFICANT_BITS_PER_SAMPLE:
+			setSignificantBitsPerSample(SIGNIFICANT_BITS_PER_SAMPLE_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_FORMAT__EXTRA_FORMAT_BYTES:
+			setExtraFormatBytes(EXTRA_FORMAT_BYTES_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -594,24 +618,36 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_FORMAT__COMPRESSION_CODE:
-				return compressionCode != COMPRESSION_CODE_EDEFAULT;
-			case WavPackage.CHUNK_FORMAT__COMPRESSION_CODE_VALUE:
-				return COMPRESSION_CODE_VALUE_EDEFAULT == null ? compressionCodeValue != null : !COMPRESSION_CODE_VALUE_EDEFAULT.equals(compressionCodeValue);
-			case WavPackage.CHUNK_FORMAT__NUMBER_OF_CHANNELS:
-				return NUMBER_OF_CHANNELS_EDEFAULT == null ? numberOfChannels != null : !NUMBER_OF_CHANNELS_EDEFAULT.equals(numberOfChannels);
-			case WavPackage.CHUNK_FORMAT__SAMPLE_RATE:
-				return SAMPLE_RATE_EDEFAULT == null ? sampleRate != null : !SAMPLE_RATE_EDEFAULT.equals(sampleRate);
-			case WavPackage.CHUNK_FORMAT__AVERAGE_BYTES_PER_SECOND:
-				return AVERAGE_BYTES_PER_SECOND_EDEFAULT == null ? averageBytesPerSecond != null : !AVERAGE_BYTES_PER_SECOND_EDEFAULT.equals(averageBytesPerSecond);
-			case WavPackage.CHUNK_FORMAT__BLOCK_ALIGN:
-				return BLOCK_ALIGN_EDEFAULT == null ? blockAlign != null : !BLOCK_ALIGN_EDEFAULT.equals(blockAlign);
-			case WavPackage.CHUNK_FORMAT__SIGNIFICANT_BITS_PER_SAMPLE:
-				return SIGNIFICANT_BITS_PER_SAMPLE_EDEFAULT == null ? significantBitsPerSample != null : !SIGNIFICANT_BITS_PER_SAMPLE_EDEFAULT.equals(significantBitsPerSample);
-			case WavPackage.CHUNK_FORMAT__NUMBER_OF_EXTRA_FORMAT_BYTES:
-				return NUMBER_OF_EXTRA_FORMAT_BYTES_EDEFAULT == null ? getNumberOfExtraFormatBytes() != null : !NUMBER_OF_EXTRA_FORMAT_BYTES_EDEFAULT.equals(getNumberOfExtraFormatBytes());
-			case WavPackage.CHUNK_FORMAT__EXTRA_FORMAT_BYTES:
-				return EXTRA_FORMAT_BYTES_EDEFAULT == null ? extraFormatBytes != null : !EXTRA_FORMAT_BYTES_EDEFAULT.equals(extraFormatBytes);
+		case WavPackage.CHUNK_FORMAT__COMPRESSION_CODE:
+			return compressionCode != COMPRESSION_CODE_EDEFAULT;
+		case WavPackage.CHUNK_FORMAT__COMPRESSION_CODE_VALUE:
+			return COMPRESSION_CODE_VALUE_EDEFAULT == null ? compressionCodeValue != null
+					: !COMPRESSION_CODE_VALUE_EDEFAULT
+							.equals(compressionCodeValue);
+		case WavPackage.CHUNK_FORMAT__NUMBER_OF_CHANNELS:
+			return NUMBER_OF_CHANNELS_EDEFAULT == null ? numberOfChannels != null
+					: !NUMBER_OF_CHANNELS_EDEFAULT.equals(numberOfChannels);
+		case WavPackage.CHUNK_FORMAT__SAMPLE_RATE:
+			return SAMPLE_RATE_EDEFAULT == null ? sampleRate != null
+					: !SAMPLE_RATE_EDEFAULT.equals(sampleRate);
+		case WavPackage.CHUNK_FORMAT__AVERAGE_BYTES_PER_SECOND:
+			return AVERAGE_BYTES_PER_SECOND_EDEFAULT == null ? averageBytesPerSecond != null
+					: !AVERAGE_BYTES_PER_SECOND_EDEFAULT
+							.equals(averageBytesPerSecond);
+		case WavPackage.CHUNK_FORMAT__BLOCK_ALIGN:
+			return BLOCK_ALIGN_EDEFAULT == null ? blockAlign != null
+					: !BLOCK_ALIGN_EDEFAULT.equals(blockAlign);
+		case WavPackage.CHUNK_FORMAT__SIGNIFICANT_BITS_PER_SAMPLE:
+			return SIGNIFICANT_BITS_PER_SAMPLE_EDEFAULT == null ? significantBitsPerSample != null
+					: !SIGNIFICANT_BITS_PER_SAMPLE_EDEFAULT
+							.equals(significantBitsPerSample);
+		case WavPackage.CHUNK_FORMAT__NUMBER_OF_EXTRA_FORMAT_BYTES:
+			return NUMBER_OF_EXTRA_FORMAT_BYTES_EDEFAULT == null ? getNumberOfExtraFormatBytes() != null
+					: !NUMBER_OF_EXTRA_FORMAT_BYTES_EDEFAULT
+							.equals(getNumberOfExtraFormatBytes());
+		case WavPackage.CHUNK_FORMAT__EXTRA_FORMAT_BYTES:
+			return EXTRA_FORMAT_BYTES_EDEFAULT == null ? extraFormatBytes != null
+					: !EXTRA_FORMAT_BYTES_EDEFAULT.equals(extraFormatBytes);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -623,7 +659,8 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (compressionCode: ");
@@ -648,12 +685,13 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 
 	@Override
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				(int) this.getSize() + 8);
 		buf.order(ByteOrder.LITTLE_ENDIAN);
 
 		buf.putUnsignedInt(this.getChunkTypeIDValue());
 		buf.putUnsignedInt(this.getSize());
-		
+
 		buf.putUnsignedShort(this.getCompressionCodeValue());
 		buf.putUnsignedShort(this.getNumberOfChannels());
 		buf.putUnsignedInt(this.getSampleRate());
@@ -661,13 +699,12 @@ public class ChunkFormatImpl extends ChunkImpl implements ChunkFormat {
 		buf.putUnsignedShort(this.getBlockAlign());
 		buf.putUnsignedShort(this.getSignificantBitsPerSample());
 
-		if(this.getCompressionCodeValue()!=CompressionCode.COMPRESSION_CODE_1_VALUE) {
+		if (this.getCompressionCodeValue() != CompressionCode.COMPRESSION_CODE_1_VALUE) {
 			buf.putUnsignedShort(this.getNumberOfExtraFormatBytes());
 			buf.putBytes(this.getExtraFormatBytes());
 		}
 
 		return buf.array();
 	}
-
 
 } //ChunkFormatImpl

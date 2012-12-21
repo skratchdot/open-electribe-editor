@@ -35,14 +35,15 @@ import org.eclipse.swt.widgets.Text;
 
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.PatternSetParameter;
+
 public class EsxCompositeGlobalPatternSets extends EsxComposite {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositeGlobalParametersPatternSets"; //$NON-NLS-1$
-	public static final String ID_PATTERN_SET_VIEWER = ID+".PatternSetViewer"; //$NON-NLS-1$
+	public static final String ID_PATTERN_SET_VIEWER = ID + ".PatternSetViewer"; //$NON-NLS-1$
 
 	private List<PatternSetParameter> patternSetParameters;
 	private List<PatternSetParameter> selectedItems;
 	private TableViewer tableViewer;
-	
+
 	private Text textPatternSetParameter;
 	private Combo comboPatternSetParameter;
 
@@ -59,21 +60,29 @@ public class EsxCompositeGlobalPatternSets extends EsxComposite {
 	 * @param parentComposite
 	 * @param style
 	 */
-	public EsxCompositeGlobalPatternSets(EsxEditorPart parentPart, Composite parentComposite, int style) {
+	public EsxCompositeGlobalPatternSets(EsxEditorPart parentPart,
+			Composite parentComposite, int style) {
 		super(parentPart, parentComposite, style);
 		this.parentPart = parentPart;
 
 		setLayout(new GridLayout(4, false));
 
-		textPatternSetParameter = this.createGridData2ColumnTextLabel(this, "Pattern Number");
-		comboPatternSetParameter = this.createGridData2ColumnComboInput(this, "", this.getPatternLabelStrings(), new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_POINTER, (short)comboPatternSetParameter.getSelectionIndex(), false, -1);
-			}
-		});
+		textPatternSetParameter = this.createGridData2ColumnTextLabel(this,
+				"Pattern Number");
+		comboPatternSetParameter = this.createGridData2ColumnComboInput(this,
+				"", this.getPatternLabelStrings(), new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(
+								selectedItems,
+								EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_POINTER,
+								(short) comboPatternSetParameter
+										.getSelectionIndex(), false, -1);
+					}
+				});
 
-		this.tableViewer = new TableViewer(this, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
+		this.tableViewer = new TableViewer(this, SWT.BORDER
+				| SWT.FULL_SELECTION | SWT.MULTI);
 		this.initTableViewer();
 	}
 
@@ -88,11 +97,14 @@ public class EsxCompositeGlobalPatternSets extends EsxComposite {
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 4, 1));
 
 		// Create our columns
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Position", 120);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Pattern Number", 200);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Position",
+				120);
+		this.parentPart.addColumnToTableViewer(this.tableViewer,
+				"Pattern Number", 200);
 
 		// Setup this.tableViewer ContentProvider
-		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
+		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(
+				this.getAdapterFactory()) {
 			@Override
 			public Object[] getElements(Object object) {
 				return patternSetParameters.toArray();
@@ -101,32 +113,38 @@ public class EsxCompositeGlobalPatternSets extends EsxComposite {
 			@Override
 			public void notifyChanged(Notification notification) {
 				super.notifyChanged(new ViewerNotification(notification));
-			}			
-		});
-
-		this.tableViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(getAdapterFactory(), this.tableViewer));
-
-		this.tableViewer.addSelectionChangedListener(new ISelectionChangedListener() {
-			public void selectionChanged(SelectionChangedEvent event) {
-		        IStructuredSelection selection = (IStructuredSelection) event.getSelection();
-
-		        Object[] objects = ((IStructuredSelection) selection).toArray();
-				selectedItems = new ArrayList<PatternSetParameter>();
-				for (Object obj : objects) {
-					if(obj instanceof PatternSetParameter) {
-						selectedItems.add((PatternSetParameter) obj);
-					}
-				}
-				refresh();
-				refreshInputs();
 			}
 		});
-		
+
+		this.tableViewer
+				.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(
+						getAdapterFactory(), this.tableViewer));
+
+		this.tableViewer
+				.addSelectionChangedListener(new ISelectionChangedListener() {
+					public void selectionChanged(SelectionChangedEvent event) {
+						IStructuredSelection selection = (IStructuredSelection) event
+								.getSelection();
+
+						Object[] objects = ((IStructuredSelection) selection)
+								.toArray();
+						selectedItems = new ArrayList<PatternSetParameter>();
+						for (Object obj : objects) {
+							if (obj instanceof PatternSetParameter) {
+								selectedItems.add((PatternSetParameter) obj);
+							}
+						}
+						refresh();
+						refreshInputs();
+					}
+				});
+
 		// Context Menu
-	    this.parentPart.createContextMenuFor(this.tableViewer, EsxCompositeGlobalPatternSets.ID_PATTERN_SET_VIEWER);
-	    
-	    // DnD
-	    this.parentPart.addEmfDragAndDropSupport(this.tableViewer);
+		this.parentPart.createContextMenuFor(this.tableViewer,
+				EsxCompositeGlobalPatternSets.ID_PATTERN_SET_VIEWER);
+
+		// DnD
+		this.parentPart.addEmfDragAndDropSupport(this.tableViewer);
 
 	}
 
@@ -137,11 +155,11 @@ public class EsxCompositeGlobalPatternSets extends EsxComposite {
 	public void setInput(Object input) {
 		this.patternSetParameters = new ArrayList<PatternSetParameter>();
 
-		if(input instanceof List<?>) {
+		if (input instanceof List<?>) {
 			Iterator<?> it = ((List<?>) input).iterator();
 			while (it.hasNext()) {
 				Object obj = it.next();
-				if(obj instanceof PatternSetParameter) {
+				if (obj instanceof PatternSetParameter) {
 					this.patternSetParameters.add((PatternSetParameter) obj);
 				}
 			}
@@ -158,7 +176,10 @@ public class EsxCompositeGlobalPatternSets extends EsxComposite {
 	@Override
 	public void refresh() {
 		String multipleValueString = "<Multiple Values>";
-		this.textPatternSetParameter.setText(getMultiStringPatternLabels(this.selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_POINTER, multipleValueString));
+		this.textPatternSetParameter.setText(getMultiStringPatternLabels(
+				this.selectedItems,
+				EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_POINTER,
+				multipleValueString));
 	}
 
 	/* (non-Javadoc)
@@ -168,7 +189,10 @@ public class EsxCompositeGlobalPatternSets extends EsxComposite {
 	public void refreshInputs() {
 		String multipleValueString = "";
 		this.comboPatternSetParameter.setItems(this.getPatternLabelStrings());
-		this.comboPatternSetParameter.setText(getMultiStringPatternLabels(this.selectedItems, EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_POINTER, multipleValueString));
+		this.comboPatternSetParameter.setText(getMultiStringPatternLabels(
+				this.selectedItems,
+				EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_POINTER,
+				multipleValueString));
 	}
 
 }

@@ -62,7 +62,7 @@ import com.skratchdot.electribe.model.esx.util.EsxUtil;
 public class EsxEditorPartSamples extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartSamples"; //$NON-NLS-1$
 	public static final int PAGE_INDEX = 3;
-	public static final String ID_SAMPLE_VIEWER = ID+".SampleViewer"; //$NON-NLS-1$
+	public static final String ID_SAMPLE_VIEWER = ID + ".SampleViewer"; //$NON-NLS-1$
 
 	private Label labelMemFree;
 	private TableViewer tableViewer;
@@ -74,9 +74,8 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 	private TabFolder tabFolder;
 	private TabItem tabSample;
 	private TabItem tabSampleInPatternInfo;
-	
-	private List<Sample> selectedSamples = new ArrayList<Sample>();
 
+	private List<Sample> selectedSamples = new ArrayList<Sample>();
 
 	/**
 	 * @param parent
@@ -92,17 +91,18 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 	public void createPartControl(Composite parent) {
 		// Create sashForm
 		SashForm sashForm = new SashForm(parent, SWT.NONE);
-		
+
 		// Create groupSamples
 		Group groupSamples = new Group(sashForm, SWT.NONE);
 		groupSamples.setLayout(new GridLayout(1, true));
 		groupSamples.setText("Samples");
-		
+
 		// Create top row
 		this.initTopRow(groupSamples);
 
 		// Create this.tableViewer
-		this.tableViewer = new TableViewer(groupSamples, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
+		this.tableViewer = new TableViewer(groupSamples, SWT.BORDER
+				| SWT.FULL_SELECTION | SWT.MULTI);
 		this.initTableViewer();
 
 		// Create groupSelectedSamples
@@ -120,7 +120,8 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 
 		// Create editorSampleInPatternInfo
 		tabSampleInPatternInfo = new TabItem(tabFolder, SWT.NONE);
-		editorSampleInPatternInfo = new EsxCompositeSampleInPatternInfo(this, tabFolder, SWT.NONE);
+		editorSampleInPatternInfo = new EsxCompositeSampleInPatternInfo(this,
+				tabFolder, SWT.NONE);
 		tabSampleInPatternInfo.setText("Pattern/Part Usage");
 		tabSampleInPatternInfo.setControl(editorSampleInPatternInfo);
 
@@ -135,16 +136,17 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 
 		});
 
-		sashForm.setWeights(new int[] {4, 3});
+		sashForm.setWeights(new int[] { 4, 3 });
 	}
-	
+
 	private void initTopRow(Composite parent) {
 		Label labelScrollTo;
 		Link link;
 
 		// Create the top row
 		Composite compositeInfoRow = new Composite(parent, SWT.NONE);
-		compositeInfoRow.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+		compositeInfoRow.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false,
+				false, 1, 1));
 		GridLayout gridLayout = new GridLayout(6, false);
 		gridLayout.marginWidth = 0;
 		gridLayout.verticalSpacing = 0;
@@ -161,8 +163,9 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		link.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				tableViewer.setSelection(new StructuredSelection(
-						tableViewer.getElementAt(0)), true);
+				tableViewer.setSelection(
+						new StructuredSelection(tableViewer.getElementAt(0)),
+						true);
 			}
 		});
 
@@ -172,8 +175,9 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		link.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				tableViewer.setSelection(new StructuredSelection(
-						tableViewer.getElementAt(EsxUtil.NUM_SAMPLES_MONO)), true);
+				tableViewer.setSelection(
+						new StructuredSelection(tableViewer
+								.getElementAt(EsxUtil.NUM_SAMPLES_MONO)), true);
 			}
 		});
 
@@ -187,15 +191,12 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 				ArrayList<Integer> skipIndices = new ArrayList<Integer>(1);
 				skipIndices.add(currentIndex);
 				int nextIndex = EsxUtil.findFirstIndex(
-					((EsxFile)tableViewer.getInput()).getSamples(),
-					currentIndex>=0?currentIndex:0,
-					skipIndices,
-					EsxPackage.Literals.SAMPLE__EMPTY,
-					false,
-					true
-				);
-				tableViewer.setSelection(new StructuredSelection(
-						tableViewer.getElementAt(nextIndex)), true);
+						((EsxFile) tableViewer.getInput()).getSamples(),
+						currentIndex >= 0 ? currentIndex : 0, skipIndices,
+						EsxPackage.Literals.SAMPLE__EMPTY, false, true);
+				tableViewer.setSelection(
+						new StructuredSelection(tableViewer
+								.getElementAt(nextIndex)), true);
 			}
 		});
 
@@ -209,22 +210,20 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 				ArrayList<Integer> skipIndices = new ArrayList<Integer>(1);
 				skipIndices.add(currentIndex);
 				int nextIndex = EsxUtil.findFirstIndex(
-					((EsxFile)tableViewer.getInput()).getSamples(),
-					currentIndex>=0?currentIndex:0,
-					skipIndices,
-					EsxPackage.Literals.SAMPLE__EMPTY,
-					true,
-					true
-				);
-				tableViewer.setSelection(new StructuredSelection(
-						tableViewer.getElementAt(nextIndex)), true);
+						((EsxFile) tableViewer.getInput()).getSamples(),
+						currentIndex >= 0 ? currentIndex : 0, skipIndices,
+						EsxPackage.Literals.SAMPLE__EMPTY, true, true);
+				tableViewer.setSelection(
+						new StructuredSelection(tableViewer
+								.getElementAt(nextIndex)), true);
 			}
 		});
 
 		// Memory Free
 		labelMemFree = new Label(compositeInfoRow, SWT.NONE);
 		labelMemFree.setAlignment(SWT.RIGHT);
-		labelMemFree.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		labelMemFree.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
+				false, 1, 1));
 	}
 
 	/**
@@ -260,71 +259,73 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		}
 
 		// Setup this.tableViewer ContentProvider
-		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
+		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(
+				this.getAdapterFactory()) {
 
 			@Override
 			public Object[] getElements(Object object) {
-				return ((EsxFile)object).getSamples().toArray();
+				return ((EsxFile) object).getSamples().toArray();
 			}
 
 			@Override
 			public void notifyChanged(Notification notification) {
 				super.notifyChanged(new ViewerNotification(notification));
 			}
-			
+
 		});
 
 		// Label Provider		
-		this.tableViewer.setLabelProvider(new TableViewerColorProvider(
-			this.getAdapterFactory(),
-			this.tableViewer,
-			EsxPreferenceStore.getSamplesBackgroundColorWhenNotEmpty(),
-			EsxPreferenceStore.getSamplesBackgroundColorWhenEmpty(),
-			EsxPreferenceStore.getSamplesForegroundColorWhenNotEmpty(),
-			EsxPreferenceStore.getSamplesForegroundColorWhenEmpty()
-		));
+		this.tableViewer.setLabelProvider(new TableViewerColorProvider(this
+				.getAdapterFactory(), this.tableViewer, EsxPreferenceStore
+				.getSamplesBackgroundColorWhenNotEmpty(), EsxPreferenceStore
+				.getSamplesBackgroundColorWhenEmpty(), EsxPreferenceStore
+				.getSamplesForegroundColorWhenNotEmpty(), EsxPreferenceStore
+				.getSamplesForegroundColorWhenEmpty()));
 
 		// Sync the scroll speed with our preference
 		tableViewerScrollSpeedListener = this.syncScrollSpeedWithPreference(
-			this.tableViewer,
-			tableViewerScrollSpeedListener,
-			EsxPreferenceStore.getSamplesScrollSpeed(),
-			EsxPreferenceStore.getSamplesUseScrollSpeed()
-		);
+				this.tableViewer, tableViewerScrollSpeedListener,
+				EsxPreferenceStore.getSamplesScrollSpeed(),
+				EsxPreferenceStore.getSamplesUseScrollSpeed());
 
 		// Play/Loop Sample on DoubleClick
 		this.tableViewer.getTable().addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDoubleClick(MouseEvent event) {
 				super.mouseDoubleClick(event);
-				IHandlerService handlerService =
-					(IHandlerService) getSite().getService(IHandlerService.class);
+				IHandlerService handlerService = (IHandlerService) getSite()
+						.getService(IHandlerService.class);
 				try {
-					handlerService.executeCommand(LoopAndPlayHandler.PLAY_OR_LOOP_COMMAND_ID, null);
+					handlerService.executeCommand(
+							LoopAndPlayHandler.PLAY_OR_LOOP_COMMAND_ID, null);
 				} catch (Exception e) {
 					e.printStackTrace();
-					throw new RuntimeException(LoopAndPlayHandler.PLAY_OR_LOOP_COMMAND_ID + " was not found");
+					throw new RuntimeException(
+							LoopAndPlayHandler.PLAY_OR_LOOP_COMMAND_ID
+									+ " was not found");
 				}
 			}
 		});
-		
+
 		// listen for preference change events
-		PlatformUI.getPreferenceStore().addPropertyChangeListener((IPropertyChangeListener) this);
+		PlatformUI.getPreferenceStore().addPropertyChangeListener(
+				(IPropertyChangeListener) this);
 
 		// Context Menu
-		createContextMenuFor(this.tableViewer, EsxEditorPartSamples.ID_SAMPLE_VIEWER);
-		
+		createContextMenuFor(this.tableViewer,
+				EsxEditorPartSamples.ID_SAMPLE_VIEWER);
+
 		// DnD
 		//this.addEmfDragAndDropSupport(this.tableViewer);
 		this.addSampleDragAndDropSupport(this.tableViewer);
 
-	    // Selection Provider For EsxEditor
-	    getEditorSite().setSelectionProvider(this.tableViewer);
+		// Selection Provider For EsxEditor
+		getEditorSite().setSelectionProvider(this.tableViewer);
 
 		// listen for selection events
-	    getSite().getPage().addSelectionListener((ISelectionListener) this);
+		getSite().getPage().addSelectionListener((ISelectionListener) this);
 	}
-	
+
 	private void setAllInputs() {
 		this.editorSample.setInput(selectedSamples);
 		this.editorSampleInPatternInfo.setInput(selectedSamples);
@@ -335,12 +336,12 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 	 */
 	@Override
 	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-		if (parentEditor.getActivePage()==EsxEditorPartSamples.PAGE_INDEX &&
-				selection instanceof IStructuredSelection) {
+		if (parentEditor.getActivePage() == EsxEditorPartSamples.PAGE_INDEX
+				&& selection instanceof IStructuredSelection) {
 			Object[] objects = ((IStructuredSelection) selection).toArray();
 			selectedSamples = new ArrayList<Sample>();
 			for (Object obj : objects) {
-				if(obj instanceof Sample) {
+				if (obj instanceof Sample) {
 					selectedSamples.add((Sample) obj);
 				}
 			}
@@ -356,28 +357,35 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 		super.propertyChange(event);
 
 		// Scroll Speed Changes
-		if(event.getProperty().equals(EsxPreferenceNames.SAMPLES_SCROLL_SPEED) ||
-			event.getProperty().equals(EsxPreferenceNames.SAMPLES_USE_SCROLL_SPEED)) {
-			tableViewerScrollSpeedListener = this.syncScrollSpeedWithPreference(
-				this.tableViewer,
-				tableViewerScrollSpeedListener,
-				EsxPreferenceStore.getSamplesScrollSpeed(),
-				EsxPreferenceStore.getSamplesUseScrollSpeed()
-			);
+		if (event.getProperty().equals(EsxPreferenceNames.SAMPLES_SCROLL_SPEED)
+				|| event.getProperty().equals(
+						EsxPreferenceNames.SAMPLES_USE_SCROLL_SPEED)) {
+			tableViewerScrollSpeedListener = this
+					.syncScrollSpeedWithPreference(this.tableViewer,
+							tableViewerScrollSpeedListener,
+							EsxPreferenceStore.getSamplesScrollSpeed(),
+							EsxPreferenceStore.getSamplesUseScrollSpeed());
 			this.tableViewer.refresh();
 		}
-		
+
 		// Color Changes
-		if(event.getProperty().equals(EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_NOT_EMPTY) ||
-				event.getProperty().equals(EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_EMPTY) ||
-				event.getProperty().equals(EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_NOT_EMPTY) ||
-				event.getProperty().equals(EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_EMPTY)) {
-			((TableViewerColorProvider)this.tableViewer.getLabelProvider()).setAllColors(
-				EsxPreferenceStore.getSamplesBackgroundColorWhenNotEmpty(),
-				EsxPreferenceStore.getSamplesBackgroundColorWhenEmpty(),
-				EsxPreferenceStore.getSamplesForegroundColorWhenNotEmpty(),
-				EsxPreferenceStore.getSamplesForegroundColorWhenEmpty()
-			);
+		if (event.getProperty().equals(
+				EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_NOT_EMPTY)
+				|| event.getProperty().equals(
+						EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_EMPTY)
+				|| event.getProperty()
+						.equals(EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_NOT_EMPTY)
+				|| event.getProperty().equals(
+						EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_EMPTY)) {
+			((TableViewerColorProvider) this.tableViewer.getLabelProvider())
+					.setAllColors(EsxPreferenceStore
+							.getSamplesBackgroundColorWhenNotEmpty(),
+							EsxPreferenceStore
+									.getSamplesBackgroundColorWhenEmpty(),
+							EsxPreferenceStore
+									.getSamplesForegroundColorWhenNotEmpty(),
+							EsxPreferenceStore
+									.getSamplesForegroundColorWhenEmpty());
 			this.tableViewer.refresh();
 		}
 	}
@@ -391,7 +399,8 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 
 		// Remove Listeners added in createPartControl()
 		getSite().getPage().removeSelectionListener((ISelectionListener) this);
-		PlatformUI.getPreferenceStore().removePropertyChangeListener((IPropertyChangeListener) this);
+		PlatformUI.getPreferenceStore().removePropertyChangeListener(
+				(IPropertyChangeListener) this);
 	}
 
 	/* (non-Javadoc)
@@ -407,7 +416,7 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 	 */
 	@Override
 	public void setInput(Object input) {
-		if(input instanceof EsxFile) {
+		if (input instanceof EsxFile) {
 			this.tableViewer.setInput(input);
 			this.refresh();
 		}
@@ -417,21 +426,20 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 	 * 
 	 */
 	public void refresh() {
-		if(this.parentEditor.getActivePage()!=EsxEditorPartSamples.PAGE_INDEX) return;
+		if (this.parentEditor.getActivePage() != EsxEditorPartSamples.PAGE_INDEX)
+			return;
 
 		this.refreshLabels();
 		this.tableViewer.refresh();
 		this.editorSample.refresh();
 	}
-	
+
 	private void refreshLabels() {
-		if(this.tableViewer.getInput() instanceof EsxFile) {
+		if (this.tableViewer.getInput() instanceof EsxFile) {
 			EsxFile esxFile = (EsxFile) this.tableViewer.getInput();
-			this.labelMemFree.setText(
-				"Memory Free: "+
-				esxFile.getMemFreeInBytes() + " bytes (" +
-				esxFile.getMemFreeInSeconds() + " seconds)"
-			);
+			this.labelMemFree.setText("Memory Free: "
+					+ esxFile.getMemFreeInBytes() + " bytes ("
+					+ esxFile.getMemFreeInSeconds() + " seconds)");
 		}
 	}
 
@@ -441,9 +449,10 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 	private void addSampleDragAndDropSupport(StructuredViewer viewer) {
 		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
 		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance() };
-		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(viewer));
-		viewer.addDropSupport(dndOperations, transfers, new EditingDomainViewerDropAdapter(getEditingDomain(), viewer));
+		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(
+				viewer));
+		viewer.addDropSupport(dndOperations, transfers,
+				new EditingDomainViewerDropAdapter(getEditingDomain(), viewer));
 	}
-	
-	
+
 }

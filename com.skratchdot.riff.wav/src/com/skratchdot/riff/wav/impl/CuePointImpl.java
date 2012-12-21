@@ -200,7 +200,9 @@ public class CuePointImpl extends EObjectImpl implements CuePoint {
 		Long oldCuePointID = cuePointID;
 		cuePointID = newCuePointID;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CUE_POINT__CUE_POINT_ID, oldCuePointID, cuePointID));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CUE_POINT__CUE_POINT_ID, oldCuePointID,
+					cuePointID));
 	}
 
 	/**
@@ -221,7 +223,8 @@ public class CuePointImpl extends EObjectImpl implements CuePoint {
 		Long oldPosition = position;
 		position = newPosition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CUE_POINT__POSITION, oldPosition, position));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CUE_POINT__POSITION, oldPosition, position));
 	}
 
 	/**
@@ -242,7 +245,9 @@ public class CuePointImpl extends EObjectImpl implements CuePoint {
 		Long oldDataChunkID = dataChunkID;
 		dataChunkID = newDataChunkID;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CUE_POINT__DATA_CHUNK_ID, oldDataChunkID, dataChunkID));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CUE_POINT__DATA_CHUNK_ID, oldDataChunkID,
+					dataChunkID));
 	}
 
 	/**
@@ -263,7 +268,9 @@ public class CuePointImpl extends EObjectImpl implements CuePoint {
 		Long oldChunkStart = chunkStart;
 		chunkStart = newChunkStart;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CUE_POINT__CHUNK_START, oldChunkStart, chunkStart));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CUE_POINT__CHUNK_START, oldChunkStart,
+					chunkStart));
 	}
 
 	/**
@@ -284,7 +291,9 @@ public class CuePointImpl extends EObjectImpl implements CuePoint {
 		Long oldBlockStart = blockStart;
 		blockStart = newBlockStart;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CUE_POINT__BLOCK_START, oldBlockStart, blockStart));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CUE_POINT__BLOCK_START, oldBlockStart,
+					blockStart));
 	}
 
 	/**
@@ -305,7 +314,9 @@ public class CuePointImpl extends EObjectImpl implements CuePoint {
 		Long oldSampleOffset = sampleOffset;
 		sampleOffset = newSampleOffset;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CUE_POINT__SAMPLE_OFFSET, oldSampleOffset, sampleOffset));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CUE_POINT__SAMPLE_OFFSET, oldSampleOffset,
+					sampleOffset));
 	}
 
 	/**
@@ -316,18 +327,18 @@ public class CuePointImpl extends EObjectImpl implements CuePoint {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.CUE_POINT__CUE_POINT_ID:
-				return getCuePointID();
-			case WavPackage.CUE_POINT__POSITION:
-				return getPosition();
-			case WavPackage.CUE_POINT__DATA_CHUNK_ID:
-				return getDataChunkID();
-			case WavPackage.CUE_POINT__CHUNK_START:
-				return getChunkStart();
-			case WavPackage.CUE_POINT__BLOCK_START:
-				return getBlockStart();
-			case WavPackage.CUE_POINT__SAMPLE_OFFSET:
-				return getSampleOffset();
+		case WavPackage.CUE_POINT__CUE_POINT_ID:
+			return getCuePointID();
+		case WavPackage.CUE_POINT__POSITION:
+			return getPosition();
+		case WavPackage.CUE_POINT__DATA_CHUNK_ID:
+			return getDataChunkID();
+		case WavPackage.CUE_POINT__CHUNK_START:
+			return getChunkStart();
+		case WavPackage.CUE_POINT__BLOCK_START:
+			return getBlockStart();
+		case WavPackage.CUE_POINT__SAMPLE_OFFSET:
+			return getSampleOffset();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -340,24 +351,24 @@ public class CuePointImpl extends EObjectImpl implements CuePoint {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.CUE_POINT__CUE_POINT_ID:
-				setCuePointID((Long)newValue);
-				return;
-			case WavPackage.CUE_POINT__POSITION:
-				setPosition((Long)newValue);
-				return;
-			case WavPackage.CUE_POINT__DATA_CHUNK_ID:
-				setDataChunkID((Long)newValue);
-				return;
-			case WavPackage.CUE_POINT__CHUNK_START:
-				setChunkStart((Long)newValue);
-				return;
-			case WavPackage.CUE_POINT__BLOCK_START:
-				setBlockStart((Long)newValue);
-				return;
-			case WavPackage.CUE_POINT__SAMPLE_OFFSET:
-				setSampleOffset((Long)newValue);
-				return;
+		case WavPackage.CUE_POINT__CUE_POINT_ID:
+			setCuePointID((Long) newValue);
+			return;
+		case WavPackage.CUE_POINT__POSITION:
+			setPosition((Long) newValue);
+			return;
+		case WavPackage.CUE_POINT__DATA_CHUNK_ID:
+			setDataChunkID((Long) newValue);
+			return;
+		case WavPackage.CUE_POINT__CHUNK_START:
+			setChunkStart((Long) newValue);
+			return;
+		case WavPackage.CUE_POINT__BLOCK_START:
+			setBlockStart((Long) newValue);
+			return;
+		case WavPackage.CUE_POINT__SAMPLE_OFFSET:
+			setSampleOffset((Long) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -370,24 +381,24 @@ public class CuePointImpl extends EObjectImpl implements CuePoint {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.CUE_POINT__CUE_POINT_ID:
-				setCuePointID(CUE_POINT_ID_EDEFAULT);
-				return;
-			case WavPackage.CUE_POINT__POSITION:
-				setPosition(POSITION_EDEFAULT);
-				return;
-			case WavPackage.CUE_POINT__DATA_CHUNK_ID:
-				setDataChunkID(DATA_CHUNK_ID_EDEFAULT);
-				return;
-			case WavPackage.CUE_POINT__CHUNK_START:
-				setChunkStart(CHUNK_START_EDEFAULT);
-				return;
-			case WavPackage.CUE_POINT__BLOCK_START:
-				setBlockStart(BLOCK_START_EDEFAULT);
-				return;
-			case WavPackage.CUE_POINT__SAMPLE_OFFSET:
-				setSampleOffset(SAMPLE_OFFSET_EDEFAULT);
-				return;
+		case WavPackage.CUE_POINT__CUE_POINT_ID:
+			setCuePointID(CUE_POINT_ID_EDEFAULT);
+			return;
+		case WavPackage.CUE_POINT__POSITION:
+			setPosition(POSITION_EDEFAULT);
+			return;
+		case WavPackage.CUE_POINT__DATA_CHUNK_ID:
+			setDataChunkID(DATA_CHUNK_ID_EDEFAULT);
+			return;
+		case WavPackage.CUE_POINT__CHUNK_START:
+			setChunkStart(CHUNK_START_EDEFAULT);
+			return;
+		case WavPackage.CUE_POINT__BLOCK_START:
+			setBlockStart(BLOCK_START_EDEFAULT);
+			return;
+		case WavPackage.CUE_POINT__SAMPLE_OFFSET:
+			setSampleOffset(SAMPLE_OFFSET_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -400,18 +411,24 @@ public class CuePointImpl extends EObjectImpl implements CuePoint {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.CUE_POINT__CUE_POINT_ID:
-				return CUE_POINT_ID_EDEFAULT == null ? cuePointID != null : !CUE_POINT_ID_EDEFAULT.equals(cuePointID);
-			case WavPackage.CUE_POINT__POSITION:
-				return POSITION_EDEFAULT == null ? position != null : !POSITION_EDEFAULT.equals(position);
-			case WavPackage.CUE_POINT__DATA_CHUNK_ID:
-				return DATA_CHUNK_ID_EDEFAULT == null ? dataChunkID != null : !DATA_CHUNK_ID_EDEFAULT.equals(dataChunkID);
-			case WavPackage.CUE_POINT__CHUNK_START:
-				return CHUNK_START_EDEFAULT == null ? chunkStart != null : !CHUNK_START_EDEFAULT.equals(chunkStart);
-			case WavPackage.CUE_POINT__BLOCK_START:
-				return BLOCK_START_EDEFAULT == null ? blockStart != null : !BLOCK_START_EDEFAULT.equals(blockStart);
-			case WavPackage.CUE_POINT__SAMPLE_OFFSET:
-				return SAMPLE_OFFSET_EDEFAULT == null ? sampleOffset != null : !SAMPLE_OFFSET_EDEFAULT.equals(sampleOffset);
+		case WavPackage.CUE_POINT__CUE_POINT_ID:
+			return CUE_POINT_ID_EDEFAULT == null ? cuePointID != null
+					: !CUE_POINT_ID_EDEFAULT.equals(cuePointID);
+		case WavPackage.CUE_POINT__POSITION:
+			return POSITION_EDEFAULT == null ? position != null
+					: !POSITION_EDEFAULT.equals(position);
+		case WavPackage.CUE_POINT__DATA_CHUNK_ID:
+			return DATA_CHUNK_ID_EDEFAULT == null ? dataChunkID != null
+					: !DATA_CHUNK_ID_EDEFAULT.equals(dataChunkID);
+		case WavPackage.CUE_POINT__CHUNK_START:
+			return CHUNK_START_EDEFAULT == null ? chunkStart != null
+					: !CHUNK_START_EDEFAULT.equals(chunkStart);
+		case WavPackage.CUE_POINT__BLOCK_START:
+			return BLOCK_START_EDEFAULT == null ? blockStart != null
+					: !BLOCK_START_EDEFAULT.equals(blockStart);
+		case WavPackage.CUE_POINT__SAMPLE_OFFSET:
+			return SAMPLE_OFFSET_EDEFAULT == null ? sampleOffset != null
+					: !SAMPLE_OFFSET_EDEFAULT.equals(sampleOffset);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -423,7 +440,8 @@ public class CuePointImpl extends EObjectImpl implements CuePoint {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (cuePointID: ");

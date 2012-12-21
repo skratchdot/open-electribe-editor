@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -41,10 +40,10 @@ import com.skratchdot.electribe.model.esx.SongEvent;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SongEventItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class SongEventItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -84,19 +83,18 @@ public class SongEventItemProvider
 	 * @generated
 	 */
 	protected void addCurrentPositionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongEvent_currentPosition_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongEvent_currentPosition_feature", "_UI_SongEvent_type"),
-				 EsxPackage.Literals.SONG_EVENT__CURRENT_POSITION,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_SongEvent_currentPosition_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_SongEvent_currentPosition_feature",
+								"_UI_SongEvent_type"),
+						EsxPackage.Literals.SONG_EVENT__CURRENT_POSITION,
+						false, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -106,19 +104,18 @@ public class SongEventItemProvider
 	 * @generated
 	 */
 	protected void addEventInfoPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongEvent_eventInfo_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongEvent_eventInfo_feature", "_UI_SongEvent_type"),
-				 EsxPackage.Literals.SONG_EVENT__EVENT_INFO,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_SongEvent_eventInfo_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_SongEvent_eventInfo_feature",
+								"_UI_SongEvent_type"),
+						EsxPackage.Literals.SONG_EVENT__EVENT_INFO, false,
+						false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -128,19 +125,18 @@ public class SongEventItemProvider
 	 * @generated
 	 */
 	protected void addEventTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongEvent_eventType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongEvent_eventType_feature", "_UI_SongEvent_type"),
-				 EsxPackage.Literals.SONG_EVENT__EVENT_TYPE,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_SongEvent_eventType_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_SongEvent_eventType_feature",
+								"_UI_SongEvent_type"),
+						EsxPackage.Literals.SONG_EVENT__EVENT_TYPE, false,
+						false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -150,19 +146,15 @@ public class SongEventItemProvider
 	 * @generated
 	 */
 	protected void addMeasurePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongEvent_measure_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongEvent_measure_feature", "_UI_SongEvent_type"),
-				 EsxPackage.Literals.SONG_EVENT__MEASURE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SongEvent_measure_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SongEvent_measure_feature", "_UI_SongEvent_type"),
+				EsxPackage.Literals.SONG_EVENT__MEASURE, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -172,19 +164,18 @@ public class SongEventItemProvider
 	 * @generated
 	 */
 	protected void addOperationNumberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongEvent_operationNumber_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongEvent_operationNumber_feature", "_UI_SongEvent_type"),
-				 EsxPackage.Literals.SONG_EVENT__OPERATION_NUMBER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_SongEvent_operationNumber_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_SongEvent_operationNumber_feature",
+								"_UI_SongEvent_type"),
+						EsxPackage.Literals.SONG_EVENT__OPERATION_NUMBER, true,
+						false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -194,19 +185,18 @@ public class SongEventItemProvider
 	 * @generated
 	 */
 	protected void addPositionNumberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongEvent_positionNumber_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongEvent_positionNumber_feature", "_UI_SongEvent_type"),
-				 EsxPackage.Literals.SONG_EVENT__POSITION_NUMBER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_SongEvent_positionNumber_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_SongEvent_positionNumber_feature",
+								"_UI_SongEvent_type"),
+						EsxPackage.Literals.SONG_EVENT__POSITION_NUMBER, true,
+						false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -216,19 +206,15 @@ public class SongEventItemProvider
 	 * @generated
 	 */
 	protected void addStepPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongEvent_step_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongEvent_step_feature", "_UI_SongEvent_type"),
-				 EsxPackage.Literals.SONG_EVENT__STEP,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SongEvent_step_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SongEvent_step_feature", "_UI_SongEvent_type"),
+				EsxPackage.Literals.SONG_EVENT__STEP, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -239,8 +225,9 @@ public class SongEventItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		SongEvent songEvent = (SongEvent)object;
-		return getString("_UI_SongEvent_type") + " " + songEvent.getCurrentPosition();
+		SongEvent songEvent = (SongEvent) object;
+		return getString("_UI_SongEvent_type") + " "
+				+ songEvent.getCurrentPosition();
 	}
 
 	/* (non-Javadoc)
@@ -248,20 +235,27 @@ public class SongEventItemProvider
 	 */
 	@Override
 	public String getColumnText(Object object, int columnIndex) {
-		switch(columnIndex) {
-			// Current Position
-			case 0: return Integer.toString(((SongEvent) object).getCurrentPosition());
+		switch (columnIndex) {
+		// Current Position
+		case 0:
+			return Integer.toString(((SongEvent) object).getCurrentPosition());
 			// Position Number
-			case 1: return Byte.toString(((SongEvent) object).getPositionNumber());
+		case 1:
+			return Byte.toString(((SongEvent) object).getPositionNumber());
 			// Measure
-			case 2: return Byte.toString(((SongEvent) object).getMeasure());
+		case 2:
+			return Byte.toString(((SongEvent) object).getMeasure());
 			// Step
-			case 3: return Byte.toString(((SongEvent) object).getStep());
+		case 3:
+			return Byte.toString(((SongEvent) object).getStep());
 			// EventType
-			case 4: return ((SongEvent) object).getEventType();
+		case 4:
+			return ((SongEvent) object).getEventType();
 			// EventInfo
-			case 5: return ((SongEvent) object).getEventInfo();
-			default: return "";
+		case 5:
+			return ((SongEvent) object).getEventInfo();
+		default:
+			return "";
 		}
 	}
 
@@ -277,15 +271,16 @@ public class SongEventItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SongEvent.class)) {
-			case EsxPackage.SONG_EVENT__CURRENT_POSITION:
-			case EsxPackage.SONG_EVENT__EVENT_INFO:
-			case EsxPackage.SONG_EVENT__EVENT_TYPE:
-			case EsxPackage.SONG_EVENT__MEASURE:
-			case EsxPackage.SONG_EVENT__OPERATION_NUMBER:
-			case EsxPackage.SONG_EVENT__POSITION_NUMBER:
-			case EsxPackage.SONG_EVENT__STEP:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case EsxPackage.SONG_EVENT__CURRENT_POSITION:
+		case EsxPackage.SONG_EVENT__EVENT_INFO:
+		case EsxPackage.SONG_EVENT__EVENT_TYPE:
+		case EsxPackage.SONG_EVENT__MEASURE:
+		case EsxPackage.SONG_EVENT__OPERATION_NUMBER:
+		case EsxPackage.SONG_EVENT__POSITION_NUMBER:
+		case EsxPackage.SONG_EVENT__STEP:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -298,7 +293,8 @@ public class SongEventItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

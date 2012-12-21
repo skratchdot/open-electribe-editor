@@ -46,7 +46,7 @@ public class ImportPatternWizard extends Wizard implements IImportWizard {
 	protected EsxFile srcEsxFile;
 	protected EsxFile destEsxFile;
 	protected EsxItemProviderAdapterFactory adapterFactory = new EsxItemProviderAdapterFactory();
-	
+
 	public ImportPatternWizard() {
 		setWindowTitle("Import Patterns Wizard");
 		this.pageSelectFile = new ImportPatternWizardPageSelectFile();
@@ -85,82 +85,96 @@ public class ImportPatternWizard extends Wizard implements IImportWizard {
 		IWorkbenchWindow win = wb.getActiveWorkbenchWindow();
 		IWorkbenchPage page = win.getActivePage();
 		IEditorPart editor = page.getActiveEditor();
-		boolean isImportSampleButtonChecked = getPageSelectPatterns().isImportSampleButtonChecked();
+		boolean isImportSampleButtonChecked = getPageSelectPatterns()
+				.isImportSampleButtonChecked();
 
 		// If the active editor is an EsxEditor
-		if(editor!=null && editor instanceof EsxEditor) {
-			
+		if (editor != null && editor instanceof EsxEditor) {
+
 			// Get our EsxFile
-			EditingDomain editingDomain = ((EsxEditor) editor).getEditingDomain();
-			Resource resource =
-				(Resource)editingDomain.getResourceSet().getResources().get(0);
+			EditingDomain editingDomain = ((EsxEditor) editor)
+					.getEditingDomain();
+			Resource resource = (Resource) editingDomain.getResourceSet()
+					.getResources().get(0);
 			Object rootObject = resource.getContents().get(0);
-			if(rootObject instanceof EsxFile) {
+			if (rootObject instanceof EsxFile) {
 				EsxFile esxFile = (EsxFile) rootObject;
-				
+
 				// Prepare a compound command to store our sample and pattern updates
 				CompoundCommand cmd = new CompoundCommand();
 
 				// Get our maps
-				PatternMap[] patternMaps = this.getPageSetPatterns().getPatternMaps();
-				SampleMap[] sampleMaps = this.getPageSetSamples().getSampleMaps();
+				PatternMap[] patternMaps = this.getPageSetPatterns()
+						.getPatternMaps();
+				SampleMap[] sampleMaps = this.getPageSetSamples()
+						.getSampleMaps();
 
 				// Import Samples
-				if(isImportSampleButtonChecked) {
-					for(int i=0; i<sampleMaps.length; i++) {
-						Sample sourceSample = this.srcEsxFile.getSamples().get(sampleMaps[i].source);
-						Sample destinationSample = this.destEsxFile.getSamples().get(sampleMaps[i].destination);
-						sourceSample.setSampleNumberOriginal(destinationSample.getSampleNumberOriginal());
-						cmd.append(new ReplaceCommand(
-							editingDomain,
-							esxFile,
-							EsxPackage.eINSTANCE.getEsxFile_Samples(),
-							destinationSample,
-							sourceSample
-						));
+				if (isImportSampleButtonChecked) {
+					for (int i = 0; i < sampleMaps.length; i++) {
+						Sample sourceSample = this.srcEsxFile.getSamples().get(
+								sampleMaps[i].source);
+						Sample destinationSample = this.destEsxFile
+								.getSamples().get(sampleMaps[i].destination);
+						sourceSample.setSampleNumberOriginal(destinationSample
+								.getSampleNumberOriginal());
+						cmd.append(new ReplaceCommand(editingDomain, esxFile,
+								EsxPackage.eINSTANCE.getEsxFile_Samples(),
+								destinationSample, sourceSample));
 					}
 				}
 
 				// Import Patterns
-				for(int i=0; i<patternMaps.length; i++) {
-					Pattern sourcePattern = this.srcEsxFile.getPatterns().get(patternMaps[i].source);
-					Pattern destinationPattern = this.destEsxFile.getPatterns().get(patternMaps[i].destination);
-					sourcePattern.setPatternNumberOriginal(destinationPattern.getPatternNumberOriginal());
+				for (int i = 0; i < patternMaps.length; i++) {
+					Pattern sourcePattern = this.srcEsxFile.getPatterns().get(
+							patternMaps[i].source);
+					Pattern destinationPattern = this.destEsxFile.getPatterns()
+							.get(patternMaps[i].destination);
+					sourcePattern.setPatternNumberOriginal(destinationPattern
+							.getPatternNumberOriginal());
 					// If we are importing samples, we need to use the sample locations set in sampleMaps
-					if(isImportSampleButtonChecked) {
-						EList<PartDrum> currentDrumParts = sourcePattern.getDrumParts();
-						EList<PartKeyboard> currentKeyboardParts = sourcePattern.getKeyboardParts();
-						EList<PartStretchSlice> currentStretchSliceParts = sourcePattern.getStretchSliceParts();
+					if (isImportSampleButtonChecked) {
+						EList<PartDrum> currentDrumParts = sourcePattern
+								.getDrumParts();
+						EList<PartKeyboard> currentKeyboardParts = sourcePattern
+								.getKeyboardParts();
+						EList<PartStretchSlice> currentStretchSliceParts = sourcePattern
+								.getStretchSliceParts();
 						int sourceSamplePointer = -1;
 						int destinationSamplePointer = -1;
-						for(int j=0; j<currentDrumParts.size(); j++) {
-							sourceSamplePointer = currentDrumParts.get(j).getSamplePointer();
-							destinationSamplePointer = getFromSampleMap(sampleMaps, sourceSamplePointer);
-							currentDrumParts.get(j).setSamplePointer((short) destinationSamplePointer);
+						for (int j = 0; j < currentDrumParts.size(); j++) {
+							sourceSamplePointer = currentDrumParts.get(j)
+									.getSamplePointer();
+							destinationSamplePointer = getFromSampleMap(
+									sampleMaps, sourceSamplePointer);
+							currentDrumParts.get(j).setSamplePointer(
+									(short) destinationSamplePointer);
 						}
-						for(int j=0; j<currentKeyboardParts.size(); j++) {
-							sourceSamplePointer = currentKeyboardParts.get(j).getSamplePointer();
-							destinationSamplePointer = getFromSampleMap(sampleMaps, sourceSamplePointer);
-							currentKeyboardParts.get(j).setSamplePointer((short) destinationSamplePointer);
+						for (int j = 0; j < currentKeyboardParts.size(); j++) {
+							sourceSamplePointer = currentKeyboardParts.get(j)
+									.getSamplePointer();
+							destinationSamplePointer = getFromSampleMap(
+									sampleMaps, sourceSamplePointer);
+							currentKeyboardParts.get(j).setSamplePointer(
+									(short) destinationSamplePointer);
 						}
-						for(int j=0; j<currentStretchSliceParts.size(); j++) {
-							sourceSamplePointer = currentStretchSliceParts.get(j).getSamplePointer();
-							destinationSamplePointer = getFromSampleMap(sampleMaps, sourceSamplePointer);
-							currentStretchSliceParts.get(j).setSamplePointer((short) destinationSamplePointer);
+						for (int j = 0; j < currentStretchSliceParts.size(); j++) {
+							sourceSamplePointer = currentStretchSliceParts.get(
+									j).getSamplePointer();
+							destinationSamplePointer = getFromSampleMap(
+									sampleMaps, sourceSamplePointer);
+							currentStretchSliceParts.get(j).setSamplePointer(
+									(short) destinationSamplePointer);
 						}
 					}
-					cmd.append(new ReplaceCommand(
-						editingDomain,
-						esxFile,
-						EsxPackage.eINSTANCE.getEsxFile_Patterns(),
-						destinationPattern,
-						sourcePattern
-					));
+					cmd.append(new ReplaceCommand(editingDomain, esxFile,
+							EsxPackage.eINSTANCE.getEsxFile_Patterns(),
+							destinationPattern, sourcePattern));
 				}
-				
+
 				// We've finished creating ReplaceCommands for samples/patterns and adding them
 				// to our CompoundCommand.  Now we can execute our CompoundCommand.
-				if(cmd.canExecute()) {
+				if (cmd.canExecute()) {
 					editingDomain.getCommandStack().execute(cmd);
 				}
 			}
@@ -197,7 +211,8 @@ public class ImportPatternWizard extends Wizard implements IImportWizard {
 		return pageSelectFile;
 	}
 
-	public void setPageSelectFile(ImportPatternWizardPageSelectFile pageSelectFile) {
+	public void setPageSelectFile(
+			ImportPatternWizardPageSelectFile pageSelectFile) {
 		this.pageSelectFile = pageSelectFile;
 	}
 
@@ -214,7 +229,8 @@ public class ImportPatternWizard extends Wizard implements IImportWizard {
 		return pageSetSamples;
 	}
 
-	public void setPageSetSamples(ImportPatternWizardPageSetSamples pageSetSamples) {
+	public void setPageSetSamples(
+			ImportPatternWizardPageSetSamples pageSetSamples) {
 		this.pageSetSamples = pageSetSamples;
 	}
 
@@ -226,10 +242,10 @@ public class ImportPatternWizard extends Wizard implements IImportWizard {
 			ImportPatternWizardPageSetPatterns pageSetPatterns) {
 		this.pageSetPatterns = pageSetPatterns;
 	}
-	
+
 	private int getFromSampleMap(SampleMap[] sampleMaps, int sourceValue) {
-		for(int i=0; i<sampleMaps.length; i++) {
-			if(sampleMaps[i].source == sourceValue) {
+		for (int i = 0; i < sampleMaps.length; i++) {
+			if (sampleMaps[i].source == sourceValue) {
 				return sampleMaps[i].destination;
 			}
 		}

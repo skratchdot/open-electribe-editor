@@ -58,7 +58,7 @@ public class SongEventKeyboardNoteTest extends SongEventTest {
 	 */
 	@Override
 	protected SongEventKeyboardNote getFixture() {
-		return (SongEventKeyboardNote)fixture;
+		return (SongEventKeyboardNote) fixture;
 	}
 
 	/**

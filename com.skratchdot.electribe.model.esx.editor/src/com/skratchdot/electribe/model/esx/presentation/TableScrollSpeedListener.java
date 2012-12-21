@@ -55,7 +55,8 @@ public class TableScrollSpeedListener implements Listener {
 	private Runnable initHeartbeat() {
 		return new Runnable() {
 			public void run() {
-				if (!tracking || table.isDisposed() || !table.getDragDetect()) return;				
+				if (!tracking || table.isDisposed() || !table.getDragDetect())
+					return;
 				Point cursor = display.getCursorLocation();
 				cursor = display.map(null, table, cursor);
 				Scroll(table, cursor.x, cursor.y);
@@ -75,7 +76,8 @@ public class TableScrollSpeedListener implements Listener {
 			break;
 		case SWT.MouseUp:
 		case SWT.MouseExit:
-			if(tracking) table.redraw();
+			if (tracking)
+				table.redraw();
 			tracking = false;
 			break;
 		}
@@ -88,10 +90,11 @@ public class TableScrollSpeedListener implements Listener {
 	 */
 	static void Scroll(Table table, int x, int y) {
 		TableItem item = table.getItem(new Point(x, y));
-		if (item == null) return;
+		if (item == null)
+			return;
 		Rectangle area = table.getClientArea();
 		int headerHeight = table.getHeaderHeight();
-		int itemHeight= table.getItemHeight();
+		int itemHeight = table.getItemHeight();
 		TableItem nextItem = null;
 		if (y < area.y + headerHeight + 2 * itemHeight) {
 			nextItem = PreviousItem(table, item);
@@ -99,7 +102,8 @@ public class TableScrollSpeedListener implements Listener {
 		if (y > area.y + area.height - 2 * itemHeight) {
 			nextItem = NextItem(table, item);
 		}
-		if (nextItem != null) table.showItem(nextItem);
+		if (nextItem != null)
+			table.showItem(nextItem);
 	}
 
 	/**
@@ -108,12 +112,12 @@ public class TableScrollSpeedListener implements Listener {
 	 * @return
 	 */
 	static TableItem PreviousItem(Table table, TableItem item) {
-		if (item == null) return null;
-		int previousIndex = table.indexOf(item)-1;
-		if(previousIndex>=0) {
+		if (item == null)
+			return null;
+		int previousIndex = table.indexOf(item) - 1;
+		if (previousIndex >= 0) {
 			return table.getItem(previousIndex);
-		}
-		else {
+		} else {
 			return item;
 		}
 	}
@@ -124,14 +128,14 @@ public class TableScrollSpeedListener implements Listener {
 	 * @return
 	 */
 	static TableItem NextItem(Table table, TableItem item) {
-		if (item == null) return null;
-		int nextIndex = table.indexOf(item)+1;
-		if(nextIndex<table.getItemCount()) {
+		if (item == null)
+			return null;
+		int nextIndex = table.indexOf(item) + 1;
+		if (nextIndex < table.getItemCount()) {
 			return table.getItem(nextIndex);
-		}
-		else {
+		} else {
 			return item;
 		}
-	}	
+	}
 
 }

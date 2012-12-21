@@ -89,10 +89,13 @@ public class ChunkDataListImpl extends ChunkImpl implements ChunkDataList {
 	}
 
 	@Override
-	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf)
+			throws RiffWaveException {
 		// Check Chunk Type ID
-		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
-			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+		if (ChunkTypeID.get((int) buf.getUnsignedInt()) != this
+				.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "
+					+ this.getChunkTypeID().getLiteral());
 
 		// Read in data size
 		long chunkSize = buf.getUnsignedInt();
@@ -101,7 +104,7 @@ public class ChunkDataListImpl extends ChunkImpl implements ChunkDataList {
 		long maxPointer = buf.position() + chunkSize;
 
 		// Check Chunk Data List Type ID
-		if(ChunkDataListTypeID.get((int)buf.getUnsignedInt())!=ChunkDataListTypeID.ADTL)
+		if (ChunkDataListTypeID.get((int) buf.getUnsignedInt()) != ChunkDataListTypeID.ADTL)
 			throw new RiffWaveException("Invalid Chunk Data List Type ID");
 
 		// loopPointer prevents an infinite loop if we try to parse a
@@ -109,7 +112,8 @@ public class ChunkDataListImpl extends ChunkImpl implements ChunkDataList {
 		long loopPointer = 0;
 
 		// Loop through file reading in chunks
-		while(buf.position()<buf.limit() && buf.position()!=loopPointer && buf.position()<maxPointer) {
+		while (buf.position() < buf.limit() && buf.position() != loopPointer
+				&& buf.position() < maxPointer) {
 			// If the filePointer doesn't advance in this loop iteration,
 			// then we'll break out of the loop
 			loopPointer = buf.position();
@@ -118,7 +122,7 @@ public class ChunkDataListImpl extends ChunkImpl implements ChunkDataList {
 			Chunk currentChunk = WavUtil.parseChunk(riffWave, buf);
 
 			// If we got a chunk, add it to our list
-			if(currentChunk!=null) {
+			if (currentChunk != null) {
 				// Add to our list of chunks
 				this.getDataListChunks().add((ChunkDataListType) currentChunk);
 			}
@@ -156,7 +160,8 @@ public class ChunkDataListImpl extends ChunkImpl implements ChunkDataList {
 		ChunkDataListTypeID oldTypeID = typeID;
 		typeID = newTypeID == null ? TYPE_ID_EDEFAULT : newTypeID;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_DATA_LIST__TYPE_ID, oldTypeID, typeID));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_DATA_LIST__TYPE_ID, oldTypeID, typeID));
 	}
 
 	/**
@@ -166,7 +171,9 @@ public class ChunkDataListImpl extends ChunkImpl implements ChunkDataList {
 	 */
 	public EList<ChunkDataListType> getDataListChunks() {
 		if (dataListChunks == null) {
-			dataListChunks = new EObjectResolvingEList<ChunkDataListType>(ChunkDataListType.class, this, WavPackage.CHUNK_DATA_LIST__DATA_LIST_CHUNKS);
+			dataListChunks = new EObjectResolvingEList<ChunkDataListType>(
+					ChunkDataListType.class, this,
+					WavPackage.CHUNK_DATA_LIST__DATA_LIST_CHUNKS);
 		}
 		return dataListChunks;
 	}
@@ -193,7 +200,7 @@ public class ChunkDataListImpl extends ChunkImpl implements ChunkDataList {
 	@Override
 	public long getSize() {
 		long returnSize = 4;
-		for(int i=0; i<this.getDataListChunks().size(); i++) {
+		for (int i = 0; i < this.getDataListChunks().size(); i++) {
 			returnSize += this.getDataListChunks().get(i).getBlockAlignedSize() + 8;
 		}
 		return returnSize;
@@ -207,10 +214,10 @@ public class ChunkDataListImpl extends ChunkImpl implements ChunkDataList {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.CHUNK_DATA_LIST__TYPE_ID:
-				return getTypeID();
-			case WavPackage.CHUNK_DATA_LIST__DATA_LIST_CHUNKS:
-				return getDataListChunks();
+		case WavPackage.CHUNK_DATA_LIST__TYPE_ID:
+			return getTypeID();
+		case WavPackage.CHUNK_DATA_LIST__DATA_LIST_CHUNKS:
+			return getDataListChunks();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -224,13 +231,14 @@ public class ChunkDataListImpl extends ChunkImpl implements ChunkDataList {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.CHUNK_DATA_LIST__TYPE_ID:
-				setTypeID((ChunkDataListTypeID)newValue);
-				return;
-			case WavPackage.CHUNK_DATA_LIST__DATA_LIST_CHUNKS:
-				getDataListChunks().clear();
-				getDataListChunks().addAll((Collection<? extends ChunkDataListType>)newValue);
-				return;
+		case WavPackage.CHUNK_DATA_LIST__TYPE_ID:
+			setTypeID((ChunkDataListTypeID) newValue);
+			return;
+		case WavPackage.CHUNK_DATA_LIST__DATA_LIST_CHUNKS:
+			getDataListChunks().clear();
+			getDataListChunks().addAll(
+					(Collection<? extends ChunkDataListType>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -243,12 +251,12 @@ public class ChunkDataListImpl extends ChunkImpl implements ChunkDataList {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_DATA_LIST__TYPE_ID:
-				setTypeID(TYPE_ID_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_DATA_LIST__DATA_LIST_CHUNKS:
-				getDataListChunks().clear();
-				return;
+		case WavPackage.CHUNK_DATA_LIST__TYPE_ID:
+			setTypeID(TYPE_ID_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_DATA_LIST__DATA_LIST_CHUNKS:
+			getDataListChunks().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -261,10 +269,10 @@ public class ChunkDataListImpl extends ChunkImpl implements ChunkDataList {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_DATA_LIST__TYPE_ID:
-				return typeID != TYPE_ID_EDEFAULT;
-			case WavPackage.CHUNK_DATA_LIST__DATA_LIST_CHUNKS:
-				return dataListChunks != null && !dataListChunks.isEmpty();
+		case WavPackage.CHUNK_DATA_LIST__TYPE_ID:
+			return typeID != TYPE_ID_EDEFAULT;
+		case WavPackage.CHUNK_DATA_LIST__DATA_LIST_CHUNKS:
+			return dataListChunks != null && !dataListChunks.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -276,7 +284,8 @@ public class ChunkDataListImpl extends ChunkImpl implements ChunkDataList {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (typeID: ");
@@ -287,13 +296,14 @@ public class ChunkDataListImpl extends ChunkImpl implements ChunkDataList {
 
 	@Override
 	public byte[] toByteArray() throws RiffWaveException {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				(int) this.getSize() + 8);
 		buf.order(ByteOrder.LITTLE_ENDIAN);
 
 		buf.putUnsignedInt(this.getChunkTypeIDValue());
 		buf.putUnsignedInt(this.getSize());
 		buf.putUnsignedInt(ChunkDataListTypeID.ADTL_VALUE);
-		for(int i=0; i<this.getDataListChunks().size(); i++) {
+		for (int i = 0; i < this.getDataListChunks().size(); i++) {
 			Chunk currentChunk = this.getDataListChunks().get(i);
 			buf.putBytes(currentChunk.toByteArray());
 			buf.putBlockAlign();

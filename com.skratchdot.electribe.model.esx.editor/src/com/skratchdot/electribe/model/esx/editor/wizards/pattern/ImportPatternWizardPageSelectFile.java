@@ -54,59 +54,69 @@ public class ImportPatternWizardPageSelectFile extends WizardPage {
 		setControl(container);
 		container.setLayout(new GridLayout(3, false));
 
-		fileFieldEditor = new FileFieldEditor("fileSelect", "Select File: ", container);
+		fileFieldEditor = new FileFieldEditor("fileSelect", "Select File: ",
+				container);
 		String[] extensions = new String[] { "*.esx" };
 		fileFieldEditor.setFileExtensions(extensions);
-		fileFieldEditor.setPropertyChangeListener(new IPropertyChangeListener(){
+		fileFieldEditor
+				.setPropertyChangeListener(new IPropertyChangeListener() {
 
-			@Override
-			public void propertyChange(PropertyChangeEvent event) {
-				// Assume we are in an invalid state
-				isValidFile = false;
+					@Override
+					public void propertyChange(PropertyChangeEvent event) {
+						// Assume we are in an invalid state
+						isValidFile = false;
 
-				// Check to see if we have a valid esx file
-				File file = new File(fileFieldEditor.getStringValue());
-				if(file.exists()) {
-					try {
-						InputStream inputStream = new FileInputStream(file);
-						byte[] esxFileBytes = EsxUtil.inputStreamToByteArray(inputStream);
+						// Check to see if we have a valid esx file
+						File file = new File(fileFieldEditor.getStringValue());
+						if (file.exists()) {
+							try {
+								InputStream inputStream = new FileInputStream(
+										file);
+								byte[] esxFileBytes = EsxUtil
+										.inputStreamToByteArray(inputStream);
 
-						// Confirm bytes are valid
-						if(EsxUtil.isValidEsxFile(esxFileBytes)) {
-							// Now create the EsxFile
-							EsxFile esxFile = EsxFactory.eINSTANCE.createEsxFile();
-							esxFile.init(esxFileBytes, new NullProgressMonitor());
-							ResourceSet resourceSet = new ResourceSetImpl();
-							URI fileURI = URI.createFileURI(file.getAbsolutePath());
-							Resource resource = resourceSet.createResource(fileURI);
-							resource.getContents().add(esxFile);							
-							isValidFile = true;
-							((ImportPatternWizard)getWizard()).setSrcEsxFile(esxFile);
+								// Confirm bytes are valid
+								if (EsxUtil.isValidEsxFile(esxFileBytes)) {
+									// Now create the EsxFile
+									EsxFile esxFile = EsxFactory.eINSTANCE
+											.createEsxFile();
+									esxFile.init(esxFileBytes,
+											new NullProgressMonitor());
+									ResourceSet resourceSet = new ResourceSetImpl();
+									URI fileURI = URI.createFileURI(file
+											.getAbsolutePath());
+									Resource resource = resourceSet
+											.createResource(fileURI);
+									resource.getContents().add(esxFile);
+									isValidFile = true;
+									((ImportPatternWizard) getWizard())
+											.setSrcEsxFile(esxFile);
+								}
+
+							} catch (Exception exception) {
+								exception.printStackTrace();
+							}
 						}
 
-					} catch (Exception exception) {
-						exception.printStackTrace();
+						if (!isValidFile) {
+							setErrorMessage("Please select a valid .esx file");
+							((ImportPatternWizard) getWizard())
+									.setSrcEsxFile(null);
+						} else {
+							setErrorMessage(null);
+							setMessage("You have selected a valid .esx file. Continue by pressing NEXT.");
+						}
+
+						getWizard().getContainer().updateButtons();
+						getWizard().getContainer().updateMessage();
 					}
-				}
-				
-				if(!isValidFile) {
-					setErrorMessage("Please select a valid .esx file");
-					((ImportPatternWizard)getWizard()).setSrcEsxFile(null);
-				}
-				else {
-					setErrorMessage(null);
-					setMessage("You have selected a valid .esx file. Continue by pressing NEXT.");
-				}
-				
-				getWizard().getContainer().updateButtons();
-				getWizard().getContainer().updateMessage();
-			}});
+				});
 
 	}
-	
+
 	@Override
 	public boolean canFlipToNextPage() {
 		return isValidFile;
 	}
-	
+
 }

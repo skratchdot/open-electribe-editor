@@ -83,11 +83,7 @@ public enum BpmSync implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final BpmSync[] VALUES_ARRAY =
-		new BpmSync[] {
-			OFF,
-			ON,
-		};
+	private static final BpmSync[] VALUES_ARRAY = new BpmSync[] { OFF, ON, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Bpm Sync</b></em>' enumerators.
@@ -95,7 +91,8 @@ public enum BpmSync implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<BpmSync> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<BpmSync> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Bpm Sync</b></em>' literal with the specified literal value.
@@ -137,8 +134,10 @@ public enum BpmSync implements Enumerator {
 	 */
 	public static BpmSync get(int value) {
 		switch (value) {
-			case OFF_VALUE: return OFF;
-			case ON_VALUE: return ON;
+		case OFF_VALUE:
+			return OFF;
+		case ON_VALUE:
+			return ON;
 		}
 		return null;
 	}
@@ -182,7 +181,7 @@ public enum BpmSync implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -191,7 +190,7 @@ public enum BpmSync implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -200,7 +199,7 @@ public enum BpmSync implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

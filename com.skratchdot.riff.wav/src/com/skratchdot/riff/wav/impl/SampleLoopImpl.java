@@ -200,7 +200,9 @@ public class SampleLoopImpl extends EObjectImpl implements SampleLoop {
 		Long oldCuePointID = cuePointID;
 		cuePointID = newCuePointID;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.SAMPLE_LOOP__CUE_POINT_ID, oldCuePointID, cuePointID));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.SAMPLE_LOOP__CUE_POINT_ID, oldCuePointID,
+					cuePointID));
 	}
 
 	/**
@@ -221,7 +223,8 @@ public class SampleLoopImpl extends EObjectImpl implements SampleLoop {
 		Long oldType = type;
 		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.SAMPLE_LOOP__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.SAMPLE_LOOP__TYPE, oldType, type));
 	}
 
 	/**
@@ -242,7 +245,8 @@ public class SampleLoopImpl extends EObjectImpl implements SampleLoop {
 		Long oldStart = start;
 		start = newStart;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.SAMPLE_LOOP__START, oldStart, start));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.SAMPLE_LOOP__START, oldStart, start));
 	}
 
 	/**
@@ -263,7 +267,8 @@ public class SampleLoopImpl extends EObjectImpl implements SampleLoop {
 		Long oldEnd = end;
 		end = newEnd;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.SAMPLE_LOOP__END, oldEnd, end));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.SAMPLE_LOOP__END, oldEnd, end));
 	}
 
 	/**
@@ -284,7 +289,8 @@ public class SampleLoopImpl extends EObjectImpl implements SampleLoop {
 		Long oldFraction = fraction;
 		fraction = newFraction;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.SAMPLE_LOOP__FRACTION, oldFraction, fraction));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.SAMPLE_LOOP__FRACTION, oldFraction, fraction));
 	}
 
 	/**
@@ -305,7 +311,8 @@ public class SampleLoopImpl extends EObjectImpl implements SampleLoop {
 		Long oldPlayCount = playCount;
 		playCount = newPlayCount;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.SAMPLE_LOOP__PLAY_COUNT, oldPlayCount, playCount));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.SAMPLE_LOOP__PLAY_COUNT, oldPlayCount, playCount));
 	}
 
 	/**
@@ -316,18 +323,18 @@ public class SampleLoopImpl extends EObjectImpl implements SampleLoop {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.SAMPLE_LOOP__CUE_POINT_ID:
-				return getCuePointID();
-			case WavPackage.SAMPLE_LOOP__TYPE:
-				return getType();
-			case WavPackage.SAMPLE_LOOP__START:
-				return getStart();
-			case WavPackage.SAMPLE_LOOP__END:
-				return getEnd();
-			case WavPackage.SAMPLE_LOOP__FRACTION:
-				return getFraction();
-			case WavPackage.SAMPLE_LOOP__PLAY_COUNT:
-				return getPlayCount();
+		case WavPackage.SAMPLE_LOOP__CUE_POINT_ID:
+			return getCuePointID();
+		case WavPackage.SAMPLE_LOOP__TYPE:
+			return getType();
+		case WavPackage.SAMPLE_LOOP__START:
+			return getStart();
+		case WavPackage.SAMPLE_LOOP__END:
+			return getEnd();
+		case WavPackage.SAMPLE_LOOP__FRACTION:
+			return getFraction();
+		case WavPackage.SAMPLE_LOOP__PLAY_COUNT:
+			return getPlayCount();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -340,24 +347,24 @@ public class SampleLoopImpl extends EObjectImpl implements SampleLoop {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.SAMPLE_LOOP__CUE_POINT_ID:
-				setCuePointID((Long)newValue);
-				return;
-			case WavPackage.SAMPLE_LOOP__TYPE:
-				setType((Long)newValue);
-				return;
-			case WavPackage.SAMPLE_LOOP__START:
-				setStart((Long)newValue);
-				return;
-			case WavPackage.SAMPLE_LOOP__END:
-				setEnd((Long)newValue);
-				return;
-			case WavPackage.SAMPLE_LOOP__FRACTION:
-				setFraction((Long)newValue);
-				return;
-			case WavPackage.SAMPLE_LOOP__PLAY_COUNT:
-				setPlayCount((Long)newValue);
-				return;
+		case WavPackage.SAMPLE_LOOP__CUE_POINT_ID:
+			setCuePointID((Long) newValue);
+			return;
+		case WavPackage.SAMPLE_LOOP__TYPE:
+			setType((Long) newValue);
+			return;
+		case WavPackage.SAMPLE_LOOP__START:
+			setStart((Long) newValue);
+			return;
+		case WavPackage.SAMPLE_LOOP__END:
+			setEnd((Long) newValue);
+			return;
+		case WavPackage.SAMPLE_LOOP__FRACTION:
+			setFraction((Long) newValue);
+			return;
+		case WavPackage.SAMPLE_LOOP__PLAY_COUNT:
+			setPlayCount((Long) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -370,24 +377,24 @@ public class SampleLoopImpl extends EObjectImpl implements SampleLoop {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.SAMPLE_LOOP__CUE_POINT_ID:
-				setCuePointID(CUE_POINT_ID_EDEFAULT);
-				return;
-			case WavPackage.SAMPLE_LOOP__TYPE:
-				setType(TYPE_EDEFAULT);
-				return;
-			case WavPackage.SAMPLE_LOOP__START:
-				setStart(START_EDEFAULT);
-				return;
-			case WavPackage.SAMPLE_LOOP__END:
-				setEnd(END_EDEFAULT);
-				return;
-			case WavPackage.SAMPLE_LOOP__FRACTION:
-				setFraction(FRACTION_EDEFAULT);
-				return;
-			case WavPackage.SAMPLE_LOOP__PLAY_COUNT:
-				setPlayCount(PLAY_COUNT_EDEFAULT);
-				return;
+		case WavPackage.SAMPLE_LOOP__CUE_POINT_ID:
+			setCuePointID(CUE_POINT_ID_EDEFAULT);
+			return;
+		case WavPackage.SAMPLE_LOOP__TYPE:
+			setType(TYPE_EDEFAULT);
+			return;
+		case WavPackage.SAMPLE_LOOP__START:
+			setStart(START_EDEFAULT);
+			return;
+		case WavPackage.SAMPLE_LOOP__END:
+			setEnd(END_EDEFAULT);
+			return;
+		case WavPackage.SAMPLE_LOOP__FRACTION:
+			setFraction(FRACTION_EDEFAULT);
+			return;
+		case WavPackage.SAMPLE_LOOP__PLAY_COUNT:
+			setPlayCount(PLAY_COUNT_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -400,18 +407,24 @@ public class SampleLoopImpl extends EObjectImpl implements SampleLoop {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.SAMPLE_LOOP__CUE_POINT_ID:
-				return CUE_POINT_ID_EDEFAULT == null ? cuePointID != null : !CUE_POINT_ID_EDEFAULT.equals(cuePointID);
-			case WavPackage.SAMPLE_LOOP__TYPE:
-				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
-			case WavPackage.SAMPLE_LOOP__START:
-				return START_EDEFAULT == null ? start != null : !START_EDEFAULT.equals(start);
-			case WavPackage.SAMPLE_LOOP__END:
-				return END_EDEFAULT == null ? end != null : !END_EDEFAULT.equals(end);
-			case WavPackage.SAMPLE_LOOP__FRACTION:
-				return FRACTION_EDEFAULT == null ? fraction != null : !FRACTION_EDEFAULT.equals(fraction);
-			case WavPackage.SAMPLE_LOOP__PLAY_COUNT:
-				return PLAY_COUNT_EDEFAULT == null ? playCount != null : !PLAY_COUNT_EDEFAULT.equals(playCount);
+		case WavPackage.SAMPLE_LOOP__CUE_POINT_ID:
+			return CUE_POINT_ID_EDEFAULT == null ? cuePointID != null
+					: !CUE_POINT_ID_EDEFAULT.equals(cuePointID);
+		case WavPackage.SAMPLE_LOOP__TYPE:
+			return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT
+					.equals(type);
+		case WavPackage.SAMPLE_LOOP__START:
+			return START_EDEFAULT == null ? start != null : !START_EDEFAULT
+					.equals(start);
+		case WavPackage.SAMPLE_LOOP__END:
+			return END_EDEFAULT == null ? end != null : !END_EDEFAULT
+					.equals(end);
+		case WavPackage.SAMPLE_LOOP__FRACTION:
+			return FRACTION_EDEFAULT == null ? fraction != null
+					: !FRACTION_EDEFAULT.equals(fraction);
+		case WavPackage.SAMPLE_LOOP__PLAY_COUNT:
+			return PLAY_COUNT_EDEFAULT == null ? playCount != null
+					: !PLAY_COUNT_EDEFAULT.equals(playCount);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -423,7 +436,8 @@ public class SampleLoopImpl extends EObjectImpl implements SampleLoop {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (cuePointID: ");

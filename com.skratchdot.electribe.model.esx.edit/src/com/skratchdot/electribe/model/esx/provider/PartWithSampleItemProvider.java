@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.PartWithSample;
 
@@ -44,10 +43,10 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PartWithSampleItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class PartWithSampleItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -85,19 +84,16 @@ public class PartWithSampleItemProvider
 	 * @generated
 	 */
 	protected void addReversePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithSample_reverse_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithSample_reverse_feature", "_UI_PartWithSample_type"),
-				 EsxPackage.Literals.PART_WITH_SAMPLE__REVERSE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithSample_reverse_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithSample_reverse_feature",
+						"_UI_PartWithSample_type"),
+				EsxPackage.Literals.PART_WITH_SAMPLE__REVERSE, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -107,19 +103,17 @@ public class PartWithSampleItemProvider
 	 * @generated
 	 */
 	protected void addSampleLabelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithSample_sampleLabel_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithSample_sampleLabel_feature", "_UI_PartWithSample_type"),
-				 EsxPackage.Literals.PART_WITH_SAMPLE__SAMPLE_LABEL,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithSample_sampleLabel_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithSample_sampleLabel_feature",
+						"_UI_PartWithSample_type"),
+				EsxPackage.Literals.PART_WITH_SAMPLE__SAMPLE_LABEL, false,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -129,19 +123,17 @@ public class PartWithSampleItemProvider
 	 * @generated
 	 */
 	protected void addSamplePointerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithSample_samplePointer_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithSample_samplePointer_feature", "_UI_PartWithSample_type"),
-				 EsxPackage.Literals.PART_WITH_SAMPLE__SAMPLE_POINTER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithSample_samplePointer_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithSample_samplePointer_feature",
+						"_UI_PartWithSample_type"),
+				EsxPackage.Literals.PART_WITH_SAMPLE__SAMPLE_POINTER, true,
+				false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -151,19 +143,18 @@ public class PartWithSampleItemProvider
 	 * @generated
 	 */
 	protected void addStartPointPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithSample_startPoint_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithSample_startPoint_feature", "_UI_PartWithSample_type"),
-				 EsxPackage.Literals.PART_WITH_SAMPLE__START_POINT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_PartWithSample_startPoint_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_PartWithSample_startPoint_feature",
+								"_UI_PartWithSample_type"),
+						EsxPackage.Literals.PART_WITH_SAMPLE__START_POINT,
+						true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -173,19 +164,19 @@ public class PartWithSampleItemProvider
 	 * @generated
 	 */
 	protected void addReservedBitsAfterReversePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithSample_reservedBitsAfterReverse_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithSample_reservedBitsAfterReverse_feature", "_UI_PartWithSample_type"),
-				 EsxPackage.Literals.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_PartWithSample_reservedBitsAfterReverse_feature"),
+						getString(
+								"_UI_PropertyDescriptor_description",
+								"_UI_PartWithSample_reservedBitsAfterReverse_feature",
+								"_UI_PartWithSample_type"),
+						EsxPackage.Literals.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE,
+						true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -196,11 +187,10 @@ public class PartWithSampleItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Reverse labelValue = ((PartWithSample)object).getReverse();
+		Reverse labelValue = ((PartWithSample) object).getReverse();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_PartWithSample_type") :
-			getString("_UI_PartWithSample_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_PartWithSample_type")
+				: getString("_UI_PartWithSample_type") + " " + label;
 	}
 
 	/**
@@ -215,13 +205,14 @@ public class PartWithSampleItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(PartWithSample.class)) {
-			case EsxPackage.PART_WITH_SAMPLE__REVERSE:
-			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL:
-			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER:
-			case EsxPackage.PART_WITH_SAMPLE__START_POINT:
-			case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case EsxPackage.PART_WITH_SAMPLE__REVERSE:
+		case EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL:
+		case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER:
+		case EsxPackage.PART_WITH_SAMPLE__START_POINT:
+		case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -234,7 +225,8 @@ public class PartWithSampleItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

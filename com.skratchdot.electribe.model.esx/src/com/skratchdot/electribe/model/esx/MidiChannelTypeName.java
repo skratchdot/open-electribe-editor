@@ -108,12 +108,8 @@ public enum MidiChannelTypeName implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final MidiChannelTypeName[] VALUES_ARRAY =
-		new MidiChannelTypeName[] {
-			NAME_00,
-			NAME_01,
-			NAME_02,
-		};
+	private static final MidiChannelTypeName[] VALUES_ARRAY = new MidiChannelTypeName[] {
+			NAME_00, NAME_01, NAME_02, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Midi Channel Type Name</b></em>' enumerators.
@@ -121,7 +117,8 @@ public enum MidiChannelTypeName implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<MidiChannelTypeName> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<MidiChannelTypeName> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Midi Channel Type Name</b></em>' literal with the specified literal value.
@@ -163,9 +160,12 @@ public enum MidiChannelTypeName implements Enumerator {
 	 */
 	public static MidiChannelTypeName get(int value) {
 		switch (value) {
-			case NAME_00_VALUE: return NAME_00;
-			case NAME_01_VALUE: return NAME_01;
-			case NAME_02_VALUE: return NAME_02;
+		case NAME_00_VALUE:
+			return NAME_00;
+		case NAME_01_VALUE:
+			return NAME_01;
+		case NAME_02_VALUE:
+			return NAME_02;
 		}
 		return null;
 	}
@@ -209,7 +209,7 @@ public enum MidiChannelTypeName implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -218,7 +218,7 @@ public enum MidiChannelTypeName implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -227,7 +227,7 @@ public enum MidiChannelTypeName implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -240,5 +240,5 @@ public enum MidiChannelTypeName implements Enumerator {
 	public String toString() {
 		return literal;
 	}
-	
+
 } //MidiChannelTypeName

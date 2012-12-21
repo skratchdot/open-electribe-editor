@@ -92,7 +92,9 @@ public class SequenceDataImpl extends EObjectImpl implements SequenceData {
 		byte[] oldSequenceData = sequenceData;
 		sequenceData = newSequenceData;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SEQUENCE_DATA__SEQUENCE_DATA, oldSequenceData, sequenceData));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SEQUENCE_DATA__SEQUENCE_DATA, oldSequenceData,
+					sequenceData));
 	}
 
 	/**
@@ -103,8 +105,8 @@ public class SequenceDataImpl extends EObjectImpl implements SequenceData {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.SEQUENCE_DATA__SEQUENCE_DATA:
-				return getSequenceData();
+		case EsxPackage.SEQUENCE_DATA__SEQUENCE_DATA:
+			return getSequenceData();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -117,9 +119,9 @@ public class SequenceDataImpl extends EObjectImpl implements SequenceData {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.SEQUENCE_DATA__SEQUENCE_DATA:
-				setSequenceData((byte[])newValue);
-				return;
+		case EsxPackage.SEQUENCE_DATA__SEQUENCE_DATA:
+			setSequenceData((byte[]) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -132,9 +134,9 @@ public class SequenceDataImpl extends EObjectImpl implements SequenceData {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SEQUENCE_DATA__SEQUENCE_DATA:
-				setSequenceData(SEQUENCE_DATA_EDEFAULT);
-				return;
+		case EsxPackage.SEQUENCE_DATA__SEQUENCE_DATA:
+			setSequenceData(SEQUENCE_DATA_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -147,8 +149,9 @@ public class SequenceDataImpl extends EObjectImpl implements SequenceData {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SEQUENCE_DATA__SEQUENCE_DATA:
-				return SEQUENCE_DATA_EDEFAULT == null ? sequenceData != null : !SEQUENCE_DATA_EDEFAULT.equals(sequenceData);
+		case EsxPackage.SEQUENCE_DATA__SEQUENCE_DATA:
+			return SEQUENCE_DATA_EDEFAULT == null ? sequenceData != null
+					: !SEQUENCE_DATA_EDEFAULT.equals(sequenceData);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -160,7 +163,8 @@ public class SequenceDataImpl extends EObjectImpl implements SequenceData {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (sequenceData: ");

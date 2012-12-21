@@ -37,7 +37,8 @@ import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
  *
  * @generated
  */
-public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEventKeyboardNote {
+public class SongEventKeyboardNoteImpl extends SongEventImpl implements
+		SongEventKeyboardNote {
 	/**
 	 * The default value of the '{@link #getPart() <em>Part</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -142,12 +143,8 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 
 	@Override
 	public String getEventInfo() {
-		return this.getPart().getLiteral() + 
-			" [note=" + 
-			this.getNoteNumber() + 
-			",length=" +
-			this.getLength() +
-			"]";
+		return this.getPart().getLiteral() + " [note=" + this.getNoteNumber()
+				+ ",length=" + this.getLength() + "]";
 	}
 
 	@Override
@@ -173,7 +170,8 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 		SongEventPart oldPart = part;
 		part = newPart == null ? PART_EDEFAULT : newPart;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT_KEYBOARD_NOTE__PART, oldPart, part));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_EVENT_KEYBOARD_NOTE__PART, oldPart, part));
 	}
 
 	/**
@@ -194,7 +192,9 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 		short oldLength = length;
 		length = newLength;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT_KEYBOARD_NOTE__LENGTH, oldLength, length));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_EVENT_KEYBOARD_NOTE__LENGTH, oldLength,
+					length));
 	}
 
 	/**
@@ -215,7 +215,9 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 		byte oldNoteNumber = noteNumber;
 		noteNumber = newNoteNumber;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER, oldNoteNumber, noteNumber));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER,
+					oldNoteNumber, noteNumber));
 	}
 
 	/**
@@ -224,7 +226,8 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_SONG_EVENT);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				EsxUtil.CHUNKSIZE_SONG_EVENT);
 		// byte 0
 		buf.putByte(this.getPositionNumber());
 		// byte 1
@@ -251,12 +254,12 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__PART:
-				return getPart();
-			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__LENGTH:
-				return getLength();
-			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER:
-				return getNoteNumber();
+		case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__PART:
+			return getPart();
+		case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__LENGTH:
+			return getLength();
+		case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER:
+			return getNoteNumber();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -269,15 +272,15 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__PART:
-				setPart((SongEventPart)newValue);
-				return;
-			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__LENGTH:
-				setLength((Short)newValue);
-				return;
-			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER:
-				setNoteNumber((Byte)newValue);
-				return;
+		case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__PART:
+			setPart((SongEventPart) newValue);
+			return;
+		case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__LENGTH:
+			setLength((Short) newValue);
+			return;
+		case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER:
+			setNoteNumber((Byte) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -290,15 +293,15 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__PART:
-				setPart(PART_EDEFAULT);
-				return;
-			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__LENGTH:
-				setLength(LENGTH_EDEFAULT);
-				return;
-			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER:
-				setNoteNumber(NOTE_NUMBER_EDEFAULT);
-				return;
+		case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__PART:
+			setPart(PART_EDEFAULT);
+			return;
+		case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__LENGTH:
+			setLength(LENGTH_EDEFAULT);
+			return;
+		case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER:
+			setNoteNumber(NOTE_NUMBER_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -311,12 +314,12 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__PART:
-				return part != PART_EDEFAULT;
-			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__LENGTH:
-				return length != LENGTH_EDEFAULT;
-			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER:
-				return noteNumber != NOTE_NUMBER_EDEFAULT;
+		case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__PART:
+			return part != PART_EDEFAULT;
+		case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__LENGTH:
+			return length != LENGTH_EDEFAULT;
+		case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER:
+			return noteNumber != NOTE_NUMBER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -330,8 +333,10 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == SongEventWithPart.class) {
 			switch (derivedFeatureID) {
-				case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__PART: return EsxPackage.SONG_EVENT_WITH_PART__PART;
-				default: return -1;
+			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE__PART:
+				return EsxPackage.SONG_EVENT_WITH_PART__PART;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
@@ -346,8 +351,10 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == SongEventWithPart.class) {
 			switch (baseFeatureID) {
-				case EsxPackage.SONG_EVENT_WITH_PART__PART: return EsxPackage.SONG_EVENT_KEYBOARD_NOTE__PART;
-				default: return -1;
+			case EsxPackage.SONG_EVENT_WITH_PART__PART:
+				return EsxPackage.SONG_EVENT_KEYBOARD_NOTE__PART;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
@@ -360,7 +367,8 @@ public class SongEventKeyboardNoteImpl extends SongEventImpl implements SongEven
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (part: ");

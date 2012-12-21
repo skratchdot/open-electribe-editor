@@ -76,13 +76,10 @@ public class WavSwitch<T> {
 	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
-		}
-		else {
+		} else {
 			List<EClass> eSuperTypes = theEClass.getESuperTypes();
-			return
-				eSuperTypes.isEmpty() ?
-					defaultCase(theEObject) :
-					doSwitch(eSuperTypes.get(0), theEObject);
+			return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(
+					eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -95,177 +92,223 @@ public class WavSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case WavPackage.RIFF_WAVE: {
-				RIFFWave riffWave = (RIFFWave)theEObject;
-				T result = caseRIFFWave(riffWave);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.CHANNEL: {
-				Channel channel = (Channel)theEObject;
-				T result = caseChannel(channel);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.CHUNK: {
-				Chunk chunk = (Chunk)theEObject;
-				T result = caseChunk(chunk);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.CHUNK_CUE: {
-				ChunkCue chunkCue = (ChunkCue)theEObject;
-				T result = caseChunkCue(chunkCue);
-				if (result == null) result = caseChunk(chunkCue);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.CHUNK_DATA: {
-				ChunkData chunkData = (ChunkData)theEObject;
-				T result = caseChunkData(chunkData);
-				if (result == null) result = caseChunk(chunkData);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.CHUNK_DATA_LIST: {
-				ChunkDataList chunkDataList = (ChunkDataList)theEObject;
-				T result = caseChunkDataList(chunkDataList);
-				if (result == null) result = caseChunk(chunkDataList);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.CHUNK_DATA_LIST_TYPE: {
-				ChunkDataListType chunkDataListType = (ChunkDataListType)theEObject;
-				T result = caseChunkDataListType(chunkDataListType);
-				if (result == null) result = caseChunk(chunkDataListType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABEL: {
-				ChunkDataListTypeLabel chunkDataListTypeLabel = (ChunkDataListTypeLabel)theEObject;
-				T result = caseChunkDataListTypeLabel(chunkDataListTypeLabel);
-				if (result == null) result = caseChunkDataListType(chunkDataListTypeLabel);
-				if (result == null) result = caseChunk(chunkDataListTypeLabel);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT: {
-				ChunkDataListTypeLabeledText chunkDataListTypeLabeledText = (ChunkDataListTypeLabeledText)theEObject;
-				T result = caseChunkDataListTypeLabeledText(chunkDataListTypeLabeledText);
-				if (result == null) result = caseChunkDataListType(chunkDataListTypeLabeledText);
-				if (result == null) result = caseChunk(chunkDataListTypeLabeledText);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.CHUNK_DATA_LIST_TYPE_NOTE: {
-				ChunkDataListTypeNote chunkDataListTypeNote = (ChunkDataListTypeNote)theEObject;
-				T result = caseChunkDataListTypeNote(chunkDataListTypeNote);
-				if (result == null) result = caseChunkDataListType(chunkDataListTypeNote);
-				if (result == null) result = caseChunk(chunkDataListTypeNote);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.CHUNK_FACT: {
-				ChunkFact chunkFact = (ChunkFact)theEObject;
-				T result = caseChunkFact(chunkFact);
-				if (result == null) result = caseChunk(chunkFact);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.CHUNK_FORMAT: {
-				ChunkFormat chunkFormat = (ChunkFormat)theEObject;
-				T result = caseChunkFormat(chunkFormat);
-				if (result == null) result = caseChunk(chunkFormat);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.CHUNK_INSTRUMENT: {
-				ChunkInstrument chunkInstrument = (ChunkInstrument)theEObject;
-				T result = caseChunkInstrument(chunkInstrument);
-				if (result == null) result = caseChunk(chunkInstrument);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.CHUNK_PLAY_LIST: {
-				ChunkPlayList chunkPlayList = (ChunkPlayList)theEObject;
-				T result = caseChunkPlayList(chunkPlayList);
-				if (result == null) result = caseChunk(chunkPlayList);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.CHUNK_SAMPLER: {
-				ChunkSampler chunkSampler = (ChunkSampler)theEObject;
-				T result = caseChunkSampler(chunkSampler);
-				if (result == null) result = caseChunk(chunkSampler);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.CHUNK_SILENT: {
-				ChunkSilent chunkSilent = (ChunkSilent)theEObject;
-				T result = caseChunkSilent(chunkSilent);
-				if (result == null) result = caseChunk(chunkSilent);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.CHUNK_UNKNOWN: {
-				ChunkUnknown chunkUnknown = (ChunkUnknown)theEObject;
-				T result = caseChunkUnknown(chunkUnknown);
-				if (result == null) result = caseChunk(chunkUnknown);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.CHUNK_WAVE_LIST: {
-				ChunkWaveList chunkWaveList = (ChunkWaveList)theEObject;
-				T result = caseChunkWaveList(chunkWaveList);
-				if (result == null) result = caseChunk(chunkWaveList);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.CUE_POINT: {
-				CuePoint cuePoint = (CuePoint)theEObject;
-				T result = caseCuePoint(cuePoint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.PARSE_CHUNK_EXCEPTION: {
-				ParseChunkException parseChunkException = (ParseChunkException)theEObject;
-				T result = caseParseChunkException(parseChunkException);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.SAMPLE_DATA: {
-				SampleData sampleData = (SampleData)theEObject;
-				T result = caseSampleData(sampleData);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.SAMPLE_DATA8_BIT: {
-				SampleData8Bit sampleData8Bit = (SampleData8Bit)theEObject;
-				T result = caseSampleData8Bit(sampleData8Bit);
-				if (result == null) result = caseSampleData(sampleData8Bit);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.SAMPLE_DATA16_BIT: {
-				SampleData16Bit sampleData16Bit = (SampleData16Bit)theEObject;
-				T result = caseSampleData16Bit(sampleData16Bit);
-				if (result == null) result = caseSampleData(sampleData16Bit);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.SAMPLE_LOOP: {
-				SampleLoop sampleLoop = (SampleLoop)theEObject;
-				T result = caseSampleLoop(sampleLoop);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WavPackage.SEGMENT: {
-				Segment segment = (Segment)theEObject;
-				T result = caseSegment(segment);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			default: return defaultCase(theEObject);
+		case WavPackage.RIFF_WAVE: {
+			RIFFWave riffWave = (RIFFWave) theEObject;
+			T result = caseRIFFWave(riffWave);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.CHANNEL: {
+			Channel channel = (Channel) theEObject;
+			T result = caseChannel(channel);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.CHUNK: {
+			Chunk chunk = (Chunk) theEObject;
+			T result = caseChunk(chunk);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.CHUNK_CUE: {
+			ChunkCue chunkCue = (ChunkCue) theEObject;
+			T result = caseChunkCue(chunkCue);
+			if (result == null)
+				result = caseChunk(chunkCue);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.CHUNK_DATA: {
+			ChunkData chunkData = (ChunkData) theEObject;
+			T result = caseChunkData(chunkData);
+			if (result == null)
+				result = caseChunk(chunkData);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.CHUNK_DATA_LIST: {
+			ChunkDataList chunkDataList = (ChunkDataList) theEObject;
+			T result = caseChunkDataList(chunkDataList);
+			if (result == null)
+				result = caseChunk(chunkDataList);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.CHUNK_DATA_LIST_TYPE: {
+			ChunkDataListType chunkDataListType = (ChunkDataListType) theEObject;
+			T result = caseChunkDataListType(chunkDataListType);
+			if (result == null)
+				result = caseChunk(chunkDataListType);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABEL: {
+			ChunkDataListTypeLabel chunkDataListTypeLabel = (ChunkDataListTypeLabel) theEObject;
+			T result = caseChunkDataListTypeLabel(chunkDataListTypeLabel);
+			if (result == null)
+				result = caseChunkDataListType(chunkDataListTypeLabel);
+			if (result == null)
+				result = caseChunk(chunkDataListTypeLabel);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.CHUNK_DATA_LIST_TYPE_LABELED_TEXT: {
+			ChunkDataListTypeLabeledText chunkDataListTypeLabeledText = (ChunkDataListTypeLabeledText) theEObject;
+			T result = caseChunkDataListTypeLabeledText(chunkDataListTypeLabeledText);
+			if (result == null)
+				result = caseChunkDataListType(chunkDataListTypeLabeledText);
+			if (result == null)
+				result = caseChunk(chunkDataListTypeLabeledText);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.CHUNK_DATA_LIST_TYPE_NOTE: {
+			ChunkDataListTypeNote chunkDataListTypeNote = (ChunkDataListTypeNote) theEObject;
+			T result = caseChunkDataListTypeNote(chunkDataListTypeNote);
+			if (result == null)
+				result = caseChunkDataListType(chunkDataListTypeNote);
+			if (result == null)
+				result = caseChunk(chunkDataListTypeNote);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.CHUNK_FACT: {
+			ChunkFact chunkFact = (ChunkFact) theEObject;
+			T result = caseChunkFact(chunkFact);
+			if (result == null)
+				result = caseChunk(chunkFact);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.CHUNK_FORMAT: {
+			ChunkFormat chunkFormat = (ChunkFormat) theEObject;
+			T result = caseChunkFormat(chunkFormat);
+			if (result == null)
+				result = caseChunk(chunkFormat);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.CHUNK_INSTRUMENT: {
+			ChunkInstrument chunkInstrument = (ChunkInstrument) theEObject;
+			T result = caseChunkInstrument(chunkInstrument);
+			if (result == null)
+				result = caseChunk(chunkInstrument);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.CHUNK_PLAY_LIST: {
+			ChunkPlayList chunkPlayList = (ChunkPlayList) theEObject;
+			T result = caseChunkPlayList(chunkPlayList);
+			if (result == null)
+				result = caseChunk(chunkPlayList);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.CHUNK_SAMPLER: {
+			ChunkSampler chunkSampler = (ChunkSampler) theEObject;
+			T result = caseChunkSampler(chunkSampler);
+			if (result == null)
+				result = caseChunk(chunkSampler);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.CHUNK_SILENT: {
+			ChunkSilent chunkSilent = (ChunkSilent) theEObject;
+			T result = caseChunkSilent(chunkSilent);
+			if (result == null)
+				result = caseChunk(chunkSilent);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.CHUNK_UNKNOWN: {
+			ChunkUnknown chunkUnknown = (ChunkUnknown) theEObject;
+			T result = caseChunkUnknown(chunkUnknown);
+			if (result == null)
+				result = caseChunk(chunkUnknown);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.CHUNK_WAVE_LIST: {
+			ChunkWaveList chunkWaveList = (ChunkWaveList) theEObject;
+			T result = caseChunkWaveList(chunkWaveList);
+			if (result == null)
+				result = caseChunk(chunkWaveList);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.CUE_POINT: {
+			CuePoint cuePoint = (CuePoint) theEObject;
+			T result = caseCuePoint(cuePoint);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.PARSE_CHUNK_EXCEPTION: {
+			ParseChunkException parseChunkException = (ParseChunkException) theEObject;
+			T result = caseParseChunkException(parseChunkException);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.SAMPLE_DATA: {
+			SampleData sampleData = (SampleData) theEObject;
+			T result = caseSampleData(sampleData);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.SAMPLE_DATA8_BIT: {
+			SampleData8Bit sampleData8Bit = (SampleData8Bit) theEObject;
+			T result = caseSampleData8Bit(sampleData8Bit);
+			if (result == null)
+				result = caseSampleData(sampleData8Bit);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.SAMPLE_DATA16_BIT: {
+			SampleData16Bit sampleData16Bit = (SampleData16Bit) theEObject;
+			T result = caseSampleData16Bit(sampleData16Bit);
+			if (result == null)
+				result = caseSampleData(sampleData16Bit);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.SAMPLE_LOOP: {
+			SampleLoop sampleLoop = (SampleLoop) theEObject;
+			T result = caseSampleLoop(sampleLoop);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case WavPackage.SEGMENT: {
+			Segment segment = (Segment) theEObject;
+			T result = caseSegment(segment);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		default:
+			return defaultCase(theEObject);
 		}
 	}
 
@@ -400,7 +443,8 @@ public class WavSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseChunkDataListTypeLabeledText(ChunkDataListTypeLabeledText object) {
+	public T caseChunkDataListTypeLabeledText(
+			ChunkDataListTypeLabeledText object) {
 		return null;
 	}
 

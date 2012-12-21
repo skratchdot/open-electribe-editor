@@ -161,9 +161,10 @@ public class AudioThread implements Runnable {
 			if (bytesToRead > 0) {
 				// Only play until end (if end is specified)
 				boolean isEnd = false;
-				if(frameEnd > 0) {
-					int numBytesUntilEnd = (frameEnd - frameCurrent) * frameSize;
-					if(bytesToRead > numBytesUntilEnd) {
+				if (frameEnd > 0) {
+					int numBytesUntilEnd = (frameEnd - frameCurrent)
+							* frameSize;
+					if (bytesToRead > numBytesUntilEnd) {
 						bytesToRead = numBytesUntilEnd;
 					}
 					if (bytesToRead <= 0) {
@@ -197,7 +198,8 @@ public class AudioThread implements Runnable {
 			int bytesToRead = Math.min(line.available(), BUFFER_SIZE);
 			if (bytesToRead > 0) {
 				// calculate number of frames to skip
-				if (isLoop && !isFirstLoop && frameLoopStart >= 0 && frameLoopStart < frameEnd) {
+				if (isLoop && !isFirstLoop && frameLoopStart >= 0
+						&& frameLoopStart < frameEnd) {
 					framesToSkip = frameLoopStart;
 				} else if (frameStart > 0) {
 					framesToSkip = frameStart;

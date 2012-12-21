@@ -159,5 +159,4 @@ public interface RIFFWave extends EObject {
 	 */
 	byte[] toByteArray() throws RiffWaveException;
 
-
 } // RIFFWave

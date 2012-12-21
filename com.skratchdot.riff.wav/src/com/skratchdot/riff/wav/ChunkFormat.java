@@ -14,8 +14,6 @@
  */
 package com.skratchdot.riff.wav;
 
-
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Chunk Format</b></em>'.

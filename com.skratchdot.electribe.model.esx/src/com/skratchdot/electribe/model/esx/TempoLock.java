@@ -83,11 +83,8 @@ public enum TempoLock implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final TempoLock[] VALUES_ARRAY =
-		new TempoLock[] {
-			TEMPO_LOCK_OFF,
-			TEMPO_LOCK_ON,
-		};
+	private static final TempoLock[] VALUES_ARRAY = new TempoLock[] {
+			TEMPO_LOCK_OFF, TEMPO_LOCK_ON, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Tempo Lock</b></em>' enumerators.
@@ -95,7 +92,8 @@ public enum TempoLock implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<TempoLock> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<TempoLock> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Tempo Lock</b></em>' literal with the specified literal value.
@@ -137,8 +135,10 @@ public enum TempoLock implements Enumerator {
 	 */
 	public static TempoLock get(int value) {
 		switch (value) {
-			case TEMPO_LOCK_OFF_VALUE: return TEMPO_LOCK_OFF;
-			case TEMPO_LOCK_ON_VALUE: return TEMPO_LOCK_ON;
+		case TEMPO_LOCK_OFF_VALUE:
+			return TEMPO_LOCK_OFF;
+		case TEMPO_LOCK_ON_VALUE:
+			return TEMPO_LOCK_ON;
 		}
 		return null;
 	}
@@ -182,7 +182,7 @@ public enum TempoLock implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -191,7 +191,7 @@ public enum TempoLock implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -200,7 +200,7 @@ public enum TempoLock implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -213,5 +213,5 @@ public enum TempoLock implements Enumerator {
 	public String toString() {
 		return literal;
 	}
-	
+
 } //TempoLock

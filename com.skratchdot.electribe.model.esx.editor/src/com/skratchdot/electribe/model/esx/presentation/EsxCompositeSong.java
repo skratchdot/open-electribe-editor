@@ -81,23 +81,24 @@ public class EsxCompositeSong extends EsxComposite {
 	 * @param parentComposite
 	 * @param style
 	 */
-	public EsxCompositeSong(EsxEditorPart parentPart, Composite parentComposite, int style) {
+	public EsxCompositeSong(EsxEditorPart parentPart,
+			Composite parentComposite, int style) {
 		super(parentPart, parentComposite, style);
 		this.parentPart = parentPart;
 
 		setLayout(new FillLayout(SWT.HORIZONTAL));
-		
-		scrolledComposite = new ScrolledComposite(this, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+
+		scrolledComposite = new ScrolledComposite(this, SWT.BORDER
+				| SWT.H_SCROLL | SWT.V_SCROLL);
 		scrolledComposite.setExpandHorizontal(true);
 		scrolledComposite.setExpandVertical(true);
-		
+
 		compositeMain = new Composite(scrolledComposite, SWT.NONE);
 		RowLayout rowLayout = new RowLayout(SWT.VERTICAL);
 		rowLayout.wrap = false;
 		rowLayout.fill = true;
 		compositeMain.setLayout(rowLayout);
 
-		
 		/* ======================== */
 		/* ROW 1					*/
 		/* ======================== */
@@ -108,9 +109,12 @@ public class EsxCompositeSong extends EsxComposite {
 		groupSelectedSongs.setText("Selected Songs");
 		groupSelectedSongs.setLayout(new GridLayout(2, false));
 
-		textSelectedTotal = this.createGridData2ColumnTextLabel(groupSelectedSongs, "Total # Selected");
-		textSelectedNotEmpty = this.createGridData2ColumnTextLabel(groupSelectedSongs, "# of Selected (Not Empty)");
-		textSelectedEmpty = this.createGridData2ColumnTextLabel(groupSelectedSongs, "# of Selected (Empty)");
+		textSelectedTotal = this.createGridData2ColumnTextLabel(
+				groupSelectedSongs, "Total # Selected");
+		textSelectedNotEmpty = this.createGridData2ColumnTextLabel(
+				groupSelectedSongs, "# of Selected (Not Empty)");
+		textSelectedEmpty = this.createGridData2ColumnTextLabel(
+				groupSelectedSongs, "# of Selected (Empty)");
 
 		/* ======================== */
 		/* ROW 2					*/
@@ -123,13 +127,18 @@ public class EsxCompositeSong extends EsxComposite {
 		groupSongName.setLayout(new GridLayout(4, false));
 
 		textName = this.createGridData2ColumnTextLabel(groupSongName, "Name");
-		inputName = this.createGridData2ColumnTextInput(groupSongName, "Name", new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(songs, EsxPackage.Literals.SONG__NAME, inputName.getText(), appendName.getSelection(), 8);
-			}
-		});
-		appendName = this.createGridData4ColumnCheckButton(groupSongName, "Append # when multiple songs are selected", true);
+		inputName = this.createGridData2ColumnTextInput(groupSongName, "Name",
+				new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(songs,
+								EsxPackage.Literals.SONG__NAME,
+								inputName.getText(), appendName.getSelection(),
+								8);
+					}
+				});
+		appendName = this.createGridData4ColumnCheckButton(groupSongName,
+				"Append # when multiple songs are selected", true);
 
 		/* ======================== */
 		/* ROW 3					*/
@@ -141,51 +150,80 @@ public class EsxCompositeSong extends EsxComposite {
 		groupGeneralInfo.setText("General Info");
 		groupGeneralInfo.setLayout(new GridLayout(4, false));
 
-		textTempo = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Tempo");
-		inputTempo = this.createGridData2ColumnTextInput(groupGeneralInfo, "Tempo", new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(
-						getListOfEObjectsWithinEObject(songs, EsxPackage.Literals.SONG__TEMPO, -1),
-						EsxPackage.Literals.TEMPO__VALUE,
-						Float.parseFloat(inputTempo.getText()),
-						false,
-						-1
-					);
-			}
-		});
-		textTempoLock = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Tempo Lock");
-		comboTempoLock = this.createGridData2ColumnComboInput(groupGeneralInfo, "Tempo Lock", this.getLiteralStrings(TempoLock.values()) , new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(songs, EsxPackage.Literals.SONG__TEMPO_LOCK, TempoLock.get(comboTempoLock.getSelectionIndex()), false, -1);
-			}
-		});
-		textSongLength = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Song Length");
-		comboSongLength = this.createGridData2ColumnComboInput(groupGeneralInfo, "Song Length", this.getLiteralStrings(SongLength.values()) , new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(songs, EsxPackage.Literals.SONG__SONG_LENGTH, SongLength.get(comboSongLength.getSelectionIndex()), false, -1);
-			}
-		});
+		textTempo = this.createGridData2ColumnTextLabel(groupGeneralInfo,
+				"Tempo");
+		inputTempo = this.createGridData2ColumnTextInput(groupGeneralInfo,
+				"Tempo", new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(
+								getListOfEObjectsWithinEObject(songs,
+										EsxPackage.Literals.SONG__TEMPO, -1),
+								EsxPackage.Literals.TEMPO__VALUE, Float
+										.parseFloat(inputTempo.getText()),
+								false, -1);
+					}
+				});
+		textTempoLock = this.createGridData2ColumnTextLabel(groupGeneralInfo,
+				"Tempo Lock");
+		comboTempoLock = this.createGridData2ColumnComboInput(groupGeneralInfo,
+				"Tempo Lock", this.getLiteralStrings(TempoLock.values()),
+				new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(songs,
+								EsxPackage.Literals.SONG__TEMPO_LOCK,
+								TempoLock.get(comboTempoLock
+										.getSelectionIndex()), false, -1);
+					}
+				});
+		textSongLength = this.createGridData2ColumnTextLabel(groupGeneralInfo,
+				"Song Length");
+		comboSongLength = this.createGridData2ColumnComboInput(
+				groupGeneralInfo, "Song Length",
+				this.getLiteralStrings(SongLength.values()),
+				new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(songs,
+								EsxPackage.Literals.SONG__SONG_LENGTH,
+								SongLength.get(comboSongLength
+										.getSelectionIndex()), false, -1);
+					}
+				});
 
-		textMuteHold = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Mute Hold");
-		comboMuteHold = this.createGridData2ColumnComboInput(groupGeneralInfo, "Mute Hold", this.getLiteralStrings(MuteHold.values()) , new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(songs, EsxPackage.Literals.SONG__MUTE_HOLD, MuteHold.get(comboMuteHold.getSelectionIndex()), false, -1);
-			}
-		});
-		textNextSongNumber = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Next Song Number");
-		comboNextSongNumber = this.createGridData2ColumnComboInput(groupGeneralInfo, "Next Song Number", this.getLiteralStrings(NextSongNumber.values()) , new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(songs, EsxPackage.Literals.SONG__NEXT_SONG_NUMBER, NextSongNumber.get(comboNextSongNumber.getSelectionIndex()), false, -1);
-			}
-		});
+		textMuteHold = this.createGridData2ColumnTextLabel(groupGeneralInfo,
+				"Mute Hold");
+		comboMuteHold = this.createGridData2ColumnComboInput(groupGeneralInfo,
+				"Mute Hold", this.getLiteralStrings(MuteHold.values()),
+				new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(
+								songs,
+								EsxPackage.Literals.SONG__MUTE_HOLD,
+								MuteHold.get(comboMuteHold.getSelectionIndex()),
+								false, -1);
+					}
+				});
+		textNextSongNumber = this.createGridData2ColumnTextLabel(
+				groupGeneralInfo, "Next Song Number");
+		comboNextSongNumber = this.createGridData2ColumnComboInput(
+				groupGeneralInfo, "Next Song Number",
+				this.getLiteralStrings(NextSongNumber.values()),
+				new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(songs,
+								EsxPackage.Literals.SONG__NEXT_SONG_NUMBER,
+								NextSongNumber.get(comboNextSongNumber
+										.getSelectionIndex()), false, -1);
+					}
+				});
 
 		scrolledComposite.setContent(compositeMain);
-		scrolledComposite.setMinSize(compositeMain.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+		scrolledComposite.setMinSize(compositeMain.computeSize(SWT.DEFAULT,
+				SWT.DEFAULT));
 	}
 
 	/* (non-Javadoc)
@@ -193,15 +231,16 @@ public class EsxCompositeSong extends EsxComposite {
 	 */
 	@Override
 	public void setInput(Object input) {
-		if(this.isActive==false) return;
+		if (this.isActive == false)
+			return;
 
 		this.songs = new ArrayList<Song>();
 
-		if(input instanceof List<?>) {
+		if (input instanceof List<?>) {
 			Iterator<?> it = ((List<?>) input).iterator();
 			while (it.hasNext()) {
 				Object obj = it.next();
-				if(obj instanceof Song) {
+				if (obj instanceof Song) {
 					this.songs.add((Song) obj);
 				}
 			}
@@ -216,21 +255,35 @@ public class EsxCompositeSong extends EsxComposite {
 	 */
 	@Override
 	public void refresh() {
-		if(this.isActive==false) return;
+		if (this.isActive == false)
+			return;
 
 		String multipleValueString = "<Multiple Values>";
 
 		this.textSelectedTotal.setText(Integer.toString(this.songs.size()));
-		this.textSelectedNotEmpty.setText(Integer.toString(this.getCountInListWithValue(this.songs, EsxPackage.Literals.SONG__EMPTY, false)));
-		this.textSelectedEmpty.setText(Integer.toString(this.getCountInListWithValue(this.songs, EsxPackage.Literals.SONG__EMPTY, true)));
+		this.textSelectedNotEmpty.setText(Integer.toString(this
+				.getCountInListWithValue(this.songs,
+						EsxPackage.Literals.SONG__EMPTY, false)));
+		this.textSelectedEmpty.setText(Integer.toString(this
+				.getCountInListWithValue(this.songs,
+						EsxPackage.Literals.SONG__EMPTY, true)));
 
-		this.textName.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__NAME, multipleValueString));
+		this.textName.setText(getMultiString(this.songs,
+				EsxPackage.Literals.SONG__NAME, multipleValueString));
 
-		this.textTempo.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__TEMPO, multipleValueString, EsxPackage.Literals.TEMPO__VALUE));
-		this.textTempoLock.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__TEMPO_LOCK, multipleValueString));
-		this.textSongLength.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__SONG_LENGTH, multipleValueString));
-		this.textMuteHold.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__MUTE_HOLD, multipleValueString));
-		this.textNextSongNumber.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__NEXT_SONG_NUMBER, multipleValueString));
+		this.textTempo.setText(getMultiString(this.songs,
+				EsxPackage.Literals.SONG__TEMPO, multipleValueString,
+				EsxPackage.Literals.TEMPO__VALUE));
+		this.textTempoLock.setText(getMultiString(this.songs,
+				EsxPackage.Literals.SONG__TEMPO_LOCK, multipleValueString));
+		this.textSongLength.setText(getMultiString(this.songs,
+				EsxPackage.Literals.SONG__SONG_LENGTH, multipleValueString));
+		this.textMuteHold.setText(getMultiString(this.songs,
+				EsxPackage.Literals.SONG__MUTE_HOLD, multipleValueString));
+		this.textNextSongNumber
+				.setText(getMultiString(this.songs,
+						EsxPackage.Literals.SONG__NEXT_SONG_NUMBER,
+						multipleValueString));
 	}
 
 	/* (non-Javadoc)
@@ -238,17 +291,27 @@ public class EsxCompositeSong extends EsxComposite {
 	 */
 	@Override
 	public void refreshInputs() {
-		if(this.isActive==false) return;
+		if (this.isActive == false)
+			return;
 
 		String multipleValueString = "";
 
-		this.inputName.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__NAME, multipleValueString));
+		this.inputName.setText(getMultiString(this.songs,
+				EsxPackage.Literals.SONG__NAME, multipleValueString));
 
-		this.inputTempo.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__TEMPO, multipleValueString, EsxPackage.Literals.TEMPO__VALUE));
-		this.comboTempoLock.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__TEMPO_LOCK, multipleValueString));
-		this.comboSongLength.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__SONG_LENGTH, multipleValueString));
-		this.comboMuteHold.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__MUTE_HOLD, multipleValueString));
-		this.comboNextSongNumber.setText(getMultiString(this.songs, EsxPackage.Literals.SONG__NEXT_SONG_NUMBER, multipleValueString));
+		this.inputTempo.setText(getMultiString(this.songs,
+				EsxPackage.Literals.SONG__TEMPO, multipleValueString,
+				EsxPackage.Literals.TEMPO__VALUE));
+		this.comboTempoLock.setText(getMultiString(this.songs,
+				EsxPackage.Literals.SONG__TEMPO_LOCK, multipleValueString));
+		this.comboSongLength.setText(getMultiString(this.songs,
+				EsxPackage.Literals.SONG__SONG_LENGTH, multipleValueString));
+		this.comboMuteHold.setText(getMultiString(this.songs,
+				EsxPackage.Literals.SONG__MUTE_HOLD, multipleValueString));
+		this.comboNextSongNumber
+				.setText(getMultiString(this.songs,
+						EsxPackage.Literals.SONG__NEXT_SONG_NUMBER,
+						multipleValueString));
 	}
 
 }

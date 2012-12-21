@@ -28,10 +28,9 @@ public class PatternMapCellModifier implements ICellModifier {
 
 	@Override
 	public Object getValue(Object element, String property) {
-		if(property == "source") {
-			return ((PatternMap) element).source;			
-		}
-		else if(property == "destination") {
+		if (property == "source") {
+			return ((PatternMap) element).source;
+		} else if (property == "destination") {
 			return ((PatternMap) element).destination;
 		}
 		return null;
@@ -41,11 +40,11 @@ public class PatternMapCellModifier implements ICellModifier {
 	public void modify(Object element, String property, Object value) {
 		TableItem item = (TableItem) element;
 
-		if(property == "source") {
+		if (property == "source") {
 			((PatternMap) item.getData()).source = ((Integer) value).intValue();
-		}
-		else if(property == "destination") {
-			((PatternMap) item.getData()).destination = ((Integer) value).intValue();
+		} else if (property == "destination") {
+			((PatternMap) item.getData()).destination = ((Integer) value)
+					.intValue();
 		}
 		viewer.update(item.getData(), null);
 	}

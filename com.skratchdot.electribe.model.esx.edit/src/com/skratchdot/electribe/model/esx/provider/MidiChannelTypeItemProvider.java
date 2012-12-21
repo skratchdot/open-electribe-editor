@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.MidiChannelType;
 
@@ -44,10 +43,10 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class MidiChannelTypeItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class MidiChannelTypeItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -82,19 +81,16 @@ public class MidiChannelTypeItemProvider
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_MidiChannelType_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_MidiChannelType_name_feature", "_UI_MidiChannelType_type"),
-				 EsxPackage.Literals.MIDI_CHANNEL_TYPE__NAME,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_MidiChannelType_name_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_MidiChannelType_name_feature",
+						"_UI_MidiChannelType_type"),
+				EsxPackage.Literals.MIDI_CHANNEL_TYPE__NAME, false, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -104,19 +100,17 @@ public class MidiChannelTypeItemProvider
 	 * @generated
 	 */
 	protected void addMidiChannelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_MidiChannelType_midiChannel_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_MidiChannelType_midiChannel_feature", "_UI_MidiChannelType_type"),
-				 EsxPackage.Literals.MIDI_CHANNEL_TYPE__MIDI_CHANNEL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_MidiChannelType_midiChannel_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_MidiChannelType_midiChannel_feature",
+						"_UI_MidiChannelType_type"),
+				EsxPackage.Literals.MIDI_CHANNEL_TYPE__MIDI_CHANNEL, true,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -127,7 +121,8 @@ public class MidiChannelTypeItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/MidiChannelType"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/MidiChannelType"));
 	}
 
 	/**
@@ -138,11 +133,10 @@ public class MidiChannelTypeItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		MidiChannelTypeName labelValue = ((MidiChannelType)object).getName();
+		MidiChannelTypeName labelValue = ((MidiChannelType) object).getName();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_MidiChannelType_type") :
-			getString("_UI_MidiChannelType_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_MidiChannelType_type")
+				: getString("_UI_MidiChannelType_type") + " " + label;
 	}
 
 	/**
@@ -157,10 +151,11 @@ public class MidiChannelTypeItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(MidiChannelType.class)) {
-			case EsxPackage.MIDI_CHANNEL_TYPE__NAME:
-			case EsxPackage.MIDI_CHANNEL_TYPE__MIDI_CHANNEL:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case EsxPackage.MIDI_CHANNEL_TYPE__NAME:
+		case EsxPackage.MIDI_CHANNEL_TYPE__MIDI_CHANNEL:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -173,7 +168,8 @@ public class MidiChannelTypeItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

@@ -64,7 +64,7 @@ public class PartKeyboardTest extends PartTest {
 	 */
 	@Override
 	protected PartKeyboard getFixture() {
-		return (PartKeyboard)fixture;
+		return (PartKeyboard) fixture;
 	}
 
 	/**

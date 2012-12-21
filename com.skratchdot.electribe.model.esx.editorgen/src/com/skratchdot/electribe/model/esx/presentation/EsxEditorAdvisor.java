@@ -56,7 +56,6 @@ import org.eclipse.emf.edit.ui.util.EditUIUtil;
 
 import com.skratchdot.electribe.model.esx.presentation.EsxEditorPlugin;
 
-
 /**
  * Customized {@link WorkbenchAdvisor} for the RCP application.
  * <!-- begin-user-doc -->
@@ -70,7 +69,8 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final String[] FILE_EXTENSION_FILTERS = EsxEditor.FILE_EXTENSION_FILTERS.toArray(new String[0]); 
+	private static final String[] FILE_EXTENSION_FILTERS = EsxEditor.FILE_EXTENSION_FILTERS
+			.toArray(new String[0]);
 
 	/**
 	 * This looks up a string in the plugin's plugin.properties file.
@@ -89,7 +89,8 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 	 * @generated
 	 */
 	private static String getString(String key, Object s1) {
-		return com.skratchdot.electribe.model.esx.presentation.EsxEditorPlugin.INSTANCE.getString(key, new Object [] { s1 });
+		return com.skratchdot.electribe.model.esx.presentation.EsxEditorPlugin.INSTANCE
+				.getString(key, new Object[] { s1 });
 	}
 
 	/**
@@ -109,15 +110,14 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 			WorkbenchAdvisor workbenchAdvisor = new EsxEditorAdvisor();
 			Display display = PlatformUI.createDisplay();
 			try {
-				int returnCode = PlatformUI.createAndRunWorkbench(display, workbenchAdvisor);
+				int returnCode = PlatformUI.createAndRunWorkbench(display,
+						workbenchAdvisor);
 				if (returnCode == PlatformUI.RETURN_RESTART) {
 					return IApplication.EXIT_RESTART;
-				}
-				else {
+				} else {
 					return IApplication.EXIT_OK;
 				}
-			}
-			finally {
+			} finally {
 				display.dispose();
 			}
 		}
@@ -158,14 +158,16 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 			layout.setEditorAreaVisible(true);
 			layout.addPerspectiveShortcut(ID_PERSPECTIVE);
 
-			IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, (float)0.66, layout.getEditorArea());
+			IFolderLayout right = layout.createFolder("right",
+					IPageLayout.RIGHT, (float) 0.66, layout.getEditorArea());
 			right.addView(IPageLayout.ID_OUTLINE);
 
-			IFolderLayout bottonRight = layout.createFolder("bottonRight", IPageLayout.BOTTOM, (float)0.60, "right");
+			IFolderLayout bottonRight = layout.createFolder("bottonRight",
+					IPageLayout.BOTTOM, (float) 0.60, "right");
 			bottonRight.addView(IPageLayout.ID_PROP_SHEET);
 		}
 	}
-	
+
 	/**
 	 * RCP's window advisor
 	 * <!-- begin-user-doc -->
@@ -182,7 +184,7 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		public WindowAdvisor(IWorkbenchWindowConfigurer configurer) {
 			super(configurer);
 		}
-		
+
 		/**
 		 * @see org.eclipse.ui.application.WorkbenchWindowAdvisor#preWindowOpen()
 		 * <!-- begin-user-doc -->
@@ -197,7 +199,7 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 			configurer.setShowStatusLine(true);
 			configurer.setTitle(getString("_UI_Application_title"));
 		}
-		
+
 		/**
 		 * @see org.eclipse.ui.application.WorkbenchWindowAdvisor#createActionBarAdvisor(org.eclipse.ui.application.IActionBarConfigurer)
 		 * <!-- begin-user-doc -->
@@ -205,7 +207,8 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		 * @generated
 		 */
 		@Override
-		public ActionBarAdvisor createActionBarAdvisor(IActionBarConfigurer configurer) {
+		public ActionBarAdvisor createActionBarAdvisor(
+				IActionBarConfigurer configurer) {
 			return new WindowActionBarAdvisor(configurer);
 		}
 	}
@@ -226,7 +229,7 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		public WindowActionBarAdvisor(IActionBarConfigurer configurer) {
 			super(configurer);
 		}
-		
+
 		/**
 		 * @see org.eclipse.ui.application.ActionBarAdvisor#fillMenuBar(org.eclipse.jface.action.IMenuManager)
 		 * <!-- begin-user-doc -->
@@ -235,14 +238,15 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		 */
 		@Override
 		protected void fillMenuBar(IMenuManager menuBar) {
-			IWorkbenchWindow window = getActionBarConfigurer().getWindowConfigurer().getWindow();
+			IWorkbenchWindow window = getActionBarConfigurer()
+					.getWindowConfigurer().getWindow();
 			menuBar.add(createFileMenu(window));
 			menuBar.add(createEditMenu(window));
 			menuBar.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 			menuBar.add(createWindowMenu(window));
-			menuBar.add(createHelpMenu(window));					
+			menuBar.add(createHelpMenu(window));
 		}
-		
+
 		/**
 		 * Creates the 'File' menu.
 		 * <!-- begin-user-doc -->
@@ -250,13 +254,15 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		 * @generated
 		 */
 		protected IMenuManager createFileMenu(IWorkbenchWindow window) {
-			IMenuManager menu = new MenuManager(getString("_UI_Menu_File_label"),
-			IWorkbenchActionConstants.M_FILE);    
+			IMenuManager menu = new MenuManager(
+					getString("_UI_Menu_File_label"),
+					IWorkbenchActionConstants.M_FILE);
 			menu.add(new GroupMarker(IWorkbenchActionConstants.FILE_START));
-	
-			IMenuManager newMenu = new MenuManager(getString("_UI_Menu_New_label"), "new");
+
+			IMenuManager newMenu = new MenuManager(
+					getString("_UI_Menu_New_label"), "new");
 			newMenu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
-	
+
 			menu.add(newMenu);
 			menu.add(new Separator());
 			menu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
@@ -280,32 +286,33 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		 * @generated
 		 */
 		protected IMenuManager createEditMenu(IWorkbenchWindow window) {
-			IMenuManager menu = new MenuManager(getString("_UI_Menu_Edit_label"),
-			IWorkbenchActionConstants.M_EDIT);
+			IMenuManager menu = new MenuManager(
+					getString("_UI_Menu_Edit_label"),
+					IWorkbenchActionConstants.M_EDIT);
 			menu.add(new GroupMarker(IWorkbenchActionConstants.EDIT_START));
-	
+
 			addToMenuAndRegister(menu, ActionFactory.UNDO.create(window));
 			addToMenuAndRegister(menu, ActionFactory.REDO.create(window));
 			menu.add(new GroupMarker(IWorkbenchActionConstants.UNDO_EXT));
 			menu.add(new Separator());
-	
+
 			addToMenuAndRegister(menu, ActionFactory.CUT.create(window));
 			addToMenuAndRegister(menu, ActionFactory.COPY.create(window));
 			addToMenuAndRegister(menu, ActionFactory.PASTE.create(window));
 			menu.add(new GroupMarker(IWorkbenchActionConstants.CUT_EXT));
 			menu.add(new Separator());
-	
+
 			addToMenuAndRegister(menu, ActionFactory.DELETE.create(window));
 			addToMenuAndRegister(menu, ActionFactory.SELECT_ALL.create(window));
 			menu.add(new Separator());
-	
+
 			menu.add(new GroupMarker(IWorkbenchActionConstants.ADD_EXT));
-	
+
 			menu.add(new GroupMarker(IWorkbenchActionConstants.EDIT_END));
 			menu.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
 			return menu;
 		}
-	
+
 		/**
 		 * Creates the 'Window' menu.
 		 * <!-- begin-user-doc -->
@@ -313,16 +320,18 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		 * @generated
 		 */
 		protected IMenuManager createWindowMenu(IWorkbenchWindow window) {
-			IMenuManager menu = new MenuManager(getString("_UI_Menu_Window_label"),
-			IWorkbenchActionConstants.M_WINDOW);
-	
-			addToMenuAndRegister(menu, ActionFactory.OPEN_NEW_WINDOW.create(window));
+			IMenuManager menu = new MenuManager(
+					getString("_UI_Menu_Window_label"),
+					IWorkbenchActionConstants.M_WINDOW);
+
+			addToMenuAndRegister(menu,
+					ActionFactory.OPEN_NEW_WINDOW.create(window));
 			menu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 			menu.add(ContributionItemFactory.OPEN_WINDOWS.create(window));
-	
+
 			return menu;
 		}
-	
+
 		/**
 		 * Creates the 'Help' menu.
 		 * <!-- begin-user-doc -->
@@ -330,7 +339,9 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		 * @generated
 		 */
 		protected IMenuManager createHelpMenu(IWorkbenchWindow window) {
-			IMenuManager menu = new MenuManager(getString("_UI_Menu_Help_label"), IWorkbenchActionConstants.M_HELP);
+			IMenuManager menu = new MenuManager(
+					getString("_UI_Menu_Help_label"),
+					IWorkbenchActionConstants.M_HELP);
 			// Welcome or intro page would go here
 			// Help contents would go here
 			// Tips and tricks page would go here
@@ -339,7 +350,7 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 			menu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 			return menu;
 		}
-		
+
 		/**
 		 * Adds the specified action to the given menu and also registers the action with the
 		 * action bar configurer, in order to activate its key binding.
@@ -347,12 +358,13 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		protected void addToMenuAndRegister(IMenuManager menuManager, IAction action) {
+		protected void addToMenuAndRegister(IMenuManager menuManager,
+				IAction action) {
 			menuManager.add(action);
 			getActionBarConfigurer().registerGlobalAction(action);
 		}
 	}
-	
+
 	/**
 	 * About action for the RCP application.
 	 * <!-- begin-user-doc -->
@@ -367,11 +379,11 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		 * @generated
 		 */
 		public void run(IAction action) {
-			MessageDialog.openInformation(getWindow().getShell(), getString("_UI_About_title"),
-			getString("_UI_About_text"));
+			MessageDialog.openInformation(getWindow().getShell(),
+					getString("_UI_About_title"), getString("_UI_About_text"));
 		}
 	}
-	
+
 	/**
 	 * Open action for the objects from the Esx model.
 	 * <!-- begin-user-doc -->
@@ -386,13 +398,15 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		 * @generated
 		 */
 		public void run(IAction action) {
-			String[] filePaths = openFilePathDialog(getWindow().getShell(), SWT.OPEN, null);
+			String[] filePaths = openFilePathDialog(getWindow().getShell(),
+					SWT.OPEN, null);
 			if (filePaths.length > 0) {
-				openEditor(getWindow().getWorkbench(), URI.createFileURI(filePaths[0]));
+				openEditor(getWindow().getWorkbench(),
+						URI.createFileURI(filePaths[0]));
 			}
 		}
 	}
-	
+
 	/**
 	 * Open URI action for the objects from the Esx model.
 	 * <!-- begin-user-doc -->
@@ -407,7 +421,8 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		 * @generated
 		 */
 		public void run(IAction action) {
-			LoadResourceAction.LoadResourceDialog loadResourceDialog = new LoadResourceAction.LoadResourceDialog(getWindow().getShell());
+			LoadResourceAction.LoadResourceDialog loadResourceDialog = new LoadResourceAction.LoadResourceDialog(
+					getWindow().getShell());
 			if (Window.OK == loadResourceDialog.open()) {
 				for (URI uri : loadResourceDialog.getURIs()) {
 					openEditor(getWindow().getWorkbench(), uri);
@@ -415,14 +430,17 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 			}
 		}
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static String[] openFilePathDialog(Shell shell, int style, String[] fileExtensionFilters) {
-		return openFilePathDialog(shell, style, fileExtensionFilters, (style & SWT.OPEN) != 0, (style & SWT.OPEN) != 0, (style & SWT.SAVE) != 0);
+	public static String[] openFilePathDialog(Shell shell, int style,
+			String[] fileExtensionFilters) {
+		return openFilePathDialog(shell, style, fileExtensionFilters,
+				(style & SWT.OPEN) != 0, (style & SWT.OPEN) != 0,
+				(style & SWT.SAVE) != 0);
 	}
 
 	/**
@@ -430,23 +448,27 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static String[] openFilePathDialog(Shell shell, int style, String[] fileExtensionFilters, boolean includeGroupFilter, boolean includeAllFilter, boolean addExtension) {
+	public static String[] openFilePathDialog(Shell shell, int style,
+			String[] fileExtensionFilters, boolean includeGroupFilter,
+			boolean includeAllFilter, boolean addExtension) {
 		FileDialog fileDialog = new FileDialog(shell, style);
 		if (fileExtensionFilters == null) {
 			fileExtensionFilters = FILE_EXTENSION_FILTERS;
 		}
-		
+
 		// If requested, augment the file extension filters by adding a group of all the other filters (*.ext1;*.ext2;...)
 		// at the beginning and/or an all files wildcard (*.*) at the end.
 		//
 		includeGroupFilter &= fileExtensionFilters.length > 1;
 		int offset = includeGroupFilter ? 1 : 0;
-		
+
 		if (includeGroupFilter || includeAllFilter) {
-			int size = fileExtensionFilters.length + offset + (includeAllFilter ? 1 : 0);
+			int size = fileExtensionFilters.length + offset
+					+ (includeAllFilter ? 1 : 0);
 			String[] allFilters = new String[size];
-			StringBuilder group = includeGroupFilter ? new StringBuilder() : null;
-			
+			StringBuilder group = includeGroupFilter ? new StringBuilder()
+					: null;
+
 			for (int i = 0; i < fileExtensionFilters.length; i++) {
 				if (includeGroupFilter) {
 					if (i != 0) {
@@ -456,31 +478,31 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 				}
 				allFilters[i + offset] = fileExtensionFilters[i];
 			}
-			
+
 			if (includeGroupFilter) {
 				allFilters[0] = group.toString();
 			}
 			if (includeAllFilter) {
 				allFilters[allFilters.length - 1] = "*.*";
 			}
-			
+
 			fileDialog.setFilterExtensions(allFilters);
-		}
-		else {
+		} else {
 			fileDialog.setFilterExtensions(fileExtensionFilters);
 		}
 		fileDialog.open();
-		
+
 		String[] filenames = fileDialog.getFileNames();
 		String[] result = new String[filenames.length];
 		String path = fileDialog.getFilterPath() + File.separator;
 		String extension = null;
-		
+
 		// If extension adding requested, get the dotted extension corresponding to the selected filter.
 		//
 		if (addExtension) {
 			int i = fileDialog.getFilterIndex();
-			if (i != -1 && (!includeAllFilter || i != fileExtensionFilters.length)) {
+			if (i != -1
+					&& (!includeAllFilter || i != fileExtensionFilters.length)) {
 				i = includeGroupFilter && i == 0 ? 0 : i - offset;
 				String filter = fileExtensionFilters[i];
 				int dot = filter.lastIndexOf('.');
@@ -489,14 +511,16 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 				}
 			}
 		}
-		
+
 		// Build the result by adding the selected path and, if needed, auto-appending the extension.
 		//
 		for (int i = 0; i < filenames.length; i++) {
 			String filename = path + filenames[i];
 			if (extension != null) {
 				int dot = filename.lastIndexOf('.');
-				if (dot == -1 || !Arrays.asList(fileExtensionFilters).contains("*" + filename.substring(dot))) {
+				if (dot == -1
+						|| !Arrays.asList(fileExtensionFilters).contains(
+								"*" + filename.substring(dot))) {
 					filename += extension;
 				}
 			}
@@ -504,7 +528,7 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 		}
 		return result;
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -513,37 +537,35 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 	public static boolean openEditor(IWorkbench workbench, URI uri) {
 		IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
 		IWorkbenchPage page = workbenchWindow.getActivePage();
-		
-		IEditorDescriptor editorDescriptor = EditUIUtil.getDefaultEditor(uri, null);
+
+		IEditorDescriptor editorDescriptor = EditUIUtil.getDefaultEditor(uri,
+				null);
 		if (editorDescriptor == null) {
-			MessageDialog.openError(
-				workbenchWindow.getShell(),
-				getString("_UI_Error_title"),
-				getString("_WARN_No_Editor", uri.lastSegment()));
+			MessageDialog.openError(workbenchWindow.getShell(),
+					getString("_UI_Error_title"),
+					getString("_WARN_No_Editor", uri.lastSegment()));
 			return false;
-		}
-		else {
+		} else {
 			try {
-				page.openEditor(new URIEditorInput(uri), editorDescriptor.getId());
-			}
-			catch (PartInitException exception) {
-				MessageDialog.openError(
-					workbenchWindow.getShell(),
-					getString("_UI_OpenEditorError_label"),
-					exception.getMessage());
+				page.openEditor(new URIEditorInput(uri),
+						editorDescriptor.getId());
+			} catch (PartInitException exception) {
+				MessageDialog.openError(workbenchWindow.getShell(),
+						getString("_UI_OpenEditorError_label"),
+						exception.getMessage());
 				return false;
 			}
 		}
 		return true;
 	}
-	
+
 	/**
 	 * @see org.eclipse.ui.application.WorkbenchAdvisor#getInitialWindowPerspectiveId()
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-		@Override
+	@Override
 	public String getInitialWindowPerspectiveId() {
 		return Perspective.ID_PERSPECTIVE;
 	}
@@ -554,20 +576,21 @@ public final class EsxEditorAdvisor extends WorkbenchAdvisor {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-		@Override
+	@Override
 	public void initialize(IWorkbenchConfigurer configurer) {
 		super.initialize(configurer);
 		configurer.setSaveAndRestore(true);
 	}
-	
+
 	/**
 	 * @see org.eclipse.ui.application.WorkbenchAdvisor#createWorkbenchWindowAdvisor(org.eclipse.ui.application.IWorkbenchWindowConfigurer)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-		@Override
-	public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(IWorkbenchWindowConfigurer configurer) {
+	@Override
+	public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(
+			IWorkbenchWindowConfigurer configurer) {
 		return new WindowAdvisor(configurer);
 	}
 }

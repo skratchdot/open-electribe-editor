@@ -58,7 +58,7 @@ public class PartAccentTest extends PartTest {
 	 */
 	@Override
 	protected PartAccent getFixture() {
-		return (PartAccent)fixture;
+		return (PartAccent) fixture;
 	}
 
 	/**

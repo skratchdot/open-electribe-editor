@@ -11,8 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx;
 
-
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Part Audio In</b></em>'.
@@ -29,7 +27,8 @@ package com.skratchdot.electribe.model.esx;
  * @model
  * @generated
  */
-public interface PartAudioIn extends Part, PartWithCommon, PartWithSequenceData, PartWithSequenceDataGate {
+public interface PartAudioIn extends Part, PartWithCommon,
+		PartWithSequenceData, PartWithSequenceDataGate {
 
 	/**
 	 * Returns the value of the '<em><b>Reserved Bits Byte7</b></em>' attribute.

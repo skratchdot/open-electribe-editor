@@ -171,9 +171,12 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 	 */
 	public void setEffectType(FxType newEffectType) {
 		FxType oldEffectType = effectType;
-		effectType = newEffectType == null ? EFFECT_TYPE_EDEFAULT : newEffectType;
+		effectType = newEffectType == null ? EFFECT_TYPE_EDEFAULT
+				: newEffectType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PARAMETERS_FX__EFFECT_TYPE, oldEffectType, effectType));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PARAMETERS_FX__EFFECT_TYPE, oldEffectType,
+					effectType));
 	}
 
 	/**
@@ -194,7 +197,8 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 		byte oldEdit1 = edit1;
 		edit1 = newEdit1;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PARAMETERS_FX__EDIT1, oldEdit1, edit1));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PARAMETERS_FX__EDIT1, oldEdit1, edit1));
 	}
 
 	/**
@@ -215,7 +219,8 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 		byte oldEdit2 = edit2;
 		edit2 = newEdit2;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PARAMETERS_FX__EDIT2, oldEdit2, edit2));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PARAMETERS_FX__EDIT2, oldEdit2, edit2));
 	}
 
 	/**
@@ -236,7 +241,9 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 		byte oldMotionSequenceStatus = motionSequenceStatus;
 		motionSequenceStatus = newMotionSequenceStatus;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PARAMETERS_FX__MOTION_SEQUENCE_STATUS, oldMotionSequenceStatus, motionSequenceStatus));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PARAMETERS_FX__MOTION_SEQUENCE_STATUS,
+					oldMotionSequenceStatus, motionSequenceStatus));
 	}
 
 	/**
@@ -245,7 +252,8 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_PARAMETERS_FX);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				EsxUtil.CHUNKSIZE_PARAMETERS_FX);
 		// byte 0
 		buf.putUnsignedByte(this.getEffectType().getValue());
 		// byte 1
@@ -265,14 +273,14 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.PARAMETERS_FX__EFFECT_TYPE:
-				return getEffectType();
-			case EsxPackage.PARAMETERS_FX__EDIT1:
-				return getEdit1();
-			case EsxPackage.PARAMETERS_FX__EDIT2:
-				return getEdit2();
-			case EsxPackage.PARAMETERS_FX__MOTION_SEQUENCE_STATUS:
-				return getMotionSequenceStatus();
+		case EsxPackage.PARAMETERS_FX__EFFECT_TYPE:
+			return getEffectType();
+		case EsxPackage.PARAMETERS_FX__EDIT1:
+			return getEdit1();
+		case EsxPackage.PARAMETERS_FX__EDIT2:
+			return getEdit2();
+		case EsxPackage.PARAMETERS_FX__MOTION_SEQUENCE_STATUS:
+			return getMotionSequenceStatus();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -285,18 +293,18 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.PARAMETERS_FX__EFFECT_TYPE:
-				setEffectType((FxType)newValue);
-				return;
-			case EsxPackage.PARAMETERS_FX__EDIT1:
-				setEdit1((Byte)newValue);
-				return;
-			case EsxPackage.PARAMETERS_FX__EDIT2:
-				setEdit2((Byte)newValue);
-				return;
-			case EsxPackage.PARAMETERS_FX__MOTION_SEQUENCE_STATUS:
-				setMotionSequenceStatus((Byte)newValue);
-				return;
+		case EsxPackage.PARAMETERS_FX__EFFECT_TYPE:
+			setEffectType((FxType) newValue);
+			return;
+		case EsxPackage.PARAMETERS_FX__EDIT1:
+			setEdit1((Byte) newValue);
+			return;
+		case EsxPackage.PARAMETERS_FX__EDIT2:
+			setEdit2((Byte) newValue);
+			return;
+		case EsxPackage.PARAMETERS_FX__MOTION_SEQUENCE_STATUS:
+			setMotionSequenceStatus((Byte) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -309,18 +317,18 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PARAMETERS_FX__EFFECT_TYPE:
-				setEffectType(EFFECT_TYPE_EDEFAULT);
-				return;
-			case EsxPackage.PARAMETERS_FX__EDIT1:
-				setEdit1(EDIT1_EDEFAULT);
-				return;
-			case EsxPackage.PARAMETERS_FX__EDIT2:
-				setEdit2(EDIT2_EDEFAULT);
-				return;
-			case EsxPackage.PARAMETERS_FX__MOTION_SEQUENCE_STATUS:
-				setMotionSequenceStatus(MOTION_SEQUENCE_STATUS_EDEFAULT);
-				return;
+		case EsxPackage.PARAMETERS_FX__EFFECT_TYPE:
+			setEffectType(EFFECT_TYPE_EDEFAULT);
+			return;
+		case EsxPackage.PARAMETERS_FX__EDIT1:
+			setEdit1(EDIT1_EDEFAULT);
+			return;
+		case EsxPackage.PARAMETERS_FX__EDIT2:
+			setEdit2(EDIT2_EDEFAULT);
+			return;
+		case EsxPackage.PARAMETERS_FX__MOTION_SEQUENCE_STATUS:
+			setMotionSequenceStatus(MOTION_SEQUENCE_STATUS_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -333,14 +341,14 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PARAMETERS_FX__EFFECT_TYPE:
-				return effectType != EFFECT_TYPE_EDEFAULT;
-			case EsxPackage.PARAMETERS_FX__EDIT1:
-				return edit1 != EDIT1_EDEFAULT;
-			case EsxPackage.PARAMETERS_FX__EDIT2:
-				return edit2 != EDIT2_EDEFAULT;
-			case EsxPackage.PARAMETERS_FX__MOTION_SEQUENCE_STATUS:
-				return motionSequenceStatus != MOTION_SEQUENCE_STATUS_EDEFAULT;
+		case EsxPackage.PARAMETERS_FX__EFFECT_TYPE:
+			return effectType != EFFECT_TYPE_EDEFAULT;
+		case EsxPackage.PARAMETERS_FX__EDIT1:
+			return edit1 != EDIT1_EDEFAULT;
+		case EsxPackage.PARAMETERS_FX__EDIT2:
+			return edit2 != EDIT2_EDEFAULT;
+		case EsxPackage.PARAMETERS_FX__MOTION_SEQUENCE_STATUS:
+			return motionSequenceStatus != MOTION_SEQUENCE_STATUS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -352,7 +360,8 @@ public class ParametersFxImpl extends EObjectImpl implements ParametersFx {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (effectType: ");

@@ -177,7 +177,7 @@ public abstract class SongEventImpl extends EObjectImpl implements SongEvent {
 	 */
 	public int getCurrentPosition() {
 		EObject parent = this.eContainer();
-		if(parent instanceof Song) {
+		if (parent instanceof Song) {
 			return ((Song) parent).getSongEvents().indexOf(this) + 1;
 		}
 		return 0;
@@ -221,7 +221,8 @@ public abstract class SongEventImpl extends EObjectImpl implements SongEvent {
 		byte oldMeasure = measure;
 		measure = newMeasure;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT__MEASURE, oldMeasure, measure));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_EVENT__MEASURE, oldMeasure, measure));
 	}
 
 	/**
@@ -242,7 +243,9 @@ public abstract class SongEventImpl extends EObjectImpl implements SongEvent {
 		short oldOperationNumber = operationNumber;
 		operationNumber = newOperationNumber;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT__OPERATION_NUMBER, oldOperationNumber, operationNumber));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_EVENT__OPERATION_NUMBER,
+					oldOperationNumber, operationNumber));
 	}
 
 	/**
@@ -263,7 +266,9 @@ public abstract class SongEventImpl extends EObjectImpl implements SongEvent {
 		byte oldPositionNumber = positionNumber;
 		positionNumber = newPositionNumber;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT__POSITION_NUMBER, oldPositionNumber, positionNumber));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_EVENT__POSITION_NUMBER, oldPositionNumber,
+					positionNumber));
 	}
 
 	/**
@@ -284,7 +289,8 @@ public abstract class SongEventImpl extends EObjectImpl implements SongEvent {
 		byte oldStep = step;
 		step = newStep;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT__STEP, oldStep, step));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_EVENT__STEP, oldStep, step));
 	}
 
 	/**
@@ -295,20 +301,20 @@ public abstract class SongEventImpl extends EObjectImpl implements SongEvent {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT__CURRENT_POSITION:
-				return getCurrentPosition();
-			case EsxPackage.SONG_EVENT__EVENT_INFO:
-				return getEventInfo();
-			case EsxPackage.SONG_EVENT__EVENT_TYPE:
-				return getEventType();
-			case EsxPackage.SONG_EVENT__MEASURE:
-				return getMeasure();
-			case EsxPackage.SONG_EVENT__OPERATION_NUMBER:
-				return getOperationNumber();
-			case EsxPackage.SONG_EVENT__POSITION_NUMBER:
-				return getPositionNumber();
-			case EsxPackage.SONG_EVENT__STEP:
-				return getStep();
+		case EsxPackage.SONG_EVENT__CURRENT_POSITION:
+			return getCurrentPosition();
+		case EsxPackage.SONG_EVENT__EVENT_INFO:
+			return getEventInfo();
+		case EsxPackage.SONG_EVENT__EVENT_TYPE:
+			return getEventType();
+		case EsxPackage.SONG_EVENT__MEASURE:
+			return getMeasure();
+		case EsxPackage.SONG_EVENT__OPERATION_NUMBER:
+			return getOperationNumber();
+		case EsxPackage.SONG_EVENT__POSITION_NUMBER:
+			return getPositionNumber();
+		case EsxPackage.SONG_EVENT__STEP:
+			return getStep();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -321,18 +327,18 @@ public abstract class SongEventImpl extends EObjectImpl implements SongEvent {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT__MEASURE:
-				setMeasure((Byte)newValue);
-				return;
-			case EsxPackage.SONG_EVENT__OPERATION_NUMBER:
-				setOperationNumber((Short)newValue);
-				return;
-			case EsxPackage.SONG_EVENT__POSITION_NUMBER:
-				setPositionNumber((Byte)newValue);
-				return;
-			case EsxPackage.SONG_EVENT__STEP:
-				setStep((Byte)newValue);
-				return;
+		case EsxPackage.SONG_EVENT__MEASURE:
+			setMeasure((Byte) newValue);
+			return;
+		case EsxPackage.SONG_EVENT__OPERATION_NUMBER:
+			setOperationNumber((Short) newValue);
+			return;
+		case EsxPackage.SONG_EVENT__POSITION_NUMBER:
+			setPositionNumber((Byte) newValue);
+			return;
+		case EsxPackage.SONG_EVENT__STEP:
+			setStep((Byte) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -345,18 +351,18 @@ public abstract class SongEventImpl extends EObjectImpl implements SongEvent {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT__MEASURE:
-				setMeasure(MEASURE_EDEFAULT);
-				return;
-			case EsxPackage.SONG_EVENT__OPERATION_NUMBER:
-				setOperationNumber(OPERATION_NUMBER_EDEFAULT);
-				return;
-			case EsxPackage.SONG_EVENT__POSITION_NUMBER:
-				setPositionNumber(POSITION_NUMBER_EDEFAULT);
-				return;
-			case EsxPackage.SONG_EVENT__STEP:
-				setStep(STEP_EDEFAULT);
-				return;
+		case EsxPackage.SONG_EVENT__MEASURE:
+			setMeasure(MEASURE_EDEFAULT);
+			return;
+		case EsxPackage.SONG_EVENT__OPERATION_NUMBER:
+			setOperationNumber(OPERATION_NUMBER_EDEFAULT);
+			return;
+		case EsxPackage.SONG_EVENT__POSITION_NUMBER:
+			setPositionNumber(POSITION_NUMBER_EDEFAULT);
+			return;
+		case EsxPackage.SONG_EVENT__STEP:
+			setStep(STEP_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -369,20 +375,22 @@ public abstract class SongEventImpl extends EObjectImpl implements SongEvent {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT__CURRENT_POSITION:
-				return getCurrentPosition() != CURRENT_POSITION_EDEFAULT;
-			case EsxPackage.SONG_EVENT__EVENT_INFO:
-				return EVENT_INFO_EDEFAULT == null ? getEventInfo() != null : !EVENT_INFO_EDEFAULT.equals(getEventInfo());
-			case EsxPackage.SONG_EVENT__EVENT_TYPE:
-				return EVENT_TYPE_EDEFAULT == null ? getEventType() != null : !EVENT_TYPE_EDEFAULT.equals(getEventType());
-			case EsxPackage.SONG_EVENT__MEASURE:
-				return measure != MEASURE_EDEFAULT;
-			case EsxPackage.SONG_EVENT__OPERATION_NUMBER:
-				return operationNumber != OPERATION_NUMBER_EDEFAULT;
-			case EsxPackage.SONG_EVENT__POSITION_NUMBER:
-				return positionNumber != POSITION_NUMBER_EDEFAULT;
-			case EsxPackage.SONG_EVENT__STEP:
-				return step != STEP_EDEFAULT;
+		case EsxPackage.SONG_EVENT__CURRENT_POSITION:
+			return getCurrentPosition() != CURRENT_POSITION_EDEFAULT;
+		case EsxPackage.SONG_EVENT__EVENT_INFO:
+			return EVENT_INFO_EDEFAULT == null ? getEventInfo() != null
+					: !EVENT_INFO_EDEFAULT.equals(getEventInfo());
+		case EsxPackage.SONG_EVENT__EVENT_TYPE:
+			return EVENT_TYPE_EDEFAULT == null ? getEventType() != null
+					: !EVENT_TYPE_EDEFAULT.equals(getEventType());
+		case EsxPackage.SONG_EVENT__MEASURE:
+			return measure != MEASURE_EDEFAULT;
+		case EsxPackage.SONG_EVENT__OPERATION_NUMBER:
+			return operationNumber != OPERATION_NUMBER_EDEFAULT;
+		case EsxPackage.SONG_EVENT__POSITION_NUMBER:
+			return positionNumber != POSITION_NUMBER_EDEFAULT;
+		case EsxPackage.SONG_EVENT__STEP:
+			return step != STEP_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -394,7 +402,8 @@ public abstract class SongEventImpl extends EObjectImpl implements SongEvent {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (measure: ");

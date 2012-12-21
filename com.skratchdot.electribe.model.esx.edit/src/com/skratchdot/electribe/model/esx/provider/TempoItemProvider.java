@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -45,10 +44,10 @@ import com.skratchdot.electribe.model.esx.Tempo;
  * <!-- end-user-doc -->
  * @generated
  */
-public class TempoItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class TempoItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -82,19 +81,15 @@ public class TempoItemProvider
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Tempo_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Tempo_value_feature", "_UI_Tempo_type"),
-				 EsxPackage.Literals.TEMPO__VALUE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Tempo_value_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Tempo_value_feature", "_UI_Tempo_type"),
+				EsxPackage.Literals.TEMPO__VALUE, true, false, false,
+				ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -105,7 +100,8 @@ public class TempoItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Tempo"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/Tempo"));
 	}
 
 	/**
@@ -116,7 +112,7 @@ public class TempoItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Tempo tempo = (Tempo)object;
+		Tempo tempo = (Tempo) object;
 		return getString("_UI_Tempo_type") + " " + tempo.getValue();
 	}
 
@@ -132,9 +128,10 @@ public class TempoItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Tempo.class)) {
-			case EsxPackage.TEMPO__VALUE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case EsxPackage.TEMPO__VALUE:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -147,7 +144,8 @@ public class TempoItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -167,7 +165,7 @@ public class TempoItemProvider
 			EStructuralFeature feature, Object value) {
 
 		// We only allow the tempo to be between 20-300 with one decimal place precision
-		if(feature == EsxPackage.Literals.TEMPO__VALUE) {
+		if (feature == EsxPackage.Literals.TEMPO__VALUE) {
 			value = ((Tempo) owner).getValidValue((Float) value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);

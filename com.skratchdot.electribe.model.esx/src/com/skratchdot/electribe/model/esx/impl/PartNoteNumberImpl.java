@@ -115,7 +115,8 @@ public class PartNoteNumberImpl extends EObjectImpl implements PartNoteNumber {
 		PartNoteNumberName oldName = name;
 		name = newName == null ? NAME_EDEFAULT : newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_NOTE_NUMBER__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_NOTE_NUMBER__NAME, oldName, name));
 	}
 
 	/**
@@ -134,9 +135,12 @@ public class PartNoteNumberImpl extends EObjectImpl implements PartNoteNumber {
 	 */
 	public void setNoteNumber(NoteNumber newNoteNumber) {
 		NoteNumber oldNoteNumber = noteNumber;
-		noteNumber = newNoteNumber == null ? NOTE_NUMBER_EDEFAULT : newNoteNumber;
+		noteNumber = newNoteNumber == null ? NOTE_NUMBER_EDEFAULT
+				: newNoteNumber;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_NOTE_NUMBER__NOTE_NUMBER, oldNoteNumber, noteNumber));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_NOTE_NUMBER__NOTE_NUMBER, oldNoteNumber,
+					noteNumber));
 	}
 
 	/**
@@ -147,10 +151,10 @@ public class PartNoteNumberImpl extends EObjectImpl implements PartNoteNumber {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.PART_NOTE_NUMBER__NAME:
-				return getName();
-			case EsxPackage.PART_NOTE_NUMBER__NOTE_NUMBER:
-				return getNoteNumber();
+		case EsxPackage.PART_NOTE_NUMBER__NAME:
+			return getName();
+		case EsxPackage.PART_NOTE_NUMBER__NOTE_NUMBER:
+			return getNoteNumber();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -163,12 +167,12 @@ public class PartNoteNumberImpl extends EObjectImpl implements PartNoteNumber {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.PART_NOTE_NUMBER__NAME:
-				setName((PartNoteNumberName)newValue);
-				return;
-			case EsxPackage.PART_NOTE_NUMBER__NOTE_NUMBER:
-				setNoteNumber((NoteNumber)newValue);
-				return;
+		case EsxPackage.PART_NOTE_NUMBER__NAME:
+			setName((PartNoteNumberName) newValue);
+			return;
+		case EsxPackage.PART_NOTE_NUMBER__NOTE_NUMBER:
+			setNoteNumber((NoteNumber) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -181,12 +185,12 @@ public class PartNoteNumberImpl extends EObjectImpl implements PartNoteNumber {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_NOTE_NUMBER__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case EsxPackage.PART_NOTE_NUMBER__NOTE_NUMBER:
-				setNoteNumber(NOTE_NUMBER_EDEFAULT);
-				return;
+		case EsxPackage.PART_NOTE_NUMBER__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case EsxPackage.PART_NOTE_NUMBER__NOTE_NUMBER:
+			setNoteNumber(NOTE_NUMBER_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -199,10 +203,10 @@ public class PartNoteNumberImpl extends EObjectImpl implements PartNoteNumber {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_NOTE_NUMBER__NAME:
-				return name != NAME_EDEFAULT;
-			case EsxPackage.PART_NOTE_NUMBER__NOTE_NUMBER:
-				return noteNumber != NOTE_NUMBER_EDEFAULT;
+		case EsxPackage.PART_NOTE_NUMBER__NAME:
+			return name != NAME_EDEFAULT;
+		case EsxPackage.PART_NOTE_NUMBER__NOTE_NUMBER:
+			return noteNumber != NOTE_NUMBER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -214,7 +218,8 @@ public class PartNoteNumberImpl extends EObjectImpl implements PartNoteNumber {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");

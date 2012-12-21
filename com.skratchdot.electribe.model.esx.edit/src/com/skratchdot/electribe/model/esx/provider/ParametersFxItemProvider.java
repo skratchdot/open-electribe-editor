@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.FxType;
 import com.skratchdot.electribe.model.esx.ParametersFx;
@@ -44,10 +43,10 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ParametersFxItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class ParametersFxItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -84,19 +83,16 @@ public class ParametersFxItemProvider
 	 * @generated
 	 */
 	protected void addEffectTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ParametersFx_effectType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ParametersFx_effectType_feature", "_UI_ParametersFx_type"),
-				 EsxPackage.Literals.PARAMETERS_FX__EFFECT_TYPE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_ParametersFx_effectType_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_ParametersFx_effectType_feature",
+						"_UI_ParametersFx_type"),
+				EsxPackage.Literals.PARAMETERS_FX__EFFECT_TYPE, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -106,19 +102,16 @@ public class ParametersFxItemProvider
 	 * @generated
 	 */
 	protected void addEdit1PropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ParametersFx_edit1_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ParametersFx_edit1_feature", "_UI_ParametersFx_type"),
-				 EsxPackage.Literals.PARAMETERS_FX__EDIT1,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_ParametersFx_edit1_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_ParametersFx_edit1_feature",
+						"_UI_ParametersFx_type"),
+				EsxPackage.Literals.PARAMETERS_FX__EDIT1, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -128,19 +121,16 @@ public class ParametersFxItemProvider
 	 * @generated
 	 */
 	protected void addEdit2PropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ParametersFx_edit2_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ParametersFx_edit2_feature", "_UI_ParametersFx_type"),
-				 EsxPackage.Literals.PARAMETERS_FX__EDIT2,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_ParametersFx_edit2_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_ParametersFx_edit2_feature",
+						"_UI_ParametersFx_type"),
+				EsxPackage.Literals.PARAMETERS_FX__EDIT2, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -150,19 +140,17 @@ public class ParametersFxItemProvider
 	 * @generated
 	 */
 	protected void addMotionSequenceStatusPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ParametersFx_motionSequenceStatus_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ParametersFx_motionSequenceStatus_feature", "_UI_ParametersFx_type"),
-				 EsxPackage.Literals.PARAMETERS_FX__MOTION_SEQUENCE_STATUS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_ParametersFx_motionSequenceStatus_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_ParametersFx_motionSequenceStatus_feature",
+						"_UI_ParametersFx_type"),
+				EsxPackage.Literals.PARAMETERS_FX__MOTION_SEQUENCE_STATUS,
+				true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -173,7 +161,8 @@ public class ParametersFxItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ParametersFx"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/ParametersFx"));
 	}
 
 	/**
@@ -184,11 +173,10 @@ public class ParametersFxItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		FxType labelValue = ((ParametersFx)object).getEffectType();
+		FxType labelValue = ((ParametersFx) object).getEffectType();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ParametersFx_type") :
-			getString("_UI_ParametersFx_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_ParametersFx_type")
+				: getString("_UI_ParametersFx_type") + " " + label;
 	}
 
 	/**
@@ -203,12 +191,13 @@ public class ParametersFxItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ParametersFx.class)) {
-			case EsxPackage.PARAMETERS_FX__EFFECT_TYPE:
-			case EsxPackage.PARAMETERS_FX__EDIT1:
-			case EsxPackage.PARAMETERS_FX__EDIT2:
-			case EsxPackage.PARAMETERS_FX__MOTION_SEQUENCE_STATUS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case EsxPackage.PARAMETERS_FX__EFFECT_TYPE:
+		case EsxPackage.PARAMETERS_FX__EDIT1:
+		case EsxPackage.PARAMETERS_FX__EDIT2:
+		case EsxPackage.PARAMETERS_FX__MOTION_SEQUENCE_STATUS:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -221,7 +210,8 @@ public class ParametersFxItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

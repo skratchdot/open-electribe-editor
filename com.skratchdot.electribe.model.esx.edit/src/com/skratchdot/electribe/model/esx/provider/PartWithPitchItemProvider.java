@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.PartWithPitch;
 
@@ -43,10 +42,10 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PartWithPitchItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class PartWithPitchItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -80,19 +79,16 @@ public class PartWithPitchItemProvider
 	 * @generated
 	 */
 	protected void addPitchPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithPitch_pitch_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithPitch_pitch_feature", "_UI_PartWithPitch_type"),
-				 EsxPackage.Literals.PART_WITH_PITCH__PITCH,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithPitch_pitch_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithPitch_pitch_feature",
+						"_UI_PartWithPitch_type"),
+				EsxPackage.Literals.PART_WITH_PITCH__PITCH, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -103,8 +99,9 @@ public class PartWithPitchItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		PartWithPitch partWithPitch = (PartWithPitch)object;
-		return getString("_UI_PartWithPitch_type") + " " + partWithPitch.getPitch();
+		PartWithPitch partWithPitch = (PartWithPitch) object;
+		return getString("_UI_PartWithPitch_type") + " "
+				+ partWithPitch.getPitch();
 	}
 
 	/**
@@ -119,9 +116,10 @@ public class PartWithPitchItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(PartWithPitch.class)) {
-			case EsxPackage.PART_WITH_PITCH__PITCH:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case EsxPackage.PART_WITH_PITCH__PITCH:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -134,7 +132,8 @@ public class PartWithPitchItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

@@ -29,7 +29,7 @@ public class OpenHandler extends AbstractHandler {
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// OPEN_ESX_FILE_ID
-		if(event.getCommand().getId().equals(OPEN_ESX_FILE_ID)) {
+		if (event.getCommand().getId().equals(OPEN_ESX_FILE_ID)) {
 			return openEsxFile(event);
 		}
 
@@ -42,15 +42,19 @@ public class OpenHandler extends AbstractHandler {
 	 * @throws ExecutionException
 	 */
 	public Object openEsxFile(ExecutionEvent event) throws ExecutionException {
-		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+		IWorkbenchWindow window = HandlerUtil
+				.getActiveWorkbenchWindowChecked(event);
 
 		List<String> fileExtentionFilters = EsxEditor.FILE_EXTENSION_FILTERS;
-		String[] filters = fileExtentionFilters.toArray(new String[fileExtentionFilters.size()]);
-		String[] files = EsxEditorUtil.openFilePathDialog(window.getShell(), SWT.OPEN, filters);
+		String[] filters = fileExtentionFilters
+				.toArray(new String[fileExtentionFilters.size()]);
+		String[] files = EsxEditorUtil.openFilePathDialog(window.getShell(),
+				SWT.OPEN, filters);
 		if (files.length > 0) {
-			EsxEditorUtil.openEditor(window.getWorkbench(), URI.createFileURI(files[0]));
+			EsxEditorUtil.openEditor(window.getWorkbench(),
+					URI.createFileURI(files[0]));
 		}
-		
+
 		return null;
 	}
 

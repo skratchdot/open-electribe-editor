@@ -36,7 +36,6 @@ public class EsxCompositeSampleInPatternInfo extends EsxComposite {
 	private Text textPatternCount;
 	private TableViewer tableViewer;
 
-
 	/**
 	 * @param parent
 	 * @param style
@@ -50,16 +49,20 @@ public class EsxCompositeSampleInPatternInfo extends EsxComposite {
 	 * @param parentComposite
 	 * @param style
 	 */
-	public EsxCompositeSampleInPatternInfo(EsxEditorPart parentPart, Composite parentComposite, int style) {
+	public EsxCompositeSampleInPatternInfo(EsxEditorPart parentPart,
+			Composite parentComposite, int style) {
 		super(parentPart, parentComposite, style);
 		this.parentPart = parentPart;
 
 		setLayout(new GridLayout(4, false));
 
-		textPartCount = this.createGridData2ColumnTextLabel(this, "Total # of Parts");
-		textPatternCount = this.createGridData2ColumnTextLabel(this, "Total # of Patterns");
+		textPartCount = this.createGridData2ColumnTextLabel(this,
+				"Total # of Parts");
+		textPatternCount = this.createGridData2ColumnTextLabel(this,
+				"Total # of Patterns");
 
-		this.tableViewer = new TableViewer(this, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
+		this.tableViewer = new TableViewer(this, SWT.BORDER
+				| SWT.FULL_SELECTION | SWT.MULTI);
 		this.initTableViewer();
 	}
 
@@ -75,43 +78,50 @@ public class EsxCompositeSampleInPatternInfo extends EsxComposite {
 
 		// Create our columns
 		this.parentPart.addColumnToTableViewer(this.tableViewer, "#", 50);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Pattern", 100);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "PartCount", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "PartList", 400);
+		this.parentPart
+				.addColumnToTableViewer(this.tableViewer, "Pattern", 100);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "PartCount",
+				null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "PartList",
+				400);
 
 		// Setup this.tableViewer ContentProvider
-		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
+		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(
+				this.getAdapterFactory()) {
 			@Override
 			public Object[] getElements(Object object) {
 				return selectedSample.getSampleInPatternInfoList().toArray();
 			}
+
 			@Override
 			public void notifyChanged(Notification notification) {
 				super.notifyChanged(new ViewerNotification(notification));
-			}			
+			}
 		});
 
-		this.tableViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(getAdapterFactory(), this.tableViewer));
+		this.tableViewer
+				.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(
+						getAdapterFactory(), this.tableViewer));
 
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see com.skratchdot.electribe.model.esx.presentation.EsxComposite#setInput(java.lang.Object)
 	 */
 	@Override
 	public void setInput(Object input) {
-		if(this.isActive==false) return;
-		
-		if(input instanceof List<?>) {
-			if( ((List<?>) input).size()>1 ) {
+		if (this.isActive == false)
+			return;
+
+		if (input instanceof List<?>) {
+			if (((List<?>) input).size() > 1) {
 				this.selectedSample = null;
-			}
-			else {
+			} else {
 				boolean isIterating = true;
 				Iterator<?> it = ((List<?>) input).iterator();
-				while (it.hasNext() && isIterating==true) {
+				while (it.hasNext() && isIterating == true) {
 					Object obj = it.next();
-					if(obj instanceof Sample) {
+					if (obj instanceof Sample) {
 						this.selectedSample = (Sample) obj;
 						isIterating = false;
 					}
@@ -129,13 +139,15 @@ public class EsxCompositeSampleInPatternInfo extends EsxComposite {
 	 */
 	@Override
 	public void refresh() {
-		if(this.isActive==false) return;
+		if (this.isActive == false)
+			return;
 
-		if(this.selectedSample!=null) {
-			this.textPartCount.setText(Integer.toString(this.selectedSample.getPartCount()));
-			this.textPatternCount.setText(Integer.toString(this.selectedSample.getPatternCount()));
-		}
-		else {
+		if (this.selectedSample != null) {
+			this.textPartCount.setText(Integer.toString(this.selectedSample
+					.getPartCount()));
+			this.textPatternCount.setText(Integer.toString(this.selectedSample
+					.getPatternCount()));
+		} else {
 			this.textPartCount.setText("");
 			this.textPatternCount.setText("");
 		}
@@ -146,8 +158,9 @@ public class EsxCompositeSampleInPatternInfo extends EsxComposite {
 	 */
 	@Override
 	public void refreshInputs() {
-		if(this.isActive==false) return;
-		
+		if (this.isActive == false)
+			return;
+
 	}
 
 }

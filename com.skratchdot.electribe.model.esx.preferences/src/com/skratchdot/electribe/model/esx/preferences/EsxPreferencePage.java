@@ -22,8 +22,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.PreferenceLinkArea;
 import org.eclipse.ui.preferences.IWorkbenchPreferenceContainer;
 
-public class EsxPreferencePage extends PreferencePage
-		implements IWorkbenchPreferencePage {
+public class EsxPreferencePage extends PreferencePage implements
+		IWorkbenchPreferencePage {
 	public static final String ID = "com.skratchdot.electribe.model.esx.preferences.EsxPreferencePage"; //$NON-NLS-1$
 
 	/**
@@ -37,10 +37,8 @@ public class EsxPreferencePage extends PreferencePage
 	 */
 	public void init(IWorkbench workbench) {
 		setPreferenceStore(PlatformUI.getPreferenceStore());
-		setDescription(
-			"You can edit a specific feature by expanding the " +
-			"tree, or by clicking one of the links below."
-		);
+		setDescription("You can edit a specific feature by expanding the "
+				+ "tree, or by clicking one of the links below.");
 	}
 
 	/**
@@ -53,54 +51,31 @@ public class EsxPreferencePage extends PreferencePage
 		composite.setLayout(new GridLayout());
 
 		// Link to EsxPreferencePageExport
-		new PreferenceLinkArea(
-			composite,
-			SWT.NONE,
-			EsxPreferencePageExport.ID,
-			"See <a>''{0}''</a> to edit the Export preferences.",
-			(IWorkbenchPreferenceContainer) getContainer(),
-			null
-		);
+		new PreferenceLinkArea(composite, SWT.NONE, EsxPreferencePageExport.ID,
+				"See <a>''{0}''</a> to edit the Export preferences.",
+				(IWorkbenchPreferenceContainer) getContainer(), null);
 
 		// Link to EsxPreferencePageFiles
-		new PreferenceLinkArea(
-			composite,
-			SWT.NONE,
-			EsxPreferencePageFiles.ID,
-			"See <a>''{0}''</a> to edit the File preferences.",
-			(IWorkbenchPreferenceContainer) getContainer(),
-			null
-		);
-		
+		new PreferenceLinkArea(composite, SWT.NONE, EsxPreferencePageFiles.ID,
+				"See <a>''{0}''</a> to edit the File preferences.",
+				(IWorkbenchPreferenceContainer) getContainer(), null);
+
 		// Link to EsxPreferencePagePatterns
-		new PreferenceLinkArea(
-			composite,
-			SWT.NONE,
-			EsxPreferencePagePatterns.ID,
-			"See <a>''{0}''</a> to edit the Pattern preferences.",
-			(IWorkbenchPreferenceContainer) getContainer(),
-			null
-		);
+		new PreferenceLinkArea(composite, SWT.NONE,
+				EsxPreferencePagePatterns.ID,
+				"See <a>''{0}''</a> to edit the Pattern preferences.",
+				(IWorkbenchPreferenceContainer) getContainer(), null);
 
 		// Link to EsxPreferencePageSamples
-		new PreferenceLinkArea(
-			composite,
-			SWT.NONE,
-			EsxPreferencePageSamples.ID,
-			"See <a>''{0}''</a> to edit the Sample preferences.",
-			(IWorkbenchPreferenceContainer) getContainer(),
-			null
-		);
+		new PreferenceLinkArea(composite, SWT.NONE,
+				EsxPreferencePageSamples.ID,
+				"See <a>''{0}''</a> to edit the Sample preferences.",
+				(IWorkbenchPreferenceContainer) getContainer(), null);
 
 		// Link to EsxPreferencePageSongs
-		new PreferenceLinkArea(
-			composite,
-			SWT.NONE,
-			EsxPreferencePageSongs.ID,
-			"See <a>''{0}''</a> to edit the Song preferences.",
-			(IWorkbenchPreferenceContainer) getContainer(),
-			null
-		);
+		new PreferenceLinkArea(composite, SWT.NONE, EsxPreferencePageSongs.ID,
+				"See <a>''{0}''</a> to edit the Song preferences.",
+				(IWorkbenchPreferenceContainer) getContainer(), null);
 
 		return composite;
 	}

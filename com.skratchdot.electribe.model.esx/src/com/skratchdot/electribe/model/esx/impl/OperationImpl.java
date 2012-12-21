@@ -92,7 +92,8 @@ public class OperationImpl extends EObjectImpl implements Operation {
 		byte oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.OPERATION__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.OPERATION__VALUE, oldValue, value));
 	}
 
 	/**
@@ -103,8 +104,8 @@ public class OperationImpl extends EObjectImpl implements Operation {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.OPERATION__VALUE:
-				return getValue();
+		case EsxPackage.OPERATION__VALUE:
+			return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -117,9 +118,9 @@ public class OperationImpl extends EObjectImpl implements Operation {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.OPERATION__VALUE:
-				setValue((Byte)newValue);
-				return;
+		case EsxPackage.OPERATION__VALUE:
+			setValue((Byte) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -132,9 +133,9 @@ public class OperationImpl extends EObjectImpl implements Operation {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.OPERATION__VALUE:
-				setValue(VALUE_EDEFAULT);
-				return;
+		case EsxPackage.OPERATION__VALUE:
+			setValue(VALUE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -147,8 +148,8 @@ public class OperationImpl extends EObjectImpl implements Operation {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.OPERATION__VALUE:
-				return value != VALUE_EDEFAULT;
+		case EsxPackage.OPERATION__VALUE:
+			return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -160,7 +161,8 @@ public class OperationImpl extends EObjectImpl implements Operation {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: ");

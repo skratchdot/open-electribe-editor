@@ -706,6 +706,7 @@ public interface EsxFile extends EObject {
 	 * @model
 	 * @generated
 	 */
-	boolean validMemFreeInBytes(DiagnosticChain diagnostics, Map<Object, Object> context);
+	boolean validMemFreeInBytes(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 }

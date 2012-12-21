@@ -36,7 +36,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class SampleData8BitImpl extends SampleDataImpl implements SampleData8Bit {
+public class SampleData8BitImpl extends SampleDataImpl implements
+		SampleData8Bit {
 	/**
 	 * The default value of the '{@link #getSample() <em>Sample</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -94,7 +95,8 @@ public class SampleData8BitImpl extends SampleDataImpl implements SampleData8Bit
 		byte oldSample = sample;
 		sample = newSample;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.SAMPLE_DATA8_BIT__SAMPLE, oldSample, sample));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.SAMPLE_DATA8_BIT__SAMPLE, oldSample, sample));
 	}
 
 	/**
@@ -105,8 +107,8 @@ public class SampleData8BitImpl extends SampleDataImpl implements SampleData8Bit
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.SAMPLE_DATA8_BIT__SAMPLE:
-				return getSample();
+		case WavPackage.SAMPLE_DATA8_BIT__SAMPLE:
+			return getSample();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -119,9 +121,9 @@ public class SampleData8BitImpl extends SampleDataImpl implements SampleData8Bit
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.SAMPLE_DATA8_BIT__SAMPLE:
-				setSample((Byte)newValue);
-				return;
+		case WavPackage.SAMPLE_DATA8_BIT__SAMPLE:
+			setSample((Byte) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -134,9 +136,9 @@ public class SampleData8BitImpl extends SampleDataImpl implements SampleData8Bit
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.SAMPLE_DATA8_BIT__SAMPLE:
-				setSample(SAMPLE_EDEFAULT);
-				return;
+		case WavPackage.SAMPLE_DATA8_BIT__SAMPLE:
+			setSample(SAMPLE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -149,8 +151,8 @@ public class SampleData8BitImpl extends SampleDataImpl implements SampleData8Bit
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.SAMPLE_DATA8_BIT__SAMPLE:
-				return sample != SAMPLE_EDEFAULT;
+		case WavPackage.SAMPLE_DATA8_BIT__SAMPLE:
+			return sample != SAMPLE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -162,7 +164,8 @@ public class SampleData8BitImpl extends SampleDataImpl implements SampleData8Bit
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (sample: ");

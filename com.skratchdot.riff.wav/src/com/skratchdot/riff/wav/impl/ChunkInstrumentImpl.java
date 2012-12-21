@@ -197,14 +197,18 @@ public class ChunkInstrumentImpl extends ChunkImpl implements ChunkInstrument {
 	}
 
 	@Override
-	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf)
+			throws RiffWaveException {
 		// Check Chunk Type ID
-		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
-			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+		if (ChunkTypeID.get((int) buf.getUnsignedInt()) != this
+				.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "
+					+ this.getChunkTypeID().getLiteral());
 
 		// Read in data size
-		if(buf.getUnsignedInt()!=this.getSize())
-			throw new RiffWaveException("inst Chunk Size is too big. Should be 7.");
+		if (buf.getUnsignedInt() != this.getSize())
+			throw new RiffWaveException(
+					"inst Chunk Size is too big. Should be 7.");
 
 		this.setUnshiftedNote(buf.getByte());
 		this.setFineTune(buf.getByte());
@@ -243,7 +247,9 @@ public class ChunkInstrumentImpl extends ChunkImpl implements ChunkInstrument {
 		byte oldUnshiftedNote = unshiftedNote;
 		unshiftedNote = newUnshiftedNote;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_INSTRUMENT__UNSHIFTED_NOTE, oldUnshiftedNote, unshiftedNote));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_INSTRUMENT__UNSHIFTED_NOTE,
+					oldUnshiftedNote, unshiftedNote));
 	}
 
 	/**
@@ -264,7 +270,9 @@ public class ChunkInstrumentImpl extends ChunkImpl implements ChunkInstrument {
 		byte oldFineTune = fineTune;
 		fineTune = newFineTune;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_INSTRUMENT__FINE_TUNE, oldFineTune, fineTune));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_INSTRUMENT__FINE_TUNE, oldFineTune,
+					fineTune));
 	}
 
 	/**
@@ -285,7 +293,8 @@ public class ChunkInstrumentImpl extends ChunkImpl implements ChunkInstrument {
 		byte oldGain = gain;
 		gain = newGain;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_INSTRUMENT__GAIN, oldGain, gain));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_INSTRUMENT__GAIN, oldGain, gain));
 	}
 
 	/**
@@ -306,7 +315,8 @@ public class ChunkInstrumentImpl extends ChunkImpl implements ChunkInstrument {
 		byte oldLowNote = lowNote;
 		lowNote = newLowNote;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_INSTRUMENT__LOW_NOTE, oldLowNote, lowNote));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_INSTRUMENT__LOW_NOTE, oldLowNote, lowNote));
 	}
 
 	/**
@@ -327,7 +337,9 @@ public class ChunkInstrumentImpl extends ChunkImpl implements ChunkInstrument {
 		byte oldHighNote = highNote;
 		highNote = newHighNote;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_INSTRUMENT__HIGH_NOTE, oldHighNote, highNote));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_INSTRUMENT__HIGH_NOTE, oldHighNote,
+					highNote));
 	}
 
 	/**
@@ -348,7 +360,9 @@ public class ChunkInstrumentImpl extends ChunkImpl implements ChunkInstrument {
 		byte oldLowVelocity = lowVelocity;
 		lowVelocity = newLowVelocity;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_INSTRUMENT__LOW_VELOCITY, oldLowVelocity, lowVelocity));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_INSTRUMENT__LOW_VELOCITY, oldLowVelocity,
+					lowVelocity));
 	}
 
 	/**
@@ -369,7 +383,9 @@ public class ChunkInstrumentImpl extends ChunkImpl implements ChunkInstrument {
 		byte oldHighVelocity = highVelocity;
 		highVelocity = newHighVelocity;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_INSTRUMENT__HIGH_VELOCITY, oldHighVelocity, highVelocity));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_INSTRUMENT__HIGH_VELOCITY,
+					oldHighVelocity, highVelocity));
 	}
 
 	/* (non-Javadoc)
@@ -404,20 +420,20 @@ public class ChunkInstrumentImpl extends ChunkImpl implements ChunkInstrument {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.CHUNK_INSTRUMENT__UNSHIFTED_NOTE:
-				return getUnshiftedNote();
-			case WavPackage.CHUNK_INSTRUMENT__FINE_TUNE:
-				return getFineTune();
-			case WavPackage.CHUNK_INSTRUMENT__GAIN:
-				return getGain();
-			case WavPackage.CHUNK_INSTRUMENT__LOW_NOTE:
-				return getLowNote();
-			case WavPackage.CHUNK_INSTRUMENT__HIGH_NOTE:
-				return getHighNote();
-			case WavPackage.CHUNK_INSTRUMENT__LOW_VELOCITY:
-				return getLowVelocity();
-			case WavPackage.CHUNK_INSTRUMENT__HIGH_VELOCITY:
-				return getHighVelocity();
+		case WavPackage.CHUNK_INSTRUMENT__UNSHIFTED_NOTE:
+			return getUnshiftedNote();
+		case WavPackage.CHUNK_INSTRUMENT__FINE_TUNE:
+			return getFineTune();
+		case WavPackage.CHUNK_INSTRUMENT__GAIN:
+			return getGain();
+		case WavPackage.CHUNK_INSTRUMENT__LOW_NOTE:
+			return getLowNote();
+		case WavPackage.CHUNK_INSTRUMENT__HIGH_NOTE:
+			return getHighNote();
+		case WavPackage.CHUNK_INSTRUMENT__LOW_VELOCITY:
+			return getLowVelocity();
+		case WavPackage.CHUNK_INSTRUMENT__HIGH_VELOCITY:
+			return getHighVelocity();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -430,27 +446,27 @@ public class ChunkInstrumentImpl extends ChunkImpl implements ChunkInstrument {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.CHUNK_INSTRUMENT__UNSHIFTED_NOTE:
-				setUnshiftedNote((Byte)newValue);
-				return;
-			case WavPackage.CHUNK_INSTRUMENT__FINE_TUNE:
-				setFineTune((Byte)newValue);
-				return;
-			case WavPackage.CHUNK_INSTRUMENT__GAIN:
-				setGain((Byte)newValue);
-				return;
-			case WavPackage.CHUNK_INSTRUMENT__LOW_NOTE:
-				setLowNote((Byte)newValue);
-				return;
-			case WavPackage.CHUNK_INSTRUMENT__HIGH_NOTE:
-				setHighNote((Byte)newValue);
-				return;
-			case WavPackage.CHUNK_INSTRUMENT__LOW_VELOCITY:
-				setLowVelocity((Byte)newValue);
-				return;
-			case WavPackage.CHUNK_INSTRUMENT__HIGH_VELOCITY:
-				setHighVelocity((Byte)newValue);
-				return;
+		case WavPackage.CHUNK_INSTRUMENT__UNSHIFTED_NOTE:
+			setUnshiftedNote((Byte) newValue);
+			return;
+		case WavPackage.CHUNK_INSTRUMENT__FINE_TUNE:
+			setFineTune((Byte) newValue);
+			return;
+		case WavPackage.CHUNK_INSTRUMENT__GAIN:
+			setGain((Byte) newValue);
+			return;
+		case WavPackage.CHUNK_INSTRUMENT__LOW_NOTE:
+			setLowNote((Byte) newValue);
+			return;
+		case WavPackage.CHUNK_INSTRUMENT__HIGH_NOTE:
+			setHighNote((Byte) newValue);
+			return;
+		case WavPackage.CHUNK_INSTRUMENT__LOW_VELOCITY:
+			setLowVelocity((Byte) newValue);
+			return;
+		case WavPackage.CHUNK_INSTRUMENT__HIGH_VELOCITY:
+			setHighVelocity((Byte) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -463,27 +479,27 @@ public class ChunkInstrumentImpl extends ChunkImpl implements ChunkInstrument {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_INSTRUMENT__UNSHIFTED_NOTE:
-				setUnshiftedNote(UNSHIFTED_NOTE_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_INSTRUMENT__FINE_TUNE:
-				setFineTune(FINE_TUNE_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_INSTRUMENT__GAIN:
-				setGain(GAIN_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_INSTRUMENT__LOW_NOTE:
-				setLowNote(LOW_NOTE_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_INSTRUMENT__HIGH_NOTE:
-				setHighNote(HIGH_NOTE_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_INSTRUMENT__LOW_VELOCITY:
-				setLowVelocity(LOW_VELOCITY_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_INSTRUMENT__HIGH_VELOCITY:
-				setHighVelocity(HIGH_VELOCITY_EDEFAULT);
-				return;
+		case WavPackage.CHUNK_INSTRUMENT__UNSHIFTED_NOTE:
+			setUnshiftedNote(UNSHIFTED_NOTE_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_INSTRUMENT__FINE_TUNE:
+			setFineTune(FINE_TUNE_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_INSTRUMENT__GAIN:
+			setGain(GAIN_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_INSTRUMENT__LOW_NOTE:
+			setLowNote(LOW_NOTE_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_INSTRUMENT__HIGH_NOTE:
+			setHighNote(HIGH_NOTE_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_INSTRUMENT__LOW_VELOCITY:
+			setLowVelocity(LOW_VELOCITY_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_INSTRUMENT__HIGH_VELOCITY:
+			setHighVelocity(HIGH_VELOCITY_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -496,20 +512,20 @@ public class ChunkInstrumentImpl extends ChunkImpl implements ChunkInstrument {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_INSTRUMENT__UNSHIFTED_NOTE:
-				return unshiftedNote != UNSHIFTED_NOTE_EDEFAULT;
-			case WavPackage.CHUNK_INSTRUMENT__FINE_TUNE:
-				return fineTune != FINE_TUNE_EDEFAULT;
-			case WavPackage.CHUNK_INSTRUMENT__GAIN:
-				return gain != GAIN_EDEFAULT;
-			case WavPackage.CHUNK_INSTRUMENT__LOW_NOTE:
-				return lowNote != LOW_NOTE_EDEFAULT;
-			case WavPackage.CHUNK_INSTRUMENT__HIGH_NOTE:
-				return highNote != HIGH_NOTE_EDEFAULT;
-			case WavPackage.CHUNK_INSTRUMENT__LOW_VELOCITY:
-				return lowVelocity != LOW_VELOCITY_EDEFAULT;
-			case WavPackage.CHUNK_INSTRUMENT__HIGH_VELOCITY:
-				return highVelocity != HIGH_VELOCITY_EDEFAULT;
+		case WavPackage.CHUNK_INSTRUMENT__UNSHIFTED_NOTE:
+			return unshiftedNote != UNSHIFTED_NOTE_EDEFAULT;
+		case WavPackage.CHUNK_INSTRUMENT__FINE_TUNE:
+			return fineTune != FINE_TUNE_EDEFAULT;
+		case WavPackage.CHUNK_INSTRUMENT__GAIN:
+			return gain != GAIN_EDEFAULT;
+		case WavPackage.CHUNK_INSTRUMENT__LOW_NOTE:
+			return lowNote != LOW_NOTE_EDEFAULT;
+		case WavPackage.CHUNK_INSTRUMENT__HIGH_NOTE:
+			return highNote != HIGH_NOTE_EDEFAULT;
+		case WavPackage.CHUNK_INSTRUMENT__LOW_VELOCITY:
+			return lowVelocity != LOW_VELOCITY_EDEFAULT;
+		case WavPackage.CHUNK_INSTRUMENT__HIGH_VELOCITY:
+			return highVelocity != HIGH_VELOCITY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -521,7 +537,8 @@ public class ChunkInstrumentImpl extends ChunkImpl implements ChunkInstrument {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (unshiftedNote: ");
@@ -544,7 +561,8 @@ public class ChunkInstrumentImpl extends ChunkImpl implements ChunkInstrument {
 
 	@Override
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				(int) this.getSize() + 8);
 		buf.order(ByteOrder.LITTLE_ENDIAN);
 
 		buf.putUnsignedInt(this.getChunkTypeIDValue());
@@ -559,6 +577,5 @@ public class ChunkInstrumentImpl extends ChunkImpl implements ChunkInstrument {
 
 		return buf.array();
 	}
-
 
 } //ChunkInstrumentImpl

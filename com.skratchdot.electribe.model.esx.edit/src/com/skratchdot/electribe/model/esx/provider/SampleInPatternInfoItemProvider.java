@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -41,17 +40,10 @@ import com.skratchdot.electribe.model.esx.SampleInPatternInfo;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SampleInPatternInfoItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
-		ITableItemLabelProvider,
-		ITableItemColorProvider,
-		IItemColorProvider {
+public class SampleInPatternInfoItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -88,19 +80,18 @@ public class SampleInPatternInfoItemProvider
 	 * @generated
 	 */
 	protected void addIndexPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SampleInPatternInfo_index_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SampleInPatternInfo_index_feature", "_UI_SampleInPatternInfo_type"),
-				 EsxPackage.Literals.SAMPLE_IN_PATTERN_INFO__INDEX,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_SampleInPatternInfo_index_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_SampleInPatternInfo_index_feature",
+								"_UI_SampleInPatternInfo_type"),
+						EsxPackage.Literals.SAMPLE_IN_PATTERN_INFO__INDEX,
+						true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -110,19 +101,17 @@ public class SampleInPatternInfoItemProvider
 	 * @generated
 	 */
 	protected void addPatternLabelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SampleInPatternInfo_patternLabel_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SampleInPatternInfo_patternLabel_feature", "_UI_SampleInPatternInfo_type"),
-				 EsxPackage.Literals.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SampleInPatternInfo_patternLabel_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SampleInPatternInfo_patternLabel_feature",
+						"_UI_SampleInPatternInfo_type"),
+				EsxPackage.Literals.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL,
+				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -132,19 +121,17 @@ public class SampleInPatternInfoItemProvider
 	 * @generated
 	 */
 	protected void addPartCountPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SampleInPatternInfo_partCount_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SampleInPatternInfo_partCount_feature", "_UI_SampleInPatternInfo_type"),
-				 EsxPackage.Literals.SAMPLE_IN_PATTERN_INFO__PART_COUNT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SampleInPatternInfo_partCount_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SampleInPatternInfo_partCount_feature",
+						"_UI_SampleInPatternInfo_type"),
+				EsxPackage.Literals.SAMPLE_IN_PATTERN_INFO__PART_COUNT, true,
+				false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -154,19 +141,17 @@ public class SampleInPatternInfoItemProvider
 	 * @generated
 	 */
 	protected void addPartListPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SampleInPatternInfo_partList_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SampleInPatternInfo_partList_feature", "_UI_SampleInPatternInfo_type"),
-				 EsxPackage.Literals.SAMPLE_IN_PATTERN_INFO__PART_LIST,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SampleInPatternInfo_partList_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SampleInPatternInfo_partList_feature",
+						"_UI_SampleInPatternInfo_type"),
+				EsxPackage.Literals.SAMPLE_IN_PATTERN_INFO__PART_LIST, true,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -177,7 +162,8 @@ public class SampleInPatternInfoItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SampleInPatternInfo"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/SampleInPatternInfo"));
 	}
 
 	/**
@@ -188,22 +174,29 @@ public class SampleInPatternInfoItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		SampleInPatternInfo sampleInPatternInfo = (SampleInPatternInfo)object;
-		return getString("_UI_SampleInPatternInfo_type") + " " + sampleInPatternInfo.getIndex();
+		SampleInPatternInfo sampleInPatternInfo = (SampleInPatternInfo) object;
+		return getString("_UI_SampleInPatternInfo_type") + " "
+				+ sampleInPatternInfo.getIndex();
 	}
 
 	@Override
 	public String getColumnText(Object object, int columnIndex) {
-		switch(columnIndex) {
-			// Index
-			case 0: return Integer.toString(((SampleInPatternInfo) object).getIndex());
+		switch (columnIndex) {
+		// Index
+		case 0:
+			return Integer.toString(((SampleInPatternInfo) object).getIndex());
 			// Pattern Number
-			case 1: return ((SampleInPatternInfo) object).getPatternLabel();
+		case 1:
+			return ((SampleInPatternInfo) object).getPatternLabel();
 			// PartCount
-			case 2: return Integer.toString(((SampleInPatternInfo) object).getPartCount());
+		case 2:
+			return Integer.toString(((SampleInPatternInfo) object)
+					.getPartCount());
 			// PartList
-			case 3: return ((SampleInPatternInfo) object).getPartList();
-			default: return super.getColumnText(object, columnIndex);
+		case 3:
+			return ((SampleInPatternInfo) object).getPartList();
+		default:
+			return super.getColumnText(object, columnIndex);
 		}
 	}
 
@@ -219,12 +212,13 @@ public class SampleInPatternInfoItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SampleInPatternInfo.class)) {
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__INDEX:
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL:
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_COUNT:
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_LIST:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__INDEX:
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL:
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_COUNT:
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO__PART_LIST:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -237,7 +231,8 @@ public class SampleInPatternInfoItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

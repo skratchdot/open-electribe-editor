@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.PartWithSlice;
 
@@ -43,10 +42,10 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PartWithSliceItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class PartWithSliceItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -81,19 +80,17 @@ public class PartWithSliceItemProvider
 	 * @generated
 	 */
 	protected void addReservedBytePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithSlice_reservedByte_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithSlice_reservedByte_feature", "_UI_PartWithSlice_type"),
-				 EsxPackage.Literals.PART_WITH_SLICE__RESERVED_BYTE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithSlice_reservedByte_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithSlice_reservedByte_feature",
+						"_UI_PartWithSlice_type"),
+				EsxPackage.Literals.PART_WITH_SLICE__RESERVED_BYTE, true,
+				false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -103,19 +100,18 @@ public class PartWithSliceItemProvider
 	 * @generated
 	 */
 	protected void addSliceNumberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithSlice_sliceNumber_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithSlice_sliceNumber_feature", "_UI_PartWithSlice_type"),
-				 EsxPackage.Literals.PART_WITH_SLICE__SLICE_NUMBER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_PartWithSlice_sliceNumber_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_PartWithSlice_sliceNumber_feature",
+								"_UI_PartWithSlice_type"),
+						EsxPackage.Literals.PART_WITH_SLICE__SLICE_NUMBER,
+						true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -126,8 +122,9 @@ public class PartWithSliceItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		PartWithSlice partWithSlice = (PartWithSlice)object;
-		return getString("_UI_PartWithSlice_type") + " " + partWithSlice.getReservedByte();
+		PartWithSlice partWithSlice = (PartWithSlice) object;
+		return getString("_UI_PartWithSlice_type") + " "
+				+ partWithSlice.getReservedByte();
 	}
 
 	/**
@@ -142,10 +139,11 @@ public class PartWithSliceItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(PartWithSlice.class)) {
-			case EsxPackage.PART_WITH_SLICE__RESERVED_BYTE:
-			case EsxPackage.PART_WITH_SLICE__SLICE_NUMBER:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case EsxPackage.PART_WITH_SLICE__RESERVED_BYTE:
+		case EsxPackage.PART_WITH_SLICE__SLICE_NUMBER:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -158,7 +156,8 @@ public class PartWithSliceItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

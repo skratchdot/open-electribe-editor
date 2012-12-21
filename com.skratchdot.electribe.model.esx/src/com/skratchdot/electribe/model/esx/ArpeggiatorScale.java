@@ -808,40 +808,15 @@ public enum ArpeggiatorScale implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ArpeggiatorScale[] VALUES_ARRAY =
-		new ArpeggiatorScale[] {
-			CHROMATIC,
-			IONIAN,
-			DORIAN,
-			PHRYGIAN,
-			LYDIAN,
-			MIXOLYDIAN,
-			AEOLIAN,
-			LOCRIAN,
-			MAJOR_BLUES,
-			MINOR_BLUES,
-			DIMINISH,
-			COMBINATION_DIMINISH,
-			MAJOR_PENTATONIC,
-			MINOR_PENTATONIC,
-			RAGA_BHAIRAV,
-			RAGA_GAMANASRAMA,
-			RAGA_TODI,
-			SPANISH_SCALE,
-			GYPSY_SCALE,
-			ARABIAN_SCALE,
-			EGYPTIAN_SCALE,
-			HAWAIIAN_SCALE,
-			BALI_ISLAND_SCALE,
-			JAPANESE_MIYAKOBUSHI,
-			RYUKYU_SCALE,
-			WHOLETONE,
-			MINOR_3RD_INTERVAL,
-			MAJOR_3RD_INTERVAL,
-			FOURTH_INTERVAL,
-			FIFTH_INTERVAL,
-			OCTAVE_INTERVAL,
-		};
+	private static final ArpeggiatorScale[] VALUES_ARRAY = new ArpeggiatorScale[] {
+			CHROMATIC, IONIAN, DORIAN, PHRYGIAN, LYDIAN, MIXOLYDIAN, AEOLIAN,
+			LOCRIAN, MAJOR_BLUES, MINOR_BLUES, DIMINISH, COMBINATION_DIMINISH,
+			MAJOR_PENTATONIC, MINOR_PENTATONIC, RAGA_BHAIRAV, RAGA_GAMANASRAMA,
+			RAGA_TODI, SPANISH_SCALE, GYPSY_SCALE, ARABIAN_SCALE,
+			EGYPTIAN_SCALE, HAWAIIAN_SCALE, BALI_ISLAND_SCALE,
+			JAPANESE_MIYAKOBUSHI, RYUKYU_SCALE, WHOLETONE, MINOR_3RD_INTERVAL,
+			MAJOR_3RD_INTERVAL, FOURTH_INTERVAL, FIFTH_INTERVAL,
+			OCTAVE_INTERVAL, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Arpeggiator Scale</b></em>' enumerators.
@@ -849,7 +824,8 @@ public enum ArpeggiatorScale implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<ArpeggiatorScale> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ArpeggiatorScale> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Arpeggiator Scale</b></em>' literal with the specified literal value.
@@ -891,37 +867,68 @@ public enum ArpeggiatorScale implements Enumerator {
 	 */
 	public static ArpeggiatorScale get(int value) {
 		switch (value) {
-			case CHROMATIC_VALUE: return CHROMATIC;
-			case IONIAN_VALUE: return IONIAN;
-			case DORIAN_VALUE: return DORIAN;
-			case PHRYGIAN_VALUE: return PHRYGIAN;
-			case LYDIAN_VALUE: return LYDIAN;
-			case MIXOLYDIAN_VALUE: return MIXOLYDIAN;
-			case AEOLIAN_VALUE: return AEOLIAN;
-			case LOCRIAN_VALUE: return LOCRIAN;
-			case MAJOR_BLUES_VALUE: return MAJOR_BLUES;
-			case MINOR_BLUES_VALUE: return MINOR_BLUES;
-			case DIMINISH_VALUE: return DIMINISH;
-			case COMBINATION_DIMINISH_VALUE: return COMBINATION_DIMINISH;
-			case MAJOR_PENTATONIC_VALUE: return MAJOR_PENTATONIC;
-			case MINOR_PENTATONIC_VALUE: return MINOR_PENTATONIC;
-			case RAGA_BHAIRAV_VALUE: return RAGA_BHAIRAV;
-			case RAGA_GAMANASRAMA_VALUE: return RAGA_GAMANASRAMA;
-			case RAGA_TODI_VALUE: return RAGA_TODI;
-			case SPANISH_SCALE_VALUE: return SPANISH_SCALE;
-			case GYPSY_SCALE_VALUE: return GYPSY_SCALE;
-			case ARABIAN_SCALE_VALUE: return ARABIAN_SCALE;
-			case EGYPTIAN_SCALE_VALUE: return EGYPTIAN_SCALE;
-			case HAWAIIAN_SCALE_VALUE: return HAWAIIAN_SCALE;
-			case BALI_ISLAND_SCALE_VALUE: return BALI_ISLAND_SCALE;
-			case JAPANESE_MIYAKOBUSHI_VALUE: return JAPANESE_MIYAKOBUSHI;
-			case RYUKYU_SCALE_VALUE: return RYUKYU_SCALE;
-			case WHOLETONE_VALUE: return WHOLETONE;
-			case MINOR_3RD_INTERVAL_VALUE: return MINOR_3RD_INTERVAL;
-			case MAJOR_3RD_INTERVAL_VALUE: return MAJOR_3RD_INTERVAL;
-			case FOURTH_INTERVAL_VALUE: return FOURTH_INTERVAL;
-			case FIFTH_INTERVAL_VALUE: return FIFTH_INTERVAL;
-			case OCTAVE_INTERVAL_VALUE: return OCTAVE_INTERVAL;
+		case CHROMATIC_VALUE:
+			return CHROMATIC;
+		case IONIAN_VALUE:
+			return IONIAN;
+		case DORIAN_VALUE:
+			return DORIAN;
+		case PHRYGIAN_VALUE:
+			return PHRYGIAN;
+		case LYDIAN_VALUE:
+			return LYDIAN;
+		case MIXOLYDIAN_VALUE:
+			return MIXOLYDIAN;
+		case AEOLIAN_VALUE:
+			return AEOLIAN;
+		case LOCRIAN_VALUE:
+			return LOCRIAN;
+		case MAJOR_BLUES_VALUE:
+			return MAJOR_BLUES;
+		case MINOR_BLUES_VALUE:
+			return MINOR_BLUES;
+		case DIMINISH_VALUE:
+			return DIMINISH;
+		case COMBINATION_DIMINISH_VALUE:
+			return COMBINATION_DIMINISH;
+		case MAJOR_PENTATONIC_VALUE:
+			return MAJOR_PENTATONIC;
+		case MINOR_PENTATONIC_VALUE:
+			return MINOR_PENTATONIC;
+		case RAGA_BHAIRAV_VALUE:
+			return RAGA_BHAIRAV;
+		case RAGA_GAMANASRAMA_VALUE:
+			return RAGA_GAMANASRAMA;
+		case RAGA_TODI_VALUE:
+			return RAGA_TODI;
+		case SPANISH_SCALE_VALUE:
+			return SPANISH_SCALE;
+		case GYPSY_SCALE_VALUE:
+			return GYPSY_SCALE;
+		case ARABIAN_SCALE_VALUE:
+			return ARABIAN_SCALE;
+		case EGYPTIAN_SCALE_VALUE:
+			return EGYPTIAN_SCALE;
+		case HAWAIIAN_SCALE_VALUE:
+			return HAWAIIAN_SCALE;
+		case BALI_ISLAND_SCALE_VALUE:
+			return BALI_ISLAND_SCALE;
+		case JAPANESE_MIYAKOBUSHI_VALUE:
+			return JAPANESE_MIYAKOBUSHI;
+		case RYUKYU_SCALE_VALUE:
+			return RYUKYU_SCALE;
+		case WHOLETONE_VALUE:
+			return WHOLETONE;
+		case MINOR_3RD_INTERVAL_VALUE:
+			return MINOR_3RD_INTERVAL;
+		case MAJOR_3RD_INTERVAL_VALUE:
+			return MAJOR_3RD_INTERVAL;
+		case FOURTH_INTERVAL_VALUE:
+			return FOURTH_INTERVAL;
+		case FIFTH_INTERVAL_VALUE:
+			return FIFTH_INTERVAL;
+		case OCTAVE_INTERVAL_VALUE:
+			return OCTAVE_INTERVAL;
 		}
 		return null;
 	}
@@ -965,7 +972,7 @@ public enum ArpeggiatorScale implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -974,7 +981,7 @@ public enum ArpeggiatorScale implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -983,7 +990,7 @@ public enum ArpeggiatorScale implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

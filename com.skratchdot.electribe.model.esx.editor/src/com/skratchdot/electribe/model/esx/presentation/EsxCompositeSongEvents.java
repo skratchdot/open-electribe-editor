@@ -40,7 +40,6 @@ public class EsxCompositeSongEvents extends EsxComposite {
 	private List<SongEvent> selectedSongEvents;
 	private TableViewer tableViewer;
 
-
 	/**
 	 * @param parent
 	 * @param style
@@ -54,13 +53,15 @@ public class EsxCompositeSongEvents extends EsxComposite {
 	 * @param parentComposite
 	 * @param style
 	 */
-	public EsxCompositeSongEvents(EsxEditorPart parentPart, Composite parentComposite, int style) {
+	public EsxCompositeSongEvents(EsxEditorPart parentPart,
+			Composite parentComposite, int style) {
 		super(parentPart, parentComposite, style);
 		this.parentPart = parentPart;
 
 		setLayout(new GridLayout(4, false));
 
-		this.tableViewer = new TableViewer(this, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
+		this.tableViewer = new TableViewer(this, SWT.BORDER
+				| SWT.FULL_SELECTION | SWT.MULTI);
 		this.initTableViewer();
 	}
 
@@ -76,60 +77,71 @@ public class EsxCompositeSongEvents extends EsxComposite {
 
 		// Create our columns
 		this.parentPart.addColumnToTableViewer(this.tableViewer, "Event#", 50);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Position", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Measure", null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Position",
+				null);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "Measure",
+				null);
 		this.parentPart.addColumnToTableViewer(this.tableViewer, "Step", null);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "EventType", 175);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "EventInfo", 200);
-		
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "EventType",
+				175);
+		this.parentPart.addColumnToTableViewer(this.tableViewer, "EventInfo",
+				200);
+
 		// Setup this.tableViewer ContentProvider
-		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
+		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(
+				this.getAdapterFactory()) {
 			@Override
 			public Object[] getElements(Object object) {
 				return selectedSong.getSongEvents().toArray();
 			}
+
 			@Override
 			public void notifyChanged(Notification notification) {
 				super.notifyChanged(new ViewerNotification(notification));
-			}			
-		});
-
-		this.tableViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(getAdapterFactory(), this.tableViewer));
-
-		this.tableViewer.addSelectionChangedListener(new ISelectionChangedListener() {
-			public void selectionChanged(SelectionChangedEvent event) {
-		        IStructuredSelection selection = (IStructuredSelection) event.getSelection();
-
-		        Object[] objects = ((IStructuredSelection) selection).toArray();
-		        selectedSongEvents = new ArrayList<SongEvent>();
-				for (Object obj : objects) {
-					if(obj instanceof SongPattern) {
-						selectedSongEvents.add((SongEvent) obj);
-					}
-				}
-				refresh();
-				refreshInputs();
 			}
 		});
+
+		this.tableViewer
+				.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(
+						getAdapterFactory(), this.tableViewer));
+
+		this.tableViewer
+				.addSelectionChangedListener(new ISelectionChangedListener() {
+					public void selectionChanged(SelectionChangedEvent event) {
+						IStructuredSelection selection = (IStructuredSelection) event
+								.getSelection();
+
+						Object[] objects = ((IStructuredSelection) selection)
+								.toArray();
+						selectedSongEvents = new ArrayList<SongEvent>();
+						for (Object obj : objects) {
+							if (obj instanceof SongPattern) {
+								selectedSongEvents.add((SongEvent) obj);
+							}
+						}
+						refresh();
+						refreshInputs();
+					}
+				});
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see com.skratchdot.electribe.model.esx.presentation.EsxComposite#setInput(java.lang.Object)
 	 */
 	@Override
 	public void setInput(Object input) {
-		if(this.isActive==false) return;
+		if (this.isActive == false)
+			return;
 
-		if(input instanceof List<?>) {
-			if( ((List<?>) input).size()>1 ) {
+		if (input instanceof List<?>) {
+			if (((List<?>) input).size() > 1) {
 				this.selectedSong = null;
-			}
-			else {
+			} else {
 				boolean isIterating = true;
 				Iterator<?> it = ((List<?>) input).iterator();
-				while (it.hasNext() && isIterating==true) {
+				while (it.hasNext() && isIterating == true) {
 					Object obj = it.next();
-					if(obj instanceof Song) {
+					if (obj instanceof Song) {
 						this.selectedSong = (Song) obj;
 						isIterating = false;
 					}
@@ -147,7 +159,8 @@ public class EsxCompositeSongEvents extends EsxComposite {
 	 */
 	@Override
 	public void refresh() {
-		if(this.isActive==false) return;
+		if (this.isActive == false)
+			return;
 	}
 
 	/* (non-Javadoc)
@@ -155,7 +168,8 @@ public class EsxCompositeSongEvents extends EsxComposite {
 	 */
 	@Override
 	public void refreshInputs() {
-		if(this.isActive==false) return;
+		if (this.isActive == false)
+			return;
 	}
 
 }

@@ -35,7 +35,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * @generated
  */
-public abstract class SongEventWithPartImpl extends EObjectImpl implements SongEventWithPart {
+public abstract class SongEventWithPartImpl extends EObjectImpl implements
+		SongEventWithPart {
 	/**
 	 * The default value of the '{@link #getPart() <em>Part</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -93,7 +94,8 @@ public abstract class SongEventWithPartImpl extends EObjectImpl implements SongE
 		SongEventPart oldPart = part;
 		part = newPart == null ? PART_EDEFAULT : newPart;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT_WITH_PART__PART, oldPart, part));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_EVENT_WITH_PART__PART, oldPart, part));
 	}
 
 	/**
@@ -104,8 +106,8 @@ public abstract class SongEventWithPartImpl extends EObjectImpl implements SongE
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_WITH_PART__PART:
-				return getPart();
+		case EsxPackage.SONG_EVENT_WITH_PART__PART:
+			return getPart();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -118,9 +120,9 @@ public abstract class SongEventWithPartImpl extends EObjectImpl implements SongE
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_WITH_PART__PART:
-				setPart((SongEventPart)newValue);
-				return;
+		case EsxPackage.SONG_EVENT_WITH_PART__PART:
+			setPart((SongEventPart) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -133,9 +135,9 @@ public abstract class SongEventWithPartImpl extends EObjectImpl implements SongE
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_WITH_PART__PART:
-				setPart(PART_EDEFAULT);
-				return;
+		case EsxPackage.SONG_EVENT_WITH_PART__PART:
+			setPart(PART_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -148,8 +150,8 @@ public abstract class SongEventWithPartImpl extends EObjectImpl implements SongE
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_WITH_PART__PART:
-				return part != PART_EDEFAULT;
+		case EsxPackage.SONG_EVENT_WITH_PART__PART:
+			return part != PART_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -161,7 +163,8 @@ public abstract class SongEventWithPartImpl extends EObjectImpl implements SongE
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (part: ");

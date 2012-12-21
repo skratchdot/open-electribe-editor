@@ -3372,7 +3372,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RIFF_WAVE__PARSE_CHUNK_EXCEPTIONS = eINSTANCE.getRIFFWave_ParseChunkExceptions();
+		EReference RIFF_WAVE__PARSE_CHUNK_EXCEPTIONS = eINSTANCE
+				.getRIFFWave_ParseChunkExceptions();
 
 		/**
 		 * The meta object literal for the '<em><b>Size</b></em>' attribute feature.
@@ -3416,7 +3417,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK__BLOCK_ALIGNED_SIZE = eINSTANCE.getChunk_BlockAlignedSize();
+		EAttribute CHUNK__BLOCK_ALIGNED_SIZE = eINSTANCE
+				.getChunk_BlockAlignedSize();
 
 		/**
 		 * The meta object literal for the '<em><b>Size</b></em>' attribute feature.
@@ -3440,7 +3442,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK__CHUNK_TYPE_ID_VALUE = eINSTANCE.getChunk_ChunkTypeIDValue();
+		EAttribute CHUNK__CHUNK_TYPE_ID_VALUE = eINSTANCE
+				.getChunk_ChunkTypeIDValue();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.impl.ChunkCueImpl <em>Chunk Cue</em>}' class.
@@ -3458,7 +3461,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_CUE__NUMBER_OF_CUE_POINTS = eINSTANCE.getChunkCue_NumberOfCuePoints();
+		EAttribute CHUNK_CUE__NUMBER_OF_CUE_POINTS = eINSTANCE
+				.getChunkCue_NumberOfCuePoints();
 
 		/**
 		 * The meta object literal for the '<em><b>Cue Points</b></em>' reference list feature.
@@ -3492,7 +3496,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_DATA__SAMPLE_DATA_ORIGINAL = eINSTANCE.getChunkData_SampleDataOriginal();
+		EAttribute CHUNK_DATA__SAMPLE_DATA_ORIGINAL = eINSTANCE
+				.getChunkData_SampleDataOriginal();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.impl.ChunkDataListImpl <em>Chunk Data List</em>}' class.
@@ -3510,7 +3515,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_DATA_LIST__TYPE_ID = eINSTANCE.getChunkDataList_TypeID();
+		EAttribute CHUNK_DATA_LIST__TYPE_ID = eINSTANCE
+				.getChunkDataList_TypeID();
 
 		/**
 		 * The meta object literal for the '<em><b>Data List Chunks</b></em>' reference list feature.
@@ -3518,7 +3524,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CHUNK_DATA_LIST__DATA_LIST_CHUNKS = eINSTANCE.getChunkDataList_DataListChunks();
+		EReference CHUNK_DATA_LIST__DATA_LIST_CHUNKS = eINSTANCE
+				.getChunkDataList_DataListChunks();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.impl.ChunkDataListTypeImpl <em>Chunk Data List Type</em>}' class.
@@ -3536,7 +3543,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_DATA_LIST_TYPE__CUE_POINT_ID = eINSTANCE.getChunkDataListType_CuePointID();
+		EAttribute CHUNK_DATA_LIST_TYPE__CUE_POINT_ID = eINSTANCE
+				.getChunkDataListType_CuePointID();
 
 		/**
 		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
@@ -3544,7 +3552,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_DATA_LIST_TYPE__TEXT = eINSTANCE.getChunkDataListType_Text();
+		EAttribute CHUNK_DATA_LIST_TYPE__TEXT = eINSTANCE
+				.getChunkDataListType_Text();
 
 		/**
 		 * The meta object literal for the '<em><b>Text As String</b></em>' attribute feature.
@@ -3552,7 +3561,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_DATA_LIST_TYPE__TEXT_AS_STRING = eINSTANCE.getChunkDataListType_TextAsString();
+		EAttribute CHUNK_DATA_LIST_TYPE__TEXT_AS_STRING = eINSTANCE
+				.getChunkDataListType_TextAsString();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.impl.ChunkDataListTypeLabelImpl <em>Chunk Data List Type Label</em>}' class.
@@ -3562,7 +3572,8 @@ public interface WavPackage extends EPackage {
 		 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getChunkDataListTypeLabel()
 		 * @generated
 		 */
-		EClass CHUNK_DATA_LIST_TYPE_LABEL = eINSTANCE.getChunkDataListTypeLabel();
+		EClass CHUNK_DATA_LIST_TYPE_LABEL = eINSTANCE
+				.getChunkDataListTypeLabel();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.impl.ChunkDataListTypeLabeledTextImpl <em>Chunk Data List Type Labeled Text</em>}' class.
@@ -3572,7 +3583,8 @@ public interface WavPackage extends EPackage {
 		 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getChunkDataListTypeLabeledText()
 		 * @generated
 		 */
-		EClass CHUNK_DATA_LIST_TYPE_LABELED_TEXT = eINSTANCE.getChunkDataListTypeLabeledText();
+		EClass CHUNK_DATA_LIST_TYPE_LABELED_TEXT = eINSTANCE
+				.getChunkDataListTypeLabeledText();
 
 		/**
 		 * The meta object literal for the '<em><b>Sample Length</b></em>' attribute feature.
@@ -3580,7 +3592,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_DATA_LIST_TYPE_LABELED_TEXT__SAMPLE_LENGTH = eINSTANCE.getChunkDataListTypeLabeledText_SampleLength();
+		EAttribute CHUNK_DATA_LIST_TYPE_LABELED_TEXT__SAMPLE_LENGTH = eINSTANCE
+				.getChunkDataListTypeLabeledText_SampleLength();
 
 		/**
 		 * The meta object literal for the '<em><b>Purpose ID</b></em>' attribute feature.
@@ -3588,7 +3601,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_DATA_LIST_TYPE_LABELED_TEXT__PURPOSE_ID = eINSTANCE.getChunkDataListTypeLabeledText_PurposeID();
+		EAttribute CHUNK_DATA_LIST_TYPE_LABELED_TEXT__PURPOSE_ID = eINSTANCE
+				.getChunkDataListTypeLabeledText_PurposeID();
 
 		/**
 		 * The meta object literal for the '<em><b>Country</b></em>' attribute feature.
@@ -3596,7 +3610,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_DATA_LIST_TYPE_LABELED_TEXT__COUNTRY = eINSTANCE.getChunkDataListTypeLabeledText_Country();
+		EAttribute CHUNK_DATA_LIST_TYPE_LABELED_TEXT__COUNTRY = eINSTANCE
+				.getChunkDataListTypeLabeledText_Country();
 
 		/**
 		 * The meta object literal for the '<em><b>Language</b></em>' attribute feature.
@@ -3604,7 +3619,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_DATA_LIST_TYPE_LABELED_TEXT__LANGUAGE = eINSTANCE.getChunkDataListTypeLabeledText_Language();
+		EAttribute CHUNK_DATA_LIST_TYPE_LABELED_TEXT__LANGUAGE = eINSTANCE
+				.getChunkDataListTypeLabeledText_Language();
 
 		/**
 		 * The meta object literal for the '<em><b>Dialect</b></em>' attribute feature.
@@ -3612,7 +3628,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_DATA_LIST_TYPE_LABELED_TEXT__DIALECT = eINSTANCE.getChunkDataListTypeLabeledText_Dialect();
+		EAttribute CHUNK_DATA_LIST_TYPE_LABELED_TEXT__DIALECT = eINSTANCE
+				.getChunkDataListTypeLabeledText_Dialect();
 
 		/**
 		 * The meta object literal for the '<em><b>Code Page</b></em>' attribute feature.
@@ -3620,7 +3637,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_DATA_LIST_TYPE_LABELED_TEXT__CODE_PAGE = eINSTANCE.getChunkDataListTypeLabeledText_CodePage();
+		EAttribute CHUNK_DATA_LIST_TYPE_LABELED_TEXT__CODE_PAGE = eINSTANCE
+				.getChunkDataListTypeLabeledText_CodePage();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.impl.ChunkDataListTypeNoteImpl <em>Chunk Data List Type Note</em>}' class.
@@ -3648,7 +3666,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_FACT__FORMAT_DEPENDANT_DATA = eINSTANCE.getChunkFact_FormatDependantData();
+		EAttribute CHUNK_FACT__FORMAT_DEPENDANT_DATA = eINSTANCE
+				.getChunkFact_FormatDependantData();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.impl.ChunkFormatImpl <em>Chunk Format</em>}' class.
@@ -3666,7 +3685,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_FORMAT__COMPRESSION_CODE = eINSTANCE.getChunkFormat_CompressionCode();
+		EAttribute CHUNK_FORMAT__COMPRESSION_CODE = eINSTANCE
+				.getChunkFormat_CompressionCode();
 
 		/**
 		 * The meta object literal for the '<em><b>Compression Code Value</b></em>' attribute feature.
@@ -3674,7 +3694,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_FORMAT__COMPRESSION_CODE_VALUE = eINSTANCE.getChunkFormat_CompressionCodeValue();
+		EAttribute CHUNK_FORMAT__COMPRESSION_CODE_VALUE = eINSTANCE
+				.getChunkFormat_CompressionCodeValue();
 
 		/**
 		 * The meta object literal for the '<em><b>Number Of Channels</b></em>' attribute feature.
@@ -3682,7 +3703,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_FORMAT__NUMBER_OF_CHANNELS = eINSTANCE.getChunkFormat_NumberOfChannels();
+		EAttribute CHUNK_FORMAT__NUMBER_OF_CHANNELS = eINSTANCE
+				.getChunkFormat_NumberOfChannels();
 
 		/**
 		 * The meta object literal for the '<em><b>Sample Rate</b></em>' attribute feature.
@@ -3690,7 +3712,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_FORMAT__SAMPLE_RATE = eINSTANCE.getChunkFormat_SampleRate();
+		EAttribute CHUNK_FORMAT__SAMPLE_RATE = eINSTANCE
+				.getChunkFormat_SampleRate();
 
 		/**
 		 * The meta object literal for the '<em><b>Average Bytes Per Second</b></em>' attribute feature.
@@ -3698,7 +3721,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_FORMAT__AVERAGE_BYTES_PER_SECOND = eINSTANCE.getChunkFormat_AverageBytesPerSecond();
+		EAttribute CHUNK_FORMAT__AVERAGE_BYTES_PER_SECOND = eINSTANCE
+				.getChunkFormat_AverageBytesPerSecond();
 
 		/**
 		 * The meta object literal for the '<em><b>Block Align</b></em>' attribute feature.
@@ -3706,7 +3730,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_FORMAT__BLOCK_ALIGN = eINSTANCE.getChunkFormat_BlockAlign();
+		EAttribute CHUNK_FORMAT__BLOCK_ALIGN = eINSTANCE
+				.getChunkFormat_BlockAlign();
 
 		/**
 		 * The meta object literal for the '<em><b>Significant Bits Per Sample</b></em>' attribute feature.
@@ -3714,7 +3739,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_FORMAT__SIGNIFICANT_BITS_PER_SAMPLE = eINSTANCE.getChunkFormat_SignificantBitsPerSample();
+		EAttribute CHUNK_FORMAT__SIGNIFICANT_BITS_PER_SAMPLE = eINSTANCE
+				.getChunkFormat_SignificantBitsPerSample();
 
 		/**
 		 * The meta object literal for the '<em><b>Number Of Extra Format Bytes</b></em>' attribute feature.
@@ -3722,7 +3748,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_FORMAT__NUMBER_OF_EXTRA_FORMAT_BYTES = eINSTANCE.getChunkFormat_NumberOfExtraFormatBytes();
+		EAttribute CHUNK_FORMAT__NUMBER_OF_EXTRA_FORMAT_BYTES = eINSTANCE
+				.getChunkFormat_NumberOfExtraFormatBytes();
 
 		/**
 		 * The meta object literal for the '<em><b>Extra Format Bytes</b></em>' attribute feature.
@@ -3730,7 +3757,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_FORMAT__EXTRA_FORMAT_BYTES = eINSTANCE.getChunkFormat_ExtraFormatBytes();
+		EAttribute CHUNK_FORMAT__EXTRA_FORMAT_BYTES = eINSTANCE
+				.getChunkFormat_ExtraFormatBytes();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.impl.ChunkInstrumentImpl <em>Chunk Instrument</em>}' class.
@@ -3748,7 +3776,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_INSTRUMENT__UNSHIFTED_NOTE = eINSTANCE.getChunkInstrument_UnshiftedNote();
+		EAttribute CHUNK_INSTRUMENT__UNSHIFTED_NOTE = eINSTANCE
+				.getChunkInstrument_UnshiftedNote();
 
 		/**
 		 * The meta object literal for the '<em><b>Fine Tune</b></em>' attribute feature.
@@ -3756,7 +3785,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_INSTRUMENT__FINE_TUNE = eINSTANCE.getChunkInstrument_FineTune();
+		EAttribute CHUNK_INSTRUMENT__FINE_TUNE = eINSTANCE
+				.getChunkInstrument_FineTune();
 
 		/**
 		 * The meta object literal for the '<em><b>Gain</b></em>' attribute feature.
@@ -3772,7 +3802,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_INSTRUMENT__LOW_NOTE = eINSTANCE.getChunkInstrument_LowNote();
+		EAttribute CHUNK_INSTRUMENT__LOW_NOTE = eINSTANCE
+				.getChunkInstrument_LowNote();
 
 		/**
 		 * The meta object literal for the '<em><b>High Note</b></em>' attribute feature.
@@ -3780,7 +3811,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_INSTRUMENT__HIGH_NOTE = eINSTANCE.getChunkInstrument_HighNote();
+		EAttribute CHUNK_INSTRUMENT__HIGH_NOTE = eINSTANCE
+				.getChunkInstrument_HighNote();
 
 		/**
 		 * The meta object literal for the '<em><b>Low Velocity</b></em>' attribute feature.
@@ -3788,7 +3820,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_INSTRUMENT__LOW_VELOCITY = eINSTANCE.getChunkInstrument_LowVelocity();
+		EAttribute CHUNK_INSTRUMENT__LOW_VELOCITY = eINSTANCE
+				.getChunkInstrument_LowVelocity();
 
 		/**
 		 * The meta object literal for the '<em><b>High Velocity</b></em>' attribute feature.
@@ -3796,7 +3829,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_INSTRUMENT__HIGH_VELOCITY = eINSTANCE.getChunkInstrument_HighVelocity();
+		EAttribute CHUNK_INSTRUMENT__HIGH_VELOCITY = eINSTANCE
+				.getChunkInstrument_HighVelocity();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.impl.ChunkPlayListImpl <em>Chunk Play List</em>}' class.
@@ -3814,7 +3848,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_PLAY_LIST__NUMBER_OF_SEGMENTS = eINSTANCE.getChunkPlayList_NumberOfSegments();
+		EAttribute CHUNK_PLAY_LIST__NUMBER_OF_SEGMENTS = eINSTANCE
+				.getChunkPlayList_NumberOfSegments();
 
 		/**
 		 * The meta object literal for the '<em><b>Segments</b></em>' reference list feature.
@@ -3822,7 +3857,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CHUNK_PLAY_LIST__SEGMENTS = eINSTANCE.getChunkPlayList_Segments();
+		EReference CHUNK_PLAY_LIST__SEGMENTS = eINSTANCE
+				.getChunkPlayList_Segments();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.impl.ChunkSamplerImpl <em>Chunk Sampler</em>}' class.
@@ -3840,7 +3876,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_SAMPLER__MANUFACTURER = eINSTANCE.getChunkSampler_Manufacturer();
+		EAttribute CHUNK_SAMPLER__MANUFACTURER = eINSTANCE
+				.getChunkSampler_Manufacturer();
 
 		/**
 		 * The meta object literal for the '<em><b>Product</b></em>' attribute feature.
@@ -3856,7 +3893,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_SAMPLER__SAMPLE_PERIOD = eINSTANCE.getChunkSampler_SamplePeriod();
+		EAttribute CHUNK_SAMPLER__SAMPLE_PERIOD = eINSTANCE
+				.getChunkSampler_SamplePeriod();
 
 		/**
 		 * The meta object literal for the '<em><b>Midi Unity Note</b></em>' attribute feature.
@@ -3864,7 +3902,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_SAMPLER__MIDI_UNITY_NOTE = eINSTANCE.getChunkSampler_MidiUnityNote();
+		EAttribute CHUNK_SAMPLER__MIDI_UNITY_NOTE = eINSTANCE
+				.getChunkSampler_MidiUnityNote();
 
 		/**
 		 * The meta object literal for the '<em><b>Midi Pitch Fraction</b></em>' attribute feature.
@@ -3872,7 +3911,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_SAMPLER__MIDI_PITCH_FRACTION = eINSTANCE.getChunkSampler_MidiPitchFraction();
+		EAttribute CHUNK_SAMPLER__MIDI_PITCH_FRACTION = eINSTANCE
+				.getChunkSampler_MidiPitchFraction();
 
 		/**
 		 * The meta object literal for the '<em><b>Smpte Format</b></em>' attribute feature.
@@ -3880,7 +3920,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_SAMPLER__SMPTE_FORMAT = eINSTANCE.getChunkSampler_SmpteFormat();
+		EAttribute CHUNK_SAMPLER__SMPTE_FORMAT = eINSTANCE
+				.getChunkSampler_SmpteFormat();
 
 		/**
 		 * The meta object literal for the '<em><b>Smpte Offset</b></em>' attribute feature.
@@ -3888,7 +3929,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_SAMPLER__SMPTE_OFFSET = eINSTANCE.getChunkSampler_SmpteOffset();
+		EAttribute CHUNK_SAMPLER__SMPTE_OFFSET = eINSTANCE
+				.getChunkSampler_SmpteOffset();
 
 		/**
 		 * The meta object literal for the '<em><b>Number Of Sample Loops</b></em>' attribute feature.
@@ -3896,7 +3938,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_SAMPLER__NUMBER_OF_SAMPLE_LOOPS = eINSTANCE.getChunkSampler_NumberOfSampleLoops();
+		EAttribute CHUNK_SAMPLER__NUMBER_OF_SAMPLE_LOOPS = eINSTANCE
+				.getChunkSampler_NumberOfSampleLoops();
 
 		/**
 		 * The meta object literal for the '<em><b>Sampler Data Size</b></em>' attribute feature.
@@ -3904,7 +3947,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_SAMPLER__SAMPLER_DATA_SIZE = eINSTANCE.getChunkSampler_SamplerDataSize();
+		EAttribute CHUNK_SAMPLER__SAMPLER_DATA_SIZE = eINSTANCE
+				.getChunkSampler_SamplerDataSize();
 
 		/**
 		 * The meta object literal for the '<em><b>Sampler Data</b></em>' attribute feature.
@@ -3912,7 +3956,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_SAMPLER__SAMPLER_DATA = eINSTANCE.getChunkSampler_SamplerData();
+		EAttribute CHUNK_SAMPLER__SAMPLER_DATA = eINSTANCE
+				.getChunkSampler_SamplerData();
 
 		/**
 		 * The meta object literal for the '<em><b>Sample Loops</b></em>' containment reference list feature.
@@ -3920,7 +3965,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CHUNK_SAMPLER__SAMPLE_LOOPS = eINSTANCE.getChunkSampler_SampleLoops();
+		EReference CHUNK_SAMPLER__SAMPLE_LOOPS = eINSTANCE
+				.getChunkSampler_SampleLoops();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.impl.ChunkSilentImpl <em>Chunk Silent</em>}' class.
@@ -3938,7 +3984,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_SILENT__NUMBER_OF_SILENT_SAMPLES = eINSTANCE.getChunkSilent_NumberOfSilentSamples();
+		EAttribute CHUNK_SILENT__NUMBER_OF_SILENT_SAMPLES = eINSTANCE
+				.getChunkSilent_NumberOfSilentSamples();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.impl.ChunkUnknownImpl <em>Chunk Unknown</em>}' class.
@@ -3964,7 +4011,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_UNKNOWN__UNKNOWN_CHUNK_TYPE_ID_VALUE = eINSTANCE.getChunkUnknown_UnknownChunkTypeIdValue();
+		EAttribute CHUNK_UNKNOWN__UNKNOWN_CHUNK_TYPE_ID_VALUE = eINSTANCE
+				.getChunkUnknown_UnknownChunkTypeIdValue();
 
 		/**
 		 * The meta object literal for the '<em><b>Wav Random Access File Pointer</b></em>' attribute feature.
@@ -3972,7 +4020,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CHUNK_UNKNOWN__WAV_RANDOM_ACCESS_FILE_POINTER = eINSTANCE.getChunkUnknown_WavRandomAccessFilePointer();
+		EAttribute CHUNK_UNKNOWN__WAV_RANDOM_ACCESS_FILE_POINTER = eINSTANCE
+				.getChunkUnknown_WavRandomAccessFilePointer();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.impl.ChunkWaveListImpl <em>Chunk Wave List</em>}' class.
@@ -3990,7 +4039,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CHUNK_WAVE_LIST__ALTERNATING_SILENT_AND_DATA_CHUNKS = eINSTANCE.getChunkWaveList_AlternatingSilentAndDataChunks();
+		EReference CHUNK_WAVE_LIST__ALTERNATING_SILENT_AND_DATA_CHUNKS = eINSTANCE
+				.getChunkWaveList_AlternatingSilentAndDataChunks();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.impl.CuePointImpl <em>Cue Point</em>}' class.
@@ -4024,7 +4074,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CUE_POINT__DATA_CHUNK_ID = eINSTANCE.getCuePoint_DataChunkID();
+		EAttribute CUE_POINT__DATA_CHUNK_ID = eINSTANCE
+				.getCuePoint_DataChunkID();
 
 		/**
 		 * The meta object literal for the '<em><b>Chunk Start</b></em>' attribute feature.
@@ -4048,7 +4099,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CUE_POINT__SAMPLE_OFFSET = eINSTANCE.getCuePoint_SampleOffset();
+		EAttribute CUE_POINT__SAMPLE_OFFSET = eINSTANCE
+				.getCuePoint_SampleOffset();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.impl.ParseChunkExceptionImpl <em>Parse Chunk Exception</em>}' class.
@@ -4066,7 +4118,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARSE_CHUNK_EXCEPTION__EXCEPTION = eINSTANCE.getParseChunkException_Exception();
+		EAttribute PARSE_CHUNK_EXCEPTION__EXCEPTION = eINSTANCE
+				.getParseChunkException_Exception();
 
 		/**
 		 * The meta object literal for the '<em><b>String Cause</b></em>' attribute feature.
@@ -4074,7 +4127,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARSE_CHUNK_EXCEPTION__STRING_CAUSE = eINSTANCE.getParseChunkException_StringCause();
+		EAttribute PARSE_CHUNK_EXCEPTION__STRING_CAUSE = eINSTANCE
+				.getParseChunkException_StringCause();
 
 		/**
 		 * The meta object literal for the '<em><b>String Message</b></em>' attribute feature.
@@ -4082,7 +4136,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARSE_CHUNK_EXCEPTION__STRING_MESSAGE = eINSTANCE.getParseChunkException_StringMessage();
+		EAttribute PARSE_CHUNK_EXCEPTION__STRING_MESSAGE = eINSTANCE
+				.getParseChunkException_StringMessage();
 
 		/**
 		 * The meta object literal for the '<em><b>String Stack Trace</b></em>' attribute feature.
@@ -4090,7 +4145,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARSE_CHUNK_EXCEPTION__STRING_STACK_TRACE = eINSTANCE.getParseChunkException_StringStackTrace();
+		EAttribute PARSE_CHUNK_EXCEPTION__STRING_STACK_TRACE = eINSTANCE
+				.getParseChunkException_StringStackTrace();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.impl.SampleDataImpl <em>Sample Data</em>}' class.
@@ -4118,7 +4174,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE_DATA8_BIT__SAMPLE = eINSTANCE.getSampleData8Bit_Sample();
+		EAttribute SAMPLE_DATA8_BIT__SAMPLE = eINSTANCE
+				.getSampleData8Bit_Sample();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.impl.SampleData16BitImpl <em>Sample Data16 Bit</em>}' class.
@@ -4136,7 +4193,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE_DATA16_BIT__SAMPLE = eINSTANCE.getSampleData16Bit_Sample();
+		EAttribute SAMPLE_DATA16_BIT__SAMPLE = eINSTANCE
+				.getSampleData16Bit_Sample();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.impl.SampleLoopImpl <em>Sample Loop</em>}' class.
@@ -4154,7 +4212,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE_LOOP__CUE_POINT_ID = eINSTANCE.getSampleLoop_CuePointID();
+		EAttribute SAMPLE_LOOP__CUE_POINT_ID = eINSTANCE
+				.getSampleLoop_CuePointID();
 
 		/**
 		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
@@ -4194,7 +4253,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE_LOOP__PLAY_COUNT = eINSTANCE.getSampleLoop_PlayCount();
+		EAttribute SAMPLE_LOOP__PLAY_COUNT = eINSTANCE
+				.getSampleLoop_PlayCount();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.impl.SegmentImpl <em>Segment</em>}' class.
@@ -4220,7 +4280,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SEGMENT__LENGTH_IN_SAMPLES = eINSTANCE.getSegment_LengthInSamples();
+		EAttribute SEGMENT__LENGTH_IN_SAMPLES = eINSTANCE
+				.getSegment_LengthInSamples();
 
 		/**
 		 * The meta object literal for the '<em><b>Number Of Repeats</b></em>' attribute feature.
@@ -4228,7 +4289,8 @@ public interface WavPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SEGMENT__NUMBER_OF_REPEATS = eINSTANCE.getSegment_NumberOfRepeats();
+		EAttribute SEGMENT__NUMBER_OF_REPEATS = eINSTANCE
+				.getSegment_NumberOfRepeats();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.riff.wav.ChunkDataListTypeID <em>Chunk Data List Type ID</em>}' enum.
@@ -4388,7 +4450,8 @@ public interface WavPackage extends EPackage {
 		 * @see com.skratchdot.riff.wav.impl.WavPackageImpl#getUnsupportedAudioFileException()
 		 * @generated
 		 */
-		EDataType UNSUPPORTED_AUDIO_FILE_EXCEPTION = eINSTANCE.getUnsupportedAudioFileException();
+		EDataType UNSUPPORTED_AUDIO_FILE_EXCEPTION = eINSTANCE
+				.getUnsupportedAudioFileException();
 
 	}
 

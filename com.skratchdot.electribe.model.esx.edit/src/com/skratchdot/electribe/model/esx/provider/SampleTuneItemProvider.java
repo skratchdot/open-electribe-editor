@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.SampleTune;
 
@@ -48,17 +47,10 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SampleTuneItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
-		ITableItemLabelProvider,
-		ITableItemColorProvider,
-		IItemColorProvider {
+public class SampleTuneItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -92,19 +84,15 @@ public class SampleTuneItemProvider
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SampleTune_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SampleTune_value_feature", "_UI_SampleTune_type"),
-				 EsxPackage.Literals.SAMPLE_TUNE__VALUE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SampleTune_value_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SampleTune_value_feature", "_UI_SampleTune_type"),
+				EsxPackage.Literals.SAMPLE_TUNE__VALUE, true, false, false,
+				ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -115,7 +103,8 @@ public class SampleTuneItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SampleTune"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/SampleTune"));
 	}
 
 	/**
@@ -126,7 +115,7 @@ public class SampleTuneItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		SampleTune sampleTune = (SampleTune)object;
+		SampleTune sampleTune = (SampleTune) object;
 		return "" + sampleTune.getValue();
 	}
 
@@ -137,7 +126,7 @@ public class SampleTuneItemProvider
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		SampleTune sampleTune = (SampleTune)object;
+		SampleTune sampleTune = (SampleTune) object;
 		return getString("_UI_SampleTune_type") + " " + sampleTune.getValue();
 	}
 
@@ -153,9 +142,10 @@ public class SampleTuneItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SampleTune.class)) {
-			case EsxPackage.SAMPLE_TUNE__VALUE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case EsxPackage.SAMPLE_TUNE__VALUE:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -168,7 +158,8 @@ public class SampleTuneItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -188,19 +179,18 @@ public class SampleTuneItemProvider
 			EStructuralFeature feature, Object value) {
 
 		// We only allow the tempo to be between 20-300 with one decimal place precision
-		if(feature == EsxPackage.Literals.SAMPLE_TUNE__VALUE) {
-			String sampleTuneAsString = new DecimalFormat("0.##").format((Double) value);
+		if (feature == EsxPackage.Literals.SAMPLE_TUNE__VALUE) {
+			String sampleTuneAsString = new DecimalFormat("0.##")
+					.format((Double) value);
 			Float sampleTuneAsFloat = new Float(sampleTuneAsString);
 
-			if(sampleTuneAsFloat < -64) {
+			if (sampleTuneAsFloat < -64) {
 				value = new Float(-64);
-			}
-			else if(sampleTuneAsFloat > 64) {
+			} else if (sampleTuneAsFloat > 64) {
 				value = new Float(64);
-			}
-			else {
+			} else {
 				value = sampleTuneAsFloat;
-			}		
+			}
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

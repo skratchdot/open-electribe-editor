@@ -93,23 +93,24 @@ public class EsxCompositePattern extends EsxComposite {
 	 * @param parentComposite
 	 * @param style
 	 */
-	public EsxCompositePattern(EsxEditorPart parentPart, Composite parentComposite, int style) {
+	public EsxCompositePattern(EsxEditorPart parentPart,
+			Composite parentComposite, int style) {
 		super(parentPart, parentComposite, style);
 		this.parentPart = parentPart;
 
 		setLayout(new FillLayout(SWT.HORIZONTAL));
-		
-		scrolledComposite = new ScrolledComposite(this, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+
+		scrolledComposite = new ScrolledComposite(this, SWT.BORDER
+				| SWT.H_SCROLL | SWT.V_SCROLL);
 		scrolledComposite.setExpandHorizontal(true);
 		scrolledComposite.setExpandVertical(true);
-		
+
 		compositeMain = new Composite(scrolledComposite, SWT.NONE);
 		RowLayout rowLayout = new RowLayout(SWT.VERTICAL);
 		rowLayout.wrap = false;
 		rowLayout.fill = true;
 		compositeMain.setLayout(rowLayout);
 
-		
 		/* ======================== */
 		/* ROW 1					*/
 		/* ======================== */
@@ -120,9 +121,12 @@ public class EsxCompositePattern extends EsxComposite {
 		groupSelectedPatterns.setText("Selected Patterns");
 		groupSelectedPatterns.setLayout(new GridLayout(2, false));
 
-		textSelectedTotal = this.createGridData2ColumnTextLabel(groupSelectedPatterns, "Total # Selected");
-		textSelectedNotEmpty = this.createGridData2ColumnTextLabel(groupSelectedPatterns, "# of Selected (Not Empty)");
-		textSelectedEmpty = this.createGridData2ColumnTextLabel(groupSelectedPatterns, "# of Selected (Empty)");
+		textSelectedTotal = this.createGridData2ColumnTextLabel(
+				groupSelectedPatterns, "Total # Selected");
+		textSelectedNotEmpty = this.createGridData2ColumnTextLabel(
+				groupSelectedPatterns, "# of Selected (Not Empty)");
+		textSelectedEmpty = this.createGridData2ColumnTextLabel(
+				groupSelectedPatterns, "# of Selected (Empty)");
 
 		/* ======================== */
 		/* ROW 2					*/
@@ -134,14 +138,20 @@ public class EsxCompositePattern extends EsxComposite {
 		groupPatternName.setText("Pattern Name");
 		groupPatternName.setLayout(new GridLayout(4, false));
 
-		textName = this.createGridData2ColumnTextLabel(groupPatternName, "Name");
-		inputName = this.createGridData2ColumnTextInput(groupPatternName, "Name", new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(patterns, EsxPackage.Literals.PATTERN__NAME, inputName.getText(), appendName.getSelection(), 8);
-			}
-		});
-		appendName = this.createGridData4ColumnCheckButton(groupPatternName, "Append # when multiple patterns are selected", true);
+		textName = this
+				.createGridData2ColumnTextLabel(groupPatternName, "Name");
+		inputName = this.createGridData2ColumnTextInput(groupPatternName,
+				"Name", new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(patterns,
+								EsxPackage.Literals.PATTERN__NAME,
+								inputName.getText(), appendName.getSelection(),
+								8);
+					}
+				});
+		appendName = this.createGridData4ColumnCheckButton(groupPatternName,
+				"Append # when multiple patterns are selected", true);
 
 		/* ======================== */
 		/* ROW 3					*/
@@ -153,80 +163,136 @@ public class EsxCompositePattern extends EsxComposite {
 		groupGeneralInfo.setText("General Info");
 		groupGeneralInfo.setLayout(new GridLayout(4, false));
 
-		textTempo = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Tempo");
-		inputTempo = this.createGridData2ColumnTextInput(groupGeneralInfo, "Tempo", new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(
-						getListOfEObjectsWithinEObject(patterns, EsxPackage.Literals.PATTERN__TEMPO, -1),
-						EsxPackage.Literals.TEMPO__VALUE,
-						Float.parseFloat(inputTempo.getText()),
-						false,
-						-1
-					);
-			}
-		});
+		textTempo = this.createGridData2ColumnTextLabel(groupGeneralInfo,
+				"Tempo");
+		inputTempo = this.createGridData2ColumnTextInput(groupGeneralInfo,
+				"Tempo", new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(
+								getListOfEObjectsWithinEObject(patterns,
+										EsxPackage.Literals.PATTERN__TEMPO, -1),
+								EsxPackage.Literals.TEMPO__VALUE, Float
+										.parseFloat(inputTempo.getText()),
+								false, -1);
+					}
+				});
 
-		textSwing = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Swing");
-		comboSwing = this.createGridData2ColumnComboInput(groupGeneralInfo, "Swing", this.getLiteralStrings(Swing.values()) , new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(patterns, EsxPackage.Literals.PATTERN__SWING, Swing.get(comboSwing.getSelectionIndex()), false, -1);
-			}
-		});
-		textPatternLength = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Pattern Length");
-		comboPatternLength = this.createGridData2ColumnComboInput(groupGeneralInfo, "Pattern Length", this.getLiteralStrings(PatternLength.values()) , new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(patterns, EsxPackage.Literals.PATTERN__PATTERN_LENGTH, PatternLength.get(comboPatternLength.getSelectionIndex()), false, -1);
-			}
-		});
-		
-		textBeat = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Beat");
-		comboBeat = this.createGridData2ColumnComboInput(groupGeneralInfo, "Beat", this.getLiteralStrings(Beat.values()) , new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(patterns, EsxPackage.Literals.PATTERN__BEAT, Beat.get(comboBeat.getSelectionIndex()), false, -1);
-			}
-		});
-		textRollType = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Roll Type");
-		comboRollType = this.createGridData2ColumnComboInput(groupGeneralInfo, "Roll Type", this.getLiteralStrings(RollType.values()) , new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(patterns, EsxPackage.Literals.PATTERN__ROLL_TYPE, RollType.get(comboRollType.getSelectionIndex()), false, -1);
-			}
-		});
-		textFxChain = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Fx Chain");
-		comboFxChain = this.createGridData2ColumnComboInput(groupGeneralInfo, "Fx Chain", this.getLiteralStrings(FxChain.values()) , new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(patterns, EsxPackage.Literals.PATTERN__FX_CHAIN, FxChain.get(comboFxChain.getSelectionIndex()), false, -1);
-			}
-		});
-		textLastStep = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Last Step");
-		comboLastStep = this.createGridData2ColumnComboInput(groupGeneralInfo, "Last Step", this.getLiteralStrings(LastStep.values()) , new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(patterns, EsxPackage.Literals.PATTERN__LAST_STEP, LastStep.get(comboLastStep.getSelectionIndex()), false, -1);
-			}
-		});
-		textArpeggiatorScale = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Arpeggiator Scale");
-		comboArpeggiatorScale = this.createGridData2ColumnComboInput(groupGeneralInfo, "Arpeggiator Scale", this.getLiteralStrings(ArpeggiatorScale.values()) , new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(patterns, EsxPackage.Literals.PATTERN__ARPEGGIATOR_SCALE, ArpeggiatorScale.get(comboArpeggiatorScale.getSelectionIndex()), false, -1);
-			}
-		});
-		textArpeggiatorCenterNote = this.createGridData2ColumnTextLabel(groupGeneralInfo, "Arp. Center Note");
-		comboArpeggiatorCenterNote = this.createGridData2ColumnComboInput(groupGeneralInfo, "Arp. Center Note", this.getLiteralStrings(NoteNumber.values()) , new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(patterns, EsxPackage.Literals.PATTERN__ARPEGGIATOR_CENTER_NOTE, NoteNumber.get(comboArpeggiatorCenterNote.getSelectionIndex()), false, -1);
-			}
-		});
+		textSwing = this.createGridData2ColumnTextLabel(groupGeneralInfo,
+				"Swing");
+		comboSwing = this.createGridData2ColumnComboInput(groupGeneralInfo,
+				"Swing", this.getLiteralStrings(Swing.values()),
+				new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(patterns,
+								EsxPackage.Literals.PATTERN__SWING,
+								Swing.get(comboSwing.getSelectionIndex()),
+								false, -1);
+					}
+				});
+		textPatternLength = this.createGridData2ColumnTextLabel(
+				groupGeneralInfo, "Pattern Length");
+		comboPatternLength = this.createGridData2ColumnComboInput(
+				groupGeneralInfo, "Pattern Length",
+				this.getLiteralStrings(PatternLength.values()),
+				new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(patterns,
+								EsxPackage.Literals.PATTERN__PATTERN_LENGTH,
+								PatternLength.get(comboPatternLength
+										.getSelectionIndex()), false, -1);
+					}
+				});
+
+		textBeat = this
+				.createGridData2ColumnTextLabel(groupGeneralInfo, "Beat");
+		comboBeat = this.createGridData2ColumnComboInput(groupGeneralInfo,
+				"Beat", this.getLiteralStrings(Beat.values()),
+				new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(patterns,
+								EsxPackage.Literals.PATTERN__BEAT,
+								Beat.get(comboBeat.getSelectionIndex()), false,
+								-1);
+					}
+				});
+		textRollType = this.createGridData2ColumnTextLabel(groupGeneralInfo,
+				"Roll Type");
+		comboRollType = this.createGridData2ColumnComboInput(groupGeneralInfo,
+				"Roll Type", this.getLiteralStrings(RollType.values()),
+				new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(
+								patterns,
+								EsxPackage.Literals.PATTERN__ROLL_TYPE,
+								RollType.get(comboRollType.getSelectionIndex()),
+								false, -1);
+					}
+				});
+		textFxChain = this.createGridData2ColumnTextLabel(groupGeneralInfo,
+				"Fx Chain");
+		comboFxChain = this.createGridData2ColumnComboInput(groupGeneralInfo,
+				"Fx Chain", this.getLiteralStrings(FxChain.values()),
+				new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(patterns,
+								EsxPackage.Literals.PATTERN__FX_CHAIN,
+								FxChain.get(comboFxChain.getSelectionIndex()),
+								false, -1);
+					}
+				});
+		textLastStep = this.createGridData2ColumnTextLabel(groupGeneralInfo,
+				"Last Step");
+		comboLastStep = this.createGridData2ColumnComboInput(groupGeneralInfo,
+				"Last Step", this.getLiteralStrings(LastStep.values()),
+				new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(
+								patterns,
+								EsxPackage.Literals.PATTERN__LAST_STEP,
+								LastStep.get(comboLastStep.getSelectionIndex()),
+								false, -1);
+					}
+				});
+		textArpeggiatorScale = this.createGridData2ColumnTextLabel(
+				groupGeneralInfo, "Arpeggiator Scale");
+		comboArpeggiatorScale = this.createGridData2ColumnComboInput(
+				groupGeneralInfo, "Arpeggiator Scale",
+				this.getLiteralStrings(ArpeggiatorScale.values()),
+				new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(patterns,
+								EsxPackage.Literals.PATTERN__ARPEGGIATOR_SCALE,
+								ArpeggiatorScale.get(comboArpeggiatorScale
+										.getSelectionIndex()), false, -1);
+					}
+				});
+		textArpeggiatorCenterNote = this.createGridData2ColumnTextLabel(
+				groupGeneralInfo, "Arp. Center Note");
+		comboArpeggiatorCenterNote = this.createGridData2ColumnComboInput(
+				groupGeneralInfo, "Arp. Center Note",
+				this.getLiteralStrings(NoteNumber.values()),
+				new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(
+								patterns,
+								EsxPackage.Literals.PATTERN__ARPEGGIATOR_CENTER_NOTE,
+								NoteNumber.get(comboArpeggiatorCenterNote
+										.getSelectionIndex()), false, -1);
+					}
+				});
 
 		scrolledComposite.setContent(compositeMain);
-		scrolledComposite.setMinSize(compositeMain.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+		scrolledComposite.setMinSize(compositeMain.computeSize(SWT.DEFAULT,
+				SWT.DEFAULT));
 	}
 
 	/* (non-Javadoc)
@@ -234,15 +300,16 @@ public class EsxCompositePattern extends EsxComposite {
 	 */
 	@Override
 	public void setInput(Object input) {
-		if(this.isActive==false) return;
+		if (this.isActive == false)
+			return;
 
 		this.patterns = new ArrayList<Pattern>();
 
-		if(input instanceof List<?>) {
+		if (input instanceof List<?>) {
 			Iterator<?> it = ((List<?>) input).iterator();
 			while (it.hasNext()) {
 				Object obj = it.next();
-				if(obj instanceof Pattern) {
+				if (obj instanceof Pattern) {
 					this.patterns.add((Pattern) obj);
 				}
 			}
@@ -257,25 +324,44 @@ public class EsxCompositePattern extends EsxComposite {
 	 */
 	@Override
 	public void refresh() {
-		if(this.isActive==false) return;
+		if (this.isActive == false)
+			return;
 
 		String multipleValueString = "<Multiple Values>";
 
 		this.textSelectedTotal.setText(Integer.toString(this.patterns.size()));
-		this.textSelectedNotEmpty.setText(Integer.toString(this.getCountInListWithValue(this.patterns, EsxPackage.Literals.PATTERN__EMPTY, false)));
-		this.textSelectedEmpty.setText(Integer.toString(this.getCountInListWithValue(this.patterns, EsxPackage.Literals.PATTERN__EMPTY, true)));
+		this.textSelectedNotEmpty.setText(Integer.toString(this
+				.getCountInListWithValue(this.patterns,
+						EsxPackage.Literals.PATTERN__EMPTY, false)));
+		this.textSelectedEmpty.setText(Integer.toString(this
+				.getCountInListWithValue(this.patterns,
+						EsxPackage.Literals.PATTERN__EMPTY, true)));
 
-		this.textName.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__NAME, multipleValueString));
+		this.textName.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__NAME, multipleValueString));
 
-		this.textTempo.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__TEMPO, multipleValueString, EsxPackage.Literals.TEMPO__VALUE));
-		this.textSwing.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__SWING, multipleValueString));
-		this.textPatternLength.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__PATTERN_LENGTH, multipleValueString));
-		this.textBeat.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__BEAT, multipleValueString));
-		this.textRollType.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__ROLL_TYPE, multipleValueString));
-		this.textFxChain.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__FX_CHAIN, multipleValueString));
-		this.textLastStep.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__LAST_STEP, multipleValueString));
-		this.textArpeggiatorScale.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__ARPEGGIATOR_SCALE, multipleValueString));
-		this.textArpeggiatorCenterNote.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__ARPEGGIATOR_CENTER_NOTE, multipleValueString));
+		this.textTempo.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__TEMPO, multipleValueString,
+				EsxPackage.Literals.TEMPO__VALUE));
+		this.textSwing.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__SWING, multipleValueString));
+		this.textPatternLength.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__PATTERN_LENGTH,
+				multipleValueString));
+		this.textBeat.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__BEAT, multipleValueString));
+		this.textRollType.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__ROLL_TYPE, multipleValueString));
+		this.textFxChain.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__FX_CHAIN, multipleValueString));
+		this.textLastStep.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__LAST_STEP, multipleValueString));
+		this.textArpeggiatorScale.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__ARPEGGIATOR_SCALE,
+				multipleValueString));
+		this.textArpeggiatorCenterNote.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__ARPEGGIATOR_CENTER_NOTE,
+				multipleValueString));
 	}
 
 	/* (non-Javadoc)
@@ -283,21 +369,36 @@ public class EsxCompositePattern extends EsxComposite {
 	 */
 	@Override
 	public void refreshInputs() {
-		if(this.isActive==false) return;
+		if (this.isActive == false)
+			return;
 
 		String multipleValueString = "";
 
-		this.inputName.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__NAME, multipleValueString));
+		this.inputName.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__NAME, multipleValueString));
 
-		this.inputTempo.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__TEMPO, multipleValueString, EsxPackage.Literals.TEMPO__VALUE));
-		this.comboSwing.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__SWING, multipleValueString));
-		this.comboPatternLength.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__PATTERN_LENGTH, multipleValueString));
-		this.comboBeat.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__BEAT, multipleValueString));
-		this.comboRollType.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__ROLL_TYPE, multipleValueString));
-		this.comboFxChain.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__FX_CHAIN, multipleValueString));
-		this.comboLastStep.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__LAST_STEP, multipleValueString));
-		this.comboArpeggiatorScale.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__ARPEGGIATOR_SCALE, multipleValueString));
-		this.comboArpeggiatorCenterNote.setText(getMultiString(this.patterns, EsxPackage.Literals.PATTERN__ARPEGGIATOR_CENTER_NOTE, multipleValueString));
+		this.inputTempo.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__TEMPO, multipleValueString,
+				EsxPackage.Literals.TEMPO__VALUE));
+		this.comboSwing.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__SWING, multipleValueString));
+		this.comboPatternLength.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__PATTERN_LENGTH,
+				multipleValueString));
+		this.comboBeat.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__BEAT, multipleValueString));
+		this.comboRollType.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__ROLL_TYPE, multipleValueString));
+		this.comboFxChain.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__FX_CHAIN, multipleValueString));
+		this.comboLastStep.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__LAST_STEP, multipleValueString));
+		this.comboArpeggiatorScale.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__ARPEGGIATOR_SCALE,
+				multipleValueString));
+		this.comboArpeggiatorCenterNote.setText(getMultiString(this.patterns,
+				EsxPackage.Literals.PATTERN__ARPEGGIATOR_CENTER_NOTE,
+				multipleValueString));
 	}
 
 }

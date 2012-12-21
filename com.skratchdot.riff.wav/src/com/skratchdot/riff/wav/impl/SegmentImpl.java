@@ -137,7 +137,8 @@ public class SegmentImpl extends EObjectImpl implements Segment {
 		Long oldCuePointID = cuePointID;
 		cuePointID = newCuePointID;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.SEGMENT__CUE_POINT_ID, oldCuePointID, cuePointID));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.SEGMENT__CUE_POINT_ID, oldCuePointID, cuePointID));
 	}
 
 	/**
@@ -158,7 +159,9 @@ public class SegmentImpl extends EObjectImpl implements Segment {
 		Long oldLengthInSamples = lengthInSamples;
 		lengthInSamples = newLengthInSamples;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.SEGMENT__LENGTH_IN_SAMPLES, oldLengthInSamples, lengthInSamples));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.SEGMENT__LENGTH_IN_SAMPLES, oldLengthInSamples,
+					lengthInSamples));
 	}
 
 	/**
@@ -179,7 +182,9 @@ public class SegmentImpl extends EObjectImpl implements Segment {
 		Long oldNumberOfRepeats = numberOfRepeats;
 		numberOfRepeats = newNumberOfRepeats;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.SEGMENT__NUMBER_OF_REPEATS, oldNumberOfRepeats, numberOfRepeats));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.SEGMENT__NUMBER_OF_REPEATS, oldNumberOfRepeats,
+					numberOfRepeats));
 	}
 
 	/**
@@ -190,12 +195,12 @@ public class SegmentImpl extends EObjectImpl implements Segment {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.SEGMENT__CUE_POINT_ID:
-				return getCuePointID();
-			case WavPackage.SEGMENT__LENGTH_IN_SAMPLES:
-				return getLengthInSamples();
-			case WavPackage.SEGMENT__NUMBER_OF_REPEATS:
-				return getNumberOfRepeats();
+		case WavPackage.SEGMENT__CUE_POINT_ID:
+			return getCuePointID();
+		case WavPackage.SEGMENT__LENGTH_IN_SAMPLES:
+			return getLengthInSamples();
+		case WavPackage.SEGMENT__NUMBER_OF_REPEATS:
+			return getNumberOfRepeats();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -208,15 +213,15 @@ public class SegmentImpl extends EObjectImpl implements Segment {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.SEGMENT__CUE_POINT_ID:
-				setCuePointID((Long)newValue);
-				return;
-			case WavPackage.SEGMENT__LENGTH_IN_SAMPLES:
-				setLengthInSamples((Long)newValue);
-				return;
-			case WavPackage.SEGMENT__NUMBER_OF_REPEATS:
-				setNumberOfRepeats((Long)newValue);
-				return;
+		case WavPackage.SEGMENT__CUE_POINT_ID:
+			setCuePointID((Long) newValue);
+			return;
+		case WavPackage.SEGMENT__LENGTH_IN_SAMPLES:
+			setLengthInSamples((Long) newValue);
+			return;
+		case WavPackage.SEGMENT__NUMBER_OF_REPEATS:
+			setNumberOfRepeats((Long) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -229,15 +234,15 @@ public class SegmentImpl extends EObjectImpl implements Segment {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.SEGMENT__CUE_POINT_ID:
-				setCuePointID(CUE_POINT_ID_EDEFAULT);
-				return;
-			case WavPackage.SEGMENT__LENGTH_IN_SAMPLES:
-				setLengthInSamples(LENGTH_IN_SAMPLES_EDEFAULT);
-				return;
-			case WavPackage.SEGMENT__NUMBER_OF_REPEATS:
-				setNumberOfRepeats(NUMBER_OF_REPEATS_EDEFAULT);
-				return;
+		case WavPackage.SEGMENT__CUE_POINT_ID:
+			setCuePointID(CUE_POINT_ID_EDEFAULT);
+			return;
+		case WavPackage.SEGMENT__LENGTH_IN_SAMPLES:
+			setLengthInSamples(LENGTH_IN_SAMPLES_EDEFAULT);
+			return;
+		case WavPackage.SEGMENT__NUMBER_OF_REPEATS:
+			setNumberOfRepeats(NUMBER_OF_REPEATS_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -250,12 +255,15 @@ public class SegmentImpl extends EObjectImpl implements Segment {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.SEGMENT__CUE_POINT_ID:
-				return CUE_POINT_ID_EDEFAULT == null ? cuePointID != null : !CUE_POINT_ID_EDEFAULT.equals(cuePointID);
-			case WavPackage.SEGMENT__LENGTH_IN_SAMPLES:
-				return LENGTH_IN_SAMPLES_EDEFAULT == null ? lengthInSamples != null : !LENGTH_IN_SAMPLES_EDEFAULT.equals(lengthInSamples);
-			case WavPackage.SEGMENT__NUMBER_OF_REPEATS:
-				return NUMBER_OF_REPEATS_EDEFAULT == null ? numberOfRepeats != null : !NUMBER_OF_REPEATS_EDEFAULT.equals(numberOfRepeats);
+		case WavPackage.SEGMENT__CUE_POINT_ID:
+			return CUE_POINT_ID_EDEFAULT == null ? cuePointID != null
+					: !CUE_POINT_ID_EDEFAULT.equals(cuePointID);
+		case WavPackage.SEGMENT__LENGTH_IN_SAMPLES:
+			return LENGTH_IN_SAMPLES_EDEFAULT == null ? lengthInSamples != null
+					: !LENGTH_IN_SAMPLES_EDEFAULT.equals(lengthInSamples);
+		case WavPackage.SEGMENT__NUMBER_OF_REPEATS:
+			return NUMBER_OF_REPEATS_EDEFAULT == null ? numberOfRepeats != null
+					: !NUMBER_OF_REPEATS_EDEFAULT.equals(numberOfRepeats);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -267,7 +275,8 @@ public class SegmentImpl extends EObjectImpl implements Segment {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (cuePointID: ");

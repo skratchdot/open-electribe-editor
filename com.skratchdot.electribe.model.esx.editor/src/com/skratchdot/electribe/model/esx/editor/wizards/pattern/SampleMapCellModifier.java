@@ -28,10 +28,9 @@ public class SampleMapCellModifier implements ICellModifier {
 
 	@Override
 	public Object getValue(Object element, String property) {
-		if(property == "source") {
-			return ((SampleMap) element).source;			
-		}
-		else if(property == "destination") {
+		if (property == "source") {
+			return ((SampleMap) element).source;
+		} else if (property == "destination") {
 			return ((SampleMap) element).destination;
 		}
 		return null;
@@ -41,11 +40,11 @@ public class SampleMapCellModifier implements ICellModifier {
 	public void modify(Object element, String property, Object value) {
 		TableItem item = (TableItem) element;
 
-		if(property == "source") {
+		if (property == "source") {
 			((SampleMap) item.getData()).source = ((Integer) value).intValue();
-		}
-		else if(property == "destination") {
-			((SampleMap) item.getData()).destination = ((Integer) value).intValue();
+		} else if (property == "destination") {
+			((SampleMap) item.getData()).destination = ((Integer) value)
+					.intValue();
 		}
 		viewer.update(item.getData(), null);
 	}

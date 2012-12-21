@@ -34,7 +34,8 @@ import com.skratchdot.riff.wav.util.RiffWaveException;
  *
  * @generated
  */
-public class ChunkDataListTypeNoteImpl extends ChunkDataListTypeImpl implements ChunkDataListTypeNote {
+public class ChunkDataListTypeNoteImpl extends ChunkDataListTypeImpl implements
+		ChunkDataListTypeNote {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -45,18 +46,21 @@ public class ChunkDataListTypeNoteImpl extends ChunkDataListTypeImpl implements 
 	}
 
 	@Override
-	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf)
+			throws RiffWaveException {
 		// Check Chunk Type ID
-		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
-			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+		if (ChunkTypeID.get((int) buf.getUnsignedInt()) != this
+				.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "
+					+ this.getChunkTypeID().getLiteral());
 
 		// Read in data size
 		int chunkSize = (int) buf.getUnsignedInt();
 
 		this.setCuePointID(buf.getUnsignedInt());
 
-		int textSize = chunkSize-4;
-		if(textSize>0) {
+		int textSize = chunkSize - 4;
+		if (textSize > 0) {
 			byte[] newText = new byte[textSize];
 			buf.getBytes(newText);
 			this.setText(newText);
@@ -84,7 +88,7 @@ public class ChunkDataListTypeNoteImpl extends ChunkDataListTypeImpl implements 
 	 */
 	@Override
 	public long getSize() {
-		return this.getText()==null?4:4+this.getText().length;
+		return this.getText() == null ? 4 : 4 + this.getText().length;
 	}
 
 	/**
@@ -99,13 +103,14 @@ public class ChunkDataListTypeNoteImpl extends ChunkDataListTypeImpl implements 
 
 	@Override
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				(int) this.getSize() + 8);
 		buf.order(ByteOrder.LITTLE_ENDIAN);
 
 		buf.putUnsignedInt(this.getChunkTypeIDValue());
 		buf.putUnsignedInt(this.getSize());
 		buf.putUnsignedInt(this.getCuePointID());
-		if(this.getText()!=null) {
+		if (this.getText() != null) {
 			buf.putBytes(this.getText());
 		}
 

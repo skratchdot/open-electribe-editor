@@ -45,9 +45,7 @@ public final class EsxEditPlugin extends EMFPlugin {
 	 * @generated
 	 */
 	public EsxEditPlugin() {
-		super
-		  (new ResourceLocator [] {
-		   });
+		super(new ResourceLocator[] {});
 	}
 
 	/**

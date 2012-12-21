@@ -37,7 +37,8 @@ public interface EsxFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	EsxFactory eINSTANCE = com.skratchdot.electribe.model.esx.impl.EsxFactoryImpl.init();
+	EsxFactory eINSTANCE = com.skratchdot.electribe.model.esx.impl.EsxFactoryImpl
+			.init();
 
 	/**
 	 * Returns a new object of class '<em>File</em>'.
@@ -243,7 +244,7 @@ public interface EsxFactory extends EFactory {
 	 * @generated
 	 */
 	Song createSong();
-	
+
 	/**
 	 * Returns a new object of class '<em>Song Pattern</em>'.
 	 * <!-- begin-user-doc -->
@@ -381,7 +382,8 @@ public interface EsxFactory extends EFactory {
 	 * @return a new instance value of the data type.
 	 * @generated
 	 */
-	MidiControlChangeAssignmentName createMidiControlChangeAssignmentName(String literal);
+	MidiControlChangeAssignmentName createMidiControlChangeAssignmentName(
+			String literal);
 
 	/**
 	 * Returns a literal representation of an instance of data type '<em>Midi Control Change Assignment Name</em>'.
@@ -391,7 +393,8 @@ public interface EsxFactory extends EFactory {
 	 * @return a literal representation of the instance value.
 	 * @generated
 	 */
-	String convertMidiControlChangeAssignmentName(MidiControlChangeAssignmentName instanceValue);
+	String convertMidiControlChangeAssignmentName(
+			MidiControlChangeAssignmentName instanceValue);
 
 	/**
 	 * Returns an instance of data type '<em>Enabled Flag</em>' corresponding the given literal.
@@ -1231,7 +1234,8 @@ public interface EsxFactory extends EFactory {
 	 * @return a literal representation of the instance value.
 	 * @generated
 	 */
-	String convertIndexOutOfBoundsException(IndexOutOfBoundsException instanceValue);
+	String convertIndexOutOfBoundsException(
+			IndexOutOfBoundsException instanceValue);
 
 	/**
 	 * Returns an instance of data type '<em>IO Exception</em>' corresponding the given literal.

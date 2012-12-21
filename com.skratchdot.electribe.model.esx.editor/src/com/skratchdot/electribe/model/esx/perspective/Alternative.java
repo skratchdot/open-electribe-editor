@@ -22,8 +22,10 @@ public class Alternative implements IPerspectiveFactory {
 	 */
 	public void createInitialLayout(IPageLayout layout) {
 		layout.setEditorAreaVisible(true);
-		layout.addView("org.eclipse.ui.views.PropertySheet", IPageLayout.RIGHT, 0.75f, IPageLayout.ID_EDITOR_AREA);
-		layout.addView("com.skratchdot.electribe.fileexplorer.views.TableView", IPageLayout.BOTTOM, 0.7f, IPageLayout.ID_EDITOR_AREA);
+		layout.addView("org.eclipse.ui.views.PropertySheet", IPageLayout.RIGHT,
+				0.75f, IPageLayout.ID_EDITOR_AREA);
+		layout.addView("com.skratchdot.electribe.fileexplorer.views.TableView",
+				IPageLayout.BOTTOM, 0.7f, IPageLayout.ID_EDITOR_AREA);
 	}
 
 }

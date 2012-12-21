@@ -48,11 +48,11 @@ public class ImportHandler extends AbstractHandler {
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// IMPORT_AUDIO_FILES_ID
-		if(event.getCommand().getId().equals(IMPORT_AUDIO_FILES_ID)) {
+		if (event.getCommand().getId().equals(IMPORT_AUDIO_FILES_ID)) {
 			return importAudioFiles(event);
 		}
 		// IMPORT_PATTERNS_ID
-		if(event.getCommand().getId().equals(IMPORT_PATTERNS_ID)) {
+		if (event.getCommand().getId().equals(IMPORT_PATTERNS_ID)) {
 			return importPatterns(event);
 		}
 
@@ -64,12 +64,16 @@ public class ImportHandler extends AbstractHandler {
 	 * multiple files which will be loaded into the esx workspace if there
 	 * are available/unused sample slots.
 	 */
-	public Object importAudioFiles(ExecutionEvent event) throws ExecutionException {
-		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+	public Object importAudioFiles(ExecutionEvent event)
+			throws ExecutionException {
+		IWorkbenchWindow window = HandlerUtil
+				.getActiveWorkbenchWindowChecked(event);
 
 		List<String> fileExtentionFilters = EsxEditor.AUDIO_FILE_EXTENSION_FILTERS;
-		String[] filters = fileExtentionFilters.toArray(new String[fileExtentionFilters.size()]);
-		String[] files = EsxEditorUtil.openFilePathDialog(window.getShell(), SWT.OPEN | SWT.MULTI, filters);
+		String[] filters = fileExtentionFilters
+				.toArray(new String[fileExtentionFilters.size()]);
+		String[] files = EsxEditorUtil.openFilePathDialog(window.getShell(),
+				SWT.OPEN | SWT.MULTI, filters);
 		importAudioFiles(window, files);
 
 		return null;
@@ -85,20 +89,21 @@ public class ImportHandler extends AbstractHandler {
 	public static void importAudioFiles(IWorkbenchWindow window, String[] files) {
 		IWorkbenchPage page = window.getActivePage();
 		IEditorPart editor = page.getActiveEditor();
-		
+
 		// We've chosen to load a few audio files into the active editor
-		if(files.length>0) {
+		if (files.length > 0) {
 			// If the active editor is an EsxEditor
-			if(editor!=null && editor instanceof EsxEditor) {
-				
+			if (editor != null && editor instanceof EsxEditor) {
+
 				// Get our EsxFile
-				EditingDomain editingDomain = ((EsxEditor) editor).getEditingDomain();
-				Resource resource =
-					(Resource)editingDomain.getResourceSet().getResources().get(0);
+				EditingDomain editingDomain = ((EsxEditor) editor)
+						.getEditingDomain();
+				Resource resource = (Resource) editingDomain.getResourceSet()
+						.getResources().get(0);
 				Object rootObject = resource.getContents().get(0);
-				if(rootObject instanceof EsxFile) {
+				if (rootObject instanceof EsxFile) {
 					EsxFile esxFile = (EsxFile) rootObject;
-					
+
 					// Since we are using a CompoundCommand, we need to remember
 					// which SampleNumbers to ignore when we call the findFirstUnusedSample()
 					ArrayList<Integer> skipSampleNumbers = new ArrayList<Integer>();
@@ -107,37 +112,44 @@ public class ImportHandler extends AbstractHandler {
 
 					// Now we can loop through our selected
 					// Audio Files, trying to import them
-					for(int i=0; i<files.length; i++) {
+					for (int i = 0; i < files.length; i++) {
 						try {
 							File file = new File(files[i]);
 
 							// We can only import audio files
-							if(AudioUtil.isAudioFile(file)) {
+							if (AudioUtil.isAudioFile(file)) {
 								int firstEmptySampleNumber = -1;
 								Sample sample = null;
 
-								firstEmptySampleNumber = EsxUtil.findFirstIndex(
-									esxFile.getSamples(),
-									AudioUtil.isStereo(file)?EsxUtil.NUM_SAMPLES_MONO:0,
-									skipSampleNumbers,
-									EsxPackage.Literals.SAMPLE__EMPTY,
-									true,
-									true
-								);
-								if(EsxUtil.isValidSampleNumber(firstEmptySampleNumber)) {
-									sample = EsxFactory.eINSTANCE.createSampleFromFile(file);
-									sample.setSampleNumberOriginal(esxFile.getSamples().get(firstEmptySampleNumber).getSampleNumberOriginal());
-									
+								firstEmptySampleNumber = EsxUtil
+										.findFirstIndex(
+												esxFile.getSamples(),
+												AudioUtil.isStereo(file) ? EsxUtil.NUM_SAMPLES_MONO
+														: 0,
+												skipSampleNumbers,
+												EsxPackage.Literals.SAMPLE__EMPTY,
+												true, true);
+								if (EsxUtil
+										.isValidSampleNumber(firstEmptySampleNumber)) {
+									sample = EsxFactory.eINSTANCE
+											.createSampleFromFile(file);
+									sample.setSampleNumberOriginal(esxFile
+											.getSamples()
+											.get(firstEmptySampleNumber)
+											.getSampleNumberOriginal());
+
 									// Add sample using emf command
-									if(sample!=null) {
-										skipSampleNumbers.add(firstEmptySampleNumber);
+									if (sample != null) {
+										skipSampleNumbers
+												.add(firstEmptySampleNumber);
 										cmd.append(new ReplaceCommand(
-											editingDomain,
-											esxFile,
-											EsxPackage.eINSTANCE.getEsxFile_Samples(),
-											esxFile.getSamples().get(firstEmptySampleNumber),
-											sample
-										));
+												editingDomain,
+												esxFile,
+												EsxPackage.eINSTANCE
+														.getEsxFile_Samples(),
+												esxFile.getSamples().get(
+														firstEmptySampleNumber),
+												sample));
 									}
 								}
 							}
@@ -148,7 +160,7 @@ public class ImportHandler extends AbstractHandler {
 
 					// We've finished looping through our fileList adding ReplaceCommands
 					// to our CompoundCommand.  Now we can execute our CompoundCommand.
-					if(cmd.canExecute()) {
+					if (cmd.canExecute()) {
 						editingDomain.getCommandStack().execute(cmd);
 					}
 				}
@@ -163,41 +175,43 @@ public class ImportHandler extends AbstractHandler {
 	 * 
 	 * TODO: allow .psg files to be selected as well.
 	 */
-	public Object importPatterns(ExecutionEvent event) throws ExecutionException {
-		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+	public Object importPatterns(ExecutionEvent event)
+			throws ExecutionException {
+		IWorkbenchWindow window = HandlerUtil
+				.getActiveWorkbenchWindowChecked(event);
 		IWorkbenchPage page = window.getActivePage();
 		IEditorPart editor = page.getActiveEditor();
 
 		// If the active editor is an EsxEditor
-		if(editor!=null && editor instanceof EsxEditor) {
+		if (editor != null && editor instanceof EsxEditor) {
 			// Get our EsxFile
-			EditingDomain editingDomain = ((EsxEditor) editor).getEditingDomain();
-			Resource resource =
-				(Resource)editingDomain.getResourceSet().getResources().get(0);
+			EditingDomain editingDomain = ((EsxEditor) editor)
+					.getEditingDomain();
+			Resource resource = (Resource) editingDomain.getResourceSet()
+					.getResources().get(0);
 			Object rootObject = resource.getContents().get(0);
-			if(rootObject instanceof EsxFile) {
+			if (rootObject instanceof EsxFile) {
 				EsxFile esxFile = (EsxFile) rootObject;
 
 				// Attempt to sync pointers if moves have occurred.
-				SyncPointersCommand cmd = new SyncPointersCommand(resource, (AdapterFactoryEditingDomain) editingDomain);
-				if(cmd.canExecute()) {
+				SyncPointersCommand cmd = new SyncPointersCommand(resource,
+						(AdapterFactoryEditingDomain) editingDomain);
+				if (cmd.canExecute()) {
 					editingDomain.getCommandStack().execute(cmd);
 				}
-				
+
 				ImportPatternWizard wizard = new ImportPatternWizard();
 				wizard.init(window.getWorkbench(), esxFile);
-				WizardDialog dialog = new WizardDialog(window.getShell(), wizard);				
+				WizardDialog dialog = new WizardDialog(window.getShell(),
+						wizard);
 				dialog.setPageSize(650, 400);
 				dialog.create();
 				dialog.open();
 			}
-		}
-		else {
-			MessageDialog.openError(
-				window.getShell(),
-				"No Destination File",
-				"Before importing patterns, please open an existing .esx file."
-			);
+		} else {
+			MessageDialog
+					.openError(window.getShell(), "No Destination File",
+							"Before importing patterns, please open an existing .esx file.");
 		}
 
 		return null;

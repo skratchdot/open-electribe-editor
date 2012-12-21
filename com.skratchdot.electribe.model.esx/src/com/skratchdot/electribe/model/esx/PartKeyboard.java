@@ -11,8 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx;
 
-
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Part Keyboard</b></em>'.
@@ -30,7 +28,8 @@ package com.skratchdot.electribe.model.esx;
  * @model
  * @generated
  */
-public interface PartKeyboard extends Part, PartWithCommon, PartWithSample, PartWithSequenceDataGate, PartWithSlice {
+public interface PartKeyboard extends Part, PartWithCommon, PartWithSample,
+		PartWithSequenceDataGate, PartWithSlice {
 
 	/**
 	 * Returns the value of the '<em><b>Glide</b></em>' attribute.

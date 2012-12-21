@@ -68,7 +68,8 @@ public enum SMPTEFormat implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SMPTE_29(29, "SMPTE_29", "30 frames per second with frame dropping (30 drop)"),
+	SMPTE_29(29, "SMPTE_29",
+			"30 frames per second with frame dropping (30 drop)"),
 
 	/**
 	 * The '<em><b>SMPTE 30</b></em>' literal object.
@@ -161,14 +162,8 @@ public enum SMPTEFormat implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final SMPTEFormat[] VALUES_ARRAY =
-		new SMPTEFormat[] {
-			SMPTE_0,
-			SMPTE_24,
-			SMPTE_25,
-			SMPTE_29,
-			SMPTE_30,
-		};
+	private static final SMPTEFormat[] VALUES_ARRAY = new SMPTEFormat[] {
+			SMPTE_0, SMPTE_24, SMPTE_25, SMPTE_29, SMPTE_30, };
 
 	/**
 	 * A public read-only list of all the '<em><b>SMPTE Format</b></em>' enumerators.
@@ -176,7 +171,8 @@ public enum SMPTEFormat implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<SMPTEFormat> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<SMPTEFormat> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>SMPTE Format</b></em>' literal with the specified literal value.
@@ -218,11 +214,16 @@ public enum SMPTEFormat implements Enumerator {
 	 */
 	public static SMPTEFormat get(int value) {
 		switch (value) {
-			case SMPTE_0_VALUE: return SMPTE_0;
-			case SMPTE_24_VALUE: return SMPTE_24;
-			case SMPTE_25_VALUE: return SMPTE_25;
-			case SMPTE_29_VALUE: return SMPTE_29;
-			case SMPTE_30_VALUE: return SMPTE_30;
+		case SMPTE_0_VALUE:
+			return SMPTE_0;
+		case SMPTE_24_VALUE:
+			return SMPTE_24;
+		case SMPTE_25_VALUE:
+			return SMPTE_25;
+		case SMPTE_29_VALUE:
+			return SMPTE_29;
+		case SMPTE_30_VALUE:
+			return SMPTE_30;
 		}
 		return null;
 	}
@@ -266,7 +267,7 @@ public enum SMPTEFormat implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -275,7 +276,7 @@ public enum SMPTEFormat implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -284,7 +285,7 @@ public enum SMPTEFormat implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -297,5 +298,5 @@ public enum SMPTEFormat implements Enumerator {
 	public String toString() {
 		return literal;
 	}
-	
+
 } //SMPTEFormat

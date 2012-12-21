@@ -48,8 +48,9 @@ import com.skratchdot.electribe.model.esx.editor.util.EsxEditorUtil;
 /**
  * http://www.eclipse.org/articles/article.php?file=Article-Integrating-EMF-GMF-Editors/index.html
  */
-public abstract class EsxEditorPart extends EditorPart
-	implements IEditingDomainProvider, IMenuListener, ISelectionListener, IPropertyChangeListener {
+public abstract class EsxEditorPart extends EditorPart implements
+		IEditingDomainProvider, IMenuListener, ISelectionListener,
+		IPropertyChangeListener {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPart"; //$NON-NLS-1$
 
 	protected EsxEditor parentEditor;
@@ -61,10 +62,10 @@ public abstract class EsxEditorPart extends EditorPart
 	public EsxEditorPart(EsxEditor parent) {
 		super();
 		this.parentEditor = parent;
-		Resource resource =
-			(Resource)this.getEditingDomain().getResourceSet().getResources().get(0);
+		Resource resource = (Resource) this.getEditingDomain().getResourceSet()
+				.getResources().get(0);
 		Object rootObject = resource.getContents().get(0);
-		if(rootObject instanceof EsxFile) {
+		if (rootObject instanceof EsxFile) {
 			this.esxFile = (EsxFile) rootObject;
 		}
 	}
@@ -83,7 +84,7 @@ public abstract class EsxEditorPart extends EditorPart
 	 * has been called.  It is up to the subclasses to determine what needs to be refreshed.
 	 */
 	public abstract void refresh();
-	
+
 	/* (non-Javadoc)
 	 * @see org.eclipse.ui.part.WorkbenchPart#createPartControl(org.eclipse.swt.widgets.Composite)
 	 */
@@ -113,7 +114,7 @@ public abstract class EsxEditorPart extends EditorPart
 	public void propertyChange(PropertyChangeEvent event) {
 		// nothing to do here - this is handled by the editor part subclasses
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see org.eclipse.ui.part.EditorPart#doSave(org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -158,7 +159,8 @@ public abstract class EsxEditorPart extends EditorPart
 	 */
 	public void menuAboutToShow(IMenuManager manager) {
 		// pass the request to show the context menu on to the parent editor
-		((IMenuListener)parentEditor.getEditorSite().getActionBarContributor()).menuAboutToShow(manager);
+		((IMenuListener) parentEditor.getEditorSite().getActionBarContributor())
+				.menuAboutToShow(manager);
 	}
 
 	/* (non-Javadoc)
@@ -172,9 +174,9 @@ public abstract class EsxEditorPart extends EditorPart
 	 * @return
 	 */
 	protected BasicCommandStack getCommandStack() {
-		return ((BasicCommandStack)getEditingDomain().getCommandStack());
+		return ((BasicCommandStack) getEditingDomain().getCommandStack());
 	}
-	
+
 	/**
 	 * @return
 	 */
@@ -194,7 +196,8 @@ public abstract class EsxEditorPart extends EditorPart
 		//contextMenu.addMenuListener(this);
 		Menu menu = contextMenu.createContextMenu(viewer.getControl());
 		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(menuId, contextMenu, new UnwrappingSelectionProvider(viewer));
+		getSite().registerContextMenu(menuId, contextMenu,
+				new UnwrappingSelectionProvider(viewer));
 	}
 
 	/**
@@ -203,8 +206,10 @@ public abstract class EsxEditorPart extends EditorPart
 	protected void addEmfDragAndDropSupport(StructuredViewer viewer) {
 		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
 		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance() };
-		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(viewer));
-		viewer.addDropSupport(dndOperations, transfers, new EditingDomainViewerDropAdapter(getEditingDomain(), viewer));
+		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(
+				viewer));
+		viewer.addDropSupport(dndOperations, transfers,
+				new EditingDomainViewerDropAdapter(getEditingDomain(), viewer));
 	}
 
 	/**
@@ -212,7 +217,8 @@ public abstract class EsxEditorPart extends EditorPart
 	 * @param text The name of the column. Will show up in the column header.
 	 * @param width If null, then pack() will be called. If a valid integer, then the column will have this width
 	 */
-	protected void addColumnToTableViewer(TableViewer tableViewer, String text, Integer width) {
+	protected void addColumnToTableViewer(TableViewer tableViewer, String text,
+			Integer width) {
 		EsxEditorUtil.addColumnToTableViewer(tableViewer, text, width);
 	}
 
@@ -223,11 +229,12 @@ public abstract class EsxEditorPart extends EditorPart
 	 * @param useScrollSpeed
 	 * @return
 	 */
-	protected TableScrollSpeedListener syncScrollSpeedWithPreference(TableViewer viewer, TableScrollSpeedListener scrollSpeedListener, Integer scrollSpeed, Boolean useScrollSpeed) {
-		if( useScrollSpeed ) {
+	protected TableScrollSpeedListener syncScrollSpeedWithPreference(
+			TableViewer viewer, TableScrollSpeedListener scrollSpeedListener,
+			Integer scrollSpeed, Boolean useScrollSpeed) {
+		if (useScrollSpeed) {
 			return enableScrollSpeed(viewer, scrollSpeedListener, scrollSpeed);
-		}
-		else {
+		} else {
 			return disableScrollSpeed(viewer, scrollSpeedListener);
 		}
 	}
@@ -238,11 +245,13 @@ public abstract class EsxEditorPart extends EditorPart
 	 * @param scrollSpeed
 	 * @return
 	 */
-	private TableScrollSpeedListener enableScrollSpeed(TableViewer viewer, TableScrollSpeedListener scrollSpeedListener, Integer scrollSpeed) {
-		if(scrollSpeedListener==null) {
+	private TableScrollSpeedListener enableScrollSpeed(TableViewer viewer,
+			TableScrollSpeedListener scrollSpeedListener, Integer scrollSpeed) {
+		if (scrollSpeedListener == null) {
 			disableScrollSpeed(viewer, scrollSpeedListener);
 		}
-		scrollSpeedListener = new TableScrollSpeedListener(viewer.getTable(), scrollSpeed);
+		scrollSpeedListener = new TableScrollSpeedListener(viewer.getTable(),
+				scrollSpeed);
 		viewer.getTable().addListener(SWT.MouseDown, scrollSpeedListener);
 		viewer.getTable().addListener(SWT.MouseUp, scrollSpeedListener);
 		viewer.getTable().addListener(SWT.MouseExit, scrollSpeedListener);
@@ -254,11 +263,14 @@ public abstract class EsxEditorPart extends EditorPart
 	 * @param scrollSpeedListener
 	 * @return
 	 */
-	private TableScrollSpeedListener disableScrollSpeed(TableViewer viewer, TableScrollSpeedListener scrollSpeedListener) {
-		if(scrollSpeedListener!=null) {
-			viewer.getTable().removeListener(SWT.MouseDown, scrollSpeedListener);
+	private TableScrollSpeedListener disableScrollSpeed(TableViewer viewer,
+			TableScrollSpeedListener scrollSpeedListener) {
+		if (scrollSpeedListener != null) {
+			viewer.getTable()
+					.removeListener(SWT.MouseDown, scrollSpeedListener);
 			viewer.getTable().removeListener(SWT.MouseUp, scrollSpeedListener);
-			viewer.getTable().removeListener(SWT.MouseExit, scrollSpeedListener);
+			viewer.getTable()
+					.removeListener(SWT.MouseExit, scrollSpeedListener);
 			scrollSpeedListener = null;
 		}
 		return scrollSpeedListener;

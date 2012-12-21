@@ -26,7 +26,7 @@ import java.nio.ShortBuffer;
  * reading and putting unsigned data types.
  * @see java.nio.ByteBuffer
  */
-public class ExtendedByteBuffer  {
+public class ExtendedByteBuffer {
 	private ByteBuffer buf = null;
 
 	/**
@@ -45,14 +45,13 @@ public class ExtendedByteBuffer  {
 	 * @param isDirect whether or not to internally call {@link java.nio.ByteBuffer#allocate(int)} or {@link java.nio.ByteBuffer#allocateDirect(int)}
 	 */
 	public ExtendedByteBuffer(int capacity, boolean isDirect) {
-		if(isDirect) {
+		if (isDirect) {
 			buf = ByteBuffer.allocateDirect(capacity);
-		}
-		else {
+		} else {
 			buf = ByteBuffer.allocate(capacity);
 		}
 	}
-	
+
 	/**
 	 * Allocates an ExtendedByteBuffer by calling {@link java.nio.ByteBuffer#wrap(byte[])} internally
 	 * @param array
@@ -70,7 +69,7 @@ public class ExtendedByteBuffer  {
 	public ExtendedByteBuffer(byte[] array, int offset, int length) {
 		buf = ByteBuffer.wrap(array, offset, length);
 	}
-	
+
 	/**
 	 * @return
 	 * @see java.nio.ByteBuffer#array()
@@ -244,7 +243,7 @@ public class ExtendedByteBuffer  {
 	public ByteBuffer getBytes(byte[] dst, int offset, int length) {
 		return buf.get(dst, offset, length);
 	}
-	
+
 	/**
 	 * @param position The position in which to start getting bytes. Must be non-negative and no larger than the current limit
 	 * @param length The number of bytes to get.  Must be non-negative, and position+length should be no larger than the current limit.
@@ -742,8 +741,6 @@ public class ExtendedByteBuffer  {
 		return buf.slice();
 	}
 
-	
-	
 	/**
 	 * @return
 	 * @see java.nio.ByteBuffer#toString()

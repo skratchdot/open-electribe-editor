@@ -26,12 +26,10 @@ public class EsxPreferenceStore {
 	 * @return the RGB value of the Color Preference
 	 */
 	public static RGB getColor(String preferenceName) {
-		return PreferenceConverter.getColor(
-			PlatformUI.getPreferenceStore(),
-			preferenceName
-		);
+		return PreferenceConverter.getColor(PlatformUI.getPreferenceStore(),
+				preferenceName);
 	}
-	
+
 	/**
 	 * @see org.eclipse.jface.preference.IPreferenceStore#getString(String)
 	 * @param preferenceName
@@ -45,162 +43,144 @@ public class EsxPreferenceStore {
 	 * @return the value of the '<em>SAMPLES_USE_SCROLL_SPEED</em>' preference.
 	 */
 	public static Boolean getSamplesUseScrollSpeed() {
-		return PlatformUI.getPreferenceStore().getBoolean(EsxPreferenceNames.SAMPLES_USE_SCROLL_SPEED);
+		return PlatformUI.getPreferenceStore().getBoolean(
+				EsxPreferenceNames.SAMPLES_USE_SCROLL_SPEED);
 	}
 
 	/**
 	 * @return the value of the '<em>SAMPLES_SCROLL_SPEED</em>' preference.
 	 */
 	public static Integer getSamplesScrollSpeed() {
-		return PlatformUI.getPreferenceStore().getInt(EsxPreferenceNames.SAMPLES_SCROLL_SPEED);
+		return PlatformUI.getPreferenceStore().getInt(
+				EsxPreferenceNames.SAMPLES_SCROLL_SPEED);
 	}
 
 	/**
 	 * @return the value of the '<em>SAMPLES_BACKGROUND_COLOR_WHEN_NOT_EMPTY</em>' preference.
 	 */
 	public static RGB getSamplesBackgroundColorWhenNotEmpty() {
-		return PreferenceConverter.getColor(
-				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_NOT_EMPTY
-		);
+		return PreferenceConverter.getColor(PlatformUI.getPreferenceStore(),
+				EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_NOT_EMPTY);
 	}
 
 	/**
 	 * @return the value of the '<em>SAMPLES_BACKGROUND_COLOR_WHEN_EMPTY</em>' preference.
 	 */
 	public static RGB getSamplesBackgroundColorWhenEmpty() {
-		return PreferenceConverter.getColor(
-				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_EMPTY
-		);
+		return PreferenceConverter.getColor(PlatformUI.getPreferenceStore(),
+				EsxPreferenceNames.SAMPLES_BACKGROUND_COLOR_WHEN_EMPTY);
 	}
 
 	/**
 	 * @return the value of the '<em>SAMPLES_FOREGROUND_COLOR_WHEN_NOT_EMPTY</em>' preference.
 	 */
 	public static RGB getSamplesForegroundColorWhenNotEmpty() {
-		return PreferenceConverter.getColor(
-				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_NOT_EMPTY
-		);
+		return PreferenceConverter.getColor(PlatformUI.getPreferenceStore(),
+				EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_NOT_EMPTY);
 	}
 
 	/**
 	 * @return the value of the '<em>SAMPLES_FOREGROUND_COLOR_WHEN_EMPTY</em>' preference.
 	 */
 	public static RGB getSamplesForegroundColorWhenEmpty() {
-		return PreferenceConverter.getColor(
-				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_EMPTY
-		);
+		return PreferenceConverter.getColor(PlatformUI.getPreferenceStore(),
+				EsxPreferenceNames.SAMPLES_FOREGROUND_COLOR_WHEN_EMPTY);
 	}
 
 	/**
 	 * @return the value of the '<em>PATTERNS_USE_SCROLL_SPEED</em>' preference.
 	 */
 	public static Boolean getPatternsUseScrollSpeed() {
-		return PlatformUI.getPreferenceStore().getBoolean(EsxPreferenceNames.PATTERNS_USE_SCROLL_SPEED);
+		return PlatformUI.getPreferenceStore().getBoolean(
+				EsxPreferenceNames.PATTERNS_USE_SCROLL_SPEED);
 	}
 
 	/**
 	 * @return the value of the '<em>PATTERNS_SCROLL_SPEED</em>' preference.
 	 */
 	public static Integer getPatternsScrollSpeed() {
-		return PlatformUI.getPreferenceStore().getInt(EsxPreferenceNames.PATTERNS_SCROLL_SPEED);
+		return PlatformUI.getPreferenceStore().getInt(
+				EsxPreferenceNames.PATTERNS_SCROLL_SPEED);
 	}
 
 	/**
 	 * @return the value of the '<em>PATTERNS_BACKGROUND_COLOR_WHEN_NOT_EMPTY</em>' preference.
 	 */
 	public static RGB getPatternsBackgroundColorWhenNotEmpty() {
-		return PreferenceConverter.getColor(
-				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_NOT_EMPTY
-		);
+		return PreferenceConverter.getColor(PlatformUI.getPreferenceStore(),
+				EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_NOT_EMPTY);
 	}
 
 	/**
 	 * @return the value of the '<em>PATTERNS_BACKGROUND_COLOR_WHEN_EMPTY</em>' preference.
 	 */
 	public static RGB getPatternsBackgroundColorWhenEmpty() {
-		return PreferenceConverter.getColor(
-				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_EMPTY
-		);
+		return PreferenceConverter.getColor(PlatformUI.getPreferenceStore(),
+				EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_EMPTY);
 	}
 
 	/**
 	 * @return the value of the '<em>PATTERNS_FOREGROUND_COLOR_WHEN_NOT_EMPTY</em>' preference.
 	 */
 	public static RGB getPatternsForegroundColorWhenNotEmpty() {
-		return PreferenceConverter.getColor(
-				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_NOT_EMPTY
-		);
+		return PreferenceConverter.getColor(PlatformUI.getPreferenceStore(),
+				EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_NOT_EMPTY);
 	}
 
 	/**
 	 * @return the value of the '<em>PATTERNS_FOREGROUND_COLOR_WHEN_EMPTY</em>' preference.
 	 */
 	public static RGB getPatternsForegroundColorWhenEmpty() {
-		return PreferenceConverter.getColor(
-				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_EMPTY
-		);
+		return PreferenceConverter.getColor(PlatformUI.getPreferenceStore(),
+				EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_EMPTY);
 	}
 
 	/**
 	 * @return the value of the '<em>SONGS_USE_SCROLL_SPEED</em>' preference.
 	 */
 	public static Boolean getSongsUseScrollSpeed() {
-		return PlatformUI.getPreferenceStore().getBoolean(EsxPreferenceNames.SONGS_USE_SCROLL_SPEED);
+		return PlatformUI.getPreferenceStore().getBoolean(
+				EsxPreferenceNames.SONGS_USE_SCROLL_SPEED);
 	}
 
 	/**
 	 * @return the value of the '<em>SONGS_SCROLL_SPEED</em>' preference.
 	 */
 	public static Integer getSongsScrollSpeed() {
-		return PlatformUI.getPreferenceStore().getInt(EsxPreferenceNames.SONGS_SCROLL_SPEED);
+		return PlatformUI.getPreferenceStore().getInt(
+				EsxPreferenceNames.SONGS_SCROLL_SPEED);
 	}
 
 	/**
 	 * @return the value of the '<em>SONGS_BACKGROUND_COLOR_WHEN_NOT_EMPTY</em>' preference.
 	 */
 	public static RGB getSongsBackgroundColorWhenNotEmpty() {
-		return PreferenceConverter.getColor(
-				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_NOT_EMPTY
-		);
+		return PreferenceConverter.getColor(PlatformUI.getPreferenceStore(),
+				EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_NOT_EMPTY);
 	}
 
 	/**
 	 * @return the value of the '<em>SONGS_BACKGROUND_COLOR_WHEN_EMPTY</em>' preference.
 	 */
 	public static RGB getSongsBackgroundColorWhenEmpty() {
-		return PreferenceConverter.getColor(
-				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_EMPTY
-		);
+		return PreferenceConverter.getColor(PlatformUI.getPreferenceStore(),
+				EsxPreferenceNames.SONGS_BACKGROUND_COLOR_WHEN_EMPTY);
 	}
 
 	/**
 	 * @return the value of the '<em>SONGS_FOREGROUND_COLOR_WHEN_NOT_EMPTY</em>' preference.
 	 */
 	public static RGB getSongsForegroundColorWhenNotEmpty() {
-		return PreferenceConverter.getColor(
-				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_NOT_EMPTY
-		);
+		return PreferenceConverter.getColor(PlatformUI.getPreferenceStore(),
+				EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_NOT_EMPTY);
 	}
 
 	/**
 	 * @return the value of the '<em>SONGS_FOREGROUND_COLOR_WHEN_EMPTY</em>' preference.
 	 */
 	public static RGB getSongsForegroundColorWhenEmpty() {
-		return PreferenceConverter.getColor(
-				PlatformUI.getPreferenceStore(),
-				EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_EMPTY
-		);
+		return PreferenceConverter.getColor(PlatformUI.getPreferenceStore(),
+				EsxPreferenceNames.SONGS_FOREGROUND_COLOR_WHEN_EMPTY);
 	}
 
 }

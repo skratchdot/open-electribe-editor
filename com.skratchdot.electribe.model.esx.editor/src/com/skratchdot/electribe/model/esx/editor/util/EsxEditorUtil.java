@@ -41,7 +41,6 @@ import org.eclipse.ui.PartInitException;
 import com.skratchdot.electribe.model.esx.presentation.EsxEditor;
 import com.skratchdot.electribe.model.esx.presentation.EsxEditorPlugin;
 
-
 public class EsxEditorUtil {
 
 	/**
@@ -50,18 +49,17 @@ public class EsxEditorUtil {
 	 * @param directory A valid directory.
 	 */
 	public static void clearTempDirectory(File directory) {
-		if(!directory.isDirectory()) return;
+		if (!directory.isDirectory())
+			return;
 
 		File[] tempFiles = directory.listFiles(new FilenameFilter() {
 			public boolean accept(File fDir, String strName) {
-				return (
-					(strName.startsWith("temp") || strName.startsWith("untitled"))
-					&& strName.endsWith(".esx")
-				);
+				return ((strName.startsWith("temp") || strName
+						.startsWith("untitled")) && strName.endsWith(".esx"));
 			}
 		});
 
-		for (int i=0; i<tempFiles.length; i++) {
+		for (int i = 0; i < tempFiles.length; i++) {
 			tempFiles[i].delete();
 		}
 	}
@@ -79,8 +77,10 @@ public class EsxEditorUtil {
 		} catch (IOException e) {
 			throw e;
 		} finally {
-			if (inChannel != null) inChannel.close();
-			if (outChannel != null) outChannel.close();
+			if (inChannel != null)
+				inChannel.close();
+			if (outChannel != null)
+				outChannel.close();
 		}
 	}
 
@@ -94,8 +94,8 @@ public class EsxEditorUtil {
 	/**
 	 * This looks up a string in plugin.properties, making a substitution.
 	 */
-	public  static String getString(String key, Object s1) {
-		return EsxEditorPlugin.INSTANCE.getString(key, new Object [] { s1 });
+	public static String getString(String key, Object s1) {
+		return EsxEditorPlugin.INSTANCE.getString(key, new Object[] { s1 });
 	}
 
 	/**
@@ -106,10 +106,9 @@ public class EsxEditorUtil {
 	 */
 	public static String getTempEsxFilePath(File directory, String prefix) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
-		String defaultTempFilePath = directory.getAbsolutePath() + 
-			File.separatorChar + prefix + "_" +
-			dateFormat.format(new Date()) +
-			".esx";
+		String defaultTempFilePath = directory.getAbsolutePath()
+				+ File.separatorChar + prefix + "_"
+				+ dateFormat.format(new Date()) + ".esx";
 		return defaultTempFilePath;
 	}
 
@@ -121,24 +120,22 @@ public class EsxEditorUtil {
 	public static boolean openEditor(IWorkbench workbench, URI uri) {
 		IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
 		IWorkbenchPage page = workbenchWindow.getActivePage();
-		
-		IEditorDescriptor editorDescriptor = EditUIUtil.getDefaultEditor(uri, null);
+
+		IEditorDescriptor editorDescriptor = EditUIUtil.getDefaultEditor(uri,
+				null);
 		if (editorDescriptor == null) {
-			MessageDialog.openError(
-				workbenchWindow.getShell(),
-				getString("_UI_Error_title"),
-				getString("_WARN_No_Editor", uri.lastSegment()));
+			MessageDialog.openError(workbenchWindow.getShell(),
+					getString("_UI_Error_title"),
+					getString("_WARN_No_Editor", uri.lastSegment()));
 			return false;
-		}
-		else {
+		} else {
 			try {
-				page.openEditor(new URIEditorInput(uri), editorDescriptor.getId());
-			}
-			catch (PartInitException exception) {
-				MessageDialog.openError(
-					workbenchWindow.getShell(),
-					getString("_UI_OpenEditorError_label"),
-					exception.getMessage());
+				page.openEditor(new URIEditorInput(uri),
+						editorDescriptor.getId());
+			} catch (PartInitException exception) {
+				MessageDialog.openError(workbenchWindow.getShell(),
+						getString("_UI_OpenEditorError_label"),
+						exception.getMessage());
 				return false;
 			}
 		}
@@ -151,8 +148,11 @@ public class EsxEditorUtil {
 	 * @param fileExtensionFilters
 	 * @return
 	 */
-	public static String[] openFilePathDialog(Shell shell, int style, String[] fileExtensionFilters) {
-		return openFilePathDialog(shell, style, fileExtensionFilters, (style & SWT.OPEN) != 0, (style & SWT.OPEN) != 0, (style & SWT.SAVE) != 0);
+	public static String[] openFilePathDialog(Shell shell, int style,
+			String[] fileExtensionFilters) {
+		return openFilePathDialog(shell, style, fileExtensionFilters,
+				(style & SWT.OPEN) != 0, (style & SWT.OPEN) != 0,
+				(style & SWT.SAVE) != 0);
 	}
 
 	/**
@@ -164,11 +164,14 @@ public class EsxEditorUtil {
 	 * @param addExtension
 	 * @return
 	 */
-	public static String[] openFilePathDialog(Shell shell, int style, String[] fileExtensionFilters, boolean includeGroupFilter, boolean includeAllFilter, boolean addExtension) {
+	public static String[] openFilePathDialog(Shell shell, int style,
+			String[] fileExtensionFilters, boolean includeGroupFilter,
+			boolean includeAllFilter, boolean addExtension) {
 		FileDialog fileDialog = new FileDialog(shell, style);
 		if (fileExtensionFilters == null) {
 			List<String> fileExtentionFilters = EsxEditor.FILE_EXTENSION_FILTERS;
-			fileExtensionFilters = fileExtentionFilters.toArray(new String[fileExtentionFilters.size()]);
+			fileExtensionFilters = fileExtentionFilters
+					.toArray(new String[fileExtentionFilters.size()]);
 		}
 
 		// If requested, augment the file extension filters by adding a group of all the other filters (*.ext1;*.ext2;...)
@@ -176,12 +179,14 @@ public class EsxEditorUtil {
 		//
 		includeGroupFilter &= fileExtensionFilters.length > 1;
 		int offset = includeGroupFilter ? 1 : 0;
-		
+
 		if (includeGroupFilter || includeAllFilter) {
-			int size = fileExtensionFilters.length + offset + (includeAllFilter ? 1 : 0);
+			int size = fileExtensionFilters.length + offset
+					+ (includeAllFilter ? 1 : 0);
 			String[] allFilters = new String[size];
-			StringBuilder group = includeGroupFilter ? new StringBuilder() : null;
-			
+			StringBuilder group = includeGroupFilter ? new StringBuilder()
+					: null;
+
 			for (int i = 0; i < fileExtensionFilters.length; i++) {
 				if (includeGroupFilter) {
 					if (i != 0) {
@@ -191,31 +196,31 @@ public class EsxEditorUtil {
 				}
 				allFilters[i + offset] = fileExtensionFilters[i];
 			}
-			
+
 			if (includeGroupFilter) {
 				allFilters[0] = group.toString();
 			}
 			if (includeAllFilter) {
 				allFilters[allFilters.length - 1] = "*.*";
 			}
-			
+
 			fileDialog.setFilterExtensions(allFilters);
-		}
-		else {
+		} else {
 			fileDialog.setFilterExtensions(fileExtensionFilters);
 		}
 		fileDialog.open();
-		
+
 		String[] filenames = fileDialog.getFileNames();
 		String[] result = new String[filenames.length];
 		String path = fileDialog.getFilterPath() + File.separator;
 		String extension = null;
-		
+
 		// If extension adding requested, get the dotted extension corresponding to the selected filter.
 		//
 		if (addExtension) {
 			int i = fileDialog.getFilterIndex();
-			if (i != -1 && (!includeAllFilter || i != fileExtensionFilters.length)) {
+			if (i != -1
+					&& (!includeAllFilter || i != fileExtensionFilters.length)) {
 				i = includeGroupFilter && i == 0 ? 0 : i - offset;
 				String filter = fileExtensionFilters[i];
 				int dot = filter.lastIndexOf('.');
@@ -224,14 +229,16 @@ public class EsxEditorUtil {
 				}
 			}
 		}
-		
+
 		// Build the result by adding the selected path and, if needed, auto-appending the extension.
 		//
 		for (int i = 0; i < filenames.length; i++) {
 			String filename = path + filenames[i];
 			if (extension != null) {
 				int dot = filename.lastIndexOf('.');
-				if (dot == -1 || !Arrays.asList(fileExtensionFilters).contains("*" + filename.substring(dot))) {
+				if (dot == -1
+						|| !Arrays.asList(fileExtensionFilters).contains(
+								"*" + filename.substring(dot))) {
 					filename += extension;
 				}
 			}
@@ -245,16 +252,17 @@ public class EsxEditorUtil {
 	 * @param text The name of the column. Will show up in the column header.
 	 * @param width If null, then pack() will be called. If a valid integer, then the column will have this width
 	 */
-	public static void addColumnToTableViewer(TableViewer tableViewer, String text, Integer width) {
-		TableViewerColumn tableViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
+	public static void addColumnToTableViewer(TableViewer tableViewer,
+			String text, Integer width) {
+		TableViewerColumn tableViewerColumn = new TableViewerColumn(
+				tableViewer, SWT.NONE);
 		TableColumn column = tableViewerColumn.getColumn();
 		column.setText(text);
-		if(width==null) {
+		if (width == null) {
 			column.pack();
-		}
-		else {
+		} else {
 			column.setWidth(width);
 		}
 	}
-	
+
 }

@@ -40,7 +40,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * @generated
  */
-public class ParseChunkExceptionImpl extends EObjectImpl implements ParseChunkException {
+public class ParseChunkExceptionImpl extends EObjectImpl implements
+		ParseChunkException {
 	/**
 	 * The default value of the '{@link #getException() <em>Exception</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -128,7 +129,9 @@ public class ParseChunkExceptionImpl extends EObjectImpl implements ParseChunkEx
 		Exception oldException = exception;
 		exception = newException;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.PARSE_CHUNK_EXCEPTION__EXCEPTION, oldException, exception));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.PARSE_CHUNK_EXCEPTION__EXCEPTION, oldException,
+					exception));
 	}
 
 	/**
@@ -137,7 +140,8 @@ public class ParseChunkExceptionImpl extends EObjectImpl implements ParseChunkEx
 	 * @generated NOT
 	 */
 	public String getStringCause() {
-		return this.getException()==null?"":this.getException().getCause().toString();
+		return this.getException() == null ? "" : this.getException()
+				.getCause().toString();
 	}
 
 	/**
@@ -146,7 +150,8 @@ public class ParseChunkExceptionImpl extends EObjectImpl implements ParseChunkEx
 	 * @generated NOT
 	 */
 	public String getStringMessage() {
-		return this.getException()==null?"":this.getException().getMessage();
+		return this.getException() == null ? "" : this.getException()
+				.getMessage();
 	}
 
 	/**
@@ -155,7 +160,8 @@ public class ParseChunkExceptionImpl extends EObjectImpl implements ParseChunkEx
 	 * @generated NOT
 	 */
 	public String getStringStackTrace() {
-		return this.getException()==null?"":this.getException().getStackTrace().toString();
+		return this.getException() == null ? "" : this.getException()
+				.getStackTrace().toString();
 	}
 
 	/**
@@ -166,14 +172,14 @@ public class ParseChunkExceptionImpl extends EObjectImpl implements ParseChunkEx
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.PARSE_CHUNK_EXCEPTION__EXCEPTION:
-				return getException();
-			case WavPackage.PARSE_CHUNK_EXCEPTION__STRING_CAUSE:
-				return getStringCause();
-			case WavPackage.PARSE_CHUNK_EXCEPTION__STRING_MESSAGE:
-				return getStringMessage();
-			case WavPackage.PARSE_CHUNK_EXCEPTION__STRING_STACK_TRACE:
-				return getStringStackTrace();
+		case WavPackage.PARSE_CHUNK_EXCEPTION__EXCEPTION:
+			return getException();
+		case WavPackage.PARSE_CHUNK_EXCEPTION__STRING_CAUSE:
+			return getStringCause();
+		case WavPackage.PARSE_CHUNK_EXCEPTION__STRING_MESSAGE:
+			return getStringMessage();
+		case WavPackage.PARSE_CHUNK_EXCEPTION__STRING_STACK_TRACE:
+			return getStringStackTrace();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -186,9 +192,9 @@ public class ParseChunkExceptionImpl extends EObjectImpl implements ParseChunkEx
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.PARSE_CHUNK_EXCEPTION__EXCEPTION:
-				setException((Exception)newValue);
-				return;
+		case WavPackage.PARSE_CHUNK_EXCEPTION__EXCEPTION:
+			setException((Exception) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -201,9 +207,9 @@ public class ParseChunkExceptionImpl extends EObjectImpl implements ParseChunkEx
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.PARSE_CHUNK_EXCEPTION__EXCEPTION:
-				setException(EXCEPTION_EDEFAULT);
-				return;
+		case WavPackage.PARSE_CHUNK_EXCEPTION__EXCEPTION:
+			setException(EXCEPTION_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -216,14 +222,19 @@ public class ParseChunkExceptionImpl extends EObjectImpl implements ParseChunkEx
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.PARSE_CHUNK_EXCEPTION__EXCEPTION:
-				return EXCEPTION_EDEFAULT == null ? exception != null : !EXCEPTION_EDEFAULT.equals(exception);
-			case WavPackage.PARSE_CHUNK_EXCEPTION__STRING_CAUSE:
-				return STRING_CAUSE_EDEFAULT == null ? getStringCause() != null : !STRING_CAUSE_EDEFAULT.equals(getStringCause());
-			case WavPackage.PARSE_CHUNK_EXCEPTION__STRING_MESSAGE:
-				return STRING_MESSAGE_EDEFAULT == null ? getStringMessage() != null : !STRING_MESSAGE_EDEFAULT.equals(getStringMessage());
-			case WavPackage.PARSE_CHUNK_EXCEPTION__STRING_STACK_TRACE:
-				return STRING_STACK_TRACE_EDEFAULT == null ? getStringStackTrace() != null : !STRING_STACK_TRACE_EDEFAULT.equals(getStringStackTrace());
+		case WavPackage.PARSE_CHUNK_EXCEPTION__EXCEPTION:
+			return EXCEPTION_EDEFAULT == null ? exception != null
+					: !EXCEPTION_EDEFAULT.equals(exception);
+		case WavPackage.PARSE_CHUNK_EXCEPTION__STRING_CAUSE:
+			return STRING_CAUSE_EDEFAULT == null ? getStringCause() != null
+					: !STRING_CAUSE_EDEFAULT.equals(getStringCause());
+		case WavPackage.PARSE_CHUNK_EXCEPTION__STRING_MESSAGE:
+			return STRING_MESSAGE_EDEFAULT == null ? getStringMessage() != null
+					: !STRING_MESSAGE_EDEFAULT.equals(getStringMessage());
+		case WavPackage.PARSE_CHUNK_EXCEPTION__STRING_STACK_TRACE:
+			return STRING_STACK_TRACE_EDEFAULT == null ? getStringStackTrace() != null
+					: !STRING_STACK_TRACE_EDEFAULT
+							.equals(getStringStackTrace());
 		}
 		return super.eIsSet(featureID);
 	}
@@ -235,7 +246,8 @@ public class ParseChunkExceptionImpl extends EObjectImpl implements ParseChunkEx
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (exception: ");

@@ -24,7 +24,8 @@ public class FileExplorerFilter implements FileFilter {
 	private String[] fileFilterArray;
 	private String seperator = DEFAULT_SEPERATOR;
 
-	public FileExplorerFilter(Boolean onlyShowingDirectories, String fileFilterString) {
+	public FileExplorerFilter(Boolean onlyShowingDirectories,
+			String fileFilterString) {
 		super();
 		this.setOnlyShowingDirectories(onlyShowingDirectories);
 		this.setFileFilterString(fileFilterString);
@@ -82,8 +83,7 @@ public class FileExplorerFilter implements FileFilter {
 	 * into an array of list items.
 	 */
 	private String[] parseString(String stringList) {
-		StringTokenizer tokenizer =
-			new StringTokenizer(stringList, seperator);
+		StringTokenizer tokenizer = new StringTokenizer(stringList, seperator);
 		int tokenCount = tokenizer.countTokens();
 		String[] elements = new String[tokenCount];
 		for (int i = 0; i < tokenCount; i++) {
@@ -94,21 +94,22 @@ public class FileExplorerFilter implements FileFilter {
 
 	public boolean accept(File element) {
 		// Always return true for directories
-		if(element.isDirectory()) {
+		if (element.isDirectory()) {
 			return true;
 		}
 		// If we are only showing directories, then we've already returned true
-		if(this.onlyShowingDirectories) {
+		if (this.onlyShowingDirectories) {
 			return false;
 		}
 		// We are showing every file
-		if(this.fileFilterArray.length==0 || this.fileFilterString=="") {
+		if (this.fileFilterArray.length == 0 || this.fileFilterString == "") {
 			return true;
 		}
 		// Now we filter on name
-		for(String ext : this.fileFilterArray) {
+		for (String ext : this.fileFilterArray) {
 			PathPattern pp = new PathPattern(ext.toLowerCase());
-			if(pp.matches(element.getName().toLowerCase())) return true;
+			if (pp.matches(element.getName().toLowerCase()))
+				return true;
 		}
 		// Default to false
 		return false;

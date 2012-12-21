@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.PartAccent;
@@ -40,10 +39,10 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PartAccentItemProvider
-	extends PartItemProvider
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class PartAccentItemProvider extends PartItemProvider implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -78,10 +77,12 @@ public class PartAccentItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(EsxPackage.Literals.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA);
+			childrenFeatures
+					.add(EsxPackage.Literals.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA);
 		}
 		return childrenFeatures;
 	}
@@ -107,7 +108,8 @@ public class PartAccentItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/PartAccent"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/PartAccent"));
 	}
 
 	/**
@@ -118,10 +120,9 @@ public class PartAccentItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((PartAccent)object).getLabel();
-		return label == null || label.length() == 0 ?
-			getString("_UI_PartAccent_type") :
-			getString("_UI_PartAccent_type") + " " + label;
+		String label = ((PartAccent) object).getLabel();
+		return label == null || label.length() == 0 ? getString("_UI_PartAccent_type")
+				: getString("_UI_PartAccent_type") + " " + label;
 	}
 
 	/**
@@ -136,9 +137,10 @@ public class PartAccentItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(PartAccent.class)) {
-			case EsxPackage.PART_ACCENT__SEQUENCE_DATA:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case EsxPackage.PART_ACCENT__SEQUENCE_DATA:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -151,13 +153,13 @@ public class PartAccentItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-				(EsxPackage.Literals.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA,
-				 EsxFactory.eINSTANCE.createSequenceData()));
+		newChildDescriptors.add(createChildParameter(
+				EsxPackage.Literals.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA,
+				EsxFactory.eINSTANCE.createSequenceData()));
 	}
 
 }

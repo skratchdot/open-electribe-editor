@@ -71,14 +71,17 @@ public class ChunkWaveListImpl extends ChunkImpl implements ChunkWaveList {
 	}
 
 	@Override
-	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf)
+			throws RiffWaveException {
 		// Check Chunk Type ID
-		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
-			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+		if (ChunkTypeID.get((int) buf.getUnsignedInt()) != this
+				.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "
+					+ this.getChunkTypeID().getLiteral());
 
 		// Read in data size
 		long chunkSize = buf.getUnsignedInt();
-		
+
 		// We cannot read in chunks past this point
 		long maxPointer = buf.position() + chunkSize;
 
@@ -87,7 +90,8 @@ public class ChunkWaveListImpl extends ChunkImpl implements ChunkWaveList {
 		long loopPointer = 0;
 
 		// Loop through file reading in chunks
-		while(buf.position()<buf.limit() && buf.position()!=loopPointer && buf.position()<maxPointer) {
+		while (buf.position() < buf.limit() && buf.position() != loopPointer
+				&& buf.position() < maxPointer) {
 			// If the filePointer doesn't advance in this loop iteration,
 			// then we'll break out of the loop
 			loopPointer = buf.position();
@@ -96,12 +100,14 @@ public class ChunkWaveListImpl extends ChunkImpl implements ChunkWaveList {
 			Chunk currentChunk = WavUtil.parseChunk(riffWave, buf);
 
 			// If we got a chunk, add it to our list
-			if(currentChunk!=null) {
+			if (currentChunk != null) {
 				// Wave List chunks are only supposed to contain sInt and data chunks
-				if(currentChunk instanceof ChunkSilent == false && 
-					currentChunk instanceof ChunkData == false) {
-					ParseChunkException pce = WavFactory.eINSTANCE.createParseChunkException();
-					pce.setException(new Exception("Invalid Chunk Type: Not sInt or data"));
+				if (currentChunk instanceof ChunkSilent == false
+						&& currentChunk instanceof ChunkData == false) {
+					ParseChunkException pce = WavFactory.eINSTANCE
+							.createParseChunkException();
+					pce.setException(new Exception(
+							"Invalid Chunk Type: Not sInt or data"));
 					riffWave.getParseChunkExceptions().add(pce);
 				}
 				// Add to our list of chunks
@@ -109,7 +115,7 @@ public class ChunkWaveListImpl extends ChunkImpl implements ChunkWaveList {
 			}
 
 			// We need to block align
-			buf.blockAlign();		
+			buf.blockAlign();
 		}
 	}
 
@@ -130,7 +136,10 @@ public class ChunkWaveListImpl extends ChunkImpl implements ChunkWaveList {
 	 */
 	public EList<Chunk> getAlternatingSilentAndDataChunks() {
 		if (alternatingSilentAndDataChunks == null) {
-			alternatingSilentAndDataChunks = new EObjectContainmentEList<Chunk>(Chunk.class, this, WavPackage.CHUNK_WAVE_LIST__ALTERNATING_SILENT_AND_DATA_CHUNKS);
+			alternatingSilentAndDataChunks = new EObjectContainmentEList<Chunk>(
+					Chunk.class,
+					this,
+					WavPackage.CHUNK_WAVE_LIST__ALTERNATING_SILENT_AND_DATA_CHUNKS);
 		}
 		return alternatingSilentAndDataChunks;
 	}
@@ -157,8 +166,9 @@ public class ChunkWaveListImpl extends ChunkImpl implements ChunkWaveList {
 	@Override
 	public long getSize() {
 		long returnSize = 0;
-		for(int i=0; i<this.getAlternatingSilentAndDataChunks().size(); i++) {
-			returnSize += this.getAlternatingSilentAndDataChunks().get(i).getBlockAlignedSize() + 8;
+		for (int i = 0; i < this.getAlternatingSilentAndDataChunks().size(); i++) {
+			returnSize += this.getAlternatingSilentAndDataChunks().get(i)
+					.getBlockAlignedSize() + 8;
 		}
 		return returnSize;
 	}
@@ -169,10 +179,12 @@ public class ChunkWaveListImpl extends ChunkImpl implements ChunkWaveList {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case WavPackage.CHUNK_WAVE_LIST__ALTERNATING_SILENT_AND_DATA_CHUNKS:
-				return ((InternalEList<?>)getAlternatingSilentAndDataChunks()).basicRemove(otherEnd, msgs);
+		case WavPackage.CHUNK_WAVE_LIST__ALTERNATING_SILENT_AND_DATA_CHUNKS:
+			return ((InternalEList<?>) getAlternatingSilentAndDataChunks())
+					.basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -185,8 +197,8 @@ public class ChunkWaveListImpl extends ChunkImpl implements ChunkWaveList {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.CHUNK_WAVE_LIST__ALTERNATING_SILENT_AND_DATA_CHUNKS:
-				return getAlternatingSilentAndDataChunks();
+		case WavPackage.CHUNK_WAVE_LIST__ALTERNATING_SILENT_AND_DATA_CHUNKS:
+			return getAlternatingSilentAndDataChunks();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -200,10 +212,11 @@ public class ChunkWaveListImpl extends ChunkImpl implements ChunkWaveList {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.CHUNK_WAVE_LIST__ALTERNATING_SILENT_AND_DATA_CHUNKS:
-				getAlternatingSilentAndDataChunks().clear();
-				getAlternatingSilentAndDataChunks().addAll((Collection<? extends Chunk>)newValue);
-				return;
+		case WavPackage.CHUNK_WAVE_LIST__ALTERNATING_SILENT_AND_DATA_CHUNKS:
+			getAlternatingSilentAndDataChunks().clear();
+			getAlternatingSilentAndDataChunks().addAll(
+					(Collection<? extends Chunk>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -216,9 +229,9 @@ public class ChunkWaveListImpl extends ChunkImpl implements ChunkWaveList {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_WAVE_LIST__ALTERNATING_SILENT_AND_DATA_CHUNKS:
-				getAlternatingSilentAndDataChunks().clear();
-				return;
+		case WavPackage.CHUNK_WAVE_LIST__ALTERNATING_SILENT_AND_DATA_CHUNKS:
+			getAlternatingSilentAndDataChunks().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -231,22 +244,25 @@ public class ChunkWaveListImpl extends ChunkImpl implements ChunkWaveList {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_WAVE_LIST__ALTERNATING_SILENT_AND_DATA_CHUNKS:
-				return alternatingSilentAndDataChunks != null && !alternatingSilentAndDataChunks.isEmpty();
+		case WavPackage.CHUNK_WAVE_LIST__ALTERNATING_SILENT_AND_DATA_CHUNKS:
+			return alternatingSilentAndDataChunks != null
+					&& !alternatingSilentAndDataChunks.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	@Override
 	public byte[] toByteArray() throws RiffWaveException {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				(int) this.getSize() + 8);
 		buf.order(ByteOrder.LITTLE_ENDIAN);
 
 		buf.putUnsignedInt(this.getChunkTypeIDValue());
 		buf.putUnsignedInt(this.getSize());
 
-		for(int i=0; i<this.getAlternatingSilentAndDataChunks().size(); i++) {
-			Chunk currentChunk = this.getAlternatingSilentAndDataChunks().get(i);
+		for (int i = 0; i < this.getAlternatingSilentAndDataChunks().size(); i++) {
+			Chunk currentChunk = this.getAlternatingSilentAndDataChunks()
+					.get(i);
 			buf.putBytes(currentChunk.toByteArray());
 			buf.putBlockAlign();
 		}

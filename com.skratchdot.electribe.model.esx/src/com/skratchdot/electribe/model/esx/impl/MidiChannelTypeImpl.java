@@ -115,7 +115,8 @@ public class MidiChannelTypeImpl extends EObjectImpl implements MidiChannelType 
 		MidiChannelTypeName oldName = name;
 		name = newName == null ? NAME_EDEFAULT : newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.MIDI_CHANNEL_TYPE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.MIDI_CHANNEL_TYPE__NAME, oldName, name));
 	}
 
 	/**
@@ -134,9 +135,12 @@ public class MidiChannelTypeImpl extends EObjectImpl implements MidiChannelType 
 	 */
 	public void setMidiChannel(MidiChannel newMidiChannel) {
 		MidiChannel oldMidiChannel = midiChannel;
-		midiChannel = newMidiChannel == null ? MIDI_CHANNEL_EDEFAULT : newMidiChannel;
+		midiChannel = newMidiChannel == null ? MIDI_CHANNEL_EDEFAULT
+				: newMidiChannel;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.MIDI_CHANNEL_TYPE__MIDI_CHANNEL, oldMidiChannel, midiChannel));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.MIDI_CHANNEL_TYPE__MIDI_CHANNEL, oldMidiChannel,
+					midiChannel));
 	}
 
 	/**
@@ -147,10 +151,10 @@ public class MidiChannelTypeImpl extends EObjectImpl implements MidiChannelType 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.MIDI_CHANNEL_TYPE__NAME:
-				return getName();
-			case EsxPackage.MIDI_CHANNEL_TYPE__MIDI_CHANNEL:
-				return getMidiChannel();
+		case EsxPackage.MIDI_CHANNEL_TYPE__NAME:
+			return getName();
+		case EsxPackage.MIDI_CHANNEL_TYPE__MIDI_CHANNEL:
+			return getMidiChannel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -163,12 +167,12 @@ public class MidiChannelTypeImpl extends EObjectImpl implements MidiChannelType 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.MIDI_CHANNEL_TYPE__NAME:
-				setName((MidiChannelTypeName)newValue);
-				return;
-			case EsxPackage.MIDI_CHANNEL_TYPE__MIDI_CHANNEL:
-				setMidiChannel((MidiChannel)newValue);
-				return;
+		case EsxPackage.MIDI_CHANNEL_TYPE__NAME:
+			setName((MidiChannelTypeName) newValue);
+			return;
+		case EsxPackage.MIDI_CHANNEL_TYPE__MIDI_CHANNEL:
+			setMidiChannel((MidiChannel) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -181,12 +185,12 @@ public class MidiChannelTypeImpl extends EObjectImpl implements MidiChannelType 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.MIDI_CHANNEL_TYPE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case EsxPackage.MIDI_CHANNEL_TYPE__MIDI_CHANNEL:
-				setMidiChannel(MIDI_CHANNEL_EDEFAULT);
-				return;
+		case EsxPackage.MIDI_CHANNEL_TYPE__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case EsxPackage.MIDI_CHANNEL_TYPE__MIDI_CHANNEL:
+			setMidiChannel(MIDI_CHANNEL_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -199,10 +203,10 @@ public class MidiChannelTypeImpl extends EObjectImpl implements MidiChannelType 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.MIDI_CHANNEL_TYPE__NAME:
-				return name != NAME_EDEFAULT;
-			case EsxPackage.MIDI_CHANNEL_TYPE__MIDI_CHANNEL:
-				return midiChannel != MIDI_CHANNEL_EDEFAULT;
+		case EsxPackage.MIDI_CHANNEL_TYPE__NAME:
+			return name != NAME_EDEFAULT;
+		case EsxPackage.MIDI_CHANNEL_TYPE__MIDI_CHANNEL:
+			return midiChannel != MIDI_CHANNEL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -214,7 +218,8 @@ public class MidiChannelTypeImpl extends EObjectImpl implements MidiChannelType 
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");

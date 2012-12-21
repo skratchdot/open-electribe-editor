@@ -46,117 +46,117 @@ public enum MidiChannel implements Enumerator {
 	 * @ordered
 	 */
 	CHANNEL_2(1, "Channel_2", "2"), /**
-	 * The '<em><b>Channel 3</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CHANNEL_3_VALUE
-	 * @generated
-	 * @ordered
-	 */
+									* The '<em><b>Channel 3</b></em>' literal object.
+									* <!-- begin-user-doc -->
+									* <!-- end-user-doc -->
+									* @see #CHANNEL_3_VALUE
+									* @generated
+									* @ordered
+									*/
 	CHANNEL_3(2, "Channel_3", "3"), /**
-	 * The '<em><b>Channel 4</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CHANNEL_4_VALUE
-	 * @generated
-	 * @ordered
-	 */
+									* The '<em><b>Channel 4</b></em>' literal object.
+									* <!-- begin-user-doc -->
+									* <!-- end-user-doc -->
+									* @see #CHANNEL_4_VALUE
+									* @generated
+									* @ordered
+									*/
 	CHANNEL_4(3, "Channel_4", "4"), /**
-	 * The '<em><b>Channel 5</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CHANNEL_5_VALUE
-	 * @generated
-	 * @ordered
-	 */
+									* The '<em><b>Channel 5</b></em>' literal object.
+									* <!-- begin-user-doc -->
+									* <!-- end-user-doc -->
+									* @see #CHANNEL_5_VALUE
+									* @generated
+									* @ordered
+									*/
 	CHANNEL_5(4, "Channel_5", "5"), /**
-	 * The '<em><b>Channel 6</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CHANNEL_6_VALUE
-	 * @generated
-	 * @ordered
-	 */
+									* The '<em><b>Channel 6</b></em>' literal object.
+									* <!-- begin-user-doc -->
+									* <!-- end-user-doc -->
+									* @see #CHANNEL_6_VALUE
+									* @generated
+									* @ordered
+									*/
 	CHANNEL_6(5, "Channel_6", "6"), /**
-	 * The '<em><b>Channel 7</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CHANNEL_7_VALUE
-	 * @generated
-	 * @ordered
-	 */
+									* The '<em><b>Channel 7</b></em>' literal object.
+									* <!-- begin-user-doc -->
+									* <!-- end-user-doc -->
+									* @see #CHANNEL_7_VALUE
+									* @generated
+									* @ordered
+									*/
 	CHANNEL_7(6, "Channel_7", "7"), /**
-	 * The '<em><b>Channel 8</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CHANNEL_8_VALUE
-	 * @generated
-	 * @ordered
-	 */
+									* The '<em><b>Channel 8</b></em>' literal object.
+									* <!-- begin-user-doc -->
+									* <!-- end-user-doc -->
+									* @see #CHANNEL_8_VALUE
+									* @generated
+									* @ordered
+									*/
 	CHANNEL_8(7, "Channel_8", "8"), /**
-	 * The '<em><b>Channel 9</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CHANNEL_9_VALUE
-	 * @generated
-	 * @ordered
-	 */
+									* The '<em><b>Channel 9</b></em>' literal object.
+									* <!-- begin-user-doc -->
+									* <!-- end-user-doc -->
+									* @see #CHANNEL_9_VALUE
+									* @generated
+									* @ordered
+									*/
 	CHANNEL_9(8, "Channel_9", "9"), /**
-	 * The '<em><b>Channel 10</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CHANNEL_10_VALUE
-	 * @generated
-	 * @ordered
-	 */
+									* The '<em><b>Channel 10</b></em>' literal object.
+									* <!-- begin-user-doc -->
+									* <!-- end-user-doc -->
+									* @see #CHANNEL_10_VALUE
+									* @generated
+									* @ordered
+									*/
 	CHANNEL_10(9, "Channel_10", "10"), /**
-	 * The '<em><b>Channel 11</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CHANNEL_11_VALUE
-	 * @generated
-	 * @ordered
-	 */
+										* The '<em><b>Channel 11</b></em>' literal object.
+										* <!-- begin-user-doc -->
+										* <!-- end-user-doc -->
+										* @see #CHANNEL_11_VALUE
+										* @generated
+										* @ordered
+										*/
 	CHANNEL_11(10, "Channel_11", "11"), /**
-	 * The '<em><b>Channel 12</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CHANNEL_12_VALUE
-	 * @generated
-	 * @ordered
-	 */
+										* The '<em><b>Channel 12</b></em>' literal object.
+										* <!-- begin-user-doc -->
+										* <!-- end-user-doc -->
+										* @see #CHANNEL_12_VALUE
+										* @generated
+										* @ordered
+										*/
 	CHANNEL_12(11, "Channel_12", "12"), /**
-	 * The '<em><b>Channel 13</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CHANNEL_13_VALUE
-	 * @generated
-	 * @ordered
-	 */
+										* The '<em><b>Channel 13</b></em>' literal object.
+										* <!-- begin-user-doc -->
+										* <!-- end-user-doc -->
+										* @see #CHANNEL_13_VALUE
+										* @generated
+										* @ordered
+										*/
 	CHANNEL_13(12, "Channel_13", "13"), /**
-	 * The '<em><b>Channel 14</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CHANNEL_14_VALUE
-	 * @generated
-	 * @ordered
-	 */
+										* The '<em><b>Channel 14</b></em>' literal object.
+										* <!-- begin-user-doc -->
+										* <!-- end-user-doc -->
+										* @see #CHANNEL_14_VALUE
+										* @generated
+										* @ordered
+										*/
 	CHANNEL_14(13, "Channel_14", "14"), /**
-	 * The '<em><b>Channel 15</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CHANNEL_15_VALUE
-	 * @generated
-	 * @ordered
-	 */
+										* The '<em><b>Channel 15</b></em>' literal object.
+										* <!-- begin-user-doc -->
+										* <!-- end-user-doc -->
+										* @see #CHANNEL_15_VALUE
+										* @generated
+										* @ordered
+										*/
 	CHANNEL_15(14, "Channel_15", "15"), /**
-	 * The '<em><b>Channel 16</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CHANNEL_16_VALUE
-	 * @generated
-	 * @ordered
-	 */
+										* The '<em><b>Channel 16</b></em>' literal object.
+										* <!-- begin-user-doc -->
+										* <!-- end-user-doc -->
+										* @see #CHANNEL_16_VALUE
+										* @generated
+										* @ordered
+										*/
 	CHANNEL_16(15, "Channel_16", "16");
 
 	/**
@@ -405,25 +405,10 @@ public enum MidiChannel implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final MidiChannel[] VALUES_ARRAY =
-		new MidiChannel[] {
-			CHANNEL_1,
-			CHANNEL_2,
-			CHANNEL_3,
-			CHANNEL_4,
-			CHANNEL_5,
-			CHANNEL_6,
-			CHANNEL_7,
-			CHANNEL_8,
-			CHANNEL_9,
-			CHANNEL_10,
-			CHANNEL_11,
-			CHANNEL_12,
-			CHANNEL_13,
-			CHANNEL_14,
-			CHANNEL_15,
-			CHANNEL_16,
-		};
+	private static final MidiChannel[] VALUES_ARRAY = new MidiChannel[] {
+			CHANNEL_1, CHANNEL_2, CHANNEL_3, CHANNEL_4, CHANNEL_5, CHANNEL_6,
+			CHANNEL_7, CHANNEL_8, CHANNEL_9, CHANNEL_10, CHANNEL_11,
+			CHANNEL_12, CHANNEL_13, CHANNEL_14, CHANNEL_15, CHANNEL_16, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Midi Channel</b></em>' enumerators.
@@ -431,7 +416,8 @@ public enum MidiChannel implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<MidiChannel> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<MidiChannel> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Midi Channel</b></em>' literal with the specified literal value.
@@ -473,22 +459,38 @@ public enum MidiChannel implements Enumerator {
 	 */
 	public static MidiChannel get(int value) {
 		switch (value) {
-			case CHANNEL_1_VALUE: return CHANNEL_1;
-			case CHANNEL_2_VALUE: return CHANNEL_2;
-			case CHANNEL_3_VALUE: return CHANNEL_3;
-			case CHANNEL_4_VALUE: return CHANNEL_4;
-			case CHANNEL_5_VALUE: return CHANNEL_5;
-			case CHANNEL_6_VALUE: return CHANNEL_6;
-			case CHANNEL_7_VALUE: return CHANNEL_7;
-			case CHANNEL_8_VALUE: return CHANNEL_8;
-			case CHANNEL_9_VALUE: return CHANNEL_9;
-			case CHANNEL_10_VALUE: return CHANNEL_10;
-			case CHANNEL_11_VALUE: return CHANNEL_11;
-			case CHANNEL_12_VALUE: return CHANNEL_12;
-			case CHANNEL_13_VALUE: return CHANNEL_13;
-			case CHANNEL_14_VALUE: return CHANNEL_14;
-			case CHANNEL_15_VALUE: return CHANNEL_15;
-			case CHANNEL_16_VALUE: return CHANNEL_16;
+		case CHANNEL_1_VALUE:
+			return CHANNEL_1;
+		case CHANNEL_2_VALUE:
+			return CHANNEL_2;
+		case CHANNEL_3_VALUE:
+			return CHANNEL_3;
+		case CHANNEL_4_VALUE:
+			return CHANNEL_4;
+		case CHANNEL_5_VALUE:
+			return CHANNEL_5;
+		case CHANNEL_6_VALUE:
+			return CHANNEL_6;
+		case CHANNEL_7_VALUE:
+			return CHANNEL_7;
+		case CHANNEL_8_VALUE:
+			return CHANNEL_8;
+		case CHANNEL_9_VALUE:
+			return CHANNEL_9;
+		case CHANNEL_10_VALUE:
+			return CHANNEL_10;
+		case CHANNEL_11_VALUE:
+			return CHANNEL_11;
+		case CHANNEL_12_VALUE:
+			return CHANNEL_12;
+		case CHANNEL_13_VALUE:
+			return CHANNEL_13;
+		case CHANNEL_14_VALUE:
+			return CHANNEL_14;
+		case CHANNEL_15_VALUE:
+			return CHANNEL_15;
+		case CHANNEL_16_VALUE:
+			return CHANNEL_16;
 		}
 		return null;
 	}
@@ -532,7 +534,7 @@ public enum MidiChannel implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -541,7 +543,7 @@ public enum MidiChannel implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -550,7 +552,7 @@ public enum MidiChannel implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

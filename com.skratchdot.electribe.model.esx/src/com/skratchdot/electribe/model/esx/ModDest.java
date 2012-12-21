@@ -133,13 +133,8 @@ public enum ModDest implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ModDest[] VALUES_ARRAY =
-		new ModDest[] {
-			PITCH,
-			CUTOFF,
-			AMP,
-			PAN,
-		};
+	private static final ModDest[] VALUES_ARRAY = new ModDest[] { PITCH,
+			CUTOFF, AMP, PAN, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Mod Dest</b></em>' enumerators.
@@ -147,7 +142,8 @@ public enum ModDest implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<ModDest> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ModDest> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Mod Dest</b></em>' literal with the specified literal value.
@@ -189,10 +185,14 @@ public enum ModDest implements Enumerator {
 	 */
 	public static ModDest get(int value) {
 		switch (value) {
-			case PITCH_VALUE: return PITCH;
-			case CUTOFF_VALUE: return CUTOFF;
-			case AMP_VALUE: return AMP;
-			case PAN_VALUE: return PAN;
+		case PITCH_VALUE:
+			return PITCH;
+		case CUTOFF_VALUE:
+			return CUTOFF;
+		case AMP_VALUE:
+			return AMP;
+		case PAN_VALUE:
+			return PAN;
 		}
 		return null;
 	}
@@ -236,7 +236,7 @@ public enum ModDest implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -245,7 +245,7 @@ public enum ModDest implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -254,7 +254,7 @@ public enum ModDest implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

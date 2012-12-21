@@ -36,13 +36,14 @@ import org.eclipse.swt.widgets.Text;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.NoteNumber;
 import com.skratchdot.electribe.model.esx.PartNoteNumber;
+
 public class EsxCompositeGlobalNoteNumbers extends EsxComposite {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxCompositeGlobalParametersNoteNumbers"; //$NON-NLS-1$
 
 	private List<PartNoteNumber> partNoteNumbers;
 	private List<PartNoteNumber> selectedItems;
 	private TableViewer tableViewer;
-	
+
 	private Text textPartNoteNumber;
 	private Combo comboPartNoteNumber;
 
@@ -59,21 +60,30 @@ public class EsxCompositeGlobalNoteNumbers extends EsxComposite {
 	 * @param parentComposite
 	 * @param style
 	 */
-	public EsxCompositeGlobalNoteNumbers(EsxEditorPart parentPart, Composite parentComposite, int style) {
+	public EsxCompositeGlobalNoteNumbers(EsxEditorPart parentPart,
+			Composite parentComposite, int style) {
 		super(parentPart, parentComposite, style);
 		this.parentPart = parentPart;
 
 		setLayout(new GridLayout(4, false));
 
-		textPartNoteNumber = this.createGridData2ColumnTextLabel(this, "Note Number");
-		comboPartNoteNumber = this.createGridData2ColumnComboInput(this, "", this.getLiteralStrings(NoteNumber.values()) , new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(selectedItems, EsxPackage.Literals.PART_NOTE_NUMBER__NOTE_NUMBER, NoteNumber.get(comboPartNoteNumber.getSelectionIndex()), false, -1);
-			}
-		});
+		textPartNoteNumber = this.createGridData2ColumnTextLabel(this,
+				"Note Number");
+		comboPartNoteNumber = this.createGridData2ColumnComboInput(this, "",
+				this.getLiteralStrings(NoteNumber.values()),
+				new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(
+								selectedItems,
+								EsxPackage.Literals.PART_NOTE_NUMBER__NOTE_NUMBER,
+								NoteNumber.get(comboPartNoteNumber
+										.getSelectionIndex()), false, -1);
+					}
+				});
 
-		this.tableViewer = new TableViewer(this, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
+		this.tableViewer = new TableViewer(this, SWT.BORDER
+				| SWT.FULL_SELECTION | SWT.MULTI);
 		this.initTableViewer();
 	}
 
@@ -92,7 +102,8 @@ public class EsxCompositeGlobalNoteNumbers extends EsxComposite {
 		this.parentPart.addColumnToTableViewer(this.tableViewer, "Value", 120);
 
 		// Setup this.tableViewer ContentProvider
-		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
+		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(
+				this.getAdapterFactory()) {
 			@Override
 			public Object[] getElements(Object object) {
 				return partNoteNumbers.toArray();
@@ -101,26 +112,31 @@ public class EsxCompositeGlobalNoteNumbers extends EsxComposite {
 			@Override
 			public void notifyChanged(Notification notification) {
 				super.notifyChanged(new ViewerNotification(notification));
-			}			
-		});
-
-		this.tableViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(getAdapterFactory(), this.tableViewer));
-
-		this.tableViewer.addSelectionChangedListener(new ISelectionChangedListener() {
-			public void selectionChanged(SelectionChangedEvent event) {
-		        IStructuredSelection selection = (IStructuredSelection) event.getSelection();
-
-		        Object[] objects = ((IStructuredSelection) selection).toArray();
-				selectedItems = new ArrayList<PartNoteNumber>();
-				for (Object obj : objects) {
-					if(obj instanceof PartNoteNumber) {
-						selectedItems.add((PartNoteNumber) obj);
-					}
-				}
-				refresh();
-				refreshInputs();
 			}
 		});
+
+		this.tableViewer
+				.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(
+						getAdapterFactory(), this.tableViewer));
+
+		this.tableViewer
+				.addSelectionChangedListener(new ISelectionChangedListener() {
+					public void selectionChanged(SelectionChangedEvent event) {
+						IStructuredSelection selection = (IStructuredSelection) event
+								.getSelection();
+
+						Object[] objects = ((IStructuredSelection) selection)
+								.toArray();
+						selectedItems = new ArrayList<PartNoteNumber>();
+						for (Object obj : objects) {
+							if (obj instanceof PartNoteNumber) {
+								selectedItems.add((PartNoteNumber) obj);
+							}
+						}
+						refresh();
+						refreshInputs();
+					}
+				});
 	}
 
 	/* (non-Javadoc)
@@ -130,11 +146,11 @@ public class EsxCompositeGlobalNoteNumbers extends EsxComposite {
 	public void setInput(Object input) {
 		this.partNoteNumbers = new ArrayList<PartNoteNumber>();
 
-		if(input instanceof List<?>) {
+		if (input instanceof List<?>) {
 			Iterator<?> it = ((List<?>) input).iterator();
 			while (it.hasNext()) {
 				Object obj = it.next();
-				if(obj instanceof PartNoteNumber) {
+				if (obj instanceof PartNoteNumber) {
 					this.partNoteNumbers.add((PartNoteNumber) obj);
 				}
 			}
@@ -151,7 +167,9 @@ public class EsxCompositeGlobalNoteNumbers extends EsxComposite {
 	@Override
 	public void refresh() {
 		String multipleValueString = "<Multiple Values>";
-		this.textPartNoteNumber.setText(getMultiString(this.selectedItems, EsxPackage.Literals.PART_NOTE_NUMBER__NOTE_NUMBER, multipleValueString));
+		this.textPartNoteNumber.setText(getMultiString(this.selectedItems,
+				EsxPackage.Literals.PART_NOTE_NUMBER__NOTE_NUMBER,
+				multipleValueString));
 	}
 
 	/* (non-Javadoc)
@@ -160,7 +178,9 @@ public class EsxCompositeGlobalNoteNumbers extends EsxComposite {
 	@Override
 	public void refreshInputs() {
 		String multipleValueString = "";
-		this.comboPartNoteNumber.setText(getMultiString(this.selectedItems, EsxPackage.Literals.PART_NOTE_NUMBER__NOTE_NUMBER, multipleValueString));
+		this.comboPartNoteNumber.setText(getMultiString(this.selectedItems,
+				EsxPackage.Literals.PART_NOTE_NUMBER__NOTE_NUMBER,
+				multipleValueString));
 	}
 
 }

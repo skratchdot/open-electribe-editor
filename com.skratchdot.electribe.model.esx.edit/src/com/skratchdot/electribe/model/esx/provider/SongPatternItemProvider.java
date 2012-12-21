@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -43,17 +42,10 @@ import com.skratchdot.electribe.model.esx.SongPattern;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SongPatternItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
-		ITableItemLabelProvider,
-		ITableItemColorProvider,
-		IItemColorProvider {
+public class SongPatternItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -90,19 +82,17 @@ public class SongPatternItemProvider
 	 * @generated
 	 */
 	protected void addPositionCurrentPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongPattern_positionCurrent_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongPattern_positionCurrent_feature", "_UI_SongPattern_type"),
-				 EsxPackage.Literals.SONG_PATTERN__POSITION_CURRENT,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SongPattern_positionCurrent_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SongPattern_positionCurrent_feature",
+						"_UI_SongPattern_type"),
+				EsxPackage.Literals.SONG_PATTERN__POSITION_CURRENT, false,
+				false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -112,19 +102,18 @@ public class SongPatternItemProvider
 	 * @generated
 	 */
 	protected void addNoteOffsetPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongPattern_noteOffset_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongPattern_noteOffset_feature", "_UI_SongPattern_type"),
-				 EsxPackage.Literals.SONG_PATTERN__NOTE_OFFSET,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_SongPattern_noteOffset_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_SongPattern_noteOffset_feature",
+								"_UI_SongPattern_type"),
+						EsxPackage.Literals.SONG_PATTERN__NOTE_OFFSET, true,
+						false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -134,19 +123,18 @@ public class SongPatternItemProvider
 	 * @generated
 	 */
 	protected void addPatternPointerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongPattern_patternPointer_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongPattern_patternPointer_feature", "_UI_SongPattern_type"),
-				 EsxPackage.Literals.SONG_PATTERN__PATTERN_POINTER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_SongPattern_patternPointer_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_SongPattern_patternPointer_feature",
+								"_UI_SongPattern_type"),
+						EsxPackage.Literals.SONG_PATTERN__PATTERN_POINTER,
+						true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -156,19 +144,18 @@ public class SongPatternItemProvider
 	 * @generated
 	 */
 	protected void addEmptyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongPattern_empty_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongPattern_empty_feature", "_UI_SongPattern_type"),
-				 EsxPackage.Literals.SONG_PATTERN__EMPTY,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_SongPattern_empty_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_SongPattern_empty_feature",
+								"_UI_SongPattern_type"),
+						EsxPackage.Literals.SONG_PATTERN__EMPTY, false, false,
+						false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+						null, null));
 	}
 
 	/**
@@ -179,7 +166,8 @@ public class SongPatternItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SongPattern"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/SongPattern"));
 	}
 
 	/**
@@ -190,7 +178,7 @@ public class SongPatternItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		SongPattern songPattern = (SongPattern)object;
+		SongPattern songPattern = (SongPattern) object;
 		return getString("_UI_SongPattern_type") + " " + songPattern.isEmpty();
 	}
 
@@ -199,24 +187,32 @@ public class SongPatternItemProvider
 	 */
 	@Override
 	public String getColumnText(Object object, int columnIndex) {
-		switch(columnIndex) {
-			// Current Position
-			case 0: return Integer.toString(((SongPattern) object).getPositionCurrent()+1);
+		switch (columnIndex) {
+		// Current Position
+		case 0:
+			return Integer
+					.toString(((SongPattern) object).getPositionCurrent() + 1);
 			// Pattern Number
-			case 1: {
-				if(((SongPattern) object).eResource()!=null) {
-					Resource resource = (Resource) ((SongPattern) object).eResource();
-					Object rootObject = resource.getContents().get(0);
-					if(rootObject instanceof EsxFile) {
-						try {
-							return ((EsxFile) rootObject).getPatternFromPointer(((SongPattern) object).getPatternPointer()).getLabel();
-						} catch(Exception e) {}
+		case 1: {
+			if (((SongPattern) object).eResource() != null) {
+				Resource resource = (Resource) ((SongPattern) object)
+						.eResource();
+				Object rootObject = resource.getContents().get(0);
+				if (rootObject instanceof EsxFile) {
+					try {
+						return ((EsxFile) rootObject).getPatternFromPointer(
+								((SongPattern) object).getPatternPointer())
+								.getLabel();
+					} catch (Exception e) {
 					}
 				}
 			}
-			// Note Offset
-			case 2: return Byte.toString(((SongPattern) object).getNoteOffset());
-			default: return getText(object);
+		}
+		// Note Offset
+		case 2:
+			return Byte.toString(((SongPattern) object).getNoteOffset());
+		default:
+			return getText(object);
 		}
 	}
 
@@ -232,12 +228,13 @@ public class SongPatternItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SongPattern.class)) {
-			case EsxPackage.SONG_PATTERN__EMPTY:
-			case EsxPackage.SONG_PATTERN__NOTE_OFFSET:
-			case EsxPackage.SONG_PATTERN__PATTERN_POINTER:
-			case EsxPackage.SONG_PATTERN__POSITION_CURRENT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case EsxPackage.SONG_PATTERN__EMPTY:
+		case EsxPackage.SONG_PATTERN__NOTE_OFFSET:
+		case EsxPackage.SONG_PATTERN__PATTERN_POINTER:
+		case EsxPackage.SONG_PATTERN__POSITION_CURRENT:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -250,7 +247,8 @@ public class SongPatternItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

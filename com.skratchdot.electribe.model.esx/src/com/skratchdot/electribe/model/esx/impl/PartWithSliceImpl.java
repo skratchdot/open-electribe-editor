@@ -35,7 +35,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * @generated
  */
-public abstract class PartWithSliceImpl extends EObjectImpl implements PartWithSlice {
+public abstract class PartWithSliceImpl extends EObjectImpl implements
+		PartWithSlice {
 	/**
 	 * The default value of the '{@link #getReservedByte() <em>Reserved Byte</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -113,7 +114,9 @@ public abstract class PartWithSliceImpl extends EObjectImpl implements PartWithS
 		byte oldReservedByte = reservedByte;
 		reservedByte = newReservedByte;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_SLICE__RESERVED_BYTE, oldReservedByte, reservedByte));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_SLICE__RESERVED_BYTE, oldReservedByte,
+					reservedByte));
 	}
 
 	/**
@@ -134,7 +137,9 @@ public abstract class PartWithSliceImpl extends EObjectImpl implements PartWithS
 		byte oldSliceNumber = sliceNumber;
 		sliceNumber = newSliceNumber;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_SLICE__SLICE_NUMBER, oldSliceNumber, sliceNumber));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_SLICE__SLICE_NUMBER, oldSliceNumber,
+					sliceNumber));
 	}
 
 	/**
@@ -145,10 +150,10 @@ public abstract class PartWithSliceImpl extends EObjectImpl implements PartWithS
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_SLICE__RESERVED_BYTE:
-				return getReservedByte();
-			case EsxPackage.PART_WITH_SLICE__SLICE_NUMBER:
-				return getSliceNumber();
+		case EsxPackage.PART_WITH_SLICE__RESERVED_BYTE:
+			return getReservedByte();
+		case EsxPackage.PART_WITH_SLICE__SLICE_NUMBER:
+			return getSliceNumber();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -161,12 +166,12 @@ public abstract class PartWithSliceImpl extends EObjectImpl implements PartWithS
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_SLICE__RESERVED_BYTE:
-				setReservedByte((Byte)newValue);
-				return;
-			case EsxPackage.PART_WITH_SLICE__SLICE_NUMBER:
-				setSliceNumber((Byte)newValue);
-				return;
+		case EsxPackage.PART_WITH_SLICE__RESERVED_BYTE:
+			setReservedByte((Byte) newValue);
+			return;
+		case EsxPackage.PART_WITH_SLICE__SLICE_NUMBER:
+			setSliceNumber((Byte) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -179,12 +184,12 @@ public abstract class PartWithSliceImpl extends EObjectImpl implements PartWithS
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_SLICE__RESERVED_BYTE:
-				setReservedByte(RESERVED_BYTE_EDEFAULT);
-				return;
-			case EsxPackage.PART_WITH_SLICE__SLICE_NUMBER:
-				setSliceNumber(SLICE_NUMBER_EDEFAULT);
-				return;
+		case EsxPackage.PART_WITH_SLICE__RESERVED_BYTE:
+			setReservedByte(RESERVED_BYTE_EDEFAULT);
+			return;
+		case EsxPackage.PART_WITH_SLICE__SLICE_NUMBER:
+			setSliceNumber(SLICE_NUMBER_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -197,10 +202,10 @@ public abstract class PartWithSliceImpl extends EObjectImpl implements PartWithS
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_SLICE__RESERVED_BYTE:
-				return reservedByte != RESERVED_BYTE_EDEFAULT;
-			case EsxPackage.PART_WITH_SLICE__SLICE_NUMBER:
-				return sliceNumber != SLICE_NUMBER_EDEFAULT;
+		case EsxPackage.PART_WITH_SLICE__RESERVED_BYTE:
+			return reservedByte != RESERVED_BYTE_EDEFAULT;
+		case EsxPackage.PART_WITH_SLICE__SLICE_NUMBER:
+			return sliceNumber != SLICE_NUMBER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -212,7 +217,8 @@ public abstract class PartWithSliceImpl extends EObjectImpl implements PartWithS
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (reservedByte: ");

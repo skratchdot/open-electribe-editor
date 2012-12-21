@@ -31,14 +31,12 @@ public class EsxPreferencePageExport extends FieldEditorPreferencePage
 	 */
 	public void init(IWorkbench workbench) {
 		setPreferenceStore(PlatformUI.getPreferenceStore());
-		setDescription(
-			"When setting the exported filename format, you do not" +
-			" have to specify the .wav extension. It will be added automatically." +
-			"\n\nAlso, there are 2 special sequences you can use to insert variable values:" +
-			"\n\n     %n% - will be replaced with the current sample number (ie. 001, S.005, etc)" +
-			"\n\n     %s% - will be replaced with the current sample name. Whitespace will be trimmed away" +
-			"\n\n"
-		);
+		setDescription("When setting the exported filename format, you do not"
+				+ " have to specify the .wav extension. It will be added automatically."
+				+ "\n\nAlso, there are 2 special sequences you can use to insert variable values:"
+				+ "\n\n     %n% - will be replaced with the current sample number (ie. 001, S.005, etc)"
+				+ "\n\n     %s% - will be replaced with the current sample name. Whitespace will be trimmed away"
+				+ "\n\n");
 	}
 
 	/**
@@ -47,7 +45,11 @@ public class EsxPreferencePageExport extends FieldEditorPreferencePage
 	@Override
 	protected void createFieldEditors() {
 		// Create the field editors
-		addField(new StringFieldEditor(EsxPreferenceNames.EXPORT_FILENAME_FORMAT, "Exported Filename Format:", -1, StringFieldEditor.VALIDATE_ON_KEY_STROKE, getFieldEditorParent()));
+		addField(new StringFieldEditor(
+				EsxPreferenceNames.EXPORT_FILENAME_FORMAT,
+				"Exported Filename Format:", -1,
+				StringFieldEditor.VALIDATE_ON_KEY_STROKE,
+				getFieldEditorParent()));
 	}
 
 }

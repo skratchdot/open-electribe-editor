@@ -433,25 +433,10 @@ public enum FxType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final FxType[] VALUES_ARRAY =
-		new FxType[] {
-			REVERB,
-			BPM_SYNC_DELAY,
-			SHORT_DELAY,
-			MOD_DELAY,
-			GRAIN_SHIFTER,
-			CHO_FLG,
-			PHASER,
-			RING_MOD,
-			TALKING_MOD,
-			PITCH_SHIFTER,
-			COMPRESSOR,
-			DISTORTION,
-			DECIMATOR,
-			EQ,
-			LPF,
-			HPF,
-		};
+	private static final FxType[] VALUES_ARRAY = new FxType[] { REVERB,
+			BPM_SYNC_DELAY, SHORT_DELAY, MOD_DELAY, GRAIN_SHIFTER, CHO_FLG,
+			PHASER, RING_MOD, TALKING_MOD, PITCH_SHIFTER, COMPRESSOR,
+			DISTORTION, DECIMATOR, EQ, LPF, HPF, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Fx Type</b></em>' enumerators.
@@ -459,7 +444,8 @@ public enum FxType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<FxType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<FxType> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Fx Type</b></em>' literal with the specified literal value.
@@ -501,22 +487,38 @@ public enum FxType implements Enumerator {
 	 */
 	public static FxType get(int value) {
 		switch (value) {
-			case REVERB_VALUE: return REVERB;
-			case BPM_SYNC_DELAY_VALUE: return BPM_SYNC_DELAY;
-			case SHORT_DELAY_VALUE: return SHORT_DELAY;
-			case MOD_DELAY_VALUE: return MOD_DELAY;
-			case GRAIN_SHIFTER_VALUE: return GRAIN_SHIFTER;
-			case CHO_FLG_VALUE: return CHO_FLG;
-			case PHASER_VALUE: return PHASER;
-			case RING_MOD_VALUE: return RING_MOD;
-			case TALKING_MOD_VALUE: return TALKING_MOD;
-			case PITCH_SHIFTER_VALUE: return PITCH_SHIFTER;
-			case COMPRESSOR_VALUE: return COMPRESSOR;
-			case DISTORTION_VALUE: return DISTORTION;
-			case DECIMATOR_VALUE: return DECIMATOR;
-			case EQ_VALUE: return EQ;
-			case LPF_VALUE: return LPF;
-			case HPF_VALUE: return HPF;
+		case REVERB_VALUE:
+			return REVERB;
+		case BPM_SYNC_DELAY_VALUE:
+			return BPM_SYNC_DELAY;
+		case SHORT_DELAY_VALUE:
+			return SHORT_DELAY;
+		case MOD_DELAY_VALUE:
+			return MOD_DELAY;
+		case GRAIN_SHIFTER_VALUE:
+			return GRAIN_SHIFTER;
+		case CHO_FLG_VALUE:
+			return CHO_FLG;
+		case PHASER_VALUE:
+			return PHASER;
+		case RING_MOD_VALUE:
+			return RING_MOD;
+		case TALKING_MOD_VALUE:
+			return TALKING_MOD;
+		case PITCH_SHIFTER_VALUE:
+			return PITCH_SHIFTER;
+		case COMPRESSOR_VALUE:
+			return COMPRESSOR;
+		case DISTORTION_VALUE:
+			return DISTORTION;
+		case DECIMATOR_VALUE:
+			return DECIMATOR;
+		case EQ_VALUE:
+			return EQ;
+		case LPF_VALUE:
+			return LPF;
+		case HPF_VALUE:
+			return HPF;
 		}
 		return null;
 	}
@@ -560,7 +562,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -569,7 +571,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -578,7 +580,7 @@ public enum FxType implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -591,5 +593,5 @@ public enum FxType implements Enumerator {
 	public String toString() {
 		return literal;
 	}
-	
+
 } //FxType

@@ -433,25 +433,11 @@ public enum LastStep implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final LastStep[] VALUES_ARRAY =
-		new LastStep[] {
-			LAST_STEP_1,
-			LAST_STEP_2,
-			LAST_STEP_3,
-			LAST_STEP_4,
-			LAST_STEP_5,
-			LAST_STEP_6,
-			LAST_STEP_7,
-			LAST_STEP_8,
-			LAST_STEP_9,
-			LAST_STEP_10,
-			LAST_STEP_11,
-			LAST_STEP_12,
-			LAST_STEP_13,
-			LAST_STEP_14,
-			LAST_STEP_15,
-			LAST_STEP_16,
-		};
+	private static final LastStep[] VALUES_ARRAY = new LastStep[] {
+			LAST_STEP_1, LAST_STEP_2, LAST_STEP_3, LAST_STEP_4, LAST_STEP_5,
+			LAST_STEP_6, LAST_STEP_7, LAST_STEP_8, LAST_STEP_9, LAST_STEP_10,
+			LAST_STEP_11, LAST_STEP_12, LAST_STEP_13, LAST_STEP_14,
+			LAST_STEP_15, LAST_STEP_16, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Last Step</b></em>' enumerators.
@@ -459,7 +445,8 @@ public enum LastStep implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<LastStep> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<LastStep> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Last Step</b></em>' literal with the specified literal value.
@@ -501,22 +488,38 @@ public enum LastStep implements Enumerator {
 	 */
 	public static LastStep get(int value) {
 		switch (value) {
-			case LAST_STEP_1_VALUE: return LAST_STEP_1;
-			case LAST_STEP_2_VALUE: return LAST_STEP_2;
-			case LAST_STEP_3_VALUE: return LAST_STEP_3;
-			case LAST_STEP_4_VALUE: return LAST_STEP_4;
-			case LAST_STEP_5_VALUE: return LAST_STEP_5;
-			case LAST_STEP_6_VALUE: return LAST_STEP_6;
-			case LAST_STEP_7_VALUE: return LAST_STEP_7;
-			case LAST_STEP_8_VALUE: return LAST_STEP_8;
-			case LAST_STEP_9_VALUE: return LAST_STEP_9;
-			case LAST_STEP_10_VALUE: return LAST_STEP_10;
-			case LAST_STEP_11_VALUE: return LAST_STEP_11;
-			case LAST_STEP_12_VALUE: return LAST_STEP_12;
-			case LAST_STEP_13_VALUE: return LAST_STEP_13;
-			case LAST_STEP_14_VALUE: return LAST_STEP_14;
-			case LAST_STEP_15_VALUE: return LAST_STEP_15;
-			case LAST_STEP_16_VALUE: return LAST_STEP_16;
+		case LAST_STEP_1_VALUE:
+			return LAST_STEP_1;
+		case LAST_STEP_2_VALUE:
+			return LAST_STEP_2;
+		case LAST_STEP_3_VALUE:
+			return LAST_STEP_3;
+		case LAST_STEP_4_VALUE:
+			return LAST_STEP_4;
+		case LAST_STEP_5_VALUE:
+			return LAST_STEP_5;
+		case LAST_STEP_6_VALUE:
+			return LAST_STEP_6;
+		case LAST_STEP_7_VALUE:
+			return LAST_STEP_7;
+		case LAST_STEP_8_VALUE:
+			return LAST_STEP_8;
+		case LAST_STEP_9_VALUE:
+			return LAST_STEP_9;
+		case LAST_STEP_10_VALUE:
+			return LAST_STEP_10;
+		case LAST_STEP_11_VALUE:
+			return LAST_STEP_11;
+		case LAST_STEP_12_VALUE:
+			return LAST_STEP_12;
+		case LAST_STEP_13_VALUE:
+			return LAST_STEP_13;
+		case LAST_STEP_14_VALUE:
+			return LAST_STEP_14;
+		case LAST_STEP_15_VALUE:
+			return LAST_STEP_15;
+		case LAST_STEP_16_VALUE:
+			return LAST_STEP_16;
 		}
 		return null;
 	}
@@ -560,7 +563,7 @@ public enum LastStep implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -569,7 +572,7 @@ public enum LastStep implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -578,7 +581,7 @@ public enum LastStep implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

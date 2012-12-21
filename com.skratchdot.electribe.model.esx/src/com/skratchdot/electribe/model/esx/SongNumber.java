@@ -1633,73 +1633,17 @@ public enum SongNumber implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final SongNumber[] VALUES_ARRAY =
-		new SongNumber[] {
-			SONG_01,
-			SONG_02,
-			SONG_03,
-			SONG_04,
-			SONG_05,
-			SONG_06,
-			SONG_07,
-			SONG_08,
-			SONG_09,
-			SONG_10,
-			SONG_11,
-			SONG_12,
-			SONG_13,
-			SONG_14,
-			SONG_15,
-			SONG_16,
-			SONG_17,
-			SONG_18,
-			SONG_19,
-			SONG_20,
-			SONG_21,
-			SONG_22,
-			SONG_23,
-			SONG_24,
-			SONG_25,
-			SONG_26,
-			SONG_27,
-			SONG_28,
-			SONG_29,
-			SONG_30,
-			SONG_31,
-			SONG_32,
-			SONG_33,
-			SONG_34,
-			SONG_35,
-			SONG_36,
-			SONG_37,
-			SONG_38,
-			SONG_39,
-			SONG_40,
-			SONG_41,
-			SONG_42,
-			SONG_43,
-			SONG_44,
-			SONG_45,
-			SONG_46,
-			SONG_47,
-			SONG_48,
-			SONG_49,
-			SONG_50,
-			SONG_51,
-			SONG_52,
-			SONG_53,
-			SONG_54,
-			SONG_55,
-			SONG_56,
-			SONG_57,
-			SONG_58,
-			SONG_59,
-			SONG_60,
-			SONG_61,
-			SONG_62,
-			SONG_63,
-			SONG_64,
-		};
+	private static final SongNumber[] VALUES_ARRAY = new SongNumber[] {
+			SONG_01, SONG_02, SONG_03, SONG_04, SONG_05, SONG_06, SONG_07,
+			SONG_08, SONG_09, SONG_10, SONG_11, SONG_12, SONG_13, SONG_14,
+			SONG_15, SONG_16, SONG_17, SONG_18, SONG_19, SONG_20, SONG_21,
+			SONG_22, SONG_23, SONG_24, SONG_25, SONG_26, SONG_27, SONG_28,
+			SONG_29, SONG_30, SONG_31, SONG_32, SONG_33, SONG_34, SONG_35,
+			SONG_36, SONG_37, SONG_38, SONG_39, SONG_40, SONG_41, SONG_42,
+			SONG_43, SONG_44, SONG_45, SONG_46, SONG_47, SONG_48, SONG_49,
+			SONG_50, SONG_51, SONG_52, SONG_53, SONG_54, SONG_55, SONG_56,
+			SONG_57, SONG_58, SONG_59, SONG_60, SONG_61, SONG_62, SONG_63,
+			SONG_64, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Song Number</b></em>' enumerators.
@@ -1707,7 +1651,8 @@ public enum SongNumber implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<SongNumber> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<SongNumber> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Song Number</b></em>' literal with the specified literal value.
@@ -1749,70 +1694,134 @@ public enum SongNumber implements Enumerator {
 	 */
 	public static SongNumber get(int value) {
 		switch (value) {
-			case SONG_01_VALUE: return SONG_01;
-			case SONG_02_VALUE: return SONG_02;
-			case SONG_03_VALUE: return SONG_03;
-			case SONG_04_VALUE: return SONG_04;
-			case SONG_05_VALUE: return SONG_05;
-			case SONG_06_VALUE: return SONG_06;
-			case SONG_07_VALUE: return SONG_07;
-			case SONG_08_VALUE: return SONG_08;
-			case SONG_09_VALUE: return SONG_09;
-			case SONG_10_VALUE: return SONG_10;
-			case SONG_11_VALUE: return SONG_11;
-			case SONG_12_VALUE: return SONG_12;
-			case SONG_13_VALUE: return SONG_13;
-			case SONG_14_VALUE: return SONG_14;
-			case SONG_15_VALUE: return SONG_15;
-			case SONG_16_VALUE: return SONG_16;
-			case SONG_17_VALUE: return SONG_17;
-			case SONG_18_VALUE: return SONG_18;
-			case SONG_19_VALUE: return SONG_19;
-			case SONG_20_VALUE: return SONG_20;
-			case SONG_21_VALUE: return SONG_21;
-			case SONG_22_VALUE: return SONG_22;
-			case SONG_23_VALUE: return SONG_23;
-			case SONG_24_VALUE: return SONG_24;
-			case SONG_25_VALUE: return SONG_25;
-			case SONG_26_VALUE: return SONG_26;
-			case SONG_27_VALUE: return SONG_27;
-			case SONG_28_VALUE: return SONG_28;
-			case SONG_29_VALUE: return SONG_29;
-			case SONG_30_VALUE: return SONG_30;
-			case SONG_31_VALUE: return SONG_31;
-			case SONG_32_VALUE: return SONG_32;
-			case SONG_33_VALUE: return SONG_33;
-			case SONG_34_VALUE: return SONG_34;
-			case SONG_35_VALUE: return SONG_35;
-			case SONG_36_VALUE: return SONG_36;
-			case SONG_37_VALUE: return SONG_37;
-			case SONG_38_VALUE: return SONG_38;
-			case SONG_39_VALUE: return SONG_39;
-			case SONG_40_VALUE: return SONG_40;
-			case SONG_41_VALUE: return SONG_41;
-			case SONG_42_VALUE: return SONG_42;
-			case SONG_43_VALUE: return SONG_43;
-			case SONG_44_VALUE: return SONG_44;
-			case SONG_45_VALUE: return SONG_45;
-			case SONG_46_VALUE: return SONG_46;
-			case SONG_47_VALUE: return SONG_47;
-			case SONG_48_VALUE: return SONG_48;
-			case SONG_49_VALUE: return SONG_49;
-			case SONG_50_VALUE: return SONG_50;
-			case SONG_51_VALUE: return SONG_51;
-			case SONG_52_VALUE: return SONG_52;
-			case SONG_53_VALUE: return SONG_53;
-			case SONG_54_VALUE: return SONG_54;
-			case SONG_55_VALUE: return SONG_55;
-			case SONG_56_VALUE: return SONG_56;
-			case SONG_57_VALUE: return SONG_57;
-			case SONG_58_VALUE: return SONG_58;
-			case SONG_59_VALUE: return SONG_59;
-			case SONG_60_VALUE: return SONG_60;
-			case SONG_61_VALUE: return SONG_61;
-			case SONG_62_VALUE: return SONG_62;
-			case SONG_63_VALUE: return SONG_63;
-			case SONG_64_VALUE: return SONG_64;
+		case SONG_01_VALUE:
+			return SONG_01;
+		case SONG_02_VALUE:
+			return SONG_02;
+		case SONG_03_VALUE:
+			return SONG_03;
+		case SONG_04_VALUE:
+			return SONG_04;
+		case SONG_05_VALUE:
+			return SONG_05;
+		case SONG_06_VALUE:
+			return SONG_06;
+		case SONG_07_VALUE:
+			return SONG_07;
+		case SONG_08_VALUE:
+			return SONG_08;
+		case SONG_09_VALUE:
+			return SONG_09;
+		case SONG_10_VALUE:
+			return SONG_10;
+		case SONG_11_VALUE:
+			return SONG_11;
+		case SONG_12_VALUE:
+			return SONG_12;
+		case SONG_13_VALUE:
+			return SONG_13;
+		case SONG_14_VALUE:
+			return SONG_14;
+		case SONG_15_VALUE:
+			return SONG_15;
+		case SONG_16_VALUE:
+			return SONG_16;
+		case SONG_17_VALUE:
+			return SONG_17;
+		case SONG_18_VALUE:
+			return SONG_18;
+		case SONG_19_VALUE:
+			return SONG_19;
+		case SONG_20_VALUE:
+			return SONG_20;
+		case SONG_21_VALUE:
+			return SONG_21;
+		case SONG_22_VALUE:
+			return SONG_22;
+		case SONG_23_VALUE:
+			return SONG_23;
+		case SONG_24_VALUE:
+			return SONG_24;
+		case SONG_25_VALUE:
+			return SONG_25;
+		case SONG_26_VALUE:
+			return SONG_26;
+		case SONG_27_VALUE:
+			return SONG_27;
+		case SONG_28_VALUE:
+			return SONG_28;
+		case SONG_29_VALUE:
+			return SONG_29;
+		case SONG_30_VALUE:
+			return SONG_30;
+		case SONG_31_VALUE:
+			return SONG_31;
+		case SONG_32_VALUE:
+			return SONG_32;
+		case SONG_33_VALUE:
+			return SONG_33;
+		case SONG_34_VALUE:
+			return SONG_34;
+		case SONG_35_VALUE:
+			return SONG_35;
+		case SONG_36_VALUE:
+			return SONG_36;
+		case SONG_37_VALUE:
+			return SONG_37;
+		case SONG_38_VALUE:
+			return SONG_38;
+		case SONG_39_VALUE:
+			return SONG_39;
+		case SONG_40_VALUE:
+			return SONG_40;
+		case SONG_41_VALUE:
+			return SONG_41;
+		case SONG_42_VALUE:
+			return SONG_42;
+		case SONG_43_VALUE:
+			return SONG_43;
+		case SONG_44_VALUE:
+			return SONG_44;
+		case SONG_45_VALUE:
+			return SONG_45;
+		case SONG_46_VALUE:
+			return SONG_46;
+		case SONG_47_VALUE:
+			return SONG_47;
+		case SONG_48_VALUE:
+			return SONG_48;
+		case SONG_49_VALUE:
+			return SONG_49;
+		case SONG_50_VALUE:
+			return SONG_50;
+		case SONG_51_VALUE:
+			return SONG_51;
+		case SONG_52_VALUE:
+			return SONG_52;
+		case SONG_53_VALUE:
+			return SONG_53;
+		case SONG_54_VALUE:
+			return SONG_54;
+		case SONG_55_VALUE:
+			return SONG_55;
+		case SONG_56_VALUE:
+			return SONG_56;
+		case SONG_57_VALUE:
+			return SONG_57;
+		case SONG_58_VALUE:
+			return SONG_58;
+		case SONG_59_VALUE:
+			return SONG_59;
+		case SONG_60_VALUE:
+			return SONG_60;
+		case SONG_61_VALUE:
+			return SONG_61;
+		case SONG_62_VALUE:
+			return SONG_62;
+		case SONG_63_VALUE:
+			return SONG_63;
+		case SONG_64_VALUE:
+			return SONG_64;
 		}
 		return null;
 	}
@@ -1856,7 +1865,7 @@ public enum SongNumber implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -1865,7 +1874,7 @@ public enum SongNumber implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -1874,7 +1883,7 @@ public enum SongNumber implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -1887,5 +1896,5 @@ public enum SongNumber implements Enumerator {
 	public String toString() {
 		return literal;
 	}
-	
+
 } //SongNumber

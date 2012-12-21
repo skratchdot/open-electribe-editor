@@ -572,11 +572,13 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		this.setRoll(Roll.get(EsxUtil.unpackInt(packedByte13, 1, 3)));
 		this.setAmpEg(AmpEg.get(EsxUtil.unpackInt(packedByte13, 1, 4)));
 		this.setReverse(Reverse.get(EsxUtil.unpackInt(packedByte13, 1, 5)));
-		this.setReservedBitsAfterReverse((byte) EsxUtil.unpackInt(packedByte13, 2, 6));
+		this.setReservedBitsAfterReverse((byte) EsxUtil.unpackInt(packedByte13,
+				2, 6));
 		// byte 14
 		int packedByte14 = in.getUnsignedByte();
 		this.setModDest(ModDest.get(EsxUtil.unpackInt(packedByte14, 3, 0)));
-		this.setReservedBitAfterModDepth((byte) EsxUtil.unpackInt(packedByte14, 1, 3));
+		this.setReservedBitAfterModDepth((byte) EsxUtil.unpackInt(packedByte14,
+				1, 3));
 		this.setModType(ModType.get(EsxUtil.unpackInt(packedByte14, 3, 4)));
 		this.setBpmSync(BpmSync.get(EsxUtil.unpackInt(packedByte14, 1, 7)));
 		// byte 15
@@ -591,13 +593,15 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		// bytes 18~145 (128 bytes)
 		tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA_NOTE];
 		in.getBytes(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA_NOTE);
-		SequenceDataNote newSequenceDataNote = EsxFactory.eINSTANCE.createSequenceDataNote();
+		SequenceDataNote newSequenceDataNote = EsxFactory.eINSTANCE
+				.createSequenceDataNote();
 		newSequenceDataNote.setSequenceDataNote(tempBytes);
 		this.setSequenceDataNote(newSequenceDataNote);
 		// bytes 146~273 (128 bytes)
 		tempBytes = new byte[EsxUtil.NUM_SEQUENCE_DATA_GATE];
 		in.getBytes(tempBytes, 0, EsxUtil.NUM_SEQUENCE_DATA_GATE);
-		SequenceDataGate newSequenceDataGate = EsxFactory.eINSTANCE.createSequenceDataGate();
+		SequenceDataGate newSequenceDataGate = EsxFactory.eINSTANCE
+				.createSequenceDataGate();
 		newSequenceDataGate.setSequenceDataGate(tempBytes);
 		this.setSequenceDataGate(newSequenceDataGate);
 	}
@@ -630,7 +634,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		AmpEg oldAmpEg = ampEg;
 		ampEg = newAmpEg == null ? AMP_EG_EDEFAULT : newAmpEg;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__AMP_EG, oldAmpEg, ampEg));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__AMP_EG, oldAmpEg, ampEg));
 	}
 
 	/**
@@ -651,7 +656,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		BpmSync oldBpmSync = bpmSync;
 		bpmSync = newBpmSync == null ? BPM_SYNC_EDEFAULT : newBpmSync;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__BPM_SYNC, oldBpmSync, bpmSync));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__BPM_SYNC, oldBpmSync, bpmSync));
 	}
 
 	/**
@@ -672,7 +678,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		byte oldCutoff = cutoff;
 		cutoff = newCutoff;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__CUTOFF, oldCutoff, cutoff));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__CUTOFF, oldCutoff, cutoff));
 	}
 
 	/**
@@ -693,7 +700,9 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		byte oldEgIntensity = egIntensity;
 		egIntensity = newEgIntensity;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__EG_INTENSITY, oldEgIntensity, egIntensity));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__EG_INTENSITY, oldEgIntensity,
+					egIntensity));
 	}
 
 	/**
@@ -714,7 +723,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		byte oldEgTime = egTime;
 		egTime = newEgTime;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__EG_TIME, oldEgTime, egTime));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__EG_TIME, oldEgTime, egTime));
 	}
 
 	/**
@@ -733,9 +743,12 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 	 */
 	public void setFilterType(FilterType newFilterType) {
 		FilterType oldFilterType = filterType;
-		filterType = newFilterType == null ? FILTER_TYPE_EDEFAULT : newFilterType;
+		filterType = newFilterType == null ? FILTER_TYPE_EDEFAULT
+				: newFilterType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__FILTER_TYPE, oldFilterType, filterType));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__FILTER_TYPE, oldFilterType,
+					filterType));
 	}
 
 	/**
@@ -756,7 +769,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		FxSelect oldFxSelect = fxSelect;
 		fxSelect = newFxSelect == null ? FX_SELECT_EDEFAULT : newFxSelect;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__FX_SELECT, oldFxSelect, fxSelect));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__FX_SELECT, oldFxSelect, fxSelect));
 	}
 
 	/**
@@ -777,7 +791,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		FxSend oldFxSend = fxSend;
 		fxSend = newFxSend == null ? FX_SEND_EDEFAULT : newFxSend;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__FX_SEND, oldFxSend, fxSend));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__FX_SEND, oldFxSend, fxSend));
 	}
 
 	/**
@@ -798,7 +813,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		byte oldModDepth = modDepth;
 		modDepth = newModDepth;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__MOD_DEPTH, oldModDepth, modDepth));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__MOD_DEPTH, oldModDepth, modDepth));
 	}
 
 	/**
@@ -819,7 +835,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		ModDest oldModDest = modDest;
 		modDest = newModDest == null ? MOD_DEST_EDEFAULT : newModDest;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__MOD_DEST, oldModDest, modDest));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__MOD_DEST, oldModDest, modDest));
 	}
 
 	/**
@@ -840,7 +857,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		byte oldModSpeed = modSpeed;
 		modSpeed = newModSpeed;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__MOD_SPEED, oldModSpeed, modSpeed));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__MOD_SPEED, oldModSpeed, modSpeed));
 	}
 
 	/**
@@ -861,7 +879,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		ModType oldModType = modType;
 		modType = newModType == null ? MOD_TYPE_EDEFAULT : newModType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__MOD_TYPE, oldModType, modType));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__MOD_TYPE, oldModType, modType));
 	}
 
 	/**
@@ -882,7 +901,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		byte oldPan = pan;
 		pan = newPan;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__PAN, oldPan, pan));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__PAN, oldPan, pan));
 	}
 
 	/**
@@ -903,7 +923,9 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		byte oldReservedBitAfterModDepth = reservedBitAfterModDepth;
 		reservedBitAfterModDepth = newReservedBitAfterModDepth;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__RESERVED_BIT_AFTER_MOD_DEPTH, oldReservedBitAfterModDepth, reservedBitAfterModDepth));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__RESERVED_BIT_AFTER_MOD_DEPTH,
+					oldReservedBitAfterModDepth, reservedBitAfterModDepth));
 	}
 
 	/**
@@ -924,7 +946,9 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		byte oldResonance = resonance;
 		resonance = newResonance;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__RESONANCE, oldResonance, resonance));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__RESONANCE, oldResonance,
+					resonance));
 	}
 
 	/**
@@ -945,7 +969,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		Roll oldRoll = roll;
 		roll = newRoll == null ? ROLL_EDEFAULT : newRoll;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__ROLL, oldRoll, roll));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__ROLL, oldRoll, roll));
 	}
 
 	/**
@@ -966,7 +991,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		Reverse oldReverse = reverse;
 		reverse = newReverse == null ? REVERSE_EDEFAULT : newReverse;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__REVERSE, oldReverse, reverse));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__REVERSE, oldReverse, reverse));
 	}
 
 	/**
@@ -1007,7 +1033,9 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		short oldSamplePointer = samplePointer;
 		samplePointer = newSamplePointer;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__SAMPLE_POINTER, oldSamplePointer, samplePointer));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__SAMPLE_POINTER, oldSamplePointer,
+					samplePointer));
 	}
 
 	/**
@@ -1028,7 +1056,9 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		byte oldStartPoint = startPoint;
 		startPoint = newStartPoint;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__START_POINT, oldStartPoint, startPoint));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__START_POINT, oldStartPoint,
+					startPoint));
 	}
 
 	/**
@@ -1049,7 +1079,9 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		byte oldReservedBitsAfterReverse = reservedBitsAfterReverse;
 		reservedBitsAfterReverse = newReservedBitsAfterReverse;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE, oldReservedBitsAfterReverse, reservedBitsAfterReverse));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE,
+					oldReservedBitsAfterReverse, reservedBitsAfterReverse));
 	}
 
 	/**
@@ -1066,12 +1098,19 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSequenceDataGate(SequenceDataGate newSequenceDataGate, NotificationChain msgs) {
+	public NotificationChain basicSetSequenceDataGate(
+			SequenceDataGate newSequenceDataGate, NotificationChain msgs) {
 		SequenceDataGate oldSequenceDataGate = sequenceDataGate;
 		sequenceDataGate = newSequenceDataGate;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE, oldSequenceDataGate, newSequenceDataGate);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET,
+					EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE,
+					oldSequenceDataGate, newSequenceDataGate);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -1085,14 +1124,22 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		if (newSequenceDataGate != sequenceDataGate) {
 			NotificationChain msgs = null;
 			if (sequenceDataGate != null)
-				msgs = ((InternalEObject)sequenceDataGate).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE, null, msgs);
+				msgs = ((InternalEObject) sequenceDataGate).eInverseRemove(
+						this, EOPPOSITE_FEATURE_BASE
+								- EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE,
+						null, msgs);
 			if (newSequenceDataGate != null)
-				msgs = ((InternalEObject)newSequenceDataGate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE, null, msgs);
+				msgs = ((InternalEObject) newSequenceDataGate).eInverseAdd(
+						this, EOPPOSITE_FEATURE_BASE
+								- EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE,
+						null, msgs);
 			msgs = basicSetSequenceDataGate(newSequenceDataGate, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE, newSequenceDataGate, newSequenceDataGate));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE,
+					newSequenceDataGate, newSequenceDataGate));
 	}
 
 	/**
@@ -1113,7 +1160,9 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		byte oldReservedByte = reservedByte;
 		reservedByte = newReservedByte;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__RESERVED_BYTE, oldReservedByte, reservedByte));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__RESERVED_BYTE, oldReservedByte,
+					reservedByte));
 	}
 
 	/**
@@ -1134,7 +1183,9 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		byte oldSliceNumber = sliceNumber;
 		sliceNumber = newSliceNumber;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__SLICE_NUMBER, oldSliceNumber, sliceNumber));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__SLICE_NUMBER, oldSliceNumber,
+					sliceNumber));
 	}
 
 	/**
@@ -1155,7 +1206,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		byte oldGlide = glide;
 		glide = newGlide;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__GLIDE, oldGlide, glide));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__GLIDE, oldGlide, glide));
 	}
 
 	/**
@@ -1172,12 +1224,19 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSequenceDataNote(SequenceDataNote newSequenceDataNote, NotificationChain msgs) {
+	public NotificationChain basicSetSequenceDataNote(
+			SequenceDataNote newSequenceDataNote, NotificationChain msgs) {
 		SequenceDataNote oldSequenceDataNote = sequenceDataNote;
 		sequenceDataNote = newSequenceDataNote;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_NOTE, oldSequenceDataNote, newSequenceDataNote);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET,
+					EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_NOTE,
+					oldSequenceDataNote, newSequenceDataNote);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -1191,14 +1250,22 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		if (newSequenceDataNote != sequenceDataNote) {
 			NotificationChain msgs = null;
 			if (sequenceDataNote != null)
-				msgs = ((InternalEObject)sequenceDataNote).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_NOTE, null, msgs);
+				msgs = ((InternalEObject) sequenceDataNote).eInverseRemove(
+						this, EOPPOSITE_FEATURE_BASE
+								- EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_NOTE,
+						null, msgs);
 			if (newSequenceDataNote != null)
-				msgs = ((InternalEObject)newSequenceDataNote).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_NOTE, null, msgs);
+				msgs = ((InternalEObject) newSequenceDataNote).eInverseAdd(
+						this, EOPPOSITE_FEATURE_BASE
+								- EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_NOTE,
+						null, msgs);
 			msgs = basicSetSequenceDataNote(newSequenceDataNote, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_NOTE, newSequenceDataNote, newSequenceDataNote));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_NOTE,
+					newSequenceDataNote, newSequenceDataNote));
 	}
 
 	/**
@@ -1207,7 +1274,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_PARTS_KEYBOARD);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				EsxUtil.CHUNKSIZE_PARTS_KEYBOARD);
 		// bytes 0~1
 		buf.putShort(this.getSamplePointer());
 		// byte 2
@@ -1234,19 +1302,29 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		buf.putByte(this.getStartPoint());
 		// byte 13
 		int packedByte13 = 0x00;
-		packedByte13 = EsxUtil.packInt(packedByte13, this.getFxSelect().getValue(), 2, 0);
-		packedByte13 = EsxUtil.packInt(packedByte13, this.getFxSend().getValue(), 1, 2);
-		packedByte13 = EsxUtil.packInt(packedByte13, this.getRoll().getValue(), 1, 3);
-		packedByte13 = EsxUtil.packInt(packedByte13, this.getAmpEg().getValue(), 1, 4);
-		packedByte13 = EsxUtil.packInt(packedByte13, this.getReverse().getValue(), 1, 5);
-		packedByte13 = EsxUtil.packInt(packedByte13, this.getReservedBitsAfterReverse(), 2, 6);
+		packedByte13 = EsxUtil.packInt(packedByte13, this.getFxSelect()
+				.getValue(), 2, 0);
+		packedByte13 = EsxUtil.packInt(packedByte13, this.getFxSend()
+				.getValue(), 1, 2);
+		packedByte13 = EsxUtil.packInt(packedByte13, this.getRoll().getValue(),
+				1, 3);
+		packedByte13 = EsxUtil.packInt(packedByte13,
+				this.getAmpEg().getValue(), 1, 4);
+		packedByte13 = EsxUtil.packInt(packedByte13, this.getReverse()
+				.getValue(), 1, 5);
+		packedByte13 = EsxUtil.packInt(packedByte13,
+				this.getReservedBitsAfterReverse(), 2, 6);
 		buf.putUnsignedByte(packedByte13);
 		// byte 14
 		int packedByte14 = 0x00;
-		packedByte14 = EsxUtil.packInt(packedByte14, this.getModDest().getValue(), 3, 0);
-		packedByte14 = EsxUtil.packInt(packedByte14, this.getReservedBitAfterModDepth(), 1, 3);
-		packedByte14 = EsxUtil.packInt(packedByte14, this.getModType().getValue(), 3, 4);
-		packedByte14 = EsxUtil.packInt(packedByte14, this.getBpmSync().getValue(), 1, 7);
+		packedByte14 = EsxUtil.packInt(packedByte14, this.getModDest()
+				.getValue(), 3, 0);
+		packedByte14 = EsxUtil.packInt(packedByte14,
+				this.getReservedBitAfterModDepth(), 1, 3);
+		packedByte14 = EsxUtil.packInt(packedByte14, this.getModType()
+				.getValue(), 3, 4);
+		packedByte14 = EsxUtil.packInt(packedByte14, this.getBpmSync()
+				.getValue(), 1, 7);
 		buf.putUnsignedByte(packedByte14);
 		// byte 15
 		buf.putByte(this.getModSpeed());
@@ -1267,12 +1345,13 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE:
-				return basicSetSequenceDataGate(null, msgs);
-			case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_NOTE:
-				return basicSetSequenceDataNote(null, msgs);
+		case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE:
+			return basicSetSequenceDataGate(null, msgs);
+		case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_NOTE:
+			return basicSetSequenceDataNote(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1285,58 +1364,58 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.PART_KEYBOARD__AMP_EG:
-				return getAmpEg();
-			case EsxPackage.PART_KEYBOARD__BPM_SYNC:
-				return getBpmSync();
-			case EsxPackage.PART_KEYBOARD__CUTOFF:
-				return getCutoff();
-			case EsxPackage.PART_KEYBOARD__EG_INTENSITY:
-				return getEgIntensity();
-			case EsxPackage.PART_KEYBOARD__EG_TIME:
-				return getEgTime();
-			case EsxPackage.PART_KEYBOARD__FILTER_TYPE:
-				return getFilterType();
-			case EsxPackage.PART_KEYBOARD__FX_SELECT:
-				return getFxSelect();
-			case EsxPackage.PART_KEYBOARD__FX_SEND:
-				return getFxSend();
-			case EsxPackage.PART_KEYBOARD__MOD_DEPTH:
-				return getModDepth();
-			case EsxPackage.PART_KEYBOARD__MOD_DEST:
-				return getModDest();
-			case EsxPackage.PART_KEYBOARD__MOD_SPEED:
-				return getModSpeed();
-			case EsxPackage.PART_KEYBOARD__MOD_TYPE:
-				return getModType();
-			case EsxPackage.PART_KEYBOARD__PAN:
-				return getPan();
-			case EsxPackage.PART_KEYBOARD__RESERVED_BIT_AFTER_MOD_DEPTH:
-				return getReservedBitAfterModDepth();
-			case EsxPackage.PART_KEYBOARD__RESONANCE:
-				return getResonance();
-			case EsxPackage.PART_KEYBOARD__ROLL:
-				return getRoll();
-			case EsxPackage.PART_KEYBOARD__REVERSE:
-				return getReverse();
-			case EsxPackage.PART_KEYBOARD__SAMPLE_LABEL:
-				return getSampleLabel();
-			case EsxPackage.PART_KEYBOARD__SAMPLE_POINTER:
-				return getSamplePointer();
-			case EsxPackage.PART_KEYBOARD__START_POINT:
-				return getStartPoint();
-			case EsxPackage.PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE:
-				return getReservedBitsAfterReverse();
-			case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE:
-				return getSequenceDataGate();
-			case EsxPackage.PART_KEYBOARD__RESERVED_BYTE:
-				return getReservedByte();
-			case EsxPackage.PART_KEYBOARD__SLICE_NUMBER:
-				return getSliceNumber();
-			case EsxPackage.PART_KEYBOARD__GLIDE:
-				return getGlide();
-			case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_NOTE:
-				return getSequenceDataNote();
+		case EsxPackage.PART_KEYBOARD__AMP_EG:
+			return getAmpEg();
+		case EsxPackage.PART_KEYBOARD__BPM_SYNC:
+			return getBpmSync();
+		case EsxPackage.PART_KEYBOARD__CUTOFF:
+			return getCutoff();
+		case EsxPackage.PART_KEYBOARD__EG_INTENSITY:
+			return getEgIntensity();
+		case EsxPackage.PART_KEYBOARD__EG_TIME:
+			return getEgTime();
+		case EsxPackage.PART_KEYBOARD__FILTER_TYPE:
+			return getFilterType();
+		case EsxPackage.PART_KEYBOARD__FX_SELECT:
+			return getFxSelect();
+		case EsxPackage.PART_KEYBOARD__FX_SEND:
+			return getFxSend();
+		case EsxPackage.PART_KEYBOARD__MOD_DEPTH:
+			return getModDepth();
+		case EsxPackage.PART_KEYBOARD__MOD_DEST:
+			return getModDest();
+		case EsxPackage.PART_KEYBOARD__MOD_SPEED:
+			return getModSpeed();
+		case EsxPackage.PART_KEYBOARD__MOD_TYPE:
+			return getModType();
+		case EsxPackage.PART_KEYBOARD__PAN:
+			return getPan();
+		case EsxPackage.PART_KEYBOARD__RESERVED_BIT_AFTER_MOD_DEPTH:
+			return getReservedBitAfterModDepth();
+		case EsxPackage.PART_KEYBOARD__RESONANCE:
+			return getResonance();
+		case EsxPackage.PART_KEYBOARD__ROLL:
+			return getRoll();
+		case EsxPackage.PART_KEYBOARD__REVERSE:
+			return getReverse();
+		case EsxPackage.PART_KEYBOARD__SAMPLE_LABEL:
+			return getSampleLabel();
+		case EsxPackage.PART_KEYBOARD__SAMPLE_POINTER:
+			return getSamplePointer();
+		case EsxPackage.PART_KEYBOARD__START_POINT:
+			return getStartPoint();
+		case EsxPackage.PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE:
+			return getReservedBitsAfterReverse();
+		case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE:
+			return getSequenceDataGate();
+		case EsxPackage.PART_KEYBOARD__RESERVED_BYTE:
+			return getReservedByte();
+		case EsxPackage.PART_KEYBOARD__SLICE_NUMBER:
+			return getSliceNumber();
+		case EsxPackage.PART_KEYBOARD__GLIDE:
+			return getGlide();
+		case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_NOTE:
+			return getSequenceDataNote();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1349,81 +1428,81 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.PART_KEYBOARD__AMP_EG:
-				setAmpEg((AmpEg)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__BPM_SYNC:
-				setBpmSync((BpmSync)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__CUTOFF:
-				setCutoff((Byte)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__EG_INTENSITY:
-				setEgIntensity((Byte)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__EG_TIME:
-				setEgTime((Byte)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__FILTER_TYPE:
-				setFilterType((FilterType)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__FX_SELECT:
-				setFxSelect((FxSelect)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__FX_SEND:
-				setFxSend((FxSend)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__MOD_DEPTH:
-				setModDepth((Byte)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__MOD_DEST:
-				setModDest((ModDest)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__MOD_SPEED:
-				setModSpeed((Byte)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__MOD_TYPE:
-				setModType((ModType)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__PAN:
-				setPan((Byte)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__RESERVED_BIT_AFTER_MOD_DEPTH:
-				setReservedBitAfterModDepth((Byte)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__RESONANCE:
-				setResonance((Byte)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__ROLL:
-				setRoll((Roll)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__REVERSE:
-				setReverse((Reverse)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__SAMPLE_POINTER:
-				setSamplePointer((Short)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__START_POINT:
-				setStartPoint((Byte)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE:
-				setReservedBitsAfterReverse((Byte)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE:
-				setSequenceDataGate((SequenceDataGate)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__RESERVED_BYTE:
-				setReservedByte((Byte)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__SLICE_NUMBER:
-				setSliceNumber((Byte)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__GLIDE:
-				setGlide((Byte)newValue);
-				return;
-			case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_NOTE:
-				setSequenceDataNote((SequenceDataNote)newValue);
-				return;
+		case EsxPackage.PART_KEYBOARD__AMP_EG:
+			setAmpEg((AmpEg) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__BPM_SYNC:
+			setBpmSync((BpmSync) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__CUTOFF:
+			setCutoff((Byte) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__EG_INTENSITY:
+			setEgIntensity((Byte) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__EG_TIME:
+			setEgTime((Byte) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__FILTER_TYPE:
+			setFilterType((FilterType) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__FX_SELECT:
+			setFxSelect((FxSelect) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__FX_SEND:
+			setFxSend((FxSend) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__MOD_DEPTH:
+			setModDepth((Byte) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__MOD_DEST:
+			setModDest((ModDest) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__MOD_SPEED:
+			setModSpeed((Byte) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__MOD_TYPE:
+			setModType((ModType) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__PAN:
+			setPan((Byte) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__RESERVED_BIT_AFTER_MOD_DEPTH:
+			setReservedBitAfterModDepth((Byte) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__RESONANCE:
+			setResonance((Byte) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__ROLL:
+			setRoll((Roll) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__REVERSE:
+			setReverse((Reverse) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__SAMPLE_POINTER:
+			setSamplePointer((Short) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__START_POINT:
+			setStartPoint((Byte) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE:
+			setReservedBitsAfterReverse((Byte) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE:
+			setSequenceDataGate((SequenceDataGate) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__RESERVED_BYTE:
+			setReservedByte((Byte) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__SLICE_NUMBER:
+			setSliceNumber((Byte) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__GLIDE:
+			setGlide((Byte) newValue);
+			return;
+		case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_NOTE:
+			setSequenceDataNote((SequenceDataNote) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1436,81 +1515,81 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_KEYBOARD__AMP_EG:
-				setAmpEg(AMP_EG_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__BPM_SYNC:
-				setBpmSync(BPM_SYNC_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__CUTOFF:
-				setCutoff(CUTOFF_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__EG_INTENSITY:
-				setEgIntensity(EG_INTENSITY_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__EG_TIME:
-				setEgTime(EG_TIME_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__FILTER_TYPE:
-				setFilterType(FILTER_TYPE_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__FX_SELECT:
-				setFxSelect(FX_SELECT_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__FX_SEND:
-				setFxSend(FX_SEND_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__MOD_DEPTH:
-				setModDepth(MOD_DEPTH_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__MOD_DEST:
-				setModDest(MOD_DEST_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__MOD_SPEED:
-				setModSpeed(MOD_SPEED_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__MOD_TYPE:
-				setModType(MOD_TYPE_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__PAN:
-				setPan(PAN_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__RESERVED_BIT_AFTER_MOD_DEPTH:
-				setReservedBitAfterModDepth(RESERVED_BIT_AFTER_MOD_DEPTH_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__RESONANCE:
-				setResonance(RESONANCE_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__ROLL:
-				setRoll(ROLL_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__REVERSE:
-				setReverse(REVERSE_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__SAMPLE_POINTER:
-				setSamplePointer(SAMPLE_POINTER_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__START_POINT:
-				setStartPoint(START_POINT_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE:
-				setReservedBitsAfterReverse(RESERVED_BITS_AFTER_REVERSE_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE:
-				setSequenceDataGate((SequenceDataGate)null);
-				return;
-			case EsxPackage.PART_KEYBOARD__RESERVED_BYTE:
-				setReservedByte(RESERVED_BYTE_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__SLICE_NUMBER:
-				setSliceNumber(SLICE_NUMBER_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__GLIDE:
-				setGlide(GLIDE_EDEFAULT);
-				return;
-			case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_NOTE:
-				setSequenceDataNote((SequenceDataNote)null);
-				return;
+		case EsxPackage.PART_KEYBOARD__AMP_EG:
+			setAmpEg(AMP_EG_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__BPM_SYNC:
+			setBpmSync(BPM_SYNC_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__CUTOFF:
+			setCutoff(CUTOFF_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__EG_INTENSITY:
+			setEgIntensity(EG_INTENSITY_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__EG_TIME:
+			setEgTime(EG_TIME_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__FILTER_TYPE:
+			setFilterType(FILTER_TYPE_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__FX_SELECT:
+			setFxSelect(FX_SELECT_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__FX_SEND:
+			setFxSend(FX_SEND_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__MOD_DEPTH:
+			setModDepth(MOD_DEPTH_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__MOD_DEST:
+			setModDest(MOD_DEST_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__MOD_SPEED:
+			setModSpeed(MOD_SPEED_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__MOD_TYPE:
+			setModType(MOD_TYPE_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__PAN:
+			setPan(PAN_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__RESERVED_BIT_AFTER_MOD_DEPTH:
+			setReservedBitAfterModDepth(RESERVED_BIT_AFTER_MOD_DEPTH_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__RESONANCE:
+			setResonance(RESONANCE_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__ROLL:
+			setRoll(ROLL_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__REVERSE:
+			setReverse(REVERSE_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__SAMPLE_POINTER:
+			setSamplePointer(SAMPLE_POINTER_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__START_POINT:
+			setStartPoint(START_POINT_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE:
+			setReservedBitsAfterReverse(RESERVED_BITS_AFTER_REVERSE_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE:
+			setSequenceDataGate((SequenceDataGate) null);
+			return;
+		case EsxPackage.PART_KEYBOARD__RESERVED_BYTE:
+			setReservedByte(RESERVED_BYTE_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__SLICE_NUMBER:
+			setSliceNumber(SLICE_NUMBER_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__GLIDE:
+			setGlide(GLIDE_EDEFAULT);
+			return;
+		case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_NOTE:
+			setSequenceDataNote((SequenceDataNote) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1523,58 +1602,59 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_KEYBOARD__AMP_EG:
-				return ampEg != AMP_EG_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__BPM_SYNC:
-				return bpmSync != BPM_SYNC_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__CUTOFF:
-				return cutoff != CUTOFF_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__EG_INTENSITY:
-				return egIntensity != EG_INTENSITY_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__EG_TIME:
-				return egTime != EG_TIME_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__FILTER_TYPE:
-				return filterType != FILTER_TYPE_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__FX_SELECT:
-				return fxSelect != FX_SELECT_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__FX_SEND:
-				return fxSend != FX_SEND_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__MOD_DEPTH:
-				return modDepth != MOD_DEPTH_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__MOD_DEST:
-				return modDest != MOD_DEST_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__MOD_SPEED:
-				return modSpeed != MOD_SPEED_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__MOD_TYPE:
-				return modType != MOD_TYPE_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__PAN:
-				return pan != PAN_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__RESERVED_BIT_AFTER_MOD_DEPTH:
-				return reservedBitAfterModDepth != RESERVED_BIT_AFTER_MOD_DEPTH_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__RESONANCE:
-				return resonance != RESONANCE_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__ROLL:
-				return roll != ROLL_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__REVERSE:
-				return reverse != REVERSE_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__SAMPLE_LABEL:
-				return SAMPLE_LABEL_EDEFAULT == null ? getSampleLabel() != null : !SAMPLE_LABEL_EDEFAULT.equals(getSampleLabel());
-			case EsxPackage.PART_KEYBOARD__SAMPLE_POINTER:
-				return samplePointer != SAMPLE_POINTER_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__START_POINT:
-				return startPoint != START_POINT_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE:
-				return reservedBitsAfterReverse != RESERVED_BITS_AFTER_REVERSE_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE:
-				return sequenceDataGate != null;
-			case EsxPackage.PART_KEYBOARD__RESERVED_BYTE:
-				return reservedByte != RESERVED_BYTE_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__SLICE_NUMBER:
-				return sliceNumber != SLICE_NUMBER_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__GLIDE:
-				return glide != GLIDE_EDEFAULT;
-			case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_NOTE:
-				return sequenceDataNote != null;
+		case EsxPackage.PART_KEYBOARD__AMP_EG:
+			return ampEg != AMP_EG_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__BPM_SYNC:
+			return bpmSync != BPM_SYNC_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__CUTOFF:
+			return cutoff != CUTOFF_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__EG_INTENSITY:
+			return egIntensity != EG_INTENSITY_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__EG_TIME:
+			return egTime != EG_TIME_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__FILTER_TYPE:
+			return filterType != FILTER_TYPE_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__FX_SELECT:
+			return fxSelect != FX_SELECT_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__FX_SEND:
+			return fxSend != FX_SEND_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__MOD_DEPTH:
+			return modDepth != MOD_DEPTH_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__MOD_DEST:
+			return modDest != MOD_DEST_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__MOD_SPEED:
+			return modSpeed != MOD_SPEED_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__MOD_TYPE:
+			return modType != MOD_TYPE_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__PAN:
+			return pan != PAN_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__RESERVED_BIT_AFTER_MOD_DEPTH:
+			return reservedBitAfterModDepth != RESERVED_BIT_AFTER_MOD_DEPTH_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__RESONANCE:
+			return resonance != RESONANCE_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__ROLL:
+			return roll != ROLL_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__REVERSE:
+			return reverse != REVERSE_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__SAMPLE_LABEL:
+			return SAMPLE_LABEL_EDEFAULT == null ? getSampleLabel() != null
+					: !SAMPLE_LABEL_EDEFAULT.equals(getSampleLabel());
+		case EsxPackage.PART_KEYBOARD__SAMPLE_POINTER:
+			return samplePointer != SAMPLE_POINTER_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__START_POINT:
+			return startPoint != START_POINT_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE:
+			return reservedBitsAfterReverse != RESERVED_BITS_AFTER_REVERSE_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE:
+			return sequenceDataGate != null;
+		case EsxPackage.PART_KEYBOARD__RESERVED_BYTE:
+			return reservedByte != RESERVED_BYTE_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__SLICE_NUMBER:
+			return sliceNumber != SLICE_NUMBER_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__GLIDE:
+			return glide != GLIDE_EDEFAULT;
+		case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_NOTE:
+			return sequenceDataNote != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1588,46 +1668,74 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == PartWithCommon.class) {
 			switch (derivedFeatureID) {
-				case EsxPackage.PART_KEYBOARD__AMP_EG: return EsxPackage.PART_WITH_COMMON__AMP_EG;
-				case EsxPackage.PART_KEYBOARD__BPM_SYNC: return EsxPackage.PART_WITH_COMMON__BPM_SYNC;
-				case EsxPackage.PART_KEYBOARD__CUTOFF: return EsxPackage.PART_WITH_COMMON__CUTOFF;
-				case EsxPackage.PART_KEYBOARD__EG_INTENSITY: return EsxPackage.PART_WITH_COMMON__EG_INTENSITY;
-				case EsxPackage.PART_KEYBOARD__EG_TIME: return EsxPackage.PART_WITH_COMMON__EG_TIME;
-				case EsxPackage.PART_KEYBOARD__FILTER_TYPE: return EsxPackage.PART_WITH_COMMON__FILTER_TYPE;
-				case EsxPackage.PART_KEYBOARD__FX_SELECT: return EsxPackage.PART_WITH_COMMON__FX_SELECT;
-				case EsxPackage.PART_KEYBOARD__FX_SEND: return EsxPackage.PART_WITH_COMMON__FX_SEND;
-				case EsxPackage.PART_KEYBOARD__MOD_DEPTH: return EsxPackage.PART_WITH_COMMON__MOD_DEPTH;
-				case EsxPackage.PART_KEYBOARD__MOD_DEST: return EsxPackage.PART_WITH_COMMON__MOD_DEST;
-				case EsxPackage.PART_KEYBOARD__MOD_SPEED: return EsxPackage.PART_WITH_COMMON__MOD_SPEED;
-				case EsxPackage.PART_KEYBOARD__MOD_TYPE: return EsxPackage.PART_WITH_COMMON__MOD_TYPE;
-				case EsxPackage.PART_KEYBOARD__PAN: return EsxPackage.PART_WITH_COMMON__PAN;
-				case EsxPackage.PART_KEYBOARD__RESERVED_BIT_AFTER_MOD_DEPTH: return EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH;
-				case EsxPackage.PART_KEYBOARD__RESONANCE: return EsxPackage.PART_WITH_COMMON__RESONANCE;
-				case EsxPackage.PART_KEYBOARD__ROLL: return EsxPackage.PART_WITH_COMMON__ROLL;
-				default: return -1;
+			case EsxPackage.PART_KEYBOARD__AMP_EG:
+				return EsxPackage.PART_WITH_COMMON__AMP_EG;
+			case EsxPackage.PART_KEYBOARD__BPM_SYNC:
+				return EsxPackage.PART_WITH_COMMON__BPM_SYNC;
+			case EsxPackage.PART_KEYBOARD__CUTOFF:
+				return EsxPackage.PART_WITH_COMMON__CUTOFF;
+			case EsxPackage.PART_KEYBOARD__EG_INTENSITY:
+				return EsxPackage.PART_WITH_COMMON__EG_INTENSITY;
+			case EsxPackage.PART_KEYBOARD__EG_TIME:
+				return EsxPackage.PART_WITH_COMMON__EG_TIME;
+			case EsxPackage.PART_KEYBOARD__FILTER_TYPE:
+				return EsxPackage.PART_WITH_COMMON__FILTER_TYPE;
+			case EsxPackage.PART_KEYBOARD__FX_SELECT:
+				return EsxPackage.PART_WITH_COMMON__FX_SELECT;
+			case EsxPackage.PART_KEYBOARD__FX_SEND:
+				return EsxPackage.PART_WITH_COMMON__FX_SEND;
+			case EsxPackage.PART_KEYBOARD__MOD_DEPTH:
+				return EsxPackage.PART_WITH_COMMON__MOD_DEPTH;
+			case EsxPackage.PART_KEYBOARD__MOD_DEST:
+				return EsxPackage.PART_WITH_COMMON__MOD_DEST;
+			case EsxPackage.PART_KEYBOARD__MOD_SPEED:
+				return EsxPackage.PART_WITH_COMMON__MOD_SPEED;
+			case EsxPackage.PART_KEYBOARD__MOD_TYPE:
+				return EsxPackage.PART_WITH_COMMON__MOD_TYPE;
+			case EsxPackage.PART_KEYBOARD__PAN:
+				return EsxPackage.PART_WITH_COMMON__PAN;
+			case EsxPackage.PART_KEYBOARD__RESERVED_BIT_AFTER_MOD_DEPTH:
+				return EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH;
+			case EsxPackage.PART_KEYBOARD__RESONANCE:
+				return EsxPackage.PART_WITH_COMMON__RESONANCE;
+			case EsxPackage.PART_KEYBOARD__ROLL:
+				return EsxPackage.PART_WITH_COMMON__ROLL;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == PartWithSample.class) {
 			switch (derivedFeatureID) {
-				case EsxPackage.PART_KEYBOARD__REVERSE: return EsxPackage.PART_WITH_SAMPLE__REVERSE;
-				case EsxPackage.PART_KEYBOARD__SAMPLE_LABEL: return EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL;
-				case EsxPackage.PART_KEYBOARD__SAMPLE_POINTER: return EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER;
-				case EsxPackage.PART_KEYBOARD__START_POINT: return EsxPackage.PART_WITH_SAMPLE__START_POINT;
-				case EsxPackage.PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE: return EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE;
-				default: return -1;
+			case EsxPackage.PART_KEYBOARD__REVERSE:
+				return EsxPackage.PART_WITH_SAMPLE__REVERSE;
+			case EsxPackage.PART_KEYBOARD__SAMPLE_LABEL:
+				return EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL;
+			case EsxPackage.PART_KEYBOARD__SAMPLE_POINTER:
+				return EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER;
+			case EsxPackage.PART_KEYBOARD__START_POINT:
+				return EsxPackage.PART_WITH_SAMPLE__START_POINT;
+			case EsxPackage.PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE:
+				return EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == PartWithSequenceDataGate.class) {
 			switch (derivedFeatureID) {
-				case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE: return EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE;
-				default: return -1;
+			case EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE:
+				return EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == PartWithSlice.class) {
 			switch (derivedFeatureID) {
-				case EsxPackage.PART_KEYBOARD__RESERVED_BYTE: return EsxPackage.PART_WITH_SLICE__RESERVED_BYTE;
-				case EsxPackage.PART_KEYBOARD__SLICE_NUMBER: return EsxPackage.PART_WITH_SLICE__SLICE_NUMBER;
-				default: return -1;
+			case EsxPackage.PART_KEYBOARD__RESERVED_BYTE:
+				return EsxPackage.PART_WITH_SLICE__RESERVED_BYTE;
+			case EsxPackage.PART_KEYBOARD__SLICE_NUMBER:
+				return EsxPackage.PART_WITH_SLICE__SLICE_NUMBER;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
@@ -1642,46 +1750,74 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == PartWithCommon.class) {
 			switch (baseFeatureID) {
-				case EsxPackage.PART_WITH_COMMON__AMP_EG: return EsxPackage.PART_KEYBOARD__AMP_EG;
-				case EsxPackage.PART_WITH_COMMON__BPM_SYNC: return EsxPackage.PART_KEYBOARD__BPM_SYNC;
-				case EsxPackage.PART_WITH_COMMON__CUTOFF: return EsxPackage.PART_KEYBOARD__CUTOFF;
-				case EsxPackage.PART_WITH_COMMON__EG_INTENSITY: return EsxPackage.PART_KEYBOARD__EG_INTENSITY;
-				case EsxPackage.PART_WITH_COMMON__EG_TIME: return EsxPackage.PART_KEYBOARD__EG_TIME;
-				case EsxPackage.PART_WITH_COMMON__FILTER_TYPE: return EsxPackage.PART_KEYBOARD__FILTER_TYPE;
-				case EsxPackage.PART_WITH_COMMON__FX_SELECT: return EsxPackage.PART_KEYBOARD__FX_SELECT;
-				case EsxPackage.PART_WITH_COMMON__FX_SEND: return EsxPackage.PART_KEYBOARD__FX_SEND;
-				case EsxPackage.PART_WITH_COMMON__MOD_DEPTH: return EsxPackage.PART_KEYBOARD__MOD_DEPTH;
-				case EsxPackage.PART_WITH_COMMON__MOD_DEST: return EsxPackage.PART_KEYBOARD__MOD_DEST;
-				case EsxPackage.PART_WITH_COMMON__MOD_SPEED: return EsxPackage.PART_KEYBOARD__MOD_SPEED;
-				case EsxPackage.PART_WITH_COMMON__MOD_TYPE: return EsxPackage.PART_KEYBOARD__MOD_TYPE;
-				case EsxPackage.PART_WITH_COMMON__PAN: return EsxPackage.PART_KEYBOARD__PAN;
-				case EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH: return EsxPackage.PART_KEYBOARD__RESERVED_BIT_AFTER_MOD_DEPTH;
-				case EsxPackage.PART_WITH_COMMON__RESONANCE: return EsxPackage.PART_KEYBOARD__RESONANCE;
-				case EsxPackage.PART_WITH_COMMON__ROLL: return EsxPackage.PART_KEYBOARD__ROLL;
-				default: return -1;
+			case EsxPackage.PART_WITH_COMMON__AMP_EG:
+				return EsxPackage.PART_KEYBOARD__AMP_EG;
+			case EsxPackage.PART_WITH_COMMON__BPM_SYNC:
+				return EsxPackage.PART_KEYBOARD__BPM_SYNC;
+			case EsxPackage.PART_WITH_COMMON__CUTOFF:
+				return EsxPackage.PART_KEYBOARD__CUTOFF;
+			case EsxPackage.PART_WITH_COMMON__EG_INTENSITY:
+				return EsxPackage.PART_KEYBOARD__EG_INTENSITY;
+			case EsxPackage.PART_WITH_COMMON__EG_TIME:
+				return EsxPackage.PART_KEYBOARD__EG_TIME;
+			case EsxPackage.PART_WITH_COMMON__FILTER_TYPE:
+				return EsxPackage.PART_KEYBOARD__FILTER_TYPE;
+			case EsxPackage.PART_WITH_COMMON__FX_SELECT:
+				return EsxPackage.PART_KEYBOARD__FX_SELECT;
+			case EsxPackage.PART_WITH_COMMON__FX_SEND:
+				return EsxPackage.PART_KEYBOARD__FX_SEND;
+			case EsxPackage.PART_WITH_COMMON__MOD_DEPTH:
+				return EsxPackage.PART_KEYBOARD__MOD_DEPTH;
+			case EsxPackage.PART_WITH_COMMON__MOD_DEST:
+				return EsxPackage.PART_KEYBOARD__MOD_DEST;
+			case EsxPackage.PART_WITH_COMMON__MOD_SPEED:
+				return EsxPackage.PART_KEYBOARD__MOD_SPEED;
+			case EsxPackage.PART_WITH_COMMON__MOD_TYPE:
+				return EsxPackage.PART_KEYBOARD__MOD_TYPE;
+			case EsxPackage.PART_WITH_COMMON__PAN:
+				return EsxPackage.PART_KEYBOARD__PAN;
+			case EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH:
+				return EsxPackage.PART_KEYBOARD__RESERVED_BIT_AFTER_MOD_DEPTH;
+			case EsxPackage.PART_WITH_COMMON__RESONANCE:
+				return EsxPackage.PART_KEYBOARD__RESONANCE;
+			case EsxPackage.PART_WITH_COMMON__ROLL:
+				return EsxPackage.PART_KEYBOARD__ROLL;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == PartWithSample.class) {
 			switch (baseFeatureID) {
-				case EsxPackage.PART_WITH_SAMPLE__REVERSE: return EsxPackage.PART_KEYBOARD__REVERSE;
-				case EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL: return EsxPackage.PART_KEYBOARD__SAMPLE_LABEL;
-				case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER: return EsxPackage.PART_KEYBOARD__SAMPLE_POINTER;
-				case EsxPackage.PART_WITH_SAMPLE__START_POINT: return EsxPackage.PART_KEYBOARD__START_POINT;
-				case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE: return EsxPackage.PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE;
-				default: return -1;
+			case EsxPackage.PART_WITH_SAMPLE__REVERSE:
+				return EsxPackage.PART_KEYBOARD__REVERSE;
+			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_LABEL:
+				return EsxPackage.PART_KEYBOARD__SAMPLE_LABEL;
+			case EsxPackage.PART_WITH_SAMPLE__SAMPLE_POINTER:
+				return EsxPackage.PART_KEYBOARD__SAMPLE_POINTER;
+			case EsxPackage.PART_WITH_SAMPLE__START_POINT:
+				return EsxPackage.PART_KEYBOARD__START_POINT;
+			case EsxPackage.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE:
+				return EsxPackage.PART_KEYBOARD__RESERVED_BITS_AFTER_REVERSE;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == PartWithSequenceDataGate.class) {
 			switch (baseFeatureID) {
-				case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE: return EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE;
-				default: return -1;
+			case EsxPackage.PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
+				return EsxPackage.PART_KEYBOARD__SEQUENCE_DATA_GATE;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == PartWithSlice.class) {
 			switch (baseFeatureID) {
-				case EsxPackage.PART_WITH_SLICE__RESERVED_BYTE: return EsxPackage.PART_KEYBOARD__RESERVED_BYTE;
-				case EsxPackage.PART_WITH_SLICE__SLICE_NUMBER: return EsxPackage.PART_KEYBOARD__SLICE_NUMBER;
-				default: return -1;
+			case EsxPackage.PART_WITH_SLICE__RESERVED_BYTE:
+				return EsxPackage.PART_KEYBOARD__RESERVED_BYTE;
+			case EsxPackage.PART_WITH_SLICE__SLICE_NUMBER:
+				return EsxPackage.PART_KEYBOARD__SLICE_NUMBER;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
@@ -1694,7 +1830,8 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (ampEg: ");
@@ -1752,11 +1889,12 @@ public class PartKeyboardImpl extends PartImpl implements PartKeyboard {
 		int containerIndex = 0;
 
 		EObject parent = this.eContainer();
-		if(parent instanceof Pattern) {
-			containerIndex = ((Pattern) parent).getKeyboardParts().indexOf(this);
+		if (parent instanceof Pattern) {
+			containerIndex = ((Pattern) parent).getKeyboardParts()
+					.indexOf(this);
 		}
 
-		return SongEventPart.get(10+containerIndex).getLiteral();
+		return SongEventPart.get(10 + containerIndex).getLiteral();
 	}
 
 } //PartKeyboardImpl

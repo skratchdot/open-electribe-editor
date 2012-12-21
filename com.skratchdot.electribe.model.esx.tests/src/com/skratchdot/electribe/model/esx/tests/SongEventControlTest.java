@@ -64,7 +64,7 @@ public class SongEventControlTest extends SongEventTest {
 	 */
 	@Override
 	protected SongEventControl getFixture() {
-		return (SongEventControl)fixture;
+		return (SongEventControl) fixture;
 	}
 
 	/**

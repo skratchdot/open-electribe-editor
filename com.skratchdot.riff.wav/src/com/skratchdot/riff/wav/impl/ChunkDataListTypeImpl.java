@@ -36,7 +36,8 @@ import com.skratchdot.riff.wav.WavPackage;
  *
  * @generated
  */
-public abstract class ChunkDataListTypeImpl extends ChunkImpl implements ChunkDataListType {
+public abstract class ChunkDataListTypeImpl extends ChunkImpl implements
+		ChunkDataListType {
 	/**
 	 * The default value of the '{@link #getCuePointID() <em>Cue Point ID</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -124,7 +125,9 @@ public abstract class ChunkDataListTypeImpl extends ChunkImpl implements ChunkDa
 		Long oldCuePointID = cuePointID;
 		cuePointID = newCuePointID;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_DATA_LIST_TYPE__CUE_POINT_ID, oldCuePointID, cuePointID));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_DATA_LIST_TYPE__CUE_POINT_ID,
+					oldCuePointID, cuePointID));
 	}
 
 	/**
@@ -145,7 +148,8 @@ public abstract class ChunkDataListTypeImpl extends ChunkImpl implements ChunkDa
 		byte[] oldText = text;
 		text = newText;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_DATA_LIST_TYPE__TEXT, oldText, text));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_DATA_LIST_TYPE__TEXT, oldText, text));
 	}
 
 	/**
@@ -154,7 +158,7 @@ public abstract class ChunkDataListTypeImpl extends ChunkImpl implements ChunkDa
 	 * @generated NOT
 	 */
 	public String getTextAsString() {
-		return this.getText()==null?"":new String(this.getText());
+		return this.getText() == null ? "" : new String(this.getText());
 	}
 
 	/**
@@ -165,12 +169,12 @@ public abstract class ChunkDataListTypeImpl extends ChunkImpl implements ChunkDa
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.CHUNK_DATA_LIST_TYPE__CUE_POINT_ID:
-				return getCuePointID();
-			case WavPackage.CHUNK_DATA_LIST_TYPE__TEXT:
-				return getText();
-			case WavPackage.CHUNK_DATA_LIST_TYPE__TEXT_AS_STRING:
-				return getTextAsString();
+		case WavPackage.CHUNK_DATA_LIST_TYPE__CUE_POINT_ID:
+			return getCuePointID();
+		case WavPackage.CHUNK_DATA_LIST_TYPE__TEXT:
+			return getText();
+		case WavPackage.CHUNK_DATA_LIST_TYPE__TEXT_AS_STRING:
+			return getTextAsString();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -183,12 +187,12 @@ public abstract class ChunkDataListTypeImpl extends ChunkImpl implements ChunkDa
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.CHUNK_DATA_LIST_TYPE__CUE_POINT_ID:
-				setCuePointID((Long)newValue);
-				return;
-			case WavPackage.CHUNK_DATA_LIST_TYPE__TEXT:
-				setText((byte[])newValue);
-				return;
+		case WavPackage.CHUNK_DATA_LIST_TYPE__CUE_POINT_ID:
+			setCuePointID((Long) newValue);
+			return;
+		case WavPackage.CHUNK_DATA_LIST_TYPE__TEXT:
+			setText((byte[]) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -201,12 +205,12 @@ public abstract class ChunkDataListTypeImpl extends ChunkImpl implements ChunkDa
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_DATA_LIST_TYPE__CUE_POINT_ID:
-				setCuePointID(CUE_POINT_ID_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_DATA_LIST_TYPE__TEXT:
-				setText(TEXT_EDEFAULT);
-				return;
+		case WavPackage.CHUNK_DATA_LIST_TYPE__CUE_POINT_ID:
+			setCuePointID(CUE_POINT_ID_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_DATA_LIST_TYPE__TEXT:
+			setText(TEXT_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -219,12 +223,15 @@ public abstract class ChunkDataListTypeImpl extends ChunkImpl implements ChunkDa
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_DATA_LIST_TYPE__CUE_POINT_ID:
-				return CUE_POINT_ID_EDEFAULT == null ? cuePointID != null : !CUE_POINT_ID_EDEFAULT.equals(cuePointID);
-			case WavPackage.CHUNK_DATA_LIST_TYPE__TEXT:
-				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
-			case WavPackage.CHUNK_DATA_LIST_TYPE__TEXT_AS_STRING:
-				return TEXT_AS_STRING_EDEFAULT == null ? getTextAsString() != null : !TEXT_AS_STRING_EDEFAULT.equals(getTextAsString());
+		case WavPackage.CHUNK_DATA_LIST_TYPE__CUE_POINT_ID:
+			return CUE_POINT_ID_EDEFAULT == null ? cuePointID != null
+					: !CUE_POINT_ID_EDEFAULT.equals(cuePointID);
+		case WavPackage.CHUNK_DATA_LIST_TYPE__TEXT:
+			return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT
+					.equals(text);
+		case WavPackage.CHUNK_DATA_LIST_TYPE__TEXT_AS_STRING:
+			return TEXT_AS_STRING_EDEFAULT == null ? getTextAsString() != null
+					: !TEXT_AS_STRING_EDEFAULT.equals(getTextAsString());
 		}
 		return super.eIsSet(featureID);
 	}
@@ -236,7 +243,8 @@ public abstract class ChunkDataListTypeImpl extends ChunkImpl implements ChunkDa
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (cuePointID: ");

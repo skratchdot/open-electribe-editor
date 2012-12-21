@@ -51,7 +51,7 @@ import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
 public class EsxEditorPartPatterns extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartPatterns"; //$NON-NLS-1$
 	public static final int PAGE_INDEX = 2;
-	public static final String ID_PATTERN_VIEWER = ID+".PatternViewer"; //$NON-NLS-1$
+	public static final String ID_PATTERN_VIEWER = ID + ".PatternViewer"; //$NON-NLS-1$
 
 	private TableViewer tableViewer;
 	private TableScrollSpeedListener tableViewerScrollSpeedListener;
@@ -90,7 +90,8 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 		groupPatterns.setText("Patterns");
 
 		// Create this.tableViewer
-		this.tableViewer = new TableViewer(groupPatterns, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
+		this.tableViewer = new TableViewer(groupPatterns, SWT.BORDER
+				| SWT.FULL_SELECTION | SWT.MULTI);
 		this.initTableViewer();
 
 		// Create groupSelectedPatterns
@@ -111,15 +112,17 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 		tabPatternFx.setControl(editorPatternFx);
 
 		tabPatternParts = new TabItem(tabFolder, SWT.NONE);
-		editorPatternParts = new EsxCompositePatternParts(this, tabFolder, SWT.NONE);
+		editorPatternParts = new EsxCompositePatternParts(this, tabFolder,
+				SWT.NONE);
 		tabPatternParts.setText("Parts");
 		tabPatternParts.setControl(editorPatternParts);
 
 		tabPatternMotionSequences = new TabItem(tabFolder, SWT.NONE);
-		editorPatternMotionSequences = new EsxCompositePatternMotionSequences(this, tabFolder, SWT.NONE);
+		editorPatternMotionSequences = new EsxCompositePatternMotionSequences(
+				this, tabFolder, SWT.NONE);
 		tabPatternMotionSequences.setText("Motion Sequences");
 		tabPatternMotionSequences.setControl(editorPatternMotionSequences);
-		
+
 		// Only display info for one tab at a time
 		editorPattern.isActive = true;
 		tabFolder.addSelectionListener(new EsxTabSelectionListener() {
@@ -130,8 +133,8 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 			}
 
 		});
-		
-		sashForm.setWeights(new int[] {1, 1});
+
+		sashForm.setWeights(new int[] { 1, 1 });
 	}
 
 	/**
@@ -182,54 +185,53 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 		}
 
 		// Setup this.tableViewer ContentProvider
-		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
+		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(
+				this.getAdapterFactory()) {
 
 			@Override
 			public Object[] getElements(Object object) {
-				return ((EsxFile)object).getPatterns().toArray();
+				return ((EsxFile) object).getPatterns().toArray();
 			}
 
 			@Override
 			public void notifyChanged(Notification notification) {
 				super.notifyChanged(new ViewerNotification(notification));
 			}
-			
+
 		});
 
 		// Label Provider		
-		this.tableViewer.setLabelProvider(new TableViewerColorProvider(
-			this.getAdapterFactory(),
-			this.tableViewer,
-			EsxPreferenceStore.getPatternsBackgroundColorWhenNotEmpty(),
-			EsxPreferenceStore.getPatternsBackgroundColorWhenEmpty(),
-			EsxPreferenceStore.getPatternsForegroundColorWhenNotEmpty(),
-			EsxPreferenceStore.getPatternsForegroundColorWhenEmpty()
-		));
+		this.tableViewer.setLabelProvider(new TableViewerColorProvider(this
+				.getAdapterFactory(), this.tableViewer, EsxPreferenceStore
+				.getPatternsBackgroundColorWhenNotEmpty(), EsxPreferenceStore
+				.getPatternsBackgroundColorWhenEmpty(), EsxPreferenceStore
+				.getPatternsForegroundColorWhenNotEmpty(), EsxPreferenceStore
+				.getPatternsForegroundColorWhenEmpty()));
 
 		// Sync the scroll speed with our preference
 		tableViewerScrollSpeedListener = this.syncScrollSpeedWithPreference(
-			this.tableViewer,
-			tableViewerScrollSpeedListener,
-			EsxPreferenceStore.getPatternsScrollSpeed(),
-			EsxPreferenceStore.getPatternsUseScrollSpeed()
-		);
+				this.tableViewer, tableViewerScrollSpeedListener,
+				EsxPreferenceStore.getPatternsScrollSpeed(),
+				EsxPreferenceStore.getPatternsUseScrollSpeed());
 
 		// listen for preference change events
-		PlatformUI.getPreferenceStore().addPropertyChangeListener((IPropertyChangeListener) this);
+		PlatformUI.getPreferenceStore().addPropertyChangeListener(
+				(IPropertyChangeListener) this);
 
 		// Setup Context Menu
-	    createContextMenuFor(this.tableViewer, EsxEditorPartPatterns.ID_PATTERN_VIEWER);
+		createContextMenuFor(this.tableViewer,
+				EsxEditorPartPatterns.ID_PATTERN_VIEWER);
 
-	    // DnD
+		// DnD
 		this.addPatternDragAndDropSupport(this.tableViewer);
 
-	    // Selection Provider For EsxEditor
-	    getEditorSite().setSelectionProvider(this.tableViewer);
+		// Selection Provider For EsxEditor
+		getEditorSite().setSelectionProvider(this.tableViewer);
 
 		// listen for selection events
-	    getSite().getPage().addSelectionListener((ISelectionListener) this);
+		getSite().getPage().addSelectionListener((ISelectionListener) this);
 	}
-	
+
 	private void setAllInputs() {
 		this.editorPattern.setInput(selectedPatterns);
 		this.editorPatternFx.setInput(selectedPatterns);
@@ -242,12 +244,12 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 	 */
 	@Override
 	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-		if (parentEditor.getActivePage()==EsxEditorPartPatterns.PAGE_INDEX &&
-				selection instanceof IStructuredSelection) {
+		if (parentEditor.getActivePage() == EsxEditorPartPatterns.PAGE_INDEX
+				&& selection instanceof IStructuredSelection) {
 			Object[] objects = ((IStructuredSelection) selection).toArray();
 			selectedPatterns = new ArrayList<Pattern>();
 			for (Object obj : objects) {
-				if(obj instanceof Pattern) {
+				if (obj instanceof Pattern) {
 					selectedPatterns.add((Pattern) obj);
 				}
 			}
@@ -263,28 +265,36 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 		super.propertyChange(event);
 
 		// Scroll Speed Changes
-		if(event.getProperty().equals(EsxPreferenceNames.PATTERNS_SCROLL_SPEED) ||
-			event.getProperty().equals(EsxPreferenceNames.PATTERNS_USE_SCROLL_SPEED)) {
-			tableViewerScrollSpeedListener = this.syncScrollSpeedWithPreference(
-				this.tableViewer,
-				tableViewerScrollSpeedListener,
-				EsxPreferenceStore.getPatternsScrollSpeed(),
-				EsxPreferenceStore.getPatternsUseScrollSpeed()
-			);
+		if (event.getProperty()
+				.equals(EsxPreferenceNames.PATTERNS_SCROLL_SPEED)
+				|| event.getProperty().equals(
+						EsxPreferenceNames.PATTERNS_USE_SCROLL_SPEED)) {
+			tableViewerScrollSpeedListener = this
+					.syncScrollSpeedWithPreference(this.tableViewer,
+							tableViewerScrollSpeedListener,
+							EsxPreferenceStore.getPatternsScrollSpeed(),
+							EsxPreferenceStore.getPatternsUseScrollSpeed());
 			this.tableViewer.refresh();
 		}
-		
+
 		// Color Changes
-		if(event.getProperty().equals(EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_NOT_EMPTY) ||
-				event.getProperty().equals(EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_EMPTY) ||
-				event.getProperty().equals(EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_NOT_EMPTY) ||
-				event.getProperty().equals(EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_EMPTY)) {
-			((TableViewerColorProvider)this.tableViewer.getLabelProvider()).setAllColors(
-				EsxPreferenceStore.getPatternsBackgroundColorWhenNotEmpty(),
-				EsxPreferenceStore.getPatternsBackgroundColorWhenEmpty(),
-				EsxPreferenceStore.getPatternsForegroundColorWhenNotEmpty(),
-				EsxPreferenceStore.getPatternsForegroundColorWhenEmpty()
-			);
+		if (event.getProperty().equals(
+				EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_NOT_EMPTY)
+				|| event.getProperty()
+						.equals(EsxPreferenceNames.PATTERNS_BACKGROUND_COLOR_WHEN_EMPTY)
+				|| event.getProperty()
+						.equals(EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_NOT_EMPTY)
+				|| event.getProperty()
+						.equals(EsxPreferenceNames.PATTERNS_FOREGROUND_COLOR_WHEN_EMPTY)) {
+			((TableViewerColorProvider) this.tableViewer.getLabelProvider())
+					.setAllColors(EsxPreferenceStore
+							.getPatternsBackgroundColorWhenNotEmpty(),
+							EsxPreferenceStore
+									.getPatternsBackgroundColorWhenEmpty(),
+							EsxPreferenceStore
+									.getPatternsForegroundColorWhenNotEmpty(),
+							EsxPreferenceStore
+									.getPatternsForegroundColorWhenEmpty());
 			this.tableViewer.refresh();
 		}
 	}
@@ -297,7 +307,8 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 		super.dispose();
 
 		// Remove Listeners added in createPartControl()
-		PlatformUI.getPreferenceStore().removePropertyChangeListener((IPropertyChangeListener) this);
+		PlatformUI.getPreferenceStore().removePropertyChangeListener(
+				(IPropertyChangeListener) this);
 	}
 
 	/* (non-Javadoc)
@@ -313,7 +324,7 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 	 */
 	@Override
 	public void setInput(Object input) {
-		if(input instanceof EsxFile) {
+		if (input instanceof EsxFile) {
 			this.tableViewer.setInput(input);
 			this.refresh();
 		}
@@ -323,7 +334,8 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 	 * 
 	 */
 	public void refresh() {
-		if(this.parentEditor.getActivePage()!=EsxEditorPartPatterns.PAGE_INDEX) return;
+		if (this.parentEditor.getActivePage() != EsxEditorPartPatterns.PAGE_INDEX)
+			return;
 
 		this.tableViewer.refresh();
 		this.editorPattern.refresh();
@@ -338,9 +350,10 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 	private void addPatternDragAndDropSupport(StructuredViewer viewer) {
 		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
 		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance() };
-		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(viewer));
-		viewer.addDropSupport(dndOperations, transfers, new EditingDomainViewerDropAdapter(getEditingDomain(), viewer));
+		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(
+				viewer));
+		viewer.addDropSupport(dndOperations, transfers,
+				new EditingDomainViewerDropAdapter(getEditingDomain(), viewer));
 	}
-	
-	
+
 }

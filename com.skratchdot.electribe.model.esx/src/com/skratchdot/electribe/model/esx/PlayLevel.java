@@ -83,11 +83,8 @@ public enum PlayLevel implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final PlayLevel[] VALUES_ARRAY =
-		new PlayLevel[] {
-			DB_0,
-			DB_1,
-		};
+	private static final PlayLevel[] VALUES_ARRAY = new PlayLevel[] { DB_0,
+			DB_1, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Play Level</b></em>' enumerators.
@@ -95,7 +92,8 @@ public enum PlayLevel implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<PlayLevel> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<PlayLevel> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Play Level</b></em>' literal with the specified literal value.
@@ -137,8 +135,10 @@ public enum PlayLevel implements Enumerator {
 	 */
 	public static PlayLevel get(int value) {
 		switch (value) {
-			case DB_0_VALUE: return DB_0;
-			case DB_1_VALUE: return DB_1;
+		case DB_0_VALUE:
+			return DB_0;
+		case DB_1_VALUE:
+			return DB_1;
 		}
 		return null;
 	}
@@ -182,7 +182,7 @@ public enum PlayLevel implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -191,7 +191,7 @@ public enum PlayLevel implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -200,7 +200,7 @@ public enum PlayLevel implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -213,5 +213,5 @@ public enum PlayLevel implements Enumerator {
 	public String toString() {
 		return literal;
 	}
-	
+
 } //PlayLevel

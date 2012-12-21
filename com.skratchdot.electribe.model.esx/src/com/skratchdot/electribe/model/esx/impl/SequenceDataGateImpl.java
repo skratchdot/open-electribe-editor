@@ -34,7 +34,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * @generated
  */
-public class SequenceDataGateImpl extends EObjectImpl implements SequenceDataGate {
+public class SequenceDataGateImpl extends EObjectImpl implements
+		SequenceDataGate {
 	/**
 	 * The default value of the '{@link #getSequenceDataGate() <em>Sequence Data Gate</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -92,7 +93,9 @@ public class SequenceDataGateImpl extends EObjectImpl implements SequenceDataGat
 		byte[] oldSequenceDataGate = sequenceDataGate;
 		sequenceDataGate = newSequenceDataGate;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE, oldSequenceDataGate, sequenceDataGate));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE,
+					oldSequenceDataGate, sequenceDataGate));
 	}
 
 	/**
@@ -103,8 +106,8 @@ public class SequenceDataGateImpl extends EObjectImpl implements SequenceDataGat
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
-				return getSequenceDataGate();
+		case EsxPackage.SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
+			return getSequenceDataGate();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -117,9 +120,9 @@ public class SequenceDataGateImpl extends EObjectImpl implements SequenceDataGat
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
-				setSequenceDataGate((byte[])newValue);
-				return;
+		case EsxPackage.SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
+			setSequenceDataGate((byte[]) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -132,9 +135,9 @@ public class SequenceDataGateImpl extends EObjectImpl implements SequenceDataGat
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
-				setSequenceDataGate(SEQUENCE_DATA_GATE_EDEFAULT);
-				return;
+		case EsxPackage.SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
+			setSequenceDataGate(SEQUENCE_DATA_GATE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -147,8 +150,9 @@ public class SequenceDataGateImpl extends EObjectImpl implements SequenceDataGat
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
-				return SEQUENCE_DATA_GATE_EDEFAULT == null ? sequenceDataGate != null : !SEQUENCE_DATA_GATE_EDEFAULT.equals(sequenceDataGate);
+		case EsxPackage.SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE:
+			return SEQUENCE_DATA_GATE_EDEFAULT == null ? sequenceDataGate != null
+					: !SEQUENCE_DATA_GATE_EDEFAULT.equals(sequenceDataGate);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -160,7 +164,8 @@ public class SequenceDataGateImpl extends EObjectImpl implements SequenceDataGat
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (sequenceDataGate: ");

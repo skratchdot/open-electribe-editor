@@ -64,7 +64,7 @@ public class PartDrumTest extends PartTest {
 	 */
 	@Override
 	protected PartDrum getFixture() {
-		return (PartDrum)fixture;
+		return (PartDrum) fixture;
 	}
 
 	/**

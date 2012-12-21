@@ -43,7 +43,8 @@ public class EsxEditorDropTargetAdapter extends DropTargetAdapter {
 
 		// Handle DROP_DEFAULT events
 		if (event.detail == DND.DROP_DEFAULT) {
-			event.detail = (event.operations & DND.DROP_COPY) != 0 ? DND.DROP_COPY : DND.DROP_NONE;
+			event.detail = (event.operations & DND.DROP_COPY) != 0 ? DND.DROP_COPY
+					: DND.DROP_NONE;
 		}
 
 		// Allow for dropping of Files
@@ -65,37 +66,38 @@ public class EsxEditorDropTargetAdapter extends DropTargetAdapter {
 		super.drop(event);
 
 		if (FileTransfer.getInstance().isSupportedType(event.currentDataType)) {
-			String[] fileNames = (String[])event.data;
+			String[] fileNames = (String[]) event.data;
 			ArrayList<String> esxFiles = new ArrayList<String>();
 			ArrayList<String> audioFiles = new ArrayList<String>();
 
 			// Build out arrays
-			for(int i=0; i<fileNames.length; i++) {
+			for (int i = 0; i < fileNames.length; i++) {
 				File file = new File(fileNames[i]);
-				if(file.isFile()) {
+				if (file.isFile()) {
 					// Handle Esx Files
-	            	if(file.getAbsolutePath().toLowerCase().endsWith(".esx")) {
-	            		esxFiles.add(fileNames[i]);
-	            		//handleEsxFile(fileNames[i]);
-	            	}
-	            	// Handle Audio Files
-	            	else if(AudioUtil.isAudioFile(file)) {
-	            		audioFiles.add(fileNames[i]);
-	            		//handleAudioFile(fileNames[i]);
-	            	}
+					if (file.getAbsolutePath().toLowerCase().endsWith(".esx")) {
+						esxFiles.add(fileNames[i]);
+						//handleEsxFile(fileNames[i]);
+					}
+					// Handle Audio Files
+					else if (AudioUtil.isAudioFile(file)) {
+						audioFiles.add(fileNames[i]);
+						//handleAudioFile(fileNames[i]);
+					}
 				}
-            }
+			}
 
 			// Handle esx files first
-			for(int i=0; i<esxFiles.size(); i++) {
+			for (int i = 0; i < esxFiles.size(); i++) {
 				handleEsxFile(esxFiles.get(i));
 			}
 
 			//  Handle audio files
-			if(audioFiles.size() > 0) {
-				handleAudioFiles((String[])audioFiles.toArray(new String[audioFiles.size()]));
+			if (audioFiles.size() > 0) {
+				handleAudioFiles((String[]) audioFiles
+						.toArray(new String[audioFiles.size()]));
 			}
-            
+
 		}
 
 	}
@@ -107,9 +109,8 @@ public class EsxEditorDropTargetAdapter extends DropTargetAdapter {
 	 * @param fileName
 	 */
 	private void handleEsxFile(String fileName) {
-		EsxEditorUtil.openEditor(
-			PlatformUI.getWorkbench(),
-			URI.createFileURI(fileName));
+		EsxEditorUtil.openEditor(PlatformUI.getWorkbench(),
+				URI.createFileURI(fileName));
 	}
 
 	/**
@@ -121,30 +122,34 @@ public class EsxEditorDropTargetAdapter extends DropTargetAdapter {
 	 * @param fileNames
 	 */
 	private void handleAudioFiles(String[] fileNames) {
-		IEditorPart editor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+		IEditorPart editor = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
 
 		// If there's not an active editor, display a message to the user and return
-		if(editor == null) {
-			MessageDialog.openInformation(
-				PlatformUI.getWorkbench().getDisplay().getActiveShell(),
-				"Dragging Audio Files...",
-				"There is not an open .esx file to import samples into.\n\n" +
-				"Before dragging audio files, please open an existing .esx file, " +
-				"or create a new one, then try dragging your audio files again."
-			);
+		if (editor == null) {
+			MessageDialog
+					.openInformation(
+							PlatformUI.getWorkbench().getDisplay()
+									.getActiveShell(),
+							"Dragging Audio Files...",
+							"There is not an open .esx file to import samples into.\n\n"
+									+ "Before dragging audio files, please open an existing .esx file, "
+									+ "or create a new one, then try dragging your audio files again.");
 			return;
 		}
 
 		// Show the samples tab if we are not already on it, or not on the info tab
-		if(editor instanceof EsxEditor) {
+		if (editor instanceof EsxEditor) {
 			EsxEditor esxEditor = ((EsxEditor) editor);
-			if(esxEditor.getActivePage()!=EsxEditorPartSamples.PAGE_INDEX && esxEditor.getActivePage()!=EsxEditorPartInfo.PAGE_INDEX) {
+			if (esxEditor.getActivePage() != EsxEditorPartSamples.PAGE_INDEX
+					&& esxEditor.getActivePage() != EsxEditorPartInfo.PAGE_INDEX) {
 				esxEditor.setActivePage(EsxEditorPartSamples.PAGE_INDEX);
 			}
 		}
 
 		// Import audio files
-		ImportHandler.importAudioFiles(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), fileNames);
+		ImportHandler.importAudioFiles(PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow(), fileNames);
 	}
-	
+
 }

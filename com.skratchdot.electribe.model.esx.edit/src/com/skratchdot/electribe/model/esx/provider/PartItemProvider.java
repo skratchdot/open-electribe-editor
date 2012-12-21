@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -46,10 +45,10 @@ import com.skratchdot.electribe.model.esx.PartWithSample;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PartItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class PartItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -85,19 +84,15 @@ public class PartItemProvider
 	 * @generated
 	 */
 	protected void addLabelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Part_label_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Part_label_feature", "_UI_Part_type"),
-				 EsxPackage.Literals.PART__LABEL,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Part_label_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Part_label_feature", "_UI_Part_type"),
+				EsxPackage.Literals.PART__LABEL, false, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -107,19 +102,15 @@ public class PartItemProvider
 	 * @generated
 	 */
 	protected void addLevelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Part_level_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Part_level_feature", "_UI_Part_type"),
-				 EsxPackage.Literals.PART__LEVEL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Part_level_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Part_level_feature", "_UI_Part_type"),
+				EsxPackage.Literals.PART__LEVEL, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -129,19 +120,18 @@ public class PartItemProvider
 	 * @generated
 	 */
 	protected void addMotionSequenceStatusPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Part_motionSequenceStatus_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Part_motionSequenceStatus_feature", "_UI_Part_type"),
-				 EsxPackage.Literals.PART__MOTION_SEQUENCE_STATUS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_Part_motionSequenceStatus_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_Part_motionSequenceStatus_feature",
+								"_UI_Part_type"),
+						EsxPackage.Literals.PART__MOTION_SEQUENCE_STATUS, true,
+						false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -152,7 +142,8 @@ public class PartItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Part"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/Part"));
 	}
 
 	/**
@@ -163,200 +154,185 @@ public class PartItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Part)object).getLabel();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Part_type") :
-			getString("_UI_Part_type") + " " + label;
+		String label = ((Part) object).getLabel();
+		return label == null || label.length() == 0 ? getString("_UI_Part_type")
+				: getString("_UI_Part_type") + " " + label;
 	}
 
 	@Override
 	public String getColumnText(Object object, int columnIndex) {
-		switch(columnIndex) {
-			// Part Label
-			case 0: return ((Part) object).getLabel();
+		switch (columnIndex) {
+		// Part Label
+		case 0:
+			return ((Part) object).getLabel();
 			// Level
-			case 1: return Byte.toString(((Part) object).getLevel());
+		case 1:
+			return Byte.toString(((Part) object).getLevel());
 			// Motion Sequence Status
-			case 2: {
-				MotionSequenceStatus motionSequenceStatus = MotionSequenceStatus.get(((Part) object).getMotionSequenceStatus());
-				return motionSequenceStatus==null?"unknown":motionSequenceStatus.getLiteral();
+		case 2: {
+			MotionSequenceStatus motionSequenceStatus = MotionSequenceStatus
+					.get(((Part) object).getMotionSequenceStatus());
+			return motionSequenceStatus == null ? "unknown"
+					: motionSequenceStatus.getLiteral();
+		}
+		// PartWithSample: Sample Label
+		case 3: {
+			if (object instanceof PartWithSample) {
+				return ((PartWithSample) object).getSampleLabel();
+			} else {
+				return "";
 			}
-			// PartWithSample: Sample Label
-			case 3: {
-				if(object instanceof PartWithSample) {
-					return ((PartWithSample) object).getSampleLabel();
-				}
-				else {
-					return "";
-				}
+		}
+		// PartWithPitch: Pitch
+		// PartKeyboard: Glide
+		case 4: {
+			if (object instanceof PartWithPitch) {
+				return Byte.toString(((PartWithPitch) object).getPitch());
+			} else if (object instanceof PartKeyboard) {
+				return Byte.toString(((PartKeyboard) object).getGlide());
+			} else {
+				return "";
 			}
-			// PartWithPitch: Pitch
-			// PartKeyboard: Glide
-			case 4: {
-				if(object instanceof PartWithPitch) {
-					return Byte.toString(((PartWithPitch) object).getPitch());
-				}
-				else if(object instanceof PartKeyboard) {
-					return Byte.toString(((PartKeyboard) object).getGlide());
-				}
-				else {
-					return "";
-				}
+		}
+		// PartWithCommon: Pan
+		case 5: {
+			if (object instanceof PartWithCommon) {
+				return Byte.toString(((PartWithCommon) object).getPan());
+			} else {
+				return "";
 			}
-			// PartWithCommon: Pan
-			case 5: {
-				if(object instanceof PartWithCommon) {
-					return Byte.toString(((PartWithCommon) object).getPan());
-				}
-				else {
-					return "";
-				}
+		}
+		// PartWithCommon: Eg Time
+		case 6: {
+			if (object instanceof PartWithCommon) {
+				return Byte.toString(((PartWithCommon) object).getEgTime());
+			} else {
+				return "";
 			}
-			// PartWithCommon: Eg Time
-			case 6: {
-				if(object instanceof PartWithCommon) {
-					return Byte.toString(((PartWithCommon) object).getEgTime());
-				}
-				else {
-					return "";
-				}
-			}			
-			// PartWithSample: Start Point
-			case 7: {
-				if(object instanceof PartWithSample) {
-					return Byte.toString(((PartWithSample) object).getStartPoint());
-				}
-				else {
-					return "";
-				}
+		}
+		// PartWithSample: Start Point
+		case 7: {
+			if (object instanceof PartWithSample) {
+				return Byte.toString(((PartWithSample) object).getStartPoint());
+			} else {
+				return "";
 			}
-			// PartWithCommon: Amp Eg
-			case 8: {
-				if(object instanceof PartWithCommon) {
-					return ((PartWithCommon) object).getAmpEg().getLiteral();
-				}
-				else {
-					return "";
-				}
+		}
+		// PartWithCommon: Amp Eg
+		case 8: {
+			if (object instanceof PartWithCommon) {
+				return ((PartWithCommon) object).getAmpEg().getLiteral();
+			} else {
+				return "";
 			}
-			// PartWithCommon: Roll
-			case 9: {
-				if(object instanceof PartWithCommon) {
-					return ((PartWithCommon) object).getRoll().getLiteral();
-				}
-				else {
-					return "";
-				}
+		}
+		// PartWithCommon: Roll
+		case 9: {
+			if (object instanceof PartWithCommon) {
+				return ((PartWithCommon) object).getRoll().getLiteral();
+			} else {
+				return "";
 			}
-			// PartWithSample: Reverse
-			case 10: {
-				if(object instanceof PartWithSample) {
-					return ((PartWithSample) object).getReverse().getLiteral();
-				}
-				else {
-					return "";
-				}
+		}
+		// PartWithSample: Reverse
+		case 10: {
+			if (object instanceof PartWithSample) {
+				return ((PartWithSample) object).getReverse().getLiteral();
+			} else {
+				return "";
 			}
-			// PartWithCommon: FX Select
-			case 11: {
-				if(object instanceof PartWithCommon) {
-					return ((PartWithCommon) object).getFxSelect().getLiteral();
-				}
-				else {
-					return "";
-				}
+		}
+		// PartWithCommon: FX Select
+		case 11: {
+			if (object instanceof PartWithCommon) {
+				return ((PartWithCommon) object).getFxSelect().getLiteral();
+			} else {
+				return "";
 			}
-			// PartWithCommon: FX Send
-			case 12: {
-				if(object instanceof PartWithCommon) {
-					return ((PartWithCommon) object).getFxSend().getLiteral();
-				}
-				else {
-					return "";
-				}
+		}
+		// PartWithCommon: FX Send
+		case 12: {
+			if (object instanceof PartWithCommon) {
+				return ((PartWithCommon) object).getFxSend().getLiteral();
+			} else {
+				return "";
 			}
-			// PartWithCommon: Mod Type
-			case 13: {
-				if(object instanceof PartWithCommon) {
-					return ((PartWithCommon) object).getModType().getLiteral();
-				}
-				else {
-					return "";
-				}
+		}
+		// PartWithCommon: Mod Type
+		case 13: {
+			if (object instanceof PartWithCommon) {
+				return ((PartWithCommon) object).getModType().getLiteral();
+			} else {
+				return "";
 			}
-			// PartWithCommon: Mod Dest
-			case 14: {
-				if(object instanceof PartWithCommon) {
-					return ((PartWithCommon) object).getModDest().getLiteral();
-				}
-				else {
-					return "";
-				}
+		}
+		// PartWithCommon: Mod Dest
+		case 14: {
+			if (object instanceof PartWithCommon) {
+				return ((PartWithCommon) object).getModDest().getLiteral();
+			} else {
+				return "";
 			}
-			// PartWithCommon: Mod Speed
-			case 15: {
-				if(object instanceof PartWithCommon) {
-					return Byte.toString(((PartWithCommon) object).getModSpeed());
-				}
-				else {
-					return "";
-				}
+		}
+		// PartWithCommon: Mod Speed
+		case 15: {
+			if (object instanceof PartWithCommon) {
+				return Byte.toString(((PartWithCommon) object).getModSpeed());
+			} else {
+				return "";
 			}
-			// PartWithCommon: Mod Depth
-			case 16: {
-				if(object instanceof PartWithCommon) {
-					return Byte.toString(((PartWithCommon) object).getModDepth());
-				}
-				else {
-					return "";
-				}
+		}
+		// PartWithCommon: Mod Depth
+		case 16: {
+			if (object instanceof PartWithCommon) {
+				return Byte.toString(((PartWithCommon) object).getModDepth());
+			} else {
+				return "";
 			}
-			// PartWithCommon: BPM Sync
-			case 17: {
-				if(object instanceof PartWithCommon) {
-					return ((PartWithCommon) object).getBpmSync().getLiteral();
-				}
-				else {
-					return "";
-				}
+		}
+		// PartWithCommon: BPM Sync
+		case 17: {
+			if (object instanceof PartWithCommon) {
+				return ((PartWithCommon) object).getBpmSync().getLiteral();
+			} else {
+				return "";
 			}
-			// PartWithCommon: Cutoff
-			case 18: {
-				if(object instanceof PartWithCommon) {
-					return Byte.toString(((PartWithCommon) object).getCutoff());
-				}
-				else {
-					return "";
-				}
+		}
+		// PartWithCommon: Cutoff
+		case 18: {
+			if (object instanceof PartWithCommon) {
+				return Byte.toString(((PartWithCommon) object).getCutoff());
+			} else {
+				return "";
 			}
-			// PartWithCommon: Resonance
-			case 19: {
-				if(object instanceof PartWithCommon) {
-					return Byte.toString(((PartWithCommon) object).getResonance());
-				}
-				else {
-					return "";
-				}
+		}
+		// PartWithCommon: Resonance
+		case 19: {
+			if (object instanceof PartWithCommon) {
+				return Byte.toString(((PartWithCommon) object).getResonance());
+			} else {
+				return "";
 			}
-			// PartWithCommon: Eg Intensity
-			case 20: {
-				if(object instanceof PartWithCommon) {
-					return Byte.toString(((PartWithCommon) object).getEgIntensity());
-				}
-				else {
-					return "";
-				}
+		}
+		// PartWithCommon: Eg Intensity
+		case 20: {
+			if (object instanceof PartWithCommon) {
+				return Byte
+						.toString(((PartWithCommon) object).getEgIntensity());
+			} else {
+				return "";
 			}
-			// PartWithCommon: Filter Type
-			case 21: {
-				if(object instanceof PartWithCommon) {
-					return ((PartWithCommon) object).getFilterType().getLiteral();
-				}
-				else {
-					return "";
-				}
+		}
+		// PartWithCommon: Filter Type
+		case 21: {
+			if (object instanceof PartWithCommon) {
+				return ((PartWithCommon) object).getFilterType().getLiteral();
+			} else {
+				return "";
 			}
-			default: return "";
+		}
+		default:
+			return "";
 		}
 	}
 
@@ -372,11 +348,12 @@ public class PartItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Part.class)) {
-			case EsxPackage.PART__LABEL:
-			case EsxPackage.PART__LEVEL:
-			case EsxPackage.PART__MOTION_SEQUENCE_STATUS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case EsxPackage.PART__LABEL:
+		case EsxPackage.PART__LEVEL:
+		case EsxPackage.PART__MOTION_SEQUENCE_STATUS:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -389,7 +366,8 @@ public class PartItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

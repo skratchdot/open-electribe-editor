@@ -97,7 +97,8 @@ public class SampleTuneImpl extends EObjectImpl implements SampleTune {
 		float oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SAMPLE_TUNE__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SAMPLE_TUNE__VALUE, oldValue, value));
 	}
 
 	/**
@@ -114,10 +115,11 @@ public class SampleTuneImpl extends EObjectImpl implements SampleTune {
 	 * @generated NOT
 	 */
 	public float calculateSampleTuneFromSampleRate(int sampleRate) {
-		float x = ((float)sampleRate)/44100;
+		float x = ((float) sampleRate) / 44100;
 		float y = (float) Math.log(x);
-		float z = (float) (y/Math.log(2));
-		BigDecimal bd = new BigDecimal(12*z).setScale(2, RoundingMode.HALF_EVEN);
+		float z = (float) (y / Math.log(2));
+		BigDecimal bd = new BigDecimal(12 * z).setScale(2,
+				RoundingMode.HALF_EVEN);
 		return bd.floatValue();
 	}
 
@@ -128,12 +130,13 @@ public class SampleTuneImpl extends EObjectImpl implements SampleTune {
 	 */
 	public short getShortFromCurrentValue() {
 		float sampleTuneAbsolute = Math.abs(this.getValue());
-		int sampleTuneNegative = this.getValue()<0?1:0;
+		int sampleTuneNegative = this.getValue() < 0 ? 1 : 0;
 		int sampleTuneWhole = (int) (sampleTuneAbsolute / 1);
-		int sampleTuneDecimal = (int) Math.round(((sampleTuneAbsolute - sampleTuneWhole) * 100f));
+		int sampleTuneDecimal = (int) Math
+				.round(((sampleTuneAbsolute - sampleTuneWhole) * 100f));
 
 		// valid sampleTuneDecimal values are between 0-99
-		if(sampleTuneDecimal>99 || sampleTuneDecimal<0) {
+		if (sampleTuneDecimal > 99 || sampleTuneDecimal < 0) {
 			sampleTuneDecimal = 0;
 		}
 
@@ -155,19 +158,20 @@ public class SampleTuneImpl extends EObjectImpl implements SampleTune {
 		byte sampleTuneDecimal = (byte) EsxUtil.unpackInt(packedShort, 8, 0);
 
 		// valid sampleTuneDecimal values are between 0-99
-		if(sampleTuneDecimal>99 || sampleTuneDecimal<0) {
+		if (sampleTuneDecimal > 99 || sampleTuneDecimal < 0) {
 			sampleTuneDecimal = 0;
 		}
 
 		// Now construct the float value as a string
-		String sampleTuneAsString = "";		
-		if(sampleTuneNegative==1 && sampleTuneWhole>0) {
+		String sampleTuneAsString = "";
+		if (sampleTuneNegative == 1 && sampleTuneWhole > 0) {
 			sampleTuneAsString = "-";
 		}
-		sampleTuneAsString = sampleTuneAsString +
-			sampleTuneWhole +
-			"." +
-			StringUtils.leftPad(Integer.toString(sampleTuneDecimal), 2, "0");
+		sampleTuneAsString = sampleTuneAsString
+				+ sampleTuneWhole
+				+ "."
+				+ StringUtils.leftPad(Integer.toString(sampleTuneDecimal), 2,
+						"0");
 
 		this.setValue(Float.parseFloat(sampleTuneAsString));
 	}
@@ -180,8 +184,8 @@ public class SampleTuneImpl extends EObjectImpl implements SampleTune {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.SAMPLE_TUNE__VALUE:
-				return getValue();
+		case EsxPackage.SAMPLE_TUNE__VALUE:
+			return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -194,9 +198,9 @@ public class SampleTuneImpl extends EObjectImpl implements SampleTune {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.SAMPLE_TUNE__VALUE:
-				setValue((Float)newValue);
-				return;
+		case EsxPackage.SAMPLE_TUNE__VALUE:
+			setValue((Float) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -209,9 +213,9 @@ public class SampleTuneImpl extends EObjectImpl implements SampleTune {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SAMPLE_TUNE__VALUE:
-				setValue(VALUE_EDEFAULT);
-				return;
+		case EsxPackage.SAMPLE_TUNE__VALUE:
+			setValue(VALUE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -224,8 +228,8 @@ public class SampleTuneImpl extends EObjectImpl implements SampleTune {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SAMPLE_TUNE__VALUE:
-				return value != VALUE_EDEFAULT;
+		case EsxPackage.SAMPLE_TUNE__VALUE:
+			return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -237,7 +241,8 @@ public class SampleTuneImpl extends EObjectImpl implements SampleTune {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: ");

@@ -22,10 +22,12 @@ public class TreeViewLabelProvider extends LabelProvider {
 
 	@Override
 	public Image getImage(Object element) {
-		if( ((File) element).isDirectory() )
-			return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
-		else if( ((File) element).isFile() )
-			return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FILE);
+		if (((File) element).isDirectory())
+			return PlatformUI.getWorkbench().getSharedImages()
+					.getImage(ISharedImages.IMG_OBJ_FOLDER);
+		else if (((File) element).isFile())
+			return PlatformUI.getWorkbench().getSharedImages()
+					.getImage(ISharedImages.IMG_OBJ_FILE);
 		else
 			return null;
 	}

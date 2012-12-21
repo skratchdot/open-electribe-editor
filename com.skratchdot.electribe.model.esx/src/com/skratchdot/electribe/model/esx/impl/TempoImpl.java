@@ -93,7 +93,8 @@ public class TempoImpl extends EObjectImpl implements Tempo {
 		float oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.TEMPO__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.TEMPO__VALUE, oldValue, value));
 	}
 
 	/**
@@ -121,13 +122,11 @@ public class TempoImpl extends EObjectImpl implements Tempo {
 		String tempoAsString = new DecimalFormat("0.#").format(value);
 		Float tempoAsFloat = new Float(tempoAsString);
 
-		if(tempoAsFloat < 20) {
+		if (tempoAsFloat < 20) {
 			value = new Float(20);
-		}
-		else if(tempoAsFloat > 300) {
+		} else if (tempoAsFloat > 300) {
 			value = new Float(300);
-		}
-		else {
+		} else {
 			value = tempoAsFloat;
 		}
 		return value;
@@ -144,12 +143,15 @@ public class TempoImpl extends EObjectImpl implements Tempo {
 		int tempoDecimal = EsxUtil.unpackInt(packedShort, 4, 0);
 
 		// valid tempoDecimal values are between 0-9
-		if(tempoDecimal>9 || tempoDecimal<0) tempoDecimal = 0;
+		if (tempoDecimal > 9 || tempoDecimal < 0)
+			tempoDecimal = 0;
 
 		// valid tempoWhole values are between 20-300
-		if(tempoWhole<20) tempoWhole = 20;
-		if(tempoWhole>300) tempoWhole = 300;
-		
+		if (tempoWhole < 20)
+			tempoWhole = 20;
+		if (tempoWhole > 300)
+			tempoWhole = 300;
+
 		// Now construct the float value as a string
 		String tempoAsString = "" + tempoWhole + "." + tempoDecimal + "";
 		Float tempoAsFloat = new Float(tempoAsString);
@@ -164,8 +166,8 @@ public class TempoImpl extends EObjectImpl implements Tempo {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.TEMPO__VALUE:
-				return getValue();
+		case EsxPackage.TEMPO__VALUE:
+			return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -178,9 +180,9 @@ public class TempoImpl extends EObjectImpl implements Tempo {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.TEMPO__VALUE:
-				setValue((Float)newValue);
-				return;
+		case EsxPackage.TEMPO__VALUE:
+			setValue((Float) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -193,9 +195,9 @@ public class TempoImpl extends EObjectImpl implements Tempo {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.TEMPO__VALUE:
-				setValue(VALUE_EDEFAULT);
-				return;
+		case EsxPackage.TEMPO__VALUE:
+			setValue(VALUE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -208,8 +210,8 @@ public class TempoImpl extends EObjectImpl implements Tempo {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.TEMPO__VALUE:
-				return value != VALUE_EDEFAULT;
+		case EsxPackage.TEMPO__VALUE:
+			return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -221,7 +223,8 @@ public class TempoImpl extends EObjectImpl implements Tempo {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: ");

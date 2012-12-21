@@ -62,29 +62,43 @@ public class EsxCompositeSongPatterns extends EsxComposite {
 	 * @param parentComposite
 	 * @param style
 	 */
-	public EsxCompositeSongPatterns(EsxEditorPart parentPart, Composite parentComposite, int style) {
+	public EsxCompositeSongPatterns(EsxEditorPart parentPart,
+			Composite parentComposite, int style) {
 		super(parentPart, parentComposite, style);
 		this.parentPart = parentPart;
 
 		setLayout(new GridLayout(4, false));
 
-		textPatternNumber = this.createGridData2ColumnTextLabel(this, "Pattern Number");
-		comboPatternNumber = this.createGridData2ColumnComboInput(this, "Pattern Number", this.getPatternLabelStrings(), new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(selectedSongPatterns, EsxPackage.Literals.SONG_PATTERN__PATTERN_POINTER, (short)comboPatternNumber.getSelectionIndex(), false, -1);
-			}
-		});
+		textPatternNumber = this.createGridData2ColumnTextLabel(this,
+				"Pattern Number");
+		comboPatternNumber = this.createGridData2ColumnComboInput(this,
+				"Pattern Number", this.getPatternLabelStrings(),
+				new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(
+								selectedSongPatterns,
+								EsxPackage.Literals.SONG_PATTERN__PATTERN_POINTER,
+								(short) comboPatternNumber.getSelectionIndex(),
+								false, -1);
+					}
+				});
 
-		textNoteOffset = this.createGridData2ColumnTextLabel(this, "Note Offset");
-		inputNoteOffset = this.createGridData2ColumnTextInput(this, "Note Offset", new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setFeatureForSelectedItems(selectedSongPatterns, EsxPackage.Literals.SONG_PATTERN__NOTE_OFFSET, Byte.parseByte(inputNoteOffset.getText()), false, -1);
-			}
-		});
+		textNoteOffset = this.createGridData2ColumnTextLabel(this,
+				"Note Offset");
+		inputNoteOffset = this.createGridData2ColumnTextInput(this,
+				"Note Offset", new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						setFeatureForSelectedItems(selectedSongPatterns,
+								EsxPackage.Literals.SONG_PATTERN__NOTE_OFFSET,
+								Byte.parseByte(inputNoteOffset.getText()),
+								false, -1);
+					}
+				});
 
-		this.tableViewer = new TableViewer(this, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
+		this.tableViewer = new TableViewer(this, SWT.BORDER
+				| SWT.FULL_SELECTION | SWT.MULTI);
 		this.initTableViewer();
 	}
 
@@ -99,47 +113,52 @@ public class EsxCompositeSongPatterns extends EsxComposite {
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 4, 1));
 
 		// Create our columns
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Position", 60);
-		this.parentPart.addColumnToTableViewer(this.tableViewer, "Pattern Number", 120);
+		this.parentPart
+				.addColumnToTableViewer(this.tableViewer, "Position", 60);
+		this.parentPart.addColumnToTableViewer(this.tableViewer,
+				"Pattern Number", 120);
 		this.parentPart.addColumnToTableViewer(this.tableViewer, "Offset", 100);
 
 		// Setup this.tableViewer ContentProvider
-		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(this.getAdapterFactory()) {
+		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(
+				this.getAdapterFactory()) {
 			@Override
 			public Object[] getElements(Object object) {
 				return selectedSong.getSongPatterns().toArray();
 			}
+
 			@Override
 			public void notifyChanged(Notification notification) {
 				super.notifyChanged(new ViewerNotification(notification));
-			}			
+			}
 		});
 
 		// Label Provider		
-		this.tableViewer.setLabelProvider(new TableViewerColorProvider(
-			this.getAdapterFactory(),
-			this.tableViewer,
-			EsxPreferenceStore.getSongsBackgroundColorWhenNotEmpty(),
-			EsxPreferenceStore.getSongsBackgroundColorWhenEmpty(),
-			EsxPreferenceStore.getSongsForegroundColorWhenNotEmpty(),
-			EsxPreferenceStore.getSongsForegroundColorWhenEmpty()
-		));
+		this.tableViewer.setLabelProvider(new TableViewerColorProvider(this
+				.getAdapterFactory(), this.tableViewer, EsxPreferenceStore
+				.getSongsBackgroundColorWhenNotEmpty(), EsxPreferenceStore
+				.getSongsBackgroundColorWhenEmpty(), EsxPreferenceStore
+				.getSongsForegroundColorWhenNotEmpty(), EsxPreferenceStore
+				.getSongsForegroundColorWhenEmpty()));
 
-		this.tableViewer.addSelectionChangedListener(new ISelectionChangedListener() {
-			public void selectionChanged(SelectionChangedEvent event) {
-		        IStructuredSelection selection = (IStructuredSelection) event.getSelection();
+		this.tableViewer
+				.addSelectionChangedListener(new ISelectionChangedListener() {
+					public void selectionChanged(SelectionChangedEvent event) {
+						IStructuredSelection selection = (IStructuredSelection) event
+								.getSelection();
 
-		        Object[] objects = ((IStructuredSelection) selection).toArray();
-		        selectedSongPatterns = new ArrayList<SongPattern>();
-				for (Object obj : objects) {
-					if(obj instanceof SongPattern) {
-						selectedSongPatterns.add((SongPattern) obj);
+						Object[] objects = ((IStructuredSelection) selection)
+								.toArray();
+						selectedSongPatterns = new ArrayList<SongPattern>();
+						for (Object obj : objects) {
+							if (obj instanceof SongPattern) {
+								selectedSongPatterns.add((SongPattern) obj);
+							}
+						}
+						refresh();
+						refreshInputs();
 					}
-				}
-				refresh();
-				refreshInputs();
-			}
-		});
+				});
 	}
 
 	/* (non-Javadoc)
@@ -147,18 +166,18 @@ public class EsxCompositeSongPatterns extends EsxComposite {
 	 */
 	@Override
 	public void setInput(Object input) {
-		if(this.isActive==false) return;
+		if (this.isActive == false)
+			return;
 
-		if(input instanceof List<?>) {
-			if( ((List<?>) input).size()>1 ) {
+		if (input instanceof List<?>) {
+			if (((List<?>) input).size() > 1) {
 				this.selectedSong = null;
-			}
-			else {
+			} else {
 				boolean isIterating = true;
 				Iterator<?> it = ((List<?>) input).iterator();
-				while (it.hasNext() && isIterating==true) {
+				while (it.hasNext() && isIterating == true) {
 					Object obj = it.next();
-					if(obj instanceof Song) {
+					if (obj instanceof Song) {
 						this.selectedSong = (Song) obj;
 						isIterating = false;
 					}
@@ -176,12 +195,18 @@ public class EsxCompositeSongPatterns extends EsxComposite {
 	 */
 	@Override
 	public void refresh() {
-		if(this.isActive==false) return;
+		if (this.isActive == false)
+			return;
 
 		String multipleValueString = "<Multiple Values>";
 
-		this.textPatternNumber.setText(getMultiStringPatternLabels(this.selectedSongPatterns, EsxPackage.Literals.SONG_PATTERN__PATTERN_POINTER, multipleValueString));
-		this.textNoteOffset.setText(getMultiString(this.selectedSongPatterns, EsxPackage.Literals.SONG_PATTERN__NOTE_OFFSET, multipleValueString));
+		this.textPatternNumber.setText(getMultiStringPatternLabels(
+				this.selectedSongPatterns,
+				EsxPackage.Literals.SONG_PATTERN__PATTERN_POINTER,
+				multipleValueString));
+		this.textNoteOffset.setText(getMultiString(this.selectedSongPatterns,
+				EsxPackage.Literals.SONG_PATTERN__NOTE_OFFSET,
+				multipleValueString));
 	}
 
 	/* (non-Javadoc)
@@ -189,13 +214,19 @@ public class EsxCompositeSongPatterns extends EsxComposite {
 	 */
 	@Override
 	public void refreshInputs() {
-		if(this.isActive==false) return;
+		if (this.isActive == false)
+			return;
 
 		String multipleValueString = "";
 
 		this.comboPatternNumber.setItems(this.getPatternLabelStrings());
-		this.comboPatternNumber.setText(getMultiStringPatternLabels(this.selectedSongPatterns, EsxPackage.Literals.SONG_PATTERN__PATTERN_POINTER, multipleValueString));
-		this.inputNoteOffset.setText(getMultiString(this.selectedSongPatterns, EsxPackage.Literals.SONG_PATTERN__NOTE_OFFSET, multipleValueString));
+		this.comboPatternNumber.setText(getMultiStringPatternLabels(
+				this.selectedSongPatterns,
+				EsxPackage.Literals.SONG_PATTERN__PATTERN_POINTER,
+				multipleValueString));
+		this.inputNoteOffset.setText(getMultiString(this.selectedSongPatterns,
+				EsxPackage.Literals.SONG_PATTERN__NOTE_OFFSET,
+				multipleValueString));
 	}
 
 }

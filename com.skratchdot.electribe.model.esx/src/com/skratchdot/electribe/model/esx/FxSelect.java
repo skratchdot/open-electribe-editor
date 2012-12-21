@@ -108,12 +108,8 @@ public enum FxSelect implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final FxSelect[] VALUES_ARRAY =
-		new FxSelect[] {
-			FX1,
-			FX2,
-			FX3,
-		};
+	private static final FxSelect[] VALUES_ARRAY = new FxSelect[] { FX1, FX2,
+			FX3, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Fx Select</b></em>' enumerators.
@@ -121,7 +117,8 @@ public enum FxSelect implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<FxSelect> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<FxSelect> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Fx Select</b></em>' literal with the specified literal value.
@@ -163,9 +160,12 @@ public enum FxSelect implements Enumerator {
 	 */
 	public static FxSelect get(int value) {
 		switch (value) {
-			case FX1_VALUE: return FX1;
-			case FX2_VALUE: return FX2;
-			case FX3_VALUE: return FX3;
+		case FX1_VALUE:
+			return FX1;
+		case FX2_VALUE:
+			return FX2;
+		case FX3_VALUE:
+			return FX3;
 		}
 		return null;
 	}
@@ -209,7 +209,7 @@ public enum FxSelect implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -218,7 +218,7 @@ public enum FxSelect implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -227,7 +227,7 @@ public enum FxSelect implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

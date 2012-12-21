@@ -311,20 +311,11 @@ public enum CompressionCode implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final CompressionCode[] VALUES_ARRAY =
-		new CompressionCode[] {
-			COMPRESSION_CODE_0,
-			COMPRESSION_CODE_1,
-			COMPRESSION_CODE_2,
-			COMPRESSION_CODE_6,
-			COMPRESSION_CODE_7,
-			COMPRESSION_CODE_17,
-			COMPRESSION_CODE_20,
-			COMPRESSION_CODE_49,
-			COMPRESSION_CODE_64,
-			COMPRESSION_CODE_80,
-			COMPRESSION_CODE_65536,
-		};
+	private static final CompressionCode[] VALUES_ARRAY = new CompressionCode[] {
+			COMPRESSION_CODE_0, COMPRESSION_CODE_1, COMPRESSION_CODE_2,
+			COMPRESSION_CODE_6, COMPRESSION_CODE_7, COMPRESSION_CODE_17,
+			COMPRESSION_CODE_20, COMPRESSION_CODE_49, COMPRESSION_CODE_64,
+			COMPRESSION_CODE_80, COMPRESSION_CODE_65536, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Compression Code</b></em>' enumerators.
@@ -332,7 +323,8 @@ public enum CompressionCode implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<CompressionCode> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<CompressionCode> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Compression Code</b></em>' literal with the specified literal value.
@@ -374,17 +366,28 @@ public enum CompressionCode implements Enumerator {
 	 */
 	public static CompressionCode get(int value) {
 		switch (value) {
-			case COMPRESSION_CODE_0_VALUE: return COMPRESSION_CODE_0;
-			case COMPRESSION_CODE_1_VALUE: return COMPRESSION_CODE_1;
-			case COMPRESSION_CODE_2_VALUE: return COMPRESSION_CODE_2;
-			case COMPRESSION_CODE_6_VALUE: return COMPRESSION_CODE_6;
-			case COMPRESSION_CODE_7_VALUE: return COMPRESSION_CODE_7;
-			case COMPRESSION_CODE_17_VALUE: return COMPRESSION_CODE_17;
-			case COMPRESSION_CODE_20_VALUE: return COMPRESSION_CODE_20;
-			case COMPRESSION_CODE_49_VALUE: return COMPRESSION_CODE_49;
-			case COMPRESSION_CODE_64_VALUE: return COMPRESSION_CODE_64;
-			case COMPRESSION_CODE_80_VALUE: return COMPRESSION_CODE_80;
-			case COMPRESSION_CODE_65536_VALUE: return COMPRESSION_CODE_65536;
+		case COMPRESSION_CODE_0_VALUE:
+			return COMPRESSION_CODE_0;
+		case COMPRESSION_CODE_1_VALUE:
+			return COMPRESSION_CODE_1;
+		case COMPRESSION_CODE_2_VALUE:
+			return COMPRESSION_CODE_2;
+		case COMPRESSION_CODE_6_VALUE:
+			return COMPRESSION_CODE_6;
+		case COMPRESSION_CODE_7_VALUE:
+			return COMPRESSION_CODE_7;
+		case COMPRESSION_CODE_17_VALUE:
+			return COMPRESSION_CODE_17;
+		case COMPRESSION_CODE_20_VALUE:
+			return COMPRESSION_CODE_20;
+		case COMPRESSION_CODE_49_VALUE:
+			return COMPRESSION_CODE_49;
+		case COMPRESSION_CODE_64_VALUE:
+			return COMPRESSION_CODE_64;
+		case COMPRESSION_CODE_80_VALUE:
+			return COMPRESSION_CODE_80;
+		case COMPRESSION_CODE_65536_VALUE:
+			return COMPRESSION_CODE_65536;
 		}
 		return null;
 	}
@@ -428,7 +431,7 @@ public enum CompressionCode implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -437,7 +440,7 @@ public enum CompressionCode implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -446,7 +449,7 @@ public enum CompressionCode implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -459,5 +462,5 @@ public enum CompressionCode implements Enumerator {
 	public String toString() {
 		return literal;
 	}
-	
+
 } //CompressionCode

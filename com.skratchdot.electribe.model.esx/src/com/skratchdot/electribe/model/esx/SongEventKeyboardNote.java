@@ -11,8 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx;
 
-
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Song Event Keyboard Note</b></em>'.

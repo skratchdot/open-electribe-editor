@@ -25,19 +25,19 @@ import org.eclipse.ui.IWorkbenchPartSite;
 
 public class FileExplorerUtil {
 	private static final DateFormat dateFormat = DateFormat
-		.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
-	private static final NumberFormat numberFormat = NumberFormat.getNumberInstance();
+			.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
+	private static final NumberFormat numberFormat = NumberFormat
+			.getNumberInstance();
 
 	public static String getFileName(File element) {
 		String name = element.getName();
-		return name.length()==0?element.getPath():name;
+		return name.length() == 0 ? element.getPath() : name;
 	}
-	
+
 	public static String getFileSize(File element) {
 		if (element.isDirectory()) {
 			return "";
-		}
-		else {
+		} else {
 			long filesizeInKb = ((element.length() + 512) / 1024);
 			return "" + numberFormat.format(filesizeInKb) + " KB";
 		}
@@ -46,21 +46,18 @@ public class FileExplorerUtil {
 	public static String getFileType(File element) {
 		if (element.isDirectory()) {
 			return "Folder";
-		}
-		else if (element.isFile()) {
+		} else if (element.isFile()) {
 			String filename = element.getName();
 			int extensionPos = filename.lastIndexOf(".");
-			if(extensionPos>0) {
+			if (extensionPos > 0) {
 				String extension = filename.substring(extensionPos);
 				Program program = Program.findProgram(extension);
-				if(program!=null) {
+				if (program != null) {
 					return program.getName();
-				}
-				else {
+				} else {
 					return extension.toUpperCase();
 				}
-			}
-			else {
+			} else {
 				return "Unknown";
 			}
 		}
@@ -75,14 +72,16 @@ public class FileExplorerUtil {
 	 * @param viewer the viewer in which to create a context menu for
 	 * @param menuManagerId the id of the menu manager
 	 */
-	public static void createContextMenuFor(IWorkbenchPartSite site, StructuredViewer viewer, String menuId) {
+	public static void createContextMenuFor(IWorkbenchPartSite site,
+			StructuredViewer viewer, String menuId) {
 		MenuManager contextMenu = new MenuManager("#PopUp");
 		contextMenu.add(new Separator("additions"));
 		contextMenu.setRemoveAllWhenShown(true);
 
 		Menu menu = contextMenu.createContextMenu(viewer.getControl());
 		viewer.getControl().setMenu(menu);
-		site.registerContextMenu(menuId, contextMenu, site.getSelectionProvider());
+		site.registerContextMenu(menuId, contextMenu,
+				site.getSelectionProvider());
 	}
 
 }

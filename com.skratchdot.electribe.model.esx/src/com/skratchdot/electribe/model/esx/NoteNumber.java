@@ -3233,137 +3233,16 @@ public enum NoteNumber implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final NoteNumber[] VALUES_ARRAY =
-		new NoteNumber[] {
-			CN1,
-			CSN1,
-			DN1,
-			DSN1,
-			EN1,
-			FN1,
-			FSN1,
-			GN1,
-			GSN1,
-			AN1,
-			ASN1,
-			BN1,
-			C0,
-			CS10,
-			D0,
-			DS0,
-			E0,
-			F0,
-			FS0,
-			G0,
-			GS0,
-			A0,
-			AS0,
-			B0,
-			C1,
-			CS11,
-			D1,
-			DS1,
-			E1,
-			F1,
-			FS1,
-			G1,
-			GS1,
-			A1,
-			AS1,
-			B1,
-			C2,
-			CS12,
-			D2,
-			DS2,
-			E2,
-			F2,
-			FS2,
-			G2,
-			GS2,
-			A2,
-			AS2,
-			B2,
-			C3,
-			CS13,
-			D3,
-			DS3,
-			E3,
-			F3,
-			FS3,
-			G3,
-			GS3,
-			A3,
-			AS3,
-			B3,
-			C4,
-			CS14,
-			D4,
-			DS4,
-			E4,
-			F4,
-			FS4,
-			G4,
-			GS4,
-			A4,
-			AS4,
-			B4,
-			C5,
-			CS15,
-			D5,
-			DS5,
-			E5,
-			F5,
-			FS5,
-			G5,
-			GS5,
-			A5,
-			AS5,
-			B5,
-			C6,
-			CS16,
-			D6,
-			DS6,
-			E6,
-			F6,
-			FS6,
-			G6,
-			GS6,
-			A6,
-			AS6,
-			B6,
-			C7,
-			CS17,
-			D7,
-			DS7,
-			E7,
-			F7,
-			FS7,
-			G7,
-			GS7,
-			A7,
-			AS7,
-			B7,
-			C8,
-			CS18,
-			D8,
-			DS8,
-			E8,
-			F8,
-			FS8,
-			G8,
-			GS8,
-			A8,
-			AS8,
-			B8,
-			C9,
-			CS19,
-			D9,
-			DS9,
-			E9,
-			F9,
-			FS9,
-			G9,
-		};
+	private static final NoteNumber[] VALUES_ARRAY = new NoteNumber[] { CN1,
+			CSN1, DN1, DSN1, EN1, FN1, FSN1, GN1, GSN1, AN1, ASN1, BN1, C0,
+			CS10, D0, DS0, E0, F0, FS0, G0, GS0, A0, AS0, B0, C1, CS11, D1,
+			DS1, E1, F1, FS1, G1, GS1, A1, AS1, B1, C2, CS12, D2, DS2, E2, F2,
+			FS2, G2, GS2, A2, AS2, B2, C3, CS13, D3, DS3, E3, F3, FS3, G3, GS3,
+			A3, AS3, B3, C4, CS14, D4, DS4, E4, F4, FS4, G4, GS4, A4, AS4, B4,
+			C5, CS15, D5, DS5, E5, F5, FS5, G5, GS5, A5, AS5, B5, C6, CS16, D6,
+			DS6, E6, F6, FS6, G6, GS6, A6, AS6, B6, C7, CS17, D7, DS7, E7, F7,
+			FS7, G7, GS7, A7, AS7, B7, C8, CS18, D8, DS8, E8, F8, FS8, G8, GS8,
+			A8, AS8, B8, C9, CS19, D9, DS9, E9, F9, FS9, G9, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Note Number</b></em>' enumerators.
@@ -3371,7 +3250,8 @@ public enum NoteNumber implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<NoteNumber> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<NoteNumber> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Note Number</b></em>' literal with the specified literal value.
@@ -3413,134 +3293,262 @@ public enum NoteNumber implements Enumerator {
 	 */
 	public static NoteNumber get(int value) {
 		switch (value) {
-			case CN1_VALUE: return CN1;
-			case CSN1_VALUE: return CSN1;
-			case DN1_VALUE: return DN1;
-			case DSN1_VALUE: return DSN1;
-			case EN1_VALUE: return EN1;
-			case FN1_VALUE: return FN1;
-			case FSN1_VALUE: return FSN1;
-			case GN1_VALUE: return GN1;
-			case GSN1_VALUE: return GSN1;
-			case AN1_VALUE: return AN1;
-			case ASN1_VALUE: return ASN1;
-			case BN1_VALUE: return BN1;
-			case C0_VALUE: return C0;
-			case CS10_VALUE: return CS10;
-			case D0_VALUE: return D0;
-			case DS0_VALUE: return DS0;
-			case E0_VALUE: return E0;
-			case F0_VALUE: return F0;
-			case FS0_VALUE: return FS0;
-			case G0_VALUE: return G0;
-			case GS0_VALUE: return GS0;
-			case A0_VALUE: return A0;
-			case AS0_VALUE: return AS0;
-			case B0_VALUE: return B0;
-			case C1_VALUE: return C1;
-			case CS11_VALUE: return CS11;
-			case D1_VALUE: return D1;
-			case DS1_VALUE: return DS1;
-			case E1_VALUE: return E1;
-			case F1_VALUE: return F1;
-			case FS1_VALUE: return FS1;
-			case G1_VALUE: return G1;
-			case GS1_VALUE: return GS1;
-			case A1_VALUE: return A1;
-			case AS1_VALUE: return AS1;
-			case B1_VALUE: return B1;
-			case C2_VALUE: return C2;
-			case CS12_VALUE: return CS12;
-			case D2_VALUE: return D2;
-			case DS2_VALUE: return DS2;
-			case E2_VALUE: return E2;
-			case F2_VALUE: return F2;
-			case FS2_VALUE: return FS2;
-			case G2_VALUE: return G2;
-			case GS2_VALUE: return GS2;
-			case A2_VALUE: return A2;
-			case AS2_VALUE: return AS2;
-			case B2_VALUE: return B2;
-			case C3_VALUE: return C3;
-			case CS13_VALUE: return CS13;
-			case D3_VALUE: return D3;
-			case DS3_VALUE: return DS3;
-			case E3_VALUE: return E3;
-			case F3_VALUE: return F3;
-			case FS3_VALUE: return FS3;
-			case G3_VALUE: return G3;
-			case GS3_VALUE: return GS3;
-			case A3_VALUE: return A3;
-			case AS3_VALUE: return AS3;
-			case B3_VALUE: return B3;
-			case C4_VALUE: return C4;
-			case CS14_VALUE: return CS14;
-			case D4_VALUE: return D4;
-			case DS4_VALUE: return DS4;
-			case E4_VALUE: return E4;
-			case F4_VALUE: return F4;
-			case FS4_VALUE: return FS4;
-			case G4_VALUE: return G4;
-			case GS4_VALUE: return GS4;
-			case A4_VALUE: return A4;
-			case AS4_VALUE: return AS4;
-			case B4_VALUE: return B4;
-			case C5_VALUE: return C5;
-			case CS15_VALUE: return CS15;
-			case D5_VALUE: return D5;
-			case DS5_VALUE: return DS5;
-			case E5_VALUE: return E5;
-			case F5_VALUE: return F5;
-			case FS5_VALUE: return FS5;
-			case G5_VALUE: return G5;
-			case GS5_VALUE: return GS5;
-			case A5_VALUE: return A5;
-			case AS5_VALUE: return AS5;
-			case B5_VALUE: return B5;
-			case C6_VALUE: return C6;
-			case CS16_VALUE: return CS16;
-			case D6_VALUE: return D6;
-			case DS6_VALUE: return DS6;
-			case E6_VALUE: return E6;
-			case F6_VALUE: return F6;
-			case FS6_VALUE: return FS6;
-			case G6_VALUE: return G6;
-			case GS6_VALUE: return GS6;
-			case A6_VALUE: return A6;
-			case AS6_VALUE: return AS6;
-			case B6_VALUE: return B6;
-			case C7_VALUE: return C7;
-			case CS17_VALUE: return CS17;
-			case D7_VALUE: return D7;
-			case DS7_VALUE: return DS7;
-			case E7_VALUE: return E7;
-			case F7_VALUE: return F7;
-			case FS7_VALUE: return FS7;
-			case G7_VALUE: return G7;
-			case GS7_VALUE: return GS7;
-			case A7_VALUE: return A7;
-			case AS7_VALUE: return AS7;
-			case B7_VALUE: return B7;
-			case C8_VALUE: return C8;
-			case CS18_VALUE: return CS18;
-			case D8_VALUE: return D8;
-			case DS8_VALUE: return DS8;
-			case E8_VALUE: return E8;
-			case F8_VALUE: return F8;
-			case FS8_VALUE: return FS8;
-			case G8_VALUE: return G8;
-			case GS8_VALUE: return GS8;
-			case A8_VALUE: return A8;
-			case AS8_VALUE: return AS8;
-			case B8_VALUE: return B8;
-			case C9_VALUE: return C9;
-			case CS19_VALUE: return CS19;
-			case D9_VALUE: return D9;
-			case DS9_VALUE: return DS9;
-			case E9_VALUE: return E9;
-			case F9_VALUE: return F9;
-			case FS9_VALUE: return FS9;
-			case G9_VALUE: return G9;
+		case CN1_VALUE:
+			return CN1;
+		case CSN1_VALUE:
+			return CSN1;
+		case DN1_VALUE:
+			return DN1;
+		case DSN1_VALUE:
+			return DSN1;
+		case EN1_VALUE:
+			return EN1;
+		case FN1_VALUE:
+			return FN1;
+		case FSN1_VALUE:
+			return FSN1;
+		case GN1_VALUE:
+			return GN1;
+		case GSN1_VALUE:
+			return GSN1;
+		case AN1_VALUE:
+			return AN1;
+		case ASN1_VALUE:
+			return ASN1;
+		case BN1_VALUE:
+			return BN1;
+		case C0_VALUE:
+			return C0;
+		case CS10_VALUE:
+			return CS10;
+		case D0_VALUE:
+			return D0;
+		case DS0_VALUE:
+			return DS0;
+		case E0_VALUE:
+			return E0;
+		case F0_VALUE:
+			return F0;
+		case FS0_VALUE:
+			return FS0;
+		case G0_VALUE:
+			return G0;
+		case GS0_VALUE:
+			return GS0;
+		case A0_VALUE:
+			return A0;
+		case AS0_VALUE:
+			return AS0;
+		case B0_VALUE:
+			return B0;
+		case C1_VALUE:
+			return C1;
+		case CS11_VALUE:
+			return CS11;
+		case D1_VALUE:
+			return D1;
+		case DS1_VALUE:
+			return DS1;
+		case E1_VALUE:
+			return E1;
+		case F1_VALUE:
+			return F1;
+		case FS1_VALUE:
+			return FS1;
+		case G1_VALUE:
+			return G1;
+		case GS1_VALUE:
+			return GS1;
+		case A1_VALUE:
+			return A1;
+		case AS1_VALUE:
+			return AS1;
+		case B1_VALUE:
+			return B1;
+		case C2_VALUE:
+			return C2;
+		case CS12_VALUE:
+			return CS12;
+		case D2_VALUE:
+			return D2;
+		case DS2_VALUE:
+			return DS2;
+		case E2_VALUE:
+			return E2;
+		case F2_VALUE:
+			return F2;
+		case FS2_VALUE:
+			return FS2;
+		case G2_VALUE:
+			return G2;
+		case GS2_VALUE:
+			return GS2;
+		case A2_VALUE:
+			return A2;
+		case AS2_VALUE:
+			return AS2;
+		case B2_VALUE:
+			return B2;
+		case C3_VALUE:
+			return C3;
+		case CS13_VALUE:
+			return CS13;
+		case D3_VALUE:
+			return D3;
+		case DS3_VALUE:
+			return DS3;
+		case E3_VALUE:
+			return E3;
+		case F3_VALUE:
+			return F3;
+		case FS3_VALUE:
+			return FS3;
+		case G3_VALUE:
+			return G3;
+		case GS3_VALUE:
+			return GS3;
+		case A3_VALUE:
+			return A3;
+		case AS3_VALUE:
+			return AS3;
+		case B3_VALUE:
+			return B3;
+		case C4_VALUE:
+			return C4;
+		case CS14_VALUE:
+			return CS14;
+		case D4_VALUE:
+			return D4;
+		case DS4_VALUE:
+			return DS4;
+		case E4_VALUE:
+			return E4;
+		case F4_VALUE:
+			return F4;
+		case FS4_VALUE:
+			return FS4;
+		case G4_VALUE:
+			return G4;
+		case GS4_VALUE:
+			return GS4;
+		case A4_VALUE:
+			return A4;
+		case AS4_VALUE:
+			return AS4;
+		case B4_VALUE:
+			return B4;
+		case C5_VALUE:
+			return C5;
+		case CS15_VALUE:
+			return CS15;
+		case D5_VALUE:
+			return D5;
+		case DS5_VALUE:
+			return DS5;
+		case E5_VALUE:
+			return E5;
+		case F5_VALUE:
+			return F5;
+		case FS5_VALUE:
+			return FS5;
+		case G5_VALUE:
+			return G5;
+		case GS5_VALUE:
+			return GS5;
+		case A5_VALUE:
+			return A5;
+		case AS5_VALUE:
+			return AS5;
+		case B5_VALUE:
+			return B5;
+		case C6_VALUE:
+			return C6;
+		case CS16_VALUE:
+			return CS16;
+		case D6_VALUE:
+			return D6;
+		case DS6_VALUE:
+			return DS6;
+		case E6_VALUE:
+			return E6;
+		case F6_VALUE:
+			return F6;
+		case FS6_VALUE:
+			return FS6;
+		case G6_VALUE:
+			return G6;
+		case GS6_VALUE:
+			return GS6;
+		case A6_VALUE:
+			return A6;
+		case AS6_VALUE:
+			return AS6;
+		case B6_VALUE:
+			return B6;
+		case C7_VALUE:
+			return C7;
+		case CS17_VALUE:
+			return CS17;
+		case D7_VALUE:
+			return D7;
+		case DS7_VALUE:
+			return DS7;
+		case E7_VALUE:
+			return E7;
+		case F7_VALUE:
+			return F7;
+		case FS7_VALUE:
+			return FS7;
+		case G7_VALUE:
+			return G7;
+		case GS7_VALUE:
+			return GS7;
+		case A7_VALUE:
+			return A7;
+		case AS7_VALUE:
+			return AS7;
+		case B7_VALUE:
+			return B7;
+		case C8_VALUE:
+			return C8;
+		case CS18_VALUE:
+			return CS18;
+		case D8_VALUE:
+			return D8;
+		case DS8_VALUE:
+			return DS8;
+		case E8_VALUE:
+			return E8;
+		case F8_VALUE:
+			return F8;
+		case FS8_VALUE:
+			return FS8;
+		case G8_VALUE:
+			return G8;
+		case GS8_VALUE:
+			return GS8;
+		case A8_VALUE:
+			return A8;
+		case AS8_VALUE:
+			return AS8;
+		case B8_VALUE:
+			return B8;
+		case C9_VALUE:
+			return C9;
+		case CS19_VALUE:
+			return CS19;
+		case D9_VALUE:
+			return D9;
+		case DS9_VALUE:
+			return DS9;
+		case E9_VALUE:
+			return E9;
+		case F9_VALUE:
+			return F9;
+		case FS9_VALUE:
+			return FS9;
+		case G9_VALUE:
+			return G9;
 		}
 		return null;
 	}
@@ -3584,7 +3592,7 @@ public enum NoteNumber implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -3593,7 +3601,7 @@ public enum NoteNumber implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -3602,7 +3610,7 @@ public enum NoteNumber implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

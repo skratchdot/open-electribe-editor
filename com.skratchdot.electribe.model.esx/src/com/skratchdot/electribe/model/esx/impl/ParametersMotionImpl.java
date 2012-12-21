@@ -50,7 +50,8 @@ import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
  *
  * @generated
  */
-public class ParametersMotionImpl extends EObjectImpl implements ParametersMotion {
+public class ParametersMotionImpl extends EObjectImpl implements
+		ParametersMotion {
 	/**
 	 * The default value of the '{@link #getCurrentPosition() <em>Current Position</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -130,7 +131,7 @@ public class ParametersMotionImpl extends EObjectImpl implements ParametersMotio
 		// bytes 0~1
 		this.setOperationNumber(in.getShort());
 		// bytes 2~129
-		for(int i=0; i<EsxUtil.NUM_MOTION_OPERATIONS; i++) {
+		for (int i = 0; i < EsxUtil.NUM_MOTION_OPERATIONS; i++) {
 			Operation tempOperation = EsxFactory.eINSTANCE.createOperation();
 			tempOperation.setValue(in.getByte());
 			this.getOperation().add(i, tempOperation);
@@ -154,7 +155,7 @@ public class ParametersMotionImpl extends EObjectImpl implements ParametersMotio
 	 */
 	public int getCurrentPosition() {
 		EObject parent = this.eContainer();
-		if(parent instanceof Pattern) {
+		if (parent instanceof Pattern) {
 			return ((Pattern) parent).getMotionParameters().indexOf(this) + 1;
 		}
 		return 0;
@@ -176,7 +177,8 @@ public class ParametersMotionImpl extends EObjectImpl implements ParametersMotio
 	 */
 	public EList<Operation> getOperation() {
 		if (operation == null) {
-			operation = new EObjectContainmentEList<Operation>(Operation.class, this, EsxPackage.PARAMETERS_MOTION__OPERATION);
+			operation = new EObjectContainmentEList<Operation>(Operation.class,
+					this, EsxPackage.PARAMETERS_MOTION__OPERATION);
 		}
 		return operation;
 	}
@@ -199,7 +201,9 @@ public class ParametersMotionImpl extends EObjectImpl implements ParametersMotio
 		short oldOperationNumber = operationNumber;
 		operationNumber = newOperationNumber;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PARAMETERS_MOTION__OPERATION_NUMBER, oldOperationNumber, operationNumber));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PARAMETERS_MOTION__OPERATION_NUMBER,
+					oldOperationNumber, operationNumber));
 	}
 
 	/**
@@ -208,8 +212,9 @@ public class ParametersMotionImpl extends EObjectImpl implements ParametersMotio
 	 * @generated NOT
 	 */
 	public OperationType getOperationType() {
-		OperationType operationType = OperationType.get(this.getOperationNumber());
-		return (operationType==null?OperationType.get(0):operationType);
+		OperationType operationType = OperationType.get(this
+				.getOperationNumber());
+		return (operationType == null ? OperationType.get(0) : operationType);
 	}
 
 	/**
@@ -218,11 +223,12 @@ public class ParametersMotionImpl extends EObjectImpl implements ParametersMotio
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_PARAMETERS_MOTION);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				EsxUtil.CHUNKSIZE_PARAMETERS_MOTION);
 		// bytes 0~1
 		buf.putShort(this.getOperationNumber());
 		// bytes 2~129
-		for(int i=0; i<EsxUtil.NUM_MOTION_OPERATIONS; i++) {
+		for (int i = 0; i < EsxUtil.NUM_MOTION_OPERATIONS; i++) {
 			buf.putByte(this.getOperation().get(i).getValue());
 		}
 		return buf.array();
@@ -234,10 +240,12 @@ public class ParametersMotionImpl extends EObjectImpl implements ParametersMotio
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EsxPackage.PARAMETERS_MOTION__OPERATION:
-				return ((InternalEList<?>)getOperation()).basicRemove(otherEnd, msgs);
+		case EsxPackage.PARAMETERS_MOTION__OPERATION:
+			return ((InternalEList<?>) getOperation()).basicRemove(otherEnd,
+					msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -250,16 +258,16 @@ public class ParametersMotionImpl extends EObjectImpl implements ParametersMotio
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.PARAMETERS_MOTION__CURRENT_POSITION:
-				return getCurrentPosition();
-			case EsxPackage.PARAMETERS_MOTION__EMPTY:
-				return isEmpty();
-			case EsxPackage.PARAMETERS_MOTION__OPERATION:
-				return getOperation();
-			case EsxPackage.PARAMETERS_MOTION__OPERATION_NUMBER:
-				return getOperationNumber();
-			case EsxPackage.PARAMETERS_MOTION__OPERATION_TYPE:
-				return getOperationType();
+		case EsxPackage.PARAMETERS_MOTION__CURRENT_POSITION:
+			return getCurrentPosition();
+		case EsxPackage.PARAMETERS_MOTION__EMPTY:
+			return isEmpty();
+		case EsxPackage.PARAMETERS_MOTION__OPERATION:
+			return getOperation();
+		case EsxPackage.PARAMETERS_MOTION__OPERATION_NUMBER:
+			return getOperationNumber();
+		case EsxPackage.PARAMETERS_MOTION__OPERATION_TYPE:
+			return getOperationType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -273,13 +281,13 @@ public class ParametersMotionImpl extends EObjectImpl implements ParametersMotio
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.PARAMETERS_MOTION__OPERATION:
-				getOperation().clear();
-				getOperation().addAll((Collection<? extends Operation>)newValue);
-				return;
-			case EsxPackage.PARAMETERS_MOTION__OPERATION_NUMBER:
-				setOperationNumber((Short)newValue);
-				return;
+		case EsxPackage.PARAMETERS_MOTION__OPERATION:
+			getOperation().clear();
+			getOperation().addAll((Collection<? extends Operation>) newValue);
+			return;
+		case EsxPackage.PARAMETERS_MOTION__OPERATION_NUMBER:
+			setOperationNumber((Short) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -292,12 +300,12 @@ public class ParametersMotionImpl extends EObjectImpl implements ParametersMotio
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PARAMETERS_MOTION__OPERATION:
-				getOperation().clear();
-				return;
-			case EsxPackage.PARAMETERS_MOTION__OPERATION_NUMBER:
-				setOperationNumber(OPERATION_NUMBER_EDEFAULT);
-				return;
+		case EsxPackage.PARAMETERS_MOTION__OPERATION:
+			getOperation().clear();
+			return;
+		case EsxPackage.PARAMETERS_MOTION__OPERATION_NUMBER:
+			setOperationNumber(OPERATION_NUMBER_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -310,16 +318,16 @@ public class ParametersMotionImpl extends EObjectImpl implements ParametersMotio
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PARAMETERS_MOTION__CURRENT_POSITION:
-				return getCurrentPosition() != CURRENT_POSITION_EDEFAULT;
-			case EsxPackage.PARAMETERS_MOTION__EMPTY:
-				return isEmpty() != EMPTY_EDEFAULT;
-			case EsxPackage.PARAMETERS_MOTION__OPERATION:
-				return operation != null && !operation.isEmpty();
-			case EsxPackage.PARAMETERS_MOTION__OPERATION_NUMBER:
-				return operationNumber != OPERATION_NUMBER_EDEFAULT;
-			case EsxPackage.PARAMETERS_MOTION__OPERATION_TYPE:
-				return getOperationType() != OPERATION_TYPE_EDEFAULT;
+		case EsxPackage.PARAMETERS_MOTION__CURRENT_POSITION:
+			return getCurrentPosition() != CURRENT_POSITION_EDEFAULT;
+		case EsxPackage.PARAMETERS_MOTION__EMPTY:
+			return isEmpty() != EMPTY_EDEFAULT;
+		case EsxPackage.PARAMETERS_MOTION__OPERATION:
+			return operation != null && !operation.isEmpty();
+		case EsxPackage.PARAMETERS_MOTION__OPERATION_NUMBER:
+			return operationNumber != OPERATION_NUMBER_EDEFAULT;
+		case EsxPackage.PARAMETERS_MOTION__OPERATION_TYPE:
+			return getOperationType() != OPERATION_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -331,7 +339,8 @@ public class ParametersMotionImpl extends EObjectImpl implements ParametersMotio
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (operationNumber: ");

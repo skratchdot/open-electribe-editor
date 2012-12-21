@@ -84,12 +84,18 @@ public class ChannelImpl extends EObjectImpl implements Channel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSampleData(SampleData newSampleData, NotificationChain msgs) {
+	public NotificationChain basicSetSampleData(SampleData newSampleData,
+			NotificationChain msgs) {
 		SampleData oldSampleData = sampleData;
 		sampleData = newSampleData;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WavPackage.CHANNEL__SAMPLE_DATA, oldSampleData, newSampleData);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, WavPackage.CHANNEL__SAMPLE_DATA,
+					oldSampleData, newSampleData);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -103,14 +109,20 @@ public class ChannelImpl extends EObjectImpl implements Channel {
 		if (newSampleData != sampleData) {
 			NotificationChain msgs = null;
 			if (sampleData != null)
-				msgs = ((InternalEObject)sampleData).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WavPackage.CHANNEL__SAMPLE_DATA, null, msgs);
+				msgs = ((InternalEObject) sampleData).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+								- WavPackage.CHANNEL__SAMPLE_DATA, null, msgs);
 			if (newSampleData != null)
-				msgs = ((InternalEObject)newSampleData).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WavPackage.CHANNEL__SAMPLE_DATA, null, msgs);
+				msgs = ((InternalEObject) newSampleData).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+								- WavPackage.CHANNEL__SAMPLE_DATA, null, msgs);
 			msgs = basicSetSampleData(newSampleData, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHANNEL__SAMPLE_DATA, newSampleData, newSampleData));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHANNEL__SAMPLE_DATA, newSampleData,
+					newSampleData));
 	}
 
 	/**
@@ -119,10 +131,11 @@ public class ChannelImpl extends EObjectImpl implements Channel {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case WavPackage.CHANNEL__SAMPLE_DATA:
-				return basicSetSampleData(null, msgs);
+		case WavPackage.CHANNEL__SAMPLE_DATA:
+			return basicSetSampleData(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -135,8 +148,8 @@ public class ChannelImpl extends EObjectImpl implements Channel {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.CHANNEL__SAMPLE_DATA:
-				return getSampleData();
+		case WavPackage.CHANNEL__SAMPLE_DATA:
+			return getSampleData();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -149,9 +162,9 @@ public class ChannelImpl extends EObjectImpl implements Channel {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.CHANNEL__SAMPLE_DATA:
-				setSampleData((SampleData)newValue);
-				return;
+		case WavPackage.CHANNEL__SAMPLE_DATA:
+			setSampleData((SampleData) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -164,9 +177,9 @@ public class ChannelImpl extends EObjectImpl implements Channel {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHANNEL__SAMPLE_DATA:
-				setSampleData((SampleData)null);
-				return;
+		case WavPackage.CHANNEL__SAMPLE_DATA:
+			setSampleData((SampleData) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -179,8 +192,8 @@ public class ChannelImpl extends EObjectImpl implements Channel {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHANNEL__SAMPLE_DATA:
-				return sampleData != null;
+		case WavPackage.CHANNEL__SAMPLE_DATA:
+			return sampleData != null;
 		}
 		return super.eIsSet(featureID);
 	}

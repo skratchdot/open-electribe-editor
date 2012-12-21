@@ -34,7 +34,8 @@ import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
  *
  * @generated
  */
-public class SongEventMuteStatusImpl extends SongEventImpl implements SongEventMuteStatus {
+public class SongEventMuteStatusImpl extends SongEventImpl implements
+		SongEventMuteStatus {
 	/**
 	 * The default value of the '{@link #getReservedShort() <em>Reserved Short</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -143,7 +144,9 @@ public class SongEventMuteStatusImpl extends SongEventImpl implements SongEventM
 		short oldReservedShort = reservedShort;
 		reservedShort = newReservedShort;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT_MUTE_STATUS__RESERVED_SHORT, oldReservedShort, reservedShort));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_EVENT_MUTE_STATUS__RESERVED_SHORT,
+					oldReservedShort, reservedShort));
 	}
 
 	/**
@@ -164,7 +167,9 @@ public class SongEventMuteStatusImpl extends SongEventImpl implements SongEventM
 		short oldMuteStatus = muteStatus;
 		muteStatus = newMuteStatus;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SONG_EVENT_MUTE_STATUS__MUTE_STATUS, oldMuteStatus, muteStatus));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SONG_EVENT_MUTE_STATUS__MUTE_STATUS,
+					oldMuteStatus, muteStatus));
 	}
 
 	/**
@@ -173,7 +178,8 @@ public class SongEventMuteStatusImpl extends SongEventImpl implements SongEventM
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_SONG_EVENT);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				EsxUtil.CHUNKSIZE_SONG_EVENT);
 		// byte 0
 		buf.putByte(this.getPositionNumber());
 		// byte 1
@@ -198,10 +204,10 @@ public class SongEventMuteStatusImpl extends SongEventImpl implements SongEventM
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_MUTE_STATUS__RESERVED_SHORT:
-				return getReservedShort();
-			case EsxPackage.SONG_EVENT_MUTE_STATUS__MUTE_STATUS:
-				return getMuteStatus();
+		case EsxPackage.SONG_EVENT_MUTE_STATUS__RESERVED_SHORT:
+			return getReservedShort();
+		case EsxPackage.SONG_EVENT_MUTE_STATUS__MUTE_STATUS:
+			return getMuteStatus();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -214,12 +220,12 @@ public class SongEventMuteStatusImpl extends SongEventImpl implements SongEventM
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_MUTE_STATUS__RESERVED_SHORT:
-				setReservedShort((Short)newValue);
-				return;
-			case EsxPackage.SONG_EVENT_MUTE_STATUS__MUTE_STATUS:
-				setMuteStatus((Short)newValue);
-				return;
+		case EsxPackage.SONG_EVENT_MUTE_STATUS__RESERVED_SHORT:
+			setReservedShort((Short) newValue);
+			return;
+		case EsxPackage.SONG_EVENT_MUTE_STATUS__MUTE_STATUS:
+			setMuteStatus((Short) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -232,12 +238,12 @@ public class SongEventMuteStatusImpl extends SongEventImpl implements SongEventM
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_MUTE_STATUS__RESERVED_SHORT:
-				setReservedShort(RESERVED_SHORT_EDEFAULT);
-				return;
-			case EsxPackage.SONG_EVENT_MUTE_STATUS__MUTE_STATUS:
-				setMuteStatus(MUTE_STATUS_EDEFAULT);
-				return;
+		case EsxPackage.SONG_EVENT_MUTE_STATUS__RESERVED_SHORT:
+			setReservedShort(RESERVED_SHORT_EDEFAULT);
+			return;
+		case EsxPackage.SONG_EVENT_MUTE_STATUS__MUTE_STATUS:
+			setMuteStatus(MUTE_STATUS_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -250,10 +256,10 @@ public class SongEventMuteStatusImpl extends SongEventImpl implements SongEventM
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SONG_EVENT_MUTE_STATUS__RESERVED_SHORT:
-				return reservedShort != RESERVED_SHORT_EDEFAULT;
-			case EsxPackage.SONG_EVENT_MUTE_STATUS__MUTE_STATUS:
-				return muteStatus != MUTE_STATUS_EDEFAULT;
+		case EsxPackage.SONG_EVENT_MUTE_STATUS__RESERVED_SHORT:
+			return reservedShort != RESERVED_SHORT_EDEFAULT;
+		case EsxPackage.SONG_EVENT_MUTE_STATUS__MUTE_STATUS:
+			return muteStatus != MUTE_STATUS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -265,7 +271,8 @@ public class SongEventMuteStatusImpl extends SongEventImpl implements SongEventM
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (reservedShort: ");

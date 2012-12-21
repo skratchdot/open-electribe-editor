@@ -34,7 +34,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * @generated
  */
-public abstract class PartWithPitchImpl extends EObjectImpl implements PartWithPitch {
+public abstract class PartWithPitchImpl extends EObjectImpl implements
+		PartWithPitch {
 	/**
 	 * The default value of the '{@link #getPitch() <em>Pitch</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -92,7 +93,8 @@ public abstract class PartWithPitchImpl extends EObjectImpl implements PartWithP
 		byte oldPitch = pitch;
 		pitch = newPitch;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_PITCH__PITCH, oldPitch, pitch));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_PITCH__PITCH, oldPitch, pitch));
 	}
 
 	/**
@@ -103,8 +105,8 @@ public abstract class PartWithPitchImpl extends EObjectImpl implements PartWithP
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_PITCH__PITCH:
-				return getPitch();
+		case EsxPackage.PART_WITH_PITCH__PITCH:
+			return getPitch();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -117,9 +119,9 @@ public abstract class PartWithPitchImpl extends EObjectImpl implements PartWithP
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_PITCH__PITCH:
-				setPitch((Byte)newValue);
-				return;
+		case EsxPackage.PART_WITH_PITCH__PITCH:
+			setPitch((Byte) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -132,9 +134,9 @@ public abstract class PartWithPitchImpl extends EObjectImpl implements PartWithP
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_PITCH__PITCH:
-				setPitch(PITCH_EDEFAULT);
-				return;
+		case EsxPackage.PART_WITH_PITCH__PITCH:
+			setPitch(PITCH_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -147,8 +149,8 @@ public abstract class PartWithPitchImpl extends EObjectImpl implements PartWithP
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_PITCH__PITCH:
-				return pitch != PITCH_EDEFAULT;
+		case EsxPackage.PART_WITH_PITCH__PITCH:
+			return pitch != PITCH_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -160,7 +162,8 @@ public abstract class PartWithPitchImpl extends EObjectImpl implements PartWithP
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (pitch: ");

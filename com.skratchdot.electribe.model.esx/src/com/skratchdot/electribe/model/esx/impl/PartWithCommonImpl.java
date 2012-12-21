@@ -57,7 +57,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * @generated
  */
-public abstract class PartWithCommonImpl extends EObjectImpl implements PartWithCommon {
+public abstract class PartWithCommonImpl extends EObjectImpl implements
+		PartWithCommon {
 	/**
 	 * The default value of the '{@link #getAmpEg() <em>Amp Eg</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -415,7 +416,8 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 		AmpEg oldAmpEg = ampEg;
 		ampEg = newAmpEg == null ? AMP_EG_EDEFAULT : newAmpEg;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_COMMON__AMP_EG, oldAmpEg, ampEg));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_COMMON__AMP_EG, oldAmpEg, ampEg));
 	}
 
 	/**
@@ -436,7 +438,8 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 		BpmSync oldBpmSync = bpmSync;
 		bpmSync = newBpmSync == null ? BPM_SYNC_EDEFAULT : newBpmSync;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_COMMON__BPM_SYNC, oldBpmSync, bpmSync));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_COMMON__BPM_SYNC, oldBpmSync, bpmSync));
 	}
 
 	/**
@@ -457,7 +460,8 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 		byte oldCutoff = cutoff;
 		cutoff = newCutoff;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_COMMON__CUTOFF, oldCutoff, cutoff));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_COMMON__CUTOFF, oldCutoff, cutoff));
 	}
 
 	/**
@@ -478,7 +482,9 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 		byte oldEgIntensity = egIntensity;
 		egIntensity = newEgIntensity;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_COMMON__EG_INTENSITY, oldEgIntensity, egIntensity));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_COMMON__EG_INTENSITY, oldEgIntensity,
+					egIntensity));
 	}
 
 	/**
@@ -499,7 +505,8 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 		byte oldEgTime = egTime;
 		egTime = newEgTime;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_COMMON__EG_TIME, oldEgTime, egTime));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_COMMON__EG_TIME, oldEgTime, egTime));
 	}
 
 	/**
@@ -518,9 +525,12 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 	 */
 	public void setFilterType(FilterType newFilterType) {
 		FilterType oldFilterType = filterType;
-		filterType = newFilterType == null ? FILTER_TYPE_EDEFAULT : newFilterType;
+		filterType = newFilterType == null ? FILTER_TYPE_EDEFAULT
+				: newFilterType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_COMMON__FILTER_TYPE, oldFilterType, filterType));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_COMMON__FILTER_TYPE, oldFilterType,
+					filterType));
 	}
 
 	/**
@@ -541,7 +551,9 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 		FxSelect oldFxSelect = fxSelect;
 		fxSelect = newFxSelect == null ? FX_SELECT_EDEFAULT : newFxSelect;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_COMMON__FX_SELECT, oldFxSelect, fxSelect));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_COMMON__FX_SELECT, oldFxSelect,
+					fxSelect));
 	}
 
 	/**
@@ -562,7 +574,8 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 		FxSend oldFxSend = fxSend;
 		fxSend = newFxSend == null ? FX_SEND_EDEFAULT : newFxSend;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_COMMON__FX_SEND, oldFxSend, fxSend));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_COMMON__FX_SEND, oldFxSend, fxSend));
 	}
 
 	/**
@@ -583,7 +596,9 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 		byte oldModDepth = modDepth;
 		modDepth = newModDepth;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_COMMON__MOD_DEPTH, oldModDepth, modDepth));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_COMMON__MOD_DEPTH, oldModDepth,
+					modDepth));
 	}
 
 	/**
@@ -604,7 +619,8 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 		ModDest oldModDest = modDest;
 		modDest = newModDest == null ? MOD_DEST_EDEFAULT : newModDest;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_COMMON__MOD_DEST, oldModDest, modDest));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_COMMON__MOD_DEST, oldModDest, modDest));
 	}
 
 	/**
@@ -625,7 +641,9 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 		byte oldModSpeed = modSpeed;
 		modSpeed = newModSpeed;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_COMMON__MOD_SPEED, oldModSpeed, modSpeed));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_COMMON__MOD_SPEED, oldModSpeed,
+					modSpeed));
 	}
 
 	/**
@@ -646,7 +664,8 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 		ModType oldModType = modType;
 		modType = newModType == null ? MOD_TYPE_EDEFAULT : newModType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_COMMON__MOD_TYPE, oldModType, modType));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_COMMON__MOD_TYPE, oldModType, modType));
 	}
 
 	/**
@@ -667,7 +686,8 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 		byte oldPan = pan;
 		pan = newPan;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_COMMON__PAN, oldPan, pan));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_COMMON__PAN, oldPan, pan));
 	}
 
 	/**
@@ -688,7 +708,9 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 		byte oldReservedBitAfterModDepth = reservedBitAfterModDepth;
 		reservedBitAfterModDepth = newReservedBitAfterModDepth;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH, oldReservedBitAfterModDepth, reservedBitAfterModDepth));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH,
+					oldReservedBitAfterModDepth, reservedBitAfterModDepth));
 	}
 
 	/**
@@ -709,7 +731,9 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 		byte oldResonance = resonance;
 		resonance = newResonance;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_COMMON__RESONANCE, oldResonance, resonance));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_COMMON__RESONANCE, oldResonance,
+					resonance));
 	}
 
 	/**
@@ -730,7 +754,8 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 		Roll oldRoll = roll;
 		roll = newRoll == null ? ROLL_EDEFAULT : newRoll;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_COMMON__ROLL, oldRoll, roll));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_COMMON__ROLL, oldRoll, roll));
 	}
 
 	/**
@@ -741,38 +766,38 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_COMMON__AMP_EG:
-				return getAmpEg();
-			case EsxPackage.PART_WITH_COMMON__BPM_SYNC:
-				return getBpmSync();
-			case EsxPackage.PART_WITH_COMMON__CUTOFF:
-				return getCutoff();
-			case EsxPackage.PART_WITH_COMMON__EG_INTENSITY:
-				return getEgIntensity();
-			case EsxPackage.PART_WITH_COMMON__EG_TIME:
-				return getEgTime();
-			case EsxPackage.PART_WITH_COMMON__FILTER_TYPE:
-				return getFilterType();
-			case EsxPackage.PART_WITH_COMMON__FX_SELECT:
-				return getFxSelect();
-			case EsxPackage.PART_WITH_COMMON__FX_SEND:
-				return getFxSend();
-			case EsxPackage.PART_WITH_COMMON__MOD_DEPTH:
-				return getModDepth();
-			case EsxPackage.PART_WITH_COMMON__MOD_DEST:
-				return getModDest();
-			case EsxPackage.PART_WITH_COMMON__MOD_SPEED:
-				return getModSpeed();
-			case EsxPackage.PART_WITH_COMMON__MOD_TYPE:
-				return getModType();
-			case EsxPackage.PART_WITH_COMMON__PAN:
-				return getPan();
-			case EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH:
-				return getReservedBitAfterModDepth();
-			case EsxPackage.PART_WITH_COMMON__RESONANCE:
-				return getResonance();
-			case EsxPackage.PART_WITH_COMMON__ROLL:
-				return getRoll();
+		case EsxPackage.PART_WITH_COMMON__AMP_EG:
+			return getAmpEg();
+		case EsxPackage.PART_WITH_COMMON__BPM_SYNC:
+			return getBpmSync();
+		case EsxPackage.PART_WITH_COMMON__CUTOFF:
+			return getCutoff();
+		case EsxPackage.PART_WITH_COMMON__EG_INTENSITY:
+			return getEgIntensity();
+		case EsxPackage.PART_WITH_COMMON__EG_TIME:
+			return getEgTime();
+		case EsxPackage.PART_WITH_COMMON__FILTER_TYPE:
+			return getFilterType();
+		case EsxPackage.PART_WITH_COMMON__FX_SELECT:
+			return getFxSelect();
+		case EsxPackage.PART_WITH_COMMON__FX_SEND:
+			return getFxSend();
+		case EsxPackage.PART_WITH_COMMON__MOD_DEPTH:
+			return getModDepth();
+		case EsxPackage.PART_WITH_COMMON__MOD_DEST:
+			return getModDest();
+		case EsxPackage.PART_WITH_COMMON__MOD_SPEED:
+			return getModSpeed();
+		case EsxPackage.PART_WITH_COMMON__MOD_TYPE:
+			return getModType();
+		case EsxPackage.PART_WITH_COMMON__PAN:
+			return getPan();
+		case EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH:
+			return getReservedBitAfterModDepth();
+		case EsxPackage.PART_WITH_COMMON__RESONANCE:
+			return getResonance();
+		case EsxPackage.PART_WITH_COMMON__ROLL:
+			return getRoll();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -785,54 +810,54 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_COMMON__AMP_EG:
-				setAmpEg((AmpEg)newValue);
-				return;
-			case EsxPackage.PART_WITH_COMMON__BPM_SYNC:
-				setBpmSync((BpmSync)newValue);
-				return;
-			case EsxPackage.PART_WITH_COMMON__CUTOFF:
-				setCutoff((Byte)newValue);
-				return;
-			case EsxPackage.PART_WITH_COMMON__EG_INTENSITY:
-				setEgIntensity((Byte)newValue);
-				return;
-			case EsxPackage.PART_WITH_COMMON__EG_TIME:
-				setEgTime((Byte)newValue);
-				return;
-			case EsxPackage.PART_WITH_COMMON__FILTER_TYPE:
-				setFilterType((FilterType)newValue);
-				return;
-			case EsxPackage.PART_WITH_COMMON__FX_SELECT:
-				setFxSelect((FxSelect)newValue);
-				return;
-			case EsxPackage.PART_WITH_COMMON__FX_SEND:
-				setFxSend((FxSend)newValue);
-				return;
-			case EsxPackage.PART_WITH_COMMON__MOD_DEPTH:
-				setModDepth((Byte)newValue);
-				return;
-			case EsxPackage.PART_WITH_COMMON__MOD_DEST:
-				setModDest((ModDest)newValue);
-				return;
-			case EsxPackage.PART_WITH_COMMON__MOD_SPEED:
-				setModSpeed((Byte)newValue);
-				return;
-			case EsxPackage.PART_WITH_COMMON__MOD_TYPE:
-				setModType((ModType)newValue);
-				return;
-			case EsxPackage.PART_WITH_COMMON__PAN:
-				setPan((Byte)newValue);
-				return;
-			case EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH:
-				setReservedBitAfterModDepth((Byte)newValue);
-				return;
-			case EsxPackage.PART_WITH_COMMON__RESONANCE:
-				setResonance((Byte)newValue);
-				return;
-			case EsxPackage.PART_WITH_COMMON__ROLL:
-				setRoll((Roll)newValue);
-				return;
+		case EsxPackage.PART_WITH_COMMON__AMP_EG:
+			setAmpEg((AmpEg) newValue);
+			return;
+		case EsxPackage.PART_WITH_COMMON__BPM_SYNC:
+			setBpmSync((BpmSync) newValue);
+			return;
+		case EsxPackage.PART_WITH_COMMON__CUTOFF:
+			setCutoff((Byte) newValue);
+			return;
+		case EsxPackage.PART_WITH_COMMON__EG_INTENSITY:
+			setEgIntensity((Byte) newValue);
+			return;
+		case EsxPackage.PART_WITH_COMMON__EG_TIME:
+			setEgTime((Byte) newValue);
+			return;
+		case EsxPackage.PART_WITH_COMMON__FILTER_TYPE:
+			setFilterType((FilterType) newValue);
+			return;
+		case EsxPackage.PART_WITH_COMMON__FX_SELECT:
+			setFxSelect((FxSelect) newValue);
+			return;
+		case EsxPackage.PART_WITH_COMMON__FX_SEND:
+			setFxSend((FxSend) newValue);
+			return;
+		case EsxPackage.PART_WITH_COMMON__MOD_DEPTH:
+			setModDepth((Byte) newValue);
+			return;
+		case EsxPackage.PART_WITH_COMMON__MOD_DEST:
+			setModDest((ModDest) newValue);
+			return;
+		case EsxPackage.PART_WITH_COMMON__MOD_SPEED:
+			setModSpeed((Byte) newValue);
+			return;
+		case EsxPackage.PART_WITH_COMMON__MOD_TYPE:
+			setModType((ModType) newValue);
+			return;
+		case EsxPackage.PART_WITH_COMMON__PAN:
+			setPan((Byte) newValue);
+			return;
+		case EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH:
+			setReservedBitAfterModDepth((Byte) newValue);
+			return;
+		case EsxPackage.PART_WITH_COMMON__RESONANCE:
+			setResonance((Byte) newValue);
+			return;
+		case EsxPackage.PART_WITH_COMMON__ROLL:
+			setRoll((Roll) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -845,54 +870,54 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_COMMON__AMP_EG:
-				setAmpEg(AMP_EG_EDEFAULT);
-				return;
-			case EsxPackage.PART_WITH_COMMON__BPM_SYNC:
-				setBpmSync(BPM_SYNC_EDEFAULT);
-				return;
-			case EsxPackage.PART_WITH_COMMON__CUTOFF:
-				setCutoff(CUTOFF_EDEFAULT);
-				return;
-			case EsxPackage.PART_WITH_COMMON__EG_INTENSITY:
-				setEgIntensity(EG_INTENSITY_EDEFAULT);
-				return;
-			case EsxPackage.PART_WITH_COMMON__EG_TIME:
-				setEgTime(EG_TIME_EDEFAULT);
-				return;
-			case EsxPackage.PART_WITH_COMMON__FILTER_TYPE:
-				setFilterType(FILTER_TYPE_EDEFAULT);
-				return;
-			case EsxPackage.PART_WITH_COMMON__FX_SELECT:
-				setFxSelect(FX_SELECT_EDEFAULT);
-				return;
-			case EsxPackage.PART_WITH_COMMON__FX_SEND:
-				setFxSend(FX_SEND_EDEFAULT);
-				return;
-			case EsxPackage.PART_WITH_COMMON__MOD_DEPTH:
-				setModDepth(MOD_DEPTH_EDEFAULT);
-				return;
-			case EsxPackage.PART_WITH_COMMON__MOD_DEST:
-				setModDest(MOD_DEST_EDEFAULT);
-				return;
-			case EsxPackage.PART_WITH_COMMON__MOD_SPEED:
-				setModSpeed(MOD_SPEED_EDEFAULT);
-				return;
-			case EsxPackage.PART_WITH_COMMON__MOD_TYPE:
-				setModType(MOD_TYPE_EDEFAULT);
-				return;
-			case EsxPackage.PART_WITH_COMMON__PAN:
-				setPan(PAN_EDEFAULT);
-				return;
-			case EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH:
-				setReservedBitAfterModDepth(RESERVED_BIT_AFTER_MOD_DEPTH_EDEFAULT);
-				return;
-			case EsxPackage.PART_WITH_COMMON__RESONANCE:
-				setResonance(RESONANCE_EDEFAULT);
-				return;
-			case EsxPackage.PART_WITH_COMMON__ROLL:
-				setRoll(ROLL_EDEFAULT);
-				return;
+		case EsxPackage.PART_WITH_COMMON__AMP_EG:
+			setAmpEg(AMP_EG_EDEFAULT);
+			return;
+		case EsxPackage.PART_WITH_COMMON__BPM_SYNC:
+			setBpmSync(BPM_SYNC_EDEFAULT);
+			return;
+		case EsxPackage.PART_WITH_COMMON__CUTOFF:
+			setCutoff(CUTOFF_EDEFAULT);
+			return;
+		case EsxPackage.PART_WITH_COMMON__EG_INTENSITY:
+			setEgIntensity(EG_INTENSITY_EDEFAULT);
+			return;
+		case EsxPackage.PART_WITH_COMMON__EG_TIME:
+			setEgTime(EG_TIME_EDEFAULT);
+			return;
+		case EsxPackage.PART_WITH_COMMON__FILTER_TYPE:
+			setFilterType(FILTER_TYPE_EDEFAULT);
+			return;
+		case EsxPackage.PART_WITH_COMMON__FX_SELECT:
+			setFxSelect(FX_SELECT_EDEFAULT);
+			return;
+		case EsxPackage.PART_WITH_COMMON__FX_SEND:
+			setFxSend(FX_SEND_EDEFAULT);
+			return;
+		case EsxPackage.PART_WITH_COMMON__MOD_DEPTH:
+			setModDepth(MOD_DEPTH_EDEFAULT);
+			return;
+		case EsxPackage.PART_WITH_COMMON__MOD_DEST:
+			setModDest(MOD_DEST_EDEFAULT);
+			return;
+		case EsxPackage.PART_WITH_COMMON__MOD_SPEED:
+			setModSpeed(MOD_SPEED_EDEFAULT);
+			return;
+		case EsxPackage.PART_WITH_COMMON__MOD_TYPE:
+			setModType(MOD_TYPE_EDEFAULT);
+			return;
+		case EsxPackage.PART_WITH_COMMON__PAN:
+			setPan(PAN_EDEFAULT);
+			return;
+		case EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH:
+			setReservedBitAfterModDepth(RESERVED_BIT_AFTER_MOD_DEPTH_EDEFAULT);
+			return;
+		case EsxPackage.PART_WITH_COMMON__RESONANCE:
+			setResonance(RESONANCE_EDEFAULT);
+			return;
+		case EsxPackage.PART_WITH_COMMON__ROLL:
+			setRoll(ROLL_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -905,38 +930,38 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_COMMON__AMP_EG:
-				return ampEg != AMP_EG_EDEFAULT;
-			case EsxPackage.PART_WITH_COMMON__BPM_SYNC:
-				return bpmSync != BPM_SYNC_EDEFAULT;
-			case EsxPackage.PART_WITH_COMMON__CUTOFF:
-				return cutoff != CUTOFF_EDEFAULT;
-			case EsxPackage.PART_WITH_COMMON__EG_INTENSITY:
-				return egIntensity != EG_INTENSITY_EDEFAULT;
-			case EsxPackage.PART_WITH_COMMON__EG_TIME:
-				return egTime != EG_TIME_EDEFAULT;
-			case EsxPackage.PART_WITH_COMMON__FILTER_TYPE:
-				return filterType != FILTER_TYPE_EDEFAULT;
-			case EsxPackage.PART_WITH_COMMON__FX_SELECT:
-				return fxSelect != FX_SELECT_EDEFAULT;
-			case EsxPackage.PART_WITH_COMMON__FX_SEND:
-				return fxSend != FX_SEND_EDEFAULT;
-			case EsxPackage.PART_WITH_COMMON__MOD_DEPTH:
-				return modDepth != MOD_DEPTH_EDEFAULT;
-			case EsxPackage.PART_WITH_COMMON__MOD_DEST:
-				return modDest != MOD_DEST_EDEFAULT;
-			case EsxPackage.PART_WITH_COMMON__MOD_SPEED:
-				return modSpeed != MOD_SPEED_EDEFAULT;
-			case EsxPackage.PART_WITH_COMMON__MOD_TYPE:
-				return modType != MOD_TYPE_EDEFAULT;
-			case EsxPackage.PART_WITH_COMMON__PAN:
-				return pan != PAN_EDEFAULT;
-			case EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH:
-				return reservedBitAfterModDepth != RESERVED_BIT_AFTER_MOD_DEPTH_EDEFAULT;
-			case EsxPackage.PART_WITH_COMMON__RESONANCE:
-				return resonance != RESONANCE_EDEFAULT;
-			case EsxPackage.PART_WITH_COMMON__ROLL:
-				return roll != ROLL_EDEFAULT;
+		case EsxPackage.PART_WITH_COMMON__AMP_EG:
+			return ampEg != AMP_EG_EDEFAULT;
+		case EsxPackage.PART_WITH_COMMON__BPM_SYNC:
+			return bpmSync != BPM_SYNC_EDEFAULT;
+		case EsxPackage.PART_WITH_COMMON__CUTOFF:
+			return cutoff != CUTOFF_EDEFAULT;
+		case EsxPackage.PART_WITH_COMMON__EG_INTENSITY:
+			return egIntensity != EG_INTENSITY_EDEFAULT;
+		case EsxPackage.PART_WITH_COMMON__EG_TIME:
+			return egTime != EG_TIME_EDEFAULT;
+		case EsxPackage.PART_WITH_COMMON__FILTER_TYPE:
+			return filterType != FILTER_TYPE_EDEFAULT;
+		case EsxPackage.PART_WITH_COMMON__FX_SELECT:
+			return fxSelect != FX_SELECT_EDEFAULT;
+		case EsxPackage.PART_WITH_COMMON__FX_SEND:
+			return fxSend != FX_SEND_EDEFAULT;
+		case EsxPackage.PART_WITH_COMMON__MOD_DEPTH:
+			return modDepth != MOD_DEPTH_EDEFAULT;
+		case EsxPackage.PART_WITH_COMMON__MOD_DEST:
+			return modDest != MOD_DEST_EDEFAULT;
+		case EsxPackage.PART_WITH_COMMON__MOD_SPEED:
+			return modSpeed != MOD_SPEED_EDEFAULT;
+		case EsxPackage.PART_WITH_COMMON__MOD_TYPE:
+			return modType != MOD_TYPE_EDEFAULT;
+		case EsxPackage.PART_WITH_COMMON__PAN:
+			return pan != PAN_EDEFAULT;
+		case EsxPackage.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH:
+			return reservedBitAfterModDepth != RESERVED_BIT_AFTER_MOD_DEPTH_EDEFAULT;
+		case EsxPackage.PART_WITH_COMMON__RESONANCE:
+			return resonance != RESONANCE_EDEFAULT;
+		case EsxPackage.PART_WITH_COMMON__ROLL:
+			return roll != ROLL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -948,7 +973,8 @@ public abstract class PartWithCommonImpl extends EObjectImpl implements PartWith
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (ampEg: ");

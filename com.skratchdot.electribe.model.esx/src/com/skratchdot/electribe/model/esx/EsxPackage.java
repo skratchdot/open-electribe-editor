@@ -64,7 +64,8 @@ public interface EsxPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	EsxPackage eINSTANCE = com.skratchdot.electribe.model.esx.impl.EsxPackageImpl.init();
+	EsxPackage eINSTANCE = com.skratchdot.electribe.model.esx.impl.EsxPackageImpl
+			.init();
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.EsxFileImpl <em>File</em>}' class.
@@ -3155,7 +3156,6 @@ public interface EsxPackage extends EPackage {
 	 */
 	int SONG_FEATURE_COUNT = 13;
 
-
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.SongPatternImpl <em>Song Pattern</em>}' class.
 	 * <!-- begin-user-doc -->
@@ -3885,7 +3885,6 @@ public interface EsxPackage extends EPackage {
 	 */
 	int TEMPO_FEATURE_COUNT = 1;
 
-
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.ArpeggiatorControl <em>Arpeggiator Control</em>}' enum.
 	 * <!-- begin-user-doc -->
@@ -4075,7 +4074,6 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	int SWING = 76;
-
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.PatternLength <em>Pattern Length</em>}' enum.
@@ -4297,7 +4295,6 @@ public interface EsxPackage extends EPackage {
 	 */
 	int OBJECT = 84;
 
-
 	/**
 	 * The meta object id for the '<em>RIFF Wave</em>' data type.
 	 * <!-- begin-user-doc -->
@@ -4318,7 +4315,6 @@ public interface EsxPackage extends EPackage {
 	 */
 	int ARRAY_LIST = 78;
 
-
 	/**
 	 * The meta object id for the '<em>File</em>' data type.
 	 * <!-- begin-user-doc -->
@@ -4328,7 +4324,6 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	int FILE = 79;
-
 
 	/**
 	 * The meta object id for the '<em>Input Stream</em>' data type.
@@ -4360,7 +4355,6 @@ public interface EsxPackage extends EPackage {
 	 */
 	int IO_EXCEPTION = 82;
 
-
 	/**
 	 * The meta object id for the '<em>IProgress Monitor</em>' data type.
 	 * <!-- begin-user-doc -->
@@ -4370,7 +4364,6 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	int IPROGRESS_MONITOR = 83;
-
 
 	/**
 	 * Returns the meta object for class '{@link com.skratchdot.electribe.model.esx.EsxFile <em>File</em>}'.
@@ -7489,7 +7482,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__ORIGINAL_NON_AUDIO_DATA = eINSTANCE.getEsxFile_OriginalNonAudioData();
+		EAttribute ESX_FILE__ORIGINAL_NON_AUDIO_DATA = eINSTANCE
+				.getEsxFile_OriginalNonAudioData();
 
 		/**
 		 * The meta object literal for the '<em><b>Global Parameters</b></em>' containment reference feature.
@@ -7497,7 +7491,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ESX_FILE__GLOBAL_PARAMETERS = eINSTANCE.getEsxFile_GlobalParameters();
+		EReference ESX_FILE__GLOBAL_PARAMETERS = eINSTANCE
+				.getEsxFile_GlobalParameters();
 
 		/**
 		 * The meta object literal for the '<em><b>Patterns</b></em>' containment reference list feature.
@@ -7529,7 +7524,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ESX_FILE__EMPTY_PATTERN = eINSTANCE.getEsxFile_EmptyPattern();
+		EReference ESX_FILE__EMPTY_PATTERN = eINSTANCE
+				.getEsxFile_EmptyPattern();
 
 		/**
 		 * The meta object literal for the '<em><b>Empty Song</b></em>' containment reference feature.
@@ -7545,7 +7541,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__MAX_SAMPLE_OFFSET = eINSTANCE.getEsxFile_MaxSampleOffset();
+		EAttribute ESX_FILE__MAX_SAMPLE_OFFSET = eINSTANCE
+				.getEsxFile_MaxSampleOffset();
 
 		/**
 		 * The meta object literal for the '<em><b>Mem Used In Bytes</b></em>' attribute feature.
@@ -7553,7 +7550,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__MEM_USED_IN_BYTES = eINSTANCE.getEsxFile_MemUsedInBytes();
+		EAttribute ESX_FILE__MEM_USED_IN_BYTES = eINSTANCE
+				.getEsxFile_MemUsedInBytes();
 
 		/**
 		 * The meta object literal for the '<em><b>Mem Used In Seconds</b></em>' attribute feature.
@@ -7561,7 +7559,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__MEM_USED_IN_SECONDS = eINSTANCE.getEsxFile_MemUsedInSeconds();
+		EAttribute ESX_FILE__MEM_USED_IN_SECONDS = eINSTANCE
+				.getEsxFile_MemUsedInSeconds();
 
 		/**
 		 * The meta object literal for the '<em><b>Mem Free In Bytes</b></em>' attribute feature.
@@ -7569,7 +7568,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__MEM_FREE_IN_BYTES = eINSTANCE.getEsxFile_MemFreeInBytes();
+		EAttribute ESX_FILE__MEM_FREE_IN_BYTES = eINSTANCE
+				.getEsxFile_MemFreeInBytes();
 
 		/**
 		 * The meta object literal for the '<em><b>Mem Free In Seconds</b></em>' attribute feature.
@@ -7577,7 +7577,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__MEM_FREE_IN_SECONDS = eINSTANCE.getEsxFile_MemFreeInSeconds();
+		EAttribute ESX_FILE__MEM_FREE_IN_SECONDS = eINSTANCE
+				.getEsxFile_MemFreeInSeconds();
 
 		/**
 		 * The meta object literal for the '<em><b>Num Patterns Empty</b></em>' attribute feature.
@@ -7585,7 +7586,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__NUM_PATTERNS_EMPTY = eINSTANCE.getEsxFile_NumPatternsEmpty();
+		EAttribute ESX_FILE__NUM_PATTERNS_EMPTY = eINSTANCE
+				.getEsxFile_NumPatternsEmpty();
 
 		/**
 		 * The meta object literal for the '<em><b>Num Patterns Not Empty</b></em>' attribute feature.
@@ -7593,7 +7595,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__NUM_PATTERNS_NOT_EMPTY = eINSTANCE.getEsxFile_NumPatternsNotEmpty();
+		EAttribute ESX_FILE__NUM_PATTERNS_NOT_EMPTY = eINSTANCE
+				.getEsxFile_NumPatternsNotEmpty();
 
 		/**
 		 * The meta object literal for the '<em><b>Num Samples Empty</b></em>' attribute feature.
@@ -7601,7 +7604,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__NUM_SAMPLES_EMPTY = eINSTANCE.getEsxFile_NumSamplesEmpty();
+		EAttribute ESX_FILE__NUM_SAMPLES_EMPTY = eINSTANCE
+				.getEsxFile_NumSamplesEmpty();
 
 		/**
 		 * The meta object literal for the '<em><b>Num Samples Not Empty</b></em>' attribute feature.
@@ -7609,7 +7613,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__NUM_SAMPLES_NOT_EMPTY = eINSTANCE.getEsxFile_NumSamplesNotEmpty();
+		EAttribute ESX_FILE__NUM_SAMPLES_NOT_EMPTY = eINSTANCE
+				.getEsxFile_NumSamplesNotEmpty();
 
 		/**
 		 * The meta object literal for the '<em><b>Num Samples Mono Empty</b></em>' attribute feature.
@@ -7617,7 +7622,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__NUM_SAMPLES_MONO_EMPTY = eINSTANCE.getEsxFile_NumSamplesMonoEmpty();
+		EAttribute ESX_FILE__NUM_SAMPLES_MONO_EMPTY = eINSTANCE
+				.getEsxFile_NumSamplesMonoEmpty();
 
 		/**
 		 * The meta object literal for the '<em><b>Num Samples Mono Not Empty</b></em>' attribute feature.
@@ -7625,7 +7631,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__NUM_SAMPLES_MONO_NOT_EMPTY = eINSTANCE.getEsxFile_NumSamplesMonoNotEmpty();
+		EAttribute ESX_FILE__NUM_SAMPLES_MONO_NOT_EMPTY = eINSTANCE
+				.getEsxFile_NumSamplesMonoNotEmpty();
 
 		/**
 		 * The meta object literal for the '<em><b>Num Samples Stereo Empty</b></em>' attribute feature.
@@ -7633,7 +7640,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__NUM_SAMPLES_STEREO_EMPTY = eINSTANCE.getEsxFile_NumSamplesStereoEmpty();
+		EAttribute ESX_FILE__NUM_SAMPLES_STEREO_EMPTY = eINSTANCE
+				.getEsxFile_NumSamplesStereoEmpty();
 
 		/**
 		 * The meta object literal for the '<em><b>Num Samples Stereo Not Empty</b></em>' attribute feature.
@@ -7641,7 +7649,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__NUM_SAMPLES_STEREO_NOT_EMPTY = eINSTANCE.getEsxFile_NumSamplesStereoNotEmpty();
+		EAttribute ESX_FILE__NUM_SAMPLES_STEREO_NOT_EMPTY = eINSTANCE
+				.getEsxFile_NumSamplesStereoNotEmpty();
 
 		/**
 		 * The meta object literal for the '<em><b>Num Songs Empty</b></em>' attribute feature.
@@ -7649,7 +7658,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__NUM_SONGS_EMPTY = eINSTANCE.getEsxFile_NumSongsEmpty();
+		EAttribute ESX_FILE__NUM_SONGS_EMPTY = eINSTANCE
+				.getEsxFile_NumSongsEmpty();
 
 		/**
 		 * The meta object literal for the '<em><b>Num Songs Not Empty</b></em>' attribute feature.
@@ -7657,7 +7667,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__NUM_SONGS_NOT_EMPTY = eINSTANCE.getEsxFile_NumSongsNotEmpty();
+		EAttribute ESX_FILE__NUM_SONGS_NOT_EMPTY = eINSTANCE
+				.getEsxFile_NumSongsNotEmpty();
 
 		/**
 		 * The meta object literal for the '<em><b>Sync Patterns On Move Enabled</b></em>' attribute feature.
@@ -7665,7 +7676,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED = eINSTANCE.getEsxFile_SyncPatternsOnMoveEnabled();
+		EAttribute ESX_FILE__SYNC_PATTERNS_ON_MOVE_ENABLED = eINSTANCE
+				.getEsxFile_SyncPatternsOnMoveEnabled();
 
 		/**
 		 * The meta object literal for the '<em><b>Sync Samples On Move Enabled</b></em>' attribute feature.
@@ -7673,7 +7685,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED = eINSTANCE.getEsxFile_SyncSamplesOnMoveEnabled();
+		EAttribute ESX_FILE__SYNC_SAMPLES_ON_MOVE_ENABLED = eINSTANCE
+				.getEsxFile_SyncSamplesOnMoveEnabled();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.GlobalParametersImpl <em>Global Parameters</em>}' class.
@@ -7691,7 +7704,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED = eINSTANCE.getGlobalParameters_MemoryProtectEnabled();
+		EAttribute GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED = eINSTANCE
+				.getGlobalParameters_MemoryProtectEnabled();
 
 		/**
 		 * The meta object literal for the '<em><b>Reserved Byte</b></em>' attribute feature.
@@ -7699,7 +7713,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GLOBAL_PARAMETERS__RESERVED_BYTE = eINSTANCE.getGlobalParameters_ReservedByte();
+		EAttribute GLOBAL_PARAMETERS__RESERVED_BYTE = eINSTANCE
+				.getGlobalParameters_ReservedByte();
 
 		/**
 		 * The meta object literal for the '<em><b>Arpeggiator Control</b></em>' attribute feature.
@@ -7707,7 +7722,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GLOBAL_PARAMETERS__ARPEGGIATOR_CONTROL = eINSTANCE.getGlobalParameters_ArpeggiatorControl();
+		EAttribute GLOBAL_PARAMETERS__ARPEGGIATOR_CONTROL = eINSTANCE
+				.getGlobalParameters_ArpeggiatorControl();
 
 		/**
 		 * The meta object literal for the '<em><b>Audio In Mode</b></em>' attribute feature.
@@ -7715,7 +7731,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GLOBAL_PARAMETERS__AUDIO_IN_MODE = eINSTANCE.getGlobalParameters_AudioInMode();
+		EAttribute GLOBAL_PARAMETERS__AUDIO_IN_MODE = eINSTANCE
+				.getGlobalParameters_AudioInMode();
 
 		/**
 		 * The meta object literal for the '<em><b>Midi Clock</b></em>' attribute feature.
@@ -7723,7 +7740,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GLOBAL_PARAMETERS__MIDI_CLOCK = eINSTANCE.getGlobalParameters_MidiClock();
+		EAttribute GLOBAL_PARAMETERS__MIDI_CLOCK = eINSTANCE
+				.getGlobalParameters_MidiClock();
 
 		/**
 		 * The meta object literal for the '<em><b>Note Message Enabled</b></em>' attribute feature.
@@ -7731,7 +7749,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GLOBAL_PARAMETERS__NOTE_MESSAGE_ENABLED = eINSTANCE.getGlobalParameters_NoteMessageEnabled();
+		EAttribute GLOBAL_PARAMETERS__NOTE_MESSAGE_ENABLED = eINSTANCE
+				.getGlobalParameters_NoteMessageEnabled();
 
 		/**
 		 * The meta object literal for the '<em><b>System Ex Enabled</b></em>' attribute feature.
@@ -7739,7 +7758,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GLOBAL_PARAMETERS__SYSTEM_EX_ENABLED = eINSTANCE.getGlobalParameters_SystemExEnabled();
+		EAttribute GLOBAL_PARAMETERS__SYSTEM_EX_ENABLED = eINSTANCE
+				.getGlobalParameters_SystemExEnabled();
 
 		/**
 		 * The meta object literal for the '<em><b>Control Change Enabled</b></em>' attribute feature.
@@ -7747,7 +7767,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GLOBAL_PARAMETERS__CONTROL_CHANGE_ENABLED = eINSTANCE.getGlobalParameters_ControlChangeEnabled();
+		EAttribute GLOBAL_PARAMETERS__CONTROL_CHANGE_ENABLED = eINSTANCE
+				.getGlobalParameters_ControlChangeEnabled();
 
 		/**
 		 * The meta object literal for the '<em><b>Program Change Enabled</b></em>' attribute feature.
@@ -7755,7 +7776,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GLOBAL_PARAMETERS__PROGRAM_CHANGE_ENABLED = eINSTANCE.getGlobalParameters_ProgramChangeEnabled();
+		EAttribute GLOBAL_PARAMETERS__PROGRAM_CHANGE_ENABLED = eINSTANCE
+				.getGlobalParameters_ProgramChangeEnabled();
 
 		/**
 		 * The meta object literal for the '<em><b>Reserved Bits After Program Change Enabled</b></em>' attribute feature.
@@ -7763,7 +7785,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GLOBAL_PARAMETERS__RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED = eINSTANCE.getGlobalParameters_ReservedBitsAfterProgramChangeEnabled();
+		EAttribute GLOBAL_PARAMETERS__RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED = eINSTANCE
+				.getGlobalParameters_ReservedBitsAfterProgramChangeEnabled();
 
 		/**
 		 * The meta object literal for the '<em><b>Pitch Bend Range</b></em>' attribute feature.
@@ -7771,7 +7794,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GLOBAL_PARAMETERS__PITCH_BEND_RANGE = eINSTANCE.getGlobalParameters_PitchBendRange();
+		EAttribute GLOBAL_PARAMETERS__PITCH_BEND_RANGE = eINSTANCE
+				.getGlobalParameters_PitchBendRange();
 
 		/**
 		 * The meta object literal for the '<em><b>Midi Channels</b></em>' containment reference list feature.
@@ -7779,7 +7803,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GLOBAL_PARAMETERS__MIDI_CHANNELS = eINSTANCE.getGlobalParameters_MidiChannels();
+		EReference GLOBAL_PARAMETERS__MIDI_CHANNELS = eINSTANCE
+				.getGlobalParameters_MidiChannels();
 
 		/**
 		 * The meta object literal for the '<em><b>Part Note Numbers</b></em>' containment reference list feature.
@@ -7787,7 +7812,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GLOBAL_PARAMETERS__PART_NOTE_NUMBERS = eINSTANCE.getGlobalParameters_PartNoteNumbers();
+		EReference GLOBAL_PARAMETERS__PART_NOTE_NUMBERS = eINSTANCE
+				.getGlobalParameters_PartNoteNumbers();
 
 		/**
 		 * The meta object literal for the '<em><b>Midi Control Change Assignments</b></em>' containment reference list feature.
@@ -7795,7 +7821,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS = eINSTANCE.getGlobalParameters_MidiControlChangeAssignments();
+		EReference GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS = eINSTANCE
+				.getGlobalParameters_MidiControlChangeAssignments();
 
 		/**
 		 * The meta object literal for the '<em><b>Reserved Long</b></em>' attribute feature.
@@ -7803,7 +7830,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GLOBAL_PARAMETERS__RESERVED_LONG = eINSTANCE.getGlobalParameters_ReservedLong();
+		EAttribute GLOBAL_PARAMETERS__RESERVED_LONG = eINSTANCE
+				.getGlobalParameters_ReservedLong();
 
 		/**
 		 * The meta object literal for the '<em><b>Pattern Set Parameters</b></em>' containment reference list feature.
@@ -7811,7 +7839,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS = eINSTANCE.getGlobalParameters_PatternSetParameters();
+		EReference GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS = eINSTANCE
+				.getGlobalParameters_PatternSetParameters();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.PatternSetParameterImpl <em>Pattern Set Parameter</em>}' class.
@@ -7829,7 +7858,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PATTERN_SET_PARAMETER__POSITION_CURRENT = eINSTANCE.getPatternSetParameter_PositionCurrent();
+		EAttribute PATTERN_SET_PARAMETER__POSITION_CURRENT = eINSTANCE
+				.getPatternSetParameter_PositionCurrent();
 
 		/**
 		 * The meta object literal for the '<em><b>Pattern Pointer</b></em>' attribute feature.
@@ -7837,7 +7867,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PATTERN_SET_PARAMETER__PATTERN_POINTER = eINSTANCE.getPatternSetParameter_PatternPointer();
+		EAttribute PATTERN_SET_PARAMETER__PATTERN_POINTER = eINSTANCE
+				.getPatternSetParameter_PatternPointer();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.MidiChannelTypeImpl <em>Midi Channel Type</em>}' class.
@@ -7855,7 +7886,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MIDI_CHANNEL_TYPE__NAME = eINSTANCE.getMidiChannelType_Name();
+		EAttribute MIDI_CHANNEL_TYPE__NAME = eINSTANCE
+				.getMidiChannelType_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Midi Channel</b></em>' attribute feature.
@@ -7863,7 +7895,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MIDI_CHANNEL_TYPE__MIDI_CHANNEL = eINSTANCE.getMidiChannelType_MidiChannel();
+		EAttribute MIDI_CHANNEL_TYPE__MIDI_CHANNEL = eINSTANCE
+				.getMidiChannelType_MidiChannel();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.PartNoteNumberImpl <em>Part Note Number</em>}' class.
@@ -7889,7 +7922,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_NOTE_NUMBER__NOTE_NUMBER = eINSTANCE.getPartNoteNumber_NoteNumber();
+		EAttribute PART_NOTE_NUMBER__NOTE_NUMBER = eINSTANCE
+				.getPartNoteNumber_NoteNumber();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.MidiControlChangeAssignmentImpl <em>Midi Control Change Assignment</em>}' class.
@@ -7899,7 +7933,8 @@ public interface EsxPackage extends EPackage {
 		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMidiControlChangeAssignment()
 		 * @generated
 		 */
-		EClass MIDI_CONTROL_CHANGE_ASSIGNMENT = eINSTANCE.getMidiControlChangeAssignment();
+		EClass MIDI_CONTROL_CHANGE_ASSIGNMENT = eINSTANCE
+				.getMidiControlChangeAssignment();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -7907,7 +7942,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME = eINSTANCE.getMidiControlChangeAssignment_Name();
+		EAttribute MIDI_CONTROL_CHANGE_ASSIGNMENT__NAME = eINSTANCE
+				.getMidiControlChangeAssignment_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -7915,7 +7951,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE = eINSTANCE.getMidiControlChangeAssignment_Value();
+		EAttribute MIDI_CONTROL_CHANGE_ASSIGNMENT__VALUE = eINSTANCE
+				.getMidiControlChangeAssignment_Value();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.OperationImpl <em>Operation</em>}' class.
@@ -7951,7 +7988,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETERS_FX__EFFECT_TYPE = eINSTANCE.getParametersFx_EffectType();
+		EAttribute PARAMETERS_FX__EFFECT_TYPE = eINSTANCE
+				.getParametersFx_EffectType();
 
 		/**
 		 * The meta object literal for the '<em><b>Edit1</b></em>' attribute feature.
@@ -7975,7 +8013,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETERS_FX__MOTION_SEQUENCE_STATUS = eINSTANCE.getParametersFx_MotionSequenceStatus();
+		EAttribute PARAMETERS_FX__MOTION_SEQUENCE_STATUS = eINSTANCE
+				.getParametersFx_MotionSequenceStatus();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.ParametersMotionImpl <em>Parameters Motion</em>}' class.
@@ -7993,7 +8032,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETERS_MOTION__CURRENT_POSITION = eINSTANCE.getParametersMotion_CurrentPosition();
+		EAttribute PARAMETERS_MOTION__CURRENT_POSITION = eINSTANCE
+				.getParametersMotion_CurrentPosition();
 
 		/**
 		 * The meta object literal for the '<em><b>Empty</b></em>' attribute feature.
@@ -8001,7 +8041,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETERS_MOTION__EMPTY = eINSTANCE.getParametersMotion_Empty();
+		EAttribute PARAMETERS_MOTION__EMPTY = eINSTANCE
+				.getParametersMotion_Empty();
 
 		/**
 		 * The meta object literal for the '<em><b>Operation</b></em>' containment reference list feature.
@@ -8009,7 +8050,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PARAMETERS_MOTION__OPERATION = eINSTANCE.getParametersMotion_Operation();
+		EReference PARAMETERS_MOTION__OPERATION = eINSTANCE
+				.getParametersMotion_Operation();
 
 		/**
 		 * The meta object literal for the '<em><b>Operation Number</b></em>' attribute feature.
@@ -8017,7 +8059,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETERS_MOTION__OPERATION_NUMBER = eINSTANCE.getParametersMotion_OperationNumber();
+		EAttribute PARAMETERS_MOTION__OPERATION_NUMBER = eINSTANCE
+				.getParametersMotion_OperationNumber();
 
 		/**
 		 * The meta object literal for the '<em><b>Operation Type</b></em>' attribute feature.
@@ -8025,7 +8068,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETERS_MOTION__OPERATION_TYPE = eINSTANCE.getParametersMotion_OperationType();
+		EAttribute PARAMETERS_MOTION__OPERATION_TYPE = eINSTANCE
+				.getParametersMotion_OperationType();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.SequenceDataImpl <em>Sequence Data</em>}' class.
@@ -8043,7 +8087,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SEQUENCE_DATA__SEQUENCE_DATA = eINSTANCE.getSequenceData_SequenceData();
+		EAttribute SEQUENCE_DATA__SEQUENCE_DATA = eINSTANCE
+				.getSequenceData_SequenceData();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.SequenceDataGateImpl <em>Sequence Data Gate</em>}' class.
@@ -8061,7 +8106,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE = eINSTANCE.getSequenceDataGate_SequenceDataGate();
+		EAttribute SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE = eINSTANCE
+				.getSequenceDataGate_SequenceDataGate();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.SequenceDataNoteImpl <em>Sequence Data Note</em>}' class.
@@ -8079,7 +8125,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SEQUENCE_DATA_NOTE__SEQUENCE_DATA_NOTE = eINSTANCE.getSequenceDataNote_SequenceDataNote();
+		EAttribute SEQUENCE_DATA_NOTE__SEQUENCE_DATA_NOTE = eINSTANCE
+				.getSequenceDataNote_SequenceDataNote();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.PartImpl <em>Part</em>}' class.
@@ -8113,7 +8160,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART__MOTION_SEQUENCE_STATUS = eINSTANCE.getPart_MotionSequenceStatus();
+		EAttribute PART__MOTION_SEQUENCE_STATUS = eINSTANCE
+				.getPart_MotionSequenceStatus();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.PartWithSequenceDataImpl <em>Part With Sequence Data</em>}' class.
@@ -8131,7 +8179,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA = eINSTANCE.getPartWithSequenceData_SequenceData();
+		EReference PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA = eINSTANCE
+				.getPartWithSequenceData_SequenceData();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.PartWithCommonImpl <em>Part With Common</em>}' class.
@@ -8149,7 +8198,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_COMMON__AMP_EG = eINSTANCE.getPartWithCommon_AmpEg();
+		EAttribute PART_WITH_COMMON__AMP_EG = eINSTANCE
+				.getPartWithCommon_AmpEg();
 
 		/**
 		 * The meta object literal for the '<em><b>Bpm Sync</b></em>' attribute feature.
@@ -8157,7 +8207,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_COMMON__BPM_SYNC = eINSTANCE.getPartWithCommon_BpmSync();
+		EAttribute PART_WITH_COMMON__BPM_SYNC = eINSTANCE
+				.getPartWithCommon_BpmSync();
 
 		/**
 		 * The meta object literal for the '<em><b>Cutoff</b></em>' attribute feature.
@@ -8165,7 +8216,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_COMMON__CUTOFF = eINSTANCE.getPartWithCommon_Cutoff();
+		EAttribute PART_WITH_COMMON__CUTOFF = eINSTANCE
+				.getPartWithCommon_Cutoff();
 
 		/**
 		 * The meta object literal for the '<em><b>Eg Intensity</b></em>' attribute feature.
@@ -8173,7 +8225,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_COMMON__EG_INTENSITY = eINSTANCE.getPartWithCommon_EgIntensity();
+		EAttribute PART_WITH_COMMON__EG_INTENSITY = eINSTANCE
+				.getPartWithCommon_EgIntensity();
 
 		/**
 		 * The meta object literal for the '<em><b>Eg Time</b></em>' attribute feature.
@@ -8181,7 +8234,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_COMMON__EG_TIME = eINSTANCE.getPartWithCommon_EgTime();
+		EAttribute PART_WITH_COMMON__EG_TIME = eINSTANCE
+				.getPartWithCommon_EgTime();
 
 		/**
 		 * The meta object literal for the '<em><b>Filter Type</b></em>' attribute feature.
@@ -8189,7 +8243,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_COMMON__FILTER_TYPE = eINSTANCE.getPartWithCommon_FilterType();
+		EAttribute PART_WITH_COMMON__FILTER_TYPE = eINSTANCE
+				.getPartWithCommon_FilterType();
 
 		/**
 		 * The meta object literal for the '<em><b>Fx Select</b></em>' attribute feature.
@@ -8197,7 +8252,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_COMMON__FX_SELECT = eINSTANCE.getPartWithCommon_FxSelect();
+		EAttribute PART_WITH_COMMON__FX_SELECT = eINSTANCE
+				.getPartWithCommon_FxSelect();
 
 		/**
 		 * The meta object literal for the '<em><b>Fx Send</b></em>' attribute feature.
@@ -8205,7 +8261,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_COMMON__FX_SEND = eINSTANCE.getPartWithCommon_FxSend();
+		EAttribute PART_WITH_COMMON__FX_SEND = eINSTANCE
+				.getPartWithCommon_FxSend();
 
 		/**
 		 * The meta object literal for the '<em><b>Mod Depth</b></em>' attribute feature.
@@ -8213,7 +8270,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_COMMON__MOD_DEPTH = eINSTANCE.getPartWithCommon_ModDepth();
+		EAttribute PART_WITH_COMMON__MOD_DEPTH = eINSTANCE
+				.getPartWithCommon_ModDepth();
 
 		/**
 		 * The meta object literal for the '<em><b>Mod Dest</b></em>' attribute feature.
@@ -8221,7 +8279,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_COMMON__MOD_DEST = eINSTANCE.getPartWithCommon_ModDest();
+		EAttribute PART_WITH_COMMON__MOD_DEST = eINSTANCE
+				.getPartWithCommon_ModDest();
 
 		/**
 		 * The meta object literal for the '<em><b>Mod Speed</b></em>' attribute feature.
@@ -8229,7 +8288,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_COMMON__MOD_SPEED = eINSTANCE.getPartWithCommon_ModSpeed();
+		EAttribute PART_WITH_COMMON__MOD_SPEED = eINSTANCE
+				.getPartWithCommon_ModSpeed();
 
 		/**
 		 * The meta object literal for the '<em><b>Mod Type</b></em>' attribute feature.
@@ -8237,7 +8297,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_COMMON__MOD_TYPE = eINSTANCE.getPartWithCommon_ModType();
+		EAttribute PART_WITH_COMMON__MOD_TYPE = eINSTANCE
+				.getPartWithCommon_ModType();
 
 		/**
 		 * The meta object literal for the '<em><b>Pan</b></em>' attribute feature.
@@ -8253,7 +8314,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH = eINSTANCE.getPartWithCommon_ReservedBitAfterModDepth();
+		EAttribute PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH = eINSTANCE
+				.getPartWithCommon_ReservedBitAfterModDepth();
 
 		/**
 		 * The meta object literal for the '<em><b>Resonance</b></em>' attribute feature.
@@ -8261,7 +8323,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_COMMON__RESONANCE = eINSTANCE.getPartWithCommon_Resonance();
+		EAttribute PART_WITH_COMMON__RESONANCE = eINSTANCE
+				.getPartWithCommon_Resonance();
 
 		/**
 		 * The meta object literal for the '<em><b>Roll</b></em>' attribute feature.
@@ -8287,7 +8350,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_SAMPLE__REVERSE = eINSTANCE.getPartWithSample_Reverse();
+		EAttribute PART_WITH_SAMPLE__REVERSE = eINSTANCE
+				.getPartWithSample_Reverse();
 
 		/**
 		 * The meta object literal for the '<em><b>Sample Label</b></em>' attribute feature.
@@ -8295,7 +8359,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_SAMPLE__SAMPLE_LABEL = eINSTANCE.getPartWithSample_SampleLabel();
+		EAttribute PART_WITH_SAMPLE__SAMPLE_LABEL = eINSTANCE
+				.getPartWithSample_SampleLabel();
 
 		/**
 		 * The meta object literal for the '<em><b>Sample Pointer</b></em>' attribute feature.
@@ -8303,7 +8368,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_SAMPLE__SAMPLE_POINTER = eINSTANCE.getPartWithSample_SamplePointer();
+		EAttribute PART_WITH_SAMPLE__SAMPLE_POINTER = eINSTANCE
+				.getPartWithSample_SamplePointer();
 
 		/**
 		 * The meta object literal for the '<em><b>Start Point</b></em>' attribute feature.
@@ -8311,7 +8377,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_SAMPLE__START_POINT = eINSTANCE.getPartWithSample_StartPoint();
+		EAttribute PART_WITH_SAMPLE__START_POINT = eINSTANCE
+				.getPartWithSample_StartPoint();
 
 		/**
 		 * The meta object literal for the '<em><b>Reserved Bits After Reverse</b></em>' attribute feature.
@@ -8319,7 +8386,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE = eINSTANCE.getPartWithSample_ReservedBitsAfterReverse();
+		EAttribute PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE = eINSTANCE
+				.getPartWithSample_ReservedBitsAfterReverse();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.PartWithSliceImpl <em>Part With Slice</em>}' class.
@@ -8337,7 +8405,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_SLICE__RESERVED_BYTE = eINSTANCE.getPartWithSlice_ReservedByte();
+		EAttribute PART_WITH_SLICE__RESERVED_BYTE = eINSTANCE
+				.getPartWithSlice_ReservedByte();
 
 		/**
 		 * The meta object literal for the '<em><b>Slice Number</b></em>' attribute feature.
@@ -8345,7 +8414,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_WITH_SLICE__SLICE_NUMBER = eINSTANCE.getPartWithSlice_SliceNumber();
+		EAttribute PART_WITH_SLICE__SLICE_NUMBER = eINSTANCE
+				.getPartWithSlice_SliceNumber();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.PartWithPitchImpl <em>Part With Pitch</em>}' class.
@@ -8373,7 +8443,8 @@ public interface EsxPackage extends EPackage {
 		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getPartWithSequenceDataGate()
 		 * @generated
 		 */
-		EClass PART_WITH_SEQUENCE_DATA_GATE = eINSTANCE.getPartWithSequenceDataGate();
+		EClass PART_WITH_SEQUENCE_DATA_GATE = eINSTANCE
+				.getPartWithSequenceDataGate();
 
 		/**
 		 * The meta object literal for the '<em><b>Sequence Data Gate</b></em>' containment reference feature.
@@ -8381,7 +8452,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE = eINSTANCE.getPartWithSequenceDataGate_SequenceDataGate();
+		EReference PART_WITH_SEQUENCE_DATA_GATE__SEQUENCE_DATA_GATE = eINSTANCE
+				.getPartWithSequenceDataGate_SequenceDataGate();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.PartAccentImpl <em>Part Accent</em>}' class.
@@ -8409,7 +8481,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PART_AUDIO_IN__RESERVED_BITS_BYTE7 = eINSTANCE.getPartAudioIn_ReservedBitsByte7();
+		EAttribute PART_AUDIO_IN__RESERVED_BITS_BYTE7 = eINSTANCE
+				.getPartAudioIn_ReservedBitsByte7();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.PartDrumImpl <em>Part Drum</em>}' class.
@@ -8445,7 +8518,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PART_KEYBOARD__SEQUENCE_DATA_NOTE = eINSTANCE.getPartKeyboard_SequenceDataNote();
+		EReference PART_KEYBOARD__SEQUENCE_DATA_NOTE = eINSTANCE
+				.getPartKeyboard_SequenceDataNote();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.PartStretchSliceImpl <em>Part Stretch Slice</em>}' class.
@@ -8505,7 +8579,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PATTERN__PATTERN_LENGTH = eINSTANCE.getPattern_PatternLength();
+		EAttribute PATTERN__PATTERN_LENGTH = eINSTANCE
+				.getPattern_PatternLength();
 
 		/**
 		 * The meta object literal for the '<em><b>Reserved Bit After Pattern Length</b></em>' attribute feature.
@@ -8513,7 +8588,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PATTERN__RESERVED_BIT_AFTER_PATTERN_LENGTH = eINSTANCE.getPattern_ReservedBitAfterPatternLength();
+		EAttribute PATTERN__RESERVED_BIT_AFTER_PATTERN_LENGTH = eINSTANCE
+				.getPattern_ReservedBitAfterPatternLength();
 
 		/**
 		 * The meta object literal for the '<em><b>Beat</b></em>' attribute feature.
@@ -8553,7 +8629,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PATTERN__ARPEGGIATOR_SCALE = eINSTANCE.getPattern_ArpeggiatorScale();
+		EAttribute PATTERN__ARPEGGIATOR_SCALE = eINSTANCE
+				.getPattern_ArpeggiatorScale();
 
 		/**
 		 * The meta object literal for the '<em><b>Reserved Bits After Arpeggiator Scale</b></em>' attribute feature.
@@ -8561,7 +8638,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PATTERN__RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE = eINSTANCE.getPattern_ReservedBitsAfterArpeggiatorScale();
+		EAttribute PATTERN__RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE = eINSTANCE
+				.getPattern_ReservedBitsAfterArpeggiatorScale();
 
 		/**
 		 * The meta object literal for the '<em><b>Arpeggiator Center Note</b></em>' attribute feature.
@@ -8569,7 +8647,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PATTERN__ARPEGGIATOR_CENTER_NOTE = eINSTANCE.getPattern_ArpeggiatorCenterNote();
+		EAttribute PATTERN__ARPEGGIATOR_CENTER_NOTE = eINSTANCE
+				.getPattern_ArpeggiatorCenterNote();
 
 		/**
 		 * The meta object literal for the '<em><b>Mute Status</b></em>' attribute feature.
@@ -8593,7 +8672,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PATTERN__OUTPUT_BUS_STATUS = eINSTANCE.getPattern_OutputBusStatus();
+		EAttribute PATTERN__OUTPUT_BUS_STATUS = eINSTANCE
+				.getPattern_OutputBusStatus();
 
 		/**
 		 * The meta object literal for the '<em><b>Accent Status</b></em>' attribute feature.
@@ -8617,7 +8697,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PATTERN__KEYBOARD_PARTS = eINSTANCE.getPattern_KeyboardParts();
+		EReference PATTERN__KEYBOARD_PARTS = eINSTANCE
+				.getPattern_KeyboardParts();
 
 		/**
 		 * The meta object literal for the '<em><b>Stretch Slice Parts</b></em>' containment reference list feature.
@@ -8625,7 +8706,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PATTERN__STRETCH_SLICE_PARTS = eINSTANCE.getPattern_StretchSliceParts();
+		EReference PATTERN__STRETCH_SLICE_PARTS = eINSTANCE
+				.getPattern_StretchSliceParts();
 
 		/**
 		 * The meta object literal for the '<em><b>Audio In Part</b></em>' containment reference feature.
@@ -8657,7 +8739,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PATTERN__MOTION_PARAMETERS = eINSTANCE.getPattern_MotionParameters();
+		EReference PATTERN__MOTION_PARAMETERS = eINSTANCE
+				.getPattern_MotionParameters();
 
 		/**
 		 * The meta object literal for the '<em><b>Empty</b></em>' attribute feature.
@@ -8673,7 +8756,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PATTERN__PATTERN_NUMBER_ORIGINAL = eINSTANCE.getPattern_PatternNumberOriginal();
+		EAttribute PATTERN__PATTERN_NUMBER_ORIGINAL = eINSTANCE
+				.getPattern_PatternNumberOriginal();
 
 		/**
 		 * The meta object literal for the '<em><b>Pattern Number Current</b></em>' attribute feature.
@@ -8681,7 +8765,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PATTERN__PATTERN_NUMBER_CURRENT = eINSTANCE.getPattern_PatternNumberCurrent();
+		EAttribute PATTERN__PATTERN_NUMBER_CURRENT = eINSTANCE
+				.getPattern_PatternNumberCurrent();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.SampleImpl <em>Sample</em>}' class.
@@ -8707,7 +8792,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__MEM_USED_IN_BYTES = eINSTANCE.getSample_MemUsedInBytes();
+		EAttribute SAMPLE__MEM_USED_IN_BYTES = eINSTANCE
+				.getSample_MemUsedInBytes();
 
 		/**
 		 * The meta object literal for the '<em><b>Empty</b></em>' attribute feature.
@@ -8739,7 +8825,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SAMPLE__SAMPLE_IN_PATTERN_INFO_LIST = eINSTANCE.getSample_SampleInPatternInfoList();
+		EReference SAMPLE__SAMPLE_IN_PATTERN_INFO_LIST = eINSTANCE
+				.getSample_SampleInPatternInfoList();
 
 		/**
 		 * The meta object literal for the '<em><b>Offset Channel1 Start</b></em>' attribute feature.
@@ -8747,7 +8834,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__OFFSET_CHANNEL1_START = eINSTANCE.getSample_OffsetChannel1Start();
+		EAttribute SAMPLE__OFFSET_CHANNEL1_START = eINSTANCE
+				.getSample_OffsetChannel1Start();
 
 		/**
 		 * The meta object literal for the '<em><b>Offset Channel1 End</b></em>' attribute feature.
@@ -8755,7 +8843,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__OFFSET_CHANNEL1_END = eINSTANCE.getSample_OffsetChannel1End();
+		EAttribute SAMPLE__OFFSET_CHANNEL1_END = eINSTANCE
+				.getSample_OffsetChannel1End();
 
 		/**
 		 * The meta object literal for the '<em><b>Offset Channel2 Start</b></em>' attribute feature.
@@ -8763,7 +8852,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__OFFSET_CHANNEL2_START = eINSTANCE.getSample_OffsetChannel2Start();
+		EAttribute SAMPLE__OFFSET_CHANNEL2_START = eINSTANCE
+				.getSample_OffsetChannel2Start();
 
 		/**
 		 * The meta object literal for the '<em><b>Offset Channel2 End</b></em>' attribute feature.
@@ -8771,7 +8861,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__OFFSET_CHANNEL2_END = eINSTANCE.getSample_OffsetChannel2End();
+		EAttribute SAMPLE__OFFSET_CHANNEL2_END = eINSTANCE
+				.getSample_OffsetChannel2End();
 
 		/**
 		 * The meta object literal for the '<em><b>Start</b></em>' attribute feature.
@@ -8819,7 +8910,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__NUMBER_OF_SAMPLE_FRAMES = eINSTANCE.getSample_NumberOfSampleFrames();
+		EAttribute SAMPLE__NUMBER_OF_SAMPLE_FRAMES = eINSTANCE
+				.getSample_NumberOfSampleFrames();
 
 		/**
 		 * The meta object literal for the '<em><b>Play Level</b></em>' attribute feature.
@@ -8843,7 +8935,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__UNKNOWN_BYTE_MONO1 = eINSTANCE.getSample_UnknownByteMono1();
+		EAttribute SAMPLE__UNKNOWN_BYTE_MONO1 = eINSTANCE
+				.getSample_UnknownByteMono1();
 
 		/**
 		 * The meta object literal for the '<em><b>Unknown Byte Mono2</b></em>' attribute feature.
@@ -8851,7 +8944,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__UNKNOWN_BYTE_MONO2 = eINSTANCE.getSample_UnknownByteMono2();
+		EAttribute SAMPLE__UNKNOWN_BYTE_MONO2 = eINSTANCE
+				.getSample_UnknownByteMono2();
 
 		/**
 		 * The meta object literal for the '<em><b>Unknown Byte Mono3</b></em>' attribute feature.
@@ -8859,7 +8953,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__UNKNOWN_BYTE_MONO3 = eINSTANCE.getSample_UnknownByteMono3();
+		EAttribute SAMPLE__UNKNOWN_BYTE_MONO3 = eINSTANCE
+				.getSample_UnknownByteMono3();
 
 		/**
 		 * The meta object literal for the '<em><b>Unknown Byte Mono4</b></em>' attribute feature.
@@ -8867,7 +8962,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__UNKNOWN_BYTE_MONO4 = eINSTANCE.getSample_UnknownByteMono4();
+		EAttribute SAMPLE__UNKNOWN_BYTE_MONO4 = eINSTANCE
+				.getSample_UnknownByteMono4();
 
 		/**
 		 * The meta object literal for the '<em><b>Unknown Byte Stereo1</b></em>' attribute feature.
@@ -8875,7 +8971,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__UNKNOWN_BYTE_STEREO1 = eINSTANCE.getSample_UnknownByteStereo1();
+		EAttribute SAMPLE__UNKNOWN_BYTE_STEREO1 = eINSTANCE
+				.getSample_UnknownByteStereo1();
 
 		/**
 		 * The meta object literal for the '<em><b>Unknown Byte Stereo2</b></em>' attribute feature.
@@ -8883,7 +8980,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__UNKNOWN_BYTE_STEREO2 = eINSTANCE.getSample_UnknownByteStereo2();
+		EAttribute SAMPLE__UNKNOWN_BYTE_STEREO2 = eINSTANCE
+				.getSample_UnknownByteStereo2();
 
 		/**
 		 * The meta object literal for the '<em><b>Unknown Byte Stereo3</b></em>' attribute feature.
@@ -8891,7 +8989,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__UNKNOWN_BYTE_STEREO3 = eINSTANCE.getSample_UnknownByteStereo3();
+		EAttribute SAMPLE__UNKNOWN_BYTE_STEREO3 = eINSTANCE
+				.getSample_UnknownByteStereo3();
 
 		/**
 		 * The meta object literal for the '<em><b>Unknown Byte Stereo4</b></em>' attribute feature.
@@ -8899,7 +8998,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__UNKNOWN_BYTE_STEREO4 = eINSTANCE.getSample_UnknownByteStereo4();
+		EAttribute SAMPLE__UNKNOWN_BYTE_STEREO4 = eINSTANCE
+				.getSample_UnknownByteStereo4();
 
 		/**
 		 * The meta object literal for the '<em><b>Audio Data Channel1</b></em>' attribute feature.
@@ -8907,7 +9007,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__AUDIO_DATA_CHANNEL1 = eINSTANCE.getSample_AudioDataChannel1();
+		EAttribute SAMPLE__AUDIO_DATA_CHANNEL1 = eINSTANCE
+				.getSample_AudioDataChannel1();
 
 		/**
 		 * The meta object literal for the '<em><b>Audio Data Channel2</b></em>' attribute feature.
@@ -8915,7 +9016,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__AUDIO_DATA_CHANNEL2 = eINSTANCE.getSample_AudioDataChannel2();
+		EAttribute SAMPLE__AUDIO_DATA_CHANNEL2 = eINSTANCE
+				.getSample_AudioDataChannel2();
 
 		/**
 		 * The meta object literal for the '<em><b>Audio Data Channel Both</b></em>' attribute feature.
@@ -8923,7 +9025,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__AUDIO_DATA_CHANNEL_BOTH = eINSTANCE.getSample_AudioDataChannelBoth();
+		EAttribute SAMPLE__AUDIO_DATA_CHANNEL_BOTH = eINSTANCE
+				.getSample_AudioDataChannelBoth();
 
 		/**
 		 * The meta object literal for the '<em><b>Audio Data Loop Start</b></em>' attribute feature.
@@ -8931,7 +9034,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__AUDIO_DATA_LOOP_START = eINSTANCE.getSample_AudioDataLoopStart();
+		EAttribute SAMPLE__AUDIO_DATA_LOOP_START = eINSTANCE
+				.getSample_AudioDataLoopStart();
 
 		/**
 		 * The meta object literal for the '<em><b>Slice Array</b></em>' attribute feature.
@@ -8947,7 +9051,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__SAMPLE_NUMBER_ORIGINAL = eINSTANCE.getSample_SampleNumberOriginal();
+		EAttribute SAMPLE__SAMPLE_NUMBER_ORIGINAL = eINSTANCE
+				.getSample_SampleNumberOriginal();
 
 		/**
 		 * The meta object literal for the '<em><b>Sample Number Current</b></em>' attribute feature.
@@ -8955,7 +9060,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__SAMPLE_NUMBER_CURRENT = eINSTANCE.getSample_SampleNumberCurrent();
+		EAttribute SAMPLE__SAMPLE_NUMBER_CURRENT = eINSTANCE
+				.getSample_SampleNumberCurrent();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.SampleInPatternInfoImpl <em>Sample In Pattern Info</em>}' class.
@@ -8973,7 +9079,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE_IN_PATTERN_INFO__INDEX = eINSTANCE.getSampleInPatternInfo_Index();
+		EAttribute SAMPLE_IN_PATTERN_INFO__INDEX = eINSTANCE
+				.getSampleInPatternInfo_Index();
 
 		/**
 		 * The meta object literal for the '<em><b>Pattern Label</b></em>' attribute feature.
@@ -8981,7 +9088,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL = eINSTANCE.getSampleInPatternInfo_PatternLabel();
+		EAttribute SAMPLE_IN_PATTERN_INFO__PATTERN_LABEL = eINSTANCE
+				.getSampleInPatternInfo_PatternLabel();
 
 		/**
 		 * The meta object literal for the '<em><b>Part Count</b></em>' attribute feature.
@@ -8989,7 +9097,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE_IN_PATTERN_INFO__PART_COUNT = eINSTANCE.getSampleInPatternInfo_PartCount();
+		EAttribute SAMPLE_IN_PATTERN_INFO__PART_COUNT = eINSTANCE
+				.getSampleInPatternInfo_PartCount();
 
 		/**
 		 * The meta object literal for the '<em><b>Part List</b></em>' attribute feature.
@@ -8997,7 +9106,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE_IN_PATTERN_INFO__PART_LIST = eINSTANCE.getSampleInPatternInfo_PartList();
+		EAttribute SAMPLE_IN_PATTERN_INFO__PART_LIST = eINSTANCE
+				.getSampleInPatternInfo_PartList();
 
 		/**
 		 * The meta object literal for the '<em><b>Loop</b></em>' attribute feature.
@@ -9021,7 +9131,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SAMPLE__STEREO_ORIGINAL = eINSTANCE.getSample_StereoOriginal();
+		EAttribute SAMPLE__STEREO_ORIGINAL = eINSTANCE
+				.getSample_StereoOriginal();
 
 		/**
 		 * The meta object literal for the '<em><b>Stereo Current</b></em>' attribute feature.
@@ -9121,7 +9232,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG__NUMBER_OF_SONG_EVENTS_CURRENT = eINSTANCE.getSong_NumberOfSongEventsCurrent();
+		EAttribute SONG__NUMBER_OF_SONG_EVENTS_CURRENT = eINSTANCE
+				.getSong_NumberOfSongEventsCurrent();
 
 		/**
 		 * The meta object literal for the '<em><b>Number Of Song Events Original</b></em>' attribute feature.
@@ -9129,7 +9241,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL = eINSTANCE.getSong_NumberOfSongEventsOriginal();
+		EAttribute SONG__NUMBER_OF_SONG_EVENTS_ORIGINAL = eINSTANCE
+				.getSong_NumberOfSongEventsOriginal();
 
 		/**
 		 * The meta object literal for the '<em><b>Song Patterns</b></em>' containment reference list feature.
@@ -9161,7 +9274,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG__SONG_NUMBER_ORIGINAL = eINSTANCE.getSong_SongNumberOriginal();
+		EAttribute SONG__SONG_NUMBER_ORIGINAL = eINSTANCE
+				.getSong_SongNumberOriginal();
 
 		/**
 		 * The meta object literal for the '<em><b>Song Number Current</b></em>' attribute feature.
@@ -9169,7 +9283,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG__SONG_NUMBER_CURRENT = eINSTANCE.getSong_SongNumberCurrent();
+		EAttribute SONG__SONG_NUMBER_CURRENT = eINSTANCE
+				.getSong_SongNumberCurrent();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.SongPatternImpl <em>Song Pattern</em>}' class.
@@ -9187,7 +9302,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_PATTERN__POSITION_CURRENT = eINSTANCE.getSongPattern_PositionCurrent();
+		EAttribute SONG_PATTERN__POSITION_CURRENT = eINSTANCE
+				.getSongPattern_PositionCurrent();
 
 		/**
 		 * The meta object literal for the '<em><b>Note Offset</b></em>' attribute feature.
@@ -9195,7 +9311,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_PATTERN__NOTE_OFFSET = eINSTANCE.getSongPattern_NoteOffset();
+		EAttribute SONG_PATTERN__NOTE_OFFSET = eINSTANCE
+				.getSongPattern_NoteOffset();
 
 		/**
 		 * The meta object literal for the '<em><b>Pattern Pointer</b></em>' attribute feature.
@@ -9203,7 +9320,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_PATTERN__PATTERN_POINTER = eINSTANCE.getSongPattern_PatternPointer();
+		EAttribute SONG_PATTERN__PATTERN_POINTER = eINSTANCE
+				.getSongPattern_PatternPointer();
 
 		/**
 		 * The meta object literal for the '<em><b>Empty</b></em>' attribute feature.
@@ -9247,7 +9365,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_EVENT__CURRENT_POSITION = eINSTANCE.getSongEvent_CurrentPosition();
+		EAttribute SONG_EVENT__CURRENT_POSITION = eINSTANCE
+				.getSongEvent_CurrentPosition();
 
 		/**
 		 * The meta object literal for the '<em><b>Event Info</b></em>' attribute feature.
@@ -9279,7 +9398,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_EVENT__OPERATION_NUMBER = eINSTANCE.getSongEvent_OperationNumber();
+		EAttribute SONG_EVENT__OPERATION_NUMBER = eINSTANCE
+				.getSongEvent_OperationNumber();
 
 		/**
 		 * The meta object literal for the '<em><b>Position Number</b></em>' attribute feature.
@@ -9287,7 +9407,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_EVENT__POSITION_NUMBER = eINSTANCE.getSongEvent_PositionNumber();
+		EAttribute SONG_EVENT__POSITION_NUMBER = eINSTANCE
+				.getSongEvent_PositionNumber();
 
 		/**
 		 * The meta object literal for the '<em><b>Step</b></em>' attribute feature.
@@ -9313,7 +9434,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_EVENT_WITH_PART__PART = eINSTANCE.getSongEventWithPart_Part();
+		EAttribute SONG_EVENT_WITH_PART__PART = eINSTANCE
+				.getSongEventWithPart_Part();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.SongEventControlImpl <em>Song Event Control</em>}' class.
@@ -9331,7 +9453,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_EVENT_CONTROL__OPERATION_TYPE = eINSTANCE.getSongEventControl_OperationType();
+		EAttribute SONG_EVENT_CONTROL__OPERATION_TYPE = eINSTANCE
+				.getSongEventControl_OperationType();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -9339,7 +9462,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_EVENT_CONTROL__VALUE = eINSTANCE.getSongEventControl_Value();
+		EAttribute SONG_EVENT_CONTROL__VALUE = eINSTANCE
+				.getSongEventControl_Value();
 
 		/**
 		 * The meta object literal for the '<em><b>Reserved Byte</b></em>' attribute feature.
@@ -9347,7 +9471,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_EVENT_CONTROL__RESERVED_BYTE = eINSTANCE.getSongEventControl_ReservedByte();
+		EAttribute SONG_EVENT_CONTROL__RESERVED_BYTE = eINSTANCE
+				.getSongEventControl_ReservedByte();
 
 		/**
 		 * The meta object literal for the '<em><b>Reserved Short</b></em>' attribute feature.
@@ -9355,7 +9480,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_EVENT_CONTROL__RESERVED_SHORT = eINSTANCE.getSongEventControl_ReservedShort();
+		EAttribute SONG_EVENT_CONTROL__RESERVED_SHORT = eINSTANCE
+				.getSongEventControl_ReservedShort();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.SongEventDrumNoteImpl <em>Song Event Drum Note</em>}' class.
@@ -9373,7 +9499,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_EVENT_DRUM_NOTE__RESERVED_BYTE = eINSTANCE.getSongEventDrumNote_ReservedByte();
+		EAttribute SONG_EVENT_DRUM_NOTE__RESERVED_BYTE = eINSTANCE
+				.getSongEventDrumNote_ReservedByte();
 
 		/**
 		 * The meta object literal for the '<em><b>Reserved Short</b></em>' attribute feature.
@@ -9381,7 +9508,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_EVENT_DRUM_NOTE__RESERVED_SHORT = eINSTANCE.getSongEventDrumNote_ReservedShort();
+		EAttribute SONG_EVENT_DRUM_NOTE__RESERVED_SHORT = eINSTANCE
+				.getSongEventDrumNote_ReservedShort();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.SongEventKeyboardNoteImpl <em>Song Event Keyboard Note</em>}' class.
@@ -9399,7 +9527,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_EVENT_KEYBOARD_NOTE__LENGTH = eINSTANCE.getSongEventKeyboardNote_Length();
+		EAttribute SONG_EVENT_KEYBOARD_NOTE__LENGTH = eINSTANCE
+				.getSongEventKeyboardNote_Length();
 
 		/**
 		 * The meta object literal for the '<em><b>Note Number</b></em>' attribute feature.
@@ -9407,7 +9536,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER = eINSTANCE.getSongEventKeyboardNote_NoteNumber();
+		EAttribute SONG_EVENT_KEYBOARD_NOTE__NOTE_NUMBER = eINSTANCE
+				.getSongEventKeyboardNote_NoteNumber();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.SongEventTempoImpl <em>Song Event Tempo</em>}' class.
@@ -9425,7 +9555,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SONG_EVENT_TEMPO__TEMPO = eINSTANCE.getSongEventTempo_Tempo();
+		EReference SONG_EVENT_TEMPO__TEMPO = eINSTANCE
+				.getSongEventTempo_Tempo();
 
 		/**
 		 * The meta object literal for the '<em><b>Reserved Short</b></em>' attribute feature.
@@ -9433,7 +9564,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_EVENT_TEMPO__RESERVED_SHORT = eINSTANCE.getSongEventTempo_ReservedShort();
+		EAttribute SONG_EVENT_TEMPO__RESERVED_SHORT = eINSTANCE
+				.getSongEventTempo_ReservedShort();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.impl.SongEventMuteStatusImpl <em>Song Event Mute Status</em>}' class.
@@ -9451,7 +9583,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_EVENT_MUTE_STATUS__RESERVED_SHORT = eINSTANCE.getSongEventMuteStatus_ReservedShort();
+		EAttribute SONG_EVENT_MUTE_STATUS__RESERVED_SHORT = eINSTANCE
+				.getSongEventMuteStatus_ReservedShort();
 
 		/**
 		 * The meta object literal for the '<em><b>Mute Status</b></em>' attribute feature.
@@ -9459,7 +9592,8 @@ public interface EsxPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SONG_EVENT_MUTE_STATUS__MUTE_STATUS = eINSTANCE.getSongEventMuteStatus_MuteStatus();
+		EAttribute SONG_EVENT_MUTE_STATUS__MUTE_STATUS = eINSTANCE
+				.getSongEventMuteStatus_MuteStatus();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.ArpeggiatorControl <em>Arpeggiator Control</em>}' enum.
@@ -9499,7 +9633,8 @@ public interface EsxPackage extends EPackage {
 		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMidiControlChangeAssignmentName()
 		 * @generated
 		 */
-		EEnum MIDI_CONTROL_CHANGE_ASSIGNMENT_NAME = eINSTANCE.getMidiControlChangeAssignmentName();
+		EEnum MIDI_CONTROL_CHANGE_ASSIGNMENT_NAME = eINSTANCE
+				.getMidiControlChangeAssignmentName();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.EnabledFlag <em>Enabled Flag</em>}' enum.
@@ -9919,7 +10054,8 @@ public interface EsxPackage extends EPackage {
 		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getIndexOutOfBoundsException()
 		 * @generated
 		 */
-		EDataType INDEX_OUT_OF_BOUNDS_EXCEPTION = eINSTANCE.getIndexOutOfBoundsException();
+		EDataType INDEX_OUT_OF_BOUNDS_EXCEPTION = eINSTANCE
+				.getIndexOutOfBoundsException();
 
 		/**
 		 * The meta object literal for the '<em>IO Exception</em>' data type.

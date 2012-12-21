@@ -25,11 +25,11 @@ public class StopHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
 		try {
-			AudioPlayer.getInstance().stop();			
+			AudioPlayer.getInstance().stop();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
 }

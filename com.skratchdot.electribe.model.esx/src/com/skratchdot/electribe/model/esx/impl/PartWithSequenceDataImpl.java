@@ -37,7 +37,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * @generated
  */
-public abstract class PartWithSequenceDataImpl extends EObjectImpl implements PartWithSequenceData {
+public abstract class PartWithSequenceDataImpl extends EObjectImpl implements
+		PartWithSequenceData {
 	/**
 	 * The cached value of the '{@link #getSequenceData() <em>Sequence Data</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -81,12 +82,19 @@ public abstract class PartWithSequenceDataImpl extends EObjectImpl implements Pa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSequenceData(SequenceData newSequenceData, NotificationChain msgs) {
+	public NotificationChain basicSetSequenceData(SequenceData newSequenceData,
+			NotificationChain msgs) {
 		SequenceData oldSequenceData = sequenceData;
 		sequenceData = newSequenceData;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA, oldSequenceData, newSequenceData);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET,
+					EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA,
+					oldSequenceData, newSequenceData);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -100,14 +108,26 @@ public abstract class PartWithSequenceDataImpl extends EObjectImpl implements Pa
 		if (newSequenceData != sequenceData) {
 			NotificationChain msgs = null;
 			if (sequenceData != null)
-				msgs = ((InternalEObject)sequenceData).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA, null, msgs);
+				msgs = ((InternalEObject) sequenceData)
+						.eInverseRemove(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA,
+								null, msgs);
 			if (newSequenceData != null)
-				msgs = ((InternalEObject)newSequenceData).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA, null, msgs);
+				msgs = ((InternalEObject) newSequenceData)
+						.eInverseAdd(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA,
+								null, msgs);
 			msgs = basicSetSequenceData(newSequenceData, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA, newSequenceData, newSequenceData));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA,
+					newSequenceData, newSequenceData));
 	}
 
 	/**
@@ -116,10 +136,11 @@ public abstract class PartWithSequenceDataImpl extends EObjectImpl implements Pa
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA:
-				return basicSetSequenceData(null, msgs);
+		case EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA:
+			return basicSetSequenceData(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -132,8 +153,8 @@ public abstract class PartWithSequenceDataImpl extends EObjectImpl implements Pa
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA:
-				return getSequenceData();
+		case EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA:
+			return getSequenceData();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -146,9 +167,9 @@ public abstract class PartWithSequenceDataImpl extends EObjectImpl implements Pa
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA:
-				setSequenceData((SequenceData)newValue);
-				return;
+		case EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA:
+			setSequenceData((SequenceData) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -161,9 +182,9 @@ public abstract class PartWithSequenceDataImpl extends EObjectImpl implements Pa
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA:
-				setSequenceData((SequenceData)null);
-				return;
+		case EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA:
+			setSequenceData((SequenceData) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -176,8 +197,8 @@ public abstract class PartWithSequenceDataImpl extends EObjectImpl implements Pa
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA:
-				return sequenceData != null;
+		case EsxPackage.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA:
+			return sequenceData != null;
 		}
 		return super.eIsSet(featureID);
 	}

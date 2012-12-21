@@ -27,10 +27,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	 */
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = PlatformUI.getPreferenceStore();
-		store.setDefault(
-			PreferenceConstants.AUDIOPLAYER_DOUBLECLICK_BEHAVIOR,
-			PreferenceConstants.AUDIOPLAYER_DOUBLECLICK_PLAY_OR_LOOP
-		);
+		store.setDefault(PreferenceConstants.AUDIOPLAYER_DOUBLECLICK_BEHAVIOR,
+				PreferenceConstants.AUDIOPLAYER_DOUBLECLICK_PLAY_OR_LOOP);
 
 	}
 

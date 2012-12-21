@@ -106,7 +106,7 @@ public abstract class ChunkImpl extends EObjectImpl implements Chunk {
 	 * @generated NOT
 	 */
 	public long getBlockAlignedSize() {
-		return this.getSize()%2==1?this.getSize()+1:this.getSize();
+		return this.getSize() % 2 == 1 ? this.getSize() + 1 : this.getSize();
 	}
 
 	/**
@@ -144,7 +144,8 @@ public abstract class ChunkImpl extends EObjectImpl implements Chunk {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf)
+			throws RiffWaveException {
 		// Implementation should be handled by subclasses
 		throw new UnsupportedOperationException();
 	}
@@ -167,14 +168,14 @@ public abstract class ChunkImpl extends EObjectImpl implements Chunk {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.CHUNK__BLOCK_ALIGNED_SIZE:
-				return getBlockAlignedSize();
-			case WavPackage.CHUNK__SIZE:
-				return getSize();
-			case WavPackage.CHUNK__CHUNK_TYPE_ID:
-				return getChunkTypeID();
-			case WavPackage.CHUNK__CHUNK_TYPE_ID_VALUE:
-				return getChunkTypeIDValue();
+		case WavPackage.CHUNK__BLOCK_ALIGNED_SIZE:
+			return getBlockAlignedSize();
+		case WavPackage.CHUNK__SIZE:
+			return getSize();
+		case WavPackage.CHUNK__CHUNK_TYPE_ID:
+			return getChunkTypeID();
+		case WavPackage.CHUNK__CHUNK_TYPE_ID_VALUE:
+			return getChunkTypeIDValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -187,14 +188,14 @@ public abstract class ChunkImpl extends EObjectImpl implements Chunk {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK__BLOCK_ALIGNED_SIZE:
-				return getBlockAlignedSize() != BLOCK_ALIGNED_SIZE_EDEFAULT;
-			case WavPackage.CHUNK__SIZE:
-				return getSize() != SIZE_EDEFAULT;
-			case WavPackage.CHUNK__CHUNK_TYPE_ID:
-				return getChunkTypeID() != CHUNK_TYPE_ID_EDEFAULT;
-			case WavPackage.CHUNK__CHUNK_TYPE_ID_VALUE:
-				return getChunkTypeIDValue() != CHUNK_TYPE_ID_VALUE_EDEFAULT;
+		case WavPackage.CHUNK__BLOCK_ALIGNED_SIZE:
+			return getBlockAlignedSize() != BLOCK_ALIGNED_SIZE_EDEFAULT;
+		case WavPackage.CHUNK__SIZE:
+			return getSize() != SIZE_EDEFAULT;
+		case WavPackage.CHUNK__CHUNK_TYPE_ID:
+			return getChunkTypeID() != CHUNK_TYPE_ID_EDEFAULT;
+		case WavPackage.CHUNK__CHUNK_TYPE_ID_VALUE:
+			return getChunkTypeIDValue() != CHUNK_TYPE_ID_VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -251,5 +251,5 @@ public interface WavFactory extends EFactory {
 	 * @generated
 	 */
 	WavPackage getWavPackage();
-	
+
 } //WavFactory

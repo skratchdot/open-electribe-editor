@@ -108,12 +108,8 @@ public enum MidiClock implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final MidiClock[] VALUES_ARRAY =
-		new MidiClock[] {
-			INT,
-			EXT,
-			AUTO,
-		};
+	private static final MidiClock[] VALUES_ARRAY = new MidiClock[] { INT, EXT,
+			AUTO, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Midi Clock</b></em>' enumerators.
@@ -121,7 +117,8 @@ public enum MidiClock implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<MidiClock> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<MidiClock> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Midi Clock</b></em>' literal with the specified literal value.
@@ -163,9 +160,12 @@ public enum MidiClock implements Enumerator {
 	 */
 	public static MidiClock get(int value) {
 		switch (value) {
-			case INT_VALUE: return INT;
-			case EXT_VALUE: return EXT;
-			case AUTO_VALUE: return AUTO;
+		case INT_VALUE:
+			return INT;
+		case EXT_VALUE:
+			return EXT;
+		case AUTO_VALUE:
+			return AUTO;
 		}
 		return null;
 	}
@@ -209,7 +209,7 @@ public enum MidiClock implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -218,7 +218,7 @@ public enum MidiClock implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -227,7 +227,7 @@ public enum MidiClock implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**

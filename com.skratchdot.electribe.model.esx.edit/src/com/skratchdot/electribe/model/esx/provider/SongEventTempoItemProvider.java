@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -39,10 +38,10 @@ import com.skratchdot.electribe.model.esx.SongEventTempo;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SongEventTempoItemProvider
-	extends SongEventItemProvider
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class SongEventTempoItemProvider extends SongEventItemProvider implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -77,19 +76,16 @@ public class SongEventTempoItemProvider
 	 * @generated
 	 */
 	protected void addTempoPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongEventTempo_tempo_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongEventTempo_tempo_feature", "_UI_SongEventTempo_type"),
-				 EsxPackage.Literals.SONG_EVENT_TEMPO__TEMPO,
-				 true,
-				 false,
-				 false,
-				 null,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SongEventTempo_tempo_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SongEventTempo_tempo_feature",
+						"_UI_SongEventTempo_type"),
+				EsxPackage.Literals.SONG_EVENT_TEMPO__TEMPO, true, false,
+				false, null, null, null));
 	}
 
 	/**
@@ -99,19 +95,17 @@ public class SongEventTempoItemProvider
 	 * @generated
 	 */
 	protected void addReservedShortPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongEventTempo_reservedShort_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongEventTempo_reservedShort_feature", "_UI_SongEventTempo_type"),
-				 EsxPackage.Literals.SONG_EVENT_TEMPO__RESERVED_SHORT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SongEventTempo_reservedShort_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SongEventTempo_reservedShort_feature",
+						"_UI_SongEventTempo_type"),
+				EsxPackage.Literals.SONG_EVENT_TEMPO__RESERVED_SHORT, true,
+				false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -122,7 +116,8 @@ public class SongEventTempoItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SongEventTempo"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/SongEventTempo"));
 	}
 
 	/**
@@ -133,8 +128,9 @@ public class SongEventTempoItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		SongEventTempo songEventTempo = (SongEventTempo)object;
-		return getString("_UI_SongEventTempo_type") + " " + songEventTempo.getCurrentPosition();
+		SongEventTempo songEventTempo = (SongEventTempo) object;
+		return getString("_UI_SongEventTempo_type") + " "
+				+ songEventTempo.getCurrentPosition();
 	}
 
 	/**
@@ -149,10 +145,11 @@ public class SongEventTempoItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SongEventTempo.class)) {
-			case EsxPackage.SONG_EVENT_TEMPO__RESERVED_SHORT:
-			case EsxPackage.SONG_EVENT_TEMPO__TEMPO:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case EsxPackage.SONG_EVENT_TEMPO__RESERVED_SHORT:
+		case EsxPackage.SONG_EVENT_TEMPO__TEMPO:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -165,7 +162,8 @@ public class SongEventTempoItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

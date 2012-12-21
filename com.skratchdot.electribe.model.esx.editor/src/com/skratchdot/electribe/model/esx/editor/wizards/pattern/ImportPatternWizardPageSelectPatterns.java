@@ -53,7 +53,6 @@ public class ImportPatternWizardPageSelectPatterns extends WizardPage {
 	protected Collection<Integer> uniquePatterns = new HashSet<Integer>();
 	protected Collection<Short> uniqueSamples = new HashSet<Short>();
 
-
 	/**
 	 * Create the wizard.
 	 */
@@ -73,21 +72,23 @@ public class ImportPatternWizardPageSelectPatterns extends WizardPage {
 		setControl(container);
 		container.setLayout(new GridLayout(1, false));
 
-		tableViewer = new TableViewer(container, SWT.BORDER | SWT.CHECK | SWT.FULL_SELECTION);
+		tableViewer = new TableViewer(container, SWT.BORDER | SWT.CHECK
+				| SWT.FULL_SELECTION);
 		this.initTableViewer();
 
 		Composite composite = new Composite(container, SWT.NONE);
-		composite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		composite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
+				1, 1));
 		composite.setLayout(new GridLayout(5, false));
-		
+
 		Button btnCheckAll = new Button(composite, SWT.NONE);
 		btnCheckAll.setText("Check All");
-		btnCheckAll.addSelectionListener(new SelectionAdapter(){
+		btnCheckAll.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				super.widgetSelected(e);
 				TableItem[] items = table.getItems();
-				for (int i=0; i<items.length; i++) {
+				for (int i = 0; i < items.length; i++) {
 					items[i].setChecked(true);
 				}
 				updateSelections();
@@ -96,12 +97,12 @@ public class ImportPatternWizardPageSelectPatterns extends WizardPage {
 
 		Button btnUncheckAll = new Button(composite, SWT.NONE);
 		btnUncheckAll.setText("Uncheck All");
-		btnUncheckAll.addSelectionListener(new SelectionAdapter(){
+		btnUncheckAll.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				super.widgetSelected(e);
 				TableItem[] items = table.getItems();
-				for (int i=0; i<items.length; i++) {
+				for (int i = 0; i < items.length; i++) {
 					items[i].setChecked(false);
 				}
 				updateSelections();
@@ -109,35 +110,40 @@ public class ImportPatternWizardPageSelectPatterns extends WizardPage {
 		});
 
 		Label lblSpacer1 = new Label(composite, SWT.NONE);
-		lblSpacer1.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
+		lblSpacer1.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,
+				false, 1, 1));
 
 		Label lblPatterns = new Label(composite, SWT.NONE);
 		lblPatterns.setText("# of Patterns:");
-		
+
 		lblPatternsCount = new Label(composite, SWT.NONE);
-		GridData gd_lblPatternsCount = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
+		GridData gd_lblPatternsCount = new GridData(SWT.RIGHT, SWT.CENTER,
+				false, false, 1, 1);
 		gd_lblPatternsCount.widthHint = 30;
 		gd_lblPatternsCount.minimumWidth = 30;
 		lblPatternsCount.setLayoutData(gd_lblPatternsCount);
 		lblPatternsCount.setText("0");
-		
+
 		btnImportSamples = new Button(composite, SWT.CHECK);
 		btnImportSamples.setSelection(true);
-		btnImportSamples.setText("Import the samples used in the selected patterns.");
-		btnImportSamples.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 3, 1));
-		
+		btnImportSamples
+				.setText("Import the samples used in the selected patterns.");
+		btnImportSamples.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,
+				false, 3, 1));
+
 		Label lblSamples = new Label(composite, SWT.NONE);
 		lblSamples.setText("# of Samples");
-		
+
 		lblSamplesCount = new Label(composite, SWT.NONE);
-		GridData gd_lblSamplesCount = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
+		GridData gd_lblSamplesCount = new GridData(SWT.RIGHT, SWT.CENTER,
+				false, false, 1, 1);
 		gd_lblSamplesCount.widthHint = 30;
 		gd_lblSamplesCount.minimumWidth = 30;
 		lblSamplesCount.setLayoutData(gd_lblSamplesCount);
 		lblSamplesCount.setText("0");
 
 	}
-	
+
 	@Override
 	public boolean canFlipToNextPage() {
 		return canFlip;
@@ -146,10 +152,11 @@ public class ImportPatternWizardPageSelectPatterns extends WizardPage {
 	@Override
 	public void setVisible(boolean visible) {
 		super.setVisible(visible);
-		if(visible) {
-			EsxFile esxFile = ((ImportPatternWizard)this.getWizard()).getSrcEsxFile();
-			if(esxFile!=null) {
-				this.tableViewer.setInput(esxFile);			
+		if (visible) {
+			EsxFile esxFile = ((ImportPatternWizard) this.getWizard())
+					.getSrcEsxFile();
+			if (esxFile != null) {
+				this.tableViewer.setInput(esxFile);
 			}
 		}
 	}
@@ -172,7 +179,8 @@ public class ImportPatternWizardPageSelectPatterns extends WizardPage {
 		EsxEditorUtil.addColumnToTableViewer(this.tableViewer, "FxChain", 50);
 		EsxEditorUtil.addColumnToTableViewer(this.tableViewer, "LastStep", 50);
 		EsxEditorUtil.addColumnToTableViewer(this.tableViewer, "ArpScale", 100);
-		EsxEditorUtil.addColumnToTableViewer(this.tableViewer, "CenterNote", 100);
+		EsxEditorUtil.addColumnToTableViewer(this.tableViewer, "CenterNote",
+				100);
 		EsxEditorUtil.addColumnToTableViewer(this.tableViewer, "Fx1 Type", 100);
 		EsxEditorUtil.addColumnToTableViewer(this.tableViewer, "Fx2 Type", 100);
 		EsxEditorUtil.addColumnToTableViewer(this.tableViewer, "Fx3 Type", 100);
@@ -187,8 +195,10 @@ public class ImportPatternWizardPageSelectPatterns extends WizardPage {
 		EsxEditorUtil.addColumnToTableViewer(this.tableViewer, "Part 7b", 100);
 		EsxEditorUtil.addColumnToTableViewer(this.tableViewer, "Key 1", 100);
 		EsxEditorUtil.addColumnToTableViewer(this.tableViewer, "Key 2", 100);
-		EsxEditorUtil.addColumnToTableViewer(this.tableViewer, "Stretch 1", 100);
-		EsxEditorUtil.addColumnToTableViewer(this.tableViewer, "Stretch 2", 100);
+		EsxEditorUtil
+				.addColumnToTableViewer(this.tableViewer, "Stretch 1", 100);
+		EsxEditorUtil
+				.addColumnToTableViewer(this.tableViewer, "Stretch 2", 100);
 		EsxEditorUtil.addColumnToTableViewer(this.tableViewer, "Slice", 100);
 
 		// Allow all the columns to be moved
@@ -198,53 +208,51 @@ public class ImportPatternWizardPageSelectPatterns extends WizardPage {
 		}
 
 		// Setup this.tableViewer ContentProvider
-		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(((ImportPatternWizard)this.getWizard()).getAdapterFactory()) {
+		this.tableViewer.setContentProvider(new AdapterFactoryContentProvider(
+				((ImportPatternWizard) this.getWizard()).getAdapterFactory()) {
 
 			@Override
 			public Object[] getElements(Object object) {
-				return ((EsxFile)object).getPatterns().toArray();
+				return ((EsxFile) object).getPatterns().toArray();
 			}
 
 			@Override
 			public void notifyChanged(Notification notification) {
 				super.notifyChanged(new ViewerNotification(notification));
 			}
-			
+
 		});
 
 		// Label Provider
 		this.tableViewer.setLabelProvider(new TableViewerColorProvider(
-			((ImportPatternWizard)this.getWizard()).getAdapterFactory(),
-			this.tableViewer,
-			EsxPreferenceStore.getPatternsBackgroundColorWhenNotEmpty(),
-			EsxPreferenceStore.getPatternsBackgroundColorWhenEmpty(),
-			EsxPreferenceStore.getPatternsForegroundColorWhenNotEmpty(),
-			EsxPreferenceStore.getPatternsForegroundColorWhenEmpty()
-		){
+				((ImportPatternWizard) this.getWizard()).getAdapterFactory(),
+				this.tableViewer, EsxPreferenceStore
+						.getPatternsBackgroundColorWhenNotEmpty(),
+				EsxPreferenceStore.getPatternsBackgroundColorWhenEmpty(),
+				EsxPreferenceStore.getPatternsForegroundColorWhenNotEmpty(),
+				EsxPreferenceStore.getPatternsForegroundColorWhenEmpty()) {
 
 			@Override
 			public String getColumnText(Object object, int columnIndex) {
 				// Skip the 2nd column (which usually shows "Original#)
-				if(columnIndex==0) {
+				if (columnIndex == 0) {
 					return super.getColumnText(object, columnIndex);
-				}
-				else {
-					return super.getColumnText(object, columnIndex+1);
+				} else {
+					return super.getColumnText(object, columnIndex + 1);
 				}
 			}
-			
+
 		});
-		
+
 		this.table.addListener(SWT.Selection, new Listener() {
 			@Override
 			public void handleEvent(Event event) {
 				updateSelections();
 			}
 		});
-		
 
 	}
-	
+
 	private void updateSelections() {
 		uniquePatterns = new HashSet<Integer>();
 		uniqueSamples = new HashSet<Short>();
@@ -257,43 +265,45 @@ public class ImportPatternWizardPageSelectPatterns extends WizardPage {
 		short samplePointer = 0;
 
 		// Count unique patterns and samples
-		for (int i=0; i<items.length; i++) {
-			if(items[i].getChecked()) {
+		for (int i = 0; i < items.length; i++) {
+			if (items[i].getChecked()) {
 				uniquePatterns.add(i);
 				currentPattern = esxFile.getPatterns().get(i);
 				currentDrumParts = currentPattern.getDrumParts();
 				currentKeyboardParts = currentPattern.getKeyboardParts();
-				currentStretchSliceParts = currentPattern.getStretchSliceParts();
-				for(int j=0; j<currentDrumParts.size(); j++) {
+				currentStretchSliceParts = currentPattern
+						.getStretchSliceParts();
+				for (int j = 0; j < currentDrumParts.size(); j++) {
 					samplePointer = currentDrumParts.get(j).getSamplePointer();
-					if(samplePointer>=0) {
+					if (samplePointer >= 0) {
 						uniqueSamples.add(samplePointer);
 					}
 				}
-				for(int j=0; j<currentKeyboardParts.size(); j++) {
-					samplePointer = currentKeyboardParts.get(j).getSamplePointer();
-					if(samplePointer>=0) {
+				for (int j = 0; j < currentKeyboardParts.size(); j++) {
+					samplePointer = currentKeyboardParts.get(j)
+							.getSamplePointer();
+					if (samplePointer >= 0) {
 						uniqueSamples.add(samplePointer);
 					}
 				}
-				for(int j=0; j<currentStretchSliceParts.size(); j++) {
-					samplePointer = currentStretchSliceParts.get(j).getSamplePointer();
-					if(samplePointer>=0) {
+				for (int j = 0; j < currentStretchSliceParts.size(); j++) {
+					samplePointer = currentStretchSliceParts.get(j)
+							.getSamplePointer();
+					if (samplePointer >= 0) {
 						uniqueSamples.add(samplePointer);
 					}
 				}
 			}
 		}
-		
+
 		// Update labels
 		this.lblPatternsCount.setText(Integer.toString(uniquePatterns.size()));
 		this.lblSamplesCount.setText(Integer.toString(uniqueSamples.size()));
 
 		// We can only flip to the next page if we have selected at least one pattern to import
-		if(uniquePatterns.size()>0) {
+		if (uniquePatterns.size() > 0) {
 			canFlip = true;
-		}
-		else {
+		} else {
 			canFlip = false;
 		}
 
@@ -301,7 +311,7 @@ public class ImportPatternWizardPageSelectPatterns extends WizardPage {
 		getWizard().getContainer().updateButtons();
 		getWizard().getContainer().updateMessage();
 	}
-	
+
 	public boolean isImportSampleButtonChecked() {
 		return btnImportSamples.getSelection();
 	}

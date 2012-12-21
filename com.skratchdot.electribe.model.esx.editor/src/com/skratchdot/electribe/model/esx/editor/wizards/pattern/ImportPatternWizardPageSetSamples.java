@@ -59,13 +59,14 @@ public class ImportPatternWizardPageSetSamples extends WizardPage {
 		Composite container = new Composite(parent, SWT.NULL);
 		setControl(container);
 		container.setLayout(new GridLayout(2, false));
-		
-		tableViewer = new TableViewer(container, SWT.BORDER | SWT.FULL_SELECTION);
+
+		tableViewer = new TableViewer(container, SWT.BORDER
+				| SWT.FULL_SELECTION);
 		table = tableViewer.getTable();
 		table.setLinesVisible(true);
 		table.setHeaderVisible(true);
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
-		
+
 		TableColumn tableColumnSource = new TableColumn(table, SWT.NONE);
 		tableColumnSource.setWidth(200);
 		tableColumnSource.setText("Source Samples");
@@ -73,7 +74,7 @@ public class ImportPatternWizardPageSetSamples extends WizardPage {
 		TableColumn tableColumnDestination = new TableColumn(table, SWT.NONE);
 		tableColumnDestination.setWidth(200);
 		tableColumnDestination.setText("Desination Samples");
-		
+
 		tableViewer.setLabelProvider(new ITableLabelProvider() {
 
 			@Override
@@ -84,25 +85,28 @@ public class ImportPatternWizardPageSetSamples extends WizardPage {
 			public boolean isLabelProperty(Object element, String property) {
 				return false;
 			}
-			
+
 			@Override
 			public void dispose() {
 			}
-			
+
 			@Override
 			public void addListener(ILabelProviderListener listener) {
 			}
-			
+
 			@Override
 			public String getColumnText(Object element, int columnIndex) {
-				if(columnIndex == 0) {
-					return ((ImportPatternWizard) getWizard()).getSrcEsxFile().getSamples().get(((SampleMap) element).source).getLabel();
-				}
-				else {
-					return ((ImportPatternWizard) getWizard()).getDestEsxFile().getSamples().get(((SampleMap) element).destination).getLabel();
+				if (columnIndex == 0) {
+					return ((ImportPatternWizard) getWizard()).getSrcEsxFile()
+							.getSamples().get(((SampleMap) element).source)
+							.getLabel();
+				} else {
+					return ((ImportPatternWizard) getWizard()).getDestEsxFile()
+							.getSamples()
+							.get(((SampleMap) element).destination).getLabel();
 				}
 			}
-			
+
 			@Override
 			public Image getColumnImage(Object element, int columnIndex) {
 				return null;
@@ -116,19 +120,22 @@ public class ImportPatternWizardPageSetSamples extends WizardPage {
 			}
 
 			@Override
-			public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+			public void inputChanged(Viewer viewer, Object oldInput,
+					Object newInput) {
 			}
 
 			@Override
 			public Object[] getElements(Object inputElement) {
 				return (SampleMap[]) inputElement;
 			}
-			
+
 		});
 
-		this.tableViewer.setCellModifier(new SampleMapCellModifier(this.tableViewer));
-		this.tableViewer.setColumnProperties(new String[] { "source", "destination" });
-		
+		this.tableViewer.setCellModifier(new SampleMapCellModifier(
+				this.tableViewer));
+		this.tableViewer.setColumnProperties(new String[] { "source",
+				"destination" });
+
 		Button btnRecalculateDestinations = new Button(container, SWT.NONE);
 		btnRecalculateDestinations.setText("Recalculate Destinations");
 		btnRecalculateDestinations.addSelectionListener(new SelectionAdapter() {
@@ -137,7 +144,7 @@ public class ImportPatternWizardPageSetSamples extends WizardPage {
 				recalculateDestinations();
 			}
 		});
-		
+
 		Button btnResetDestinations = new Button(container, SWT.NONE);
 		btnResetDestinations.setText("Reset Destinations");
 		btnResetDestinations.addSelectionListener(new SelectionAdapter() {
@@ -156,25 +163,28 @@ public class ImportPatternWizardPageSetSamples extends WizardPage {
 	@Override
 	public void setVisible(boolean visible) {
 		super.setVisible(visible);
-		if(visible) {
-			sampleNumbers = ((ImportPatternWizard)getWizard()).getPageSelectPatterns().uniqueSamples.toArray();
+		if (visible) {
+			sampleNumbers = ((ImportPatternWizard) getWizard())
+					.getPageSelectPatterns().uniqueSamples.toArray();
 			Arrays.sort(sampleNumbers);
 
 			// Set sampleMaps
 			sampleMaps = new SampleMap[sampleNumbers.length];
-			for (int i=0; i<sampleNumbers.length; i++) {
-				sampleMaps[i] = new SampleMap((Short) sampleNumbers[i], (Short) sampleNumbers[i]);
+			for (int i = 0; i < sampleNumbers.length; i++) {
+				sampleMaps[i] = new SampleMap((Short) sampleNumbers[i],
+						(Short) sampleNumbers[i]);
 			}
 
 			// Create sample labels
 			final String[] sampleLabels = new String[EsxUtil.NUM_SAMPLES];
-			for(int i=0; i<EsxUtil.NUM_SAMPLES; i++) {
-				sampleLabels[i] = ((ImportPatternWizard)getWizard()).getDestEsxFile().getSamples().get(i).getLabel();
+			for (int i = 0; i < EsxUtil.NUM_SAMPLES; i++) {
+				sampleLabels[i] = ((ImportPatternWizard) getWizard())
+						.getDestEsxFile().getSamples().get(i).getLabel();
 			}
 			this.tableViewer.setCellEditors(new CellEditor[] {
-				null,
-				new ComboBoxCellEditor(this.tableViewer.getTable(), sampleLabels, SWT.READ_ONLY)
-			});
+					null,
+					new ComboBoxCellEditor(this.tableViewer.getTable(),
+							sampleLabels, SWT.READ_ONLY) });
 
 			// Set our input
 			this.recalculateDestinations();
@@ -184,39 +194,41 @@ public class ImportPatternWizardPageSetSamples extends WizardPage {
 			getWizard().getContainer().updateButtons();
 		}
 	}
-	
+
 	private void recalculateDestinations() {
 		// Keep track of empty samples, and samples in use
 		ArrayList<Integer> samplesEmpty = new ArrayList<Integer>();
 		ArrayList<Integer> samplesInUse = new ArrayList<Integer>();
-		for(int i=0; i<EsxUtil.NUM_SAMPLES; i++) {
-			Sample sample = ((ImportPatternWizard) getWizard()).getDestEsxFile().getSamples().get(i);
-			if(sample.isEmpty()) {
+		for (int i = 0; i < EsxUtil.NUM_SAMPLES; i++) {
+			Sample sample = ((ImportPatternWizard) getWizard())
+					.getDestEsxFile().getSamples().get(i);
+			if (sample.isEmpty()) {
 				samplesEmpty.add(i);
-			}
-			else {
+			} else {
 				samplesInUse.add(i);
 			}
 		}
 
 		// Set sampleMaps
 		sampleMaps = new SampleMap[sampleNumbers.length];
-		for (int i=0; i<sampleNumbers.length; i++) {
+		for (int i = 0; i < sampleNumbers.length; i++) {
 			int index = -1;
 			int existingSampleIndex = EsxUtil.getExistingSampleIndex(
-				((ImportPatternWizard) getWizard()).getDestEsxFile(),
-				((ImportPatternWizard) getWizard()).getSrcEsxFile().getSamples().get(Integer.parseInt(sampleNumbers[i].toString(), 10))
-			);
-			if(EsxUtil.isValidSampleNumber(existingSampleIndex)) {
+					((ImportPatternWizard) getWizard()).getDestEsxFile(),
+					((ImportPatternWizard) getWizard())
+							.getSrcEsxFile()
+							.getSamples()
+							.get(Integer.parseInt(sampleNumbers[i].toString(),
+									10)));
+			if (EsxUtil.isValidSampleNumber(existingSampleIndex)) {
 				index = existingSampleIndex;
-			}
-			else if(samplesEmpty.size()>0) {
+			} else if (samplesEmpty.size() > 0) {
 				index = samplesEmpty.remove(0);
-			}
-			else if(samplesInUse.size() > 0) {
+			} else if (samplesInUse.size() > 0) {
 				index = samplesInUse.remove(0);
 			}
-			sampleMaps[i] = new SampleMap((Short)sampleNumbers[i], (short) index);
+			sampleMaps[i] = new SampleMap((Short) sampleNumbers[i],
+					(short) index);
 		}
 
 		this.tableViewer.setInput(sampleMaps);
@@ -225,8 +237,9 @@ public class ImportPatternWizardPageSetSamples extends WizardPage {
 	private void resetDestinations() {
 		// Set sampleMaps
 		sampleMaps = new SampleMap[sampleNumbers.length];
-		for (int i=0; i<sampleNumbers.length; i++) {
-			sampleMaps[i] = new SampleMap((Short)sampleNumbers[i], (Short)sampleNumbers[i]);
+		for (int i = 0; i < sampleNumbers.length; i++) {
+			sampleMaps[i] = new SampleMap((Short) sampleNumbers[i],
+					(Short) sampleNumbers[i]);
 		}
 
 		this.tableViewer.setInput(sampleMaps);
@@ -235,6 +248,5 @@ public class ImportPatternWizardPageSetSamples extends WizardPage {
 	public SampleMap[] getSampleMaps() {
 		return sampleMaps;
 	}
-
 
 }

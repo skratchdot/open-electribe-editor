@@ -561,8 +561,10 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		this.setSwing(Swing.get(in.getByte()));
 		// byte 11
 		int packedByte11 = in.getUnsignedByte();
-		this.setPatternLength(PatternLength.get(EsxUtil.unpackInt(packedByte11, 3, 0)));
-		this.setReservedBitAfterPatternLength((byte) EsxUtil.unpackInt(packedByte11, 1, 3));
+		this.setPatternLength(PatternLength.get(EsxUtil.unpackInt(packedByte11,
+				3, 0)));
+		this.setReservedBitAfterPatternLength((byte) EsxUtil.unpackInt(
+				packedByte11, 1, 3));
 		this.setBeat(Beat.get(EsxUtil.unpackInt(packedByte11, 2, 4)));
 		this.setRollType(RollType.get(EsxUtil.unpackInt(packedByte11, 2, 6)));
 		// byte 12
@@ -571,8 +573,10 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		this.setLastStep(LastStep.get(in.getByte()));
 		// byte 14
 		int packedByte14 = in.getUnsignedByte();
-		this.setArpeggiatorScale(ArpeggiatorScale.get(EsxUtil.unpackInt(packedByte14, 5, 0)));
-		this.setReservedBitsAfterArpeggiatorScale((byte) EsxUtil.unpackInt(packedByte14, 3, 5));
+		this.setArpeggiatorScale(ArpeggiatorScale.get(EsxUtil.unpackInt(
+				packedByte14, 5, 0)));
+		this.setReservedBitsAfterArpeggiatorScale((byte) EsxUtil.unpackInt(
+				packedByte14, 3, 5));
 		// byte 15
 		this.setArpeggiatorCenterNote(NoteNumber.get(in.getByte()));
 		// byte 16~17
@@ -587,49 +591,60 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		// bytes 24~329 (34 bytes each)
 		for (int i = 0; i < EsxUtil.NUM_PARTS_DRUM; i++) {
 			PartDrum partDrum = EsxFactory.eINSTANCE.createPartDrum();
-			partDrum.init(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_PARTS_DRUM));
+			partDrum.init(in.getBytes(in.position(),
+					EsxUtil.CHUNKSIZE_PARTS_DRUM));
 			this.getDrumParts().add(i, partDrum);
 		}
 
 		// bytes 330~877 (274 bytes each)
 		for (int i = 0; i < EsxUtil.NUM_PARTS_KEYBOARD; i++) {
-			PartKeyboard partKeyboard = EsxFactory.eINSTANCE.createPartKeyboard();
-			partKeyboard.init(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_PARTS_KEYBOARD));
+			PartKeyboard partKeyboard = EsxFactory.eINSTANCE
+					.createPartKeyboard();
+			partKeyboard.init(in.getBytes(in.position(),
+					EsxUtil.CHUNKSIZE_PARTS_KEYBOARD));
 			this.getKeyboardParts().add(i, partKeyboard);
 		}
 
 		// bytes 878~973 (32 bytes each)
 		for (int i = 0; i < EsxUtil.NUM_PARTS_STRETCHSLICE; i++) {
-			PartStretchSlice partStretchSlice = EsxFactory.eINSTANCE.createPartStretchSlice();
-			partStretchSlice.init(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_PARTS_STRETCHSLICE));
+			PartStretchSlice partStretchSlice = EsxFactory.eINSTANCE
+					.createPartStretchSlice();
+			partStretchSlice.init(in.getBytes(in.position(),
+					EsxUtil.CHUNKSIZE_PARTS_STRETCHSLICE));
 			this.getStretchSliceParts().add(i, partStretchSlice);
 		}
 
 		// bytes 974~1129 (156 bytes)
 		for (int i = 0; i < EsxUtil.NUM_PARTS_AUDIOIN; i++) {
 			PartAudioIn partAudioIn = EsxFactory.eINSTANCE.createPartAudioIn();
-			partAudioIn.init(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_PARTS_AUDIOIN));
+			partAudioIn.init(in.getBytes(in.position(),
+					EsxUtil.CHUNKSIZE_PARTS_AUDIOIN));
 			this.setAudioInPart(partAudioIn);
 		}
 
 		// bytes 1130~1147 (18 bytes)
 		for (int i = 0; i < EsxUtil.NUM_PARTS_ACCENT; i++) {
 			PartAccent partAccent = EsxFactory.eINSTANCE.createPartAccent();
-			partAccent.init(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_PARTS_ACCENT));
+			partAccent.init(in.getBytes(in.position(),
+					EsxUtil.CHUNKSIZE_PARTS_ACCENT));
 			this.setAccentPart(partAccent);
 		}
 
 		// bytes 1148~1159 (4 bytes each)
 		for (int i = 0; i < EsxUtil.NUM_PARAMETERS_FX; i++) {
-			ParametersFx parametersFx = EsxFactory.eINSTANCE.createParametersFx();
-			parametersFx.init(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_PARAMETERS_FX));
+			ParametersFx parametersFx = EsxFactory.eINSTANCE
+					.createParametersFx();
+			parametersFx.init(in.getBytes(in.position(),
+					EsxUtil.CHUNKSIZE_PARAMETERS_FX));
 			this.getFxParameters().add(i, parametersFx);
 		}
 
 		// bytes 1160~4279 (130 bytes each)
 		for (int i = 0; i < EsxUtil.NUM_PARAMETERS_MOTION; i++) {
-			ParametersMotion parametersMotion = EsxFactory.eINSTANCE.createParametersMotion();
-			parametersMotion.init(in.getBytes(in.position(), EsxUtil.CHUNKSIZE_PARAMETERS_MOTION));
+			ParametersMotion parametersMotion = EsxFactory.eINSTANCE
+					.createParametersMotion();
+			parametersMotion.init(in.getBytes(in.position(),
+					EsxUtil.CHUNKSIZE_PARAMETERS_MOTION));
 			this.getMotionParameters().add(i, parametersMotion);
 		}
 	}
@@ -662,7 +677,8 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN__NAME, oldName, name));
 	}
 
 	/**
@@ -671,11 +687,8 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 * @generated NOT
 	 */
 	public String getLabel() {
-		return "" +
-			this.getPatternNumberCurrent() +
-			" - " +
-			this.getName() +
-			"";
+		return "" + this.getPatternNumberCurrent() + " - " + this.getName()
+				+ "";
 	}
 
 	/**
@@ -692,12 +705,18 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTempo(Tempo newTempo, NotificationChain msgs) {
+	public NotificationChain basicSetTempo(Tempo newTempo,
+			NotificationChain msgs) {
 		Tempo oldTempo = tempo;
 		tempo = newTempo;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__TEMPO, oldTempo, newTempo);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, EsxPackage.PATTERN__TEMPO, oldTempo,
+					newTempo);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -711,14 +730,19 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		if (newTempo != tempo) {
 			NotificationChain msgs = null;
 			if (tempo != null)
-				msgs = ((InternalEObject)tempo).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PATTERN__TEMPO, null, msgs);
+				msgs = ((InternalEObject) tempo).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - EsxPackage.PATTERN__TEMPO,
+						null, msgs);
 			if (newTempo != null)
-				msgs = ((InternalEObject)newTempo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PATTERN__TEMPO, null, msgs);
+				msgs = ((InternalEObject) newTempo).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - EsxPackage.PATTERN__TEMPO,
+						null, msgs);
 			msgs = basicSetTempo(newTempo, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__TEMPO, newTempo, newTempo));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN__TEMPO, newTempo, newTempo));
 	}
 
 	/**
@@ -739,7 +763,8 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		Swing oldSwing = swing;
 		swing = newSwing == null ? SWING_EDEFAULT : newSwing;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__SWING, oldSwing, swing));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN__SWING, oldSwing, swing));
 	}
 
 	/**
@@ -758,9 +783,12 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 */
 	public void setPatternLength(PatternLength newPatternLength) {
 		PatternLength oldPatternLength = patternLength;
-		patternLength = newPatternLength == null ? PATTERN_LENGTH_EDEFAULT : newPatternLength;
+		patternLength = newPatternLength == null ? PATTERN_LENGTH_EDEFAULT
+				: newPatternLength;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__PATTERN_LENGTH, oldPatternLength, patternLength));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN__PATTERN_LENGTH, oldPatternLength,
+					patternLength));
 	}
 
 	/**
@@ -777,11 +805,15 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setReservedBitAfterPatternLength(byte newReservedBitAfterPatternLength) {
+	public void setReservedBitAfterPatternLength(
+			byte newReservedBitAfterPatternLength) {
 		byte oldReservedBitAfterPatternLength = reservedBitAfterPatternLength;
 		reservedBitAfterPatternLength = newReservedBitAfterPatternLength;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__RESERVED_BIT_AFTER_PATTERN_LENGTH, oldReservedBitAfterPatternLength, reservedBitAfterPatternLength));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN__RESERVED_BIT_AFTER_PATTERN_LENGTH,
+					oldReservedBitAfterPatternLength,
+					reservedBitAfterPatternLength));
 	}
 
 	/**
@@ -802,7 +834,8 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		Beat oldBeat = beat;
 		beat = newBeat == null ? BEAT_EDEFAULT : newBeat;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__BEAT, oldBeat, beat));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN__BEAT, oldBeat, beat));
 	}
 
 	/**
@@ -823,7 +856,8 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		RollType oldRollType = rollType;
 		rollType = newRollType == null ? ROLL_TYPE_EDEFAULT : newRollType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__ROLL_TYPE, oldRollType, rollType));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN__ROLL_TYPE, oldRollType, rollType));
 	}
 
 	/**
@@ -844,7 +878,8 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		FxChain oldFxChain = fxChain;
 		fxChain = newFxChain == null ? FX_CHAIN_EDEFAULT : newFxChain;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__FX_CHAIN, oldFxChain, fxChain));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN__FX_CHAIN, oldFxChain, fxChain));
 	}
 
 	/**
@@ -865,7 +900,8 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		LastStep oldLastStep = lastStep;
 		lastStep = newLastStep == null ? LAST_STEP_EDEFAULT : newLastStep;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__LAST_STEP, oldLastStep, lastStep));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN__LAST_STEP, oldLastStep, lastStep));
 	}
 
 	/**
@@ -884,9 +920,12 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 */
 	public void setArpeggiatorScale(ArpeggiatorScale newArpeggiatorScale) {
 		ArpeggiatorScale oldArpeggiatorScale = arpeggiatorScale;
-		arpeggiatorScale = newArpeggiatorScale == null ? ARPEGGIATOR_SCALE_EDEFAULT : newArpeggiatorScale;
+		arpeggiatorScale = newArpeggiatorScale == null ? ARPEGGIATOR_SCALE_EDEFAULT
+				: newArpeggiatorScale;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__ARPEGGIATOR_SCALE, oldArpeggiatorScale, arpeggiatorScale));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN__ARPEGGIATOR_SCALE, oldArpeggiatorScale,
+					arpeggiatorScale));
 	}
 
 	/**
@@ -903,11 +942,15 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setReservedBitsAfterArpeggiatorScale(byte newReservedBitsAfterArpeggiatorScale) {
+	public void setReservedBitsAfterArpeggiatorScale(
+			byte newReservedBitsAfterArpeggiatorScale) {
 		byte oldReservedBitsAfterArpeggiatorScale = reservedBitsAfterArpeggiatorScale;
 		reservedBitsAfterArpeggiatorScale = newReservedBitsAfterArpeggiatorScale;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE, oldReservedBitsAfterArpeggiatorScale, reservedBitsAfterArpeggiatorScale));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN__RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE,
+					oldReservedBitsAfterArpeggiatorScale,
+					reservedBitsAfterArpeggiatorScale));
 	}
 
 	/**
@@ -926,9 +969,12 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 */
 	public void setArpeggiatorCenterNote(NoteNumber newArpeggiatorCenterNote) {
 		NoteNumber oldArpeggiatorCenterNote = arpeggiatorCenterNote;
-		arpeggiatorCenterNote = newArpeggiatorCenterNote == null ? ARPEGGIATOR_CENTER_NOTE_EDEFAULT : newArpeggiatorCenterNote;
+		arpeggiatorCenterNote = newArpeggiatorCenterNote == null ? ARPEGGIATOR_CENTER_NOTE_EDEFAULT
+				: newArpeggiatorCenterNote;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__ARPEGGIATOR_CENTER_NOTE, oldArpeggiatorCenterNote, arpeggiatorCenterNote));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN__ARPEGGIATOR_CENTER_NOTE,
+					oldArpeggiatorCenterNote, arpeggiatorCenterNote));
 	}
 
 	/**
@@ -949,7 +995,8 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		short oldMuteStatus = muteStatus;
 		muteStatus = newMuteStatus;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__MUTE_STATUS, oldMuteStatus, muteStatus));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN__MUTE_STATUS, oldMuteStatus, muteStatus));
 	}
 
 	/**
@@ -970,7 +1017,9 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		short oldSwingStatus = swingStatus;
 		swingStatus = newSwingStatus;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__SWING_STATUS, oldSwingStatus, swingStatus));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN__SWING_STATUS, oldSwingStatus,
+					swingStatus));
 	}
 
 	/**
@@ -991,7 +1040,9 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		short oldOutputBusStatus = outputBusStatus;
 		outputBusStatus = newOutputBusStatus;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__OUTPUT_BUS_STATUS, oldOutputBusStatus, outputBusStatus));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN__OUTPUT_BUS_STATUS, oldOutputBusStatus,
+					outputBusStatus));
 	}
 
 	/**
@@ -1012,7 +1063,9 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		short oldAccentStatus = accentStatus;
 		accentStatus = newAccentStatus;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__ACCENT_STATUS, oldAccentStatus, accentStatus));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN__ACCENT_STATUS, oldAccentStatus,
+					accentStatus));
 	}
 
 	/**
@@ -1022,7 +1075,8 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 */
 	public EList<PartDrum> getDrumParts() {
 		if (drumParts == null) {
-			drumParts = new EObjectContainmentEList<PartDrum>(PartDrum.class, this, EsxPackage.PATTERN__DRUM_PARTS);
+			drumParts = new EObjectContainmentEList<PartDrum>(PartDrum.class,
+					this, EsxPackage.PATTERN__DRUM_PARTS);
 		}
 		return drumParts;
 	}
@@ -1034,7 +1088,9 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 */
 	public EList<PartKeyboard> getKeyboardParts() {
 		if (keyboardParts == null) {
-			keyboardParts = new EObjectContainmentEList<PartKeyboard>(PartKeyboard.class, this, EsxPackage.PATTERN__KEYBOARD_PARTS);
+			keyboardParts = new EObjectContainmentEList<PartKeyboard>(
+					PartKeyboard.class, this,
+					EsxPackage.PATTERN__KEYBOARD_PARTS);
 		}
 		return keyboardParts;
 	}
@@ -1046,7 +1102,9 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 */
 	public EList<PartStretchSlice> getStretchSliceParts() {
 		if (stretchSliceParts == null) {
-			stretchSliceParts = new EObjectContainmentEList<PartStretchSlice>(PartStretchSlice.class, this, EsxPackage.PATTERN__STRETCH_SLICE_PARTS);
+			stretchSliceParts = new EObjectContainmentEList<PartStretchSlice>(
+					PartStretchSlice.class, this,
+					EsxPackage.PATTERN__STRETCH_SLICE_PARTS);
 		}
 		return stretchSliceParts;
 	}
@@ -1065,12 +1123,18 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAudioInPart(PartAudioIn newAudioInPart, NotificationChain msgs) {
+	public NotificationChain basicSetAudioInPart(PartAudioIn newAudioInPart,
+			NotificationChain msgs) {
 		PartAudioIn oldAudioInPart = audioInPart;
 		audioInPart = newAudioInPart;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__AUDIO_IN_PART, oldAudioInPart, newAudioInPart);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, EsxPackage.PATTERN__AUDIO_IN_PART,
+					oldAudioInPart, newAudioInPart);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -1084,14 +1148,20 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		if (newAudioInPart != audioInPart) {
 			NotificationChain msgs = null;
 			if (audioInPart != null)
-				msgs = ((InternalEObject)audioInPart).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PATTERN__AUDIO_IN_PART, null, msgs);
+				msgs = ((InternalEObject) audioInPart)
+						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+								- EsxPackage.PATTERN__AUDIO_IN_PART, null, msgs);
 			if (newAudioInPart != null)
-				msgs = ((InternalEObject)newAudioInPart).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PATTERN__AUDIO_IN_PART, null, msgs);
+				msgs = ((InternalEObject) newAudioInPart)
+						.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+								- EsxPackage.PATTERN__AUDIO_IN_PART, null, msgs);
 			msgs = basicSetAudioInPart(newAudioInPart, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__AUDIO_IN_PART, newAudioInPart, newAudioInPart));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN__AUDIO_IN_PART, newAudioInPart,
+					newAudioInPart));
 	}
 
 	/**
@@ -1108,12 +1178,18 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAccentPart(PartAccent newAccentPart, NotificationChain msgs) {
+	public NotificationChain basicSetAccentPart(PartAccent newAccentPart,
+			NotificationChain msgs) {
 		PartAccent oldAccentPart = accentPart;
 		accentPart = newAccentPart;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__ACCENT_PART, oldAccentPart, newAccentPart);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, EsxPackage.PATTERN__ACCENT_PART,
+					oldAccentPart, newAccentPart);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -1127,14 +1203,20 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		if (newAccentPart != accentPart) {
 			NotificationChain msgs = null;
 			if (accentPart != null)
-				msgs = ((InternalEObject)accentPart).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PATTERN__ACCENT_PART, null, msgs);
+				msgs = ((InternalEObject) accentPart).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+								- EsxPackage.PATTERN__ACCENT_PART, null, msgs);
 			if (newAccentPart != null)
-				msgs = ((InternalEObject)newAccentPart).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsxPackage.PATTERN__ACCENT_PART, null, msgs);
+				msgs = ((InternalEObject) newAccentPart).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+								- EsxPackage.PATTERN__ACCENT_PART, null, msgs);
 			msgs = basicSetAccentPart(newAccentPart, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__ACCENT_PART, newAccentPart, newAccentPart));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN__ACCENT_PART, newAccentPart,
+					newAccentPart));
 	}
 
 	/**
@@ -1144,7 +1226,8 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 */
 	public EList<ParametersFx> getFxParameters() {
 		if (fxParameters == null) {
-			fxParameters = new EObjectContainmentEList<ParametersFx>(ParametersFx.class, this, EsxPackage.PATTERN__FX_PARAMETERS);
+			fxParameters = new EObjectContainmentEList<ParametersFx>(
+					ParametersFx.class, this, EsxPackage.PATTERN__FX_PARAMETERS);
 		}
 		return fxParameters;
 	}
@@ -1156,7 +1239,9 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 */
 	public EList<ParametersMotion> getMotionParameters() {
 		if (motionParameters == null) {
-			motionParameters = new EObjectContainmentEList<ParametersMotion>(ParametersMotion.class, this, EsxPackage.PATTERN__MOTION_PARAMETERS);
+			motionParameters = new EObjectContainmentEList<ParametersMotion>(
+					ParametersMotion.class, this,
+					EsxPackage.PATTERN__MOTION_PARAMETERS);
 		}
 		return motionParameters;
 	}
@@ -1167,11 +1252,12 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 * @generated NOT
 	 */
 	public boolean isEmpty() {
-		if(this.eResource()!=null) {
+		if (this.eResource() != null) {
 			Resource resource = (Resource) this.eResource();
 			Object rootObject = resource.getContents().get(0);
-			if(rootObject instanceof EsxFile) {
-				return (this.getName().equals(((EsxFile) rootObject).getEmptyPattern().getName()));
+			if (rootObject instanceof EsxFile) {
+				return (this.getName().equals(((EsxFile) rootObject)
+						.getEmptyPattern().getName()));
 			}
 		}
 		return true;
@@ -1193,9 +1279,12 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 */
 	public void setPatternNumberOriginal(PatternNumber newPatternNumberOriginal) {
 		PatternNumber oldPatternNumberOriginal = patternNumberOriginal;
-		patternNumberOriginal = newPatternNumberOriginal == null ? PATTERN_NUMBER_ORIGINAL_EDEFAULT : newPatternNumberOriginal;
+		patternNumberOriginal = newPatternNumberOriginal == null ? PATTERN_NUMBER_ORIGINAL_EDEFAULT
+				: newPatternNumberOriginal;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.PATTERN__PATTERN_NUMBER_ORIGINAL, oldPatternNumberOriginal, patternNumberOriginal));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.PATTERN__PATTERN_NUMBER_ORIGINAL,
+					oldPatternNumberOriginal, patternNumberOriginal));
 	}
 
 	/**
@@ -1204,11 +1293,12 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 * @generated NOT
 	 */
 	public PatternNumber getPatternNumberCurrent() {
-		if(this.eResource()!=null) {
+		if (this.eResource() != null) {
 			Resource resource = (Resource) this.eResource();
 			Object rootObject = resource.getContents().get(0);
-			if(rootObject instanceof EsxFile) {
-				return PatternNumber.get(((EsxFile) rootObject).getPatterns().indexOf(this));
+			if (rootObject instanceof EsxFile) {
+				return PatternNumber.get(((EsxFile) rootObject).getPatterns()
+						.indexOf(this));
 			}
 		}
 		return PatternNumber.get(-1);
@@ -1220,19 +1310,26 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_PATTERN);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				EsxUtil.CHUNKSIZE_PATTERN);
 		// bytes 0~7
-		buf.putBytes(EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00), 0, 8);
+		buf.putBytes(
+				EsxUtil.getByteArrayWithLength(this.getName(), 8, (byte) 0x00),
+				0, 8);
 		// bytes 8~9
 		buf.putShort(this.getTempo().getShortFromCurrentValue());
 		// byte 10
 		buf.putUnsignedByte(this.getSwing().getValue());
 		// byte 11
 		int packedByte11 = 0x00;
-		packedByte11 = EsxUtil.packInt(packedByte11, this.getPatternLength().getValue(), 3, 0);
-		packedByte11 = EsxUtil.packInt(packedByte11, this.getReservedBitAfterPatternLength(), 1, 3);
-		packedByte11 = EsxUtil.packInt(packedByte11, this.getBeat().getValue(), 2, 4);
-		packedByte11 = EsxUtil.packInt(packedByte11, this.getRollType().getValue(), 2, 6);
+		packedByte11 = EsxUtil.packInt(packedByte11, this.getPatternLength()
+				.getValue(), 3, 0);
+		packedByte11 = EsxUtil.packInt(packedByte11,
+				this.getReservedBitAfterPatternLength(), 1, 3);
+		packedByte11 = EsxUtil.packInt(packedByte11, this.getBeat().getValue(),
+				2, 4);
+		packedByte11 = EsxUtil.packInt(packedByte11, this.getRollType()
+				.getValue(), 2, 6);
 		buf.putUnsignedByte(packedByte11);
 		// byte 12
 		buf.putUnsignedByte(this.getFxChain().getValue());
@@ -1240,8 +1337,10 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 		buf.putUnsignedByte(this.getLastStep().getValue());
 		// byte 14
 		int packedByte14 = 0x00;
-		packedByte14 = EsxUtil.packInt(packedByte14, this.getArpeggiatorScale().getValue(), 5, 0);
-		packedByte14 = EsxUtil.packInt(packedByte14, this.getReservedBitsAfterArpeggiatorScale(), 3, 5);
+		packedByte14 = EsxUtil.packInt(packedByte14, this.getArpeggiatorScale()
+				.getValue(), 5, 0);
+		packedByte14 = EsxUtil.packInt(packedByte14,
+				this.getReservedBitsAfterArpeggiatorScale(), 3, 5);
 		buf.putUnsignedByte(packedByte14);
 		// byte 15
 		buf.putUnsignedByte(this.getArpeggiatorCenterNote().getValue());
@@ -1290,24 +1389,30 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EsxPackage.PATTERN__TEMPO:
-				return basicSetTempo(null, msgs);
-			case EsxPackage.PATTERN__DRUM_PARTS:
-				return ((InternalEList<?>)getDrumParts()).basicRemove(otherEnd, msgs);
-			case EsxPackage.PATTERN__KEYBOARD_PARTS:
-				return ((InternalEList<?>)getKeyboardParts()).basicRemove(otherEnd, msgs);
-			case EsxPackage.PATTERN__STRETCH_SLICE_PARTS:
-				return ((InternalEList<?>)getStretchSliceParts()).basicRemove(otherEnd, msgs);
-			case EsxPackage.PATTERN__AUDIO_IN_PART:
-				return basicSetAudioInPart(null, msgs);
-			case EsxPackage.PATTERN__ACCENT_PART:
-				return basicSetAccentPart(null, msgs);
-			case EsxPackage.PATTERN__FX_PARAMETERS:
-				return ((InternalEList<?>)getFxParameters()).basicRemove(otherEnd, msgs);
-			case EsxPackage.PATTERN__MOTION_PARAMETERS:
-				return ((InternalEList<?>)getMotionParameters()).basicRemove(otherEnd, msgs);
+		case EsxPackage.PATTERN__TEMPO:
+			return basicSetTempo(null, msgs);
+		case EsxPackage.PATTERN__DRUM_PARTS:
+			return ((InternalEList<?>) getDrumParts()).basicRemove(otherEnd,
+					msgs);
+		case EsxPackage.PATTERN__KEYBOARD_PARTS:
+			return ((InternalEList<?>) getKeyboardParts()).basicRemove(
+					otherEnd, msgs);
+		case EsxPackage.PATTERN__STRETCH_SLICE_PARTS:
+			return ((InternalEList<?>) getStretchSliceParts()).basicRemove(
+					otherEnd, msgs);
+		case EsxPackage.PATTERN__AUDIO_IN_PART:
+			return basicSetAudioInPart(null, msgs);
+		case EsxPackage.PATTERN__ACCENT_PART:
+			return basicSetAccentPart(null, msgs);
+		case EsxPackage.PATTERN__FX_PARAMETERS:
+			return ((InternalEList<?>) getFxParameters()).basicRemove(otherEnd,
+					msgs);
+		case EsxPackage.PATTERN__MOTION_PARAMETERS:
+			return ((InternalEList<?>) getMotionParameters()).basicRemove(
+					otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1320,60 +1425,60 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.PATTERN__NAME:
-				return getName();
-			case EsxPackage.PATTERN__LABEL:
-				return getLabel();
-			case EsxPackage.PATTERN__TEMPO:
-				return getTempo();
-			case EsxPackage.PATTERN__SWING:
-				return getSwing();
-			case EsxPackage.PATTERN__PATTERN_LENGTH:
-				return getPatternLength();
-			case EsxPackage.PATTERN__RESERVED_BIT_AFTER_PATTERN_LENGTH:
-				return getReservedBitAfterPatternLength();
-			case EsxPackage.PATTERN__BEAT:
-				return getBeat();
-			case EsxPackage.PATTERN__ROLL_TYPE:
-				return getRollType();
-			case EsxPackage.PATTERN__FX_CHAIN:
-				return getFxChain();
-			case EsxPackage.PATTERN__LAST_STEP:
-				return getLastStep();
-			case EsxPackage.PATTERN__ARPEGGIATOR_SCALE:
-				return getArpeggiatorScale();
-			case EsxPackage.PATTERN__RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE:
-				return getReservedBitsAfterArpeggiatorScale();
-			case EsxPackage.PATTERN__ARPEGGIATOR_CENTER_NOTE:
-				return getArpeggiatorCenterNote();
-			case EsxPackage.PATTERN__MUTE_STATUS:
-				return getMuteStatus();
-			case EsxPackage.PATTERN__SWING_STATUS:
-				return getSwingStatus();
-			case EsxPackage.PATTERN__OUTPUT_BUS_STATUS:
-				return getOutputBusStatus();
-			case EsxPackage.PATTERN__ACCENT_STATUS:
-				return getAccentStatus();
-			case EsxPackage.PATTERN__DRUM_PARTS:
-				return getDrumParts();
-			case EsxPackage.PATTERN__KEYBOARD_PARTS:
-				return getKeyboardParts();
-			case EsxPackage.PATTERN__STRETCH_SLICE_PARTS:
-				return getStretchSliceParts();
-			case EsxPackage.PATTERN__AUDIO_IN_PART:
-				return getAudioInPart();
-			case EsxPackage.PATTERN__ACCENT_PART:
-				return getAccentPart();
-			case EsxPackage.PATTERN__FX_PARAMETERS:
-				return getFxParameters();
-			case EsxPackage.PATTERN__MOTION_PARAMETERS:
-				return getMotionParameters();
-			case EsxPackage.PATTERN__EMPTY:
-				return isEmpty();
-			case EsxPackage.PATTERN__PATTERN_NUMBER_ORIGINAL:
-				return getPatternNumberOriginal();
-			case EsxPackage.PATTERN__PATTERN_NUMBER_CURRENT:
-				return getPatternNumberCurrent();
+		case EsxPackage.PATTERN__NAME:
+			return getName();
+		case EsxPackage.PATTERN__LABEL:
+			return getLabel();
+		case EsxPackage.PATTERN__TEMPO:
+			return getTempo();
+		case EsxPackage.PATTERN__SWING:
+			return getSwing();
+		case EsxPackage.PATTERN__PATTERN_LENGTH:
+			return getPatternLength();
+		case EsxPackage.PATTERN__RESERVED_BIT_AFTER_PATTERN_LENGTH:
+			return getReservedBitAfterPatternLength();
+		case EsxPackage.PATTERN__BEAT:
+			return getBeat();
+		case EsxPackage.PATTERN__ROLL_TYPE:
+			return getRollType();
+		case EsxPackage.PATTERN__FX_CHAIN:
+			return getFxChain();
+		case EsxPackage.PATTERN__LAST_STEP:
+			return getLastStep();
+		case EsxPackage.PATTERN__ARPEGGIATOR_SCALE:
+			return getArpeggiatorScale();
+		case EsxPackage.PATTERN__RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE:
+			return getReservedBitsAfterArpeggiatorScale();
+		case EsxPackage.PATTERN__ARPEGGIATOR_CENTER_NOTE:
+			return getArpeggiatorCenterNote();
+		case EsxPackage.PATTERN__MUTE_STATUS:
+			return getMuteStatus();
+		case EsxPackage.PATTERN__SWING_STATUS:
+			return getSwingStatus();
+		case EsxPackage.PATTERN__OUTPUT_BUS_STATUS:
+			return getOutputBusStatus();
+		case EsxPackage.PATTERN__ACCENT_STATUS:
+			return getAccentStatus();
+		case EsxPackage.PATTERN__DRUM_PARTS:
+			return getDrumParts();
+		case EsxPackage.PATTERN__KEYBOARD_PARTS:
+			return getKeyboardParts();
+		case EsxPackage.PATTERN__STRETCH_SLICE_PARTS:
+			return getStretchSliceParts();
+		case EsxPackage.PATTERN__AUDIO_IN_PART:
+			return getAudioInPart();
+		case EsxPackage.PATTERN__ACCENT_PART:
+			return getAccentPart();
+		case EsxPackage.PATTERN__FX_PARAMETERS:
+			return getFxParameters();
+		case EsxPackage.PATTERN__MOTION_PARAMETERS:
+			return getMotionParameters();
+		case EsxPackage.PATTERN__EMPTY:
+			return isEmpty();
+		case EsxPackage.PATTERN__PATTERN_NUMBER_ORIGINAL:
+			return getPatternNumberOriginal();
+		case EsxPackage.PATTERN__PATTERN_NUMBER_CURRENT:
+			return getPatternNumberCurrent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1387,83 +1492,87 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.PATTERN__NAME:
-				setName((String)newValue);
-				return;
-			case EsxPackage.PATTERN__TEMPO:
-				setTempo((Tempo)newValue);
-				return;
-			case EsxPackage.PATTERN__SWING:
-				setSwing((Swing)newValue);
-				return;
-			case EsxPackage.PATTERN__PATTERN_LENGTH:
-				setPatternLength((PatternLength)newValue);
-				return;
-			case EsxPackage.PATTERN__RESERVED_BIT_AFTER_PATTERN_LENGTH:
-				setReservedBitAfterPatternLength((Byte)newValue);
-				return;
-			case EsxPackage.PATTERN__BEAT:
-				setBeat((Beat)newValue);
-				return;
-			case EsxPackage.PATTERN__ROLL_TYPE:
-				setRollType((RollType)newValue);
-				return;
-			case EsxPackage.PATTERN__FX_CHAIN:
-				setFxChain((FxChain)newValue);
-				return;
-			case EsxPackage.PATTERN__LAST_STEP:
-				setLastStep((LastStep)newValue);
-				return;
-			case EsxPackage.PATTERN__ARPEGGIATOR_SCALE:
-				setArpeggiatorScale((ArpeggiatorScale)newValue);
-				return;
-			case EsxPackage.PATTERN__RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE:
-				setReservedBitsAfterArpeggiatorScale((Byte)newValue);
-				return;
-			case EsxPackage.PATTERN__ARPEGGIATOR_CENTER_NOTE:
-				setArpeggiatorCenterNote((NoteNumber)newValue);
-				return;
-			case EsxPackage.PATTERN__MUTE_STATUS:
-				setMuteStatus((Short)newValue);
-				return;
-			case EsxPackage.PATTERN__SWING_STATUS:
-				setSwingStatus((Short)newValue);
-				return;
-			case EsxPackage.PATTERN__OUTPUT_BUS_STATUS:
-				setOutputBusStatus((Short)newValue);
-				return;
-			case EsxPackage.PATTERN__ACCENT_STATUS:
-				setAccentStatus((Short)newValue);
-				return;
-			case EsxPackage.PATTERN__DRUM_PARTS:
-				getDrumParts().clear();
-				getDrumParts().addAll((Collection<? extends PartDrum>)newValue);
-				return;
-			case EsxPackage.PATTERN__KEYBOARD_PARTS:
-				getKeyboardParts().clear();
-				getKeyboardParts().addAll((Collection<? extends PartKeyboard>)newValue);
-				return;
-			case EsxPackage.PATTERN__STRETCH_SLICE_PARTS:
-				getStretchSliceParts().clear();
-				getStretchSliceParts().addAll((Collection<? extends PartStretchSlice>)newValue);
-				return;
-			case EsxPackage.PATTERN__AUDIO_IN_PART:
-				setAudioInPart((PartAudioIn)newValue);
-				return;
-			case EsxPackage.PATTERN__ACCENT_PART:
-				setAccentPart((PartAccent)newValue);
-				return;
-			case EsxPackage.PATTERN__FX_PARAMETERS:
-				getFxParameters().clear();
-				getFxParameters().addAll((Collection<? extends ParametersFx>)newValue);
-				return;
-			case EsxPackage.PATTERN__MOTION_PARAMETERS:
-				getMotionParameters().clear();
-				getMotionParameters().addAll((Collection<? extends ParametersMotion>)newValue);
-				return;
-			case EsxPackage.PATTERN__PATTERN_NUMBER_ORIGINAL:
-				setPatternNumberOriginal((PatternNumber)newValue);
-				return;
+		case EsxPackage.PATTERN__NAME:
+			setName((String) newValue);
+			return;
+		case EsxPackage.PATTERN__TEMPO:
+			setTempo((Tempo) newValue);
+			return;
+		case EsxPackage.PATTERN__SWING:
+			setSwing((Swing) newValue);
+			return;
+		case EsxPackage.PATTERN__PATTERN_LENGTH:
+			setPatternLength((PatternLength) newValue);
+			return;
+		case EsxPackage.PATTERN__RESERVED_BIT_AFTER_PATTERN_LENGTH:
+			setReservedBitAfterPatternLength((Byte) newValue);
+			return;
+		case EsxPackage.PATTERN__BEAT:
+			setBeat((Beat) newValue);
+			return;
+		case EsxPackage.PATTERN__ROLL_TYPE:
+			setRollType((RollType) newValue);
+			return;
+		case EsxPackage.PATTERN__FX_CHAIN:
+			setFxChain((FxChain) newValue);
+			return;
+		case EsxPackage.PATTERN__LAST_STEP:
+			setLastStep((LastStep) newValue);
+			return;
+		case EsxPackage.PATTERN__ARPEGGIATOR_SCALE:
+			setArpeggiatorScale((ArpeggiatorScale) newValue);
+			return;
+		case EsxPackage.PATTERN__RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE:
+			setReservedBitsAfterArpeggiatorScale((Byte) newValue);
+			return;
+		case EsxPackage.PATTERN__ARPEGGIATOR_CENTER_NOTE:
+			setArpeggiatorCenterNote((NoteNumber) newValue);
+			return;
+		case EsxPackage.PATTERN__MUTE_STATUS:
+			setMuteStatus((Short) newValue);
+			return;
+		case EsxPackage.PATTERN__SWING_STATUS:
+			setSwingStatus((Short) newValue);
+			return;
+		case EsxPackage.PATTERN__OUTPUT_BUS_STATUS:
+			setOutputBusStatus((Short) newValue);
+			return;
+		case EsxPackage.PATTERN__ACCENT_STATUS:
+			setAccentStatus((Short) newValue);
+			return;
+		case EsxPackage.PATTERN__DRUM_PARTS:
+			getDrumParts().clear();
+			getDrumParts().addAll((Collection<? extends PartDrum>) newValue);
+			return;
+		case EsxPackage.PATTERN__KEYBOARD_PARTS:
+			getKeyboardParts().clear();
+			getKeyboardParts().addAll(
+					(Collection<? extends PartKeyboard>) newValue);
+			return;
+		case EsxPackage.PATTERN__STRETCH_SLICE_PARTS:
+			getStretchSliceParts().clear();
+			getStretchSliceParts().addAll(
+					(Collection<? extends PartStretchSlice>) newValue);
+			return;
+		case EsxPackage.PATTERN__AUDIO_IN_PART:
+			setAudioInPart((PartAudioIn) newValue);
+			return;
+		case EsxPackage.PATTERN__ACCENT_PART:
+			setAccentPart((PartAccent) newValue);
+			return;
+		case EsxPackage.PATTERN__FX_PARAMETERS:
+			getFxParameters().clear();
+			getFxParameters().addAll(
+					(Collection<? extends ParametersFx>) newValue);
+			return;
+		case EsxPackage.PATTERN__MOTION_PARAMETERS:
+			getMotionParameters().clear();
+			getMotionParameters().addAll(
+					(Collection<? extends ParametersMotion>) newValue);
+			return;
+		case EsxPackage.PATTERN__PATTERN_NUMBER_ORIGINAL:
+			setPatternNumberOriginal((PatternNumber) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1476,78 +1585,78 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PATTERN__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case EsxPackage.PATTERN__TEMPO:
-				setTempo((Tempo)null);
-				return;
-			case EsxPackage.PATTERN__SWING:
-				setSwing(SWING_EDEFAULT);
-				return;
-			case EsxPackage.PATTERN__PATTERN_LENGTH:
-				setPatternLength(PATTERN_LENGTH_EDEFAULT);
-				return;
-			case EsxPackage.PATTERN__RESERVED_BIT_AFTER_PATTERN_LENGTH:
-				setReservedBitAfterPatternLength(RESERVED_BIT_AFTER_PATTERN_LENGTH_EDEFAULT);
-				return;
-			case EsxPackage.PATTERN__BEAT:
-				setBeat(BEAT_EDEFAULT);
-				return;
-			case EsxPackage.PATTERN__ROLL_TYPE:
-				setRollType(ROLL_TYPE_EDEFAULT);
-				return;
-			case EsxPackage.PATTERN__FX_CHAIN:
-				setFxChain(FX_CHAIN_EDEFAULT);
-				return;
-			case EsxPackage.PATTERN__LAST_STEP:
-				setLastStep(LAST_STEP_EDEFAULT);
-				return;
-			case EsxPackage.PATTERN__ARPEGGIATOR_SCALE:
-				setArpeggiatorScale(ARPEGGIATOR_SCALE_EDEFAULT);
-				return;
-			case EsxPackage.PATTERN__RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE:
-				setReservedBitsAfterArpeggiatorScale(RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE_EDEFAULT);
-				return;
-			case EsxPackage.PATTERN__ARPEGGIATOR_CENTER_NOTE:
-				setArpeggiatorCenterNote(ARPEGGIATOR_CENTER_NOTE_EDEFAULT);
-				return;
-			case EsxPackage.PATTERN__MUTE_STATUS:
-				setMuteStatus(MUTE_STATUS_EDEFAULT);
-				return;
-			case EsxPackage.PATTERN__SWING_STATUS:
-				setSwingStatus(SWING_STATUS_EDEFAULT);
-				return;
-			case EsxPackage.PATTERN__OUTPUT_BUS_STATUS:
-				setOutputBusStatus(OUTPUT_BUS_STATUS_EDEFAULT);
-				return;
-			case EsxPackage.PATTERN__ACCENT_STATUS:
-				setAccentStatus(ACCENT_STATUS_EDEFAULT);
-				return;
-			case EsxPackage.PATTERN__DRUM_PARTS:
-				getDrumParts().clear();
-				return;
-			case EsxPackage.PATTERN__KEYBOARD_PARTS:
-				getKeyboardParts().clear();
-				return;
-			case EsxPackage.PATTERN__STRETCH_SLICE_PARTS:
-				getStretchSliceParts().clear();
-				return;
-			case EsxPackage.PATTERN__AUDIO_IN_PART:
-				setAudioInPart((PartAudioIn)null);
-				return;
-			case EsxPackage.PATTERN__ACCENT_PART:
-				setAccentPart((PartAccent)null);
-				return;
-			case EsxPackage.PATTERN__FX_PARAMETERS:
-				getFxParameters().clear();
-				return;
-			case EsxPackage.PATTERN__MOTION_PARAMETERS:
-				getMotionParameters().clear();
-				return;
-			case EsxPackage.PATTERN__PATTERN_NUMBER_ORIGINAL:
-				setPatternNumberOriginal(PATTERN_NUMBER_ORIGINAL_EDEFAULT);
-				return;
+		case EsxPackage.PATTERN__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case EsxPackage.PATTERN__TEMPO:
+			setTempo((Tempo) null);
+			return;
+		case EsxPackage.PATTERN__SWING:
+			setSwing(SWING_EDEFAULT);
+			return;
+		case EsxPackage.PATTERN__PATTERN_LENGTH:
+			setPatternLength(PATTERN_LENGTH_EDEFAULT);
+			return;
+		case EsxPackage.PATTERN__RESERVED_BIT_AFTER_PATTERN_LENGTH:
+			setReservedBitAfterPatternLength(RESERVED_BIT_AFTER_PATTERN_LENGTH_EDEFAULT);
+			return;
+		case EsxPackage.PATTERN__BEAT:
+			setBeat(BEAT_EDEFAULT);
+			return;
+		case EsxPackage.PATTERN__ROLL_TYPE:
+			setRollType(ROLL_TYPE_EDEFAULT);
+			return;
+		case EsxPackage.PATTERN__FX_CHAIN:
+			setFxChain(FX_CHAIN_EDEFAULT);
+			return;
+		case EsxPackage.PATTERN__LAST_STEP:
+			setLastStep(LAST_STEP_EDEFAULT);
+			return;
+		case EsxPackage.PATTERN__ARPEGGIATOR_SCALE:
+			setArpeggiatorScale(ARPEGGIATOR_SCALE_EDEFAULT);
+			return;
+		case EsxPackage.PATTERN__RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE:
+			setReservedBitsAfterArpeggiatorScale(RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE_EDEFAULT);
+			return;
+		case EsxPackage.PATTERN__ARPEGGIATOR_CENTER_NOTE:
+			setArpeggiatorCenterNote(ARPEGGIATOR_CENTER_NOTE_EDEFAULT);
+			return;
+		case EsxPackage.PATTERN__MUTE_STATUS:
+			setMuteStatus(MUTE_STATUS_EDEFAULT);
+			return;
+		case EsxPackage.PATTERN__SWING_STATUS:
+			setSwingStatus(SWING_STATUS_EDEFAULT);
+			return;
+		case EsxPackage.PATTERN__OUTPUT_BUS_STATUS:
+			setOutputBusStatus(OUTPUT_BUS_STATUS_EDEFAULT);
+			return;
+		case EsxPackage.PATTERN__ACCENT_STATUS:
+			setAccentStatus(ACCENT_STATUS_EDEFAULT);
+			return;
+		case EsxPackage.PATTERN__DRUM_PARTS:
+			getDrumParts().clear();
+			return;
+		case EsxPackage.PATTERN__KEYBOARD_PARTS:
+			getKeyboardParts().clear();
+			return;
+		case EsxPackage.PATTERN__STRETCH_SLICE_PARTS:
+			getStretchSliceParts().clear();
+			return;
+		case EsxPackage.PATTERN__AUDIO_IN_PART:
+			setAudioInPart((PartAudioIn) null);
+			return;
+		case EsxPackage.PATTERN__ACCENT_PART:
+			setAccentPart((PartAccent) null);
+			return;
+		case EsxPackage.PATTERN__FX_PARAMETERS:
+			getFxParameters().clear();
+			return;
+		case EsxPackage.PATTERN__MOTION_PARAMETERS:
+			getMotionParameters().clear();
+			return;
+		case EsxPackage.PATTERN__PATTERN_NUMBER_ORIGINAL:
+			setPatternNumberOriginal(PATTERN_NUMBER_ORIGINAL_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1560,60 +1669,62 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.PATTERN__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case EsxPackage.PATTERN__LABEL:
-				return LABEL_EDEFAULT == null ? getLabel() != null : !LABEL_EDEFAULT.equals(getLabel());
-			case EsxPackage.PATTERN__TEMPO:
-				return tempo != null;
-			case EsxPackage.PATTERN__SWING:
-				return swing != SWING_EDEFAULT;
-			case EsxPackage.PATTERN__PATTERN_LENGTH:
-				return patternLength != PATTERN_LENGTH_EDEFAULT;
-			case EsxPackage.PATTERN__RESERVED_BIT_AFTER_PATTERN_LENGTH:
-				return reservedBitAfterPatternLength != RESERVED_BIT_AFTER_PATTERN_LENGTH_EDEFAULT;
-			case EsxPackage.PATTERN__BEAT:
-				return beat != BEAT_EDEFAULT;
-			case EsxPackage.PATTERN__ROLL_TYPE:
-				return rollType != ROLL_TYPE_EDEFAULT;
-			case EsxPackage.PATTERN__FX_CHAIN:
-				return fxChain != FX_CHAIN_EDEFAULT;
-			case EsxPackage.PATTERN__LAST_STEP:
-				return lastStep != LAST_STEP_EDEFAULT;
-			case EsxPackage.PATTERN__ARPEGGIATOR_SCALE:
-				return arpeggiatorScale != ARPEGGIATOR_SCALE_EDEFAULT;
-			case EsxPackage.PATTERN__RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE:
-				return reservedBitsAfterArpeggiatorScale != RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE_EDEFAULT;
-			case EsxPackage.PATTERN__ARPEGGIATOR_CENTER_NOTE:
-				return arpeggiatorCenterNote != ARPEGGIATOR_CENTER_NOTE_EDEFAULT;
-			case EsxPackage.PATTERN__MUTE_STATUS:
-				return muteStatus != MUTE_STATUS_EDEFAULT;
-			case EsxPackage.PATTERN__SWING_STATUS:
-				return swingStatus != SWING_STATUS_EDEFAULT;
-			case EsxPackage.PATTERN__OUTPUT_BUS_STATUS:
-				return outputBusStatus != OUTPUT_BUS_STATUS_EDEFAULT;
-			case EsxPackage.PATTERN__ACCENT_STATUS:
-				return accentStatus != ACCENT_STATUS_EDEFAULT;
-			case EsxPackage.PATTERN__DRUM_PARTS:
-				return drumParts != null && !drumParts.isEmpty();
-			case EsxPackage.PATTERN__KEYBOARD_PARTS:
-				return keyboardParts != null && !keyboardParts.isEmpty();
-			case EsxPackage.PATTERN__STRETCH_SLICE_PARTS:
-				return stretchSliceParts != null && !stretchSliceParts.isEmpty();
-			case EsxPackage.PATTERN__AUDIO_IN_PART:
-				return audioInPart != null;
-			case EsxPackage.PATTERN__ACCENT_PART:
-				return accentPart != null;
-			case EsxPackage.PATTERN__FX_PARAMETERS:
-				return fxParameters != null && !fxParameters.isEmpty();
-			case EsxPackage.PATTERN__MOTION_PARAMETERS:
-				return motionParameters != null && !motionParameters.isEmpty();
-			case EsxPackage.PATTERN__EMPTY:
-				return isEmpty() != EMPTY_EDEFAULT;
-			case EsxPackage.PATTERN__PATTERN_NUMBER_ORIGINAL:
-				return patternNumberOriginal != PATTERN_NUMBER_ORIGINAL_EDEFAULT;
-			case EsxPackage.PATTERN__PATTERN_NUMBER_CURRENT:
-				return getPatternNumberCurrent() != PATTERN_NUMBER_CURRENT_EDEFAULT;
+		case EsxPackage.PATTERN__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
+					.equals(name);
+		case EsxPackage.PATTERN__LABEL:
+			return LABEL_EDEFAULT == null ? getLabel() != null
+					: !LABEL_EDEFAULT.equals(getLabel());
+		case EsxPackage.PATTERN__TEMPO:
+			return tempo != null;
+		case EsxPackage.PATTERN__SWING:
+			return swing != SWING_EDEFAULT;
+		case EsxPackage.PATTERN__PATTERN_LENGTH:
+			return patternLength != PATTERN_LENGTH_EDEFAULT;
+		case EsxPackage.PATTERN__RESERVED_BIT_AFTER_PATTERN_LENGTH:
+			return reservedBitAfterPatternLength != RESERVED_BIT_AFTER_PATTERN_LENGTH_EDEFAULT;
+		case EsxPackage.PATTERN__BEAT:
+			return beat != BEAT_EDEFAULT;
+		case EsxPackage.PATTERN__ROLL_TYPE:
+			return rollType != ROLL_TYPE_EDEFAULT;
+		case EsxPackage.PATTERN__FX_CHAIN:
+			return fxChain != FX_CHAIN_EDEFAULT;
+		case EsxPackage.PATTERN__LAST_STEP:
+			return lastStep != LAST_STEP_EDEFAULT;
+		case EsxPackage.PATTERN__ARPEGGIATOR_SCALE:
+			return arpeggiatorScale != ARPEGGIATOR_SCALE_EDEFAULT;
+		case EsxPackage.PATTERN__RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE:
+			return reservedBitsAfterArpeggiatorScale != RESERVED_BITS_AFTER_ARPEGGIATOR_SCALE_EDEFAULT;
+		case EsxPackage.PATTERN__ARPEGGIATOR_CENTER_NOTE:
+			return arpeggiatorCenterNote != ARPEGGIATOR_CENTER_NOTE_EDEFAULT;
+		case EsxPackage.PATTERN__MUTE_STATUS:
+			return muteStatus != MUTE_STATUS_EDEFAULT;
+		case EsxPackage.PATTERN__SWING_STATUS:
+			return swingStatus != SWING_STATUS_EDEFAULT;
+		case EsxPackage.PATTERN__OUTPUT_BUS_STATUS:
+			return outputBusStatus != OUTPUT_BUS_STATUS_EDEFAULT;
+		case EsxPackage.PATTERN__ACCENT_STATUS:
+			return accentStatus != ACCENT_STATUS_EDEFAULT;
+		case EsxPackage.PATTERN__DRUM_PARTS:
+			return drumParts != null && !drumParts.isEmpty();
+		case EsxPackage.PATTERN__KEYBOARD_PARTS:
+			return keyboardParts != null && !keyboardParts.isEmpty();
+		case EsxPackage.PATTERN__STRETCH_SLICE_PARTS:
+			return stretchSliceParts != null && !stretchSliceParts.isEmpty();
+		case EsxPackage.PATTERN__AUDIO_IN_PART:
+			return audioInPart != null;
+		case EsxPackage.PATTERN__ACCENT_PART:
+			return accentPart != null;
+		case EsxPackage.PATTERN__FX_PARAMETERS:
+			return fxParameters != null && !fxParameters.isEmpty();
+		case EsxPackage.PATTERN__MOTION_PARAMETERS:
+			return motionParameters != null && !motionParameters.isEmpty();
+		case EsxPackage.PATTERN__EMPTY:
+			return isEmpty() != EMPTY_EDEFAULT;
+		case EsxPackage.PATTERN__PATTERN_NUMBER_ORIGINAL:
+			return patternNumberOriginal != PATTERN_NUMBER_ORIGINAL_EDEFAULT;
+		case EsxPackage.PATTERN__PATTERN_NUMBER_CURRENT:
+			return getPatternNumberCurrent() != PATTERN_NUMBER_CURRENT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1625,7 +1736,8 @@ public class PatternImpl extends EObjectImpl implements Pattern {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");

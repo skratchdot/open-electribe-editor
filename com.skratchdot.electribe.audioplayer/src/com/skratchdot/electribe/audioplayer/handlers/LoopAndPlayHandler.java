@@ -35,25 +35,28 @@ public class LoopAndPlayHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
 		try {
-			IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+			IWorkbenchWindow window = HandlerUtil
+					.getActiveWorkbenchWindowChecked(event);
 			ISelection selection = window.getSelectionService().getSelection();
 
 			// Now try to play the first selected item
 			if (selection instanceof IStructuredSelection) {
-				Object firstObject = ((IStructuredSelection) selection).getFirstElement();
+				Object firstObject = ((IStructuredSelection) selection)
+						.getFirstElement();
 
-				if(firstObject!=null) {
+				if (firstObject != null) {
 
 					// LOOP COMMAND
-					if(event.getCommand().getId().equals(LOOP_COMMAND_ID)) {
+					if (event.getCommand().getId().equals(LOOP_COMMAND_ID)) {
 						AudioPlayer.getInstance().play(firstObject, true);
 					}
 					// PLAY COMMAND
-					else if(event.getCommand().getId().equals(PLAY_COMMAND_ID)) {
+					else if (event.getCommand().getId().equals(PLAY_COMMAND_ID)) {
 						AudioPlayer.getInstance().play(firstObject, false);
 					}
 					// PLAY OR LOOP COMMAND
-					else if(event.getCommand().getId().equals(PLAY_OR_LOOP_COMMAND_ID)) {
+					else if (event.getCommand().getId()
+							.equals(PLAY_OR_LOOP_COMMAND_ID)) {
 						loopOrPlayBasedOnPreference(firstObject);
 					}
 				}
@@ -64,12 +67,11 @@ public class LoopAndPlayHandler extends AbstractHandler {
 
 		return null;
 	}
-	
+
 	public void loopOrPlayBasedOnPreference(Object obj) {
 		// Get preference
-		String doubleClickBehavior = PlatformUI
-			.getPreferenceStore()
-			.getString(PreferenceConstants.AUDIOPLAYER_DOUBLECLICK_BEHAVIOR);
+		String doubleClickBehavior = PlatformUI.getPreferenceStore().getString(
+				PreferenceConstants.AUDIOPLAYER_DOUBLECLICK_BEHAVIOR);
 
 		// Loop Or Play
 		if (doubleClickBehavior == PreferenceConstants.AUDIOPLAYER_DOUBLECLICK_PLAY_OR_LOOP) {

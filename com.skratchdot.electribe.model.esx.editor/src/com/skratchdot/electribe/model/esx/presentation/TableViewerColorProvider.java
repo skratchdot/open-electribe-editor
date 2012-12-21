@@ -36,10 +36,9 @@ public class TableViewerColorProvider extends ColorProvider {
 	 * @param foregroundColorWhenNotEmpty
 	 * @param foregroundColorWhenEmpty
 	 */
-	public TableViewerColorProvider(AdapterFactory adapterFactory, Viewer viewer,
-			Color backgroundColorWhenNotEmpty,
-			Color backgroundColorWhenEmpty,
-			Color foregroundColorWhenNotEmpty,
+	public TableViewerColorProvider(AdapterFactory adapterFactory,
+			Viewer viewer, Color backgroundColorWhenNotEmpty,
+			Color backgroundColorWhenEmpty, Color foregroundColorWhenNotEmpty,
 			Color foregroundColorWhenEmpty) {
 		super(adapterFactory, viewer);
 		this.backgroundColorWhenNotEmpty = backgroundColorWhenNotEmpty;
@@ -56,10 +55,9 @@ public class TableViewerColorProvider extends ColorProvider {
 	 * @param foregroundColorWhenNotEmpty
 	 * @param foregroundColorWhenEmpty
 	 */
-	public TableViewerColorProvider(AdapterFactory adapterFactory, Viewer viewer,
-			RGB backgroundColorWhenNotEmpty,
-			RGB backgroundColorWhenEmpty,
-			RGB foregroundColorWhenNotEmpty,
+	public TableViewerColorProvider(AdapterFactory adapterFactory,
+			Viewer viewer, RGB backgroundColorWhenNotEmpty,
+			RGB backgroundColorWhenEmpty, RGB foregroundColorWhenNotEmpty,
 			RGB foregroundColorWhenEmpty) {
 		super(adapterFactory, viewer);
 		this.backgroundColorWhenNotEmpty = new Color(null,
@@ -120,28 +118,24 @@ public class TableViewerColorProvider extends ColorProvider {
 	 * @param foregroundColorWhenNotEmpty
 	 * @param foregroundColorWhenEmpty
 	 */
-	public void setAllColors(
-		Color backgroundColorWhenNotEmpty,
-		Color backgroundColorWhenEmpty,
-		Color foregroundColorWhenNotEmpty,
-		Color foregroundColorWhenEmpty) {
+	public void setAllColors(Color backgroundColorWhenNotEmpty,
+			Color backgroundColorWhenEmpty, Color foregroundColorWhenNotEmpty,
+			Color foregroundColorWhenEmpty) {
 		this.backgroundColorWhenNotEmpty = backgroundColorWhenNotEmpty;
 		this.backgroundColorWhenEmpty = backgroundColorWhenEmpty;
 		this.foregroundColorWhenNotEmpty = foregroundColorWhenNotEmpty;
 		this.foregroundColorWhenEmpty = foregroundColorWhenEmpty;
 	}
-	
+
 	/**
 	 * @param backgroundColorWhenNotEmpty
 	 * @param backgroundColorWhenEmpty
 	 * @param foregroundColorWhenNotEmpty
 	 * @param foregroundColorWhenEmpty
 	 */
-	public void setAllColors(
-		RGB backgroundColorWhenNotEmpty,
-		RGB backgroundColorWhenEmpty,
-		RGB foregroundColorWhenNotEmpty,
-		RGB foregroundColorWhenEmpty) {
+	public void setAllColors(RGB backgroundColorWhenNotEmpty,
+			RGB backgroundColorWhenEmpty, RGB foregroundColorWhenNotEmpty,
+			RGB foregroundColorWhenEmpty) {
 		this.backgroundColorWhenNotEmpty = new Color(null,
 				backgroundColorWhenNotEmpty);
 		this.backgroundColorWhenEmpty = new Color(null,
@@ -155,8 +149,7 @@ public class TableViewerColorProvider extends ColorProvider {
 	/**
 	 * @param backgroundColorWhenNotEmpty
 	 */
-	public void setBackgroundColorWhenNotEmpty(
-			Color backgroundColorWhenNotEmpty) {
+	public void setBackgroundColorWhenNotEmpty(Color backgroundColorWhenNotEmpty) {
 		this.backgroundColorWhenNotEmpty = backgroundColorWhenNotEmpty;
 	}
 
@@ -186,8 +179,7 @@ public class TableViewerColorProvider extends ColorProvider {
 	/**
 	 * @param foregroundColorWhenNotEmpty
 	 */
-	public void setForegroundColorWhenNotEmpty(
-			Color foregroundColorWhenNotEmpty) {
+	public void setForegroundColorWhenNotEmpty(Color foregroundColorWhenNotEmpty) {
 		this.foregroundColorWhenNotEmpty = foregroundColorWhenNotEmpty;
 	}
 

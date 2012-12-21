@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.PartDrum;
@@ -42,10 +41,10 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PartDrumItemProvider
-	extends PartItemProvider
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class PartDrumItemProvider extends PartItemProvider implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -102,19 +101,16 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addAmpEgPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithCommon_ampEg_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithCommon_ampEg_feature", "_UI_PartWithCommon_type"),
-				 EsxPackage.Literals.PART_WITH_COMMON__AMP_EG,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithCommon_ampEg_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithCommon_ampEg_feature",
+						"_UI_PartWithCommon_type"),
+				EsxPackage.Literals.PART_WITH_COMMON__AMP_EG, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -124,19 +120,16 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addBpmSyncPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithCommon_bpmSync_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithCommon_bpmSync_feature", "_UI_PartWithCommon_type"),
-				 EsxPackage.Literals.PART_WITH_COMMON__BPM_SYNC,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithCommon_bpmSync_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithCommon_bpmSync_feature",
+						"_UI_PartWithCommon_type"),
+				EsxPackage.Literals.PART_WITH_COMMON__BPM_SYNC, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -146,19 +139,18 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addCutoffPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithCommon_cutoff_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithCommon_cutoff_feature", "_UI_PartWithCommon_type"),
-				 EsxPackage.Literals.PART_WITH_COMMON__CUTOFF,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_PartWithCommon_cutoff_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_PartWithCommon_cutoff_feature",
+								"_UI_PartWithCommon_type"),
+						EsxPackage.Literals.PART_WITH_COMMON__CUTOFF, true,
+						false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -168,19 +160,17 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addEgIntensityPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithCommon_egIntensity_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithCommon_egIntensity_feature", "_UI_PartWithCommon_type"),
-				 EsxPackage.Literals.PART_WITH_COMMON__EG_INTENSITY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithCommon_egIntensity_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithCommon_egIntensity_feature",
+						"_UI_PartWithCommon_type"),
+				EsxPackage.Literals.PART_WITH_COMMON__EG_INTENSITY, true,
+				false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -190,19 +180,18 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addEgTimePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithCommon_egTime_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithCommon_egTime_feature", "_UI_PartWithCommon_type"),
-				 EsxPackage.Literals.PART_WITH_COMMON__EG_TIME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_PartWithCommon_egTime_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_PartWithCommon_egTime_feature",
+								"_UI_PartWithCommon_type"),
+						EsxPackage.Literals.PART_WITH_COMMON__EG_TIME, true,
+						false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -212,19 +201,16 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addFilterTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithCommon_filterType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithCommon_filterType_feature", "_UI_PartWithCommon_type"),
-				 EsxPackage.Literals.PART_WITH_COMMON__FILTER_TYPE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithCommon_filterType_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithCommon_filterType_feature",
+						"_UI_PartWithCommon_type"),
+				EsxPackage.Literals.PART_WITH_COMMON__FILTER_TYPE, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -234,19 +220,16 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addFxSelectPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithCommon_fxSelect_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithCommon_fxSelect_feature", "_UI_PartWithCommon_type"),
-				 EsxPackage.Literals.PART_WITH_COMMON__FX_SELECT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithCommon_fxSelect_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithCommon_fxSelect_feature",
+						"_UI_PartWithCommon_type"),
+				EsxPackage.Literals.PART_WITH_COMMON__FX_SELECT, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -256,19 +239,16 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addFxSendPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithCommon_fxSend_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithCommon_fxSend_feature", "_UI_PartWithCommon_type"),
-				 EsxPackage.Literals.PART_WITH_COMMON__FX_SEND,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithCommon_fxSend_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithCommon_fxSend_feature",
+						"_UI_PartWithCommon_type"),
+				EsxPackage.Literals.PART_WITH_COMMON__FX_SEND, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -278,19 +258,18 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addModDepthPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithCommon_modDepth_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithCommon_modDepth_feature", "_UI_PartWithCommon_type"),
-				 EsxPackage.Literals.PART_WITH_COMMON__MOD_DEPTH,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_PartWithCommon_modDepth_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_PartWithCommon_modDepth_feature",
+								"_UI_PartWithCommon_type"),
+						EsxPackage.Literals.PART_WITH_COMMON__MOD_DEPTH, true,
+						false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -300,19 +279,16 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addModDestPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithCommon_modDest_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithCommon_modDest_feature", "_UI_PartWithCommon_type"),
-				 EsxPackage.Literals.PART_WITH_COMMON__MOD_DEST,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithCommon_modDest_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithCommon_modDest_feature",
+						"_UI_PartWithCommon_type"),
+				EsxPackage.Literals.PART_WITH_COMMON__MOD_DEST, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -322,19 +298,18 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addModSpeedPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithCommon_modSpeed_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithCommon_modSpeed_feature", "_UI_PartWithCommon_type"),
-				 EsxPackage.Literals.PART_WITH_COMMON__MOD_SPEED,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_PartWithCommon_modSpeed_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_PartWithCommon_modSpeed_feature",
+								"_UI_PartWithCommon_type"),
+						EsxPackage.Literals.PART_WITH_COMMON__MOD_SPEED, true,
+						false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -344,19 +319,16 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addModTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithCommon_modType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithCommon_modType_feature", "_UI_PartWithCommon_type"),
-				 EsxPackage.Literals.PART_WITH_COMMON__MOD_TYPE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithCommon_modType_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithCommon_modType_feature",
+						"_UI_PartWithCommon_type"),
+				EsxPackage.Literals.PART_WITH_COMMON__MOD_TYPE, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -366,19 +338,16 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addPanPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithCommon_pan_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithCommon_pan_feature", "_UI_PartWithCommon_type"),
-				 EsxPackage.Literals.PART_WITH_COMMON__PAN,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithCommon_pan_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithCommon_pan_feature",
+						"_UI_PartWithCommon_type"),
+				EsxPackage.Literals.PART_WITH_COMMON__PAN, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -388,19 +357,19 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addReservedBitAfterModDepthPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithCommon_reservedBitAfterModDepth_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithCommon_reservedBitAfterModDepth_feature", "_UI_PartWithCommon_type"),
-				 EsxPackage.Literals.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_PartWithCommon_reservedBitAfterModDepth_feature"),
+						getString(
+								"_UI_PropertyDescriptor_description",
+								"_UI_PartWithCommon_reservedBitAfterModDepth_feature",
+								"_UI_PartWithCommon_type"),
+						EsxPackage.Literals.PART_WITH_COMMON__RESERVED_BIT_AFTER_MOD_DEPTH,
+						true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -410,19 +379,18 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addResonancePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithCommon_resonance_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithCommon_resonance_feature", "_UI_PartWithCommon_type"),
-				 EsxPackage.Literals.PART_WITH_COMMON__RESONANCE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_PartWithCommon_resonance_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_PartWithCommon_resonance_feature",
+								"_UI_PartWithCommon_type"),
+						EsxPackage.Literals.PART_WITH_COMMON__RESONANCE, true,
+						false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -432,19 +400,16 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addRollPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithCommon_roll_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithCommon_roll_feature", "_UI_PartWithCommon_type"),
-				 EsxPackage.Literals.PART_WITH_COMMON__ROLL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithCommon_roll_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithCommon_roll_feature",
+						"_UI_PartWithCommon_type"),
+				EsxPackage.Literals.PART_WITH_COMMON__ROLL, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -454,19 +419,16 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addPitchPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithPitch_pitch_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithPitch_pitch_feature", "_UI_PartWithPitch_type"),
-				 EsxPackage.Literals.PART_WITH_PITCH__PITCH,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithPitch_pitch_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithPitch_pitch_feature",
+						"_UI_PartWithPitch_type"),
+				EsxPackage.Literals.PART_WITH_PITCH__PITCH, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -476,19 +438,16 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addReversePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithSample_reverse_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithSample_reverse_feature", "_UI_PartWithSample_type"),
-				 EsxPackage.Literals.PART_WITH_SAMPLE__REVERSE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithSample_reverse_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithSample_reverse_feature",
+						"_UI_PartWithSample_type"),
+				EsxPackage.Literals.PART_WITH_SAMPLE__REVERSE, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -498,19 +457,17 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addSampleLabelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithSample_sampleLabel_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithSample_sampleLabel_feature", "_UI_PartWithSample_type"),
-				 EsxPackage.Literals.PART_WITH_SAMPLE__SAMPLE_LABEL,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithSample_sampleLabel_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithSample_sampleLabel_feature",
+						"_UI_PartWithSample_type"),
+				EsxPackage.Literals.PART_WITH_SAMPLE__SAMPLE_LABEL, false,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -520,19 +477,17 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addSamplePointerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithSample_samplePointer_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithSample_samplePointer_feature", "_UI_PartWithSample_type"),
-				 EsxPackage.Literals.PART_WITH_SAMPLE__SAMPLE_POINTER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithSample_samplePointer_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithSample_samplePointer_feature",
+						"_UI_PartWithSample_type"),
+				EsxPackage.Literals.PART_WITH_SAMPLE__SAMPLE_POINTER, true,
+				false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -542,19 +497,18 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addStartPointPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithSample_startPoint_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithSample_startPoint_feature", "_UI_PartWithSample_type"),
-				 EsxPackage.Literals.PART_WITH_SAMPLE__START_POINT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_PartWithSample_startPoint_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_PartWithSample_startPoint_feature",
+								"_UI_PartWithSample_type"),
+						EsxPackage.Literals.PART_WITH_SAMPLE__START_POINT,
+						true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -564,19 +518,19 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addReservedBitsAfterReversePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithSample_reservedBitsAfterReverse_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithSample_reservedBitsAfterReverse_feature", "_UI_PartWithSample_type"),
-				 EsxPackage.Literals.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_PartWithSample_reservedBitsAfterReverse_feature"),
+						getString(
+								"_UI_PropertyDescriptor_description",
+								"_UI_PartWithSample_reservedBitsAfterReverse_feature",
+								"_UI_PartWithSample_type"),
+						EsxPackage.Literals.PART_WITH_SAMPLE__RESERVED_BITS_AFTER_REVERSE,
+						true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -586,19 +540,17 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addReservedBytePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithSlice_reservedByte_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithSlice_reservedByte_feature", "_UI_PartWithSlice_type"),
-				 EsxPackage.Literals.PART_WITH_SLICE__RESERVED_BYTE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PartWithSlice_reservedByte_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PartWithSlice_reservedByte_feature",
+						"_UI_PartWithSlice_type"),
+				EsxPackage.Literals.PART_WITH_SLICE__RESERVED_BYTE, true,
+				false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -608,19 +560,18 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	protected void addSliceNumberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartWithSlice_sliceNumber_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartWithSlice_sliceNumber_feature", "_UI_PartWithSlice_type"),
-				 EsxPackage.Literals.PART_WITH_SLICE__SLICE_NUMBER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_PartWithSlice_sliceNumber_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_PartWithSlice_sliceNumber_feature",
+								"_UI_PartWithSlice_type"),
+						EsxPackage.Literals.PART_WITH_SLICE__SLICE_NUMBER,
+						true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -632,10 +583,12 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(EsxPackage.Literals.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA);
+			childrenFeatures
+					.add(EsxPackage.Literals.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA);
 		}
 		return childrenFeatures;
 	}
@@ -661,7 +614,8 @@ public class PartDrumItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/PartDrum"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/PartDrum"));
 	}
 
 	/**
@@ -672,10 +626,9 @@ public class PartDrumItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((PartDrum)object).getLabel();
-		return label == null || label.length() == 0 ?
-			getString("_UI_PartDrum_type") :
-			getString("_UI_PartDrum_type") + " " + label;
+		String label = ((PartDrum) object).getLabel();
+		return label == null || label.length() == 0 ? getString("_UI_PartDrum_type")
+				: getString("_UI_PartDrum_type") + " " + label;
 	}
 
 	/**
@@ -690,35 +643,37 @@ public class PartDrumItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(PartDrum.class)) {
-			case EsxPackage.PART_DRUM__AMP_EG:
-			case EsxPackage.PART_DRUM__BPM_SYNC:
-			case EsxPackage.PART_DRUM__CUTOFF:
-			case EsxPackage.PART_DRUM__EG_INTENSITY:
-			case EsxPackage.PART_DRUM__EG_TIME:
-			case EsxPackage.PART_DRUM__FILTER_TYPE:
-			case EsxPackage.PART_DRUM__FX_SELECT:
-			case EsxPackage.PART_DRUM__FX_SEND:
-			case EsxPackage.PART_DRUM__MOD_DEPTH:
-			case EsxPackage.PART_DRUM__MOD_DEST:
-			case EsxPackage.PART_DRUM__MOD_SPEED:
-			case EsxPackage.PART_DRUM__MOD_TYPE:
-			case EsxPackage.PART_DRUM__PAN:
-			case EsxPackage.PART_DRUM__RESERVED_BIT_AFTER_MOD_DEPTH:
-			case EsxPackage.PART_DRUM__RESONANCE:
-			case EsxPackage.PART_DRUM__ROLL:
-			case EsxPackage.PART_DRUM__PITCH:
-			case EsxPackage.PART_DRUM__REVERSE:
-			case EsxPackage.PART_DRUM__SAMPLE_LABEL:
-			case EsxPackage.PART_DRUM__SAMPLE_POINTER:
-			case EsxPackage.PART_DRUM__START_POINT:
-			case EsxPackage.PART_DRUM__RESERVED_BITS_AFTER_REVERSE:
-			case EsxPackage.PART_DRUM__RESERVED_BYTE:
-			case EsxPackage.PART_DRUM__SLICE_NUMBER:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case EsxPackage.PART_DRUM__SEQUENCE_DATA:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case EsxPackage.PART_DRUM__AMP_EG:
+		case EsxPackage.PART_DRUM__BPM_SYNC:
+		case EsxPackage.PART_DRUM__CUTOFF:
+		case EsxPackage.PART_DRUM__EG_INTENSITY:
+		case EsxPackage.PART_DRUM__EG_TIME:
+		case EsxPackage.PART_DRUM__FILTER_TYPE:
+		case EsxPackage.PART_DRUM__FX_SELECT:
+		case EsxPackage.PART_DRUM__FX_SEND:
+		case EsxPackage.PART_DRUM__MOD_DEPTH:
+		case EsxPackage.PART_DRUM__MOD_DEST:
+		case EsxPackage.PART_DRUM__MOD_SPEED:
+		case EsxPackage.PART_DRUM__MOD_TYPE:
+		case EsxPackage.PART_DRUM__PAN:
+		case EsxPackage.PART_DRUM__RESERVED_BIT_AFTER_MOD_DEPTH:
+		case EsxPackage.PART_DRUM__RESONANCE:
+		case EsxPackage.PART_DRUM__ROLL:
+		case EsxPackage.PART_DRUM__PITCH:
+		case EsxPackage.PART_DRUM__REVERSE:
+		case EsxPackage.PART_DRUM__SAMPLE_LABEL:
+		case EsxPackage.PART_DRUM__SAMPLE_POINTER:
+		case EsxPackage.PART_DRUM__START_POINT:
+		case EsxPackage.PART_DRUM__RESERVED_BITS_AFTER_REVERSE:
+		case EsxPackage.PART_DRUM__RESERVED_BYTE:
+		case EsxPackage.PART_DRUM__SLICE_NUMBER:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
+		case EsxPackage.PART_DRUM__SEQUENCE_DATA:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -731,13 +686,13 @@ public class PartDrumItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-				(EsxPackage.Literals.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA,
-				 EsxFactory.eINSTANCE.createSequenceData()));
+		newChildDescriptors.add(createChildParameter(
+				EsxPackage.Literals.PART_WITH_SEQUENCE_DATA__SEQUENCE_DATA,
+				EsxFactory.eINSTANCE.createSequenceData()));
 	}
 
 }

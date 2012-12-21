@@ -71,7 +71,8 @@ import com.skratchdot.electribe.model.esx.util.ExtendedByteBuffer;
  *
  * @generated
  */
-public class GlobalParametersImpl extends EObjectImpl implements GlobalParameters {
+public class GlobalParametersImpl extends EObjectImpl implements
+		GlobalParameters {
 	/**
 	 * The default value of the '{@link #getMemoryProtectEnabled() <em>Memory Protect Enabled</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -380,39 +381,50 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 		this.setMidiClock(MidiClock.get(in.getByte()));
 		// byte 5
 		int packedByte5 = in.getUnsignedByte();
-		this.setNoteMessageEnabled(EnabledFlag.get(EsxUtil.unpackInt(packedByte5, 1, 0)));
-		this.setSystemExEnabled(EnabledFlag.get(EsxUtil.unpackInt(packedByte5, 1, 1)));
-		this.setControlChangeEnabled(EnabledFlag.get(EsxUtil.unpackInt(packedByte5, 1, 2)));
-		this.setProgramChangeEnabled(EnabledFlag.get(EsxUtil.unpackInt(packedByte5, 1, 3)));
-		this.setReservedBitsAfterProgramChangeEnabled((byte) EsxUtil.unpackInt(packedByte5, 4, 4));
+		this.setNoteMessageEnabled(EnabledFlag.get(EsxUtil.unpackInt(
+				packedByte5, 1, 0)));
+		this.setSystemExEnabled(EnabledFlag.get(EsxUtil.unpackInt(packedByte5,
+				1, 1)));
+		this.setControlChangeEnabled(EnabledFlag.get(EsxUtil.unpackInt(
+				packedByte5, 1, 2)));
+		this.setProgramChangeEnabled(EnabledFlag.get(EsxUtil.unpackInt(
+				packedByte5, 1, 3)));
+		this.setReservedBitsAfterProgramChangeEnabled((byte) EsxUtil.unpackInt(
+				packedByte5, 4, 4));
 		// byte 6
 		this.setPitchBendRange(PitchBendRange.get(in.getByte()));
 		// bytes 7~9 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_MIDI_CHANNELS; i++) {
-			MidiChannelType midiChannelType = EsxFactory.eINSTANCE.createMidiChannelType();
+			MidiChannelType midiChannelType = EsxFactory.eINSTANCE
+					.createMidiChannelType();
 			midiChannelType.setName(MidiChannelTypeName.get(i));
 			midiChannelType.setMidiChannel(MidiChannel.get(in.getByte()));
 			this.getMidiChannels().add(i, midiChannelType);
 		}
 		// bytes 10~22 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_PART_NOTE_NUMBERS; i++) {
-			PartNoteNumber partNoteNumber = EsxFactory.eINSTANCE.createPartNoteNumber();
+			PartNoteNumber partNoteNumber = EsxFactory.eINSTANCE
+					.createPartNoteNumber();
 			partNoteNumber.setName(PartNoteNumberName.get(i));
 			partNoteNumber.setNoteNumber(NoteNumber.get(in.getByte()));
 			this.getPartNoteNumbers().add(i, partNoteNumber);
 		}
 		// bytes 23~55 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_MIDI_CONTROL_CHANGE_ASSIGNMENTS; i++) {
-			MidiControlChangeAssignment midiControlChangeAssignment = EsxFactory.eINSTANCE.createMidiControlChangeAssignment();
-			midiControlChangeAssignment.setName(MidiControlChangeAssignmentName.get(i));
+			MidiControlChangeAssignment midiControlChangeAssignment = EsxFactory.eINSTANCE
+					.createMidiControlChangeAssignment();
+			midiControlChangeAssignment.setName(MidiControlChangeAssignmentName
+					.get(i));
 			midiControlChangeAssignment.setValue(in.getByte());
-			this.getMidiControlChangeAssignments().add(i, midiControlChangeAssignment);
+			this.getMidiControlChangeAssignments().add(i,
+					midiControlChangeAssignment);
 		}
 		// bytes 56~63
 		this.setReservedLong(in.getLong());
 		// bytes 64~191 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_PATTERN_SET_PARAMETERS; i++) {
-			PatternSetParameter patternSetParameter = EsxFactory.eINSTANCE.createPatternSetParameter();
+			PatternSetParameter patternSetParameter = EsxFactory.eINSTANCE
+					.createPatternSetParameter();
 			patternSetParameter.setPatternPointer((short) in.getUnsignedByte());
 			this.getPatternSetParameters().add(i, patternSetParameter);
 		}
@@ -444,9 +456,12 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	 */
 	public void setMemoryProtectEnabled(EnabledFlag newMemoryProtectEnabled) {
 		EnabledFlag oldMemoryProtectEnabled = memoryProtectEnabled;
-		memoryProtectEnabled = newMemoryProtectEnabled == null ? MEMORY_PROTECT_ENABLED_EDEFAULT : newMemoryProtectEnabled;
+		memoryProtectEnabled = newMemoryProtectEnabled == null ? MEMORY_PROTECT_ENABLED_EDEFAULT
+				: newMemoryProtectEnabled;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED, oldMemoryProtectEnabled, memoryProtectEnabled));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED,
+					oldMemoryProtectEnabled, memoryProtectEnabled));
 	}
 
 	/**
@@ -467,7 +482,9 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 		byte oldReservedByte = reservedByte;
 		reservedByte = newReservedByte;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.GLOBAL_PARAMETERS__RESERVED_BYTE, oldReservedByte, reservedByte));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.GLOBAL_PARAMETERS__RESERVED_BYTE,
+					oldReservedByte, reservedByte));
 	}
 
 	/**
@@ -486,9 +503,12 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	 */
 	public void setArpeggiatorControl(ArpeggiatorControl newArpeggiatorControl) {
 		ArpeggiatorControl oldArpeggiatorControl = arpeggiatorControl;
-		arpeggiatorControl = newArpeggiatorControl == null ? ARPEGGIATOR_CONTROL_EDEFAULT : newArpeggiatorControl;
+		arpeggiatorControl = newArpeggiatorControl == null ? ARPEGGIATOR_CONTROL_EDEFAULT
+				: newArpeggiatorControl;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.GLOBAL_PARAMETERS__ARPEGGIATOR_CONTROL, oldArpeggiatorControl, arpeggiatorControl));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.GLOBAL_PARAMETERS__ARPEGGIATOR_CONTROL,
+					oldArpeggiatorControl, arpeggiatorControl));
 	}
 
 	/**
@@ -507,9 +527,12 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	 */
 	public void setAudioInMode(AudioInMode newAudioInMode) {
 		AudioInMode oldAudioInMode = audioInMode;
-		audioInMode = newAudioInMode == null ? AUDIO_IN_MODE_EDEFAULT : newAudioInMode;
+		audioInMode = newAudioInMode == null ? AUDIO_IN_MODE_EDEFAULT
+				: newAudioInMode;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.GLOBAL_PARAMETERS__AUDIO_IN_MODE, oldAudioInMode, audioInMode));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.GLOBAL_PARAMETERS__AUDIO_IN_MODE,
+					oldAudioInMode, audioInMode));
 	}
 
 	/**
@@ -530,7 +553,9 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 		MidiClock oldMidiClock = midiClock;
 		midiClock = newMidiClock == null ? MIDI_CLOCK_EDEFAULT : newMidiClock;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.GLOBAL_PARAMETERS__MIDI_CLOCK, oldMidiClock, midiClock));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.GLOBAL_PARAMETERS__MIDI_CLOCK, oldMidiClock,
+					midiClock));
 	}
 
 	/**
@@ -549,9 +574,12 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	 */
 	public void setNoteMessageEnabled(EnabledFlag newNoteMessageEnabled) {
 		EnabledFlag oldNoteMessageEnabled = noteMessageEnabled;
-		noteMessageEnabled = newNoteMessageEnabled == null ? NOTE_MESSAGE_ENABLED_EDEFAULT : newNoteMessageEnabled;
+		noteMessageEnabled = newNoteMessageEnabled == null ? NOTE_MESSAGE_ENABLED_EDEFAULT
+				: newNoteMessageEnabled;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.GLOBAL_PARAMETERS__NOTE_MESSAGE_ENABLED, oldNoteMessageEnabled, noteMessageEnabled));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.GLOBAL_PARAMETERS__NOTE_MESSAGE_ENABLED,
+					oldNoteMessageEnabled, noteMessageEnabled));
 	}
 
 	/**
@@ -570,9 +598,12 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	 */
 	public void setSystemExEnabled(EnabledFlag newSystemExEnabled) {
 		EnabledFlag oldSystemExEnabled = systemExEnabled;
-		systemExEnabled = newSystemExEnabled == null ? SYSTEM_EX_ENABLED_EDEFAULT : newSystemExEnabled;
+		systemExEnabled = newSystemExEnabled == null ? SYSTEM_EX_ENABLED_EDEFAULT
+				: newSystemExEnabled;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.GLOBAL_PARAMETERS__SYSTEM_EX_ENABLED, oldSystemExEnabled, systemExEnabled));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.GLOBAL_PARAMETERS__SYSTEM_EX_ENABLED,
+					oldSystemExEnabled, systemExEnabled));
 	}
 
 	/**
@@ -591,9 +622,12 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	 */
 	public void setControlChangeEnabled(EnabledFlag newControlChangeEnabled) {
 		EnabledFlag oldControlChangeEnabled = controlChangeEnabled;
-		controlChangeEnabled = newControlChangeEnabled == null ? CONTROL_CHANGE_ENABLED_EDEFAULT : newControlChangeEnabled;
+		controlChangeEnabled = newControlChangeEnabled == null ? CONTROL_CHANGE_ENABLED_EDEFAULT
+				: newControlChangeEnabled;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.GLOBAL_PARAMETERS__CONTROL_CHANGE_ENABLED, oldControlChangeEnabled, controlChangeEnabled));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.GLOBAL_PARAMETERS__CONTROL_CHANGE_ENABLED,
+					oldControlChangeEnabled, controlChangeEnabled));
 	}
 
 	/**
@@ -612,9 +646,12 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	 */
 	public void setProgramChangeEnabled(EnabledFlag newProgramChangeEnabled) {
 		EnabledFlag oldProgramChangeEnabled = programChangeEnabled;
-		programChangeEnabled = newProgramChangeEnabled == null ? PROGRAM_CHANGE_ENABLED_EDEFAULT : newProgramChangeEnabled;
+		programChangeEnabled = newProgramChangeEnabled == null ? PROGRAM_CHANGE_ENABLED_EDEFAULT
+				: newProgramChangeEnabled;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.GLOBAL_PARAMETERS__PROGRAM_CHANGE_ENABLED, oldProgramChangeEnabled, programChangeEnabled));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.GLOBAL_PARAMETERS__PROGRAM_CHANGE_ENABLED,
+					oldProgramChangeEnabled, programChangeEnabled));
 	}
 
 	/**
@@ -631,11 +668,17 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setReservedBitsAfterProgramChangeEnabled(byte newReservedBitsAfterProgramChangeEnabled) {
+	public void setReservedBitsAfterProgramChangeEnabled(
+			byte newReservedBitsAfterProgramChangeEnabled) {
 		byte oldReservedBitsAfterProgramChangeEnabled = reservedBitsAfterProgramChangeEnabled;
 		reservedBitsAfterProgramChangeEnabled = newReservedBitsAfterProgramChangeEnabled;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.GLOBAL_PARAMETERS__RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED, oldReservedBitsAfterProgramChangeEnabled, reservedBitsAfterProgramChangeEnabled));
+			eNotify(new ENotificationImpl(
+					this,
+					Notification.SET,
+					EsxPackage.GLOBAL_PARAMETERS__RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED,
+					oldReservedBitsAfterProgramChangeEnabled,
+					reservedBitsAfterProgramChangeEnabled));
 	}
 
 	/**
@@ -654,9 +697,12 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	 */
 	public void setPitchBendRange(PitchBendRange newPitchBendRange) {
 		PitchBendRange oldPitchBendRange = pitchBendRange;
-		pitchBendRange = newPitchBendRange == null ? PITCH_BEND_RANGE_EDEFAULT : newPitchBendRange;
+		pitchBendRange = newPitchBendRange == null ? PITCH_BEND_RANGE_EDEFAULT
+				: newPitchBendRange;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.GLOBAL_PARAMETERS__PITCH_BEND_RANGE, oldPitchBendRange, pitchBendRange));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.GLOBAL_PARAMETERS__PITCH_BEND_RANGE,
+					oldPitchBendRange, pitchBendRange));
 	}
 
 	/**
@@ -666,7 +712,9 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	 */
 	public EList<MidiChannelType> getMidiChannels() {
 		if (midiChannels == null) {
-			midiChannels = new EObjectContainmentEList<MidiChannelType>(MidiChannelType.class, this, EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNELS);
+			midiChannels = new EObjectContainmentEList<MidiChannelType>(
+					MidiChannelType.class, this,
+					EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNELS);
 		}
 		return midiChannels;
 	}
@@ -678,7 +726,9 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	 */
 	public EList<PartNoteNumber> getPartNoteNumbers() {
 		if (partNoteNumbers == null) {
-			partNoteNumbers = new EObjectContainmentEList<PartNoteNumber>(PartNoteNumber.class, this, EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBERS);
+			partNoteNumbers = new EObjectContainmentEList<PartNoteNumber>(
+					PartNoteNumber.class, this,
+					EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBERS);
 		}
 		return partNoteNumbers;
 	}
@@ -690,7 +740,10 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	 */
 	public EList<MidiControlChangeAssignment> getMidiControlChangeAssignments() {
 		if (midiControlChangeAssignments == null) {
-			midiControlChangeAssignments = new EObjectContainmentEList<MidiControlChangeAssignment>(MidiControlChangeAssignment.class, this, EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS);
+			midiControlChangeAssignments = new EObjectContainmentEList<MidiControlChangeAssignment>(
+					MidiControlChangeAssignment.class,
+					this,
+					EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS);
 		}
 		return midiControlChangeAssignments;
 	}
@@ -713,7 +766,9 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 		long oldReservedLong = reservedLong;
 		reservedLong = newReservedLong;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.GLOBAL_PARAMETERS__RESERVED_LONG, oldReservedLong, reservedLong));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.GLOBAL_PARAMETERS__RESERVED_LONG,
+					oldReservedLong, reservedLong));
 	}
 
 	/**
@@ -723,7 +778,9 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	 */
 	public EList<PatternSetParameter> getPatternSetParameters() {
 		if (patternSetParameters == null) {
-			patternSetParameters = new EObjectContainmentEList<PatternSetParameter>(PatternSetParameter.class, this, EsxPackage.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS);
+			patternSetParameters = new EObjectContainmentEList<PatternSetParameter>(
+					PatternSetParameter.class, this,
+					EsxPackage.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS);
 		}
 		return patternSetParameters;
 	}
@@ -734,7 +791,8 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	 * @generated NOT
 	 */
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer(EsxUtil.CHUNKSIZE_GLOBAL_PARAMETERS);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				EsxUtil.CHUNKSIZE_GLOBAL_PARAMETERS);
 		// byte 0
 		buf.putUnsignedByte(this.getMemoryProtectEnabled().getValue());
 		// byte 1
@@ -747,31 +805,40 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 		buf.putUnsignedByte(this.getMidiClock().getValue());
 		// byte 5
 		int packedByte5 = 0x00;
-		packedByte5 = EsxUtil.packInt(packedByte5, this.getNoteMessageEnabled().getValue(), 1, 0);
-		packedByte5 = EsxUtil.packInt(packedByte5, this.getSystemExEnabled().getValue(), 1, 1);
-		packedByte5 = EsxUtil.packInt(packedByte5, this.getControlChangeEnabled().getValue(), 1, 2);
-		packedByte5 = EsxUtil.packInt(packedByte5, this.getProgramChangeEnabled().getValue(), 1, 3);
-		packedByte5 = EsxUtil.packInt(packedByte5, this.getReservedBitsAfterProgramChangeEnabled(), 4, 4);
+		packedByte5 = EsxUtil.packInt(packedByte5, this.getNoteMessageEnabled()
+				.getValue(), 1, 0);
+		packedByte5 = EsxUtil.packInt(packedByte5, this.getSystemExEnabled()
+				.getValue(), 1, 1);
+		packedByte5 = EsxUtil.packInt(packedByte5, this
+				.getControlChangeEnabled().getValue(), 1, 2);
+		packedByte5 = EsxUtil.packInt(packedByte5, this
+				.getProgramChangeEnabled().getValue(), 1, 3);
+		packedByte5 = EsxUtil.packInt(packedByte5,
+				this.getReservedBitsAfterProgramChangeEnabled(), 4, 4);
 		buf.putUnsignedByte(packedByte5);
 		// byte 6
 		buf.putUnsignedByte(this.getPitchBendRange().getValue());
 		// bytes 7~9 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_MIDI_CHANNELS; i++) {
-			buf.putUnsignedByte(this.getMidiChannels().get(i).getMidiChannel().getValue());
+			buf.putUnsignedByte(this.getMidiChannels().get(i).getMidiChannel()
+					.getValue());
 		}
 		// bytes 10~22 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_PART_NOTE_NUMBERS; i++) {
-			buf.putUnsignedByte(this.getPartNoteNumbers().get(i).getNoteNumber().getValue());
+			buf.putUnsignedByte(this.getPartNoteNumbers().get(i)
+					.getNoteNumber().getValue());
 		}
 		// bytes 23~55 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_MIDI_CONTROL_CHANGE_ASSIGNMENTS; i++) {
-			buf.putByte(this.getMidiControlChangeAssignments().get(i).getValue());
+			buf.putByte(this.getMidiControlChangeAssignments().get(i)
+					.getValue());
 		}
 		// bytes 56~63
 		buf.putLong(this.getReservedLong());
 		// bytes 64~191 (1 byte each)
 		for (int i = 0; i < EsxUtil.NUM_PATTERN_SET_PARAMETERS; i++) {
-			buf.putUnsignedByte(this.getPatternSetParameters().get(i).getPatternPointer());
+			buf.putUnsignedByte(this.getPatternSetParameters().get(i)
+					.getPatternPointer());
 		}
 		return buf.array();
 	}
@@ -782,16 +849,21 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNELS:
-				return ((InternalEList<?>)getMidiChannels()).basicRemove(otherEnd, msgs);
-			case EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBERS:
-				return ((InternalEList<?>)getPartNoteNumbers()).basicRemove(otherEnd, msgs);
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS:
-				return ((InternalEList<?>)getMidiControlChangeAssignments()).basicRemove(otherEnd, msgs);
-			case EsxPackage.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS:
-				return ((InternalEList<?>)getPatternSetParameters()).basicRemove(otherEnd, msgs);
+		case EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNELS:
+			return ((InternalEList<?>) getMidiChannels()).basicRemove(otherEnd,
+					msgs);
+		case EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBERS:
+			return ((InternalEList<?>) getPartNoteNumbers()).basicRemove(
+					otherEnd, msgs);
+		case EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS:
+			return ((InternalEList<?>) getMidiControlChangeAssignments())
+					.basicRemove(otherEnd, msgs);
+		case EsxPackage.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS:
+			return ((InternalEList<?>) getPatternSetParameters()).basicRemove(
+					otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -804,38 +876,38 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED:
-				return getMemoryProtectEnabled();
-			case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BYTE:
-				return getReservedByte();
-			case EsxPackage.GLOBAL_PARAMETERS__ARPEGGIATOR_CONTROL:
-				return getArpeggiatorControl();
-			case EsxPackage.GLOBAL_PARAMETERS__AUDIO_IN_MODE:
-				return getAudioInMode();
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CLOCK:
-				return getMidiClock();
-			case EsxPackage.GLOBAL_PARAMETERS__NOTE_MESSAGE_ENABLED:
-				return getNoteMessageEnabled();
-			case EsxPackage.GLOBAL_PARAMETERS__SYSTEM_EX_ENABLED:
-				return getSystemExEnabled();
-			case EsxPackage.GLOBAL_PARAMETERS__CONTROL_CHANGE_ENABLED:
-				return getControlChangeEnabled();
-			case EsxPackage.GLOBAL_PARAMETERS__PROGRAM_CHANGE_ENABLED:
-				return getProgramChangeEnabled();
-			case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED:
-				return getReservedBitsAfterProgramChangeEnabled();
-			case EsxPackage.GLOBAL_PARAMETERS__PITCH_BEND_RANGE:
-				return getPitchBendRange();
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNELS:
-				return getMidiChannels();
-			case EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBERS:
-				return getPartNoteNumbers();
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS:
-				return getMidiControlChangeAssignments();
-			case EsxPackage.GLOBAL_PARAMETERS__RESERVED_LONG:
-				return getReservedLong();
-			case EsxPackage.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS:
-				return getPatternSetParameters();
+		case EsxPackage.GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED:
+			return getMemoryProtectEnabled();
+		case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BYTE:
+			return getReservedByte();
+		case EsxPackage.GLOBAL_PARAMETERS__ARPEGGIATOR_CONTROL:
+			return getArpeggiatorControl();
+		case EsxPackage.GLOBAL_PARAMETERS__AUDIO_IN_MODE:
+			return getAudioInMode();
+		case EsxPackage.GLOBAL_PARAMETERS__MIDI_CLOCK:
+			return getMidiClock();
+		case EsxPackage.GLOBAL_PARAMETERS__NOTE_MESSAGE_ENABLED:
+			return getNoteMessageEnabled();
+		case EsxPackage.GLOBAL_PARAMETERS__SYSTEM_EX_ENABLED:
+			return getSystemExEnabled();
+		case EsxPackage.GLOBAL_PARAMETERS__CONTROL_CHANGE_ENABLED:
+			return getControlChangeEnabled();
+		case EsxPackage.GLOBAL_PARAMETERS__PROGRAM_CHANGE_ENABLED:
+			return getProgramChangeEnabled();
+		case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED:
+			return getReservedBitsAfterProgramChangeEnabled();
+		case EsxPackage.GLOBAL_PARAMETERS__PITCH_BEND_RANGE:
+			return getPitchBendRange();
+		case EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNELS:
+			return getMidiChannels();
+		case EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBERS:
+			return getPartNoteNumbers();
+		case EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS:
+			return getMidiControlChangeAssignments();
+		case EsxPackage.GLOBAL_PARAMETERS__RESERVED_LONG:
+			return getReservedLong();
+		case EsxPackage.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS:
+			return getPatternSetParameters();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -849,58 +921,62 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED:
-				setMemoryProtectEnabled((EnabledFlag)newValue);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BYTE:
-				setReservedByte((Byte)newValue);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__ARPEGGIATOR_CONTROL:
-				setArpeggiatorControl((ArpeggiatorControl)newValue);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__AUDIO_IN_MODE:
-				setAudioInMode((AudioInMode)newValue);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CLOCK:
-				setMidiClock((MidiClock)newValue);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__NOTE_MESSAGE_ENABLED:
-				setNoteMessageEnabled((EnabledFlag)newValue);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__SYSTEM_EX_ENABLED:
-				setSystemExEnabled((EnabledFlag)newValue);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__CONTROL_CHANGE_ENABLED:
-				setControlChangeEnabled((EnabledFlag)newValue);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__PROGRAM_CHANGE_ENABLED:
-				setProgramChangeEnabled((EnabledFlag)newValue);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED:
-				setReservedBitsAfterProgramChangeEnabled((Byte)newValue);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__PITCH_BEND_RANGE:
-				setPitchBendRange((PitchBendRange)newValue);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNELS:
-				getMidiChannels().clear();
-				getMidiChannels().addAll((Collection<? extends MidiChannelType>)newValue);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBERS:
-				getPartNoteNumbers().clear();
-				getPartNoteNumbers().addAll((Collection<? extends PartNoteNumber>)newValue);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS:
-				getMidiControlChangeAssignments().clear();
-				getMidiControlChangeAssignments().addAll((Collection<? extends MidiControlChangeAssignment>)newValue);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__RESERVED_LONG:
-				setReservedLong((Long)newValue);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS:
-				getPatternSetParameters().clear();
-				getPatternSetParameters().addAll((Collection<? extends PatternSetParameter>)newValue);
-				return;
+		case EsxPackage.GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED:
+			setMemoryProtectEnabled((EnabledFlag) newValue);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BYTE:
+			setReservedByte((Byte) newValue);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__ARPEGGIATOR_CONTROL:
+			setArpeggiatorControl((ArpeggiatorControl) newValue);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__AUDIO_IN_MODE:
+			setAudioInMode((AudioInMode) newValue);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__MIDI_CLOCK:
+			setMidiClock((MidiClock) newValue);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__NOTE_MESSAGE_ENABLED:
+			setNoteMessageEnabled((EnabledFlag) newValue);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__SYSTEM_EX_ENABLED:
+			setSystemExEnabled((EnabledFlag) newValue);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__CONTROL_CHANGE_ENABLED:
+			setControlChangeEnabled((EnabledFlag) newValue);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__PROGRAM_CHANGE_ENABLED:
+			setProgramChangeEnabled((EnabledFlag) newValue);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED:
+			setReservedBitsAfterProgramChangeEnabled((Byte) newValue);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__PITCH_BEND_RANGE:
+			setPitchBendRange((PitchBendRange) newValue);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNELS:
+			getMidiChannels().clear();
+			getMidiChannels().addAll(
+					(Collection<? extends MidiChannelType>) newValue);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBERS:
+			getPartNoteNumbers().clear();
+			getPartNoteNumbers().addAll(
+					(Collection<? extends PartNoteNumber>) newValue);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS:
+			getMidiControlChangeAssignments().clear();
+			getMidiControlChangeAssignments()
+					.addAll((Collection<? extends MidiControlChangeAssignment>) newValue);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__RESERVED_LONG:
+			setReservedLong((Long) newValue);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS:
+			getPatternSetParameters().clear();
+			getPatternSetParameters().addAll(
+					(Collection<? extends PatternSetParameter>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -913,54 +989,54 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED:
-				setMemoryProtectEnabled(MEMORY_PROTECT_ENABLED_EDEFAULT);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BYTE:
-				setReservedByte(RESERVED_BYTE_EDEFAULT);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__ARPEGGIATOR_CONTROL:
-				setArpeggiatorControl(ARPEGGIATOR_CONTROL_EDEFAULT);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__AUDIO_IN_MODE:
-				setAudioInMode(AUDIO_IN_MODE_EDEFAULT);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CLOCK:
-				setMidiClock(MIDI_CLOCK_EDEFAULT);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__NOTE_MESSAGE_ENABLED:
-				setNoteMessageEnabled(NOTE_MESSAGE_ENABLED_EDEFAULT);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__SYSTEM_EX_ENABLED:
-				setSystemExEnabled(SYSTEM_EX_ENABLED_EDEFAULT);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__CONTROL_CHANGE_ENABLED:
-				setControlChangeEnabled(CONTROL_CHANGE_ENABLED_EDEFAULT);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__PROGRAM_CHANGE_ENABLED:
-				setProgramChangeEnabled(PROGRAM_CHANGE_ENABLED_EDEFAULT);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED:
-				setReservedBitsAfterProgramChangeEnabled(RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED_EDEFAULT);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__PITCH_BEND_RANGE:
-				setPitchBendRange(PITCH_BEND_RANGE_EDEFAULT);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNELS:
-				getMidiChannels().clear();
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBERS:
-				getPartNoteNumbers().clear();
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS:
-				getMidiControlChangeAssignments().clear();
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__RESERVED_LONG:
-				setReservedLong(RESERVED_LONG_EDEFAULT);
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS:
-				getPatternSetParameters().clear();
-				return;
+		case EsxPackage.GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED:
+			setMemoryProtectEnabled(MEMORY_PROTECT_ENABLED_EDEFAULT);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BYTE:
+			setReservedByte(RESERVED_BYTE_EDEFAULT);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__ARPEGGIATOR_CONTROL:
+			setArpeggiatorControl(ARPEGGIATOR_CONTROL_EDEFAULT);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__AUDIO_IN_MODE:
+			setAudioInMode(AUDIO_IN_MODE_EDEFAULT);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__MIDI_CLOCK:
+			setMidiClock(MIDI_CLOCK_EDEFAULT);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__NOTE_MESSAGE_ENABLED:
+			setNoteMessageEnabled(NOTE_MESSAGE_ENABLED_EDEFAULT);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__SYSTEM_EX_ENABLED:
+			setSystemExEnabled(SYSTEM_EX_ENABLED_EDEFAULT);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__CONTROL_CHANGE_ENABLED:
+			setControlChangeEnabled(CONTROL_CHANGE_ENABLED_EDEFAULT);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__PROGRAM_CHANGE_ENABLED:
+			setProgramChangeEnabled(PROGRAM_CHANGE_ENABLED_EDEFAULT);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED:
+			setReservedBitsAfterProgramChangeEnabled(RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED_EDEFAULT);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__PITCH_BEND_RANGE:
+			setPitchBendRange(PITCH_BEND_RANGE_EDEFAULT);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNELS:
+			getMidiChannels().clear();
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBERS:
+			getPartNoteNumbers().clear();
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS:
+			getMidiControlChangeAssignments().clear();
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__RESERVED_LONG:
+			setReservedLong(RESERVED_LONG_EDEFAULT);
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS:
+			getPatternSetParameters().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -973,38 +1049,40 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED:
-				return memoryProtectEnabled != MEMORY_PROTECT_ENABLED_EDEFAULT;
-			case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BYTE:
-				return reservedByte != RESERVED_BYTE_EDEFAULT;
-			case EsxPackage.GLOBAL_PARAMETERS__ARPEGGIATOR_CONTROL:
-				return arpeggiatorControl != ARPEGGIATOR_CONTROL_EDEFAULT;
-			case EsxPackage.GLOBAL_PARAMETERS__AUDIO_IN_MODE:
-				return audioInMode != AUDIO_IN_MODE_EDEFAULT;
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CLOCK:
-				return midiClock != MIDI_CLOCK_EDEFAULT;
-			case EsxPackage.GLOBAL_PARAMETERS__NOTE_MESSAGE_ENABLED:
-				return noteMessageEnabled != NOTE_MESSAGE_ENABLED_EDEFAULT;
-			case EsxPackage.GLOBAL_PARAMETERS__SYSTEM_EX_ENABLED:
-				return systemExEnabled != SYSTEM_EX_ENABLED_EDEFAULT;
-			case EsxPackage.GLOBAL_PARAMETERS__CONTROL_CHANGE_ENABLED:
-				return controlChangeEnabled != CONTROL_CHANGE_ENABLED_EDEFAULT;
-			case EsxPackage.GLOBAL_PARAMETERS__PROGRAM_CHANGE_ENABLED:
-				return programChangeEnabled != PROGRAM_CHANGE_ENABLED_EDEFAULT;
-			case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED:
-				return reservedBitsAfterProgramChangeEnabled != RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED_EDEFAULT;
-			case EsxPackage.GLOBAL_PARAMETERS__PITCH_BEND_RANGE:
-				return pitchBendRange != PITCH_BEND_RANGE_EDEFAULT;
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNELS:
-				return midiChannels != null && !midiChannels.isEmpty();
-			case EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBERS:
-				return partNoteNumbers != null && !partNoteNumbers.isEmpty();
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS:
-				return midiControlChangeAssignments != null && !midiControlChangeAssignments.isEmpty();
-			case EsxPackage.GLOBAL_PARAMETERS__RESERVED_LONG:
-				return reservedLong != RESERVED_LONG_EDEFAULT;
-			case EsxPackage.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS:
-				return patternSetParameters != null && !patternSetParameters.isEmpty();
+		case EsxPackage.GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED:
+			return memoryProtectEnabled != MEMORY_PROTECT_ENABLED_EDEFAULT;
+		case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BYTE:
+			return reservedByte != RESERVED_BYTE_EDEFAULT;
+		case EsxPackage.GLOBAL_PARAMETERS__ARPEGGIATOR_CONTROL:
+			return arpeggiatorControl != ARPEGGIATOR_CONTROL_EDEFAULT;
+		case EsxPackage.GLOBAL_PARAMETERS__AUDIO_IN_MODE:
+			return audioInMode != AUDIO_IN_MODE_EDEFAULT;
+		case EsxPackage.GLOBAL_PARAMETERS__MIDI_CLOCK:
+			return midiClock != MIDI_CLOCK_EDEFAULT;
+		case EsxPackage.GLOBAL_PARAMETERS__NOTE_MESSAGE_ENABLED:
+			return noteMessageEnabled != NOTE_MESSAGE_ENABLED_EDEFAULT;
+		case EsxPackage.GLOBAL_PARAMETERS__SYSTEM_EX_ENABLED:
+			return systemExEnabled != SYSTEM_EX_ENABLED_EDEFAULT;
+		case EsxPackage.GLOBAL_PARAMETERS__CONTROL_CHANGE_ENABLED:
+			return controlChangeEnabled != CONTROL_CHANGE_ENABLED_EDEFAULT;
+		case EsxPackage.GLOBAL_PARAMETERS__PROGRAM_CHANGE_ENABLED:
+			return programChangeEnabled != PROGRAM_CHANGE_ENABLED_EDEFAULT;
+		case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED:
+			return reservedBitsAfterProgramChangeEnabled != RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED_EDEFAULT;
+		case EsxPackage.GLOBAL_PARAMETERS__PITCH_BEND_RANGE:
+			return pitchBendRange != PITCH_BEND_RANGE_EDEFAULT;
+		case EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNELS:
+			return midiChannels != null && !midiChannels.isEmpty();
+		case EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBERS:
+			return partNoteNumbers != null && !partNoteNumbers.isEmpty();
+		case EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS:
+			return midiControlChangeAssignments != null
+					&& !midiControlChangeAssignments.isEmpty();
+		case EsxPackage.GLOBAL_PARAMETERS__RESERVED_LONG:
+			return reservedLong != RESERVED_LONG_EDEFAULT;
+		case EsxPackage.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS:
+			return patternSetParameters != null
+					&& !patternSetParameters.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1016,7 +1094,8 @@ public class GlobalParametersImpl extends EObjectImpl implements GlobalParameter
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (memoryProtectEnabled: ");

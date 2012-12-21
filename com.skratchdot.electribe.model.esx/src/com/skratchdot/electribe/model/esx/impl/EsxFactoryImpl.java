@@ -111,12 +111,12 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public static EsxFactory init() {
 		try {
-			EsxFactory theEsxFactory = (EsxFactory)EPackage.Registry.INSTANCE.getEFactory("http:///com/skratchdot/electribe/model/esx.ecore"); 
+			EsxFactory theEsxFactory = (EsxFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http:///com/skratchdot/electribe/model/esx.ecore");
 			if (theEsxFactory != null) {
 				return theEsxFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new EsxFactoryImpl();
@@ -140,37 +140,67 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case EsxPackage.ESX_FILE: return createEsxFile();
-			case EsxPackage.GLOBAL_PARAMETERS: return createGlobalParameters();
-			case EsxPackage.MIDI_CHANNEL_TYPE: return createMidiChannelType();
-			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT: return createMidiControlChangeAssignment();
-			case EsxPackage.OPERATION: return createOperation();
-			case EsxPackage.PARAMETERS_FX: return createParametersFx();
-			case EsxPackage.PARAMETERS_MOTION: return createParametersMotion();
-			case EsxPackage.PART_ACCENT: return createPartAccent();
-			case EsxPackage.PART_AUDIO_IN: return createPartAudioIn();
-			case EsxPackage.PART_DRUM: return createPartDrum();
-			case EsxPackage.PART_KEYBOARD: return createPartKeyboard();
-			case EsxPackage.PART_NOTE_NUMBER: return createPartNoteNumber();
-			case EsxPackage.PART_STRETCH_SLICE: return createPartStretchSlice();
-			case EsxPackage.PATTERN: return createPattern();
-			case EsxPackage.SAMPLE_IN_PATTERN_INFO: return createSampleInPatternInfo();
-			case EsxPackage.PATTERN_SET_PARAMETER: return createPatternSetParameter();
-			case EsxPackage.SAMPLE: return createSample();
-			case EsxPackage.SAMPLE_TUNE: return createSampleTune();
-			case EsxPackage.SEQUENCE_DATA: return createSequenceData();
-			case EsxPackage.SEQUENCE_DATA_GATE: return createSequenceDataGate();
-			case EsxPackage.SEQUENCE_DATA_NOTE: return createSequenceDataNote();
-			case EsxPackage.SONG: return createSong();
-			case EsxPackage.SONG_EVENT_CONTROL: return createSongEventControl();
-			case EsxPackage.SONG_EVENT_DRUM_NOTE: return createSongEventDrumNote();
-			case EsxPackage.SONG_EVENT_KEYBOARD_NOTE: return createSongEventKeyboardNote();
-			case EsxPackage.SONG_EVENT_MUTE_STATUS: return createSongEventMuteStatus();
-			case EsxPackage.SONG_EVENT_TEMPO: return createSongEventTempo();
-			case EsxPackage.SONG_PATTERN: return createSongPattern();
-			case EsxPackage.TEMPO: return createTempo();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case EsxPackage.ESX_FILE:
+			return createEsxFile();
+		case EsxPackage.GLOBAL_PARAMETERS:
+			return createGlobalParameters();
+		case EsxPackage.MIDI_CHANNEL_TYPE:
+			return createMidiChannelType();
+		case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT:
+			return createMidiControlChangeAssignment();
+		case EsxPackage.OPERATION:
+			return createOperation();
+		case EsxPackage.PARAMETERS_FX:
+			return createParametersFx();
+		case EsxPackage.PARAMETERS_MOTION:
+			return createParametersMotion();
+		case EsxPackage.PART_ACCENT:
+			return createPartAccent();
+		case EsxPackage.PART_AUDIO_IN:
+			return createPartAudioIn();
+		case EsxPackage.PART_DRUM:
+			return createPartDrum();
+		case EsxPackage.PART_KEYBOARD:
+			return createPartKeyboard();
+		case EsxPackage.PART_NOTE_NUMBER:
+			return createPartNoteNumber();
+		case EsxPackage.PART_STRETCH_SLICE:
+			return createPartStretchSlice();
+		case EsxPackage.PATTERN:
+			return createPattern();
+		case EsxPackage.SAMPLE_IN_PATTERN_INFO:
+			return createSampleInPatternInfo();
+		case EsxPackage.PATTERN_SET_PARAMETER:
+			return createPatternSetParameter();
+		case EsxPackage.SAMPLE:
+			return createSample();
+		case EsxPackage.SAMPLE_TUNE:
+			return createSampleTune();
+		case EsxPackage.SEQUENCE_DATA:
+			return createSequenceData();
+		case EsxPackage.SEQUENCE_DATA_GATE:
+			return createSequenceDataGate();
+		case EsxPackage.SEQUENCE_DATA_NOTE:
+			return createSequenceDataNote();
+		case EsxPackage.SONG:
+			return createSong();
+		case EsxPackage.SONG_EVENT_CONTROL:
+			return createSongEventControl();
+		case EsxPackage.SONG_EVENT_DRUM_NOTE:
+			return createSongEventDrumNote();
+		case EsxPackage.SONG_EVENT_KEYBOARD_NOTE:
+			return createSongEventKeyboardNote();
+		case EsxPackage.SONG_EVENT_MUTE_STATUS:
+			return createSongEventMuteStatus();
+		case EsxPackage.SONG_EVENT_TEMPO:
+			return createSongEventTempo();
+		case EsxPackage.SONG_PATTERN:
+			return createSongPattern();
+		case EsxPackage.TEMPO:
+			return createTempo();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
@@ -182,104 +212,107 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case EsxPackage.AMP_EG:
-				return createAmpEgFromString(eDataType, initialValue);
-			case EsxPackage.ARPEGGIATOR_CONTROL:
-				return createArpeggiatorControlFromString(eDataType, initialValue);
-			case EsxPackage.ARPEGGIATOR_SCALE:
-				return createArpeggiatorScaleFromString(eDataType, initialValue);
-			case EsxPackage.AUDIO_CHANNEL_TYPE:
-				return createAudioChannelTypeFromString(eDataType, initialValue);
-			case EsxPackage.AUDIO_IN_MODE:
-				return createAudioInModeFromString(eDataType, initialValue);
-			case EsxPackage.BEAT:
-				return createBeatFromString(eDataType, initialValue);
-			case EsxPackage.BPM_SYNC:
-				return createBpmSyncFromString(eDataType, initialValue);
-			case EsxPackage.ENABLED_FLAG:
-				return createEnabledFlagFromString(eDataType, initialValue);
-			case EsxPackage.FILTER_TYPE:
-				return createFilterTypeFromString(eDataType, initialValue);
-			case EsxPackage.FX_CHAIN:
-				return createFxChainFromString(eDataType, initialValue);
-			case EsxPackage.FX_SELECT:
-				return createFxSelectFromString(eDataType, initialValue);
-			case EsxPackage.FX_SEND:
-				return createFxSendFromString(eDataType, initialValue);
-			case EsxPackage.FX_TYPE:
-				return createFxTypeFromString(eDataType, initialValue);
-			case EsxPackage.LAST_STEP:
-				return createLastStepFromString(eDataType, initialValue);
-			case EsxPackage.MIDI_CHANNEL:
-				return createMidiChannelFromString(eDataType, initialValue);
-			case EsxPackage.MIDI_CHANNEL_TYPE_NAME:
-				return createMidiChannelTypeNameFromString(eDataType, initialValue);
-			case EsxPackage.MIDI_CLOCK:
-				return createMidiClockFromString(eDataType, initialValue);
-			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT_NAME:
-				return createMidiControlChangeAssignmentNameFromString(eDataType, initialValue);
-			case EsxPackage.MOD_DEST:
-				return createModDestFromString(eDataType, initialValue);
-			case EsxPackage.MOD_TYPE:
-				return createModTypeFromString(eDataType, initialValue);
-			case EsxPackage.MOTION_SEQUENCE_STATUS:
-				return createMotionSequenceStatusFromString(eDataType, initialValue);
-			case EsxPackage.MUTE_HOLD:
-				return createMuteHoldFromString(eDataType, initialValue);
-			case EsxPackage.NEXT_SONG_NUMBER:
-				return createNextSongNumberFromString(eDataType, initialValue);
-			case EsxPackage.NOTE_NUMBER:
-				return createNoteNumberFromString(eDataType, initialValue);
-			case EsxPackage.OPERATION_TYPE:
-				return createOperationTypeFromString(eDataType, initialValue);
-			case EsxPackage.PART_NOTE_NUMBER_NAME:
-				return createPartNoteNumberNameFromString(eDataType, initialValue);
-			case EsxPackage.PATTERN_LENGTH:
-				return createPatternLengthFromString(eDataType, initialValue);
-			case EsxPackage.PATTERN_NUMBER:
-				return createPatternNumberFromString(eDataType, initialValue);
-			case EsxPackage.PITCH_BEND_RANGE:
-				return createPitchBendRangeFromString(eDataType, initialValue);
-			case EsxPackage.PLAY_LEVEL:
-				return createPlayLevelFromString(eDataType, initialValue);
-			case EsxPackage.REVERSE:
-				return createReverseFromString(eDataType, initialValue);
-			case EsxPackage.ROLL:
-				return createRollFromString(eDataType, initialValue);
-			case EsxPackage.ROLL_TYPE:
-				return createRollTypeFromString(eDataType, initialValue);
-			case EsxPackage.SAMPLE_NUMBER:
-				return createSampleNumberFromString(eDataType, initialValue);
-			case EsxPackage.SONG_EVENT_PART:
-				return createSongEventPartFromString(eDataType, initialValue);
-			case EsxPackage.SONG_LENGTH:
-				return createSongLengthFromString(eDataType, initialValue);
-			case EsxPackage.SONG_NUMBER:
-				return createSongNumberFromString(eDataType, initialValue);
-			case EsxPackage.STRETCH_STEP:
-				return createStretchStepFromString(eDataType, initialValue);
-			case EsxPackage.SWING:
-				return createSwingFromString(eDataType, initialValue);
-			case EsxPackage.TEMPO_LOCK:
-				return createTempoLockFromString(eDataType, initialValue);
-			case EsxPackage.ARRAY_LIST:
-				return createArrayListFromString(eDataType, initialValue);
-			case EsxPackage.FILE:
-				return createFileFromString(eDataType, initialValue);
-			case EsxPackage.INPUT_STREAM:
-				return createInputStreamFromString(eDataType, initialValue);
-			case EsxPackage.INDEX_OUT_OF_BOUNDS_EXCEPTION:
-				return createIndexOutOfBoundsExceptionFromString(eDataType, initialValue);
-			case EsxPackage.IO_EXCEPTION:
-				return createIOExceptionFromString(eDataType, initialValue);
-			case EsxPackage.IPROGRESS_MONITOR:
-				return createIProgressMonitorFromString(eDataType, initialValue);
-			case EsxPackage.OBJECT:
-				return createObjectFromString(eDataType, initialValue);
-			case EsxPackage.RIFF_WAVE:
-				return createRIFFWaveFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case EsxPackage.AMP_EG:
+			return createAmpEgFromString(eDataType, initialValue);
+		case EsxPackage.ARPEGGIATOR_CONTROL:
+			return createArpeggiatorControlFromString(eDataType, initialValue);
+		case EsxPackage.ARPEGGIATOR_SCALE:
+			return createArpeggiatorScaleFromString(eDataType, initialValue);
+		case EsxPackage.AUDIO_CHANNEL_TYPE:
+			return createAudioChannelTypeFromString(eDataType, initialValue);
+		case EsxPackage.AUDIO_IN_MODE:
+			return createAudioInModeFromString(eDataType, initialValue);
+		case EsxPackage.BEAT:
+			return createBeatFromString(eDataType, initialValue);
+		case EsxPackage.BPM_SYNC:
+			return createBpmSyncFromString(eDataType, initialValue);
+		case EsxPackage.ENABLED_FLAG:
+			return createEnabledFlagFromString(eDataType, initialValue);
+		case EsxPackage.FILTER_TYPE:
+			return createFilterTypeFromString(eDataType, initialValue);
+		case EsxPackage.FX_CHAIN:
+			return createFxChainFromString(eDataType, initialValue);
+		case EsxPackage.FX_SELECT:
+			return createFxSelectFromString(eDataType, initialValue);
+		case EsxPackage.FX_SEND:
+			return createFxSendFromString(eDataType, initialValue);
+		case EsxPackage.FX_TYPE:
+			return createFxTypeFromString(eDataType, initialValue);
+		case EsxPackage.LAST_STEP:
+			return createLastStepFromString(eDataType, initialValue);
+		case EsxPackage.MIDI_CHANNEL:
+			return createMidiChannelFromString(eDataType, initialValue);
+		case EsxPackage.MIDI_CHANNEL_TYPE_NAME:
+			return createMidiChannelTypeNameFromString(eDataType, initialValue);
+		case EsxPackage.MIDI_CLOCK:
+			return createMidiClockFromString(eDataType, initialValue);
+		case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT_NAME:
+			return createMidiControlChangeAssignmentNameFromString(eDataType,
+					initialValue);
+		case EsxPackage.MOD_DEST:
+			return createModDestFromString(eDataType, initialValue);
+		case EsxPackage.MOD_TYPE:
+			return createModTypeFromString(eDataType, initialValue);
+		case EsxPackage.MOTION_SEQUENCE_STATUS:
+			return createMotionSequenceStatusFromString(eDataType, initialValue);
+		case EsxPackage.MUTE_HOLD:
+			return createMuteHoldFromString(eDataType, initialValue);
+		case EsxPackage.NEXT_SONG_NUMBER:
+			return createNextSongNumberFromString(eDataType, initialValue);
+		case EsxPackage.NOTE_NUMBER:
+			return createNoteNumberFromString(eDataType, initialValue);
+		case EsxPackage.OPERATION_TYPE:
+			return createOperationTypeFromString(eDataType, initialValue);
+		case EsxPackage.PART_NOTE_NUMBER_NAME:
+			return createPartNoteNumberNameFromString(eDataType, initialValue);
+		case EsxPackage.PATTERN_LENGTH:
+			return createPatternLengthFromString(eDataType, initialValue);
+		case EsxPackage.PATTERN_NUMBER:
+			return createPatternNumberFromString(eDataType, initialValue);
+		case EsxPackage.PITCH_BEND_RANGE:
+			return createPitchBendRangeFromString(eDataType, initialValue);
+		case EsxPackage.PLAY_LEVEL:
+			return createPlayLevelFromString(eDataType, initialValue);
+		case EsxPackage.REVERSE:
+			return createReverseFromString(eDataType, initialValue);
+		case EsxPackage.ROLL:
+			return createRollFromString(eDataType, initialValue);
+		case EsxPackage.ROLL_TYPE:
+			return createRollTypeFromString(eDataType, initialValue);
+		case EsxPackage.SAMPLE_NUMBER:
+			return createSampleNumberFromString(eDataType, initialValue);
+		case EsxPackage.SONG_EVENT_PART:
+			return createSongEventPartFromString(eDataType, initialValue);
+		case EsxPackage.SONG_LENGTH:
+			return createSongLengthFromString(eDataType, initialValue);
+		case EsxPackage.SONG_NUMBER:
+			return createSongNumberFromString(eDataType, initialValue);
+		case EsxPackage.STRETCH_STEP:
+			return createStretchStepFromString(eDataType, initialValue);
+		case EsxPackage.SWING:
+			return createSwingFromString(eDataType, initialValue);
+		case EsxPackage.TEMPO_LOCK:
+			return createTempoLockFromString(eDataType, initialValue);
+		case EsxPackage.ARRAY_LIST:
+			return createArrayListFromString(eDataType, initialValue);
+		case EsxPackage.FILE:
+			return createFileFromString(eDataType, initialValue);
+		case EsxPackage.INPUT_STREAM:
+			return createInputStreamFromString(eDataType, initialValue);
+		case EsxPackage.INDEX_OUT_OF_BOUNDS_EXCEPTION:
+			return createIndexOutOfBoundsExceptionFromString(eDataType,
+					initialValue);
+		case EsxPackage.IO_EXCEPTION:
+			return createIOExceptionFromString(eDataType, initialValue);
+		case EsxPackage.IPROGRESS_MONITOR:
+			return createIProgressMonitorFromString(eDataType, initialValue);
+		case EsxPackage.OBJECT:
+			return createObjectFromString(eDataType, initialValue);
+		case EsxPackage.RIFF_WAVE:
+			return createRIFFWaveFromString(eDataType, initialValue);
+		default:
+			throw new IllegalArgumentException("The datatype '"
+					+ eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -291,104 +324,107 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case EsxPackage.AMP_EG:
-				return convertAmpEgToString(eDataType, instanceValue);
-			case EsxPackage.ARPEGGIATOR_CONTROL:
-				return convertArpeggiatorControlToString(eDataType, instanceValue);
-			case EsxPackage.ARPEGGIATOR_SCALE:
-				return convertArpeggiatorScaleToString(eDataType, instanceValue);
-			case EsxPackage.AUDIO_CHANNEL_TYPE:
-				return convertAudioChannelTypeToString(eDataType, instanceValue);
-			case EsxPackage.AUDIO_IN_MODE:
-				return convertAudioInModeToString(eDataType, instanceValue);
-			case EsxPackage.BEAT:
-				return convertBeatToString(eDataType, instanceValue);
-			case EsxPackage.BPM_SYNC:
-				return convertBpmSyncToString(eDataType, instanceValue);
-			case EsxPackage.ENABLED_FLAG:
-				return convertEnabledFlagToString(eDataType, instanceValue);
-			case EsxPackage.FILTER_TYPE:
-				return convertFilterTypeToString(eDataType, instanceValue);
-			case EsxPackage.FX_CHAIN:
-				return convertFxChainToString(eDataType, instanceValue);
-			case EsxPackage.FX_SELECT:
-				return convertFxSelectToString(eDataType, instanceValue);
-			case EsxPackage.FX_SEND:
-				return convertFxSendToString(eDataType, instanceValue);
-			case EsxPackage.FX_TYPE:
-				return convertFxTypeToString(eDataType, instanceValue);
-			case EsxPackage.LAST_STEP:
-				return convertLastStepToString(eDataType, instanceValue);
-			case EsxPackage.MIDI_CHANNEL:
-				return convertMidiChannelToString(eDataType, instanceValue);
-			case EsxPackage.MIDI_CHANNEL_TYPE_NAME:
-				return convertMidiChannelTypeNameToString(eDataType, instanceValue);
-			case EsxPackage.MIDI_CLOCK:
-				return convertMidiClockToString(eDataType, instanceValue);
-			case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT_NAME:
-				return convertMidiControlChangeAssignmentNameToString(eDataType, instanceValue);
-			case EsxPackage.MOD_DEST:
-				return convertModDestToString(eDataType, instanceValue);
-			case EsxPackage.MOD_TYPE:
-				return convertModTypeToString(eDataType, instanceValue);
-			case EsxPackage.MOTION_SEQUENCE_STATUS:
-				return convertMotionSequenceStatusToString(eDataType, instanceValue);
-			case EsxPackage.MUTE_HOLD:
-				return convertMuteHoldToString(eDataType, instanceValue);
-			case EsxPackage.NEXT_SONG_NUMBER:
-				return convertNextSongNumberToString(eDataType, instanceValue);
-			case EsxPackage.NOTE_NUMBER:
-				return convertNoteNumberToString(eDataType, instanceValue);
-			case EsxPackage.OPERATION_TYPE:
-				return convertOperationTypeToString(eDataType, instanceValue);
-			case EsxPackage.PART_NOTE_NUMBER_NAME:
-				return convertPartNoteNumberNameToString(eDataType, instanceValue);
-			case EsxPackage.PATTERN_LENGTH:
-				return convertPatternLengthToString(eDataType, instanceValue);
-			case EsxPackage.PATTERN_NUMBER:
-				return convertPatternNumberToString(eDataType, instanceValue);
-			case EsxPackage.PITCH_BEND_RANGE:
-				return convertPitchBendRangeToString(eDataType, instanceValue);
-			case EsxPackage.PLAY_LEVEL:
-				return convertPlayLevelToString(eDataType, instanceValue);
-			case EsxPackage.REVERSE:
-				return convertReverseToString(eDataType, instanceValue);
-			case EsxPackage.ROLL:
-				return convertRollToString(eDataType, instanceValue);
-			case EsxPackage.ROLL_TYPE:
-				return convertRollTypeToString(eDataType, instanceValue);
-			case EsxPackage.SAMPLE_NUMBER:
-				return convertSampleNumberToString(eDataType, instanceValue);
-			case EsxPackage.SONG_EVENT_PART:
-				return convertSongEventPartToString(eDataType, instanceValue);
-			case EsxPackage.SONG_LENGTH:
-				return convertSongLengthToString(eDataType, instanceValue);
-			case EsxPackage.SONG_NUMBER:
-				return convertSongNumberToString(eDataType, instanceValue);
-			case EsxPackage.STRETCH_STEP:
-				return convertStretchStepToString(eDataType, instanceValue);
-			case EsxPackage.SWING:
-				return convertSwingToString(eDataType, instanceValue);
-			case EsxPackage.TEMPO_LOCK:
-				return convertTempoLockToString(eDataType, instanceValue);
-			case EsxPackage.ARRAY_LIST:
-				return convertArrayListToString(eDataType, instanceValue);
-			case EsxPackage.FILE:
-				return convertFileToString(eDataType, instanceValue);
-			case EsxPackage.INPUT_STREAM:
-				return convertInputStreamToString(eDataType, instanceValue);
-			case EsxPackage.INDEX_OUT_OF_BOUNDS_EXCEPTION:
-				return convertIndexOutOfBoundsExceptionToString(eDataType, instanceValue);
-			case EsxPackage.IO_EXCEPTION:
-				return convertIOExceptionToString(eDataType, instanceValue);
-			case EsxPackage.IPROGRESS_MONITOR:
-				return convertIProgressMonitorToString(eDataType, instanceValue);
-			case EsxPackage.OBJECT:
-				return convertObjectToString(eDataType, instanceValue);
-			case EsxPackage.RIFF_WAVE:
-				return convertRIFFWaveToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case EsxPackage.AMP_EG:
+			return convertAmpEgToString(eDataType, instanceValue);
+		case EsxPackage.ARPEGGIATOR_CONTROL:
+			return convertArpeggiatorControlToString(eDataType, instanceValue);
+		case EsxPackage.ARPEGGIATOR_SCALE:
+			return convertArpeggiatorScaleToString(eDataType, instanceValue);
+		case EsxPackage.AUDIO_CHANNEL_TYPE:
+			return convertAudioChannelTypeToString(eDataType, instanceValue);
+		case EsxPackage.AUDIO_IN_MODE:
+			return convertAudioInModeToString(eDataType, instanceValue);
+		case EsxPackage.BEAT:
+			return convertBeatToString(eDataType, instanceValue);
+		case EsxPackage.BPM_SYNC:
+			return convertBpmSyncToString(eDataType, instanceValue);
+		case EsxPackage.ENABLED_FLAG:
+			return convertEnabledFlagToString(eDataType, instanceValue);
+		case EsxPackage.FILTER_TYPE:
+			return convertFilterTypeToString(eDataType, instanceValue);
+		case EsxPackage.FX_CHAIN:
+			return convertFxChainToString(eDataType, instanceValue);
+		case EsxPackage.FX_SELECT:
+			return convertFxSelectToString(eDataType, instanceValue);
+		case EsxPackage.FX_SEND:
+			return convertFxSendToString(eDataType, instanceValue);
+		case EsxPackage.FX_TYPE:
+			return convertFxTypeToString(eDataType, instanceValue);
+		case EsxPackage.LAST_STEP:
+			return convertLastStepToString(eDataType, instanceValue);
+		case EsxPackage.MIDI_CHANNEL:
+			return convertMidiChannelToString(eDataType, instanceValue);
+		case EsxPackage.MIDI_CHANNEL_TYPE_NAME:
+			return convertMidiChannelTypeNameToString(eDataType, instanceValue);
+		case EsxPackage.MIDI_CLOCK:
+			return convertMidiClockToString(eDataType, instanceValue);
+		case EsxPackage.MIDI_CONTROL_CHANGE_ASSIGNMENT_NAME:
+			return convertMidiControlChangeAssignmentNameToString(eDataType,
+					instanceValue);
+		case EsxPackage.MOD_DEST:
+			return convertModDestToString(eDataType, instanceValue);
+		case EsxPackage.MOD_TYPE:
+			return convertModTypeToString(eDataType, instanceValue);
+		case EsxPackage.MOTION_SEQUENCE_STATUS:
+			return convertMotionSequenceStatusToString(eDataType, instanceValue);
+		case EsxPackage.MUTE_HOLD:
+			return convertMuteHoldToString(eDataType, instanceValue);
+		case EsxPackage.NEXT_SONG_NUMBER:
+			return convertNextSongNumberToString(eDataType, instanceValue);
+		case EsxPackage.NOTE_NUMBER:
+			return convertNoteNumberToString(eDataType, instanceValue);
+		case EsxPackage.OPERATION_TYPE:
+			return convertOperationTypeToString(eDataType, instanceValue);
+		case EsxPackage.PART_NOTE_NUMBER_NAME:
+			return convertPartNoteNumberNameToString(eDataType, instanceValue);
+		case EsxPackage.PATTERN_LENGTH:
+			return convertPatternLengthToString(eDataType, instanceValue);
+		case EsxPackage.PATTERN_NUMBER:
+			return convertPatternNumberToString(eDataType, instanceValue);
+		case EsxPackage.PITCH_BEND_RANGE:
+			return convertPitchBendRangeToString(eDataType, instanceValue);
+		case EsxPackage.PLAY_LEVEL:
+			return convertPlayLevelToString(eDataType, instanceValue);
+		case EsxPackage.REVERSE:
+			return convertReverseToString(eDataType, instanceValue);
+		case EsxPackage.ROLL:
+			return convertRollToString(eDataType, instanceValue);
+		case EsxPackage.ROLL_TYPE:
+			return convertRollTypeToString(eDataType, instanceValue);
+		case EsxPackage.SAMPLE_NUMBER:
+			return convertSampleNumberToString(eDataType, instanceValue);
+		case EsxPackage.SONG_EVENT_PART:
+			return convertSongEventPartToString(eDataType, instanceValue);
+		case EsxPackage.SONG_LENGTH:
+			return convertSongLengthToString(eDataType, instanceValue);
+		case EsxPackage.SONG_NUMBER:
+			return convertSongNumberToString(eDataType, instanceValue);
+		case EsxPackage.STRETCH_STEP:
+			return convertStretchStepToString(eDataType, instanceValue);
+		case EsxPackage.SWING:
+			return convertSwingToString(eDataType, instanceValue);
+		case EsxPackage.TEMPO_LOCK:
+			return convertTempoLockToString(eDataType, instanceValue);
+		case EsxPackage.ARRAY_LIST:
+			return convertArrayListToString(eDataType, instanceValue);
+		case EsxPackage.FILE:
+			return convertFileToString(eDataType, instanceValue);
+		case EsxPackage.INPUT_STREAM:
+			return convertInputStreamToString(eDataType, instanceValue);
+		case EsxPackage.INDEX_OUT_OF_BOUNDS_EXCEPTION:
+			return convertIndexOutOfBoundsExceptionToString(eDataType,
+					instanceValue);
+		case EsxPackage.IO_EXCEPTION:
+			return convertIOExceptionToString(eDataType, instanceValue);
+		case EsxPackage.IPROGRESS_MONITOR:
+			return convertIProgressMonitorToString(eDataType, instanceValue);
+		case EsxPackage.OBJECT:
+			return convertObjectToString(eDataType, instanceValue);
+		case EsxPackage.RIFF_WAVE:
+			return convertRIFFWaveToString(eDataType, instanceValue);
+		default:
+			throw new IllegalArgumentException("The datatype '"
+					+ eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -652,31 +688,33 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 		// bytes 2~3
 		short operationNumber = in.getShort();
 
-		switch(operationNumber) {
-			case 503:
-				SongEventMuteStatus songEventMuteStatus = this.createSongEventMuteStatus();
-				songEventMuteStatus.init(b);
-				return songEventMuteStatus;
-			case 515:
-				SongEventTempo songEventTempo = this.createSongEventTempo();
-				songEventTempo.init(b);
-				return songEventTempo;
-			case 0x4000:
-				int partNumber = in.getByte();
-				if(partNumber==10 || partNumber==11) {
-					SongEventKeyboardNote songEventKeyboardNote = this.createSongEventKeyboardNote();
-					songEventKeyboardNote.init(b);
-					return songEventKeyboardNote;
-				}
-				else {
-					SongEventDrumNote songEventDrumNote = this.createSongEventDrumNote();
-					songEventDrumNote.init(b);
-					return songEventDrumNote;	
-				}			
-			default:
-				SongEventControl songEventControl = this.createSongEventControl();
-				songEventControl.init(b);
-				return songEventControl;
+		switch (operationNumber) {
+		case 503:
+			SongEventMuteStatus songEventMuteStatus = this
+					.createSongEventMuteStatus();
+			songEventMuteStatus.init(b);
+			return songEventMuteStatus;
+		case 515:
+			SongEventTempo songEventTempo = this.createSongEventTempo();
+			songEventTempo.init(b);
+			return songEventTempo;
+		case 0x4000:
+			int partNumber = in.getByte();
+			if (partNumber == 10 || partNumber == 11) {
+				SongEventKeyboardNote songEventKeyboardNote = this
+						.createSongEventKeyboardNote();
+				songEventKeyboardNote.init(b);
+				return songEventKeyboardNote;
+			} else {
+				SongEventDrumNote songEventDrumNote = this
+						.createSongEventDrumNote();
+				songEventDrumNote.init(b);
+				return songEventDrumNote;
+			}
+		default:
+			SongEventControl songEventControl = this.createSongEventControl();
+			songEventControl.init(b);
+			return songEventControl;
 		}
 	}
 
@@ -737,7 +775,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public ArpeggiatorControl createArpeggiatorControl(String literal) {
 		ArpeggiatorControl result = ArpeggiatorControl.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.ARPEGGIATOR_CONTROL.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.ARPEGGIATOR_CONTROL.getName() + "'");
 		return result;
 	}
 
@@ -746,7 +787,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ArpeggiatorControl createArpeggiatorControlFromString(EDataType eDataType, String initialValue) {
+	public ArpeggiatorControl createArpeggiatorControlFromString(
+			EDataType eDataType, String initialValue) {
 		return createArpeggiatorControl(initialValue);
 	}
 
@@ -764,7 +806,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertArpeggiatorControlToString(EDataType eDataType, Object instanceValue) {
+	public String convertArpeggiatorControlToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -775,7 +818,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public AudioInMode createAudioInMode(String literal) {
 		AudioInMode result = AudioInMode.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.AUDIO_IN_MODE.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.AUDIO_IN_MODE.getName() + "'");
 		return result;
 	}
 
@@ -784,7 +830,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AudioInMode createAudioInModeFromString(EDataType eDataType, String initialValue) {
+	public AudioInMode createAudioInModeFromString(EDataType eDataType,
+			String initialValue) {
 		return createAudioInMode(initialValue);
 	}
 
@@ -802,7 +849,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertAudioInModeToString(EDataType eDataType, Object instanceValue) {
+	public String convertAudioInModeToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -813,7 +861,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public MidiClock createMidiClock(String literal) {
 		MidiClock result = MidiClock.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.MIDI_CLOCK.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.MIDI_CLOCK.getName() + "'");
 		return result;
 	}
 
@@ -822,7 +873,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MidiClock createMidiClockFromString(EDataType eDataType, String initialValue) {
+	public MidiClock createMidiClockFromString(EDataType eDataType,
+			String initialValue) {
 		return createMidiClock(initialValue);
 	}
 
@@ -840,7 +892,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertMidiClockToString(EDataType eDataType, Object instanceValue) {
+	public String convertMidiClockToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -849,9 +902,17 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MidiControlChangeAssignmentName createMidiControlChangeAssignmentName(String literal) {
-		MidiControlChangeAssignmentName result = MidiControlChangeAssignmentName.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT_NAME.getName() + "'");
+	public MidiControlChangeAssignmentName createMidiControlChangeAssignmentName(
+			String literal) {
+		MidiControlChangeAssignmentName result = MidiControlChangeAssignmentName
+				.get(literal);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '"
+							+ literal
+							+ "' is not a valid enumerator of '"
+							+ EsxPackage.Literals.MIDI_CONTROL_CHANGE_ASSIGNMENT_NAME
+									.getName() + "'");
 		return result;
 	}
 
@@ -860,7 +921,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MidiControlChangeAssignmentName createMidiControlChangeAssignmentNameFromString(EDataType eDataType, String initialValue) {
+	public MidiControlChangeAssignmentName createMidiControlChangeAssignmentNameFromString(
+			EDataType eDataType, String initialValue) {
 		return createMidiControlChangeAssignmentName(initialValue);
 	}
 
@@ -869,7 +931,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertMidiControlChangeAssignmentName(MidiControlChangeAssignmentName instanceValue) {
+	public String convertMidiControlChangeAssignmentName(
+			MidiControlChangeAssignmentName instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -878,7 +941,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertMidiControlChangeAssignmentNameToString(EDataType eDataType, Object instanceValue) {
+	public String convertMidiControlChangeAssignmentNameToString(
+			EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -889,7 +953,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public EnabledFlag createEnabledFlag(String literal) {
 		EnabledFlag result = EnabledFlag.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.ENABLED_FLAG.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.ENABLED_FLAG.getName() + "'");
 		return result;
 	}
 
@@ -898,7 +965,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EnabledFlag createEnabledFlagFromString(EDataType eDataType, String initialValue) {
+	public EnabledFlag createEnabledFlagFromString(EDataType eDataType,
+			String initialValue) {
 		return createEnabledFlag(initialValue);
 	}
 
@@ -916,7 +984,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertEnabledFlagToString(EDataType eDataType, Object instanceValue) {
+	public String convertEnabledFlagToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -927,7 +996,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public PitchBendRange createPitchBendRange(String literal) {
 		PitchBendRange result = PitchBendRange.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.PITCH_BEND_RANGE.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.PITCH_BEND_RANGE.getName() + "'");
 		return result;
 	}
 
@@ -936,7 +1008,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PitchBendRange createPitchBendRangeFromString(EDataType eDataType, String initialValue) {
+	public PitchBendRange createPitchBendRangeFromString(EDataType eDataType,
+			String initialValue) {
 		return createPitchBendRange(initialValue);
 	}
 
@@ -954,7 +1027,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertPitchBendRangeToString(EDataType eDataType, Object instanceValue) {
+	public String convertPitchBendRangeToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -965,7 +1039,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public MidiChannel createMidiChannel(String literal) {
 		MidiChannel result = MidiChannel.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.MIDI_CHANNEL.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.MIDI_CHANNEL.getName() + "'");
 		return result;
 	}
 
@@ -974,7 +1051,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MidiChannel createMidiChannelFromString(EDataType eDataType, String initialValue) {
+	public MidiChannel createMidiChannelFromString(EDataType eDataType,
+			String initialValue) {
 		return createMidiChannel(initialValue);
 	}
 
@@ -992,7 +1070,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertMidiChannelToString(EDataType eDataType, Object instanceValue) {
+	public String convertMidiChannelToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1003,7 +1082,11 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public MidiChannelTypeName createMidiChannelTypeName(String literal) {
 		MidiChannelTypeName result = MidiChannelTypeName.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.MIDI_CHANNEL_TYPE_NAME.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.MIDI_CHANNEL_TYPE_NAME.getName()
+					+ "'");
 		return result;
 	}
 
@@ -1012,7 +1095,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MidiChannelTypeName createMidiChannelTypeNameFromString(EDataType eDataType, String initialValue) {
+	public MidiChannelTypeName createMidiChannelTypeNameFromString(
+			EDataType eDataType, String initialValue) {
 		return createMidiChannelTypeName(initialValue);
 	}
 
@@ -1030,7 +1114,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertMidiChannelTypeNameToString(EDataType eDataType, Object instanceValue) {
+	public String convertMidiChannelTypeNameToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1041,7 +1126,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public PlayLevel createPlayLevel(String literal) {
 		PlayLevel result = PlayLevel.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.PLAY_LEVEL.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.PLAY_LEVEL.getName() + "'");
 		return result;
 	}
 
@@ -1050,7 +1138,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PlayLevel createPlayLevelFromString(EDataType eDataType, String initialValue) {
+	public PlayLevel createPlayLevelFromString(EDataType eDataType,
+			String initialValue) {
 		return createPlayLevel(initialValue);
 	}
 
@@ -1068,7 +1157,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertPlayLevelToString(EDataType eDataType, Object instanceValue) {
+	public String convertPlayLevelToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1079,7 +1169,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public PatternNumber createPatternNumber(String literal) {
 		PatternNumber result = PatternNumber.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.PATTERN_NUMBER.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.PATTERN_NUMBER.getName() + "'");
 		return result;
 	}
 
@@ -1088,7 +1181,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PatternNumber createPatternNumberFromString(EDataType eDataType, String initialValue) {
+	public PatternNumber createPatternNumberFromString(EDataType eDataType,
+			String initialValue) {
 		return createPatternNumber(initialValue);
 	}
 
@@ -1106,7 +1200,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertPatternNumberToString(EDataType eDataType, Object instanceValue) {
+	public String convertPatternNumberToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1117,7 +1212,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public SampleNumber createSampleNumber(String literal) {
 		SampleNumber result = SampleNumber.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.SAMPLE_NUMBER.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.SAMPLE_NUMBER.getName() + "'");
 		return result;
 	}
 
@@ -1126,7 +1224,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SampleNumber createSampleNumberFromString(EDataType eDataType, String initialValue) {
+	public SampleNumber createSampleNumberFromString(EDataType eDataType,
+			String initialValue) {
 		return createSampleNumber(initialValue);
 	}
 
@@ -1144,7 +1243,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertSampleNumberToString(EDataType eDataType, Object instanceValue) {
+	public String convertSampleNumberToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1155,7 +1255,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public SongEventPart createSongEventPart(String literal) {
 		SongEventPart result = SongEventPart.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.SONG_EVENT_PART.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.SONG_EVENT_PART.getName() + "'");
 		return result;
 	}
 
@@ -1164,7 +1267,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SongEventPart createSongEventPartFromString(EDataType eDataType, String initialValue) {
+	public SongEventPart createSongEventPartFromString(EDataType eDataType,
+			String initialValue) {
 		return createSongEventPart(initialValue);
 	}
 
@@ -1182,7 +1286,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertSongEventPartToString(EDataType eDataType, Object instanceValue) {
+	public String convertSongEventPartToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1193,7 +1298,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public SongNumber createSongNumber(String literal) {
 		SongNumber result = SongNumber.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.SONG_NUMBER.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.SONG_NUMBER.getName() + "'");
 		return result;
 	}
 
@@ -1202,7 +1310,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SongNumber createSongNumberFromString(EDataType eDataType, String initialValue) {
+	public SongNumber createSongNumberFromString(EDataType eDataType,
+			String initialValue) {
 		return createSongNumber(initialValue);
 	}
 
@@ -1220,7 +1329,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertSongNumberToString(EDataType eDataType, Object instanceValue) {
+	public String convertSongNumberToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1231,7 +1341,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public SongLength createSongLength(String literal) {
 		SongLength result = SongLength.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.SONG_LENGTH.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.SONG_LENGTH.getName() + "'");
 		return result;
 	}
 
@@ -1240,7 +1353,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SongLength createSongLengthFromString(EDataType eDataType, String initialValue) {
+	public SongLength createSongLengthFromString(EDataType eDataType,
+			String initialValue) {
 		return createSongLength(initialValue);
 	}
 
@@ -1258,7 +1372,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertSongLengthToString(EDataType eDataType, Object instanceValue) {
+	public String convertSongLengthToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1269,7 +1384,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public TempoLock createTempoLock(String literal) {
 		TempoLock result = TempoLock.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.TEMPO_LOCK.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.TEMPO_LOCK.getName() + "'");
 		return result;
 	}
 
@@ -1278,7 +1396,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TempoLock createTempoLockFromString(EDataType eDataType, String initialValue) {
+	public TempoLock createTempoLockFromString(EDataType eDataType,
+			String initialValue) {
 		return createTempoLock(initialValue);
 	}
 
@@ -1296,7 +1415,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertTempoLockToString(EDataType eDataType, Object instanceValue) {
+	public String convertTempoLockToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1307,7 +1427,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public MuteHold createMuteHold(String literal) {
 		MuteHold result = MuteHold.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.MUTE_HOLD.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.MUTE_HOLD.getName() + "'");
 		return result;
 	}
 
@@ -1316,7 +1439,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MuteHold createMuteHoldFromString(EDataType eDataType, String initialValue) {
+	public MuteHold createMuteHoldFromString(EDataType eDataType,
+			String initialValue) {
 		return createMuteHold(initialValue);
 	}
 
@@ -1334,7 +1458,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertMuteHoldToString(EDataType eDataType, Object instanceValue) {
+	public String convertMuteHoldToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1345,7 +1470,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public NextSongNumber createNextSongNumber(String literal) {
 		NextSongNumber result = NextSongNumber.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.NEXT_SONG_NUMBER.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.NEXT_SONG_NUMBER.getName() + "'");
 		return result;
 	}
 
@@ -1354,7 +1482,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NextSongNumber createNextSongNumberFromString(EDataType eDataType, String initialValue) {
+	public NextSongNumber createNextSongNumberFromString(EDataType eDataType,
+			String initialValue) {
 		return createNextSongNumber(initialValue);
 	}
 
@@ -1372,7 +1501,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertNextSongNumberToString(EDataType eDataType, Object instanceValue) {
+	public String convertNextSongNumberToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1383,7 +1513,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public StretchStep createStretchStep(String literal) {
 		StretchStep result = StretchStep.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.STRETCH_STEP.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.STRETCH_STEP.getName() + "'");
 		return result;
 	}
 
@@ -1392,7 +1525,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StretchStep createStretchStepFromString(EDataType eDataType, String initialValue) {
+	public StretchStep createStretchStepFromString(EDataType eDataType,
+			String initialValue) {
 		return createStretchStep(initialValue);
 	}
 
@@ -1410,7 +1544,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertStretchStepToString(EDataType eDataType, Object instanceValue) {
+	public String convertStretchStepToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1421,7 +1556,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public Swing createSwing(String literal) {
 		Swing result = Swing.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.SWING.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.SWING.getName() + "'");
 		return result;
 	}
 
@@ -1459,7 +1597,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public PatternLength createPatternLength(String literal) {
 		PatternLength result = PatternLength.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.PATTERN_LENGTH.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.PATTERN_LENGTH.getName() + "'");
 		return result;
 	}
 
@@ -1468,7 +1609,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PatternLength createPatternLengthFromString(EDataType eDataType, String initialValue) {
+	public PatternLength createPatternLengthFromString(EDataType eDataType,
+			String initialValue) {
 		return createPatternLength(initialValue);
 	}
 
@@ -1486,7 +1628,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertPatternLengthToString(EDataType eDataType, Object instanceValue) {
+	public String convertPatternLengthToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1497,7 +1640,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public Beat createBeat(String literal) {
 		Beat result = Beat.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.BEAT.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.BEAT.getName() + "'");
 		return result;
 	}
 
@@ -1535,7 +1681,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public RollType createRollType(String literal) {
 		RollType result = RollType.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.ROLL_TYPE.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.ROLL_TYPE.getName() + "'");
 		return result;
 	}
 
@@ -1544,7 +1693,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RollType createRollTypeFromString(EDataType eDataType, String initialValue) {
+	public RollType createRollTypeFromString(EDataType eDataType,
+			String initialValue) {
 		return createRollType(initialValue);
 	}
 
@@ -1562,7 +1712,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertRollTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertRollTypeToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1573,7 +1724,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public FxChain createFxChain(String literal) {
 		FxChain result = FxChain.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.FX_CHAIN.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.FX_CHAIN.getName() + "'");
 		return result;
 	}
 
@@ -1582,7 +1736,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FxChain createFxChainFromString(EDataType eDataType, String initialValue) {
+	public FxChain createFxChainFromString(EDataType eDataType,
+			String initialValue) {
 		return createFxChain(initialValue);
 	}
 
@@ -1600,7 +1755,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertFxChainToString(EDataType eDataType, Object instanceValue) {
+	public String convertFxChainToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1611,7 +1767,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public LastStep createLastStep(String literal) {
 		LastStep result = LastStep.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.LAST_STEP.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.LAST_STEP.getName() + "'");
 		return result;
 	}
 
@@ -1620,7 +1779,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LastStep createLastStepFromString(EDataType eDataType, String initialValue) {
+	public LastStep createLastStepFromString(EDataType eDataType,
+			String initialValue) {
 		return createLastStep(initialValue);
 	}
 
@@ -1638,7 +1798,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertLastStepToString(EDataType eDataType, Object instanceValue) {
+	public String convertLastStepToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1649,7 +1810,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public ArpeggiatorScale createArpeggiatorScale(String literal) {
 		ArpeggiatorScale result = ArpeggiatorScale.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.ARPEGGIATOR_SCALE.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.ARPEGGIATOR_SCALE.getName() + "'");
 		return result;
 	}
 
@@ -1658,7 +1822,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ArpeggiatorScale createArpeggiatorScaleFromString(EDataType eDataType, String initialValue) {
+	public ArpeggiatorScale createArpeggiatorScaleFromString(
+			EDataType eDataType, String initialValue) {
 		return createArpeggiatorScale(initialValue);
 	}
 
@@ -1676,7 +1841,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertArpeggiatorScaleToString(EDataType eDataType, Object instanceValue) {
+	public String convertArpeggiatorScaleToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1687,7 +1853,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public AudioChannelType createAudioChannelType(String literal) {
 		AudioChannelType result = AudioChannelType.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.AUDIO_CHANNEL_TYPE.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.AUDIO_CHANNEL_TYPE.getName() + "'");
 		return result;
 	}
 
@@ -1696,7 +1865,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AudioChannelType createAudioChannelTypeFromString(EDataType eDataType, String initialValue) {
+	public AudioChannelType createAudioChannelTypeFromString(
+			EDataType eDataType, String initialValue) {
 		return createAudioChannelType(initialValue);
 	}
 
@@ -1714,7 +1884,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertAudioChannelTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertAudioChannelTypeToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1725,7 +1896,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public NoteNumber createNoteNumber(String literal) {
 		NoteNumber result = NoteNumber.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.NOTE_NUMBER.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.NOTE_NUMBER.getName() + "'");
 		return result;
 	}
 
@@ -1734,7 +1908,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NoteNumber createNoteNumberFromString(EDataType eDataType, String initialValue) {
+	public NoteNumber createNoteNumberFromString(EDataType eDataType,
+			String initialValue) {
 		return createNoteNumber(initialValue);
 	}
 
@@ -1752,7 +1927,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertNoteNumberToString(EDataType eDataType, Object instanceValue) {
+	public String convertNoteNumberToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1763,7 +1939,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public OperationType createOperationType(String literal) {
 		OperationType result = OperationType.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.OPERATION_TYPE.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.OPERATION_TYPE.getName() + "'");
 		return result;
 	}
 
@@ -1772,7 +1951,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OperationType createOperationTypeFromString(EDataType eDataType, String initialValue) {
+	public OperationType createOperationTypeFromString(EDataType eDataType,
+			String initialValue) {
 		return createOperationType(initialValue);
 	}
 
@@ -1790,7 +1970,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertOperationTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertOperationTypeToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1801,7 +1982,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public PartNoteNumberName createPartNoteNumberName(String literal) {
 		PartNoteNumberName result = PartNoteNumberName.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.PART_NOTE_NUMBER_NAME.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.PART_NOTE_NUMBER_NAME.getName() + "'");
 		return result;
 	}
 
@@ -1810,7 +1994,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PartNoteNumberName createPartNoteNumberNameFromString(EDataType eDataType, String initialValue) {
+	public PartNoteNumberName createPartNoteNumberNameFromString(
+			EDataType eDataType, String initialValue) {
 		return createPartNoteNumberName(initialValue);
 	}
 
@@ -1828,7 +2013,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertPartNoteNumberNameToString(EDataType eDataType, Object instanceValue) {
+	public String convertPartNoteNumberNameToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1839,7 +2025,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public FilterType createFilterType(String literal) {
 		FilterType result = FilterType.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.FILTER_TYPE.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.FILTER_TYPE.getName() + "'");
 		return result;
 	}
 
@@ -1848,7 +2037,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FilterType createFilterTypeFromString(EDataType eDataType, String initialValue) {
+	public FilterType createFilterTypeFromString(EDataType eDataType,
+			String initialValue) {
 		return createFilterType(initialValue);
 	}
 
@@ -1866,7 +2056,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertFilterTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertFilterTypeToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1877,7 +2068,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public FxSelect createFxSelect(String literal) {
 		FxSelect result = FxSelect.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.FX_SELECT.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.FX_SELECT.getName() + "'");
 		return result;
 	}
 
@@ -1886,7 +2080,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FxSelect createFxSelectFromString(EDataType eDataType, String initialValue) {
+	public FxSelect createFxSelectFromString(EDataType eDataType,
+			String initialValue) {
 		return createFxSelect(initialValue);
 	}
 
@@ -1904,7 +2099,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertFxSelectToString(EDataType eDataType, Object instanceValue) {
+	public String convertFxSelectToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1915,7 +2111,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public FxSend createFxSend(String literal) {
 		FxSend result = FxSend.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.FX_SEND.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.FX_SEND.getName() + "'");
 		return result;
 	}
 
@@ -1924,7 +2123,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FxSend createFxSendFromString(EDataType eDataType, String initialValue) {
+	public FxSend createFxSendFromString(EDataType eDataType,
+			String initialValue) {
 		return createFxSend(initialValue);
 	}
 
@@ -1942,7 +2142,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertFxSendToString(EDataType eDataType, Object instanceValue) {
+	public String convertFxSendToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1953,7 +2154,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public FxType createFxType(String literal) {
 		FxType result = FxType.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.FX_TYPE.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.FX_TYPE.getName() + "'");
 		return result;
 	}
 
@@ -1962,7 +2166,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FxType createFxTypeFromString(EDataType eDataType, String initialValue) {
+	public FxType createFxTypeFromString(EDataType eDataType,
+			String initialValue) {
 		return createFxType(initialValue);
 	}
 
@@ -1980,7 +2185,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertFxTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertFxTypeToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1991,7 +2197,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public Roll createRoll(String literal) {
 		Roll result = Roll.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.ROLL.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.ROLL.getName() + "'");
 		return result;
 	}
 
@@ -2029,7 +2238,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public AmpEg createAmpEg(String literal) {
 		AmpEg result = AmpEg.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.AMP_EG.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.AMP_EG.getName() + "'");
 		return result;
 	}
 
@@ -2067,7 +2279,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public Reverse createReverse(String literal) {
 		Reverse result = Reverse.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.REVERSE.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.REVERSE.getName() + "'");
 		return result;
 	}
 
@@ -2076,7 +2291,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Reverse createReverseFromString(EDataType eDataType, String initialValue) {
+	public Reverse createReverseFromString(EDataType eDataType,
+			String initialValue) {
 		return createReverse(initialValue);
 	}
 
@@ -2094,7 +2310,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertReverseToString(EDataType eDataType, Object instanceValue) {
+	public String convertReverseToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -2105,7 +2322,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public ModDest createModDest(String literal) {
 		ModDest result = ModDest.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.MOD_DEST.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.MOD_DEST.getName() + "'");
 		return result;
 	}
 
@@ -2114,7 +2334,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModDest createModDestFromString(EDataType eDataType, String initialValue) {
+	public ModDest createModDestFromString(EDataType eDataType,
+			String initialValue) {
 		return createModDest(initialValue);
 	}
 
@@ -2132,7 +2353,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertModDestToString(EDataType eDataType, Object instanceValue) {
+	public String convertModDestToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -2143,7 +2365,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public ModType createModType(String literal) {
 		ModType result = ModType.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.MOD_TYPE.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.MOD_TYPE.getName() + "'");
 		return result;
 	}
 
@@ -2152,7 +2377,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModType createModTypeFromString(EDataType eDataType, String initialValue) {
+	public ModType createModTypeFromString(EDataType eDataType,
+			String initialValue) {
 		return createModType(initialValue);
 	}
 
@@ -2170,7 +2396,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertModTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertModTypeToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -2181,7 +2408,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public BpmSync createBpmSync(String literal) {
 		BpmSync result = BpmSync.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.BPM_SYNC.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.BPM_SYNC.getName() + "'");
 		return result;
 	}
 
@@ -2190,7 +2420,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BpmSync createBpmSyncFromString(EDataType eDataType, String initialValue) {
+	public BpmSync createBpmSyncFromString(EDataType eDataType,
+			String initialValue) {
 		return createBpmSync(initialValue);
 	}
 
@@ -2208,7 +2439,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertBpmSyncToString(EDataType eDataType, Object instanceValue) {
+	public String convertBpmSyncToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -2219,7 +2451,11 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 */
 	public MotionSequenceStatus createMotionSequenceStatus(String literal) {
 		MotionSequenceStatus result = MotionSequenceStatus.get(literal);
-		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + EsxPackage.Literals.MOTION_SEQUENCE_STATUS.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.MOTION_SEQUENCE_STATUS.getName()
+					+ "'");
 		return result;
 	}
 
@@ -2228,7 +2464,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MotionSequenceStatus createMotionSequenceStatusFromString(EDataType eDataType, String initialValue) {
+	public MotionSequenceStatus createMotionSequenceStatusFromString(
+			EDataType eDataType, String initialValue) {
 		return createMotionSequenceStatus(initialValue);
 	}
 
@@ -2246,7 +2483,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertMotionSequenceStatusToString(EDataType eDataType, Object instanceValue) {
+	public String convertMotionSequenceStatusToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -2264,7 +2502,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object createObjectFromString(EDataType eDataType, String initialValue) {
+	public Object createObjectFromString(EDataType eDataType,
+			String initialValue) {
 		return super.createFromString(eDataType, initialValue);
 	}
 
@@ -2282,7 +2521,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertObjectToString(EDataType eDataType, Object instanceValue) {
+	public String convertObjectToString(EDataType eDataType,
+			Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -2292,7 +2532,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public RIFFWave createRIFFWave(String literal) {
-		return (RIFFWave)super.createFromString(EsxPackage.Literals.RIFF_WAVE, literal);
+		return (RIFFWave) super.createFromString(EsxPackage.Literals.RIFF_WAVE,
+				literal);
 	}
 
 	/**
@@ -2300,8 +2541,9 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RIFFWave createRIFFWaveFromString(EDataType eDataType, String initialValue) {
-		return (RIFFWave)super.createFromString(eDataType, initialValue);
+	public RIFFWave createRIFFWaveFromString(EDataType eDataType,
+			String initialValue) {
+		return (RIFFWave) super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -2310,7 +2552,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public String convertRIFFWave(RIFFWave instanceValue) {
-		return super.convertToString(EsxPackage.Literals.RIFF_WAVE, instanceValue);
+		return super.convertToString(EsxPackage.Literals.RIFF_WAVE,
+				instanceValue);
 	}
 
 	/**
@@ -2318,7 +2561,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertRIFFWaveToString(EDataType eDataType, Object instanceValue) {
+	public String convertRIFFWaveToString(EDataType eDataType,
+			Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -2328,7 +2572,7 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public ArrayList<?> createArrayList(String literal) {
-		return (ArrayList<?>)super.createFromString(literal);
+		return (ArrayList<?>) super.createFromString(literal);
 	}
 
 	/**
@@ -2336,8 +2580,9 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ArrayList<?> createArrayListFromString(EDataType eDataType, String initialValue) {
-		return (ArrayList<?>)super.createFromString(initialValue);
+	public ArrayList<?> createArrayListFromString(EDataType eDataType,
+			String initialValue) {
+		return (ArrayList<?>) super.createFromString(initialValue);
 	}
 
 	/**
@@ -2354,7 +2599,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertArrayListToString(EDataType eDataType, Object instanceValue) {
+	public String convertArrayListToString(EDataType eDataType,
+			Object instanceValue) {
 		return super.convertToString(instanceValue);
 	}
 
@@ -2364,7 +2610,7 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public File createFile(String literal) {
-		return (File)super.createFromString(EsxPackage.Literals.FILE, literal);
+		return (File) super.createFromString(EsxPackage.Literals.FILE, literal);
 	}
 
 	/**
@@ -2373,7 +2619,7 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public File createFileFromString(EDataType eDataType, String initialValue) {
-		return (File)super.createFromString(eDataType, initialValue);
+		return (File) super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -2400,7 +2646,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public InputStream createInputStream(String literal) {
-		return (InputStream)super.createFromString(EsxPackage.Literals.INPUT_STREAM, literal);
+		return (InputStream) super.createFromString(
+				EsxPackage.Literals.INPUT_STREAM, literal);
 	}
 
 	/**
@@ -2408,8 +2655,9 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputStream createInputStreamFromString(EDataType eDataType, String initialValue) {
-		return (InputStream)super.createFromString(eDataType, initialValue);
+	public InputStream createInputStreamFromString(EDataType eDataType,
+			String initialValue) {
+		return (InputStream) super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -2418,7 +2666,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public String convertInputStream(InputStream instanceValue) {
-		return super.convertToString(EsxPackage.Literals.INPUT_STREAM, instanceValue);
+		return super.convertToString(EsxPackage.Literals.INPUT_STREAM,
+				instanceValue);
 	}
 
 	/**
@@ -2426,7 +2675,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertInputStreamToString(EDataType eDataType, Object instanceValue) {
+	public String convertInputStreamToString(EDataType eDataType,
+			Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -2435,8 +2685,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IndexOutOfBoundsException createIndexOutOfBoundsException(String literal) {
-		return (IndexOutOfBoundsException)super.createFromString(EsxPackage.Literals.INDEX_OUT_OF_BOUNDS_EXCEPTION, literal);
+	public IndexOutOfBoundsException createIndexOutOfBoundsException(
+			String literal) {
+		return (IndexOutOfBoundsException) super.createFromString(
+				EsxPackage.Literals.INDEX_OUT_OF_BOUNDS_EXCEPTION, literal);
 	}
 
 	/**
@@ -2444,8 +2696,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IndexOutOfBoundsException createIndexOutOfBoundsExceptionFromString(EDataType eDataType, String initialValue) {
-		return (IndexOutOfBoundsException)super.createFromString(eDataType, initialValue);
+	public IndexOutOfBoundsException createIndexOutOfBoundsExceptionFromString(
+			EDataType eDataType, String initialValue) {
+		return (IndexOutOfBoundsException) super.createFromString(eDataType,
+				initialValue);
 	}
 
 	/**
@@ -2453,8 +2707,11 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertIndexOutOfBoundsException(IndexOutOfBoundsException instanceValue) {
-		return super.convertToString(EsxPackage.Literals.INDEX_OUT_OF_BOUNDS_EXCEPTION, instanceValue);
+	public String convertIndexOutOfBoundsException(
+			IndexOutOfBoundsException instanceValue) {
+		return super.convertToString(
+				EsxPackage.Literals.INDEX_OUT_OF_BOUNDS_EXCEPTION,
+				instanceValue);
 	}
 
 	/**
@@ -2462,7 +2719,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertIndexOutOfBoundsExceptionToString(EDataType eDataType, Object instanceValue) {
+	public String convertIndexOutOfBoundsExceptionToString(EDataType eDataType,
+			Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -2472,7 +2730,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public IOException createIOException(String literal) {
-		return (IOException)super.createFromString(EsxPackage.Literals.IO_EXCEPTION, literal);
+		return (IOException) super.createFromString(
+				EsxPackage.Literals.IO_EXCEPTION, literal);
 	}
 
 	/**
@@ -2480,8 +2739,9 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IOException createIOExceptionFromString(EDataType eDataType, String initialValue) {
-		return (IOException)super.createFromString(eDataType, initialValue);
+	public IOException createIOExceptionFromString(EDataType eDataType,
+			String initialValue) {
+		return (IOException) super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -2490,7 +2750,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public String convertIOException(IOException instanceValue) {
-		return super.convertToString(EsxPackage.Literals.IO_EXCEPTION, instanceValue);
+		return super.convertToString(EsxPackage.Literals.IO_EXCEPTION,
+				instanceValue);
 	}
 
 	/**
@@ -2498,7 +2759,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertIOExceptionToString(EDataType eDataType, Object instanceValue) {
+	public String convertIOExceptionToString(EDataType eDataType,
+			Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -2508,7 +2770,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public IProgressMonitor createIProgressMonitor(String literal) {
-		return (IProgressMonitor)super.createFromString(EsxPackage.Literals.IPROGRESS_MONITOR, literal);
+		return (IProgressMonitor) super.createFromString(
+				EsxPackage.Literals.IPROGRESS_MONITOR, literal);
 	}
 
 	/**
@@ -2516,8 +2779,10 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IProgressMonitor createIProgressMonitorFromString(EDataType eDataType, String initialValue) {
-		return (IProgressMonitor)super.createFromString(eDataType, initialValue);
+	public IProgressMonitor createIProgressMonitorFromString(
+			EDataType eDataType, String initialValue) {
+		return (IProgressMonitor) super.createFromString(eDataType,
+				initialValue);
 	}
 
 	/**
@@ -2526,7 +2791,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public String convertIProgressMonitor(IProgressMonitor instanceValue) {
-		return super.convertToString(EsxPackage.Literals.IPROGRESS_MONITOR, instanceValue);
+		return super.convertToString(EsxPackage.Literals.IPROGRESS_MONITOR,
+				instanceValue);
 	}
 
 	/**
@@ -2534,7 +2800,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertIProgressMonitorToString(EDataType eDataType, Object instanceValue) {
+	public String convertIProgressMonitorToString(EDataType eDataType,
+			Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -2544,7 +2811,7 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public EsxPackage getEsxPackage() {
-		return (EsxPackage)getEPackage();
+		return (EsxPackage) getEPackage();
 	}
 
 	/**

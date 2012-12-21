@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -43,10 +42,10 @@ import com.skratchdot.electribe.model.esx.GlobalParameters;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GlobalParametersItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class GlobalParametersItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -90,19 +89,17 @@ public class GlobalParametersItemProvider
 	 * @generated
 	 */
 	protected void addMemoryProtectEnabledPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GlobalParameters_memoryProtectEnabled_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GlobalParameters_memoryProtectEnabled_feature", "_UI_GlobalParameters_type"),
-				 EsxPackage.Literals.GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GlobalParameters_memoryProtectEnabled_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_GlobalParameters_memoryProtectEnabled_feature",
+						"_UI_GlobalParameters_type"),
+				EsxPackage.Literals.GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED,
+				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -112,19 +109,17 @@ public class GlobalParametersItemProvider
 	 * @generated
 	 */
 	protected void addReservedBytePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GlobalParameters_reservedByte_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GlobalParameters_reservedByte_feature", "_UI_GlobalParameters_type"),
-				 EsxPackage.Literals.GLOBAL_PARAMETERS__RESERVED_BYTE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GlobalParameters_reservedByte_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_GlobalParameters_reservedByte_feature",
+						"_UI_GlobalParameters_type"),
+				EsxPackage.Literals.GLOBAL_PARAMETERS__RESERVED_BYTE, true,
+				false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -134,19 +129,17 @@ public class GlobalParametersItemProvider
 	 * @generated
 	 */
 	protected void addArpeggiatorControlPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GlobalParameters_arpeggiatorControl_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GlobalParameters_arpeggiatorControl_feature", "_UI_GlobalParameters_type"),
-				 EsxPackage.Literals.GLOBAL_PARAMETERS__ARPEGGIATOR_CONTROL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GlobalParameters_arpeggiatorControl_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_GlobalParameters_arpeggiatorControl_feature",
+						"_UI_GlobalParameters_type"),
+				EsxPackage.Literals.GLOBAL_PARAMETERS__ARPEGGIATOR_CONTROL,
+				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -156,19 +149,17 @@ public class GlobalParametersItemProvider
 	 * @generated
 	 */
 	protected void addAudioInModePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GlobalParameters_audioInMode_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GlobalParameters_audioInMode_feature", "_UI_GlobalParameters_type"),
-				 EsxPackage.Literals.GLOBAL_PARAMETERS__AUDIO_IN_MODE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GlobalParameters_audioInMode_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_GlobalParameters_audioInMode_feature",
+						"_UI_GlobalParameters_type"),
+				EsxPackage.Literals.GLOBAL_PARAMETERS__AUDIO_IN_MODE, true,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -178,19 +169,16 @@ public class GlobalParametersItemProvider
 	 * @generated
 	 */
 	protected void addMidiClockPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GlobalParameters_midiClock_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GlobalParameters_midiClock_feature", "_UI_GlobalParameters_type"),
-				 EsxPackage.Literals.GLOBAL_PARAMETERS__MIDI_CLOCK,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GlobalParameters_midiClock_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_GlobalParameters_midiClock_feature",
+						"_UI_GlobalParameters_type"),
+				EsxPackage.Literals.GLOBAL_PARAMETERS__MIDI_CLOCK, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -200,19 +188,17 @@ public class GlobalParametersItemProvider
 	 * @generated
 	 */
 	protected void addNoteMessageEnabledPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GlobalParameters_noteMessageEnabled_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GlobalParameters_noteMessageEnabled_feature", "_UI_GlobalParameters_type"),
-				 EsxPackage.Literals.GLOBAL_PARAMETERS__NOTE_MESSAGE_ENABLED,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GlobalParameters_noteMessageEnabled_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_GlobalParameters_noteMessageEnabled_feature",
+						"_UI_GlobalParameters_type"),
+				EsxPackage.Literals.GLOBAL_PARAMETERS__NOTE_MESSAGE_ENABLED,
+				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -222,19 +208,17 @@ public class GlobalParametersItemProvider
 	 * @generated
 	 */
 	protected void addSystemExEnabledPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GlobalParameters_systemExEnabled_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GlobalParameters_systemExEnabled_feature", "_UI_GlobalParameters_type"),
-				 EsxPackage.Literals.GLOBAL_PARAMETERS__SYSTEM_EX_ENABLED,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GlobalParameters_systemExEnabled_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_GlobalParameters_systemExEnabled_feature",
+						"_UI_GlobalParameters_type"),
+				EsxPackage.Literals.GLOBAL_PARAMETERS__SYSTEM_EX_ENABLED, true,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -244,19 +228,17 @@ public class GlobalParametersItemProvider
 	 * @generated
 	 */
 	protected void addControlChangeEnabledPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GlobalParameters_controlChangeEnabled_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GlobalParameters_controlChangeEnabled_feature", "_UI_GlobalParameters_type"),
-				 EsxPackage.Literals.GLOBAL_PARAMETERS__CONTROL_CHANGE_ENABLED,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GlobalParameters_controlChangeEnabled_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_GlobalParameters_controlChangeEnabled_feature",
+						"_UI_GlobalParameters_type"),
+				EsxPackage.Literals.GLOBAL_PARAMETERS__CONTROL_CHANGE_ENABLED,
+				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -266,19 +248,17 @@ public class GlobalParametersItemProvider
 	 * @generated
 	 */
 	protected void addProgramChangeEnabledPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GlobalParameters_programChangeEnabled_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GlobalParameters_programChangeEnabled_feature", "_UI_GlobalParameters_type"),
-				 EsxPackage.Literals.GLOBAL_PARAMETERS__PROGRAM_CHANGE_ENABLED,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GlobalParameters_programChangeEnabled_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_GlobalParameters_programChangeEnabled_feature",
+						"_UI_GlobalParameters_type"),
+				EsxPackage.Literals.GLOBAL_PARAMETERS__PROGRAM_CHANGE_ENABLED,
+				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -287,20 +267,21 @@ public class GlobalParametersItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addReservedBitsAfterProgramChangeEnabledPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GlobalParameters_reservedBitsAfterProgramChangeEnabled_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GlobalParameters_reservedBitsAfterProgramChangeEnabled_feature", "_UI_GlobalParameters_type"),
-				 EsxPackage.Literals.GLOBAL_PARAMETERS__RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+	protected void addReservedBitsAfterProgramChangeEnabledPropertyDescriptor(
+			Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_GlobalParameters_reservedBitsAfterProgramChangeEnabled_feature"),
+						getString(
+								"_UI_PropertyDescriptor_description",
+								"_UI_GlobalParameters_reservedBitsAfterProgramChangeEnabled_feature",
+								"_UI_GlobalParameters_type"),
+						EsxPackage.Literals.GLOBAL_PARAMETERS__RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED,
+						true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -310,19 +291,17 @@ public class GlobalParametersItemProvider
 	 * @generated
 	 */
 	protected void addPitchBendRangePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GlobalParameters_pitchBendRange_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GlobalParameters_pitchBendRange_feature", "_UI_GlobalParameters_type"),
-				 EsxPackage.Literals.GLOBAL_PARAMETERS__PITCH_BEND_RANGE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GlobalParameters_pitchBendRange_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_GlobalParameters_pitchBendRange_feature",
+						"_UI_GlobalParameters_type"),
+				EsxPackage.Literals.GLOBAL_PARAMETERS__PITCH_BEND_RANGE, true,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -334,13 +313,18 @@ public class GlobalParametersItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(EsxPackage.Literals.GLOBAL_PARAMETERS__MIDI_CHANNELS);
-			childrenFeatures.add(EsxPackage.Literals.GLOBAL_PARAMETERS__PART_NOTE_NUMBERS);
-			childrenFeatures.add(EsxPackage.Literals.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS);
-			childrenFeatures.add(EsxPackage.Literals.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS);
+			childrenFeatures
+					.add(EsxPackage.Literals.GLOBAL_PARAMETERS__MIDI_CHANNELS);
+			childrenFeatures
+					.add(EsxPackage.Literals.GLOBAL_PARAMETERS__PART_NOTE_NUMBERS);
+			childrenFeatures
+					.add(EsxPackage.Literals.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS);
+			childrenFeatures
+					.add(EsxPackage.Literals.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS);
 		}
 		return childrenFeatures;
 	}
@@ -366,7 +350,8 @@ public class GlobalParametersItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/GlobalParameters"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/GlobalParameters"));
 	}
 
 	/**
@@ -377,11 +362,11 @@ public class GlobalParametersItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		EnabledFlag labelValue = ((GlobalParameters)object).getMemoryProtectEnabled();
+		EnabledFlag labelValue = ((GlobalParameters) object)
+				.getMemoryProtectEnabled();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_GlobalParameters_type") :
-			getString("_UI_GlobalParameters_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_GlobalParameters_type")
+				: getString("_UI_GlobalParameters_type") + " " + label;
 	}
 
 	/**
@@ -396,26 +381,28 @@ public class GlobalParametersItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(GlobalParameters.class)) {
-			case EsxPackage.GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED:
-			case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BYTE:
-			case EsxPackage.GLOBAL_PARAMETERS__ARPEGGIATOR_CONTROL:
-			case EsxPackage.GLOBAL_PARAMETERS__AUDIO_IN_MODE:
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CLOCK:
-			case EsxPackage.GLOBAL_PARAMETERS__NOTE_MESSAGE_ENABLED:
-			case EsxPackage.GLOBAL_PARAMETERS__SYSTEM_EX_ENABLED:
-			case EsxPackage.GLOBAL_PARAMETERS__CONTROL_CHANGE_ENABLED:
-			case EsxPackage.GLOBAL_PARAMETERS__PROGRAM_CHANGE_ENABLED:
-			case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED:
-			case EsxPackage.GLOBAL_PARAMETERS__PITCH_BEND_RANGE:
-			case EsxPackage.GLOBAL_PARAMETERS__RESERVED_LONG:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNELS:
-			case EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBERS:
-			case EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS:
-			case EsxPackage.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case EsxPackage.GLOBAL_PARAMETERS__MEMORY_PROTECT_ENABLED:
+		case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BYTE:
+		case EsxPackage.GLOBAL_PARAMETERS__ARPEGGIATOR_CONTROL:
+		case EsxPackage.GLOBAL_PARAMETERS__AUDIO_IN_MODE:
+		case EsxPackage.GLOBAL_PARAMETERS__MIDI_CLOCK:
+		case EsxPackage.GLOBAL_PARAMETERS__NOTE_MESSAGE_ENABLED:
+		case EsxPackage.GLOBAL_PARAMETERS__SYSTEM_EX_ENABLED:
+		case EsxPackage.GLOBAL_PARAMETERS__CONTROL_CHANGE_ENABLED:
+		case EsxPackage.GLOBAL_PARAMETERS__PROGRAM_CHANGE_ENABLED:
+		case EsxPackage.GLOBAL_PARAMETERS__RESERVED_BITS_AFTER_PROGRAM_CHANGE_ENABLED:
+		case EsxPackage.GLOBAL_PARAMETERS__PITCH_BEND_RANGE:
+		case EsxPackage.GLOBAL_PARAMETERS__RESERVED_LONG:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
+		case EsxPackage.GLOBAL_PARAMETERS__MIDI_CHANNELS:
+		case EsxPackage.GLOBAL_PARAMETERS__PART_NOTE_NUMBERS:
+		case EsxPackage.GLOBAL_PARAMETERS__MIDI_CONTROL_CHANGE_ASSIGNMENTS:
+		case EsxPackage.GLOBAL_PARAMETERS__PATTERN_SET_PARAMETERS:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -428,7 +415,8 @@ public class GlobalParametersItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

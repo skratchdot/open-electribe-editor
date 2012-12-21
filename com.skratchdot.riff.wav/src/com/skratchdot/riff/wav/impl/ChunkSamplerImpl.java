@@ -260,10 +260,13 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 	}
 
 	@Override
-	public void init(RIFFWave riffWave, ExtendedByteBuffer buf) throws RiffWaveException {
+	public void init(RIFFWave riffWave, ExtendedByteBuffer buf)
+			throws RiffWaveException {
 		// Check Chunk Type ID
-		if(ChunkTypeID.get((int)buf.getUnsignedInt())!=this.getChunkTypeID())
-			throw new RiffWaveException("Invalid Chunk ID for "+this.getChunkTypeID().getLiteral());
+		if (ChunkTypeID.get((int) buf.getUnsignedInt()) != this
+				.getChunkTypeID())
+			throw new RiffWaveException("Invalid Chunk ID for "
+					+ this.getChunkTypeID().getLiteral());
 
 		// Read in data size
 		long chunkSize = buf.getUnsignedInt();
@@ -281,7 +284,7 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 		int samplerDataSize = (int) buf.getUnsignedInt();
 
 		// Read in sampleLoops
-		for(int i=0; i<numSampleLoops; i++) {
+		for (int i = 0; i < numSampleLoops; i++) {
 			SampleLoop sampleLoop = WavFactory.eINSTANCE.createSampleLoop();
 			sampleLoop.setCuePointID(buf.getUnsignedInt());
 			sampleLoop.setType(buf.getUnsignedInt());
@@ -293,19 +296,20 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 		}
 
 		// Read in sampler data
-		if(samplerDataSize>0) {
+		if (samplerDataSize > 0) {
 			byte[] newSamplerData = new byte[samplerDataSize];
 			buf.getBytes(newSamplerData);
 			this.setSamplerData(newSamplerData);
 		}
 
 		// Does the size we read in match the size we calculate from the data read in?
-		if(chunkSize!=this.getSize()) {
-			ParseChunkException pce = WavFactory.eINSTANCE.createParseChunkException();
-			pce.setException(new Exception("Invalid chunk size for format chunk." +
-				"From File: " + Long.toString(chunkSize) +
-				"Calculated: " + Long.toString(this.getSize())
-			));
+		if (chunkSize != this.getSize()) {
+			ParseChunkException pce = WavFactory.eINSTANCE
+					.createParseChunkException();
+			pce.setException(new Exception(
+					"Invalid chunk size for format chunk." + "From File: "
+							+ Long.toString(chunkSize) + "Calculated: "
+							+ Long.toString(this.getSize())));
 			riffWave.getParseChunkExceptions().add(pce);
 		}
 	}
@@ -338,7 +342,9 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 		Long oldManufacturer = manufacturer;
 		manufacturer = newManufacturer;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_SAMPLER__MANUFACTURER, oldManufacturer, manufacturer));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_SAMPLER__MANUFACTURER, oldManufacturer,
+					manufacturer));
 	}
 
 	/**
@@ -359,7 +365,8 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 		Long oldProduct = product;
 		product = newProduct;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_SAMPLER__PRODUCT, oldProduct, product));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_SAMPLER__PRODUCT, oldProduct, product));
 	}
 
 	/**
@@ -380,7 +387,9 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 		Long oldSamplePeriod = samplePeriod;
 		samplePeriod = newSamplePeriod;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_SAMPLER__SAMPLE_PERIOD, oldSamplePeriod, samplePeriod));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_SAMPLER__SAMPLE_PERIOD, oldSamplePeriod,
+					samplePeriod));
 	}
 
 	/**
@@ -401,7 +410,9 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 		Long oldMidiUnityNote = midiUnityNote;
 		midiUnityNote = newMidiUnityNote;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_SAMPLER__MIDI_UNITY_NOTE, oldMidiUnityNote, midiUnityNote));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_SAMPLER__MIDI_UNITY_NOTE,
+					oldMidiUnityNote, midiUnityNote));
 	}
 
 	/**
@@ -422,7 +433,9 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 		Long oldMidiPitchFraction = midiPitchFraction;
 		midiPitchFraction = newMidiPitchFraction;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_SAMPLER__MIDI_PITCH_FRACTION, oldMidiPitchFraction, midiPitchFraction));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_SAMPLER__MIDI_PITCH_FRACTION,
+					oldMidiPitchFraction, midiPitchFraction));
 	}
 
 	/**
@@ -443,7 +456,9 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 		Long oldSmpteFormat = smpteFormat;
 		smpteFormat = newSmpteFormat;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_SAMPLER__SMPTE_FORMAT, oldSmpteFormat, smpteFormat));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_SAMPLER__SMPTE_FORMAT, oldSmpteFormat,
+					smpteFormat));
 	}
 
 	/**
@@ -464,7 +479,9 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 		Long oldSmpteOffset = smpteOffset;
 		smpteOffset = newSmpteOffset;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_SAMPLER__SMPTE_OFFSET, oldSmpteOffset, smpteOffset));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_SAMPLER__SMPTE_OFFSET, oldSmpteOffset,
+					smpteOffset));
 	}
 
 	/**
@@ -473,7 +490,8 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 	 * @generated NOT
 	 */
 	public Long getNumberOfSampleLoops() {
-		return this.getSampleLoops()==null?0:(long)this.getSampleLoops().size();
+		return this.getSampleLoops() == null ? 0 : (long) this.getSampleLoops()
+				.size();
 	}
 
 	/**
@@ -482,7 +500,8 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 	 * @generated NOT
 	 */
 	public Long getSamplerDataSize() {
-		return this.getSamplerData()==null?0:(long)this.getSamplerData().length;
+		return this.getSamplerData() == null ? 0
+				: (long) this.getSamplerData().length;
 	}
 
 	/**
@@ -503,7 +522,9 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 		byte[] oldSamplerData = samplerData;
 		samplerData = newSamplerData;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_SAMPLER__SAMPLER_DATA, oldSamplerData, samplerData));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_SAMPLER__SAMPLER_DATA, oldSamplerData,
+					samplerData));
 	}
 
 	/**
@@ -513,7 +534,9 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 	 */
 	public EList<SampleLoop> getSampleLoops() {
 		if (sampleLoops == null) {
-			sampleLoops = new EObjectContainmentEList<SampleLoop>(SampleLoop.class, this, WavPackage.CHUNK_SAMPLER__SAMPLE_LOOPS);
+			sampleLoops = new EObjectContainmentEList<SampleLoop>(
+					SampleLoop.class, this,
+					WavPackage.CHUNK_SAMPLER__SAMPLE_LOOPS);
 		}
 		return sampleLoops;
 	}
@@ -539,7 +562,8 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 	 */
 	@Override
 	public long getSize() {
-		return 36 + (this.getNumberOfSampleLoops() * 24) + this.getSamplerDataSize();
+		return 36 + (this.getNumberOfSampleLoops() * 24)
+				+ this.getSamplerDataSize();
 	}
 
 	/**
@@ -548,10 +572,12 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case WavPackage.CHUNK_SAMPLER__SAMPLE_LOOPS:
-				return ((InternalEList<?>)getSampleLoops()).basicRemove(otherEnd, msgs);
+		case WavPackage.CHUNK_SAMPLER__SAMPLE_LOOPS:
+			return ((InternalEList<?>) getSampleLoops()).basicRemove(otherEnd,
+					msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -564,28 +590,28 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.CHUNK_SAMPLER__MANUFACTURER:
-				return getManufacturer();
-			case WavPackage.CHUNK_SAMPLER__PRODUCT:
-				return getProduct();
-			case WavPackage.CHUNK_SAMPLER__SAMPLE_PERIOD:
-				return getSamplePeriod();
-			case WavPackage.CHUNK_SAMPLER__MIDI_UNITY_NOTE:
-				return getMidiUnityNote();
-			case WavPackage.CHUNK_SAMPLER__MIDI_PITCH_FRACTION:
-				return getMidiPitchFraction();
-			case WavPackage.CHUNK_SAMPLER__SMPTE_FORMAT:
-				return getSmpteFormat();
-			case WavPackage.CHUNK_SAMPLER__SMPTE_OFFSET:
-				return getSmpteOffset();
-			case WavPackage.CHUNK_SAMPLER__NUMBER_OF_SAMPLE_LOOPS:
-				return getNumberOfSampleLoops();
-			case WavPackage.CHUNK_SAMPLER__SAMPLER_DATA_SIZE:
-				return getSamplerDataSize();
-			case WavPackage.CHUNK_SAMPLER__SAMPLE_LOOPS:
-				return getSampleLoops();
-			case WavPackage.CHUNK_SAMPLER__SAMPLER_DATA:
-				return getSamplerData();
+		case WavPackage.CHUNK_SAMPLER__MANUFACTURER:
+			return getManufacturer();
+		case WavPackage.CHUNK_SAMPLER__PRODUCT:
+			return getProduct();
+		case WavPackage.CHUNK_SAMPLER__SAMPLE_PERIOD:
+			return getSamplePeriod();
+		case WavPackage.CHUNK_SAMPLER__MIDI_UNITY_NOTE:
+			return getMidiUnityNote();
+		case WavPackage.CHUNK_SAMPLER__MIDI_PITCH_FRACTION:
+			return getMidiPitchFraction();
+		case WavPackage.CHUNK_SAMPLER__SMPTE_FORMAT:
+			return getSmpteFormat();
+		case WavPackage.CHUNK_SAMPLER__SMPTE_OFFSET:
+			return getSmpteOffset();
+		case WavPackage.CHUNK_SAMPLER__NUMBER_OF_SAMPLE_LOOPS:
+			return getNumberOfSampleLoops();
+		case WavPackage.CHUNK_SAMPLER__SAMPLER_DATA_SIZE:
+			return getSamplerDataSize();
+		case WavPackage.CHUNK_SAMPLER__SAMPLE_LOOPS:
+			return getSampleLoops();
+		case WavPackage.CHUNK_SAMPLER__SAMPLER_DATA:
+			return getSamplerData();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -599,34 +625,35 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.CHUNK_SAMPLER__MANUFACTURER:
-				setManufacturer((Long)newValue);
-				return;
-			case WavPackage.CHUNK_SAMPLER__PRODUCT:
-				setProduct((Long)newValue);
-				return;
-			case WavPackage.CHUNK_SAMPLER__SAMPLE_PERIOD:
-				setSamplePeriod((Long)newValue);
-				return;
-			case WavPackage.CHUNK_SAMPLER__MIDI_UNITY_NOTE:
-				setMidiUnityNote((Long)newValue);
-				return;
-			case WavPackage.CHUNK_SAMPLER__MIDI_PITCH_FRACTION:
-				setMidiPitchFraction((Long)newValue);
-				return;
-			case WavPackage.CHUNK_SAMPLER__SMPTE_FORMAT:
-				setSmpteFormat((Long)newValue);
-				return;
-			case WavPackage.CHUNK_SAMPLER__SMPTE_OFFSET:
-				setSmpteOffset((Long)newValue);
-				return;
-			case WavPackage.CHUNK_SAMPLER__SAMPLE_LOOPS:
-				getSampleLoops().clear();
-				getSampleLoops().addAll((Collection<? extends SampleLoop>)newValue);
-				return;
-			case WavPackage.CHUNK_SAMPLER__SAMPLER_DATA:
-				setSamplerData((byte[])newValue);
-				return;
+		case WavPackage.CHUNK_SAMPLER__MANUFACTURER:
+			setManufacturer((Long) newValue);
+			return;
+		case WavPackage.CHUNK_SAMPLER__PRODUCT:
+			setProduct((Long) newValue);
+			return;
+		case WavPackage.CHUNK_SAMPLER__SAMPLE_PERIOD:
+			setSamplePeriod((Long) newValue);
+			return;
+		case WavPackage.CHUNK_SAMPLER__MIDI_UNITY_NOTE:
+			setMidiUnityNote((Long) newValue);
+			return;
+		case WavPackage.CHUNK_SAMPLER__MIDI_PITCH_FRACTION:
+			setMidiPitchFraction((Long) newValue);
+			return;
+		case WavPackage.CHUNK_SAMPLER__SMPTE_FORMAT:
+			setSmpteFormat((Long) newValue);
+			return;
+		case WavPackage.CHUNK_SAMPLER__SMPTE_OFFSET:
+			setSmpteOffset((Long) newValue);
+			return;
+		case WavPackage.CHUNK_SAMPLER__SAMPLE_LOOPS:
+			getSampleLoops().clear();
+			getSampleLoops()
+					.addAll((Collection<? extends SampleLoop>) newValue);
+			return;
+		case WavPackage.CHUNK_SAMPLER__SAMPLER_DATA:
+			setSamplerData((byte[]) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -639,33 +666,33 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_SAMPLER__MANUFACTURER:
-				setManufacturer(MANUFACTURER_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_SAMPLER__PRODUCT:
-				setProduct(PRODUCT_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_SAMPLER__SAMPLE_PERIOD:
-				setSamplePeriod(SAMPLE_PERIOD_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_SAMPLER__MIDI_UNITY_NOTE:
-				setMidiUnityNote(MIDI_UNITY_NOTE_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_SAMPLER__MIDI_PITCH_FRACTION:
-				setMidiPitchFraction(MIDI_PITCH_FRACTION_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_SAMPLER__SMPTE_FORMAT:
-				setSmpteFormat(SMPTE_FORMAT_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_SAMPLER__SMPTE_OFFSET:
-				setSmpteOffset(SMPTE_OFFSET_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_SAMPLER__SAMPLE_LOOPS:
-				getSampleLoops().clear();
-				return;
-			case WavPackage.CHUNK_SAMPLER__SAMPLER_DATA:
-				setSamplerData(SAMPLER_DATA_EDEFAULT);
-				return;
+		case WavPackage.CHUNK_SAMPLER__MANUFACTURER:
+			setManufacturer(MANUFACTURER_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_SAMPLER__PRODUCT:
+			setProduct(PRODUCT_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_SAMPLER__SAMPLE_PERIOD:
+			setSamplePeriod(SAMPLE_PERIOD_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_SAMPLER__MIDI_UNITY_NOTE:
+			setMidiUnityNote(MIDI_UNITY_NOTE_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_SAMPLER__MIDI_PITCH_FRACTION:
+			setMidiPitchFraction(MIDI_PITCH_FRACTION_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_SAMPLER__SMPTE_FORMAT:
+			setSmpteFormat(SMPTE_FORMAT_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_SAMPLER__SMPTE_OFFSET:
+			setSmpteOffset(SMPTE_OFFSET_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_SAMPLER__SAMPLE_LOOPS:
+			getSampleLoops().clear();
+			return;
+		case WavPackage.CHUNK_SAMPLER__SAMPLER_DATA:
+			setSamplerData(SAMPLER_DATA_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -678,28 +705,39 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_SAMPLER__MANUFACTURER:
-				return MANUFACTURER_EDEFAULT == null ? manufacturer != null : !MANUFACTURER_EDEFAULT.equals(manufacturer);
-			case WavPackage.CHUNK_SAMPLER__PRODUCT:
-				return PRODUCT_EDEFAULT == null ? product != null : !PRODUCT_EDEFAULT.equals(product);
-			case WavPackage.CHUNK_SAMPLER__SAMPLE_PERIOD:
-				return SAMPLE_PERIOD_EDEFAULT == null ? samplePeriod != null : !SAMPLE_PERIOD_EDEFAULT.equals(samplePeriod);
-			case WavPackage.CHUNK_SAMPLER__MIDI_UNITY_NOTE:
-				return MIDI_UNITY_NOTE_EDEFAULT == null ? midiUnityNote != null : !MIDI_UNITY_NOTE_EDEFAULT.equals(midiUnityNote);
-			case WavPackage.CHUNK_SAMPLER__MIDI_PITCH_FRACTION:
-				return MIDI_PITCH_FRACTION_EDEFAULT == null ? midiPitchFraction != null : !MIDI_PITCH_FRACTION_EDEFAULT.equals(midiPitchFraction);
-			case WavPackage.CHUNK_SAMPLER__SMPTE_FORMAT:
-				return SMPTE_FORMAT_EDEFAULT == null ? smpteFormat != null : !SMPTE_FORMAT_EDEFAULT.equals(smpteFormat);
-			case WavPackage.CHUNK_SAMPLER__SMPTE_OFFSET:
-				return SMPTE_OFFSET_EDEFAULT == null ? smpteOffset != null : !SMPTE_OFFSET_EDEFAULT.equals(smpteOffset);
-			case WavPackage.CHUNK_SAMPLER__NUMBER_OF_SAMPLE_LOOPS:
-				return NUMBER_OF_SAMPLE_LOOPS_EDEFAULT == null ? getNumberOfSampleLoops() != null : !NUMBER_OF_SAMPLE_LOOPS_EDEFAULT.equals(getNumberOfSampleLoops());
-			case WavPackage.CHUNK_SAMPLER__SAMPLER_DATA_SIZE:
-				return SAMPLER_DATA_SIZE_EDEFAULT == null ? getSamplerDataSize() != null : !SAMPLER_DATA_SIZE_EDEFAULT.equals(getSamplerDataSize());
-			case WavPackage.CHUNK_SAMPLER__SAMPLE_LOOPS:
-				return sampleLoops != null && !sampleLoops.isEmpty();
-			case WavPackage.CHUNK_SAMPLER__SAMPLER_DATA:
-				return SAMPLER_DATA_EDEFAULT == null ? samplerData != null : !SAMPLER_DATA_EDEFAULT.equals(samplerData);
+		case WavPackage.CHUNK_SAMPLER__MANUFACTURER:
+			return MANUFACTURER_EDEFAULT == null ? manufacturer != null
+					: !MANUFACTURER_EDEFAULT.equals(manufacturer);
+		case WavPackage.CHUNK_SAMPLER__PRODUCT:
+			return PRODUCT_EDEFAULT == null ? product != null
+					: !PRODUCT_EDEFAULT.equals(product);
+		case WavPackage.CHUNK_SAMPLER__SAMPLE_PERIOD:
+			return SAMPLE_PERIOD_EDEFAULT == null ? samplePeriod != null
+					: !SAMPLE_PERIOD_EDEFAULT.equals(samplePeriod);
+		case WavPackage.CHUNK_SAMPLER__MIDI_UNITY_NOTE:
+			return MIDI_UNITY_NOTE_EDEFAULT == null ? midiUnityNote != null
+					: !MIDI_UNITY_NOTE_EDEFAULT.equals(midiUnityNote);
+		case WavPackage.CHUNK_SAMPLER__MIDI_PITCH_FRACTION:
+			return MIDI_PITCH_FRACTION_EDEFAULT == null ? midiPitchFraction != null
+					: !MIDI_PITCH_FRACTION_EDEFAULT.equals(midiPitchFraction);
+		case WavPackage.CHUNK_SAMPLER__SMPTE_FORMAT:
+			return SMPTE_FORMAT_EDEFAULT == null ? smpteFormat != null
+					: !SMPTE_FORMAT_EDEFAULT.equals(smpteFormat);
+		case WavPackage.CHUNK_SAMPLER__SMPTE_OFFSET:
+			return SMPTE_OFFSET_EDEFAULT == null ? smpteOffset != null
+					: !SMPTE_OFFSET_EDEFAULT.equals(smpteOffset);
+		case WavPackage.CHUNK_SAMPLER__NUMBER_OF_SAMPLE_LOOPS:
+			return NUMBER_OF_SAMPLE_LOOPS_EDEFAULT == null ? getNumberOfSampleLoops() != null
+					: !NUMBER_OF_SAMPLE_LOOPS_EDEFAULT
+							.equals(getNumberOfSampleLoops());
+		case WavPackage.CHUNK_SAMPLER__SAMPLER_DATA_SIZE:
+			return SAMPLER_DATA_SIZE_EDEFAULT == null ? getSamplerDataSize() != null
+					: !SAMPLER_DATA_SIZE_EDEFAULT.equals(getSamplerDataSize());
+		case WavPackage.CHUNK_SAMPLER__SAMPLE_LOOPS:
+			return sampleLoops != null && !sampleLoops.isEmpty();
+		case WavPackage.CHUNK_SAMPLER__SAMPLER_DATA:
+			return SAMPLER_DATA_EDEFAULT == null ? samplerData != null
+					: !SAMPLER_DATA_EDEFAULT.equals(samplerData);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -711,7 +749,8 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (manufacturer: ");
@@ -736,7 +775,8 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 
 	@Override
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				(int) this.getSize() + 8);
 		buf.order(ByteOrder.LITTLE_ENDIAN);
 
 		buf.putUnsignedInt(this.getChunkTypeIDValue());
@@ -749,12 +789,12 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 		buf.putUnsignedInt(this.getMidiPitchFraction());
 		buf.putUnsignedInt(this.getSmpteFormat());
 		buf.putUnsignedInt(this.getSmpteOffset());
-		
+
 		buf.putUnsignedInt(this.getNumberOfSampleLoops());
 		buf.putUnsignedInt(this.getSamplerDataSize());
 
 		// Write sampleLoops
-		for(int i=0; i<this.getNumberOfSampleLoops(); i++) {
+		for (int i = 0; i < this.getNumberOfSampleLoops(); i++) {
 			buf.putUnsignedInt(this.getSampleLoops().get(i).getCuePointID());
 			buf.putUnsignedInt(this.getSampleLoops().get(i).getType());
 			buf.putUnsignedInt(this.getSampleLoops().get(i).getStart());
@@ -762,9 +802,9 @@ public class ChunkSamplerImpl extends ChunkImpl implements ChunkSampler {
 			buf.putUnsignedInt(this.getSampleLoops().get(i).getFraction());
 			buf.putUnsignedInt(this.getSampleLoops().get(i).getPlayCount());
 		}
-		
+
 		// Write Sampler Data
-		if(this.getSamplerDataSize()>0) {
+		if (this.getSamplerDataSize() > 0) {
 			buf.putBytes(this.getSamplerData());
 		}
 

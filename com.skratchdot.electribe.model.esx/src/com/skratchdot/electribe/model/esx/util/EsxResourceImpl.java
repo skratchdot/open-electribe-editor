@@ -48,23 +48,19 @@ public class EsxResourceImpl extends ResourceImpl {
 			throws IOException {
 		IProgressMonitor monitor;
 		// Get IProgressMonitor from options, else create one
-		if(options.containsKey("IProgressMonitor")) {
+		if (options.containsKey("IProgressMonitor")) {
 			monitor = (IProgressMonitor) options.get("IProgressMonitor");
-		}
-		else {
+		} else {
 			monitor = new NullProgressMonitor();
 		}
 
 		// Setup monitor
-		monitor.beginTask("Loading ESX file...", 3 +
-			EsxUtil.NUM_PATTERNS +
-			EsxUtil.NUM_SONGS +
-			EsxUtil.NUM_SONGS + // Song Event Data
-			EsxUtil.NUM_SAMPLES +
-			EsxUtil.NUM_SLICE_DATA +
-			EsxUtil.NUM_SAMPLES
-		);
-		
+		monitor.beginTask("Loading ESX file...", 3 + EsxUtil.NUM_PATTERNS
+				+ EsxUtil.NUM_SONGS + EsxUtil.NUM_SONGS
+				+ // Song Event Data
+				EsxUtil.NUM_SAMPLES + EsxUtil.NUM_SLICE_DATA
+				+ EsxUtil.NUM_SAMPLES);
+
 		// Setup esxFileBytes
 		monitor.subTask("Getting contents...");
 		monitor.worked(1);
@@ -88,21 +84,16 @@ public class EsxResourceImpl extends ResourceImpl {
 			throws IOException {
 		IProgressMonitor monitor;
 		// Get IProgressMonitor from options, else create one
-		if(options.containsKey("IProgressMonitor")) {
+		if (options.containsKey("IProgressMonitor")) {
 			monitor = (IProgressMonitor) options.get("IProgressMonitor");
-		}
-		else {
+		} else {
 			monitor = new NullProgressMonitor();
 		}
 
 		// Setup monitor
-		monitor.beginTask("Saving ESX file...", 3 +
-			EsxUtil.NUM_PATTERNS +
-			EsxUtil.NUM_SONGS +
-			EsxUtil.NUM_SONGS + // Song Event Data
-			EsxUtil.NUM_SAMPLES_MONO +
-			EsxUtil.NUM_SAMPLES_STEREO
-		);
+		monitor.beginTask("Saving ESX file...", 3 + EsxUtil.NUM_PATTERNS
+				+ EsxUtil.NUM_SONGS + EsxUtil.NUM_SONGS + // Song Event Data
+				EsxUtil.NUM_SAMPLES_MONO + EsxUtil.NUM_SAMPLES_STEREO);
 
 		// Get our models root object (the EsxFile)
 		monitor.subTask("Getting contents...");

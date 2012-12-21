@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -39,10 +38,10 @@ import com.skratchdot.electribe.model.esx.SongEventControl;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SongEventControlItemProvider
-	extends SongEventItemProvider
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class SongEventControlItemProvider extends SongEventItemProvider
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -79,19 +78,17 @@ public class SongEventControlItemProvider
 	 * @generated
 	 */
 	protected void addOperationTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongEventControl_operationType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongEventControl_operationType_feature", "_UI_SongEventControl_type"),
-				 EsxPackage.Literals.SONG_EVENT_CONTROL__OPERATION_TYPE,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SongEventControl_operationType_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SongEventControl_operationType_feature",
+						"_UI_SongEventControl_type"),
+				EsxPackage.Literals.SONG_EVENT_CONTROL__OPERATION_TYPE, false,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -101,19 +98,18 @@ public class SongEventControlItemProvider
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongEventControl_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongEventControl_value_feature", "_UI_SongEventControl_type"),
-				 EsxPackage.Literals.SONG_EVENT_CONTROL__VALUE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_SongEventControl_value_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_SongEventControl_value_feature",
+								"_UI_SongEventControl_type"),
+						EsxPackage.Literals.SONG_EVENT_CONTROL__VALUE, true,
+						false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -123,19 +119,17 @@ public class SongEventControlItemProvider
 	 * @generated
 	 */
 	protected void addReservedBytePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongEventControl_reservedByte_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongEventControl_reservedByte_feature", "_UI_SongEventControl_type"),
-				 EsxPackage.Literals.SONG_EVENT_CONTROL__RESERVED_BYTE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SongEventControl_reservedByte_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SongEventControl_reservedByte_feature",
+						"_UI_SongEventControl_type"),
+				EsxPackage.Literals.SONG_EVENT_CONTROL__RESERVED_BYTE, true,
+				false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -145,19 +139,17 @@ public class SongEventControlItemProvider
 	 * @generated
 	 */
 	protected void addReservedShortPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SongEventControl_reservedShort_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SongEventControl_reservedShort_feature", "_UI_SongEventControl_type"),
-				 EsxPackage.Literals.SONG_EVENT_CONTROL__RESERVED_SHORT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SongEventControl_reservedShort_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SongEventControl_reservedShort_feature",
+						"_UI_SongEventControl_type"),
+				EsxPackage.Literals.SONG_EVENT_CONTROL__RESERVED_SHORT, true,
+				false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -168,7 +160,8 @@ public class SongEventControlItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SongEventControl"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/SongEventControl"));
 	}
 
 	/**
@@ -179,8 +172,9 @@ public class SongEventControlItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		SongEventControl songEventControl = (SongEventControl)object;
-		return getString("_UI_SongEventControl_type") + " " + songEventControl.getCurrentPosition();
+		SongEventControl songEventControl = (SongEventControl) object;
+		return getString("_UI_SongEventControl_type") + " "
+				+ songEventControl.getCurrentPosition();
 	}
 
 	/**
@@ -195,12 +189,13 @@ public class SongEventControlItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SongEventControl.class)) {
-			case EsxPackage.SONG_EVENT_CONTROL__OPERATION_TYPE:
-			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_BYTE:
-			case EsxPackage.SONG_EVENT_CONTROL__RESERVED_SHORT:
-			case EsxPackage.SONG_EVENT_CONTROL__VALUE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case EsxPackage.SONG_EVENT_CONTROL__OPERATION_TYPE:
+		case EsxPackage.SONG_EVENT_CONTROL__RESERVED_BYTE:
+		case EsxPackage.SONG_EVENT_CONTROL__RESERVED_SHORT:
+		case EsxPackage.SONG_EVENT_CONTROL__VALUE:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -213,7 +208,8 @@ public class SongEventControlItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

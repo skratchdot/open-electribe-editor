@@ -14,7 +14,6 @@
  */
 package com.skratchdot.riff.wav;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Sample Data8 Bit</b></em>'.

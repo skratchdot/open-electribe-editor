@@ -96,6 +96,7 @@ public class ChunkUnknownImpl extends ChunkImpl implements ChunkUnknown {
 	 * @ordered
 	 */
 	protected long wavRandomAccessFilePointer = WAV_RANDOM_ACCESS_FILE_POINTER_EDEFAULT;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -146,7 +147,7 @@ public class ChunkUnknownImpl extends ChunkImpl implements ChunkUnknown {
 	 */
 	@Override
 	public long getSize() {
-		if(this.getData()!=null) {
+		if (this.getData() != null) {
 			return this.getData().length;
 		}
 		return 0;
@@ -180,7 +181,8 @@ public class ChunkUnknownImpl extends ChunkImpl implements ChunkUnknown {
 		byte[] oldData = data;
 		data = newData;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_UNKNOWN__DATA, oldData, data));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_UNKNOWN__DATA, oldData, data));
 	}
 
 	/**
@@ -201,7 +203,9 @@ public class ChunkUnknownImpl extends ChunkImpl implements ChunkUnknown {
 		Long oldUnknownChunkTypeIdValue = unknownChunkTypeIdValue;
 		unknownChunkTypeIdValue = newUnknownChunkTypeIdValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_UNKNOWN__UNKNOWN_CHUNK_TYPE_ID_VALUE, oldUnknownChunkTypeIdValue, unknownChunkTypeIdValue));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_UNKNOWN__UNKNOWN_CHUNK_TYPE_ID_VALUE,
+					oldUnknownChunkTypeIdValue, unknownChunkTypeIdValue));
 	}
 
 	/**
@@ -222,7 +226,9 @@ public class ChunkUnknownImpl extends ChunkImpl implements ChunkUnknown {
 		long oldWavRandomAccessFilePointer = wavRandomAccessFilePointer;
 		wavRandomAccessFilePointer = newWavRandomAccessFilePointer;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavPackage.CHUNK_UNKNOWN__WAV_RANDOM_ACCESS_FILE_POINTER, oldWavRandomAccessFilePointer, wavRandomAccessFilePointer));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					WavPackage.CHUNK_UNKNOWN__WAV_RANDOM_ACCESS_FILE_POINTER,
+					oldWavRandomAccessFilePointer, wavRandomAccessFilePointer));
 	}
 
 	/**
@@ -233,12 +239,12 @@ public class ChunkUnknownImpl extends ChunkImpl implements ChunkUnknown {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WavPackage.CHUNK_UNKNOWN__DATA:
-				return getData();
-			case WavPackage.CHUNK_UNKNOWN__UNKNOWN_CHUNK_TYPE_ID_VALUE:
-				return getUnknownChunkTypeIdValue();
-			case WavPackage.CHUNK_UNKNOWN__WAV_RANDOM_ACCESS_FILE_POINTER:
-				return getWavRandomAccessFilePointer();
+		case WavPackage.CHUNK_UNKNOWN__DATA:
+			return getData();
+		case WavPackage.CHUNK_UNKNOWN__UNKNOWN_CHUNK_TYPE_ID_VALUE:
+			return getUnknownChunkTypeIdValue();
+		case WavPackage.CHUNK_UNKNOWN__WAV_RANDOM_ACCESS_FILE_POINTER:
+			return getWavRandomAccessFilePointer();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -251,15 +257,15 @@ public class ChunkUnknownImpl extends ChunkImpl implements ChunkUnknown {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WavPackage.CHUNK_UNKNOWN__DATA:
-				setData((byte[])newValue);
-				return;
-			case WavPackage.CHUNK_UNKNOWN__UNKNOWN_CHUNK_TYPE_ID_VALUE:
-				setUnknownChunkTypeIdValue((Long)newValue);
-				return;
-			case WavPackage.CHUNK_UNKNOWN__WAV_RANDOM_ACCESS_FILE_POINTER:
-				setWavRandomAccessFilePointer((Long)newValue);
-				return;
+		case WavPackage.CHUNK_UNKNOWN__DATA:
+			setData((byte[]) newValue);
+			return;
+		case WavPackage.CHUNK_UNKNOWN__UNKNOWN_CHUNK_TYPE_ID_VALUE:
+			setUnknownChunkTypeIdValue((Long) newValue);
+			return;
+		case WavPackage.CHUNK_UNKNOWN__WAV_RANDOM_ACCESS_FILE_POINTER:
+			setWavRandomAccessFilePointer((Long) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -272,15 +278,15 @@ public class ChunkUnknownImpl extends ChunkImpl implements ChunkUnknown {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_UNKNOWN__DATA:
-				setData(DATA_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_UNKNOWN__UNKNOWN_CHUNK_TYPE_ID_VALUE:
-				setUnknownChunkTypeIdValue(UNKNOWN_CHUNK_TYPE_ID_VALUE_EDEFAULT);
-				return;
-			case WavPackage.CHUNK_UNKNOWN__WAV_RANDOM_ACCESS_FILE_POINTER:
-				setWavRandomAccessFilePointer(WAV_RANDOM_ACCESS_FILE_POINTER_EDEFAULT);
-				return;
+		case WavPackage.CHUNK_UNKNOWN__DATA:
+			setData(DATA_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_UNKNOWN__UNKNOWN_CHUNK_TYPE_ID_VALUE:
+			setUnknownChunkTypeIdValue(UNKNOWN_CHUNK_TYPE_ID_VALUE_EDEFAULT);
+			return;
+		case WavPackage.CHUNK_UNKNOWN__WAV_RANDOM_ACCESS_FILE_POINTER:
+			setWavRandomAccessFilePointer(WAV_RANDOM_ACCESS_FILE_POINTER_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -293,12 +299,15 @@ public class ChunkUnknownImpl extends ChunkImpl implements ChunkUnknown {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WavPackage.CHUNK_UNKNOWN__DATA:
-				return DATA_EDEFAULT == null ? data != null : !DATA_EDEFAULT.equals(data);
-			case WavPackage.CHUNK_UNKNOWN__UNKNOWN_CHUNK_TYPE_ID_VALUE:
-				return UNKNOWN_CHUNK_TYPE_ID_VALUE_EDEFAULT == null ? unknownChunkTypeIdValue != null : !UNKNOWN_CHUNK_TYPE_ID_VALUE_EDEFAULT.equals(unknownChunkTypeIdValue);
-			case WavPackage.CHUNK_UNKNOWN__WAV_RANDOM_ACCESS_FILE_POINTER:
-				return wavRandomAccessFilePointer != WAV_RANDOM_ACCESS_FILE_POINTER_EDEFAULT;
+		case WavPackage.CHUNK_UNKNOWN__DATA:
+			return DATA_EDEFAULT == null ? data != null : !DATA_EDEFAULT
+					.equals(data);
+		case WavPackage.CHUNK_UNKNOWN__UNKNOWN_CHUNK_TYPE_ID_VALUE:
+			return UNKNOWN_CHUNK_TYPE_ID_VALUE_EDEFAULT == null ? unknownChunkTypeIdValue != null
+					: !UNKNOWN_CHUNK_TYPE_ID_VALUE_EDEFAULT
+							.equals(unknownChunkTypeIdValue);
+		case WavPackage.CHUNK_UNKNOWN__WAV_RANDOM_ACCESS_FILE_POINTER:
+			return wavRandomAccessFilePointer != WAV_RANDOM_ACCESS_FILE_POINTER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -310,7 +319,8 @@ public class ChunkUnknownImpl extends ChunkImpl implements ChunkUnknown {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (data: ");
@@ -325,15 +335,16 @@ public class ChunkUnknownImpl extends ChunkImpl implements ChunkUnknown {
 
 	@Override
 	public byte[] toByteArray() {
-		ExtendedByteBuffer buf = new ExtendedByteBuffer((int) this.getSize()+8);
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(
+				(int) this.getSize() + 8);
 		buf.order(ByteOrder.LITTLE_ENDIAN);
 
 		buf.putUnsignedInt(this.getUnknownChunkTypeIdValue());
 		buf.putUnsignedInt(this.getSize());
-		if(this.getData()!=null) {
+		if (this.getData() != null) {
 			buf.putBytes(this.getData());
 		}
-		
+
 		return buf.array();
 	}
 

@@ -11,7 +11,6 @@
  */
 package com.skratchdot.electribe.model.esx.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -43,10 +42,10 @@ import com.skratchdot.electribe.model.esx.PatternSetParameter;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PatternSetParameterItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
+public class PatternSetParameterItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		ITableItemLabelProvider, ITableItemColorProvider, IItemColorProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -81,19 +80,17 @@ public class PatternSetParameterItemProvider
 	 * @generated
 	 */
 	protected void addPositionCurrentPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PatternSetParameter_positionCurrent_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PatternSetParameter_positionCurrent_feature", "_UI_PatternSetParameter_type"),
-				 EsxPackage.Literals.PATTERN_SET_PARAMETER__POSITION_CURRENT,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PatternSetParameter_positionCurrent_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PatternSetParameter_positionCurrent_feature",
+						"_UI_PatternSetParameter_type"),
+				EsxPackage.Literals.PATTERN_SET_PARAMETER__POSITION_CURRENT,
+				false, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -103,19 +100,17 @@ public class PatternSetParameterItemProvider
 	 * @generated
 	 */
 	protected void addPatternPointerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PatternSetParameter_patternPointer_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PatternSetParameter_patternPointer_feature", "_UI_PatternSetParameter_type"),
-				 EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_POINTER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PatternSetParameter_patternPointer_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PatternSetParameter_patternPointer_feature",
+						"_UI_PatternSetParameter_type"),
+				EsxPackage.Literals.PATTERN_SET_PARAMETER__PATTERN_POINTER,
+				true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -126,7 +121,8 @@ public class PatternSetParameterItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/PatternSetParameter"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/PatternSetParameter"));
 	}
 
 	/**
@@ -137,8 +133,9 @@ public class PatternSetParameterItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		PatternSetParameter patternSetParameter = (PatternSetParameter)object;
-		return getString("_UI_PatternSetParameter_type") + " " + patternSetParameter.getPositionCurrent();
+		PatternSetParameter patternSetParameter = (PatternSetParameter) object;
+		return getString("_UI_PatternSetParameter_type") + " "
+				+ patternSetParameter.getPositionCurrent();
 	}
 
 	/* (non-Javadoc)
@@ -146,22 +143,29 @@ public class PatternSetParameterItemProvider
 	 */
 	@Override
 	public String getColumnText(Object object, int columnIndex) {
-		switch(columnIndex) {
-			// Current Position
-			case 0: return Integer.toString(((PatternSetParameter) object).getPositionCurrent()+1);
+		switch (columnIndex) {
+		// Current Position
+		case 0:
+			return Integer.toString(((PatternSetParameter) object)
+					.getPositionCurrent() + 1);
 			// Pattern Number
-			case 1: {
-				if(((PatternSetParameter) object).eResource()!=null) {
-					Resource resource = (Resource) ((PatternSetParameter) object).eResource();
-					Object rootObject = resource.getContents().get(0);
-					if(rootObject instanceof EsxFile) {
-						try {
-							return ((EsxFile) rootObject).getPatternFromPointer(((PatternSetParameter) object).getPatternPointer()).getLabel();
-						} catch(Exception e) {}
+		case 1: {
+			if (((PatternSetParameter) object).eResource() != null) {
+				Resource resource = (Resource) ((PatternSetParameter) object)
+						.eResource();
+				Object rootObject = resource.getContents().get(0);
+				if (rootObject instanceof EsxFile) {
+					try {
+						return ((EsxFile) rootObject).getPatternFromPointer(
+								((PatternSetParameter) object)
+										.getPatternPointer()).getLabel();
+					} catch (Exception e) {
 					}
 				}
 			}
-			default: return getText(object);
+		}
+		default:
+			return getText(object);
 		}
 	}
 
@@ -177,10 +181,11 @@ public class PatternSetParameterItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(PatternSetParameter.class)) {
-			case EsxPackage.PATTERN_SET_PARAMETER__POSITION_CURRENT:
-			case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_POINTER:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case EsxPackage.PATTERN_SET_PARAMETER__POSITION_CURRENT:
+		case EsxPackage.PATTERN_SET_PARAMETER__PATTERN_POINTER:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -193,7 +198,8 @@ public class PatternSetParameterItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

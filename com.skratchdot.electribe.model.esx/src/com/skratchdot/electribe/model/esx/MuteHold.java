@@ -83,11 +83,8 @@ public enum MuteHold implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final MuteHold[] VALUES_ARRAY =
-		new MuteHold[] {
-			MUTE_HOLD_OFF,
-			MUTE_HOLD_ON,
-		};
+	private static final MuteHold[] VALUES_ARRAY = new MuteHold[] {
+			MUTE_HOLD_OFF, MUTE_HOLD_ON, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Mute Hold</b></em>' enumerators.
@@ -95,7 +92,8 @@ public enum MuteHold implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<MuteHold> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<MuteHold> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Mute Hold</b></em>' literal with the specified literal value.
@@ -137,8 +135,10 @@ public enum MuteHold implements Enumerator {
 	 */
 	public static MuteHold get(int value) {
 		switch (value) {
-			case MUTE_HOLD_OFF_VALUE: return MUTE_HOLD_OFF;
-			case MUTE_HOLD_ON_VALUE: return MUTE_HOLD_ON;
+		case MUTE_HOLD_OFF_VALUE:
+			return MUTE_HOLD_OFF;
+		case MUTE_HOLD_ON_VALUE:
+			return MUTE_HOLD_ON;
 		}
 		return null;
 	}
@@ -182,7 +182,7 @@ public enum MuteHold implements Enumerator {
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
@@ -191,7 +191,7 @@ public enum MuteHold implements Enumerator {
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
@@ -200,7 +200,7 @@ public enum MuteHold implements Enumerator {
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -213,5 +213,5 @@ public enum MuteHold implements Enumerator {
 	public String toString() {
 		return literal;
 	}
-	
+
 } //MuteHold

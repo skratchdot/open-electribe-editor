@@ -34,7 +34,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * @generated
  */
-public class SequenceDataNoteImpl extends EObjectImpl implements SequenceDataNote {
+public class SequenceDataNoteImpl extends EObjectImpl implements
+		SequenceDataNote {
 	/**
 	 * The default value of the '{@link #getSequenceDataNote() <em>Sequence Data Note</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -92,7 +93,9 @@ public class SequenceDataNoteImpl extends EObjectImpl implements SequenceDataNot
 		byte[] oldSequenceDataNote = sequenceDataNote;
 		sequenceDataNote = newSequenceDataNote;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsxPackage.SEQUENCE_DATA_NOTE__SEQUENCE_DATA_NOTE, oldSequenceDataNote, sequenceDataNote));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EsxPackage.SEQUENCE_DATA_NOTE__SEQUENCE_DATA_NOTE,
+					oldSequenceDataNote, sequenceDataNote));
 	}
 
 	/**
@@ -103,8 +106,8 @@ public class SequenceDataNoteImpl extends EObjectImpl implements SequenceDataNot
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsxPackage.SEQUENCE_DATA_NOTE__SEQUENCE_DATA_NOTE:
-				return getSequenceDataNote();
+		case EsxPackage.SEQUENCE_DATA_NOTE__SEQUENCE_DATA_NOTE:
+			return getSequenceDataNote();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -117,9 +120,9 @@ public class SequenceDataNoteImpl extends EObjectImpl implements SequenceDataNot
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsxPackage.SEQUENCE_DATA_NOTE__SEQUENCE_DATA_NOTE:
-				setSequenceDataNote((byte[])newValue);
-				return;
+		case EsxPackage.SEQUENCE_DATA_NOTE__SEQUENCE_DATA_NOTE:
+			setSequenceDataNote((byte[]) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -132,9 +135,9 @@ public class SequenceDataNoteImpl extends EObjectImpl implements SequenceDataNot
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SEQUENCE_DATA_NOTE__SEQUENCE_DATA_NOTE:
-				setSequenceDataNote(SEQUENCE_DATA_NOTE_EDEFAULT);
-				return;
+		case EsxPackage.SEQUENCE_DATA_NOTE__SEQUENCE_DATA_NOTE:
+			setSequenceDataNote(SEQUENCE_DATA_NOTE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -147,8 +150,9 @@ public class SequenceDataNoteImpl extends EObjectImpl implements SequenceDataNot
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsxPackage.SEQUENCE_DATA_NOTE__SEQUENCE_DATA_NOTE:
-				return SEQUENCE_DATA_NOTE_EDEFAULT == null ? sequenceDataNote != null : !SEQUENCE_DATA_NOTE_EDEFAULT.equals(sequenceDataNote);
+		case EsxPackage.SEQUENCE_DATA_NOTE__SEQUENCE_DATA_NOTE:
+			return SEQUENCE_DATA_NOTE_EDEFAULT == null ? sequenceDataNote != null
+					: !SEQUENCE_DATA_NOTE_EDEFAULT.equals(sequenceDataNote);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -160,7 +164,8 @@ public class SequenceDataNoteImpl extends EObjectImpl implements SequenceDataNot
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (sequenceDataNote: ");
