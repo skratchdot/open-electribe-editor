@@ -974,22 +974,6 @@ public interface Sample extends EObject {
 	void toRIFFWaveFile(File file) throws IOException;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model dataType="com.skratchdot.electribe.model.esx.RIFFWave"
-	 * @generated
-	 */
-	RIFFWave toRIFFWaveMono();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model dataType="com.skratchdot.electribe.model.esx.RIFFWave"
-	 * @generated
-	 */
-	RIFFWave toRIFFWaveStereo();
-
-	/**
 	 * Returns the value of the '<em><b>Loop</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>

@@ -54,8 +54,6 @@ import junit.textui.TestRunner;
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#toSliceByteArray() <em>To Slice Byte Array</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#toRIFFWave() <em>To RIFF Wave</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#toRIFFWaveFile(java.io.File) <em>To RIFF Wave File</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Sample#toRIFFWaveMono() <em>To RIFF Wave Mono</em>}</li>
- *   <li>{@link com.skratchdot.electribe.model.esx.Sample#toRIFFWaveStereo() <em>To RIFF Wave Stereo</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -399,32 +397,6 @@ public class SampleTest extends TestCase {
 	 * @generated
 	 */
 	public void testToRIFFWaveFile__File() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#toRIFFWaveMono() <em>To RIFF Wave Mono</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.Sample#toRIFFWaveMono()
-	 * @generated
-	 */
-	public void testToRIFFWaveMono() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#toRIFFWaveStereo() <em>To RIFF Wave Stereo</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.skratchdot.electribe.model.esx.Sample#toRIFFWaveStereo()
-	 * @generated
-	 */
-	public void testToRIFFWaveStereo() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

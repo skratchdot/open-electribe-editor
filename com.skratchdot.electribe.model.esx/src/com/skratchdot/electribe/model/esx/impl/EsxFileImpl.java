@@ -1120,7 +1120,7 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 			buf.putBytes(stereo.toHeaderStereoByteArray());
 
 			// Write Sample Data
-			if(!stereo.isEmpty() && stereo.getNumberOfSampleFrames()>0) {
+			if(!stereo.isEmpty() && stereo.getNumberOfSampleFrames() > 0) {
 				buf.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel1Start());
 				buf.putBytes(stereo.toOffsetChannelByteArray(AudioChannelType.STEREO_1));
 				buf.position(EsxUtil.ADDR_SAMPLE_DATA + stereo.getOffsetChannel2Start());

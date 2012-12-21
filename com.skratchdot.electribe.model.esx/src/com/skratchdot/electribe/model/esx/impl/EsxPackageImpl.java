@@ -4119,10 +4119,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEParameter(op, this.getFile(), "file", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getIOException());
 
-		addEOperation(sampleEClass, this.getRIFFWave(), "toRIFFWaveMono", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(sampleEClass, this.getRIFFWave(), "toRIFFWaveStereo", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(sampleTuneEClass, SampleTune.class, "SampleTune", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSampleTune_Value(), ecorePackage.getEFloat(), "value", null, 0, 1, SampleTune.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

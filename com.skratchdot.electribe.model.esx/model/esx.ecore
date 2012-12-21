@@ -354,8 +354,6 @@
     <eOperations name="toRIFFWaveFile" eExceptions="#//IOException">
       <eParameters name="file" eType="#//File"/>
     </eOperations>
-    <eOperations name="toRIFFWaveMono" eType="#//RIFFWave"/>
-    <eOperations name="toRIFFWaveStereo" eType="#//RIFFWave"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="offsetChannel1Start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="offsetChannel1End" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>

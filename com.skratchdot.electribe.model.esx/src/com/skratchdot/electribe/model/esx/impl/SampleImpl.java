@@ -2067,11 +2067,23 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	 * @generated NOT
 	 */
 	public byte[] toOffsetChannelByteArray(AudioChannelType audioChannelType) {
-		byte[] audioData = this.getAudioDataChannelBoth();
-		ExtendedByteBuffer buf = new ExtendedByteBuffer(audioData.length+18);
+		byte[] audioData;
+		switch (audioChannelType) {
+		case STEREO_1:
+			audioData = this.getAudioDataChannel1();
+			break;
+		case STEREO_2:
+			audioData = this.getAudioDataChannel2();
+			break;
+		default:
+			audioData = this.getAudioDataChannelBoth();
+			break;
+		}
+
+		ExtendedByteBuffer buf = new ExtendedByteBuffer(audioData.length + 18);
 		buf.putInt(0x80007FFF);		
 		// Stereo Channel 2
-		if(audioChannelType==AudioChannelType.STEREO_2) {
+		if(audioChannelType == AudioChannelType.STEREO_2) {
 			buf.putInt(this.getOffsetChannel2Start());
 			buf.putInt(this.getOffsetChannel2End());
 		}
@@ -2172,12 +2184,75 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	 * @generated NOT
 	 */
 	public RIFFWave toRIFFWave() {
-		if(this.isStereoCurrent()) {
-			return this.toRIFFWaveStereo();
+		// Do nothing if this is an empty sample
+		if(this.isEmpty()) {
+			return null;
 		}
-		else {
-			return this.toRIFFWaveMono();
+
+		RIFFWave riffWave = WavFactory.eINSTANCE.createRIFFWave();
+
+		// format chunk
+		ChunkFormat chunkFormat = WavFactory.eINSTANCE.createChunkFormat();
+		chunkFormat.setCompressionCode(CompressionCode.COMPRESSION_CODE_1);
+		chunkFormat.setCompressionCodeValue(CompressionCode.COMPRESSION_CODE_1_VALUE);
+		chunkFormat.setNumberOfChannels(this.isStereoCurrent() ? 2 : 1);
+		chunkFormat.setSampleRate((long)this.getSampleRate());
+		chunkFormat.setAverageBytesPerSecond(chunkFormat.getSampleRate() * chunkFormat.getNumberOfChannels() * 2);
+		chunkFormat.setBlockAlign(chunkFormat.getNumberOfChannels() * 2);
+		chunkFormat.setSignificantBitsPerSample(16);
+		riffWave.getChunks().add(chunkFormat);
+
+		// data chunk
+		ChunkData chunkData = WavFactory.eINSTANCE.createChunkData();
+		try {
+			if (this.isStereoCurrent()) {
+				byte[] left = this.getAudioDataChannel1();
+				byte[] right = this.getAudioDataChannel2();
+				byte[] both = new byte[left.length + right.length];
+				for (int i = 0, j = 0; i < both.length && j < left.length; i = i + 4, j = j + 2) {
+					both[i] = left[j + 1];
+					both[i + 1] = left[j];
+					both[i + 2] = right[j + 1];
+					both[i + 3] = right[j];
+				}
+				chunkData.setSampleDataOriginal(both);
+			} else {
+				byte[] both = this.getAudioDataChannelBoth();
+				byte[] sampleData = new byte[both.length];
+				for (int i = 0; i < sampleData.length; i = i + 2) {
+					sampleData[i] = both[i + 1];
+					sampleData[i + 1] = both[i];
+				}
+				chunkData.setSampleDataOriginal(sampleData);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		riffWave.getChunks().add(chunkData);
+
+		// sampler chunk
+		if(this.isLoop()) {
+			ChunkSampler chunkSampler = WavFactory.eINSTANCE.createChunkSampler();
+			chunkSampler.setManufacturer((long)0x42);
+			chunkSampler.setProduct((long)0x71);
+			chunkSampler.setSamplePeriod((long)1000000000/this.getSampleRate());
+			chunkSampler.setMidiUnityNote((long)0x3C);
+			chunkSampler.setMidiPitchFraction((long)0);
+			chunkSampler.setSmpteFormat((long)0);
+			chunkSampler.setSmpteOffset((long)0);
+
+			SampleLoop sampleLoop = WavFactory.eINSTANCE.createSampleLoop();
+			sampleLoop.setCuePointID((long)0);
+			sampleLoop.setType((long)0);
+			sampleLoop.setStart((long)this.getLoopStart());
+			sampleLoop.setEnd((long)this.getEnd());
+			sampleLoop.setFraction((long)0);
+			sampleLoop.setPlayCount((long)0);
+			chunkSampler.getSampleLoops().add(sampleLoop);
+
+			riffWave.getChunks().add(chunkSampler);
+		}
+		return riffWave;
 	}
 
 	/**
@@ -2195,128 +2270,6 @@ public class SampleImpl extends EObjectImpl implements Sample {
 			e.printStackTrace();
 			throw new IOException(e.getMessage());
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public RIFFWave toRIFFWaveMono() {
-		if(this.isEmpty()) return null; // Do nothing if this is an empty sample
-
-		RIFFWave riffWave = WavFactory.eINSTANCE.createRIFFWave();
-
-		// format chunk
-		ChunkFormat chunkFormat = WavFactory.eINSTANCE.createChunkFormat();
-		chunkFormat.setCompressionCode(CompressionCode.COMPRESSION_CODE_1);
-		chunkFormat.setCompressionCodeValue(CompressionCode.COMPRESSION_CODE_1_VALUE);
-		chunkFormat.setNumberOfChannels(1);
-		chunkFormat.setSampleRate((long)this.getSampleRate());
-		chunkFormat.setAverageBytesPerSecond(chunkFormat.getSampleRate()*chunkFormat.getNumberOfChannels()*2);
-		chunkFormat.setBlockAlign(chunkFormat.getNumberOfChannels()*2);
-		chunkFormat.setSignificantBitsPerSample(16);
-		riffWave.getChunks().add(chunkFormat);
-
-		// data chunk
-		ChunkData chunkData = WavFactory.eINSTANCE.createChunkData();
-		byte[] sampleData = new byte[this.getAudioDataChannel1().length];
-		try {
-			for (int i = 0; i<sampleData.length; i = i + 2) {
-				sampleData[i] = this.getAudioDataChannel1()[i + 1];
-				sampleData[i + 1] = this.getAudioDataChannel1()[i];
-			}
-		} catch(Exception e) {}
-		chunkData.setSampleDataOriginal(sampleData);
-		riffWave.getChunks().add(chunkData);
-
-		// sampler chunk
-		if(this.isLoop()) {
-			ChunkSampler chunkSampler = WavFactory.eINSTANCE.createChunkSampler();
-			chunkSampler.setManufacturer((long)0x42);
-			chunkSampler.setProduct((long)0x71);
-			chunkSampler.setSamplePeriod((long)1000000000/this.getSampleRate());
-			chunkSampler.setMidiUnityNote((long)0x3C);
-			chunkSampler.setMidiPitchFraction((long)0);
-			chunkSampler.setSmpteFormat((long)0);
-			chunkSampler.setSmpteOffset((long)0);
-
-			SampleLoop sampleLoop = WavFactory.eINSTANCE.createSampleLoop();
-			sampleLoop.setCuePointID((long)0);
-			sampleLoop.setType((long)0);
-			sampleLoop.setStart((long)this.getLoopStart());
-			sampleLoop.setEnd((long)this.getEnd());
-			sampleLoop.setFraction((long)0);
-			sampleLoop.setPlayCount((long)0);
-			chunkSampler.getSampleLoops().add(sampleLoop);
-
-			riffWave.getChunks().add(chunkSampler);
-		}
-
-		return riffWave;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public RIFFWave toRIFFWaveStereo() {
-		if(this.isEmpty()) return null; // Do nothing if this is an empty sample
-
-		RIFFWave riffWave = WavFactory.eINSTANCE.createRIFFWave();
-
-		// format chunk
-		ChunkFormat chunkFormat = WavFactory.eINSTANCE.createChunkFormat();
-		chunkFormat.setCompressionCode(CompressionCode.COMPRESSION_CODE_1);
-		chunkFormat.setCompressionCodeValue(CompressionCode.COMPRESSION_CODE_1_VALUE);
-		chunkFormat.setNumberOfChannels(2);
-		chunkFormat.setSampleRate((long)this.getSampleRate());
-		chunkFormat.setAverageBytesPerSecond(chunkFormat.getSampleRate()*chunkFormat.getNumberOfChannels()*2);
-		chunkFormat.setBlockAlign(chunkFormat.getNumberOfChannels()*2);
-		chunkFormat.setSignificantBitsPerSample(16);
-		riffWave.getChunks().add(chunkFormat);
-
-		// data chunk
-		ChunkData chunkData = WavFactory.eINSTANCE.createChunkData();
-		byte[] left = this.getAudioDataChannel1();
-		byte[] right = this.getAudioDataChannel2();
-		byte[] both = new byte[left.length + right.length];
-		try {
-			for (int i = 0, j = 0; i<both.length && j<left.length; i = i + 4, j = j+2) {
-				both[i] = left[j + 1];
-				both[i + 1] = left[j];
-				both[i + 2] = right[j + 1];
-				both[i + 3] = right[j];
-			}
-		} catch(Exception e) {}
-		chunkData.setSampleDataOriginal(both);
-		riffWave.getChunks().add(chunkData);
-
-		// sampler chunk
-		if(this.isLoop()) {
-			ChunkSampler chunkSampler = WavFactory.eINSTANCE.createChunkSampler();
-			chunkSampler.setManufacturer((long)0x42);
-			chunkSampler.setProduct((long)0x71);
-			chunkSampler.setSamplePeriod((long)1000000000/this.getSampleRate());
-			chunkSampler.setMidiUnityNote((long)0x3C);
-			chunkSampler.setMidiPitchFraction((long)0);
-			chunkSampler.setSmpteFormat((long)0);
-			chunkSampler.setSmpteOffset((long)0);
-
-			SampleLoop sampleLoop = WavFactory.eINSTANCE.createSampleLoop();
-			sampleLoop.setCuePointID((long)0);
-			sampleLoop.setType((long)0);
-			sampleLoop.setStart((long)this.getLoopStart());
-			sampleLoop.setEnd((long)this.getEnd());
-			sampleLoop.setFraction((long)0);
-			sampleLoop.setPlayCount((long)0);
-			chunkSampler.getSampleLoops().add(sampleLoop);
-
-			riffWave.getChunks().add(chunkSampler);
-		}
-
-		return riffWave;
 	}
 
 	/**
