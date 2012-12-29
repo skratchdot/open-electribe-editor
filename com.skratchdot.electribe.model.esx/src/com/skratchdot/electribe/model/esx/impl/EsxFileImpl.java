@@ -11,6 +11,7 @@
  */
 package com.skratchdot.electribe.model.esx.impl;
 
+import java.text.DecimalFormat;
 import java.util.Collection;
 import java.util.Map;
 
@@ -26,9 +27,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import com.skratchdot.electribe.model.esx.AudioChannelType;
@@ -1269,16 +1268,15 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (this.getMemFreeInBytes() < 0) {
 			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-						EsxValidator.DIAGNOSTIC_SOURCE,
-						EsxValidator.ESX_FILE__VALID_MEM_FREE_IN_BYTES,
-						EcorePlugin.INSTANCE.getString(
-								"_UI_GenericInvariant_diagnostic",
-								new Object[] {
-										"validMemFreeInBytes",
-										EObjectValidator.getObjectLabel(this,
-												context) }),
-						new Object[] { this }));
+				String msg = "Too much sample space is being used. You need"
+						+ " to free up "
+						+ new DecimalFormat("#.##").format(0 - this.getMemFreeInSeconds())
+						+ " seconds of sample space before saving.";
+				BasicDiagnostic diagnostic = new BasicDiagnostic(
+						Diagnostic.ERROR, null,
+						EsxValidator.ESX_FILE__VALID_MEM_FREE_IN_BYTES, msg,
+						new Object[] { this });
+				diagnostics.add(diagnostic);
 			}
 			return false;
 		}

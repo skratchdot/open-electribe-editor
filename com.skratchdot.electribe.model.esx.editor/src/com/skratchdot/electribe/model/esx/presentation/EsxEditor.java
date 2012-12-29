@@ -32,14 +32,16 @@ import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.ui.URIEditorInput;
-import org.eclipse.emf.common.ui.editor.ProblemEditorPart;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -439,7 +441,7 @@ public class EsxEditor extends MultiPageEditorPart implements
 	 * Updates the problems indication with the information described in the specified diagnostic.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void updateProblemIndication() {
 		if (updateProblemIndication) {
@@ -454,19 +456,21 @@ public class EsxEditor extends MultiPageEditorPart implements
 
 			int lastEditorPage = getPageCount() - 1;
 			if (lastEditorPage >= 0
-					&& getEditor(lastEditorPage) instanceof ProblemEditorPart) {
-				((ProblemEditorPart) getEditor(lastEditorPage))
+					&& getEditor(lastEditorPage) instanceof EsxEditorPartProblems) {
+				((EsxEditorPartProblems) getEditor(lastEditorPage))
 						.setDiagnostic(diagnostic);
 				if (diagnostic.getSeverity() != Diagnostic.OK) {
 					setActivePage(lastEditorPage);
 				}
 			} else if (diagnostic.getSeverity() != Diagnostic.OK) {
-				ProblemEditorPart problemEditorPart = new ProblemEditorPart();
-				problemEditorPart.setDiagnostic(diagnostic);
+				EsxEditorPartProblems esxEditorPartProblems = new EsxEditorPartProblems(
+						this);
+				esxEditorPartProblems.setDiagnostic(diagnostic);
 				try {
-					addPage(++lastEditorPage, problemEditorPart,
+					addPage(++lastEditorPage, esxEditorPartProblems,
 							getEditorInput());
-					setPageText(lastEditorPage, problemEditorPart.getPartName());
+					setPageText(lastEditorPage,
+							esxEditorPartProblems.getPartName());
 					setActivePage(lastEditorPage);
 					showTabs();
 				} catch (PartInitException exception) {
@@ -1175,9 +1179,17 @@ public class EsxEditor extends MultiPageEditorPart implements
 							editingDomain.getCommandStack().execute(cmd);
 						}
 
+						// Issue #21: Can't Save and problems to import Patterns
+						EObject eObject = resource.getContents().get(0);
+						Diagnostic diagnostic = new BasicDiagnostic(
+								EObjectValidator.DIAGNOSTIC_SOURCE, 0,
+								getString("_UI_DiagnosticRoot_diagnostic",
+										resource.getURI().toFileString()),
+								new Object[] { eObject });
+						Diagnostician.INSTANCE.validate(eObject,
+								(DiagnosticChain) diagnostic);
+
 						// Only attempt save if resource is valid
-						Diagnostic diagnostic = Diagnostician.INSTANCE
-								.validate(resource.getContents().get(0));
 						if (diagnostic.getSeverity() == Diagnostic.ERROR
 								|| diagnostic.getSeverity() == Diagnostic.WARNING) {
 							resourceToDiagnosticMap.put(resource, diagnostic);
