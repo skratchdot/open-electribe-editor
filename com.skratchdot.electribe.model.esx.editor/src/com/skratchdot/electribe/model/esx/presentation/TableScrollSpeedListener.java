@@ -17,6 +17,7 @@ import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 
@@ -71,8 +72,12 @@ public class TableScrollSpeedListener implements Listener {
 	public void handleEvent(Event event) {
 		switch (event.type) {
 		case SWT.MouseDown:
-			tracking = true;
-			display.timerExec(0, heartbeat);
+			// Issue #12. Auto scroll when using context menu.
+			Menu menu = table.getMenu();
+			if (menu != null && !menu.isVisible()) {
+				tracking = true;
+				display.timerExec(0, heartbeat);
+			}
 			break;
 		case SWT.MouseUp:
 		case SWT.MouseExit:
