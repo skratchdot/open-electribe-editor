@@ -676,27 +676,29 @@
          </separator>
          <menu
                icon="icons/full/obj16/import_wiz.gif"
-               id="import"
                label="Import">
             <command
                   commandId="com.skratchdot.electribe.model.esx.editor.commands.importAudioFiles"
+                  id="importAudioFiles"
                   style="push">
             </command>
             <command
                   commandId="com.skratchdot.electribe.model.esx.editor.commands.importPatterns"
+                  id="importPatterns"
                   style="push">
             </command>
          </menu>
          <menu
                icon="icons/full/obj16/export_wiz.gif"
-               id="export"
                label="Export">
             <command
                   commandId="com.skratchdot.electribe.model.esx.editor.commands.exportAllAudioFiles"
+                  id="exportAllAudioFiles"
                   style="push">
             </command>
             <command
                   commandId="com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles"
+                  id="exportSelectedAudioFiles"
                   style="push">
             </command>
          </menu>
@@ -733,27 +735,29 @@
          </separator>
          <menu
                icon="icons/full/obj16/import_wiz.gif"
-               id="import"
                label="Import">
             <command
                   commandId="com.skratchdot.electribe.model.esx.editor.commands.importAudioFiles"
+                  id="importAudioFiles"
                   style="push">
             </command>
             <command
                   commandId="com.skratchdot.electribe.model.esx.editor.commands.importPatterns"
+                  id="importPatterns"
                   style="push">
             </command>
          </menu>
          <menu
                icon="icons/full/obj16/export_wiz.gif"
-               id="export"
                label="Export">
             <command
                   commandId="com.skratchdot.electribe.model.esx.editor.commands.exportAllAudioFiles"
+                  id="exportAllAudioFiles"
                   style="push">
             </command>
             <command
                   commandId="com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles"
+                  id="exportSelectedAudioFiles"
                   style="push">
             </command>
          </menu>
