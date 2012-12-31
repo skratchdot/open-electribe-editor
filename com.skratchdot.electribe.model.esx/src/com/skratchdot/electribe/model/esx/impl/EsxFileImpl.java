@@ -1270,7 +1270,8 @@ public class EsxFileImpl extends EObjectImpl implements EsxFile {
 			if (diagnostics != null) {
 				String msg = "Too much sample space is being used. You need"
 						+ " to free up "
-						+ new DecimalFormat("#.##").format(0 - this.getMemFreeInSeconds())
+						+ new DecimalFormat("#.##").format(0 - this
+								.getMemFreeInSeconds())
 						+ " seconds of sample space before saving.";
 				BasicDiagnostic diagnostic = new BasicDiagnostic(
 						Diagnostic.ERROR, null,
