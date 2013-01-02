@@ -1573,7 +1573,7 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	 */
 	public LoopType getLoopType() {
 		if (!this.isLoop()) {
-			return LoopType.NO;			
+			return LoopType.NO;
 		} else if (this.isStereoCurrent()) {
 			return LoopType.IF_MONO;
 		} else {

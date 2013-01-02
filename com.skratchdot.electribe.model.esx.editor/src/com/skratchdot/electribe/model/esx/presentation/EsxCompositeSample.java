@@ -310,7 +310,7 @@ public class EsxCompositeSample extends EsxComposite {
 		this.textIsSlice.setText(getMultiString(this.samples,
 				EsxPackage.Literals.SAMPLE__SLICE, multipleValueString));
 		this.textIsLoop.setText(getMultiString(this.samples,
-				EsxPackage.Literals.SAMPLE__LOOP, multipleValueString));
+				EsxPackage.Literals.SAMPLE__LOOP_TYPE, multipleValueString));
 
 		this.textMemUsedInBytes.setText(getMultiString(this.samples,
 				EsxPackage.Literals.SAMPLE__MEM_USED_IN_BYTES,

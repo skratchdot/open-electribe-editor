@@ -551,15 +551,9 @@ public class SampleItemProvider extends ItemProviderAdapter implements
 			// StretchStep
 		case 6:
 			return ((Sample) object).getStretchStep().getLiteral();
-			// IsLoop
+			// IsLoop?
 		case 7:
-			if (((Sample) object).isStereoCurrent()) {
-				return ((Sample) object).isLoop() ? getString("_UI_Display_If_Mono")
-						: getString("_UI_Display_No");
-			} else {
-				return ((Sample) object).isLoop() ? getString("_UI_Display_Yes")
-						: getString("_UI_Display_No");
-			}
+			return ((Sample) object).getLoopType().getLiteral();
 			// IsSlice?
 		case 8:
 			return ((Sample) object).isSlice() ? getString("_UI_Display_Yes")
