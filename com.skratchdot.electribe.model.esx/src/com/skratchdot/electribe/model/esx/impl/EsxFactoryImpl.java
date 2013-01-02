@@ -238,6 +238,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 			return createFxTypeFromString(eDataType, initialValue);
 		case EsxPackage.LAST_STEP:
 			return createLastStepFromString(eDataType, initialValue);
+		case EsxPackage.LOOP_TYPE:
+			return createLoopTypeFromString(eDataType, initialValue);
 		case EsxPackage.MIDI_CHANNEL:
 			return createMidiChannelFromString(eDataType, initialValue);
 		case EsxPackage.MIDI_CHANNEL_TYPE_NAME:
@@ -350,6 +352,8 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 			return convertFxTypeToString(eDataType, instanceValue);
 		case EsxPackage.LAST_STEP:
 			return convertLastStepToString(eDataType, instanceValue);
+		case EsxPackage.LOOP_TYPE:
+			return convertLoopTypeToString(eDataType, instanceValue);
 		case EsxPackage.MIDI_CHANNEL:
 			return convertMidiChannelToString(eDataType, instanceValue);
 		case EsxPackage.MIDI_CHANNEL_TYPE_NAME:
@@ -1797,6 +1801,49 @@ public class EsxFactoryImpl extends EFactoryImpl implements EsxFactory {
 	 * @generated
 	 */
 	public String convertLastStepToString(EDataType eDataType,
+			Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LoopType createLoopType(String literal) {
+		LoopType result = LoopType.get(literal);
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + literal
+					+ "' is not a valid enumerator of '"
+					+ EsxPackage.Literals.LOOP_TYPE.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LoopType createLoopTypeFromString(EDataType eDataType,
+			String initialValue) {
+		return createLoopType(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertLoopType(LoopType instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertLoopTypeToString(EDataType eDataType,
 			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}

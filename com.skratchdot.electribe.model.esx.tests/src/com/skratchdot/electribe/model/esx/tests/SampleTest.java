@@ -25,6 +25,7 @@ import junit.textui.TestRunner;
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getAudioDataChannelBoth() <em>Audio Data Channel Both</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getAudioDataLoopStart() <em>Audio Data Loop Start</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isLoop() <em>Loop</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getLoopType() <em>Loop Type</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isSlice() <em>Slice</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isStereoCurrent() <em>Stereo Current</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getLabel() <em>Label</em>}</li>
@@ -408,6 +409,19 @@ public class SampleTest extends TestCase {
 	 * @generated
 	 */
 	public void testIsLoop() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.skratchdot.electribe.model.esx.Sample#getLoopType() <em>Loop Type</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.Sample#getLoopType()
+	 * @generated
+	 */
+	public void testGetLoopType() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

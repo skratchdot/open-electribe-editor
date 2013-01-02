@@ -44,6 +44,7 @@ import com.skratchdot.electribe.model.esx.FxSend;
 import com.skratchdot.electribe.model.esx.FxType;
 import com.skratchdot.electribe.model.esx.GlobalParameters;
 import com.skratchdot.electribe.model.esx.LastStep;
+import com.skratchdot.electribe.model.esx.LoopType;
 import com.skratchdot.electribe.model.esx.MidiChannel;
 import com.skratchdot.electribe.model.esx.MidiChannelType;
 import com.skratchdot.electribe.model.esx.MidiChannelTypeName;
@@ -549,6 +550,13 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	private EEnum lastStepEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum loopTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2173,15 +2181,6 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_MemUsedInBytes() {
-		return (EAttribute) sampleEClass.getEStructuralFeatures().get(31);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSample_Empty() {
 		return (EAttribute) sampleEClass.getEStructuralFeatures().get(32);
 	}
 
@@ -2190,7 +2189,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_PartCount() {
+	public EAttribute getSample_Empty() {
 		return (EAttribute) sampleEClass.getEStructuralFeatures().get(33);
 	}
 
@@ -2199,7 +2198,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_PatternCount() {
+	public EAttribute getSample_PartCount() {
 		return (EAttribute) sampleEClass.getEStructuralFeatures().get(34);
 	}
 
@@ -2208,8 +2207,17 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSample_PatternCount() {
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(35);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getSample_SampleInPatternInfoList() {
-		return (EReference) sampleEClass.getEStructuralFeatures().get(35);
+		return (EReference) sampleEClass.getEStructuralFeatures().get(36);
 	}
 
 	/**
@@ -2443,7 +2451,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_SampleNumberOriginal() {
-		return (EAttribute) sampleEClass.getEStructuralFeatures().get(36);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(37);
 	}
 
 	/**
@@ -2452,7 +2460,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * @generated
 	 */
 	public EAttribute getSample_SampleNumberCurrent() {
-		return (EAttribute) sampleEClass.getEStructuralFeatures().get(37);
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(38);
 	}
 
 	/**
@@ -2518,7 +2526,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_Slice() {
+	public EAttribute getSample_LoopType() {
 		return (EAttribute) sampleEClass.getEStructuralFeatures().get(27);
 	}
 
@@ -2527,7 +2535,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_StereoOriginal() {
+	public EAttribute getSample_Slice() {
 		return (EAttribute) sampleEClass.getEStructuralFeatures().get(28);
 	}
 
@@ -2536,7 +2544,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_StereoCurrent() {
+	public EAttribute getSample_StereoOriginal() {
 		return (EAttribute) sampleEClass.getEStructuralFeatures().get(29);
 	}
 
@@ -2545,8 +2553,17 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSample_Label() {
+	public EAttribute getSample_StereoCurrent() {
 		return (EAttribute) sampleEClass.getEStructuralFeatures().get(30);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSample_Label() {
+		return (EAttribute) sampleEClass.getEStructuralFeatures().get(31);
 	}
 
 	/**
@@ -3233,6 +3250,15 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getLoopType() {
+		return loopTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getArpeggiatorScale() {
 		return arpeggiatorScaleEEnum;
 	}
@@ -3701,6 +3727,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		createEAttribute(sampleEClass, SAMPLE__AUDIO_DATA_LOOP_START);
 		createEAttribute(sampleEClass, SAMPLE__SLICE_ARRAY);
 		createEAttribute(sampleEClass, SAMPLE__LOOP);
+		createEAttribute(sampleEClass, SAMPLE__LOOP_TYPE);
 		createEAttribute(sampleEClass, SAMPLE__SLICE);
 		createEAttribute(sampleEClass, SAMPLE__STEREO_ORIGINAL);
 		createEAttribute(sampleEClass, SAMPLE__STEREO_CURRENT);
@@ -3809,6 +3836,7 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		fxSendEEnum = createEEnum(FX_SEND);
 		fxTypeEEnum = createEEnum(FX_TYPE);
 		lastStepEEnum = createEEnum(LAST_STEP);
+		loopTypeEEnum = createEEnum(LOOP_TYPE);
 		midiChannelEEnum = createEEnum(MIDI_CHANNEL);
 		midiChannelTypeNameEEnum = createEEnum(MIDI_CHANNEL_TYPE_NAME);
 		midiClockEEnum = createEEnum(MIDI_CLOCK);
@@ -4760,6 +4788,10 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 				null, 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE,
 				!IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED,
 				IS_ORDERED);
+		initEAttribute(getSample_LoopType(), this.getLoopType(), "loopType",
+				null, 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE,
+				!IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED,
+				IS_ORDERED);
 		initEAttribute(getSample_Slice(), ecorePackage.getEBoolean(), "slice",
 				null, 0, 1, Sample.class, IS_TRANSIENT, IS_VOLATILE,
 				!IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED,
@@ -5321,6 +5353,11 @@ public class EsxPackageImpl extends EPackageImpl implements EsxPackage {
 		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_14);
 		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_15);
 		addEEnumLiteral(lastStepEEnum, LastStep.LAST_STEP_16);
+
+		initEEnum(loopTypeEEnum, LoopType.class, "LoopType");
+		addEEnumLiteral(loopTypeEEnum, LoopType.NO);
+		addEEnumLiteral(loopTypeEEnum, LoopType.YES);
+		addEEnumLiteral(loopTypeEEnum, LoopType.IF_MONO);
 
 		initEEnum(midiChannelEEnum, MidiChannel.class, "MidiChannel");
 		addEEnumLiteral(midiChannelEEnum, MidiChannel.CHANNEL_1);

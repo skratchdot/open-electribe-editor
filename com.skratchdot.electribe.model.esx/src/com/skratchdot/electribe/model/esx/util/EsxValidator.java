@@ -315,6 +315,8 @@ public class EsxValidator extends EObjectValidator {
 			return validateFxType((FxType) value, diagnostics, context);
 		case EsxPackage.LAST_STEP:
 			return validateLastStep((LastStep) value, diagnostics, context);
+		case EsxPackage.LOOP_TYPE:
+			return validateLoopType((LoopType) value, diagnostics, context);
 		case EsxPackage.MIDI_CHANNEL:
 			return validateMidiChannel((MidiChannel) value, diagnostics,
 					context);
@@ -1097,6 +1099,16 @@ public class EsxValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateLastStep(LastStep lastStep,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateLoopType(LoopType loopType,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}

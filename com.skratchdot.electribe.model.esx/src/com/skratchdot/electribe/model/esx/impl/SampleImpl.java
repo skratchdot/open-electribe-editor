@@ -35,6 +35,7 @@ import com.skratchdot.electribe.model.esx.AudioChannelType;
 import com.skratchdot.electribe.model.esx.EsxFactory;
 import com.skratchdot.electribe.model.esx.EsxFile;
 import com.skratchdot.electribe.model.esx.EsxPackage;
+import com.skratchdot.electribe.model.esx.LoopType;
 import com.skratchdot.electribe.model.esx.PartDrum;
 import com.skratchdot.electribe.model.esx.PartKeyboard;
 import com.skratchdot.electribe.model.esx.PartStretchSlice;
@@ -91,6 +92,7 @@ import com.skratchdot.riff.wav.WavPackage;
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getAudioDataLoopStart <em>Audio Data Loop Start</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getSliceArray <em>Slice Array</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isLoop <em>Loop</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#getLoopType <em>Loop Type</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isSlice <em>Slice</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isStereoOriginal <em>Stereo Original</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.impl.SampleImpl#isStereoCurrent <em>Stereo Current</em>}</li>
@@ -607,6 +609,16 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	 * @ordered
 	 */
 	protected static final boolean LOOP_EDEFAULT = false;
+
+	/**
+	 * The default value of the '{@link #getLoopType() <em>Loop Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLoopType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final LoopType LOOP_TYPE_EDEFAULT = LoopType.NO;
 
 	/**
 	 * The default value of the '{@link #isSlice() <em>Slice</em>}' attribute.
@@ -1559,6 +1571,21 @@ public class SampleImpl extends EObjectImpl implements Sample {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	public LoopType getLoopType() {
+		if (!this.isLoop()) {
+			return LoopType.NO;			
+		} else if (this.isStereoCurrent()) {
+			return LoopType.IF_MONO;
+		} else {
+			return LoopType.YES;
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	public boolean isSlice() {
 		return (this.getSliceArray() != null && this.getSliceArray().length > 0 && (this
 				.getUnknownByteMono2() != 0x00
@@ -2420,6 +2447,8 @@ public class SampleImpl extends EObjectImpl implements Sample {
 			return getSliceArray();
 		case EsxPackage.SAMPLE__LOOP:
 			return isLoop();
+		case EsxPackage.SAMPLE__LOOP_TYPE:
+			return getLoopType();
 		case EsxPackage.SAMPLE__SLICE:
 			return isSlice();
 		case EsxPackage.SAMPLE__STEREO_ORIGINAL:
@@ -2696,6 +2725,8 @@ public class SampleImpl extends EObjectImpl implements Sample {
 					: !SLICE_ARRAY_EDEFAULT.equals(sliceArray);
 		case EsxPackage.SAMPLE__LOOP:
 			return isLoop() != LOOP_EDEFAULT;
+		case EsxPackage.SAMPLE__LOOP_TYPE:
+			return getLoopType() != LOOP_TYPE_EDEFAULT;
 		case EsxPackage.SAMPLE__SLICE:
 			return isSlice() != SLICE_EDEFAULT;
 		case EsxPackage.SAMPLE__STEREO_ORIGINAL:

@@ -795,6 +795,26 @@ public interface EsxFactory extends EFactory {
 	String convertLastStep(LastStep instanceValue);
 
 	/**
+	 * Returns an instance of data type '<em>Loop Type</em>' corresponding the given literal.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param literal a literal of the data type.
+	 * @return a new instance value of the data type.
+	 * @generated
+	 */
+	LoopType createLoopType(String literal);
+
+	/**
+	 * Returns a literal representation of an instance of data type '<em>Loop Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param instanceValue an instance value of the data type.
+	 * @return a literal representation of the instance value.
+	 * @generated
+	 */
+	String convertLoopType(LoopType instanceValue);
+
+	/**
 	 * Returns an instance of data type '<em>Arpeggiator Scale</em>' corresponding the given literal.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

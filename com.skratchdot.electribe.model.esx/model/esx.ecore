@@ -395,6 +395,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sliceArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="loop" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="loopType" eType="#//LoopType"
+        changeable="false" volatile="true" transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="slice" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         changeable="false" volatile="true" transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="stereoOriginal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -684,6 +686,11 @@
     <eLiterals name="LastStep_14" value="13" literal="14"/>
     <eLiterals name="LastStep_15" value="14" literal="15"/>
     <eLiterals name="LastStep_16" value="15" literal="16"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LoopType">
+    <eLiterals name="NO" literal="No"/>
+    <eLiterals name="YES" value="1" literal="Yes"/>
+    <eLiterals name="IF_MONO" value="2" literal="If Mono"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="MidiChannel">
     <eLiterals name="Channel_1" literal="1"/>

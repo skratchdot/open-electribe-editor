@@ -2829,13 +2829,22 @@ public interface EsxPackage extends EPackage {
 	int SAMPLE__LOOP = 26;
 
 	/**
+	 * The feature id for the '<em><b>Loop Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE__LOOP_TYPE = 27;
+
+	/**
 	 * The feature id for the '<em><b>Slice</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__SLICE = 27;
+	int SAMPLE__SLICE = 28;
 
 	/**
 	 * The feature id for the '<em><b>Stereo Original</b></em>' attribute.
@@ -2844,7 +2853,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__STEREO_ORIGINAL = 28;
+	int SAMPLE__STEREO_ORIGINAL = 29;
 
 	/**
 	 * The feature id for the '<em><b>Stereo Current</b></em>' attribute.
@@ -2853,7 +2862,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__STEREO_CURRENT = 29;
+	int SAMPLE__STEREO_CURRENT = 30;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -2862,7 +2871,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__LABEL = 30;
+	int SAMPLE__LABEL = 31;
 
 	/**
 	 * The feature id for the '<em><b>Mem Used In Bytes</b></em>' attribute.
@@ -2871,7 +2880,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__MEM_USED_IN_BYTES = 31;
+	int SAMPLE__MEM_USED_IN_BYTES = 32;
 
 	/**
 	 * The feature id for the '<em><b>Empty</b></em>' attribute.
@@ -2880,7 +2889,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__EMPTY = 32;
+	int SAMPLE__EMPTY = 33;
 
 	/**
 	 * The feature id for the '<em><b>Part Count</b></em>' attribute.
@@ -2889,7 +2898,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__PART_COUNT = 33;
+	int SAMPLE__PART_COUNT = 34;
 
 	/**
 	 * The feature id for the '<em><b>Pattern Count</b></em>' attribute.
@@ -2898,7 +2907,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__PATTERN_COUNT = 34;
+	int SAMPLE__PATTERN_COUNT = 35;
 
 	/**
 	 * The feature id for the '<em><b>Sample In Pattern Info List</b></em>' reference list.
@@ -2907,7 +2916,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__SAMPLE_IN_PATTERN_INFO_LIST = 35;
+	int SAMPLE__SAMPLE_IN_PATTERN_INFO_LIST = 36;
 
 	/**
 	 * The feature id for the '<em><b>Sample Number Original</b></em>' attribute.
@@ -2916,7 +2925,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__SAMPLE_NUMBER_ORIGINAL = 36;
+	int SAMPLE__SAMPLE_NUMBER_ORIGINAL = 37;
 
 	/**
 	 * The feature id for the '<em><b>Sample Number Current</b></em>' attribute.
@@ -2925,7 +2934,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE__SAMPLE_NUMBER_CURRENT = 37;
+	int SAMPLE__SAMPLE_NUMBER_CURRENT = 38;
 
 	/**
 	 * The number of structural features of the '<em>Sample</em>' class.
@@ -2934,7 +2943,7 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAMPLE_FEATURE_COUNT = 38;
+	int SAMPLE_FEATURE_COUNT = 39;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.impl.SampleTuneImpl <em>Sample Tune</em>}' class.
@@ -3911,7 +3920,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMidiClock()
 	 * @generated
 	 */
-	int MIDI_CLOCK = 54;
+	int MIDI_CLOCK = 55;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.MidiControlChangeAssignmentName <em>Midi Control Change Assignment Name</em>}' enum.
@@ -3921,7 +3930,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMidiControlChangeAssignmentName()
 	 * @generated
 	 */
-	int MIDI_CONTROL_CHANGE_ASSIGNMENT_NAME = 55;
+	int MIDI_CONTROL_CHANGE_ASSIGNMENT_NAME = 56;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.EnabledFlag <em>Enabled Flag</em>}' enum.
@@ -3941,7 +3950,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getPitchBendRange()
 	 * @generated
 	 */
-	int PITCH_BEND_RANGE = 66;
+	int PITCH_BEND_RANGE = 67;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.MidiChannel <em>Midi Channel</em>}' enum.
@@ -3951,7 +3960,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMidiChannel()
 	 * @generated
 	 */
-	int MIDI_CHANNEL = 52;
+	int MIDI_CHANNEL = 53;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.MidiChannelTypeName <em>Midi Channel Type Name</em>}' enum.
@@ -3961,7 +3970,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMidiChannelTypeName()
 	 * @generated
 	 */
-	int MIDI_CHANNEL_TYPE_NAME = 53;
+	int MIDI_CHANNEL_TYPE_NAME = 54;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.PlayLevel <em>Play Level</em>}' enum.
@@ -3971,7 +3980,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getPlayLevel()
 	 * @generated
 	 */
-	int PLAY_LEVEL = 67;
+	int PLAY_LEVEL = 68;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.PatternNumber <em>Pattern Number</em>}' enum.
@@ -3981,7 +3990,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getPatternNumber()
 	 * @generated
 	 */
-	int PATTERN_NUMBER = 65;
+	int PATTERN_NUMBER = 66;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.SampleNumber <em>Sample Number</em>}' enum.
@@ -3991,7 +4000,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSampleNumber()
 	 * @generated
 	 */
-	int SAMPLE_NUMBER = 71;
+	int SAMPLE_NUMBER = 72;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.SongEventPart <em>Song Event Part</em>}' enum.
@@ -4001,7 +4010,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSongEventPart()
 	 * @generated
 	 */
-	int SONG_EVENT_PART = 72;
+	int SONG_EVENT_PART = 73;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.SongNumber <em>Song Number</em>}' enum.
@@ -4011,7 +4020,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSongNumber()
 	 * @generated
 	 */
-	int SONG_NUMBER = 74;
+	int SONG_NUMBER = 75;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.SongLength <em>Song Length</em>}' enum.
@@ -4021,7 +4030,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSongLength()
 	 * @generated
 	 */
-	int SONG_LENGTH = 73;
+	int SONG_LENGTH = 74;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.TempoLock <em>Tempo Lock</em>}' enum.
@@ -4031,7 +4040,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getTempoLock()
 	 * @generated
 	 */
-	int TEMPO_LOCK = 77;
+	int TEMPO_LOCK = 78;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.MuteHold <em>Mute Hold</em>}' enum.
@@ -4041,7 +4050,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMuteHold()
 	 * @generated
 	 */
-	int MUTE_HOLD = 59;
+	int MUTE_HOLD = 60;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.NextSongNumber <em>Next Song Number</em>}' enum.
@@ -4051,7 +4060,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getNextSongNumber()
 	 * @generated
 	 */
-	int NEXT_SONG_NUMBER = 60;
+	int NEXT_SONG_NUMBER = 61;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.StretchStep <em>Stretch Step</em>}' enum.
@@ -4061,7 +4070,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getStretchStep()
 	 * @generated
 	 */
-	int STRETCH_STEP = 75;
+	int STRETCH_STEP = 76;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.Swing <em>Swing</em>}' enum.
@@ -4071,7 +4080,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getSwing()
 	 * @generated
 	 */
-	int SWING = 76;
+	int SWING = 77;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.PatternLength <em>Pattern Length</em>}' enum.
@@ -4081,7 +4090,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getPatternLength()
 	 * @generated
 	 */
-	int PATTERN_LENGTH = 64;
+	int PATTERN_LENGTH = 65;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.Beat <em>Beat</em>}' enum.
@@ -4101,7 +4110,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getRollType()
 	 * @generated
 	 */
-	int ROLL_TYPE = 70;
+	int ROLL_TYPE = 71;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.FxChain <em>Fx Chain</em>}' enum.
@@ -4122,6 +4131,16 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	int LAST_STEP = 51;
+
+	/**
+	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.LoopType <em>Loop Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.skratchdot.electribe.model.esx.LoopType
+	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getLoopType()
+	 * @generated
+	 */
+	int LOOP_TYPE = 52;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.ArpeggiatorScale <em>Arpeggiator Scale</em>}' enum.
@@ -4151,7 +4170,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getNoteNumber()
 	 * @generated
 	 */
-	int NOTE_NUMBER = 61;
+	int NOTE_NUMBER = 62;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.OperationType <em>Operation Type</em>}' enum.
@@ -4161,7 +4180,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getOperationType()
 	 * @generated
 	 */
-	int OPERATION_TYPE = 62;
+	int OPERATION_TYPE = 63;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.PartNoteNumberName <em>Part Note Number Name</em>}' enum.
@@ -4171,7 +4190,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getPartNoteNumberName()
 	 * @generated
 	 */
-	int PART_NOTE_NUMBER_NAME = 63;
+	int PART_NOTE_NUMBER_NAME = 64;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.FilterType <em>Filter Type</em>}' enum.
@@ -4221,7 +4240,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getRoll()
 	 * @generated
 	 */
-	int ROLL = 69;
+	int ROLL = 70;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.AmpEg <em>Amp Eg</em>}' enum.
@@ -4241,7 +4260,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getReverse()
 	 * @generated
 	 */
-	int REVERSE = 68;
+	int REVERSE = 69;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.ModDest <em>Mod Dest</em>}' enum.
@@ -4251,7 +4270,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getModDest()
 	 * @generated
 	 */
-	int MOD_DEST = 56;
+	int MOD_DEST = 57;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.ModType <em>Mod Type</em>}' enum.
@@ -4261,7 +4280,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getModType()
 	 * @generated
 	 */
-	int MOD_TYPE = 57;
+	int MOD_TYPE = 58;
 
 	/**
 	 * The meta object id for the '{@link com.skratchdot.electribe.model.esx.BpmSync <em>Bpm Sync</em>}' enum.
@@ -4281,7 +4300,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getMotionSequenceStatus()
 	 * @generated
 	 */
-	int MOTION_SEQUENCE_STATUS = 58;
+	int MOTION_SEQUENCE_STATUS = 59;
 
 	/**
 	 * The meta object id for the '<em>Object</em>' data type.
@@ -4291,7 +4310,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getObject()
 	 * @generated
 	 */
-	int OBJECT = 84;
+	int OBJECT = 85;
 
 	/**
 	 * The meta object id for the '<em>RIFF Wave</em>' data type.
@@ -4301,7 +4320,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getRIFFWave()
 	 * @generated
 	 */
-	int RIFF_WAVE = 85;
+	int RIFF_WAVE = 86;
 
 	/**
 	 * The meta object id for the '<em>Array List</em>' data type.
@@ -4311,7 +4330,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getArrayList()
 	 * @generated
 	 */
-	int ARRAY_LIST = 78;
+	int ARRAY_LIST = 79;
 
 	/**
 	 * The meta object id for the '<em>File</em>' data type.
@@ -4321,7 +4340,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getFile()
 	 * @generated
 	 */
-	int FILE = 79;
+	int FILE = 80;
 
 	/**
 	 * The meta object id for the '<em>Input Stream</em>' data type.
@@ -4331,7 +4350,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getInputStream()
 	 * @generated
 	 */
-	int INPUT_STREAM = 80;
+	int INPUT_STREAM = 81;
 
 	/**
 	 * The meta object id for the '<em>Index Out Of Bounds Exception</em>' data type.
@@ -4341,7 +4360,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getIndexOutOfBoundsException()
 	 * @generated
 	 */
-	int INDEX_OUT_OF_BOUNDS_EXCEPTION = 81;
+	int INDEX_OUT_OF_BOUNDS_EXCEPTION = 82;
 
 	/**
 	 * The meta object id for the '<em>IO Exception</em>' data type.
@@ -4351,7 +4370,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getIOException()
 	 * @generated
 	 */
-	int IO_EXCEPTION = 82;
+	int IO_EXCEPTION = 83;
 
 	/**
 	 * The meta object id for the '<em>IProgress Monitor</em>' data type.
@@ -4361,7 +4380,7 @@ public interface EsxPackage extends EPackage {
 	 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getIProgressMonitor()
 	 * @generated
 	 */
-	int IPROGRESS_MONITOR = 83;
+	int IPROGRESS_MONITOR = 84;
 
 	/**
 	 * Returns the meta object for class '{@link com.skratchdot.electribe.model.esx.EsxFile <em>File</em>}'.
@@ -6372,6 +6391,17 @@ public interface EsxPackage extends EPackage {
 	EAttribute getSample_Loop();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Sample#getLoopType <em>Loop Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Loop Type</em>'.
+	 * @see com.skratchdot.electribe.model.esx.Sample#getLoopType()
+	 * @see #getSample()
+	 * @generated
+	 */
+	EAttribute getSample_LoopType();
+
+	/**
 	 * Returns the meta object for the attribute '{@link com.skratchdot.electribe.model.esx.Sample#isSlice <em>Slice</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7193,6 +7223,16 @@ public interface EsxPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getLastStep();
+
+	/**
+	 * Returns the meta object for enum '{@link com.skratchdot.electribe.model.esx.LoopType <em>Loop Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Loop Type</em>'.
+	 * @see com.skratchdot.electribe.model.esx.LoopType
+	 * @generated
+	 */
+	EEnum getLoopType();
 
 	/**
 	 * Returns the meta object for enum '{@link com.skratchdot.electribe.model.esx.ArpeggiatorScale <em>Arpeggiator Scale</em>}'.
@@ -9116,6 +9156,14 @@ public interface EsxPackage extends EPackage {
 		EAttribute SAMPLE__LOOP = eINSTANCE.getSample_Loop();
 
 		/**
+		 * The meta object literal for the '<em><b>Loop Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SAMPLE__LOOP_TYPE = eINSTANCE.getSample_LoopType();
+
+		/**
 		 * The meta object literal for the '<em><b>Slice</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -9833,6 +9881,16 @@ public interface EsxPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum LAST_STEP = eINSTANCE.getLastStep();
+
+		/**
+		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.LoopType <em>Loop Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.skratchdot.electribe.model.esx.LoopType
+		 * @see com.skratchdot.electribe.model.esx.impl.EsxPackageImpl#getLoopType()
+		 * @generated
+		 */
+		EEnum LOOP_TYPE = eINSTANCE.getLoopType();
 
 		/**
 		 * The meta object literal for the '{@link com.skratchdot.electribe.model.esx.ArpeggiatorScale <em>Arpeggiator Scale</em>}' enum.

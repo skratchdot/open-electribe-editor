@@ -132,6 +132,11 @@
       <genEnumLiterals ecoreEnumLiteral="esx.ecore#//LastStep/LastStep_15"/>
       <genEnumLiterals ecoreEnumLiteral="esx.ecore#//LastStep/LastStep_16"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esx.ecore#//LoopType">
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//LoopType/NO"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//LoopType/YES"/>
+      <genEnumLiterals ecoreEnumLiteral="esx.ecore#//LoopType/IF_MONO"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esx.ecore#//MidiChannel">
       <genEnumLiterals ecoreEnumLiteral="esx.ecore#//MidiChannel/Channel_1"/>
       <genEnumLiterals ecoreEnumLiteral="esx.ecore#//MidiChannel/Channel_2"/>
@@ -2187,12 +2192,6 @@
       </genOperations>
       <genOperations ecoreOperation="esx.ecore#//Pattern/toByteArray"/>
     </genClasses>
-    <genClasses ecoreClass="esx.ecore#//SampleInPatternInfo">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SampleInPatternInfo/index"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SampleInPatternInfo/patternLabel"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SampleInPatternInfo/partCount"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SampleInPatternInfo/partList"/>
-    </genClasses>
     <genClasses ecoreClass="esx.ecore#//PatternSetParameter">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//PatternSetParameter/positionCurrent"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//PatternSetParameter/patternPointer"/>
@@ -2224,7 +2223,8 @@
       <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/audioDataChannelBoth"/>
       <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/audioDataLoopStart"/>
       <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/sliceArray"/>
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/loop"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/loop"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/loopType"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/slice"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/stereoOriginal"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//Sample/stereoCurrent"/>
@@ -2270,6 +2270,12 @@
       <genOperations ecoreOperation="esx.ecore#//Sample/toRIFFWaveFile">
         <genParameters ecoreParameter="esx.ecore#//Sample/toRIFFWaveFile/file"/>
       </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="esx.ecore#//SampleInPatternInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SampleInPatternInfo/index"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SampleInPatternInfo/patternLabel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SampleInPatternInfo/partCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SampleInPatternInfo/partList"/>
     </genClasses>
     <genClasses ecoreClass="esx.ecore#//SampleTune">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esx.ecore#//SampleTune/value"/>

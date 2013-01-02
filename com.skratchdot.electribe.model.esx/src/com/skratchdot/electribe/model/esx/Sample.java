@@ -52,6 +52,7 @@ import com.skratchdot.riff.wav.RIFFWave;
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getAudioDataLoopStart <em>Audio Data Loop Start</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getSliceArray <em>Slice Array</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isLoop <em>Loop</em>}</li>
+ *   <li>{@link com.skratchdot.electribe.model.esx.Sample#getLoopType <em>Loop Type</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isSlice <em>Slice</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isStereoOriginal <em>Stereo Original</em>}</li>
  *   <li>{@link com.skratchdot.electribe.model.esx.Sample#isStereoCurrent <em>Stereo Current</em>}</li>
@@ -985,6 +986,23 @@ public interface Sample extends EObject {
 	 * @generated
 	 */
 	boolean isLoop();
+
+	/**
+	 * Returns the value of the '<em><b>Loop Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link com.skratchdot.electribe.model.esx.LoopType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Loop Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Loop Type</em>' attribute.
+	 * @see com.skratchdot.electribe.model.esx.LoopType
+	 * @see com.skratchdot.electribe.model.esx.EsxPackage#getSample_LoopType()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	LoopType getLoopType();
 
 	/**
 	 * Returns the value of the '<em><b>Slice</b></em>' attribute.
