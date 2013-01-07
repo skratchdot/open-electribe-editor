@@ -2,7 +2,7 @@
 <feature
       id="com.skratchdot.electribe.features.main"
       label="Open Electribe Editor"
-      version="1.0.0.qualifier"
+      version="1.1.0.qualifier"
       provider-name="SKRATCHDOT.COM">
 
    <description>

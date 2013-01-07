@@ -13,7 +13,7 @@
 		<property name="buildDirectory" value="${basedir}/buildDirectory"/>
 		<property name="pluginPath" value="${basedir}/..${path.separator}${deltapack}" />
 		<property name="buildTempFolder" value="${buildDirectory}" />
-		<property name="buildVersion" value="v1.0.4" />
+		<property name="buildVersion" value="v1.1.0" />
 		<property name="archiveNamePrefix" value="OpenElectribeEditor-${buildVersion}" />
 
 		<ant antfile="${eclipse.pdebuild.scripts}/productBuild/productBuild.xml" />

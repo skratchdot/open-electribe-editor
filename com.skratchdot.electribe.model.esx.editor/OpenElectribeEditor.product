@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="%pluginName" uid="com.skratchdot.electribe.model.esx.editor.product" id="com.skratchdot.electribe.model.esx.editor.product" application="com.skratchdot.electribe.model.esx.editor.EsxEditorAdvisorApplication" version="1.0.4.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="%pluginName" uid="com.skratchdot.electribe.model.esx.editor.product" id="com.skratchdot.electribe.model.esx.editor.product" application="com.skratchdot.electribe.model.esx.editor.EsxEditorAdvisorApplication" version="1.1.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/com.skratchdot.electribe.model.esx.editor/icons/alt_about.gif"/>
@@ -175,7 +175,7 @@ http://www.eclipse.org/legal/epl-v10.html
    </plugins>
 
    <features>
-      <feature id="com.skratchdot.electribe.features.main" version="1.0.0.qualifier"/>
+      <feature id="com.skratchdot.electribe.features.main" version="1.1.0.qualifier"/>
    </features>
 
    <configurations>
