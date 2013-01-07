@@ -34,17 +34,11 @@ import com.skratchdot.electribe.model.esx.presentation.EsxEditor;
 
 public class ExportHandler extends AbstractHandler {
 	public static final String EXPORT_ALL_AUDIO_FILES_ID = "com.skratchdot.electribe.model.esx.editor.commands.exportAllAudioFiles";
-	public static final String EXPORT_ALL_SELECTED_FILES_ID = "com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles";
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// EXPORT_ALL_AUDIO_FILES_ID
 		if (event.getCommand().getId().equals(EXPORT_ALL_AUDIO_FILES_ID)) {
 			return exportAllAudioFiles(event);
-		}
-		// EXPORT_ALL_SELECTED_FILES_ID
-		else if (event.getCommand().getId()
-				.equals(EXPORT_ALL_SELECTED_FILES_ID)) {
-			return exportSelectedAudioFiles(event);
 		}
 
 		return null;
@@ -71,12 +65,6 @@ public class ExportHandler extends AbstractHandler {
 			exportAudioFilesToDirectory(window.getWorkbench(), directory);
 		}
 
-		return null;
-	}
-
-	public Object exportSelectedAudioFiles(ExecutionEvent event)
-			throws ExecutionException {
-		//IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 		return null;
 	}
 

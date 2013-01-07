@@ -119,12 +119,6 @@
             sequence="M1+E">
       </key>
       <key
-            commandId="com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles"
-            contextId="org.eclipse.ui.contexts.window"
-            schemeId="esx.editor.scheme"
-            sequence="M1+M2+E">
-      </key>
-      <key
             commandId="org.eclipse.ui.file.save"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="esx.editor.scheme"
@@ -205,11 +199,6 @@
             icon="icons/full/obj16/export_audio_all.gif">
       </image>
       <image
-            commandId="com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles"
-            disabledIcon="icons/full/obj16/export_audio_selected_disabled.gif"
-            icon="icons/full/obj16/export_audio_selected.gif">
-      </image>
-      <image
             commandId="com.skratchdot.electribe.model.esx.editor.commands.importAudioFiles"
             disabledIcon="icons/full/obj16/import_audio_all_disabled.gif"
             icon="icons/full/obj16/import_audio_all.gif">
@@ -242,12 +231,6 @@
             description="Exports all audio files in .wav format"
             id="com.skratchdot.electribe.model.esx.editor.commands.exportAllAudioFiles"
             name="Export all audio files">
-      </command>
-      <command
-            categoryId="org.eclipse.ui.category.file"
-            description="Exports selected audio files in .wav format"
-            id="com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles"
-            name="Export selected audio files">
       </command>
       <command
             description="Imports valid audio files into the active editor"
@@ -445,10 +428,6 @@
             commandId="com.skratchdot.electribe.model.esx.editor.commands.exportAllAudioFiles">
       </handler>
       <handler
-            class="com.skratchdot.electribe.model.esx.editor.handlers.ExportHandler"
-            commandId="com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles">
-      </handler>
-      <handler
             class="com.skratchdot.electribe.model.esx.editor.handlers.ImportHandler"
             commandId="com.skratchdot.electribe.model.esx.editor.commands.importAudioFiles">
       </handler>
@@ -524,11 +503,6 @@
                <command
                      commandId="com.skratchdot.electribe.model.esx.editor.commands.exportAllAudioFiles"
                      id="exportAllAudioFiles"
-                     style="push">
-               </command>
-               <command
-                     commandId="com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles"
-                     id="exportSelectedAudioFiles"
                      style="push">
                </command>
             </menu>
@@ -916,11 +890,6 @@
                   id="exportAllAudioFiles"
                   style="push">
             </command>
-            <command
-                  commandId="com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles"
-                  id="exportSelectedAudioFiles"
-                  style="push">
-            </command>
          </toolbar>
          <separator
                name="additions">
@@ -1013,11 +982,6 @@
                   id="exportAllAudioFiles"
                   style="push">
             </command>
-            <command
-                  commandId="com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles"
-                  id="exportSelectedAudioFiles"
-                  style="push">
-            </command>
          </menu>
       </menuContribution>
       <menuContribution
@@ -1070,11 +1034,6 @@
             <command
                   commandId="com.skratchdot.electribe.model.esx.editor.commands.exportAllAudioFiles"
                   id="exportAllAudioFiles"
-                  style="push">
-            </command>
-            <command
-                  commandId="com.skratchdot.electribe.model.esx.editor.commands.exportSelectedAudioFiles"
-                  id="exportSelectedAudioFiles"
                   style="push">
             </command>
          </menu>
