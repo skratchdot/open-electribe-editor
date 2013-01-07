@@ -274,4 +274,11 @@ public abstract class EsxEditorPart extends EditorPart implements
 		return scrollSpeedListener;
 	}
 
+	/**
+	 * @return the main TableViewer of this part if one exists, else returns null.
+	 */
+	public TableViewer getTableViewer() {
+		return null;
+	}
+
 }

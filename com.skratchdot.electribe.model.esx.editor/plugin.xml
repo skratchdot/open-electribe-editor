@@ -276,6 +276,156 @@
             id="com.skratchdot.electribe.model.esx.editor.commands.showPropertiesView"
             name="Properties">
       </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerPatterns"
+            description="Select Patterns: None"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionPatternsNone"
+            name="None">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerPatterns"
+            description="Select Patterns: All"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionPatternsAll"
+            name="All">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerPatterns"
+            description="Select Patterns: All (Empty)"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionPatternsAllEmpty"
+            name="All (Empty)">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerPatterns"
+            description="Select Patterns: All (Non-Empty)"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionPatternsAllNonEmpty"
+            name="All (Non-Empty)">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSamples"
+            description="Select Samples: None"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesNone"
+            name="None">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSamples"
+            description="Select Samples: All"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesAll"
+            name="All">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSamples"
+            description="Select Samples: All (Empty)"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesAllEmpty"
+            name="All (Empty)">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSamples"
+            description="Select Samples: All (Non-Empty)"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesAllNonEmpty"
+            name="All (Non-Empty)">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSamples"
+            description="Select Samples: All (First)"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesAllFirst"
+            name="All (First)">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSamples"
+            description="Select Samples: Mono"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesMono"
+            name="Mono">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSamples"
+            description="Select Samples: Mono (Empty)"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesMonoEmpty"
+            name="Mono (Empty)">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSamples"
+            description="Select Samples: Mono (Non-Empty)"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesMonoNonEmpty"
+            name="Mono (Non-Empty)">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSamples"
+            description="Select Samples: Mono (First)"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesMonoFirst"
+            name="Mono (First)">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSamples"
+            description="Select Samples: Stereo"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesStereo"
+            name="Stereo">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSamples"
+            description="Select Samples: Stereo (Empty)"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesStereoEmpty"
+            name="Stereo (Empty)">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSamples"
+            description="Select Samples: Stereo (Non-Empty)"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesStereoNonEmpty"
+            name="Stereo (Non-Empty)">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSamples"
+            description="Select Samples: Stereo (First)"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesStereoFirst"
+            name="Stereo (First)">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSamples"
+            description="Select Samples: Next (Empty)"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesNextEmpty"
+            name="Next (Empty)">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSamples"
+            description="Select Samples: Next (Non-Empty)"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesNextNonEmpty"
+            name="Next (Non-Empty)">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSamples"
+            description="Select Samples: In Pattern"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesInPattern"
+            name="In Pattern">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSamples"
+            description="Select Samples: Not In Pattern"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesNotInPattern"
+            name="Not In Pattern">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSongs"
+            description="Select Songs: None"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSongsNone"
+            name="None">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSongs"
+            description="Select Songs: All"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSongsAll"
+            name="All">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSongs"
+            description="Select Songs: All (Empty)"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSongsAllEmpty"
+            name="All (Empty)">
+      </command>
+      <command
+            defaultHandler="com.skratchdot.electribe.model.esx.editor.handlers.SelectionHandlerSongs"
+            description="Select Songs: All (Non-Empty)"
+            id="com.skratchdot.electribe.model.esx.editor.commands.selectionSongsAllNonEmpty"
+            name="All (Non-Empty)">
+      </command>
    </extension>
 
    <extension point="org.eclipse.ui.editors">
@@ -499,6 +649,173 @@
                   label="Select All"
                   style="push">
             </command>
+         </menu>
+         <menu
+               label="&amp;Selection">
+            <menu
+                  id="selectionMenuPatterns"
+                  label="&amp;Patterns">
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionPatternsNone"
+                     id="selectionPatternsNone"
+                     style="push">
+               </command>
+               <separator
+                     name="selectionPatterns1"
+                     visible="true">
+               </separator>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionPatternsAll"
+                     id="selectionPatternsAll"
+                     style="push">
+               </command>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionPatternsAllEmpty"
+                     id="selectionPatternsAllEmpty"
+                     style="push">
+               </command>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionPatternsAllNonEmpty"
+                     id="selectionPatternsAllNonEmpty"
+                     style="push">
+               </command>
+            </menu>
+            <menu
+                  label="&amp;Samples">
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesNone"
+                     id="selectionSamplesNone"
+                     style="push">
+               </command>
+               <separator
+                     name="selectionSamples1"
+                     visible="true">
+               </separator>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesAll"
+                     id="selectionSamplesAll"
+                     style="push">
+               </command>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesAllEmpty"
+                     id="selectionSamplesAllEmpty"
+                     style="push">
+               </command>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesAllNonEmpty"
+                     id="selectionSamplesAllNonEmpty"
+                     style="push">
+               </command>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesAllFirst"
+                     id="selectionSamplesAllFirst"
+                     style="push">
+               </command>
+               <separator
+                     name="selectionSamples2"
+                     visible="true">
+               </separator>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesMono"
+                     id="selectionSamplesMono"
+                     style="push">
+               </command>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesMonoEmpty"
+                     id="selectionSamplesMonoEmpty"
+                     style="push">
+               </command>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesMonoNonEmpty"
+                     id="selectionSamplesMonoNonEmpty"
+                     style="push">
+               </command>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesMonoFirst"
+                     id="selectionSamplesMonoFirst"
+                     style="push">
+               </command>
+               <separator
+                     name="selectionSamples3"
+                     visible="true">
+               </separator>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesStereo"
+                     id="selectionSamplesStereo"
+                     style="push">
+               </command>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesStereoEmpty"
+                     id="selectionSamplesStereoEmpty"
+                     style="push">
+               </command>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesStereoNonEmpty"
+                     id="selectionSamplesStereoNonEmpty"
+                     style="push">
+               </command>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesStereoFirst"
+                     id="selectionSamplesStereoFirst"
+                     style="push">
+               </command>
+               <separator
+                     name="selectionSamples4"
+                     visible="true">
+               </separator>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesNextEmpty"
+                     id="selectionSamplesNextEmpty"
+                     style="push">
+               </command>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesNextNonEmpty"
+                     id="selectionSamplesNextNonEmpty"
+                     style="push">
+               </command>
+               <separator
+                     name="selectionSamples5"
+                     visible="true">
+               </separator>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesInPattern"
+                     id="selectionSamplesInPattern"
+                     style="push">
+               </command>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesNotInPattern"
+                     id="selectionSamplesNotInPattern"
+                     style="push">
+               </command>
+            </menu>
+            <menu
+                  id="selectionMenuSongs"
+                  label="S&amp;ongs">
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSongsNone"
+                     id="selectionSongsNone"
+                     style="push">
+               </command>
+               <separator
+                     name="selectionSongs1"
+                     visible="true">
+               </separator>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSongsAll"
+                     id="selectionSongsAll"
+                     style="push">
+               </command>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSongsAllEmpty"
+                     id="selectionSongsAllEmpty"
+                     style="push">
+               </command>
+               <command
+                     commandId="com.skratchdot.electribe.model.esx.editor.commands.selectionSongsAllNonEmpty"
+                     id="selectionSongsAllNonEmpty"
+                     style="push">
+               </command>
+            </menu>
          </menu>
          <menu
                id="window"

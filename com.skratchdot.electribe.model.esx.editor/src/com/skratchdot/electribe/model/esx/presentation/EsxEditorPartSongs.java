@@ -302,4 +302,9 @@ public class EsxEditorPartSongs extends EsxEditorPart {
 		this.editorSongPatterns.refresh();
 	}
 
+	@Override
+	public TableViewer getTableViewer() {
+		return this.tableViewer;
+	}
+
 }

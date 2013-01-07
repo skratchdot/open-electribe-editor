@@ -817,7 +817,7 @@ public class EsxEditor extends MultiPageEditorPart implements
 	}
 
 	@Override
-	protected void setActivePage(int pageIndex) {
+	public void setActivePage(int pageIndex) {
 		if (pageIndex < this.getPageCount())
 			super.setActivePage(pageIndex);
 	}
@@ -1458,4 +1458,12 @@ public class EsxEditor extends MultiPageEditorPart implements
 		return false;
 	}
 
+	public EsxEditorPart getEsxEditorPart(int pageIndex) {
+		IEditorPart part = this.getEditor(pageIndex);
+		if (part instanceof EsxEditorPart) {
+			return (EsxEditorPart) part;
+		} else {
+			return null;
+		}
+	}
 }

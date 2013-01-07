@@ -354,4 +354,9 @@ public class EsxEditorPartPatterns extends EsxEditorPart {
 				new EditingDomainViewerDropAdapter(getEditingDomain(), viewer));
 	}
 
+	@Override
+	public TableViewer getTableViewer() {
+		return this.tableViewer;
+	}
+
 }

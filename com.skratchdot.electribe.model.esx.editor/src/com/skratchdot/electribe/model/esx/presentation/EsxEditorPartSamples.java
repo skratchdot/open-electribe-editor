@@ -10,6 +10,7 @@
 package com.skratchdot.electribe.model.esx.presentation;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -22,7 +23,6 @@ import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
@@ -36,10 +36,11 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.Table;
@@ -51,11 +52,9 @@ import org.eclipse.ui.handlers.IHandlerService;
 
 import com.skratchdot.electribe.audioplayer.handlers.LoopAndPlayHandler;
 import com.skratchdot.electribe.model.esx.EsxFile;
-import com.skratchdot.electribe.model.esx.EsxPackage;
 import com.skratchdot.electribe.model.esx.Sample;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceNames;
 import com.skratchdot.electribe.model.esx.preferences.EsxPreferenceStore;
-import com.skratchdot.electribe.model.esx.util.EsxUtil;
 
 public class EsxEditorPartSamples extends EsxEditorPart {
 	public static final String ID = "com.skratchdot.electribe.model.esx.presentation.EsxEditorPartSamples"; //$NON-NLS-1$
@@ -74,6 +73,9 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 	private TabItem tabSampleInPatternInfo;
 
 	private List<Sample> selectedSamples = new ArrayList<Sample>();
+
+	private Combo comboSelection;
+	private LinkedHashMap<String, String> selectionItems = new LinkedHashMap<String, String>();
 
 	/**
 	 * @param parent
@@ -138,90 +140,52 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 	}
 
 	private void initTopRow(Composite parent) {
-		Label labelScrollTo;
-		Link link;
-
 		// Create the top row
 		Composite compositeInfoRow = new Composite(parent, SWT.NONE);
 		compositeInfoRow.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false,
 				false, 1, 1));
-		GridLayout gridLayout = new GridLayout(6, false);
+		GridLayout gridLayout = new GridLayout(3, false);
 		gridLayout.marginWidth = 0;
 		gridLayout.verticalSpacing = 0;
 		gridLayout.marginHeight = 0;
 		compositeInfoRow.setLayout(gridLayout);
 
-		// Label: ScrollTo
-		labelScrollTo = new Label(compositeInfoRow, SWT.NONE);
-		labelScrollTo.setText("ScrollTo:");
+		// Selection Combo
+		comboSelection = new Combo(compositeInfoRow, SWT.READ_ONLY);
+		comboSelection.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false,
+				false, 1, 1));
 
-		// Mono
-		link = new Link(compositeInfoRow, SWT.NONE);
-		link.setText("<a>Mono</a>");
-		link.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				tableViewer.setSelection(
-						new StructuredSelection(tableViewer.getElementAt(0)),
-						true);
-			}
-		});
-
-		// Stereo
-		link = new Link(compositeInfoRow, SWT.NONE);
-		link.setText("<a>Stereo</a>");
-		link.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				tableViewer.setSelection(
-						new StructuredSelection(tableViewer
-								.getElementAt(EsxUtil.NUM_SAMPLES_MONO)), true);
-			}
-		});
-
-		// Next Sample
-		link = new Link(compositeInfoRow, SWT.NONE);
-		link.setText("<a>Next Sample</a>");
-		link.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				int currentIndex = tableViewer.getTable().getSelectionIndex();
-				ArrayList<Integer> skipIndices = new ArrayList<Integer>(1);
-				skipIndices.add(currentIndex);
-				int nextIndex = EsxUtil.findFirstIndex(
-						((EsxFile) tableViewer.getInput()).getSamples(),
-						currentIndex >= 0 ? currentIndex : 0, skipIndices,
-						EsxPackage.Literals.SAMPLE__EMPTY, false, true);
-				tableViewer.setSelection(
-						new StructuredSelection(tableViewer
-								.getElementAt(nextIndex)), true);
-			}
-		});
-
-		// Next Empty
-		link = new Link(compositeInfoRow, SWT.NONE);
-		link.setText("<a>Next Empty</a>");
-		link.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				int currentIndex = tableViewer.getTable().getSelectionIndex();
-				ArrayList<Integer> skipIndices = new ArrayList<Integer>(1);
-				skipIndices.add(currentIndex);
-				int nextIndex = EsxUtil.findFirstIndex(
-						((EsxFile) tableViewer.getInput()).getSamples(),
-						currentIndex >= 0 ? currentIndex : 0, skipIndices,
-						EsxPackage.Literals.SAMPLE__EMPTY, true, true);
-				tableViewer.setSelection(
-						new StructuredSelection(tableViewer
-								.getElementAt(nextIndex)), true);
-			}
-		});
+		// Selection Button
+		Button btnSelection = new Button(compositeInfoRow, SWT.NONE);
+		btnSelection.setText("Select");
 
 		// Memory Free
 		labelMemFree = new Label(compositeInfoRow, SWT.NONE);
 		labelMemFree.setAlignment(SWT.RIGHT);
 		labelMemFree.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
 				false, 1, 1));
+
+		// Populate Selection Combo
+		populateSelectionItems();
+		comboSelection.setItems(selectionItems.keySet().toArray(new String[0]));
+		comboSelection.select(0);
+
+		// Selection Combo Listener
+		comboSelection.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				selectItemsFromCurrentChoice();
+			}
+		});
+
+		// Selection Button Listener
+		btnSelection.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				selectItemsFromCurrentChoice();
+			}
+		});
+
 	}
 
 	/**
@@ -453,4 +417,91 @@ public class EsxEditorPartSamples extends EsxEditorPart {
 				new EditingDomainViewerDropAdapter(getEditingDomain(), viewer));
 	}
 
+	@Override
+	public TableViewer getTableViewer() {
+		return this.tableViewer;
+	}
+
+	/**
+	 * Select items based on current combo box selection.
+	 * Should be called on Combo change, and on button select.
+	 */
+	private void selectItemsFromCurrentChoice() {
+		String selectedText = comboSelection.getItem(comboSelection
+				.getSelectionIndex());
+		String commandId = selectionItems.get(selectedText);
+		if (commandId != null) {
+			IHandlerService handlerService = (IHandlerService) getSite()
+					.getService(IHandlerService.class);
+			try {
+				handlerService.executeCommand(commandId, null);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
+
+	/**
+	 * TODO: should eventually populate this dynamically. This is a hack because I couldn't
+	 * 			find good documentation on how to do it dynamically from plugin.xml
+	 */
+	private void populateSelectionItems() {
+		selectionItems
+				.put("None",
+						"com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesNone");
+		selectionItems
+				.put("All",
+						"com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesAll");
+		selectionItems
+				.put("All (Empty)",
+						"com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesAllEmpty");
+		selectionItems
+				.put("All (Non-Empty)",
+						"com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesAllNonEmpty");
+		selectionItems
+				.put("All (First)",
+						"com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesAllFirst");
+		selectionItems
+				.put("Mono",
+						"com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesMono");
+		selectionItems
+				.put("Mono (Empty)",
+						"com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesMonoEmpty");
+		selectionItems
+				.put("Mono (Non-Empty)",
+						"com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesMonoNonEmpty");
+		selectionItems
+				.put("Mono (First)",
+						"com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesMonoFirst");
+		selectionItems
+				.put("Stereo",
+						"com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesStereo");
+		selectionItems
+				.put("Stereo (Empty)",
+						"com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesStereoEmpty");
+		selectionItems
+				.put("Stereo (Non-Empty)",
+						"com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesStereoNonEmpty");
+		selectionItems
+				.put("Stereo (First)",
+						"com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesStereoFirst");
+		selectionItems
+				.put("Next (Empty)",
+						"com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesNextEmpty");
+		selectionItems
+				.put("Next (Non-Empty)",
+						"com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesNextNonEmpty");
+		selectionItems
+				.put("In Pattern",
+						"com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesInPattern");
+		selectionItems
+				.put("Not In Pattern",
+						"com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesNotInPattern");
+		selectionItems
+				.put("In Song",
+						"com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesInSong");
+		selectionItems
+				.put("Not In Song",
+						"com.skratchdot.electribe.model.esx.editor.commands.selectionSamplesNotInSong");
+	}
 }
