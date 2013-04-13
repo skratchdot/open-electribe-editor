@@ -116,9 +116,11 @@ public class ImportPatternWizard extends Wizard implements IImportWizard {
 								.getSamples().get(sampleMaps[i].destination);
 						sourceSample.setSampleNumberOriginal(destinationSample
 								.getSampleNumberOriginal());
-						cmd.append(new ReplaceCommand(editingDomain, esxFile,
-								EsxPackage.eINSTANCE.getEsxFile_Samples(),
-								destinationSample, sourceSample));
+						if (!sourceSample.isEmpty()) {
+							cmd.append(new ReplaceCommand(editingDomain, esxFile,
+									EsxPackage.eINSTANCE.getEsxFile_Samples(),
+									destinationSample, sourceSample));
+						}
 					}
 				}
 

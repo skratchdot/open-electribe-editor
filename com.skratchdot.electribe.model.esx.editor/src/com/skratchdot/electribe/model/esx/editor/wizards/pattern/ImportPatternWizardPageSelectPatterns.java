@@ -273,21 +273,27 @@ public class ImportPatternWizardPageSelectPatterns extends WizardPage {
 						.getStretchSliceParts();
 				for (int j = 0; j < currentDrumParts.size(); j++) {
 					samplePointer = currentDrumParts.get(j).getSamplePointer();
-					if (samplePointer >= 0) {
+					if (samplePointer >= 0
+							&& !esxFile.getSampleFromPointer(samplePointer)
+									.isEmpty()) {
 						uniqueSamples.add(samplePointer);
 					}
 				}
 				for (int j = 0; j < currentKeyboardParts.size(); j++) {
 					samplePointer = currentKeyboardParts.get(j)
 							.getSamplePointer();
-					if (samplePointer >= 0) {
+					if (samplePointer >= 0
+							&& !esxFile.getSampleFromPointer(samplePointer)
+									.isEmpty()) {
 						uniqueSamples.add(samplePointer);
 					}
 				}
 				for (int j = 0; j < currentStretchSliceParts.size(); j++) {
 					samplePointer = currentStretchSliceParts.get(j)
 							.getSamplePointer();
-					if (samplePointer >= 0) {
+					if (samplePointer >= 0
+							&& !esxFile.getSampleFromPointer(samplePointer)
+									.isEmpty()) {
 						uniqueSamples.add(samplePointer);
 					}
 				}
