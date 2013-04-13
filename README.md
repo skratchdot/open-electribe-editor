@@ -69,6 +69,10 @@ _More about the Esx File Format:_
 
 ### Version History ###
 
+#### v1.2.0 - Released April 13, 2013 ####
+
+- \[[BUG: #27](https://github.com/skratchdot/open-electribe-editor/issues/27)\] Pattern Import not working when source pattern contains empty samples
+
 #### v1.1.0 - Released January 6, 2013 ####
 
 - \[[BUG: #11](https://github.com/skratchdot/open-electribe-editor/issues/11)\] Imports/Exports showing up twice in context menu
